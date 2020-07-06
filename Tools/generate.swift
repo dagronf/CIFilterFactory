@@ -1,9 +1,23 @@
 //
-//  main.swift
+//  generate.swift
 //  CIFilterGeneratorTool
 //
-//  Created by Darren Ford on 2/6/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2020 Darren Ford. All rights reserved.
+//
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import Cocoa
@@ -55,8 +69,8 @@ private func parseFilter(filter: CIFilter) {
 	print("   ///")
 
 
-	print("   @objc class \(filter.name): Core {")
-	print("      public init?() {")
+	print("   @objc(CIFilterFactory_\(filter.name)) class \(filter.name): Core {")
+	print("      @objc public init?() {")
 	print("         super.init(name: \"\(filter.name)\")")
 	print("         self.filter.setDefaults()")
 	print("      }")
@@ -139,7 +153,7 @@ private func parseFilter(filter: CIFilter) {
 				print("      return (self.filter.value(forKey: \"\(key)\") as! \(keyType))")
 			}
 			else if isAffineTweaked {
-				print("#if os(macOS)")
+				print("#if os(macOS) || targetEnvironment(macCatalyst)")
 				print("   if let value = self.filter.value(forKey: \"\(key)\") as? NSAffineTransform {")
 				print("      return AffineTransform(value)")
 				print("   }")
@@ -162,7 +176,7 @@ private func parseFilter(filter: CIFilter) {
 				print("   self.filter.setValue(value, forKey: \"\(key)\")")
 			}
 			else if isAffineTweaked {
-				print("#if os(macOS)")
+				print("#if os(macOS) || targetEnvironment(macCatalyst)")
 				print("   self.filter.setValue(newValue?.transform, forKey: \"\(key)\")")
 				print("#else")
 				print("   if let value = newValue?.transform {")
@@ -185,7 +199,25 @@ private func parseFilter(filter: CIFilter) {
 	print("}\n")
 }
 
-print("// Automatically generated.  Do not edit.")
+print("//")
+print("// CIFilterFactory.swift")
+print("//")
+print("//  MIT license")
+print("//")
+print("//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated")
+print("//  documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the")
+print("//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to")
+print("//  permit persons to whom the Software is furnished to do so, subject to the following conditions:")
+print("//")
+print("//  The above copyright notice and this permission notice shall be included in all copies or substantial")
+print("//  portions of the Software.")
+print("//")
+print("//  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE")
+print("//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS")
+print("//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR")
+print("//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
+print("//")
+print("//  Automatically generated on \(NSDate.now).  Do not edit.")
 print("")
 print("import Foundation")
 print("import AVFoundation")
@@ -195,15 +227,15 @@ print("")
 
 print("""
 @objc public class AffineTransform: NSObject {
-	#if os(macOS)
+	#if os(macOS) || targetEnvironment(macCatalyst)
 		@objc var transform: NSAffineTransform
-		@objc init(_ transform: NSAffineTransform) {
+		@objc public init(_ transform: NSAffineTransform) {
 			self.transform = transform
 			super.init()
 		}
 	#else
 		@objc var transform: CGAffineTransform
-		@objc init(_ transform: CGAffineTransform) {
+		@objc public init(_ transform: CGAffineTransform) {
 			self.transform = transform
 			super.init()
 		}
