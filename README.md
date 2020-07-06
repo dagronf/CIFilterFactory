@@ -5,10 +5,10 @@ A Swift/Objective-C factory class (with generator) to provide type-safe and comp
 Supports macOS, tvOS, iOS and mac Catalyst
 
 <p align="center">
-    <img src="https://img.shields.io/badge/macOS-red" />
-    <img src="https://img.shields.io/badge/mac Catalyst-green" />
-    <img src="https://img.shields.io/badge/iOS-blue" />
-    <img src="https://img.shields.io/badge/tvOS-orange" />
+    <img src="https://img.shields.io/badge/macOS-10.10+-red" />
+    <img src="https://img.shields.io/badge/iOS-9+-blue" />
+    <img src="https://img.shields.io/badge/tvOS-11+-orange" />
+    <img src="https://img.shields.io/badge/mac Catalyst-supported-green" />
 </p>
 
 <p align="center">
@@ -120,7 +120,9 @@ Using `CIFilterFactory`, Xcode can now code-complete and type check classes and 
 
 ## Example
 
-### Before
+### Swift example
+
+#### Before
 
 ```swift
 let bloomFilter = CIFilter(name: "CIBloom")
@@ -130,7 +132,7 @@ bloomFilter?.setValue(radius, forKey: kCIInputRadiusKey)
 return bloomFilter?.outputImage
 ```
 
-### After
+#### After
 
 ```swift
 let bloomFilter = CIFilterFactory.CIBloom()
@@ -140,10 +142,31 @@ bloomFilter?.inputRadius = radius
 let outputImage = bloomFilter?.outputImage
 ```
 
+### Objective-C example
+
+```objc 
+id appimage = [NSImage imageNamed:NSImageNameApplicationIcon];
+id bir = [[NSBitmapImageRep alloc] initWithData:[appimage TIFFRepresentation]];
+id image = [[CIImage alloc] initWithBitmapImageRep:bir];
+
+id filter = [[CIFilterFactory_CIBloom alloc] init];
+[filter setInputImage:image];
+[filter setInputRadius:@(10)];
+[filter setInputIntensity:@(4)];
+
+CIImage *im = [filter outputImage];
+assert(im != nil);
+```
+
 ## Usage
 
 * Use Swift Package Manager to install, or
 * Copy the `CIFilterFactory.swift` file to your source code.
+
+## Regenerating CIFilterFactory
+
+1. Open a terminal and navigate to the CIFilterFactory/Tools folder
+2. run `sh regenerate.sh`
 
 ## What else?
 

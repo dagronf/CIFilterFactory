@@ -153,7 +153,7 @@ private func parseFilter(filter: CIFilter) {
 				print("      return (self.filter.value(forKey: \"\(key)\") as! \(keyType))")
 			}
 			else if isAffineTweaked {
-				print("#if os(macOS) || targetEnvironment(macCatalyst)")
+				print("#if os(macOS)")
 				print("   if let value = self.filter.value(forKey: \"\(key)\") as? NSAffineTransform {")
 				print("      return AffineTransform(value)")
 				print("   }")
@@ -176,7 +176,7 @@ private func parseFilter(filter: CIFilter) {
 				print("   self.filter.setValue(value, forKey: \"\(key)\")")
 			}
 			else if isAffineTweaked {
-				print("#if os(macOS) || targetEnvironment(macCatalyst)")
+				print("#if os(macOS)")
 				print("   self.filter.setValue(newValue?.transform, forKey: \"\(key)\")")
 				print("#else")
 				print("   if let value = newValue?.transform {")
@@ -225,9 +225,14 @@ print("import CoreML")
 print("import CoreImage")
 print("")
 
+print("#if !os(macOS)")
+print("import UIKit     // For access to NSValue.cgAffineTransformValue")
+print("#endif")
+print("")
+
 print("""
 @objc public class AffineTransform: NSObject {
-	#if os(macOS) || targetEnvironment(macCatalyst)
+	#if os(macOS)
 		@objc var transform: NSAffineTransform
 		@objc public init(_ transform: NSAffineTransform) {
 			self.transform = transform
