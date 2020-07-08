@@ -74,10 +74,6 @@ private func parseFilter(filter: CIFilter) {
 	print("         super.init(name: \"\(filter.name)\")")
 	print("         self.filter.setDefaults()")
 	print("      }")
-	print("      init?(with filter: CIFilter) {")
-	print("         super.init(with: filter, expectedName: \"\(filter.name)\")")
-	print("         self.filter.setDefaults()")
-	print("      }")
 
 	for key in inputKeys {
 		var keyType: String?
@@ -172,8 +168,7 @@ private func parseFilter(filter: CIFilter) {
 
 			print("   set {")
 			if maxValue != nil || minValue != nil {
-				print("   let value = newValue?.clamped(bounds: \(key)_Range)")
-				print("   self.filter.setValue(value, forKey: \"\(key)\")")
+				print("   self.filter.setValue(newValue?.clamped(bounds: \(key)_Range), forKey: \"\(key)\")")
 			}
 			else if isAffineTweaked {
 				print("#if os(macOS)")

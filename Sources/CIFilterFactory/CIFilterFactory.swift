@@ -16,7 +16,7 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-06 08:31:43 +0000.  Do not edit.
+//  Automatically generated on 2020-07-08 23:43:07 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -130,11 +130,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAccordionFoldTransition")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -170,8 +165,7 @@ import Foundation
 				return self.filter.value(forKey: "inputBottomHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputBottomHeight_Range)
-				self.filter.setValue(value, forKey: "inputBottomHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputBottomHeight_Range), forKey: "inputBottomHeight")
 			}
 		}
 
@@ -187,8 +181,7 @@ import Foundation
 				return self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputNumberOfFolds_Range)
-				self.filter.setValue(value, forKey: "inputNumberOfFolds")
+				self.filter.setValue(newValue?.clamped(bounds: inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
 			}
 		}
 
@@ -204,8 +197,7 @@ import Foundation
 				return self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputFoldShadowAmount_Range)
-				self.filter.setValue(value, forKey: "inputFoldShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
 			}
 		}
 
@@ -221,8 +213,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}
@@ -244,11 +235,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAdditionCompositing) class CIAdditionCompositing: Core {
 		@objc public init?() {
 			super.init(name: "CIAdditionCompositing")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAdditionCompositing")
 			self.filter.setDefaults()
 		}
 
@@ -294,11 +280,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAffineClamp) class CIAffineClamp: Core {
 		@objc public init?() {
 			super.init(name: "CIAffineClamp")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAffineClamp")
 			self.filter.setDefaults()
 		}
 
@@ -366,11 +347,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAffineTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -432,11 +408,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAffineTransform) class CIAffineTransform: Core {
 		@objc public init?() {
 			super.init(name: "CIAffineTransform")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAffineTransform")
 			self.filter.setDefaults()
 		}
 
@@ -504,11 +475,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaAverage")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -554,11 +520,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaHistogram")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image whose histogram you want to calculate.
 		///
@@ -594,8 +555,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -611,8 +571,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCount_Range)
-				self.filter.setValue(value, forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
 			}
 		}
 	}
@@ -634,11 +593,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMaximum) class CIAreaMaximum: Core {
 		@objc public init?() {
 			super.init(name: "CIAreaMaximum")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMaximum")
 			self.filter.setDefaults()
 		}
 
@@ -687,11 +641,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMaximumAlpha")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -734,11 +683,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMinimum) class CIAreaMinimum: Core {
 		@objc public init?() {
 			super.init(name: "CIAreaMinimum")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMinimum")
 			self.filter.setDefaults()
 		}
 
@@ -787,11 +731,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMinimumAlpha")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -834,11 +773,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMinMax) class CIAreaMinMax: Core {
 		@objc public init?() {
 			super.init(name: "CIAreaMinMax")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMinMax")
 			self.filter.setDefaults()
 		}
 
@@ -887,11 +821,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAreaMinMaxRed")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -937,11 +866,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAttributedTextImageGenerator")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// No Description
 		///
@@ -965,8 +889,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScaleFactor_Range)
-				self.filter.setValue(value, forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}
@@ -988,11 +911,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIAztecCodeGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -1020,8 +938,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCorrectionLevel_Range)
-				self.filter.setValue(value, forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
 			}
 		}
 
@@ -1037,8 +954,7 @@ import Foundation
 				return self.filter.value(forKey: "inputLayers") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputLayers_Range)
-				self.filter.setValue(value, forKey: "inputLayers")
+				self.filter.setValue(newValue?.clamped(bounds: inputLayers_Range), forKey: "inputLayers")
 			}
 		}
 
@@ -1054,8 +970,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCompactStyle_Range)
-				self.filter.setValue(value, forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: inputCompactStyle_Range), forKey: "inputCompactStyle")
 			}
 		}
 	}
@@ -1077,11 +992,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBarcodeGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -1115,11 +1025,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBarsSwipeTransition) class CIBarsSwipeTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIBarsSwipeTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBarsSwipeTransition")
 			self.filter.setDefaults()
 		}
 
@@ -1170,8 +1075,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -1186,8 +1090,7 @@ import Foundation
 				return self.filter.value(forKey: "inputBarOffset") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputBarOffset_Range)
-				self.filter.setValue(value, forKey: "inputBarOffset")
+				self.filter.setValue(newValue?.clamped(bounds: inputBarOffset_Range), forKey: "inputBarOffset")
 			}
 		}
 
@@ -1203,8 +1106,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}
@@ -1226,11 +1128,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBicubicScaleTransform) class CIBicubicScaleTransform: Core {
 		@objc public init?() {
 			super.init(name: "CIBicubicScaleTransform")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBicubicScaleTransform")
 			self.filter.setDefaults()
 		}
 
@@ -1257,8 +1154,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -1273,8 +1169,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAspectRatio_Range)
-				self.filter.setValue(value, forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: inputAspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
 
@@ -1290,8 +1185,7 @@ import Foundation
 				return self.filter.value(forKey: "inputB") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputB_Range)
-				self.filter.setValue(value, forKey: "inputB")
+				self.filter.setValue(newValue?.clamped(bounds: inputB_Range), forKey: "inputB")
 			}
 		}
 
@@ -1307,8 +1201,7 @@ import Foundation
 				return self.filter.value(forKey: "inputC") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputC_Range)
-				self.filter.setValue(value, forKey: "inputC")
+				self.filter.setValue(newValue?.clamped(bounds: inputC_Range), forKey: "inputC")
 			}
 		}
 	}
@@ -1330,11 +1223,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBlendWithAlphaMask) class CIBlendWithAlphaMask: Core {
 		@objc public init?() {
 			super.init(name: "CIBlendWithAlphaMask")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBlendWithAlphaMask")
 			self.filter.setDefaults()
 		}
 
@@ -1395,11 +1283,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBlendWithBlueMask")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -1454,11 +1337,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBlendWithMask) class CIBlendWithMask: Core {
 		@objc public init?() {
 			super.init(name: "CIBlendWithMask")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBlendWithMask")
 			self.filter.setDefaults()
 		}
 
@@ -1519,11 +1397,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBlendWithRedMask")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -1581,11 +1454,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBloom")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -1609,8 +1477,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -1625,8 +1492,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -1648,11 +1514,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBokehBlur) class CIBokehBlur: Core {
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBokehBlur")
 			self.filter.setDefaults()
 		}
 
@@ -1680,8 +1541,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -1697,8 +1557,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRingAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRingAmount_Range)
-				self.filter.setValue(value, forKey: "inputRingAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputRingAmount_Range), forKey: "inputRingAmount")
 			}
 		}
 
@@ -1713,8 +1572,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRingSize") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRingSize_Range)
-				self.filter.setValue(value, forKey: "inputRingSize")
+				self.filter.setValue(newValue?.clamped(bounds: inputRingSize_Range), forKey: "inputRingSize")
 			}
 		}
 
@@ -1730,8 +1588,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSoftness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSoftness_Range)
-				self.filter.setValue(value, forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
 	}
@@ -1753,11 +1610,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBoxBlur) class CIBoxBlur: Core {
 		@objc public init?() {
 			super.init(name: "CIBoxBlur")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBoxBlur")
 			self.filter.setDefaults()
 		}
 
@@ -1784,8 +1636,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -1807,11 +1658,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBumpDistortion) class CIBumpDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIBumpDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBumpDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -1850,8 +1696,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -1888,11 +1733,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIBumpDistortionLinear")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -1928,8 +1768,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -1956,8 +1795,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -1979,11 +1817,6 @@ import Foundation
 	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: Core {
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICameraCalibrationLensCorrection")
 			self.filter.setDefaults()
 		}
 
@@ -2041,11 +1874,6 @@ import Foundation
 	@objc(CIFilterFactory_CICheckerboardGenerator) class CICheckerboardGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CICheckerboardGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICheckerboardGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -2109,8 +1937,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -2132,11 +1959,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircleSplashDistortion) class CICircleSplashDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CICircleSplashDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICircleSplashDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -2175,8 +1997,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -2198,11 +2019,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircularScreen) class CICircularScreen: Core {
 		@objc public init?() {
 			super.init(name: "CICircularScreen")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICircularScreen")
 			self.filter.setDefaults()
 		}
 
@@ -2241,8 +2057,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -2258,8 +2073,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -2281,11 +2095,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircularWrap) class CICircularWrap: Core {
 		@objc public init?() {
 			super.init(name: "CICircularWrap")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICircularWrap")
 			self.filter.setDefaults()
 		}
 
@@ -2324,8 +2133,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -2359,11 +2167,6 @@ import Foundation
 	@objc(CIFilterFactory_CIClamp) class CIClamp: Core {
 		@objc public init?() {
 			super.init(name: "CIClamp")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIClamp")
 			self.filter.setDefaults()
 		}
 
@@ -2412,11 +2215,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICMYKHalftone")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -2452,8 +2250,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -2480,8 +2277,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 
@@ -2496,8 +2292,7 @@ import Foundation
 				return self.filter.value(forKey: "inputGCR") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputGCR_Range)
-				self.filter.setValue(value, forKey: "inputGCR")
+				self.filter.setValue(newValue?.clamped(bounds: inputGCR_Range), forKey: "inputGCR")
 			}
 		}
 
@@ -2512,8 +2307,7 @@ import Foundation
 				return self.filter.value(forKey: "inputUCR") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputUCR_Range)
-				self.filter.setValue(value, forKey: "inputUCR")
+				self.filter.setValue(newValue?.clamped(bounds: inputUCR_Range), forKey: "inputUCR")
 			}
 		}
 	}
@@ -2535,11 +2329,6 @@ import Foundation
 	@objc(CIFilterFactory_CICode128BarcodeGenerator) class CICode128BarcodeGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CICode128BarcodeGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICode128BarcodeGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -2567,8 +2356,7 @@ import Foundation
 				return self.filter.value(forKey: "inputQuietSpace") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputQuietSpace_Range)
-				self.filter.setValue(value, forKey: "inputQuietSpace")
+				self.filter.setValue(newValue?.clamped(bounds: inputQuietSpace_Range), forKey: "inputQuietSpace")
 			}
 		}
 
@@ -2584,8 +2372,7 @@ import Foundation
 				return self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputBarcodeHeight_Range)
-				self.filter.setValue(value, forKey: "inputBarcodeHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
 			}
 		}
 	}
@@ -2607,11 +2394,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorBlendMode) class CIColorBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIColorBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -2660,11 +2442,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorBurnBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -2707,11 +2484,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorClamp) class CIColorClamp: Core {
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorClamp")
 			self.filter.setDefaults()
 		}
 
@@ -2772,11 +2544,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorControls")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -2800,8 +2567,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSaturation") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSaturation_Range)
-				self.filter.setValue(value, forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: inputSaturation_Range), forKey: "inputSaturation")
 			}
 		}
 
@@ -2816,8 +2582,7 @@ import Foundation
 				return self.filter.value(forKey: "inputBrightness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputBrightness_Range)
-				self.filter.setValue(value, forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: inputBrightness_Range), forKey: "inputBrightness")
 			}
 		}
 
@@ -2832,8 +2597,7 @@ import Foundation
 				return self.filter.value(forKey: "inputContrast") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputContrast_Range)
-				self.filter.setValue(value, forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: inputContrast_Range), forKey: "inputContrast")
 			}
 		}
 	}
@@ -2855,11 +2619,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCrossPolynomial) class CIColorCrossPolynomial: Core {
 		@objc public init?() {
 			super.init(name: "CIColorCrossPolynomial")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorCrossPolynomial")
 			self.filter.setDefaults()
 		}
 
@@ -2932,11 +2691,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorCube")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -2961,8 +2715,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCubeDimension_Range)
-				self.filter.setValue(value, forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: inputCubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
 
@@ -2996,11 +2749,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCubesMixedWithMask) class CIColorCubesMixedWithMask: Core {
 		@objc public init?() {
 			super.init(name: "CIColorCubesMixedWithMask")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorCubesMixedWithMask")
 			self.filter.setDefaults()
 		}
 
@@ -3040,8 +2788,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCubeDimension_Range)
-				self.filter.setValue(value, forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: inputCubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
 
@@ -3102,11 +2849,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorCubeWithColorSpace")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3131,8 +2873,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCubeDimension_Range)
-				self.filter.setValue(value, forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: inputCubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
 
@@ -3178,11 +2919,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: Core {
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorCurves")
 			self.filter.setDefaults()
 		}
 
@@ -3255,11 +2991,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorDodgeBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3305,11 +3036,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorInvert")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3340,11 +3066,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorMap) class CIColorMap: Core {
 		@objc public init?() {
 			super.init(name: "CIColorMap")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorMap")
 			self.filter.setDefaults()
 		}
 
@@ -3390,11 +3111,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: Core {
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorMatrix")
 			self.filter.setDefaults()
 		}
 
@@ -3491,11 +3207,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorMonochrome")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3531,8 +3242,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -3554,11 +3264,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorPolynomial) class CIColorPolynomial: Core {
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorPolynomial")
 			self.filter.setDefaults()
 		}
 
@@ -3643,11 +3348,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColorPosterize")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3671,8 +3371,7 @@ import Foundation
 				return self.filter.value(forKey: "inputLevels") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputLevels_Range)
-				self.filter.setValue(value, forKey: "inputLevels")
+				self.filter.setValue(newValue?.clamped(bounds: inputLevels_Range), forKey: "inputLevels")
 			}
 		}
 	}
@@ -3694,11 +3393,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColumnAverage) class CIColumnAverage: Core {
 		@objc public init?() {
 			super.init(name: "CIColumnAverage")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIColumnAverage")
 			self.filter.setDefaults()
 		}
 
@@ -3747,11 +3441,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIComicEffect")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3785,11 +3474,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConstantColorGenerator")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The color to generate.
 		///
@@ -3820,11 +3504,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConvolution3X3) class CIConvolution3X3: Core {
 		@objc public init?() {
 			super.init(name: "CIConvolution3X3")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConvolution3X3")
 			self.filter.setDefaults()
 		}
 
@@ -3885,11 +3564,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConvolution5X5")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -3944,11 +3618,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: Core {
 		@objc public init?() {
 			super.init(name: "CIConvolution7X7")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConvolution7X7")
 			self.filter.setDefaults()
 		}
 
@@ -4009,11 +3678,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConvolution9Horizontal")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -4071,11 +3735,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIConvolution9Vertical")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -4130,11 +3789,6 @@ import Foundation
 	@objc(CIFilterFactory_CICopyMachineTransition) class CICopyMachineTransition: Core {
 		@objc public init?() {
 			super.init(name: "CICopyMachineTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICopyMachineTransition")
 			self.filter.setDefaults()
 		}
 
@@ -4198,8 +3852,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -4214,8 +3867,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAngle_Range)
-				self.filter.setValue(value, forKey: "inputAngle")
+				self.filter.setValue(newValue?.clamped(bounds: inputAngle_Range), forKey: "inputAngle")
 			}
 		}
 
@@ -4242,8 +3894,7 @@ import Foundation
 				return self.filter.value(forKey: "inputOpacity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputOpacity_Range)
-				self.filter.setValue(value, forKey: "inputOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: inputOpacity_Range), forKey: "inputOpacity")
 			}
 		}
 	}
@@ -4265,11 +3916,6 @@ import Foundation
 	@objc(CIFilterFactory_CICoreMLModelFilter) class CICoreMLModelFilter: Core {
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICoreMLModelFilter")
 			self.filter.setDefaults()
 		}
 
@@ -4309,8 +3955,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHeadIndex") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHeadIndex_Range)
-				self.filter.setValue(value, forKey: "inputHeadIndex")
+				self.filter.setValue(newValue?.clamped(bounds: inputHeadIndex_Range), forKey: "inputHeadIndex")
 			}
 		}
 
@@ -4326,8 +3971,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSoftmaxNormalization_Range)
-				self.filter.setValue(value, forKey: "inputSoftmaxNormalization")
+				self.filter.setValue(newValue?.clamped(bounds: inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
 			}
 		}
 	}
@@ -4349,11 +3993,6 @@ import Foundation
 	@objc(CIFilterFactory_CICrop) class CICrop: Core {
 		@objc public init?() {
 			super.init(name: "CICrop")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICrop")
 			self.filter.setDefaults()
 		}
 
@@ -4402,11 +4041,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CICrystallize")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -4430,8 +4064,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -4465,11 +4098,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDarkenBlendMode) class CIDarkenBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIDarkenBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDarkenBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -4515,11 +4143,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDepthBlurEffect) class CIDepthBlurEffect: Core {
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDepthBlurEffect")
 			self.filter.setDefaults()
 		}
 
@@ -4583,8 +4206,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAperture") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAperture_Range)
-				self.filter.setValue(value, forKey: "inputAperture")
+				self.filter.setValue(newValue?.clamped(bounds: inputAperture_Range), forKey: "inputAperture")
 			}
 		}
 
@@ -4659,8 +4281,7 @@ import Foundation
 				return self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputLumaNoiseScale_Range)
-				self.filter.setValue(value, forKey: "inputLumaNoiseScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
 			}
 		}
 
@@ -4733,11 +4354,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDepthOfField")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -4785,8 +4401,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSaturation") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSaturation_Range)
-				self.filter.setValue(value, forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: inputSaturation_Range), forKey: "inputSaturation")
 			}
 		}
 
@@ -4801,8 +4416,7 @@ import Foundation
 				return self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputUnsharpMaskRadius_Range)
-				self.filter.setValue(value, forKey: "inputUnsharpMaskRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
 			}
 		}
 
@@ -4817,8 +4431,7 @@ import Foundation
 				return self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputUnsharpMaskIntensity_Range)
-				self.filter.setValue(value, forKey: "inputUnsharpMaskIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
 			}
 		}
 
@@ -4833,8 +4446,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -4856,11 +4468,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDepthToDisparity) class CIDepthToDisparity: Core {
 		@objc public init?() {
 			super.init(name: "CIDepthToDisparity")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDepthToDisparity")
 			self.filter.setDefaults()
 		}
 
@@ -4894,11 +4501,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDifferenceBlendMode) class CIDifferenceBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIDifferenceBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDifferenceBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -4947,11 +4549,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDiscBlur")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -4975,8 +4572,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -4998,11 +4594,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDisintegrateWithMaskTransition) class CIDisintegrateWithMaskTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDisintegrateWithMaskTransition")
 			self.filter.setDefaults()
 		}
 
@@ -5054,8 +4645,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -5070,8 +4660,7 @@ import Foundation
 				return self.filter.value(forKey: "inputShadowRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputShadowRadius_Range)
-				self.filter.setValue(value, forKey: "inputShadowRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputShadowRadius_Range), forKey: "inputShadowRadius")
 			}
 		}
 
@@ -5087,8 +4676,7 @@ import Foundation
 				return self.filter.value(forKey: "inputShadowDensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputShadowDensity_Range)
-				self.filter.setValue(value, forKey: "inputShadowDensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputShadowDensity_Range), forKey: "inputShadowDensity")
 			}
 		}
 
@@ -5125,11 +4713,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDisparityToDepth")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The input disparity data image to convert to depth data.
 		///
@@ -5160,11 +4743,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDisplacementDistortion) class CIDisplacementDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDisplacementDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -5203,8 +4781,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -5226,11 +4803,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDissolveTransition")
 			self.filter.setDefaults()
 		}
 
@@ -5270,8 +4842,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}
@@ -5293,11 +4864,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDither) class CIDither: Core {
 		@objc public init?() {
 			super.init(name: "CIDither")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDither")
 			self.filter.setDefaults()
 		}
 
@@ -5325,8 +4891,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -5348,11 +4913,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDivideBlendMode) class CIDivideBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIDivideBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDivideBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -5401,11 +4961,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDocumentEnhancer")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -5430,8 +4985,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAmount_Range)
-				self.filter.setValue(value, forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputAmount_Range), forKey: "inputAmount")
 			}
 		}
 	}
@@ -5453,11 +5007,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDotScreen) class CIDotScreen: Core {
 		@objc public init?() {
 			super.init(name: "CIDotScreen")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDotScreen")
 			self.filter.setDefaults()
 		}
 
@@ -5508,8 +5057,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -5525,8 +5073,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -5548,11 +5095,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDroste) class CIDroste: Core {
 		@objc public init?() {
 			super.init(name: "CIDroste")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIDroste")
 			self.filter.setDefaults()
 		}
 
@@ -5604,8 +5146,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStrands") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStrands_Range)
-				self.filter.setValue(value, forKey: "inputStrands")
+				self.filter.setValue(newValue?.clamped(bounds: inputStrands_Range), forKey: "inputStrands")
 			}
 		}
 
@@ -5620,8 +5161,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPeriodicity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPeriodicity_Range)
-				self.filter.setValue(value, forKey: "inputPeriodicity")
+				self.filter.setValue(newValue?.clamped(bounds: inputPeriodicity_Range), forKey: "inputPeriodicity")
 			}
 		}
 
@@ -5670,11 +5210,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIEdgePreserveUpsampleFilter")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -5711,8 +5246,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSpatialSigma_Range)
-				self.filter.setValue(value, forKey: "inputSpatialSigma")
+				self.filter.setValue(newValue?.clamped(bounds: inputSpatialSigma_Range), forKey: "inputSpatialSigma")
 			}
 		}
 
@@ -5728,8 +5262,7 @@ import Foundation
 				return self.filter.value(forKey: "inputLumaSigma") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputLumaSigma_Range)
-				self.filter.setValue(value, forKey: "inputLumaSigma")
+				self.filter.setValue(newValue?.clamped(bounds: inputLumaSigma_Range), forKey: "inputLumaSigma")
 			}
 		}
 	}
@@ -5751,11 +5284,6 @@ import Foundation
 	@objc(CIFilterFactory_CIEdges) class CIEdges: Core {
 		@objc public init?() {
 			super.init(name: "CIEdges")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIEdges")
 			self.filter.setDefaults()
 		}
 
@@ -5782,8 +5310,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -5805,11 +5332,6 @@ import Foundation
 	@objc(CIFilterFactory_CIEdgeWork) class CIEdgeWork: Core {
 		@objc public init?() {
 			super.init(name: "CIEdgeWork")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIEdgeWork")
 			self.filter.setDefaults()
 		}
 
@@ -5836,8 +5358,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -5859,11 +5380,6 @@ import Foundation
 	@objc(CIFilterFactory_CIEightfoldReflectedTile) class CIEightfoldReflectedTile: Core {
 		@objc public init?() {
 			super.init(name: "CIEightfoldReflectedTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIEightfoldReflectedTile")
 			self.filter.setDefaults()
 		}
 
@@ -5914,8 +5430,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -5937,11 +5452,6 @@ import Foundation
 	@objc(CIFilterFactory_CIExclusionBlendMode) class CIExclusionBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIExclusionBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIExclusionBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -5990,11 +5500,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIExposureAdjust")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -6037,11 +5542,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: Core {
 		@objc public init?() {
 			super.init(name: "CIFalseColor")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIFalseColor")
 			self.filter.setDefaults()
 		}
 
@@ -6099,11 +5599,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFlashTransition) class CIFlashTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIFlashTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIFlashTransition")
 			self.filter.setDefaults()
 		}
 
@@ -6179,8 +5674,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -6195,8 +5689,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMaxStriationRadius_Range)
-				self.filter.setValue(value, forKey: "inputMaxStriationRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
 			}
 		}
 
@@ -6211,8 +5704,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationStrength_Range)
-				self.filter.setValue(value, forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
 
@@ -6227,8 +5719,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationContrast_Range)
-				self.filter.setValue(value, forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
 
@@ -6244,8 +5735,7 @@ import Foundation
 				return self.filter.value(forKey: "inputFadeThreshold") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputFadeThreshold_Range)
-				self.filter.setValue(value, forKey: "inputFadeThreshold")
+				self.filter.setValue(newValue?.clamped(bounds: inputFadeThreshold_Range), forKey: "inputFadeThreshold")
 			}
 		}
 	}
@@ -6267,11 +5757,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFourfoldReflectedTile) class CIFourfoldReflectedTile: Core {
 		@objc public init?() {
 			super.init(name: "CIFourfoldReflectedTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIFourfoldReflectedTile")
 			self.filter.setDefaults()
 		}
 
@@ -6322,8 +5807,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -6360,11 +5844,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIFourfoldRotatedTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -6412,8 +5891,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -6438,11 +5916,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIFourfoldTranslatedTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -6490,8 +5963,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -6528,11 +6000,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGaborGradients")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -6563,11 +6030,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGammaAdjust) class CIGammaAdjust: Core {
 		@objc public init?() {
 			super.init(name: "CIGammaAdjust")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGammaAdjust")
 			self.filter.setDefaults()
 		}
 
@@ -6616,11 +6078,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGaussianBlur")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -6644,8 +6101,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -6667,11 +6123,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: Core {
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGaussianGradient")
 			self.filter.setDefaults()
 		}
 
@@ -6722,8 +6173,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -6745,11 +6195,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlassDistortion) class CIGlassDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIGlassDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGlassDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -6800,8 +6245,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -6823,11 +6267,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlassLozenge) class CIGlassLozenge: Core {
 		@objc public init?() {
 			super.init(name: "CIGlassLozenge")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGlassLozenge")
 			self.filter.setDefaults()
 		}
 
@@ -6878,8 +6317,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -6894,8 +6332,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRefraction") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRefraction_Range)
-				self.filter.setValue(value, forKey: "inputRefraction")
+				self.filter.setValue(newValue?.clamped(bounds: inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
 	}
@@ -6917,11 +6354,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlideReflectedTile) class CIGlideReflectedTile: Core {
 		@objc public init?() {
 			super.init(name: "CIGlideReflectedTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGlideReflectedTile")
 			self.filter.setDefaults()
 		}
 
@@ -6972,8 +6404,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -6995,11 +6426,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGloom) class CIGloom: Core {
 		@objc public init?() {
 			super.init(name: "CIGloom")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGloom")
 			self.filter.setDefaults()
 		}
 
@@ -7026,8 +6452,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -7042,8 +6467,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -7065,11 +6489,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGuidedFilter) class CIGuidedFilter: Core {
 		@objc public init?() {
 			super.init(name: "CIGuidedFilter")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIGuidedFilter")
 			self.filter.setDefaults()
 		}
 
@@ -7142,11 +6561,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHardLightBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -7189,11 +6603,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHatchedScreen) class CIHatchedScreen: Core {
 		@objc public init?() {
 			super.init(name: "CIHatchedScreen")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHatchedScreen")
 			self.filter.setDefaults()
 		}
 
@@ -7244,8 +6653,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -7261,8 +6669,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -7284,11 +6691,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHeightFieldFromMask) class CIHeightFieldFromMask: Core {
 		@objc public init?() {
 			super.init(name: "CIHeightFieldFromMask")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHeightFieldFromMask")
 			self.filter.setDefaults()
 		}
 
@@ -7315,8 +6717,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -7338,11 +6739,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHexagonalPixellate) class CIHexagonalPixellate: Core {
 		@objc public init?() {
 			super.init(name: "CIHexagonalPixellate")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHexagonalPixellate")
 			self.filter.setDefaults()
 		}
 
@@ -7381,8 +6777,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -7404,11 +6799,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHighlightShadowAdjust) class CIHighlightShadowAdjust: Core {
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHighlightShadowAdjust")
 			self.filter.setDefaults()
 		}
 
@@ -7435,8 +6825,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -7452,8 +6841,7 @@ import Foundation
 				return self.filter.value(forKey: "inputShadowAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputShadowAmount_Range)
-				self.filter.setValue(value, forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputShadowAmount_Range), forKey: "inputShadowAmount")
 			}
 		}
 
@@ -7469,8 +6857,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHighlightAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHighlightAmount_Range)
-				self.filter.setValue(value, forKey: "inputHighlightAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputHighlightAmount_Range), forKey: "inputHighlightAmount")
 			}
 		}
 	}
@@ -7492,11 +6879,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHistogramDisplayFilter) class CIHistogramDisplayFilter: Core {
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHistogramDisplayFilter")
 			self.filter.setDefaults()
 		}
 
@@ -7524,8 +6906,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHeight_Range)
-				self.filter.setValue(value, forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 
@@ -7541,8 +6922,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHighLimit") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHighLimit_Range)
-				self.filter.setValue(value, forKey: "inputHighLimit")
+				self.filter.setValue(newValue?.clamped(bounds: inputHighLimit_Range), forKey: "inputHighLimit")
 			}
 		}
 
@@ -7558,8 +6938,7 @@ import Foundation
 				return self.filter.value(forKey: "inputLowLimit") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputLowLimit_Range)
-				self.filter.setValue(value, forKey: "inputLowLimit")
+				self.filter.setValue(newValue?.clamped(bounds: inputLowLimit_Range), forKey: "inputLowLimit")
 			}
 		}
 	}
@@ -7581,11 +6960,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHoleDistortion) class CIHoleDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIHoleDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHoleDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -7646,11 +7020,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHueAdjust")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -7693,11 +7062,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHueBlendMode) class CIHueBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIHueBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHueBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -7746,11 +7110,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIHueSaturationValueGradient")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// No Description
 		///
@@ -7762,8 +7121,7 @@ import Foundation
 				return self.filter.value(forKey: "inputValue") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputValue_Range)
-				self.filter.setValue(value, forKey: "inputValue")
+				self.filter.setValue(newValue?.clamped(bounds: inputValue_Range), forKey: "inputValue")
 			}
 		}
 
@@ -7778,8 +7136,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -7794,8 +7151,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSoftness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSoftness_Range)
-				self.filter.setValue(value, forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
 
@@ -7810,8 +7166,7 @@ import Foundation
 				return self.filter.value(forKey: "inputDither") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputDither_Range)
-				self.filter.setValue(value, forKey: "inputDither")
+				self.filter.setValue(newValue?.clamped(bounds: inputDither_Range), forKey: "inputDither")
 			}
 		}
 
@@ -7848,11 +7203,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIKaleidoscope")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -7876,8 +7226,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCount_Range)
-				self.filter.setValue(value, forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
 			}
 		}
 
@@ -7923,11 +7272,6 @@ import Foundation
 	@objc(CIFilterFactory_CIKeystoneCorrectionCombined) class CIKeystoneCorrectionCombined: Core {
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionCombined")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIKeystoneCorrectionCombined")
 			self.filter.setDefaults()
 		}
 
@@ -8024,11 +7368,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIKeystoneCorrectionHorizontal")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -8119,11 +7458,6 @@ import Foundation
 	@objc(CIFilterFactory_CIKeystoneCorrectionVertical) class CIKeystoneCorrectionVertical: Core {
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionVertical")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIKeystoneCorrectionVertical")
 			self.filter.setDefaults()
 		}
 
@@ -8220,11 +7554,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIKMeans")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8273,8 +7602,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCount_Range)
-				self.filter.setValue(value, forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
 			}
 		}
 
@@ -8290,8 +7618,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPasses") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPasses_Range)
-				self.filter.setValue(value, forKey: "inputPasses")
+				self.filter.setValue(newValue?.clamped(bounds: inputPasses_Range), forKey: "inputPasses")
 			}
 		}
 
@@ -8307,8 +7634,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPerceptual_Range)
-				self.filter.setValue(value, forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}
@@ -8330,11 +7656,6 @@ import Foundation
 	@objc(CIFilterFactory_CILabDeltaE) class CILabDeltaE: Core {
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILabDeltaE")
 			self.filter.setDefaults()
 		}
 
@@ -8383,11 +7704,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILanczosScaleTransform")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8411,8 +7727,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -8427,8 +7742,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAspectRatio_Range)
-				self.filter.setValue(value, forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: inputAspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
 	}
@@ -8450,11 +7764,6 @@ import Foundation
 	@objc(CIFilterFactory_CILenticularHaloGenerator) class CILenticularHaloGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CILenticularHaloGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILenticularHaloGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -8493,8 +7802,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHaloRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHaloRadius_Range)
-				self.filter.setValue(value, forKey: "inputHaloRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputHaloRadius_Range), forKey: "inputHaloRadius")
 			}
 		}
 
@@ -8509,8 +7817,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHaloWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHaloWidth_Range)
-				self.filter.setValue(value, forKey: "inputHaloWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputHaloWidth_Range), forKey: "inputHaloWidth")
 			}
 		}
 
@@ -8525,8 +7832,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHaloOverlap_Range)
-				self.filter.setValue(value, forKey: "inputHaloOverlap")
+				self.filter.setValue(newValue?.clamped(bounds: inputHaloOverlap_Range), forKey: "inputHaloOverlap")
 			}
 		}
 
@@ -8541,8 +7847,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationStrength_Range)
-				self.filter.setValue(value, forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
 
@@ -8557,8 +7862,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationContrast_Range)
-				self.filter.setValue(value, forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
 
@@ -8574,8 +7878,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}
@@ -8597,11 +7900,6 @@ import Foundation
 	@objc(CIFilterFactory_CILightenBlendMode) class CILightenBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CILightenBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILightenBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -8647,11 +7945,6 @@ import Foundation
 	@objc(CIFilterFactory_CILightTunnel) class CILightTunnel: Core {
 		@objc public init?() {
 			super.init(name: "CILightTunnel")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILightTunnel")
 			self.filter.setDefaults()
 		}
 
@@ -8724,11 +8017,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILinearBurnBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8774,11 +8062,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILinearDodgeBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8821,11 +8104,6 @@ import Foundation
 	@objc(CIFilterFactory_CILinearGradient) class CILinearGradient: Core {
 		@objc public init?() {
 			super.init(name: "CILinearGradient")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILinearGradient")
 			self.filter.setDefaults()
 		}
 
@@ -8898,11 +8176,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILinearToSRGBToneCurve")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8936,11 +8209,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILineOverlay")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -8964,8 +8232,7 @@ import Foundation
 				return self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputNRNoiseLevel_Range)
-				self.filter.setValue(value, forKey: "inputNRNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
 			}
 		}
 
@@ -8980,8 +8247,7 @@ import Foundation
 				return self.filter.value(forKey: "inputNRSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputNRSharpness_Range)
-				self.filter.setValue(value, forKey: "inputNRSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputNRSharpness_Range), forKey: "inputNRSharpness")
 			}
 		}
 
@@ -8996,8 +8262,7 @@ import Foundation
 				return self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputEdgeIntensity_Range)
-				self.filter.setValue(value, forKey: "inputEdgeIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
 			}
 		}
 
@@ -9012,8 +8277,7 @@ import Foundation
 				return self.filter.value(forKey: "inputThreshold") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputThreshold_Range)
-				self.filter.setValue(value, forKey: "inputThreshold")
+				self.filter.setValue(newValue?.clamped(bounds: inputThreshold_Range), forKey: "inputThreshold")
 			}
 		}
 
@@ -9028,8 +8292,7 @@ import Foundation
 				return self.filter.value(forKey: "inputContrast") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputContrast_Range)
-				self.filter.setValue(value, forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: inputContrast_Range), forKey: "inputContrast")
 			}
 		}
 	}
@@ -9051,11 +8314,6 @@ import Foundation
 	@objc(CIFilterFactory_CILineScreen) class CILineScreen: Core {
 		@objc public init?() {
 			super.init(name: "CILineScreen")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILineScreen")
 			self.filter.setDefaults()
 		}
 
@@ -9106,8 +8364,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -9123,8 +8380,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -9146,11 +8402,6 @@ import Foundation
 	@objc(CIFilterFactory_CILuminosityBlendMode) class CILuminosityBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CILuminosityBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CILuminosityBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -9199,11 +8450,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMaskedVariableBlur")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -9239,8 +8485,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -9262,11 +8507,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMaskToAlpha) class CIMaskToAlpha: Core {
 		@objc public init?() {
 			super.init(name: "CIMaskToAlpha")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMaskToAlpha")
 			self.filter.setDefaults()
 		}
 
@@ -9303,11 +8543,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMaximumComponent")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -9338,11 +8573,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMaximumCompositing) class CIMaximumCompositing: Core {
 		@objc public init?() {
 			super.init(name: "CIMaximumCompositing")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMaximumCompositing")
 			self.filter.setDefaults()
 		}
 
@@ -9391,11 +8621,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMedianFilter")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -9429,11 +8654,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMeshGenerator")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The width of the effect.
 		///
@@ -9445,8 +8665,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -9495,11 +8714,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMinimumComponent")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -9530,11 +8744,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMinimumCompositing) class CIMinimumCompositing: Core {
 		@objc public init?() {
 			super.init(name: "CIMinimumCompositing")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMinimumCompositing")
 			self.filter.setDefaults()
 		}
 
@@ -9580,11 +8789,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMix) class CIMix: Core {
 		@objc public init?() {
 			super.init(name: "CIMix")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMix")
 			self.filter.setDefaults()
 		}
 
@@ -9645,11 +8849,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIModTransition")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -9698,8 +8897,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -9726,8 +8924,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -9742,8 +8939,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCompression") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCompression_Range)
-				self.filter.setValue(value, forKey: "inputCompression")
+				self.filter.setValue(newValue?.clamped(bounds: inputCompression_Range), forKey: "inputCompression")
 			}
 		}
 	}
@@ -9765,11 +8961,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMorphologyGradient) class CIMorphologyGradient: Core {
 		@objc public init?() {
 			super.init(name: "CIMorphologyGradient")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMorphologyGradient")
 			self.filter.setDefaults()
 		}
 
@@ -9796,8 +8987,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -9819,11 +9009,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMorphologyMaximum) class CIMorphologyMaximum: Core {
 		@objc public init?() {
 			super.init(name: "CIMorphologyMaximum")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMorphologyMaximum")
 			self.filter.setDefaults()
 		}
 
@@ -9872,11 +9057,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMorphologyMinimum")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -9922,11 +9102,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMorphologyRectangleMaximum")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -9950,8 +9125,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -9966,8 +9140,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHeight_Range)
-				self.filter.setValue(value, forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 	}
@@ -9992,11 +9165,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMorphologyRectangleMinimum")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -10020,8 +9188,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -10036,8 +9203,7 @@ import Foundation
 				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputHeight_Range)
-				self.filter.setValue(value, forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 	}
@@ -10059,11 +9225,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMotionBlur) class CIMotionBlur: Core {
 		@objc public init?() {
 			super.init(name: "CIMotionBlur")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMotionBlur")
 			self.filter.setDefaults()
 		}
 
@@ -10090,8 +9251,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -10125,11 +9285,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMultiplyBlendMode) class CIMultiplyBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIMultiplyBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMultiplyBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -10178,11 +9333,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIMultiplyCompositing")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -10225,11 +9375,6 @@ import Foundation
 	@objc(CIFilterFactory_CINinePartStretched) class CINinePartStretched: Core {
 		@objc public init?() {
 			super.init(name: "CINinePartStretched")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CINinePartStretched")
 			self.filter.setDefaults()
 		}
 
@@ -10302,11 +9447,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CINinePartTiled")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -10367,8 +9507,7 @@ import Foundation
 				return self.filter.value(forKey: "inputFlipYTiles") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputFlipYTiles_Range)
-				self.filter.setValue(value, forKey: "inputFlipYTiles")
+				self.filter.setValue(newValue?.clamped(bounds: inputFlipYTiles_Range), forKey: "inputFlipYTiles")
 			}
 		}
 	}
@@ -10390,11 +9529,6 @@ import Foundation
 	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: Core {
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CINoiseReduction")
 			self.filter.setDefaults()
 		}
 
@@ -10421,8 +9555,7 @@ import Foundation
 				return self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputNoiseLevel_Range)
-				self.filter.setValue(value, forKey: "inputNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: inputNoiseLevel_Range), forKey: "inputNoiseLevel")
 			}
 		}
 
@@ -10437,8 +9570,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -10460,11 +9592,6 @@ import Foundation
 	@objc(CIFilterFactory_CIOpTile) class CIOpTile: Core {
 		@objc public init?() {
 			super.init(name: "CIOpTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIOpTile")
 			self.filter.setDefaults()
 		}
 
@@ -10503,8 +9630,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -10531,8 +9657,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -10554,11 +9679,6 @@ import Foundation
 	@objc(CIFilterFactory_CIOverlayBlendMode) class CIOverlayBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIOverlayBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIOverlayBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -10604,11 +9724,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPageCurlTransition) class CIPageCurlTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIPageCurlTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPageCurlTransition")
 			self.filter.setDefaults()
 		}
 
@@ -10684,8 +9799,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -10731,11 +9845,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPageCurlWithShadowTransition) class CIPageCurlWithShadowTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPageCurlWithShadowTransition")
 			self.filter.setDefaults()
 		}
 
@@ -10799,8 +9908,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -10840,8 +9948,7 @@ import Foundation
 				return self.filter.value(forKey: "inputShadowSize") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputShadowSize_Range)
-				self.filter.setValue(value, forKey: "inputShadowSize")
+				self.filter.setValue(newValue?.clamped(bounds: inputShadowSize_Range), forKey: "inputShadowSize")
 			}
 		}
 
@@ -10857,8 +9964,7 @@ import Foundation
 				return self.filter.value(forKey: "inputShadowAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputShadowAmount_Range)
-				self.filter.setValue(value, forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputShadowAmount_Range), forKey: "inputShadowAmount")
 			}
 		}
 
@@ -10895,11 +10001,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPaletteCentroid")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -10936,8 +10037,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPerceptual_Range)
-				self.filter.setValue(value, forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}
@@ -10962,11 +10062,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPalettize")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -11003,8 +10098,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPerceptual_Range)
-				self.filter.setValue(value, forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}
@@ -11026,11 +10120,6 @@ import Foundation
 	@objc(CIFilterFactory_CIParallelogramTile) class CIParallelogramTile: Core {
 		@objc public init?() {
 			super.init(name: "CIParallelogramTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIParallelogramTile")
 			self.filter.setDefaults()
 		}
 
@@ -11093,8 +10182,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -11116,11 +10204,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPDF417BarcodeGenerator) class CIPDF417BarcodeGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIPDF417BarcodeGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPDF417BarcodeGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -11148,8 +10231,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMinWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMinWidth_Range)
-				self.filter.setValue(value, forKey: "inputMinWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputMinWidth_Range), forKey: "inputMinWidth")
 			}
 		}
 
@@ -11165,8 +10247,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMaxWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMaxWidth_Range)
-				self.filter.setValue(value, forKey: "inputMaxWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputMaxWidth_Range), forKey: "inputMaxWidth")
 			}
 		}
 
@@ -11182,8 +10263,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMinHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMinHeight_Range)
-				self.filter.setValue(value, forKey: "inputMinHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputMinHeight_Range), forKey: "inputMinHeight")
 			}
 		}
 
@@ -11199,8 +10279,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMaxHeight") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMaxHeight_Range)
-				self.filter.setValue(value, forKey: "inputMaxHeight")
+				self.filter.setValue(newValue?.clamped(bounds: inputMaxHeight_Range), forKey: "inputMaxHeight")
 			}
 		}
 
@@ -11216,8 +10295,7 @@ import Foundation
 				return self.filter.value(forKey: "inputDataColumns") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputDataColumns_Range)
-				self.filter.setValue(value, forKey: "inputDataColumns")
+				self.filter.setValue(newValue?.clamped(bounds: inputDataColumns_Range), forKey: "inputDataColumns")
 			}
 		}
 
@@ -11233,8 +10311,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRows") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRows_Range)
-				self.filter.setValue(value, forKey: "inputRows")
+				self.filter.setValue(newValue?.clamped(bounds: inputRows_Range), forKey: "inputRows")
 			}
 		}
 
@@ -11249,8 +10326,7 @@ import Foundation
 				return self.filter.value(forKey: "inputPreferredAspectRatio") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputPreferredAspectRatio_Range)
-				self.filter.setValue(value, forKey: "inputPreferredAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: inputPreferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
 			}
 		}
 
@@ -11266,8 +10342,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCompactionMode") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCompactionMode_Range)
-				self.filter.setValue(value, forKey: "inputCompactionMode")
+				self.filter.setValue(newValue?.clamped(bounds: inputCompactionMode_Range), forKey: "inputCompactionMode")
 			}
 		}
 
@@ -11283,8 +10358,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCompactStyle_Range)
-				self.filter.setValue(value, forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: inputCompactStyle_Range), forKey: "inputCompactStyle")
 			}
 		}
 
@@ -11300,8 +10374,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCorrectionLevel_Range)
-				self.filter.setValue(value, forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
 			}
 		}
 
@@ -11317,8 +10390,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAlwaysSpecifyCompaction") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAlwaysSpecifyCompaction_Range)
-				self.filter.setValue(value, forKey: "inputAlwaysSpecifyCompaction")
+				self.filter.setValue(newValue?.clamped(bounds: inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
 			}
 		}
 	}
@@ -11340,11 +10412,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveCorrection) class CIPerspectiveCorrection: Core {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveCorrection")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPerspectiveCorrection")
 			self.filter.setDefaults()
 		}
 
@@ -11441,11 +10508,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPerspectiveRotate")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to process.
 		///
@@ -11524,11 +10586,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveTile) class CIPerspectiveTile: Core {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTile")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPerspectiveTile")
 			self.filter.setDefaults()
 		}
 
@@ -11613,11 +10670,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPerspectiveTransform")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -11696,11 +10748,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveTransformWithExtent) class CIPerspectiveTransformWithExtent: Core {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPerspectiveTransformWithExtent")
 			self.filter.setDefaults()
 		}
 
@@ -11797,11 +10844,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectChrome")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -11832,11 +10874,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectFade) class CIPhotoEffectFade: Core {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectFade")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectFade")
 			self.filter.setDefaults()
 		}
 
@@ -11873,11 +10910,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectInstant")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -11908,11 +10940,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectMono) class CIPhotoEffectMono: Core {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectMono")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectMono")
 			self.filter.setDefaults()
 		}
 
@@ -11949,11 +10976,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectNoir")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -11984,11 +11006,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectProcess) class CIPhotoEffectProcess: Core {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectProcess")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectProcess")
 			self.filter.setDefaults()
 		}
 
@@ -12025,11 +11042,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectTonal")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12063,11 +11075,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPhotoEffectTransfer")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12098,11 +11105,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPinchDistortion) class CIPinchDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIPinchDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPinchDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -12141,8 +11143,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -12157,8 +11158,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -12180,11 +11180,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPinLightBlendMode) class CIPinLightBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CIPinLightBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPinLightBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -12233,11 +11228,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPixellate")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12273,8 +11263,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -12296,11 +11285,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPointillize) class CIPointillize: Core {
 		@objc public init?() {
 			super.init(name: "CIPointillize")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIPointillize")
 			self.filter.setDefaults()
 		}
 
@@ -12327,8 +11311,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -12362,11 +11345,6 @@ import Foundation
 	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIQRCodeGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -12415,11 +11393,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIRadialGradient")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The center of the effect as x and y coordinates.
 		///
@@ -12443,8 +11416,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius0") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius0_Range)
-				self.filter.setValue(value, forKey: "inputRadius0")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius0_Range), forKey: "inputRadius0")
 			}
 		}
 
@@ -12459,8 +11431,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius1") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius1_Range)
-				self.filter.setValue(value, forKey: "inputRadius1")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius1_Range), forKey: "inputRadius1")
 			}
 		}
 
@@ -12508,11 +11479,6 @@ import Foundation
 			super.init(name: "CIRandomGenerator")
 			self.filter.setDefaults()
 		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIRandomGenerator")
-			self.filter.setDefaults()
-		}
 	}
 }
 
@@ -12532,11 +11498,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRippleTransition) class CIRippleTransition: Core {
 		@objc public init?() {
 			super.init(name: "CIRippleTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIRippleTransition")
 			self.filter.setDefaults()
 		}
 
@@ -12612,8 +11573,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -12628,8 +11588,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -12644,8 +11603,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -12667,11 +11625,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRoundedRectangleGenerator) class CIRoundedRectangleGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIRoundedRectangleGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -12698,8 +11651,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -12733,11 +11685,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRowAverage) class CIRowAverage: Core {
 		@objc public init?() {
 			super.init(name: "CIRowAverage")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIRowAverage")
 			self.filter.setDefaults()
 		}
 
@@ -12786,11 +11733,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISaliencyMapFilter")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12824,11 +11766,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISampleNearest")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12859,11 +11796,6 @@ import Foundation
 	@objc(CIFilterFactory_CISaturationBlendMode) class CISaturationBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CISaturationBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISaturationBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -12912,11 +11844,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIScreenBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12962,11 +11889,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISepiaTone")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -12990,8 +11912,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -13013,11 +11934,6 @@ import Foundation
 	@objc(CIFilterFactory_CIShadedMaterial) class CIShadedMaterial: Core {
 		@objc public init?() {
 			super.init(name: "CIShadedMaterial")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIShadedMaterial")
 			self.filter.setDefaults()
 		}
 
@@ -13056,8 +11972,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScale_Range)
-				self.filter.setValue(value, forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}
@@ -13079,11 +11994,6 @@ import Foundation
 	@objc(CIFilterFactory_CISharpenLuminance) class CISharpenLuminance: Core {
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISharpenLuminance")
 			self.filter.setDefaults()
 		}
 
@@ -13144,11 +12054,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISixfoldReflectedTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13196,8 +12101,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -13222,11 +12126,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISixfoldRotatedTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13274,8 +12173,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -13297,11 +12195,6 @@ import Foundation
 	@objc(CIFilterFactory_CISmoothLinearGradient) class CISmoothLinearGradient: Core {
 		@objc public init?() {
 			super.init(name: "CISmoothLinearGradient")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISmoothLinearGradient")
 			self.filter.setDefaults()
 		}
 
@@ -13374,11 +12267,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISoftLightBlendMode")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13421,11 +12309,6 @@ import Foundation
 	@objc(CIFilterFactory_CISourceAtopCompositing) class CISourceAtopCompositing: Core {
 		@objc public init?() {
 			super.init(name: "CISourceAtopCompositing")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISourceAtopCompositing")
 			self.filter.setDefaults()
 		}
 
@@ -13474,11 +12357,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISourceInCompositing")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13521,11 +12399,6 @@ import Foundation
 	@objc(CIFilterFactory_CISourceOutCompositing) class CISourceOutCompositing: Core {
 		@objc public init?() {
 			super.init(name: "CISourceOutCompositing")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISourceOutCompositing")
 			self.filter.setDefaults()
 		}
 
@@ -13574,11 +12447,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISourceOverCompositing")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13621,11 +12489,6 @@ import Foundation
 	@objc(CIFilterFactory_CISpotColor) class CISpotColor: Core {
 		@objc public init?() {
 			super.init(name: "CISpotColor")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISpotColor")
 			self.filter.setDefaults()
 		}
 
@@ -13676,8 +12539,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCloseness1") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCloseness1_Range)
-				self.filter.setValue(value, forKey: "inputCloseness1")
+				self.filter.setValue(newValue?.clamped(bounds: inputCloseness1_Range), forKey: "inputCloseness1")
 			}
 		}
 
@@ -13692,8 +12554,7 @@ import Foundation
 				return self.filter.value(forKey: "inputContrast1") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputContrast1_Range)
-				self.filter.setValue(value, forKey: "inputContrast1")
+				self.filter.setValue(newValue?.clamped(bounds: inputContrast1_Range), forKey: "inputContrast1")
 			}
 		}
 
@@ -13732,8 +12593,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCloseness2") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCloseness2_Range)
-				self.filter.setValue(value, forKey: "inputCloseness2")
+				self.filter.setValue(newValue?.clamped(bounds: inputCloseness2_Range), forKey: "inputCloseness2")
 			}
 		}
 
@@ -13748,8 +12608,7 @@ import Foundation
 				return self.filter.value(forKey: "inputContrast2") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputContrast2_Range)
-				self.filter.setValue(value, forKey: "inputContrast2")
+				self.filter.setValue(newValue?.clamped(bounds: inputContrast2_Range), forKey: "inputContrast2")
 			}
 		}
 
@@ -13788,8 +12647,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCloseness3") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCloseness3_Range)
-				self.filter.setValue(value, forKey: "inputCloseness3")
+				self.filter.setValue(newValue?.clamped(bounds: inputCloseness3_Range), forKey: "inputCloseness3")
 			}
 		}
 
@@ -13804,8 +12662,7 @@ import Foundation
 				return self.filter.value(forKey: "inputContrast3") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputContrast3_Range)
-				self.filter.setValue(value, forKey: "inputContrast3")
+				self.filter.setValue(newValue?.clamped(bounds: inputContrast3_Range), forKey: "inputContrast3")
 			}
 		}
 	}
@@ -13827,11 +12684,6 @@ import Foundation
 	@objc(CIFilterFactory_CISpotLight) class CISpotLight: Core {
 		@objc public init?() {
 			super.init(name: "CISpotLight")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISpotLight")
 			self.filter.setDefaults()
 		}
 
@@ -13882,8 +12734,7 @@ import Foundation
 				return self.filter.value(forKey: "inputBrightness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputBrightness_Range)
-				self.filter.setValue(value, forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: inputBrightness_Range), forKey: "inputBrightness")
 			}
 		}
 
@@ -13932,11 +12783,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISRGBToneCurveToLinear")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -13967,11 +12813,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIStarShineGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -14010,8 +12851,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -14026,8 +12866,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCrossScale") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCrossScale_Range)
-				self.filter.setValue(value, forKey: "inputCrossScale")
+				self.filter.setValue(newValue?.clamped(bounds: inputCrossScale_Range), forKey: "inputCrossScale")
 			}
 		}
 
@@ -14054,8 +12893,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCrossOpacity_Range)
-				self.filter.setValue(value, forKey: "inputCrossOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: inputCrossOpacity_Range), forKey: "inputCrossOpacity")
 			}
 		}
 
@@ -14070,8 +12908,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCrossWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCrossWidth_Range)
-				self.filter.setValue(value, forKey: "inputCrossWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputCrossWidth_Range), forKey: "inputCrossWidth")
 			}
 		}
 
@@ -14086,8 +12923,7 @@ import Foundation
 				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputEpsilon_Range)
-				self.filter.setValue(value, forKey: "inputEpsilon")
+				self.filter.setValue(newValue?.clamped(bounds: inputEpsilon_Range), forKey: "inputEpsilon")
 			}
 		}
 	}
@@ -14109,11 +12945,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStraightenFilter) class CIStraightenFilter: Core {
 		@objc public init?() {
 			super.init(name: "CIStraightenFilter")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIStraightenFilter")
 			self.filter.setDefaults()
 		}
 
@@ -14162,11 +12993,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIStretchCrop")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -14203,8 +13029,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCropAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCropAmount_Range)
-				self.filter.setValue(value, forKey: "inputCropAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputCropAmount_Range), forKey: "inputCropAmount")
 			}
 		}
 
@@ -14220,8 +13045,7 @@ import Foundation
 				return self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputCenterStretchAmount_Range)
-				self.filter.setValue(value, forKey: "inputCenterStretchAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
 			}
 		}
 	}
@@ -14243,11 +13067,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStripesGenerator) class CIStripesGenerator: Core {
 		@objc public init?() {
 			super.init(name: "CIStripesGenerator")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIStripesGenerator")
 			self.filter.setDefaults()
 		}
 
@@ -14311,8 +13130,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSharpness_Range)
-				self.filter.setValue(value, forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}
@@ -14334,11 +13152,6 @@ import Foundation
 	@objc(CIFilterFactory_CISubtractBlendMode) class CISubtractBlendMode: Core {
 		@objc public init?() {
 			super.init(name: "CISubtractBlendMode")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISubtractBlendMode")
 			self.filter.setDefaults()
 		}
 
@@ -14387,11 +13200,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISunbeamsGenerator")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The x and y position to use as the center of the sunbeam pattern
 		///
@@ -14427,8 +13235,7 @@ import Foundation
 				return self.filter.value(forKey: "inputSunRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputSunRadius_Range)
-				self.filter.setValue(value, forKey: "inputSunRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputSunRadius_Range), forKey: "inputSunRadius")
 			}
 		}
 
@@ -14443,8 +13250,7 @@ import Foundation
 				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputMaxStriationRadius_Range)
-				self.filter.setValue(value, forKey: "inputMaxStriationRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
 			}
 		}
 
@@ -14459,8 +13265,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationStrength_Range)
-				self.filter.setValue(value, forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
 
@@ -14475,8 +13280,7 @@ import Foundation
 				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputStriationContrast_Range)
-				self.filter.setValue(value, forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: inputStriationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
 
@@ -14492,8 +13296,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}
@@ -14515,11 +13318,6 @@ import Foundation
 	@objc(CIFilterFactory_CISwipeTransition) class CISwipeTransition: Core {
 		@objc public init?() {
 			super.init(name: "CISwipeTransition")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CISwipeTransition")
 			self.filter.setDefaults()
 		}
 
@@ -14583,8 +13381,7 @@ import Foundation
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputTime_Range)
-				self.filter.setValue(value, forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -14623,8 +13420,7 @@ import Foundation
 				return self.filter.value(forKey: "inputOpacity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputOpacity_Range)
-				self.filter.setValue(value, forKey: "inputOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: inputOpacity_Range), forKey: "inputOpacity")
 			}
 		}
 	}
@@ -14646,11 +13442,6 @@ import Foundation
 	@objc(CIFilterFactory_CITemperatureAndTint) class CITemperatureAndTint: Core {
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITemperatureAndTint")
 			self.filter.setDefaults()
 		}
 
@@ -14711,11 +13502,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITextImageGenerator")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// No Description
 		///
@@ -14751,8 +13537,7 @@ import Foundation
 				return self.filter.value(forKey: "inputFontSize") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputFontSize_Range)
-				self.filter.setValue(value, forKey: "inputFontSize")
+				self.filter.setValue(newValue?.clamped(bounds: inputFontSize_Range), forKey: "inputFontSize")
 			}
 		}
 
@@ -14767,8 +13552,7 @@ import Foundation
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputScaleFactor_Range)
-				self.filter.setValue(value, forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}
@@ -14790,11 +13574,6 @@ import Foundation
 	@objc(CIFilterFactory_CIThermal) class CIThermal: Core {
 		@objc public init?() {
 			super.init(name: "CIThermal")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIThermal")
 			self.filter.setDefaults()
 		}
 
@@ -14828,11 +13607,6 @@ import Foundation
 	@objc(CIFilterFactory_CIToneCurve) class CIToneCurve: Core {
 		@objc public init?() {
 			super.init(name: "CIToneCurve")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIToneCurve")
 			self.filter.setDefaults()
 		}
 
@@ -14929,11 +13703,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITorusLensDistortion")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -14969,8 +13738,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -14985,8 +13753,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -15001,8 +13768,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRefraction") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRefraction_Range)
-				self.filter.setValue(value, forKey: "inputRefraction")
+				self.filter.setValue(newValue?.clamped(bounds: inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
 	}
@@ -15024,11 +13790,6 @@ import Foundation
 	@objc(CIFilterFactory_CITriangleKaleidoscope) class CITriangleKaleidoscope: Core {
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITriangleKaleidoscope")
 			self.filter.setDefaults()
 		}
 
@@ -15113,11 +13874,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITriangleTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -15165,8 +13921,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -15191,11 +13946,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITwelvefoldReflectedTile")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -15243,8 +13993,7 @@ import Foundation
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputWidth_Range)
-				self.filter.setValue(value, forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}
@@ -15266,11 +14015,6 @@ import Foundation
 	@objc(CIFilterFactory_CITwirlDistortion) class CITwirlDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CITwirlDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CITwirlDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -15309,8 +14053,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -15347,11 +14090,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIUnsharpMask")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -15375,8 +14113,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -15391,8 +14128,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}
@@ -15414,11 +14150,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVibrance) class CIVibrance: Core {
 		@objc public init?() {
 			super.init(name: "CIVibrance")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIVibrance")
 			self.filter.setDefaults()
 		}
 
@@ -15446,8 +14177,7 @@ import Foundation
 				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputAmount_Range)
-				self.filter.setValue(value, forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: inputAmount_Range), forKey: "inputAmount")
 			}
 		}
 	}
@@ -15469,11 +14199,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVignette) class CIVignette: Core {
 		@objc public init?() {
 			super.init(name: "CIVignette")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIVignette")
 			self.filter.setDefaults()
 		}
 
@@ -15501,8 +14226,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 
@@ -15518,8 +14242,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}
@@ -15541,11 +14264,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVignetteEffect) class CIVignetteEffect: Core {
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIVignetteEffect")
 			self.filter.setDefaults()
 		}
 
@@ -15584,8 +14302,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -15601,8 +14318,7 @@ import Foundation
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputIntensity_Range)
-				self.filter.setValue(value, forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 
@@ -15618,8 +14334,7 @@ import Foundation
 				return self.filter.value(forKey: "inputFalloff") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputFalloff_Range)
-				self.filter.setValue(value, forKey: "inputFalloff")
+				self.filter.setValue(newValue?.clamped(bounds: inputFalloff_Range), forKey: "inputFalloff")
 			}
 		}
 	}
@@ -15641,11 +14356,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVortexDistortion) class CIVortexDistortion: Core {
 		@objc public init?() {
 			super.init(name: "CIVortexDistortion")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIVortexDistortion")
 			self.filter.setDefaults()
 		}
 
@@ -15684,8 +14394,7 @@ import Foundation
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				let value = newValue?.clamped(bounds: inputRadius_Range)
-				self.filter.setValue(value, forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -15719,11 +14428,6 @@ import Foundation
 	@objc(CIFilterFactory_CIWhitePointAdjust) class CIWhitePointAdjust: Core {
 		@objc public init?() {
 			super.init(name: "CIWhitePointAdjust")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIWhitePointAdjust")
 			self.filter.setDefaults()
 		}
 
@@ -15772,11 +14476,6 @@ import Foundation
 			self.filter.setDefaults()
 		}
 
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIXRay")
-			self.filter.setDefaults()
-		}
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -15807,11 +14506,6 @@ import Foundation
 	@objc(CIFilterFactory_CIZoomBlur) class CIZoomBlur: Core {
 		@objc public init?() {
 			super.init(name: "CIZoomBlur")
-			self.filter.setDefaults()
-		}
-
-		init?(with filter: CIFilter) {
-			super.init(with: filter, expectedName: "CIZoomBlur")
 			self.filter.setDefaults()
 		}
 
