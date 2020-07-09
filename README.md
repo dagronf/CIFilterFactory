@@ -160,8 +160,9 @@ assert(im != nil);
 
 ## Usage
 
-* Use Swift Package Manager to install, or
-* Copy the `CIFilterFactory.swift` file to your source code.
+Use Swift Package Manager
+
+You can find some really simple examples for both Swift and Objective-C in the `Demo` subfolder.
 
 ## Regenerating CIFilterFactory
 
@@ -171,7 +172,6 @@ assert(im != nil);
 ## What else?
 
 * Clean up the generator script
-* Pull out each filter into separate files rather than one gigantic one
 * Better type support
 
 ## License
