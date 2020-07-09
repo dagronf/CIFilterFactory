@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2326DEBC24B30B9400EEE779 /* DSFInspectorPanes in Frameworks */ = {isa = PBXBuildFile; productRef = 2326DEBB24B30B9400EEE779 /* DSFInspectorPanes */; };
+		2352836324B6A92A0006FC22 /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 2352836224B6A92A0006FC22 /* CIFilterFactory */; };
+		2352836C24B6AD360006FC22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352836B24B6AD360006FC22 /* AppDelegate.m */; };
+		2352836E24B6AD360006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352836D24B6AD360006FC22 /* Assets.xcassets */; };
+		2352837124B6AD360006FC22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2352836F24B6AD360006FC22 /* MainMenu.xib */; };
+		2352837424B6AD360006FC22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352837324B6AD360006FC22 /* main.m */; };
+		2352837B24B6B0F50006FC22 /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 2352837A24B6B0F50006FC22 /* CIFilterFactory */; };
+		2352838324B6BAF60006FC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352838224B6BAF60006FC22 /* AppDelegate.swift */; };
+		2352838524B6BAF60006FC22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352838424B6BAF60006FC22 /* ViewController.swift */; };
+		2352838824B6BAF60006FC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838624B6BAF60006FC22 /* Main.storyboard */; };
+		2352838A24B6BAF60006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352838924B6BAF60006FC22 /* Assets.xcassets */; };
+		2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */; };
+		2352839324B6BB840006FC22 /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 2352839224B6BB840006FC22 /* CIFilterFactory */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		23C6082F24514BB000B850E2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIFilterFactory ObjectiveC Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2352836A24B6AD360006FC22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2352836B24B6AD360006FC22 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2352836D24B6AD360006FC22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2352837024B6AD360006FC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2352837224B6AD360006FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2352837324B6AD360006FC22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2352837524B6AD360006FC22 /* CIFilterFactory_ObjectiveC_Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFilterFactory_ObjectiveC_Test.entitlements; sourceTree = "<group>"; };
+		2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIFilterFactory Swift tvOS Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2352838224B6BAF60006FC22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2352838424B6BAF60006FC22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2352838724B6BAF60006FC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2352838924B6BAF60006FC22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2352838C24B6BAF60006FC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2352838E24B6BAF60006FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23BBBC9B22A3B4BD00D054B5 /* CIFilterFactory Swift Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIFilterFactory Swift Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2352836524B6AD360006FC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352837B24B6B0F50006FC22 /* CIFilterFactory in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2352837D24B6BAF60006FC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352839324B6BB840006FC22 /* CIFilterFactory in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23BBBC9822A3B4BD00D054B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2326DEBC24B30B9400EEE779 /* DSFInspectorPanes in Frameworks */,
+				2352836324B6A92A0006FC22 /* CIFilterFactory in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2352836924B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */ = {
+			isa = PBXGroup;
+			children = (
+				2352836A24B6AD360006FC22 /* AppDelegate.h */,
+				2352836B24B6AD360006FC22 /* AppDelegate.m */,
+				2352836D24B6AD360006FC22 /* Assets.xcassets */,
+				2352836F24B6AD360006FC22 /* MainMenu.xib */,
+				2352837224B6AD360006FC22 /* Info.plist */,
+				2352837324B6AD360006FC22 /* main.m */,
+				2352837524B6AD360006FC22 /* CIFilterFactory_ObjectiveC_Test.entitlements */,
+			);
+			path = "CIFilterFactory ObjectiveC Test";
+			sourceTree = "<group>";
+		};
+		2352837924B6B0F50006FC22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2352838124B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */ = {
+			isa = PBXGroup;
+			children = (
+				2352838224B6BAF60006FC22 /* AppDelegate.swift */,
+				2352838424B6BAF60006FC22 /* ViewController.swift */,
+				2352838624B6BAF60006FC22 /* Main.storyboard */,
+				2352838924B6BAF60006FC22 /* Assets.xcassets */,
+				2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */,
+				2352838E24B6BAF60006FC22 /* Info.plist */,
+			);
+			path = "CIFilterFactory Swift tvOS Test";
+			sourceTree = "<group>";
+		};
+		23C2F6C822A3374D002A354E = {
+			isa = PBXGroup;
+			children = (
+				2352836924B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */,
+				2352838124B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */,
+				23C2F6D222A3374D002A354E /* Products */,
+				2352837924B6B0F50006FC22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		23C2F6D222A3374D002A354E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23BBBC9B22A3B4BD00D054B5 /* CIFilterFactory Swift Test.app */,
+				2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */,
+				2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2352836724B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2352837624B6AD360006FC22 /* Build configuration list for PBXNativeTarget "CIFilterFactory ObjectiveC Test" */;
+			buildPhases = (
+				2352836424B6AD360006FC22 /* Sources */,
+				2352836524B6AD360006FC22 /* Frameworks */,
+				2352836624B6AD360006FC22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CIFilterFactory ObjectiveC Test";
+			packageProductDependencies = (
+				2352837A24B6B0F50006FC22 /* CIFilterFactory */,
+			);
+			productName = "CIFilterFactory ObjectiveC Test";
+			productReference = 2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2352837F24B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2352838F24B6BAF60006FC22 /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift tvOS Test" */;
+			buildPhases = (
+				2352837C24B6BAF60006FC22 /* Sources */,
+				2352837D24B6BAF60006FC22 /* Frameworks */,
+				2352837E24B6BAF60006FC22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CIFilterFactory Swift tvOS Test";
+			packageProductDependencies = (
+				2352839224B6BB840006FC22 /* CIFilterFactory */,
+			);
+			productName = "CIFilterFactory Swift tvOS Test";
+			productReference = 2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23BBBC9A22A3B4BD00D054B5 /* CIFilterFactory Swift Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23BBBCA822A3B4BE00D054B5 /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift Test" */;
+			buildPhases = (
+				23BBBC9722A3B4BD00D054B5 /* Sources */,
+				23BBBC9822A3B4BD00D054B5 /* Frameworks */,
+				23BBBC9922A3B4BD00D054B5 /* Resources */,
+				23C6082F24514BB000B850E2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CIFilterFactory Swift Test";
+			packageProductDependencies = (
+				2326DEBB24B30B9400EEE779 /* DSFInspectorPanes */,
+				2352836224B6A92A0006FC22 /* CIFilterFactory */,
+			);
+			productName = "CIFilter-Test";
+			productReference = 23BBBC9B22A3B4BD00D054B5 /* CIFilterFactory Swift Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23C2F6C922A3374D002A354E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Darren Ford";
+				TargetAttributes = {
+					2352836724B6AD360006FC22 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					2352837F24B6BAF60006FC22 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					23BBBC9A22A3B4BD00D054B5 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 23C2F6CC22A3374D002A354E /* Build configuration list for PBXProject "CIFilterFactory Tests" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 23C2F6C822A3374D002A354E;
+			packageReferences = (
+				2326DEBA24B30B9400EEE779 /* XCRemoteSwiftPackageReference "DSFInspectorPanes" */,
+				2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */,
+			);
+			productRefGroup = 23C2F6D222A3374D002A354E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23BBBC9A22A3B4BD00D054B5 /* CIFilterFactory Swift Test */,
+				2352836724B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */,
+				2352837F24B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2352836624B6AD360006FC22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352836E24B6AD360006FC22 /* Assets.xcassets in Resources */,
+				2352837124B6AD360006FC22 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2352837E24B6BAF60006FC22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */,
+				2352838A24B6BAF60006FC22 /* Assets.xcassets in Resources */,
+				2352838824B6BAF60006FC22 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23BBBC9922A3B4BD00D054B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2352836424B6AD360006FC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352837424B6AD360006FC22 /* main.m in Sources */,
+				2352836C24B6AD360006FC22 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2352837C24B6BAF60006FC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2352838524B6BAF60006FC22 /* ViewController.swift in Sources */,
+				2352838324B6BAF60006FC22 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23BBBC9722A3B4BD00D054B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2352836F24B6AD360006FC22 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2352837024B6AD360006FC22 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2352838624B6BAF60006FC22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2352838724B6BAF60006FC22 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2352838C24B6BAF60006FC22 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2352837724B6AD360006FC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory ObjectiveC Test/CIFilterFactory_ObjectiveC_Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "CIFilterFactory ObjectiveC Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-ObjectiveC-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2352837824B6AD360006FC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory ObjectiveC Test/CIFilterFactory_ObjectiveC_Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "CIFilterFactory ObjectiveC Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-ObjectiveC-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2352839024B6BAF60006FC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "CIFilterFactory Swift tvOS Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-Swift-tvOS-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+			};
+			name = Debug;
+		};
+		2352839124B6BAF60006FC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "CIFilterFactory Swift tvOS Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-Swift-tvOS-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		23BBBCA622A3B4BE00D054B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CIFilter Test/CIFilter_Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "CIFilter Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilter-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		23BBBCA722A3B4BE00D054B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CIFilter Test/CIFilter_Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				INFOPLIST_FILE = "CIFilter Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilter-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		23C2F6D622A3374E002A354E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		23C2F6D722A3374E002A354E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2352837624B6AD360006FC22 /* Build configuration list for PBXNativeTarget "CIFilterFactory ObjectiveC Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2352837724B6AD360006FC22 /* Debug */,
+				2352837824B6AD360006FC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2352838F24B6BAF60006FC22 /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift tvOS Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2352839024B6BAF60006FC22 /* Debug */,
+				2352839124B6BAF60006FC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23BBBCA822A3B4BE00D054B5 /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23BBBCA622A3B4BE00D054B5 /* Debug */,
+				23BBBCA722A3B4BE00D054B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23C2F6CC22A3374D002A354E /* Build configuration list for PBXProject "CIFilterFactory Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23C2F6D622A3374E002A354E /* Debug */,
+				23C2F6D722A3374E002A354E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2326DEBA24B30B9400EEE779 /* XCRemoteSwiftPackageReference "DSFInspectorPanes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/DSFInspectorPanes";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/CIFilterFactory.git";
+			requirement = {
+				branch = generate_into_folder_instead_of_large_file;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2326DEBB24B30B9400EEE779 /* DSFInspectorPanes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2326DEBA24B30B9400EEE779 /* XCRemoteSwiftPackageReference "DSFInspectorPanes" */;
+			productName = DSFInspectorPanes;
+		};
+		2352836224B6A92A0006FC22 /* CIFilterFactory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
+			productName = CIFilterFactory;
+		};
+		2352837A24B6B0F50006FC22 /* CIFilterFactory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
+			productName = CIFilterFactory;
+		};
+		2352839224B6BB840006FC22 /* CIFilterFactory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
+			productName = CIFilterFactory;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 23C2F6C922A3374D002A354E /* Project object */;
+}
