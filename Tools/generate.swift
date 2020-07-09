@@ -27,6 +27,7 @@ private func parseFilter(filter: CIFilter, out: FileSquirter) {
 	out.print("""
 //
 //  \(filter.name).swift  (AUTOMATICALLY GENERATED FILE)
+//  CIFilterFactory
 //
 //  MIT license
 //
@@ -51,7 +52,8 @@ import CoreML
 import CoreImage
 
 #if !os(macOS)
-import UIKit     // For access to NSValue.cgAffineTransformValue
+// For access to NSValue.cgAffineTransformValue
+import UIKit
 #endif
 
 """)
@@ -137,7 +139,7 @@ import UIKit     // For access to NSValue.cgAffineTransformValue
 
 		var isAffineTweaked = false
 		if keyType == "NSAffineTransform" {
-			keyType = "AffineTransform"
+			keyType = "CIFilterFactory.AffineTransform"
 			isAffineTweaked = true
 		}
 
@@ -270,22 +272,6 @@ out.print("""
 import Foundation
 import CoreImage
 
-@objc public class AffineTransform: NSObject {
-	#if os(macOS)
-		@objc var transform: NSAffineTransform
-		@objc public init(_ transform: NSAffineTransform) {
-			self.transform = transform
-			super.init()
-		}
-	#else
-		@objc var transform: CGAffineTransform
-		@objc public init(_ transform: CGAffineTransform) {
-			self.transform = transform
-			super.init()
-		}
-	#endif
-}
-
 @objc public class CIFilterFactory: NSObject {
 	@objc(CIFilterCore) public class Core: NSObject {
 		let filter: CIFilter
@@ -340,6 +326,23 @@ import CoreImage
 			return filter.attributes[kCIAttributeReferenceDocumentation] as? URL
 		}
 	}
+
+	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
+	@objc(CIFilterFactoryAffineTransform) public class AffineTransform: NSObject {
+		#if os(macOS)
+			@objc var transform: NSAffineTransform
+			@objc public init(_ transform: NSAffineTransform) {
+				self.transform = transform
+				super.init()
+			}
+		#else
+			@objc var transform: CGAffineTransform
+			@objc public init(_ transform: CGAffineTransform) {
+				self.transform = transform
+				super.init()
+			}
+		#endif
+	}
 }
 
 extension NSNumber {
@@ -349,21 +352,18 @@ extension NSNumber {
 		}
 		return self
 	}
-
 	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
 		if bounds.upperBound < self.floatValue {
 			return NSNumber(value: bounds.upperBound)
 		}
 		return self
 	}
-
 	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
 		var value = max(bounds.lowerBound, self.floatValue)
 		value = min(bounds.upperBound, value)
 		return NSNumber(value: value)
 	}
 }
-
 """)
 
 let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)

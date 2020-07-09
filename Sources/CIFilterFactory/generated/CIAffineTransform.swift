@@ -1,5 +1,6 @@
 //
 //  CIAffineTransform.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIFilterFactory
 //
 //  MIT license
 //
@@ -24,7 +25,8 @@ import CoreML
 import Foundation
 
 #if !os(macOS)
-	import UIKit // For access to NSValue.cgAffineTransformValue
+	// For access to NSValue.cgAffineTransformValue
+	import UIKit
 #endif
 
 @available(macOS 10.4, iOS 5, *)
@@ -65,7 +67,7 @@ import Foundation
 		///
 		/// A transform to apply to the image.
 		///
-		@objc public var inputTransform: AffineTransform? {
+		@objc public var inputTransform: CIFilterFactory.AffineTransform? {
 			get {
 				#if os(macOS)
 					if let value = filter.value(forKey: "inputTransform") as? NSAffineTransform {

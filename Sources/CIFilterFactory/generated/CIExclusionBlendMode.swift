@@ -1,5 +1,6 @@
 //
 //  CIExclusionBlendMode.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIFilterFactory
 //
 //  MIT license
 //
@@ -24,7 +25,8 @@ import CoreML
 import Foundation
 
 #if !os(macOS)
-	import UIKit // For access to NSValue.cgAffineTransformValue
+	// For access to NSValue.cgAffineTransformValue
+	import UIKit
 #endif
 
 @available(macOS 10.4, iOS 5, *)
