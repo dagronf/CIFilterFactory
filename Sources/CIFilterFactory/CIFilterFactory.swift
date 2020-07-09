@@ -16,7 +16,7 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-08 23:43:07 +0000.  Do not edit.
+//  Automatically generated on 2020-07-09 00:05:47 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -103,11 +103,30 @@ import Foundation
 		/// The localized reference documentation for the filter. The reference should provide developers with technical details.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public var onlineDocumentationURL: URL? {
-			if let refDoc = filter.attributes[kCIAttributeReferenceDocumentation] as? URL {
-				return refDoc
-			}
-			return nil
+			return filter.attributes[kCIAttributeReferenceDocumentation] as? URL
 		}
+	}
+}
+
+private extension NSNumber {
+	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
+		if bounds.lowerBound > self.floatValue {
+			return NSNumber(value: bounds.lowerBound)
+		}
+		return self
+	}
+
+	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
+		if bounds.upperBound < self.floatValue {
+			return NSNumber(value: bounds.upperBound)
+		}
+		return self
+	}
+
+	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
+		var value = max(bounds.lowerBound, self.floatValue)
+		value = min(bounds.upperBound, value)
+		return NSNumber(value: value)
 	}
 }
 
@@ -14544,27 +14563,5 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputAmount")
 			}
 		}
-	}
-}
-
-private extension NSNumber {
-	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
-		if bounds.lowerBound > self.floatValue {
-			return NSNumber(value: bounds.lowerBound)
-		}
-		return self
-	}
-
-	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
-		if bounds.upperBound < self.floatValue {
-			return NSNumber(value: bounds.upperBound)
-		}
-		return self
-	}
-
-	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
-		var value = max(bounds.lowerBound, self.floatValue)
-		value = min(bounds.upperBound, value)
-		return NSNumber(value: value)
 	}
 }
