@@ -508,8 +508,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dagronf/CIFilterFactory.git";
 			requirement = {
-				branch = generate_into_folder_instead_of_large_file;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 10.15.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
