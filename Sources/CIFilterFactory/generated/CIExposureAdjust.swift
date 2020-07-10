@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
 	///
-	@objc(CIFilterFactory_CIExposureAdjust) class CIExposureAdjust: Core {
+	@objc(CIFilterFactory_CIExposureAdjust) class CIExposureAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIExposureAdjust")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputEV: NSNumber? {
 			get {
-				return filter.value(forKey: "inputEV") as? NSNumber
+				return self.filter.value(forKey: "inputEV") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputEV")
+				self.filter.setValue(newValue, forKey: "inputEV")
 			}
 		}
 	}

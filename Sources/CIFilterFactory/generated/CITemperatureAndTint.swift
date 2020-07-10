@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
 	///
-	@objc(CIFilterFactory_CITemperatureAndTint) class CITemperatureAndTint: Core {
+	@objc(CIFilterFactory_CITemperatureAndTint) class CITemperatureAndTint: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputNeutral: CIVector? {
 			get {
-				return filter.value(forKey: "inputNeutral") as? CIVector
+				return self.filter.value(forKey: "inputNeutral") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputNeutral")
+				self.filter.setValue(newValue, forKey: "inputNeutral")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputTargetNeutral: CIVector? {
 			get {
-				return filter.value(forKey: "inputTargetNeutral") as? CIVector
+				return self.filter.value(forKey: "inputTargetNeutral") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetNeutral")
+				self.filter.setValue(newValue, forKey: "inputTargetNeutral")
 			}
 		}
 	}

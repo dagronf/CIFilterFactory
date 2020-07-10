@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIVignette/)
 	///
-	@objc(CIFilterFactory_CIVignette) class CIVignette: Core {
+	@objc(CIFilterFactory_CIVignette) class CIVignette: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIVignette")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
 		@objc public var inputIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 
@@ -91,10 +91,10 @@ import Foundation
 		let inputRadius_Range: ClosedRange<Float> = 0.0 ... 2.0
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

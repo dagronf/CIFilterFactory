@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
 	///
-	@objc(CIFilterFactory_CIPerspectiveRotate) class CIPerspectiveRotate: Core {
+	@objc(CIFilterFactory_CIPerspectiveRotate) class CIPerspectiveRotate: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveRotate")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputFocalLength: NSNumber? {
 			get {
-				return filter.value(forKey: "inputFocalLength") as? NSNumber
+				return self.filter.value(forKey: "inputFocalLength") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputFocalLength")
+				self.filter.setValue(newValue, forKey: "inputFocalLength")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputPitch: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPitch") as? NSNumber
+				return self.filter.value(forKey: "inputPitch") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPitch")
+				self.filter.setValue(newValue, forKey: "inputPitch")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputYaw: NSNumber? {
 			get {
-				return filter.value(forKey: "inputYaw") as? NSNumber
+				return self.filter.value(forKey: "inputYaw") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputYaw")
+				self.filter.setValue(newValue, forKey: "inputYaw")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputRoll: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRoll") as? NSNumber
+				return self.filter.value(forKey: "inputRoll") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRoll")
+				self.filter.setValue(newValue, forKey: "inputRoll")
 			}
 		}
 	}

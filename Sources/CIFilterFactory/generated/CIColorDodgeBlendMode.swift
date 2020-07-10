@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorDodgeBlendMode/)
 	///
-	@objc(CIFilterFactory_CIColorDodgeBlendMode) class CIColorDodgeBlendMode: Core {
+	@objc(CIFilterFactory_CIColorDodgeBlendMode) class CIColorDodgeBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorDodgeBlendMode")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputBackgroundImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputBackgroundImage") as? CIImage
+				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBackgroundImage")
+				self.filter.setValue(newValue, forKey: "inputBackgroundImage")
 			}
 		}
 	}

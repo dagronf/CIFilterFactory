@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
 	///
-	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: Core {
+	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConvolution7X7")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputWeights: CIVector? {
 			get {
-				return filter.value(forKey: "inputWeights") as? CIVector
+				return self.filter.value(forKey: "inputWeights") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputWeights")
+				self.filter.setValue(newValue, forKey: "inputWeights")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputBias: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBias") as? NSNumber
+				return self.filter.value(forKey: "inputBias") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBias")
+				self.filter.setValue(newValue, forKey: "inputBias")
 			}
 		}
 	}

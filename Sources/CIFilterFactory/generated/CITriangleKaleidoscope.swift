@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
 	///
-	@objc(CIFilterFactory_CITriangleKaleidoscope) class CITriangleKaleidoscope: Core {
+	@objc(CIFilterFactory_CITriangleKaleidoscope) class CITriangleKaleidoscope: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPoint: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint") as? CIVector
+				return self.filter.value(forKey: "inputPoint") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint")
+				self.filter.setValue(newValue, forKey: "inputPoint")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputSize: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSize") as? NSNumber
+				return self.filter.value(forKey: "inputSize") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputSize")
+				self.filter.setValue(newValue, forKey: "inputSize")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputRotation: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRotation") as? NSNumber
+				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRotation")
+				self.filter.setValue(newValue, forKey: "inputRotation")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputDecay: NSNumber? {
 			get {
-				return filter.value(forKey: "inputDecay") as? NSNumber
+				return self.filter.value(forKey: "inputDecay") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputDecay")
+				self.filter.setValue(newValue, forKey: "inputDecay")
 			}
 		}
 	}

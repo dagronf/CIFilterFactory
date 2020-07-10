@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
 	///
-	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: Core {
+	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputWidth
@@ -58,10 +58,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		///
 		@objc public var inputMesh: NSArray? {
 			get {
-				return filter.value(forKey: "inputMesh") as? NSArray
+				return self.filter.value(forKey: "inputMesh") as? NSArray
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMesh")
+				self.filter.setValue(newValue, forKey: "inputMesh")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransformWithExtent/)
 	///
-	@objc(CIFilterFactory_CIPerspectiveTransformWithExtent) class CIPerspectiveTransformWithExtent: Core {
+	@objc(CIFilterFactory_CIPerspectiveTransformWithExtent) class CIPerspectiveTransformWithExtent: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputTopLeft: CIVector? {
 			get {
-				return filter.value(forKey: "inputTopLeft") as? CIVector
+				return self.filter.value(forKey: "inputTopLeft") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTopLeft")
+				self.filter.setValue(newValue, forKey: "inputTopLeft")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputTopRight: CIVector? {
 			get {
-				return filter.value(forKey: "inputTopRight") as? CIVector
+				return self.filter.value(forKey: "inputTopRight") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTopRight")
+				self.filter.setValue(newValue, forKey: "inputTopRight")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputBottomRight: CIVector? {
 			get {
-				return filter.value(forKey: "inputBottomRight") as? CIVector
+				return self.filter.value(forKey: "inputBottomRight") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBottomRight")
+				self.filter.setValue(newValue, forKey: "inputBottomRight")
 			}
 		}
 
@@ -125,10 +125,10 @@ import Foundation
 		///
 		@objc public var inputBottomLeft: CIVector? {
 			get {
-				return filter.value(forKey: "inputBottomLeft") as? CIVector
+				return self.filter.value(forKey: "inputBottomLeft") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBottomLeft")
+				self.filter.setValue(newValue, forKey: "inputBottomLeft")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
 	///
-	@objc(CIFilterFactory_CIColorControls) class CIColorControls: Core {
+	@objc(CIFilterFactory_CIColorControls) class CIColorControls: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorControls")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputSaturation: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSaturation") as? NSNumber
+				return self.filter.value(forKey: "inputSaturation") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSaturation_Range), forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSaturation_Range), forKey: "inputSaturation")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
 		@objc public var inputBrightness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBrightness") as? NSNumber
+				return self.filter.value(forKey: "inputBrightness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputBrightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputBrightness_Range), forKey: "inputBrightness")
 			}
 		}
 
@@ -106,10 +106,10 @@ import Foundation
 		let inputContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputContrast: NSNumber? {
 			get {
-				return filter.value(forKey: "inputContrast") as? NSNumber
+				return self.filter.value(forKey: "inputContrast") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputContrast_Range), forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast_Range), forKey: "inputContrast")
 			}
 		}
 	}

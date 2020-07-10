@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
 	///
-	@objc(CIFilterFactory_CIGaborGradients) class CIGaborGradients: Core {
+	@objc(CIFilterFactory_CIGaborGradients) class CIGaborGradients: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGaborGradients")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 	}

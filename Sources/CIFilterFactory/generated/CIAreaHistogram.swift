@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
 	///
-	@objc(CIFilterFactory_CIAreaHistogram) class CIAreaHistogram: Core {
+	@objc(CIFilterFactory_CIAreaHistogram) class CIAreaHistogram: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaHistogram")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScale") as? NSNumber
+				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -104,10 +104,10 @@ import Foundation
 		let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
 		@objc public var inputCount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCount") as? NSNumber
+				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
 			}
 		}
 	}

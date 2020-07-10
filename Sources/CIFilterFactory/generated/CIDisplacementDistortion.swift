@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
 	///
-	@objc(CIFilterFactory_CIDisplacementDistortion) class CIDisplacementDistortion: Core {
+	@objc(CIFilterFactory_CIDisplacementDistortion) class CIDisplacementDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputDisplacementImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputDisplacementImage") as? CIImage
+				return self.filter.value(forKey: "inputDisplacementImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputDisplacementImage")
+				self.filter.setValue(newValue, forKey: "inputDisplacementImage")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScale") as? NSNumber
+				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}

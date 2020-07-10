@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIEdges/)
 	///
-	@objc(CIFilterFactory_CIEdges) class CIEdges: Core {
+	@objc(CIFilterFactory_CIEdges) class CIEdges: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIEdges")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}

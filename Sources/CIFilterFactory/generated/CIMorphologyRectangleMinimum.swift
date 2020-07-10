@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMinimum/)
 	///
-	@objc(CIFilterFactory_CIMorphologyRectangleMinimum) class CIMorphologyRectangleMinimum: Core {
+	@objc(CIFilterFactory_CIMorphologyRectangleMinimum) class CIMorphologyRectangleMinimum: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMorphologyRectangleMinimum")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputHeight_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputHeight") as? NSNumber
+				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputHeight_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 	}

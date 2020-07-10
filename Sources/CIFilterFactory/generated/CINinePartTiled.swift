@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
 	///
-	@objc(CIFilterFactory_CINinePartTiled) class CINinePartTiled: Core {
+	@objc(CIFilterFactory_CINinePartTiled) class CINinePartTiled: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CINinePartTiled")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputBreakpoint0: CIVector? {
 			get {
-				return filter.value(forKey: "inputBreakpoint0") as? CIVector
+				return self.filter.value(forKey: "inputBreakpoint0") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBreakpoint0")
+				self.filter.setValue(newValue, forKey: "inputBreakpoint0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputBreakpoint1: CIVector? {
 			get {
-				return filter.value(forKey: "inputBreakpoint1") as? CIVector
+				return self.filter.value(forKey: "inputBreakpoint1") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBreakpoint1")
+				self.filter.setValue(newValue, forKey: "inputBreakpoint1")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputGrowAmount: CIVector? {
 			get {
-				return filter.value(forKey: "inputGrowAmount") as? CIVector
+				return self.filter.value(forKey: "inputGrowAmount") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputGrowAmount")
+				self.filter.setValue(newValue, forKey: "inputGrowAmount")
 			}
 		}
 
@@ -115,10 +115,10 @@ import Foundation
 		let inputFlipYTiles_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputFlipYTiles: NSNumber? {
 			get {
-				return filter.value(forKey: "inputFlipYTiles") as? NSNumber
+				return self.filter.value(forKey: "inputFlipYTiles") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputFlipYTiles_Range), forKey: "inputFlipYTiles")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputFlipYTiles_Range), forKey: "inputFlipYTiles")
 			}
 		}
 	}

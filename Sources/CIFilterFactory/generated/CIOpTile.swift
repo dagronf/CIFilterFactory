@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
 	///
-	@objc(CIFilterFactory_CIOpTile) class CIOpTile: Core {
+	@objc(CIFilterFactory_CIOpTile) class CIOpTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIOpTile")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScale") as? NSNumber
+				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 	}

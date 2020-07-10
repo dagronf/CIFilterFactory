@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
 	///
-	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: Core {
+	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputColor
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 	}

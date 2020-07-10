@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
 	///
-	@objc(CIFilterFactory_CIAttributedTextImageGenerator) class CIAttributedTextImageGenerator: Core {
+	@objc(CIFilterFactory_CIAttributedTextImageGenerator) class CIAttributedTextImageGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAttributedTextImageGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputText
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputText: NSAttributedString? {
 			get {
-				return filter.value(forKey: "inputText") as? NSAttributedString
+				return self.filter.value(forKey: "inputText") as? NSAttributedString
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputText")
+				self.filter.setValue(newValue, forKey: "inputText")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScaleFactor: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}

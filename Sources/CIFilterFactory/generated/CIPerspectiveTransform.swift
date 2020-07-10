@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)
 	///
-	@objc(CIFilterFactory_CIPerspectiveTransform) class CIPerspectiveTransform: Core {
+	@objc(CIFilterFactory_CIPerspectiveTransform) class CIPerspectiveTransform: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransform")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTopLeft: CIVector? {
 			get {
-				return filter.value(forKey: "inputTopLeft") as? CIVector
+				return self.filter.value(forKey: "inputTopLeft") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTopLeft")
+				self.filter.setValue(newValue, forKey: "inputTopLeft")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputTopRight: CIVector? {
 			get {
-				return filter.value(forKey: "inputTopRight") as? CIVector
+				return self.filter.value(forKey: "inputTopRight") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTopRight")
+				self.filter.setValue(newValue, forKey: "inputTopRight")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputBottomRight: CIVector? {
 			get {
-				return filter.value(forKey: "inputBottomRight") as? CIVector
+				return self.filter.value(forKey: "inputBottomRight") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBottomRight")
+				self.filter.setValue(newValue, forKey: "inputBottomRight")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputBottomLeft: CIVector? {
 			get {
-				return filter.value(forKey: "inputBottomLeft") as? CIVector
+				return self.filter.value(forKey: "inputBottomLeft") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBottomLeft")
+				self.filter.setValue(newValue, forKey: "inputBottomLeft")
 			}
 		}
 	}

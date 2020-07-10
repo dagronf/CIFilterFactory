@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
 	///
-	@objc(CIFilterFactory_CISharpenLuminance) class CISharpenLuminance: Core {
+	@objc(CIFilterFactory_CISharpenLuminance) class CISharpenLuminance: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputSharpness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputSharpness")
+				self.filter.setValue(newValue, forKey: "inputSharpness")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRadius")
+				self.filter.setValue(newValue, forKey: "inputRadius")
 			}
 		}
 	}

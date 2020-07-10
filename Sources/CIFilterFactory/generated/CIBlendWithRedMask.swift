@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBlendWithRedMask/)
 	///
-	@objc(CIFilterFactory_CIBlendWithRedMask) class CIBlendWithRedMask: Core {
+	@objc(CIFilterFactory_CIBlendWithRedMask) class CIBlendWithRedMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBlendWithRedMask")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputBackgroundImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputBackgroundImage") as? CIImage
+				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBackgroundImage")
+				self.filter.setValue(newValue, forKey: "inputBackgroundImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputMaskImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputMaskImage") as? CIImage
+				return self.filter.value(forKey: "inputMaskImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMaskImage")
+				self.filter.setValue(newValue, forKey: "inputMaskImage")
 			}
 		}
 	}

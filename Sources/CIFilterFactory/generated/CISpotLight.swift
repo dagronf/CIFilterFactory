@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
-	@objc(CIFilterFactory_CISpotLight) class CISpotLight: Core {
+	@objc(CIFilterFactory_CISpotLight) class CISpotLight: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISpotLight")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputLightPosition: CIVector? {
 			get {
-				return filter.value(forKey: "inputLightPosition") as? CIVector
+				return self.filter.value(forKey: "inputLightPosition") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputLightPosition")
+				self.filter.setValue(newValue, forKey: "inputLightPosition")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputLightPointsAt: CIVector? {
 			get {
-				return filter.value(forKey: "inputLightPointsAt") as? CIVector
+				return self.filter.value(forKey: "inputLightPointsAt") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputLightPointsAt")
+				self.filter.setValue(newValue, forKey: "inputLightPointsAt")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputBrightness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBrightness") as? NSNumber
+				return self.filter.value(forKey: "inputBrightness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputBrightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputBrightness_Range), forKey: "inputBrightness")
 			}
 		}
 
@@ -114,10 +114,10 @@ import Foundation
 		///
 		@objc public var inputConcentration: NSNumber? {
 			get {
-				return filter.value(forKey: "inputConcentration") as? NSNumber
+				return self.filter.value(forKey: "inputConcentration") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputConcentration")
+				self.filter.setValue(newValue, forKey: "inputConcentration")
 			}
 		}
 
@@ -128,10 +128,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 	}

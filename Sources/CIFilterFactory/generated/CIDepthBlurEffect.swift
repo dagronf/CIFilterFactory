@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
 	///
-	@objc(CIFilterFactory_CIDepthBlurEffect) class CIDepthBlurEffect: Core {
+	@objc(CIFilterFactory_CIDepthBlurEffect) class CIDepthBlurEffect: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputDisparityImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputDisparityImage") as? CIImage
+				return self.filter.value(forKey: "inputDisparityImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputDisparityImage")
+				self.filter.setValue(newValue, forKey: "inputDisparityImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputMatteImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputMatteImage") as? CIImage
+				return self.filter.value(forKey: "inputMatteImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMatteImage")
+				self.filter.setValue(newValue, forKey: "inputMatteImage")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputHairImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputHairImage") as? CIImage
+				return self.filter.value(forKey: "inputHairImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputHairImage")
+				self.filter.setValue(newValue, forKey: "inputHairImage")
 			}
 		}
 
@@ -115,10 +115,10 @@ import Foundation
 		let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
 		@objc public var inputAperture: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAperture") as? NSNumber
+				return self.filter.value(forKey: "inputAperture") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputAperture_Range), forKey: "inputAperture")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputAperture_Range), forKey: "inputAperture")
 			}
 		}
 
@@ -129,10 +129,10 @@ import Foundation
 		///
 		@objc public var inputLeftEyePositions: CIVector? {
 			get {
-				return filter.value(forKey: "inputLeftEyePositions") as? CIVector
+				return self.filter.value(forKey: "inputLeftEyePositions") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputLeftEyePositions")
+				self.filter.setValue(newValue, forKey: "inputLeftEyePositions")
 			}
 		}
 
@@ -143,10 +143,10 @@ import Foundation
 		///
 		@objc public var inputRightEyePositions: CIVector? {
 			get {
-				return filter.value(forKey: "inputRightEyePositions") as? CIVector
+				return self.filter.value(forKey: "inputRightEyePositions") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRightEyePositions")
+				self.filter.setValue(newValue, forKey: "inputRightEyePositions")
 			}
 		}
 
@@ -157,10 +157,10 @@ import Foundation
 		///
 		@objc public var inputChinPositions: CIVector? {
 			get {
-				return filter.value(forKey: "inputChinPositions") as? CIVector
+				return self.filter.value(forKey: "inputChinPositions") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputChinPositions")
+				self.filter.setValue(newValue, forKey: "inputChinPositions")
 			}
 		}
 
@@ -171,10 +171,10 @@ import Foundation
 		///
 		@objc public var inputNosePositions: CIVector? {
 			get {
-				return filter.value(forKey: "inputNosePositions") as? CIVector
+				return self.filter.value(forKey: "inputNosePositions") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputNosePositions")
+				self.filter.setValue(newValue, forKey: "inputNosePositions")
 			}
 		}
 
@@ -185,10 +185,10 @@ import Foundation
 		///
 		@objc public var inputFocusRect: CIVector? {
 			get {
-				return filter.value(forKey: "inputFocusRect") as? CIVector
+				return self.filter.value(forKey: "inputFocusRect") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputFocusRect")
+				self.filter.setValue(newValue, forKey: "inputFocusRect")
 			}
 		}
 
@@ -202,10 +202,10 @@ import Foundation
 		let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputLumaNoiseScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
+				return self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
 			}
 		}
 
@@ -216,10 +216,10 @@ import Foundation
 		///
 		@objc public var inputScaleFactor: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputScaleFactor")
+				self.filter.setValue(newValue, forKey: "inputScaleFactor")
 			}
 		}
 
@@ -230,10 +230,10 @@ import Foundation
 		///
 		@objc public var inputCalibrationData: AVCameraCalibrationData? {
 			get {
-				return filter.value(forKey: "inputCalibrationData") as? AVCameraCalibrationData
+				return self.filter.value(forKey: "inputCalibrationData") as? AVCameraCalibrationData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCalibrationData")
+				self.filter.setValue(newValue, forKey: "inputCalibrationData")
 			}
 		}
 
@@ -244,10 +244,10 @@ import Foundation
 		///
 		@objc public var inputAuxDataMetadata: CGImageMetadata? {
 			get {
-				return (filter.value(forKey: "inputAuxDataMetadata") as! CGImageMetadata)
+				return (self.filter.value(forKey: "inputAuxDataMetadata") as! CGImageMetadata)
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAuxDataMetadata")
+				self.filter.setValue(newValue, forKey: "inputAuxDataMetadata")
 			}
 		}
 
@@ -258,10 +258,10 @@ import Foundation
 		///
 		@objc public var inputShape: NSString? {
 			get {
-				return filter.value(forKey: "inputShape") as? NSString
+				return self.filter.value(forKey: "inputShape") as? NSString
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputShape")
+				self.filter.setValue(newValue, forKey: "inputShape")
 			}
 		}
 	}

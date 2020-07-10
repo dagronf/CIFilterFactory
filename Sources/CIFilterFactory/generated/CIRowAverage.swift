@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIRowAverage/)
 	///
-	@objc(CIFilterFactory_CIRowAverage) class CIRowAverage: Core {
+	@objc(CIFilterFactory_CIRowAverage) class CIRowAverage: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRowAverage")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 	}

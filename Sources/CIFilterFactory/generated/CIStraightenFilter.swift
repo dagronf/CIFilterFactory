@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIStraightenFilter/)
 	///
-	@objc(CIFilterFactory_CIStraightenFilter) class CIStraightenFilter: Core {
+	@objc(CIFilterFactory_CIStraightenFilter) class CIStraightenFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStraightenFilter")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
-	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: Core {
+	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputBottomHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBottomHeight") as? NSNumber
+				return self.filter.value(forKey: "inputBottomHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputBottomHeight_Range), forKey: "inputBottomHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputBottomHeight_Range), forKey: "inputBottomHeight")
 			}
 		}
 
@@ -104,10 +104,10 @@ import Foundation
 		let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
 		@objc public var inputNumberOfFolds: NSNumber? {
 			get {
-				return filter.value(forKey: "inputNumberOfFolds") as? NSNumber
+				return self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
 			}
 		}
 
@@ -122,10 +122,10 @@ import Foundation
 		let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputFoldShadowAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
+				return self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
 			}
 		}
 
@@ -140,10 +140,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)
 	///
-	@objc(CIFilterFactory_CISwipeTransition) class CISwipeTransition: Core {
+	@objc(CIFilterFactory_CISwipeTransition) class CISwipeTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISwipeTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 
@@ -115,10 +115,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -129,10 +129,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 
@@ -143,10 +143,10 @@ import Foundation
 		///
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputWidth")
+				self.filter.setValue(newValue, forKey: "inputWidth")
 			}
 		}
 
@@ -160,10 +160,10 @@ import Foundation
 		let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputOpacity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputOpacity") as? NSNumber
+				return self.filter.value(forKey: "inputOpacity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputOpacity_Range), forKey: "inputOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputOpacity_Range), forKey: "inputOpacity")
 			}
 		}
 	}

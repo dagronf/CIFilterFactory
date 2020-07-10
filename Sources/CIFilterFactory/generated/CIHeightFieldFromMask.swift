@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIHeightFieldFromMask/)
 	///
-	@objc(CIFilterFactory_CIHeightFieldFromMask) class CIHeightFieldFromMask: Core {
+	@objc(CIFilterFactory_CIHeightFieldFromMask) class CIHeightFieldFromMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHeightFieldFromMask")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
 	///
-	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: Core {
+	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIFalseColor")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor0") as? CIColor
+				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor0")
+				self.filter.setValue(newValue, forKey: "inputColor0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor1") as? CIColor
+				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor1")
+				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
 	}

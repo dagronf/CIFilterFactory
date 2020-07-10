@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDroste/)
 	///
-	@objc(CIFilterFactory_CIDroste) class CIDroste: Core {
+	@objc(CIFilterFactory_CIDroste) class CIDroste: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDroste")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputInsetPoint0: CIVector? {
 			get {
-				return filter.value(forKey: "inputInsetPoint0") as? CIVector
+				return self.filter.value(forKey: "inputInsetPoint0") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputInsetPoint0")
+				self.filter.setValue(newValue, forKey: "inputInsetPoint0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputInsetPoint1: CIVector? {
 			get {
-				return filter.value(forKey: "inputInsetPoint1") as? CIVector
+				return self.filter.value(forKey: "inputInsetPoint1") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputInsetPoint1")
+				self.filter.setValue(newValue, forKey: "inputInsetPoint1")
 			}
 		}
 
@@ -101,10 +101,10 @@ import Foundation
 		let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
 		@objc public var inputStrands: NSNumber? {
 			get {
-				return filter.value(forKey: "inputStrands") as? NSNumber
+				return self.filter.value(forKey: "inputStrands") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputStrands_Range), forKey: "inputStrands")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputStrands_Range), forKey: "inputStrands")
 			}
 		}
 
@@ -118,10 +118,10 @@ import Foundation
 		let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputPeriodicity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPeriodicity") as? NSNumber
+				return self.filter.value(forKey: "inputPeriodicity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputPeriodicity_Range), forKey: "inputPeriodicity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputPeriodicity_Range), forKey: "inputPeriodicity")
 			}
 		}
 
@@ -132,10 +132,10 @@ import Foundation
 		///
 		@objc public var inputRotation: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRotation") as? NSNumber
+				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRotation")
+				self.filter.setValue(newValue, forKey: "inputRotation")
 			}
 		}
 
@@ -146,10 +146,10 @@ import Foundation
 		///
 		@objc public var inputZoom: NSNumber? {
 			get {
-				return filter.value(forKey: "inputZoom") as? NSNumber
+				return self.filter.value(forKey: "inputZoom") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputZoom")
+				self.filter.setValue(newValue, forKey: "inputZoom")
 			}
 		}
 	}

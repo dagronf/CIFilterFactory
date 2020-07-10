@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
 	///
-	@objc(CIFilterFactory_CIColorClamp) class CIColorClamp: Core {
+	@objc(CIFilterFactory_CIColorClamp) class CIColorClamp: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputMinComponents: CIVector? {
 			get {
-				return filter.value(forKey: "inputMinComponents") as? CIVector
+				return self.filter.value(forKey: "inputMinComponents") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMinComponents")
+				self.filter.setValue(newValue, forKey: "inputMinComponents")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputMaxComponents: CIVector? {
 			get {
-				return filter.value(forKey: "inputMaxComponents") as? CIVector
+				return self.filter.value(forKey: "inputMaxComponents") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMaxComponents")
+				self.filter.setValue(newValue, forKey: "inputMaxComponents")
 			}
 		}
 	}

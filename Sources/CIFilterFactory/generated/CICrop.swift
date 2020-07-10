@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICrop/)
 	///
-	@objc(CIFilterFactory_CICrop) class CICrop: Core {
+	@objc(CIFilterFactory_CICrop) class CICrop: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICrop")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputRectangle: CIVector? {
 			get {
-				return filter.value(forKey: "inputRectangle") as? CIVector
+				return self.filter.value(forKey: "inputRectangle") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRectangle")
+				self.filter.setValue(newValue, forKey: "inputRectangle")
 			}
 		}
 	}

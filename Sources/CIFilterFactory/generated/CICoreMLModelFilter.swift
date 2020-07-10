@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
 	///
-	@objc(CIFilterFactory_CICoreMLModelFilter) class CICoreMLModelFilter: Core {
+	@objc(CIFilterFactory_CICoreMLModelFilter) class CICoreMLModelFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputModel: MLModel? {
 			get {
-				return filter.value(forKey: "inputModel") as? MLModel
+				return self.filter.value(forKey: "inputModel") as? MLModel
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputModel")
+				self.filter.setValue(newValue, forKey: "inputModel")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public var inputHeadIndex: NSNumber? {
 			get {
-				return filter.value(forKey: "inputHeadIndex") as? NSNumber
+				return self.filter.value(forKey: "inputHeadIndex") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputHeadIndex_Range), forKey: "inputHeadIndex")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputHeadIndex_Range), forKey: "inputHeadIndex")
 			}
 		}
 
@@ -105,10 +105,10 @@ import Foundation
 		let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputSoftmaxNormalization: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
+				return self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
 			}
 		}
 	}

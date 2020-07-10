@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
 	///
-	@objc(CIFilterFactory_CIPageCurlWithShadowTransition) class CIPageCurlWithShadowTransition: Core {
+	@objc(CIFilterFactory_CIPageCurlWithShadowTransition) class CIPageCurlWithShadowTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputBacksideImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputBacksideImage") as? CIImage
+				return self.filter.value(forKey: "inputBacksideImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBacksideImage")
+				self.filter.setValue(newValue, forKey: "inputBacksideImage")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 
@@ -115,10 +115,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -129,10 +129,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 
@@ -143,10 +143,10 @@ import Foundation
 		///
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRadius")
+				self.filter.setValue(newValue, forKey: "inputRadius")
 			}
 		}
 
@@ -161,10 +161,10 @@ import Foundation
 		let inputShadowSize_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputShadowSize: NSNumber? {
 			get {
-				return filter.value(forKey: "inputShadowSize") as? NSNumber
+				return self.filter.value(forKey: "inputShadowSize") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputShadowSize_Range), forKey: "inputShadowSize")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputShadowSize_Range), forKey: "inputShadowSize")
 			}
 		}
 
@@ -179,10 +179,10 @@ import Foundation
 		let inputShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputShadowAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputShadowAmount") as? NSNumber
+				return self.filter.value(forKey: "inputShadowAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputShadowAmount_Range), forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputShadowAmount_Range), forKey: "inputShadowAmount")
 			}
 		}
 
@@ -193,10 +193,10 @@ import Foundation
 		///
 		@objc public var inputShadowExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputShadowExtent") as? CIVector
+				return self.filter.value(forKey: "inputShadowExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputShadowExtent")
+				self.filter.setValue(newValue, forKey: "inputShadowExtent")
 			}
 		}
 	}

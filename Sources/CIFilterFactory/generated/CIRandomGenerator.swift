@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
 	///
-	@objc(CIFilterFactory_CIRandomGenerator) class CIRandomGenerator: Core {
+	@objc(CIFilterFactory_CIRandomGenerator) class CIRandomGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRandomGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 	}
 }

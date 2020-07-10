@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
 	///
-	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: Core {
+	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

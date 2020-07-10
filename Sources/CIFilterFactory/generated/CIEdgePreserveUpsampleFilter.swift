@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
 	///
-	@objc(CIFilterFactory_CIEdgePreserveUpsampleFilter) class CIEdgePreserveUpsampleFilter: Core {
+	@objc(CIFilterFactory_CIEdgePreserveUpsampleFilter) class CIEdgePreserveUpsampleFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIEdgePreserveUpsampleFilter")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputSmallImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputSmallImage") as? CIImage
+				return self.filter.value(forKey: "inputSmallImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputSmallImage")
+				self.filter.setValue(newValue, forKey: "inputSmallImage")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
 		@objc public var inputSpatialSigma: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSpatialSigma") as? NSNumber
+				return self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSpatialSigma_Range), forKey: "inputSpatialSigma")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSpatialSigma_Range), forKey: "inputSpatialSigma")
 			}
 		}
 
@@ -105,10 +105,10 @@ import Foundation
 		let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputLumaSigma: NSNumber? {
 			get {
-				return filter.value(forKey: "inputLumaSigma") as? NSNumber
+				return self.filter.value(forKey: "inputLumaSigma") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputLumaSigma_Range), forKey: "inputLumaSigma")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputLumaSigma_Range), forKey: "inputLumaSigma")
 			}
 		}
 	}

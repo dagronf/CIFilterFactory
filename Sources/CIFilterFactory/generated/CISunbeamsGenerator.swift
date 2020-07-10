@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
 	///
-	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: Core {
+	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputSunRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSunRadius") as? NSNumber
+				return self.filter.value(forKey: "inputSunRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSunRadius_Range), forKey: "inputSunRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSunRadius_Range), forKey: "inputSunRadius")
 			}
 		}
 
@@ -103,10 +103,10 @@ import Foundation
 		let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputMaxStriationRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
+				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
 			}
 		}
 
@@ -120,10 +120,10 @@ import Foundation
 		let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputStriationStrength: NSNumber? {
 			get {
-				return filter.value(forKey: "inputStriationStrength") as? NSNumber
+				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputStriationStrength_Range), forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputStriationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
 
@@ -137,10 +137,10 @@ import Foundation
 		let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputStriationContrast: NSNumber? {
 			get {
-				return filter.value(forKey: "inputStriationContrast") as? NSNumber
+				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputStriationContrast_Range), forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputStriationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
 
@@ -155,10 +155,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

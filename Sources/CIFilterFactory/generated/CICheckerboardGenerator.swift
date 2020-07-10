@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICheckerboardGenerator/)
 	///
-	@objc(CIFilterFactory_CICheckerboardGenerator) class CICheckerboardGenerator: Core {
+	@objc(CIFilterFactory_CICheckerboardGenerator) class CICheckerboardGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICheckerboardGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor0") as? CIColor
+				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor0")
+				self.filter.setValue(newValue, forKey: "inputColor0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor1") as? CIColor
+				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor1")
+				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputWidth")
+				self.filter.setValue(newValue, forKey: "inputWidth")
 			}
 		}
 
@@ -115,10 +115,10 @@ import Foundation
 		let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputSharpness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

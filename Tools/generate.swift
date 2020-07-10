@@ -104,7 +104,7 @@ import UIKit
 	out.print("   ///")
 
 
-	out.print("   @objc(CIFilterFactory_\(filter.name)) class \(filter.name): Core {")
+	out.print("   @objc(CIFilterFactory_\(filter.name)) class \(filter.name): FilterCommon {")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("         self.filter.setDefaults()")
@@ -188,17 +188,7 @@ import UIKit
 				out.print("      return (self.filter.value(forKey: \"\(key)\") as! \(keyType))")
 			}
 			else if isAffineTweaked {
-				out.print("#if os(macOS)")
-				out.print("   if let value = self.filter.value(forKey: \"\(key)\") as? NSAffineTransform {")
-				out.print("      return AffineTransform(value)")
-				out.print("   }")
-				out.print("   return nil")
-				out.print("#else")
-				out.print("   if let value = self.filter.value(forKey: \"\(key)\") as? NSValue {")
-				out.print("      return AffineTransform(value.cgAffineTransformValue)")
-				out.print("   }")
-				out.print("   return nil")
-				out.print("#endif")
+				out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
 			}
 			else {
 				out.print("         return self.filter.value(forKey: \"\(key)\") as? \(keyType)")
@@ -210,20 +200,10 @@ import UIKit
 				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(key)_Range), forKey: \"\(key)\")")
 			}
 			else if isAffineTweaked {
-				out.print("#if os(macOS)")
-				out.print("   self.filter.setValue(newValue?.transform, forKey: \"\(key)\")")
-				out.print("#else")
-				out.print("   if let value = newValue?.transform {")
-				out.print("      let val = NSValue(cgAffineTransform: value)")
-				out.print("      self.filter.setValue(val, forKey: \"\(key)\")")
-				out.print("   }")
-				out.print("   else {")
-				out.print("      self.filter.setValue(nil, forKey: \"\(key)\")")
-				out.print("   }")
-				out.print("#endif")
+				out.print("      self.filter.setValue(newValue?.embeddedValue(), forKey: \"\(key)\")")
 			}
 			else {
-				out.print("         self.filter.setValue(newValue, forKey: \"\(key)\")")
+				out.print("      self.filter.setValue(newValue, forKey: \"\(key)\")")
 			}
 			out.print("      }")
 			out.print("   }")
@@ -272,9 +252,15 @@ out.print("""
 import Foundation
 import CoreImage
 
+/// A class factory for type-safe Core Image Filter objects
 @objc public class CIFilterFactory: NSObject {
-	@objc(CIFilterCore) public class Core: NSObject {
-		let filter: CIFilter
+
+	/// Common filter base class. You never need need to create this yourself
+	@objc(CIFilterCore) public class FilterCommon: NSObject {
+
+		// The CIFilter wrapped instance for the filter
+		@objc public let filter: CIFilter
+
 		init?(name: String) {
 			guard let filter = CIFilter(name: name) else {
 				return nil
@@ -335,11 +321,29 @@ import CoreImage
 				self.transform = transform
 				super.init()
 			}
+			@objc public convenience init?(filter: CIFilter, key: String) {
+				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
+					return nil
+				}
+				self.init(value)
+			}
+			func embeddedValue() -> AnyObject {
+				return self.transform
+			}
 		#else
 			@objc var transform: CGAffineTransform
 			@objc public init(_ transform: CGAffineTransform) {
 				self.transform = transform
 				super.init()
+			}
+			@objc public convenience init?(filter: CIFilter, key: String) {
+				guard let value = filter.value(forKey: key) as? NSValue else {
+					return nil
+				}
+				self.init(value.cgAffineTransformValue)
+			}
+			func embeddedValue() -> AnyObject {
+				return NSValue(cgAffineTransform: self.transform)
 			}
 		#endif
 	}

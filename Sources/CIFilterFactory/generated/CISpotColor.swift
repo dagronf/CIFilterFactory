@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
 	///
-	@objc(CIFilterFactory_CISpotColor) class CISpotColor: Core {
+	@objc(CIFilterFactory_CISpotColor) class CISpotColor: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISpotColor")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenterColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputCenterColor1") as? CIColor
+				return self.filter.value(forKey: "inputCenterColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenterColor1")
+				self.filter.setValue(newValue, forKey: "inputCenterColor1")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputReplacementColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputReplacementColor1") as? CIColor
+				return self.filter.value(forKey: "inputReplacementColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputReplacementColor1")
+				self.filter.setValue(newValue, forKey: "inputReplacementColor1")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		let inputCloseness1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputCloseness1: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCloseness1") as? NSNumber
+				return self.filter.value(forKey: "inputCloseness1") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCloseness1_Range), forKey: "inputCloseness1")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCloseness1_Range), forKey: "inputCloseness1")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputContrast1: NSNumber? {
 			get {
-				return filter.value(forKey: "inputContrast1") as? NSNumber
+				return self.filter.value(forKey: "inputContrast1") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputContrast1_Range), forKey: "inputContrast1")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast1_Range), forKey: "inputContrast1")
 			}
 		}
 
@@ -131,10 +131,10 @@ import Foundation
 		///
 		@objc public var inputCenterColor2: CIColor? {
 			get {
-				return filter.value(forKey: "inputCenterColor2") as? CIColor
+				return self.filter.value(forKey: "inputCenterColor2") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenterColor2")
+				self.filter.setValue(newValue, forKey: "inputCenterColor2")
 			}
 		}
 
@@ -145,10 +145,10 @@ import Foundation
 		///
 		@objc public var inputReplacementColor2: CIColor? {
 			get {
-				return filter.value(forKey: "inputReplacementColor2") as? CIColor
+				return self.filter.value(forKey: "inputReplacementColor2") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputReplacementColor2")
+				self.filter.setValue(newValue, forKey: "inputReplacementColor2")
 			}
 		}
 
@@ -162,10 +162,10 @@ import Foundation
 		let inputCloseness2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputCloseness2: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCloseness2") as? NSNumber
+				return self.filter.value(forKey: "inputCloseness2") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCloseness2_Range), forKey: "inputCloseness2")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCloseness2_Range), forKey: "inputCloseness2")
 			}
 		}
 
@@ -179,10 +179,10 @@ import Foundation
 		let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputContrast2: NSNumber? {
 			get {
-				return filter.value(forKey: "inputContrast2") as? NSNumber
+				return self.filter.value(forKey: "inputContrast2") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputContrast2_Range), forKey: "inputContrast2")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast2_Range), forKey: "inputContrast2")
 			}
 		}
 
@@ -193,10 +193,10 @@ import Foundation
 		///
 		@objc public var inputCenterColor3: CIColor? {
 			get {
-				return filter.value(forKey: "inputCenterColor3") as? CIColor
+				return self.filter.value(forKey: "inputCenterColor3") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenterColor3")
+				self.filter.setValue(newValue, forKey: "inputCenterColor3")
 			}
 		}
 
@@ -207,10 +207,10 @@ import Foundation
 		///
 		@objc public var inputReplacementColor3: CIColor? {
 			get {
-				return filter.value(forKey: "inputReplacementColor3") as? CIColor
+				return self.filter.value(forKey: "inputReplacementColor3") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputReplacementColor3")
+				self.filter.setValue(newValue, forKey: "inputReplacementColor3")
 			}
 		}
 
@@ -224,10 +224,10 @@ import Foundation
 		let inputCloseness3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputCloseness3: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCloseness3") as? NSNumber
+				return self.filter.value(forKey: "inputCloseness3") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCloseness3_Range), forKey: "inputCloseness3")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCloseness3_Range), forKey: "inputCloseness3")
 			}
 		}
 
@@ -241,10 +241,10 @@ import Foundation
 		let inputContrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputContrast3: NSNumber? {
 			get {
-				return filter.value(forKey: "inputContrast3") as? NSNumber
+				return self.filter.value(forKey: "inputContrast3") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputContrast3_Range), forKey: "inputContrast3")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast3_Range), forKey: "inputContrast3")
 			}
 		}
 	}

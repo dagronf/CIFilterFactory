@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
 	///
-	@objc(CIFilterFactory_CIMaskedVariableBlur) class CIMaskedVariableBlur: Core {
+	@objc(CIFilterFactory_CIMaskedVariableBlur) class CIMaskedVariableBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMaskedVariableBlur")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputMask: CIImage? {
 			get {
-				return filter.value(forKey: "inputMask") as? CIImage
+				return self.filter.value(forKey: "inputMask") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMask")
+				self.filter.setValue(newValue, forKey: "inputMask")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

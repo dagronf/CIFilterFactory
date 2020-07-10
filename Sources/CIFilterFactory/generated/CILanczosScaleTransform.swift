@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
 	///
-	@objc(CIFilterFactory_CILanczosScaleTransform) class CILanczosScaleTransform: Core {
+	@objc(CIFilterFactory_CILanczosScaleTransform) class CILanczosScaleTransform: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILanczosScaleTransform")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScale") as? NSNumber
+				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputAspectRatio: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAspectRatio") as? NSNumber
+				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputAspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputAspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
 	}

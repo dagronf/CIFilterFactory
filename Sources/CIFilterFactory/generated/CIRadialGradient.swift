@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIRadialGradient/)
 	///
-	@objc(CIFilterFactory_CIRadialGradient) class CIRadialGradient: Core {
+	@objc(CIFilterFactory_CIRadialGradient) class CIRadialGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRadialGradient")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputRadius0_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius0: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius0") as? NSNumber
+				return self.filter.value(forKey: "inputRadius0") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius0_Range), forKey: "inputRadius0")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius0_Range), forKey: "inputRadius0")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputRadius1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius1: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius1") as? NSNumber
+				return self.filter.value(forKey: "inputRadius1") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius1_Range), forKey: "inputRadius1")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius1_Range), forKey: "inputRadius1")
 			}
 		}
 
@@ -103,10 +103,10 @@ import Foundation
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor0") as? CIColor
+				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor0")
+				self.filter.setValue(newValue, forKey: "inputColor0")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		///
 		@objc public var inputColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor1") as? CIColor
+				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor1")
+				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
 	}

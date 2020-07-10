@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
 	///
-	@objc(CIFilterFactory_CICode128BarcodeGenerator) class CICode128BarcodeGenerator: Core {
+	@objc(CIFilterFactory_CICode128BarcodeGenerator) class CICode128BarcodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICode128BarcodeGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputMessage: NSData? {
 			get {
-				return filter.value(forKey: "inputMessage") as? NSData
+				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMessage")
+				self.filter.setValue(newValue, forKey: "inputMessage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
 		@objc public var inputQuietSpace: NSNumber? {
 			get {
-				return filter.value(forKey: "inputQuietSpace") as? NSNumber
+				return self.filter.value(forKey: "inputQuietSpace") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputQuietSpace_Range), forKey: "inputQuietSpace")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputQuietSpace_Range), forKey: "inputQuietSpace")
 			}
 		}
 
@@ -91,10 +91,10 @@ import Foundation
 		let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
 		@objc public var inputBarcodeHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBarcodeHeight") as? NSNumber
+				return self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
 			}
 		}
 	}

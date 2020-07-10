@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)
 	///
-	@objc(CIFilterFactory_CIDisintegrateWithMaskTransition) class CIDisintegrateWithMaskTransition: Core {
+	@objc(CIFilterFactory_CIDisintegrateWithMaskTransition) class CIDisintegrateWithMaskTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputMaskImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputMaskImage") as? CIImage
+				return self.filter.value(forKey: "inputMaskImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMaskImage")
+				self.filter.setValue(newValue, forKey: "inputMaskImage")
 			}
 		}
 
@@ -101,10 +101,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 
@@ -118,10 +118,10 @@ import Foundation
 		let inputShadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputShadowRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputShadowRadius") as? NSNumber
+				return self.filter.value(forKey: "inputShadowRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputShadowRadius_Range), forKey: "inputShadowRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputShadowRadius_Range), forKey: "inputShadowRadius")
 			}
 		}
 
@@ -136,10 +136,10 @@ import Foundation
 		let inputShadowDensity_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputShadowDensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputShadowDensity") as? NSNumber
+				return self.filter.value(forKey: "inputShadowDensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputShadowDensity_Range), forKey: "inputShadowDensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputShadowDensity_Range), forKey: "inputShadowDensity")
 			}
 		}
 
@@ -150,10 +150,10 @@ import Foundation
 		///
 		@objc public var inputShadowOffset: CIVector? {
 			get {
-				return filter.value(forKey: "inputShadowOffset") as? CIVector
+				return self.filter.value(forKey: "inputShadowOffset") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputShadowOffset")
+				self.filter.setValue(newValue, forKey: "inputShadowOffset")
 			}
 		}
 	}

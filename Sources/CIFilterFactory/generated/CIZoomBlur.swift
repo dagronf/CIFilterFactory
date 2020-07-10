@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
 	///
-	@objc(CIFilterFactory_CIZoomBlur) class CIZoomBlur: Core {
+	@objc(CIFilterFactory_CIZoomBlur) class CIZoomBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIZoomBlur")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAmount") as? NSNumber
+				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAmount")
+				self.filter.setValue(newValue, forKey: "inputAmount")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
 	///
-	@objc(CIFilterFactory_CIKMeans) class CIKMeans: Core {
+	@objc(CIFilterFactory_CIKMeans) class CIKMeans: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIKMeans")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputExtent: CIVector? {
 			get {
-				return filter.value(forKey: "inputExtent") as? CIVector
+				return self.filter.value(forKey: "inputExtent") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue, forKey: "inputExtent")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputMeans: CIImage? {
 			get {
-				return filter.value(forKey: "inputMeans") as? CIImage
+				return self.filter.value(forKey: "inputMeans") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMeans")
+				self.filter.setValue(newValue, forKey: "inputMeans")
 			}
 		}
 
@@ -101,10 +101,10 @@ import Foundation
 		let inputCount_Range: ClosedRange<Float> = 0.0 ... 128.0
 		@objc public var inputCount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCount") as? NSNumber
+				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
 			}
 		}
 
@@ -119,10 +119,10 @@ import Foundation
 		let inputPasses_Range: ClosedRange<Float> = 0.0 ... 20.0
 		@objc public var inputPasses: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPasses") as? NSNumber
+				return self.filter.value(forKey: "inputPasses") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputPasses_Range), forKey: "inputPasses")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputPasses_Range), forKey: "inputPasses")
 			}
 		}
 
@@ -137,10 +137,10 @@ import Foundation
 		let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputPerceptual: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPerceptual") as? NSNumber
+				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputPerceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}

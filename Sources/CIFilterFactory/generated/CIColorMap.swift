@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorMap/)
 	///
-	@objc(CIFilterFactory_CIColorMap) class CIColorMap: Core {
+	@objc(CIFilterFactory_CIColorMap) class CIColorMap: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorMap")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputGradientImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputGradientImage") as? CIImage
+				return self.filter.value(forKey: "inputGradientImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputGradientImage")
+				self.filter.setValue(newValue, forKey: "inputGradientImage")
 			}
 		}
 	}

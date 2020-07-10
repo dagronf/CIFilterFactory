@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAffineClamp/)
 	///
-	@objc(CIFilterFactory_CIAffineClamp) class CIAffineClamp: Core {
+	@objc(CIFilterFactory_CIAffineClamp) class CIAffineClamp: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAffineClamp")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,29 +69,10 @@ import Foundation
 		///
 		@objc public var inputTransform: CIFilterFactory.AffineTransform? {
 			get {
-				#if os(macOS)
-					if let value = filter.value(forKey: "inputTransform") as? NSAffineTransform {
-						return AffineTransform(value)
-					}
-					return nil
-				#else
-					if let value = filter.value(forKey: "inputTransform") as? NSValue {
-						return AffineTransform(value.cgAffineTransformValue)
-					}
-					return nil
-				#endif
+				return AffineTransform(filter: self.filter, key: "inputTransform")
 			}
 			set {
-				#if os(macOS)
-					filter.setValue(newValue?.transform, forKey: "inputTransform")
-				#else
-					if let value = newValue?.transform {
-						let val = NSValue(cgAffineTransform: value)
-						filter.setValue(val, forKey: "inputTransform")
-					} else {
-						filter.setValue(nil, forKey: "inputTransform")
-					}
-				#endif
+				self.filter.setValue(newValue?.embeddedValue(), forKey: "inputTransform")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
 	///
-	@objc(CIFilterFactory_CIHistogramDisplayFilter) class CIHistogramDisplayFilter: Core {
+	@objc(CIFilterFactory_CIHistogramDisplayFilter) class CIHistogramDisplayFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputHeight_Range: ClosedRange<Float> = 1.0 ... 200.0
 		@objc public var inputHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputHeight") as? NSNumber
+				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputHeight_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 
@@ -91,10 +91,10 @@ import Foundation
 		let inputHighLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputHighLimit: NSNumber? {
 			get {
-				return filter.value(forKey: "inputHighLimit") as? NSNumber
+				return self.filter.value(forKey: "inputHighLimit") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputHighLimit_Range), forKey: "inputHighLimit")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputHighLimit_Range), forKey: "inputHighLimit")
 			}
 		}
 
@@ -109,10 +109,10 @@ import Foundation
 		let inputLowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputLowLimit: NSNumber? {
 			get {
-				return filter.value(forKey: "inputLowLimit") as? NSNumber
+				return self.filter.value(forKey: "inputLowLimit") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputLowLimit_Range), forKey: "inputLowLimit")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputLowLimit_Range), forKey: "inputLowLimit")
 			}
 		}
 	}

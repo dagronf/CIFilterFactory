@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
 	///
-	@objc(CIFilterFactory_CICircularScreen) class CICircularScreen: Core {
+	@objc(CIFilterFactory_CICircularScreen) class CICircularScreen: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICircularScreen")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -104,10 +104,10 @@ import Foundation
 		let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputSharpness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

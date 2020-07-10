@@ -16,14 +16,20 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 03:06:45 +0000.  Do not edit.
+//  Automatically generated on 2020-07-10 00:36:24 +0000.  Do not edit.
 
 import Foundation
 import CoreImage
 
+/// A class factory for type-safe Core Image Filter objects
 @objc public class CIFilterFactory: NSObject {
-	@objc(CIFilterCore) public class Core: NSObject {
-		let filter: CIFilter
+
+	/// Common filter base class. You never need need to create this yourself
+	@objc(CIFilterCore) public class FilterCommon: NSObject {
+
+		// The CIFilter wrapped instance for the filter
+		@objc public let filter: CIFilter
+
 		init?(name: String) {
 			guard let filter = CIFilter(name: name) else {
 				return nil
@@ -84,11 +90,29 @@ import CoreImage
 				self.transform = transform
 				super.init()
 			}
+			@objc public convenience init?(filter: CIFilter, key: String) {
+				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
+					return nil
+				}
+				self.init(value)
+			}
+			func embeddedValue() -> AnyObject {
+				return self.transform
+			}
 		#else
 			@objc var transform: CGAffineTransform
 			@objc public init(_ transform: CGAffineTransform) {
 				self.transform = transform
 				super.init()
+			}
+			@objc public convenience init?(filter: CIFilter, key: String) {
+				guard let value = filter.value(forKey: key) as? NSValue else {
+					return nil
+				}
+				self.init(value.cgAffineTransformValue)
+			}
+			func embeddedValue() -> AnyObject {
+				return NSValue(cgAffineTransform: self.transform)
 			}
 		#endif
 	}

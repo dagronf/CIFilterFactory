@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorMonochrome/)
 	///
-	@objc(CIFilterFactory_CIColorMonochrome) class CIColorMonochrome: Core {
+	@objc(CIFilterFactory_CIColorMonochrome) class CIColorMonochrome: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorMonochrome")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}

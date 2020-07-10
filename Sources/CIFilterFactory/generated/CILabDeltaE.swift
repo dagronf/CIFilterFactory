@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILabDeltaE/)
 	///
-	@objc(CIFilterFactory_CILabDeltaE) class CILabDeltaE: Core {
+	@objc(CIFilterFactory_CILabDeltaE) class CILabDeltaE: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputImage2: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage2") as? CIImage
+				return self.filter.value(forKey: "inputImage2") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage2")
+				self.filter.setValue(newValue, forKey: "inputImage2")
 			}
 		}
 	}

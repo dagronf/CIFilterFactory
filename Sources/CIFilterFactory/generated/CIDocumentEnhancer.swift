@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
-	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: Core {
+	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputAmount_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public var inputAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAmount") as? NSNumber
+				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputAmount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputAmount_Range), forKey: "inputAmount")
 			}
 		}
 	}

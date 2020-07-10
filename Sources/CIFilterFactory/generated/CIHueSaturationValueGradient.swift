@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIHueSaturationValueGradient/)
 	///
-	@objc(CIFilterFactory_CIHueSaturationValueGradient) class CIHueSaturationValueGradient: Core {
+	@objc(CIFilterFactory_CIHueSaturationValueGradient) class CIHueSaturationValueGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHueSaturationValueGradient")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputValue
@@ -58,10 +58,10 @@ import Foundation
 		let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputValue: NSNumber? {
 			get {
-				return filter.value(forKey: "inputValue") as? NSNumber
+				return self.filter.value(forKey: "inputValue") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputValue_Range), forKey: "inputValue")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputValue_Range), forKey: "inputValue")
 			}
 		}
 
@@ -75,10 +75,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -92,10 +92,10 @@ import Foundation
 		let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputSoftness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSoftness") as? NSNumber
+				return self.filter.value(forKey: "inputSoftness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSoftness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
 
@@ -109,10 +109,10 @@ import Foundation
 		let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputDither: NSNumber? {
 			get {
-				return filter.value(forKey: "inputDither") as? NSNumber
+				return self.filter.value(forKey: "inputDither") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputDither_Range), forKey: "inputDither")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputDither_Range), forKey: "inputDither")
 			}
 		}
 
@@ -123,10 +123,10 @@ import Foundation
 		///
 		@objc public var inputColorSpace: NSObject? {
 			get {
-				return filter.value(forKey: "inputColorSpace") as? NSObject
+				return self.filter.value(forKey: "inputColorSpace") as? NSObject
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColorSpace")
+				self.filter.setValue(newValue, forKey: "inputColorSpace")
 			}
 		}
 	}

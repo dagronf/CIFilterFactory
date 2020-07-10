@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: Core {
+	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputMessage: NSData? {
 			get {
-				return filter.value(forKey: "inputMessage") as? NSData
+				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMessage")
+				self.filter.setValue(newValue, forKey: "inputMessage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCorrectionLevel: NSString? {
 			get {
-				return filter.value(forKey: "inputCorrectionLevel") as? NSString
+				return self.filter.value(forKey: "inputCorrectionLevel") as? NSString
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue, forKey: "inputCorrectionLevel")
 			}
 		}
 	}

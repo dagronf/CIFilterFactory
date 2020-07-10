@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
 	///
-	@objc(CIFilterFactory_CIDepthOfField) class CIDepthOfField: Core {
+	@objc(CIFilterFactory_CIDepthOfField) class CIDepthOfField: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDepthOfField")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPoint0: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint0") as? CIVector
+				return self.filter.value(forKey: "inputPoint0") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint0")
+				self.filter.setValue(newValue, forKey: "inputPoint0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputPoint1: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint1") as? CIVector
+				return self.filter.value(forKey: "inputPoint1") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint1")
+				self.filter.setValue(newValue, forKey: "inputPoint1")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputSaturation: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSaturation") as? NSNumber
+				return self.filter.value(forKey: "inputSaturation") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSaturation_Range), forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSaturation_Range), forKey: "inputSaturation")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputUnsharpMaskRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
+				return self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
 			}
 		}
 
@@ -134,10 +134,10 @@ import Foundation
 		let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputUnsharpMaskIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
 			}
 		}
 
@@ -151,10 +151,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

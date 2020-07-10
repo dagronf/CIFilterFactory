@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIHueBlendMode/)
 	///
-	@objc(CIFilterFactory_CIHueBlendMode) class CIHueBlendMode: Core {
+	@objc(CIFilterFactory_CIHueBlendMode) class CIHueBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHueBlendMode")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputBackgroundImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputBackgroundImage") as? CIImage
+				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBackgroundImage")
+				self.filter.setValue(newValue, forKey: "inputBackgroundImage")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
-	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: Core {
+	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputRVector: CIVector? {
 			get {
-				return filter.value(forKey: "inputRVector") as? CIVector
+				return self.filter.value(forKey: "inputRVector") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRVector")
+				self.filter.setValue(newValue, forKey: "inputRVector")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputGVector: CIVector? {
 			get {
-				return filter.value(forKey: "inputGVector") as? CIVector
+				return self.filter.value(forKey: "inputGVector") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputGVector")
+				self.filter.setValue(newValue, forKey: "inputGVector")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputBVector: CIVector? {
 			get {
-				return filter.value(forKey: "inputBVector") as? CIVector
+				return self.filter.value(forKey: "inputBVector") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBVector")
+				self.filter.setValue(newValue, forKey: "inputBVector")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputAVector: CIVector? {
 			get {
-				return filter.value(forKey: "inputAVector") as? CIVector
+				return self.filter.value(forKey: "inputAVector") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAVector")
+				self.filter.setValue(newValue, forKey: "inputAVector")
 			}
 		}
 
@@ -125,10 +125,10 @@ import Foundation
 		///
 		@objc public var inputBiasVector: CIVector? {
 			get {
-				return filter.value(forKey: "inputBiasVector") as? CIVector
+				return self.filter.value(forKey: "inputBiasVector") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBiasVector")
+				self.filter.setValue(newValue, forKey: "inputBiasVector")
 			}
 		}
 	}

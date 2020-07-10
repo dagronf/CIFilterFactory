@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIKaleidoscope/)
 	///
-	@objc(CIFilterFactory_CIKaleidoscope) class CIKaleidoscope: Core {
+	@objc(CIFilterFactory_CIKaleidoscope) class CIKaleidoscope: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIKaleidoscope")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputCount_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputCount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCount") as? NSNumber
+				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 	}

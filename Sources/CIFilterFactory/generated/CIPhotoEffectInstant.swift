@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
 	///
-	@objc(CIFilterFactory_CIPhotoEffectInstant) class CIPhotoEffectInstant: Core {
+	@objc(CIFilterFactory_CIPhotoEffectInstant) class CIPhotoEffectInstant: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectInstant")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 	}

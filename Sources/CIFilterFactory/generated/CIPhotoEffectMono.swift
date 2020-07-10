@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectMono/)
 	///
-	@objc(CIFilterFactory_CIPhotoEffectMono) class CIPhotoEffectMono: Core {
+	@objc(CIFilterFactory_CIPhotoEffectMono) class CIPhotoEffectMono: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectMono")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 	}

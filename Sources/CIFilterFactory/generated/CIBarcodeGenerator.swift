@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: Core {
+	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputBarcodeDescriptor
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputBarcodeDescriptor: CIBarcodeDescriptor? {
 			get {
-				return filter.value(forKey: "inputBarcodeDescriptor") as? CIBarcodeDescriptor
+				return self.filter.value(forKey: "inputBarcodeDescriptor") as? CIBarcodeDescriptor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBarcodeDescriptor")
+				self.filter.setValue(newValue, forKey: "inputBarcodeDescriptor")
 			}
 		}
 	}

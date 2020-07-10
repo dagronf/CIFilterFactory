@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
 	///
-	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: Core {
+	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILineOverlay")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputNRNoiseLevel: NSNumber? {
 			get {
-				return filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
+				return self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputNRSharpness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputNRSharpness") as? NSNumber
+				return self.filter.value(forKey: "inputNRSharpness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputNRSharpness_Range), forKey: "inputNRSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputNRSharpness_Range), forKey: "inputNRSharpness")
 			}
 		}
 
@@ -106,10 +106,10 @@ import Foundation
 		let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputEdgeIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputEdgeIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
 			}
 		}
 
@@ -123,10 +123,10 @@ import Foundation
 		let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputThreshold: NSNumber? {
 			get {
-				return filter.value(forKey: "inputThreshold") as? NSNumber
+				return self.filter.value(forKey: "inputThreshold") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputThreshold_Range), forKey: "inputThreshold")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputThreshold_Range), forKey: "inputThreshold")
 			}
 		}
 
@@ -140,10 +140,10 @@ import Foundation
 		let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
 		@objc public var inputContrast: NSNumber? {
 			get {
-				return filter.value(forKey: "inputContrast") as? NSNumber
+				return self.filter.value(forKey: "inputContrast") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputContrast_Range), forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast_Range), forKey: "inputContrast")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBarsSwipeTransition/)
 	///
-	@objc(CIFilterFactory_CIBarsSwipeTransition) class CIBarsSwipeTransition: Core {
+	@objc(CIFilterFactory_CIBarsSwipeTransition) class CIBarsSwipeTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBarsSwipeTransition")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputTargetImage")
+				self.filter.setValue(newValue, forKey: "inputTargetImage")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAngle") as? NSNumber
+				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAngle")
+				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(2.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputBarOffset: NSNumber? {
 			get {
-				return filter.value(forKey: "inputBarOffset") as? NSNumber
+				return self.filter.value(forKey: "inputBarOffset") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputBarOffset_Range), forKey: "inputBarOffset")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputBarOffset_Range), forKey: "inputBarOffset")
 			}
 		}
 
@@ -135,10 +135,10 @@ import Foundation
 		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputTime: NSNumber? {
 			get {
-				return filter.value(forKey: "inputTime") as? NSNumber
+				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

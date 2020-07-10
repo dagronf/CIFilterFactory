@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
 	///
-	@objc(CIFilterFactory_CIBokehBlur) class CIBokehBlur: Core {
+	@objc(CIFilterFactory_CIBokehBlur) class CIBokehBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputRadius_Range: ClosedRange<Float> = 0.0 ... 500.0
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -91,10 +91,10 @@ import Foundation
 		let inputRingAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputRingAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRingAmount") as? NSNumber
+				return self.filter.value(forKey: "inputRingAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRingAmount_Range), forKey: "inputRingAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRingAmount_Range), forKey: "inputRingAmount")
 			}
 		}
 
@@ -108,10 +108,10 @@ import Foundation
 		let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRingSize: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRingSize") as? NSNumber
+				return self.filter.value(forKey: "inputRingSize") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRingSize_Range), forKey: "inputRingSize")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRingSize_Range), forKey: "inputRingSize")
 			}
 		}
 
@@ -126,10 +126,10 @@ import Foundation
 		let inputSoftness_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public var inputSoftness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSoftness") as? NSNumber
+				return self.filter.value(forKey: "inputSoftness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSoftness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
 	}

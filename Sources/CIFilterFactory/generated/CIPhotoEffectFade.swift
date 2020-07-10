@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectFade/)
 	///
-	@objc(CIFilterFactory_CIPhotoEffectFade) class CIPhotoEffectFade: Core {
+	@objc(CIFilterFactory_CIPhotoEffectFade) class CIPhotoEffectFade: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectFade")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 	}

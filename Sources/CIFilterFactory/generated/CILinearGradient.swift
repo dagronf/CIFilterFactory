@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILinearGradient/)
 	///
-	@objc(CIFilterFactory_CILinearGradient) class CILinearGradient: Core {
+	@objc(CIFilterFactory_CILinearGradient) class CILinearGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILinearGradient")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputPoint0
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputPoint0: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint0") as? CIVector
+				return self.filter.value(forKey: "inputPoint0") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint0")
+				self.filter.setValue(newValue, forKey: "inputPoint0")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPoint1: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint1") as? CIVector
+				return self.filter.value(forKey: "inputPoint1") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint1")
+				self.filter.setValue(newValue, forKey: "inputPoint1")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor0") as? CIColor
+				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor0")
+				self.filter.setValue(newValue, forKey: "inputColor0")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor1") as? CIColor
+				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor1")
+				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
 	}

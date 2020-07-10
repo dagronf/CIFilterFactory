@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
-	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: Core {
+	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPaletteImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputPaletteImage") as? CIImage
+				return self.filter.value(forKey: "inputPaletteImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPaletteImage")
+				self.filter.setValue(newValue, forKey: "inputPaletteImage")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputPerceptual: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPerceptual") as? NSNumber
+				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputPerceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}

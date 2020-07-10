@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
 	///
-	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: Core {
+	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor0") as? CIColor
+				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor0")
+				self.filter.setValue(newValue, forKey: "inputColor0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputColor1: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor1") as? CIColor
+				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor1")
+				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
 
@@ -100,10 +100,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

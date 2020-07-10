@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
 	///
-	@objc(CIFilterFactory_CIColorPolynomial) class CIColorPolynomial: Core {
+	@objc(CIFilterFactory_CIColorPolynomial) class CIColorPolynomial: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputRedCoefficients: CIVector? {
 			get {
-				return filter.value(forKey: "inputRedCoefficients") as? CIVector
+				return self.filter.value(forKey: "inputRedCoefficients") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRedCoefficients")
+				self.filter.setValue(newValue, forKey: "inputRedCoefficients")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputGreenCoefficients: CIVector? {
 			get {
-				return filter.value(forKey: "inputGreenCoefficients") as? CIVector
+				return self.filter.value(forKey: "inputGreenCoefficients") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputGreenCoefficients")
+				self.filter.setValue(newValue, forKey: "inputGreenCoefficients")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputBlueCoefficients: CIVector? {
 			get {
-				return filter.value(forKey: "inputBlueCoefficients") as? CIVector
+				return self.filter.value(forKey: "inputBlueCoefficients") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputBlueCoefficients")
+				self.filter.setValue(newValue, forKey: "inputBlueCoefficients")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputAlphaCoefficients: CIVector? {
 			get {
-				return filter.value(forKey: "inputAlphaCoefficients") as? CIVector
+				return self.filter.value(forKey: "inputAlphaCoefficients") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAlphaCoefficients")
+				self.filter.setValue(newValue, forKey: "inputAlphaCoefficients")
 			}
 		}
 	}

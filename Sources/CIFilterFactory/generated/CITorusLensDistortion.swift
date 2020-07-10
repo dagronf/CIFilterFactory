@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CITorusLensDistortion/)
 	///
-	@objc(CIFilterFactory_CITorusLensDistortion) class CITorusLensDistortion: Core {
+	@objc(CIFilterFactory_CITorusLensDistortion) class CITorusLensDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITorusLensDistortion")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -103,10 +103,10 @@ import Foundation
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputWidth") as? NSNumber
+				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
 
@@ -120,10 +120,10 @@ import Foundation
 		let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRefraction: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRefraction") as? NSNumber
+				return self.filter.value(forKey: "inputRefraction") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRefraction_Range), forKey: "inputRefraction")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
 	}

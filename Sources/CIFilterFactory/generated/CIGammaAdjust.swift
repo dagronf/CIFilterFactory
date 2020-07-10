@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIGammaAdjust/)
 	///
-	@objc(CIFilterFactory_CIGammaAdjust) class CIGammaAdjust: Core {
+	@objc(CIFilterFactory_CIGammaAdjust) class CIGammaAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGammaAdjust")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPower: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPower") as? NSNumber
+				return self.filter.value(forKey: "inputPower") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPower")
+				self.filter.setValue(newValue, forKey: "inputPower")
 			}
 		}
 	}

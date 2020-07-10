@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
 	///
-	@objc(CIFilterFactory_CIVignetteEffect) class CIVignetteEffect: Core {
+	@objc(CIFilterFactory_CIVignetteEffect) class CIVignetteEffect: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -104,10 +104,10 @@ import Foundation
 		let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
 		@objc public var inputIntensity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputIntensity") as? NSNumber
+				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 
@@ -122,10 +122,10 @@ import Foundation
 		let inputFalloff_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputFalloff: NSNumber? {
 			get {
-				return filter.value(forKey: "inputFalloff") as? NSNumber
+				return self.filter.value(forKey: "inputFalloff") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputFalloff_Range), forKey: "inputFalloff")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputFalloff_Range), forKey: "inputFalloff")
 			}
 		}
 	}

@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIToneCurve/)
 	///
-	@objc(CIFilterFactory_CIToneCurve) class CIToneCurve: Core {
+	@objc(CIFilterFactory_CIToneCurve) class CIToneCurve: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIToneCurve")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputPoint0: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint0") as? CIVector
+				return self.filter.value(forKey: "inputPoint0") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint0")
+				self.filter.setValue(newValue, forKey: "inputPoint0")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputPoint1: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint1") as? CIVector
+				return self.filter.value(forKey: "inputPoint1") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint1")
+				self.filter.setValue(newValue, forKey: "inputPoint1")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputPoint2: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint2") as? CIVector
+				return self.filter.value(forKey: "inputPoint2") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint2")
+				self.filter.setValue(newValue, forKey: "inputPoint2")
 			}
 		}
 
@@ -111,10 +111,10 @@ import Foundation
 		///
 		@objc public var inputPoint3: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint3") as? CIVector
+				return self.filter.value(forKey: "inputPoint3") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint3")
+				self.filter.setValue(newValue, forKey: "inputPoint3")
 			}
 		}
 
@@ -125,10 +125,10 @@ import Foundation
 		///
 		@objc public var inputPoint4: CIVector? {
 			get {
-				return filter.value(forKey: "inputPoint4") as? CIVector
+				return self.filter.value(forKey: "inputPoint4") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputPoint4")
+				self.filter.setValue(newValue, forKey: "inputPoint4")
 			}
 		}
 	}

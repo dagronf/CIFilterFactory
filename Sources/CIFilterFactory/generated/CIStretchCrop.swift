@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
 	///
-	@objc(CIFilterFactory_CIStretchCrop) class CIStretchCrop: Core {
+	@objc(CIFilterFactory_CIStretchCrop) class CIStretchCrop: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStretchCrop")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputSize: CIVector? {
 			get {
-				return filter.value(forKey: "inputSize") as? CIVector
+				return self.filter.value(forKey: "inputSize") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputSize")
+				self.filter.setValue(newValue, forKey: "inputSize")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputCropAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCropAmount") as? NSNumber
+				return self.filter.value(forKey: "inputCropAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCropAmount_Range), forKey: "inputCropAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCropAmount_Range), forKey: "inputCropAmount")
 			}
 		}
 
@@ -105,10 +105,10 @@ import Foundation
 		let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputCenterStretchAmount: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
+				return self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
 			}
 		}
 	}

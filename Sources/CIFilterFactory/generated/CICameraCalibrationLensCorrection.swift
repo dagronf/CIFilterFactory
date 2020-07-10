@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
-	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: Core {
+	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputAVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
-				return filter.value(forKey: "inputAVCameraCalibrationData") as? AVCameraCalibrationData
+				return self.filter.value(forKey: "inputAVCameraCalibrationData") as? AVCameraCalibrationData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputAVCameraCalibrationData")
+				self.filter.setValue(newValue, forKey: "inputAVCameraCalibrationData")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputUseInverseLookUpTable: NSNumber? {
 			get {
-				return filter.value(forKey: "inputUseInverseLookUpTable") as? NSNumber
+				return self.filter.value(forKey: "inputUseInverseLookUpTable") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputUseInverseLookUpTable")
+				self.filter.setValue(newValue, forKey: "inputUseInverseLookUpTable")
 			}
 		}
 	}

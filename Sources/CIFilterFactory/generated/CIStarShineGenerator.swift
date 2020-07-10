@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIStarShineGenerator/)
 	///
-	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: Core {
+	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputColor: CIColor? {
 			get {
-				return filter.value(forKey: "inputColor") as? CIColor
+				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColor")
+				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 
@@ -103,10 +103,10 @@ import Foundation
 		let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputCrossScale: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCrossScale") as? NSNumber
+				return self.filter.value(forKey: "inputCrossScale") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCrossScale_Range), forKey: "inputCrossScale")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossScale_Range), forKey: "inputCrossScale")
 			}
 		}
 
@@ -117,10 +117,10 @@ import Foundation
 		///
 		@objc public var inputCrossAngle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCrossAngle") as? NSNumber
+				return self.filter.value(forKey: "inputCrossAngle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCrossAngle")
+				self.filter.setValue(newValue, forKey: "inputCrossAngle")
 			}
 		}
 
@@ -134,10 +134,10 @@ import Foundation
 		let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public var inputCrossOpacity: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCrossOpacity") as? NSNumber
+				return self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCrossOpacity_Range), forKey: "inputCrossOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossOpacity_Range), forKey: "inputCrossOpacity")
 			}
 		}
 
@@ -151,10 +151,10 @@ import Foundation
 		let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputCrossWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCrossWidth") as? NSNumber
+				return self.filter.value(forKey: "inputCrossWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCrossWidth_Range), forKey: "inputCrossWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossWidth_Range), forKey: "inputCrossWidth")
 			}
 		}
 
@@ -168,10 +168,10 @@ import Foundation
 		let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public var inputEpsilon: NSNumber? {
 			get {
-				return filter.value(forKey: "inputEpsilon") as? NSNumber
+				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputEpsilon_Range), forKey: "inputEpsilon")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputEpsilon_Range), forKey: "inputEpsilon")
 			}
 		}
 	}

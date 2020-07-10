@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
 	///
-	@objc(CIFilterFactory_CILightTunnel) class CILightTunnel: Core {
+	@objc(CIFilterFactory_CILightTunnel) class CILightTunnel: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILightTunnel")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCenter: CIVector? {
 			get {
-				return filter.value(forKey: "inputCenter") as? CIVector
+				return self.filter.value(forKey: "inputCenter") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue, forKey: "inputCenter")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputRotation: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRotation") as? NSNumber
+				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRotation")
+				self.filter.setValue(newValue, forKey: "inputRotation")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputRadius: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRadius") as? NSNumber
+				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputRadius")
+				self.filter.setValue(newValue, forKey: "inputRadius")
 			}
 		}
 	}

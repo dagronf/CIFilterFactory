@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
 	///
-	@objc(CIFilterFactory_CITextImageGenerator) class CITextImageGenerator: Core {
+	@objc(CIFilterFactory_CITextImageGenerator) class CITextImageGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITextImageGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputText
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputText: NSString? {
 			get {
-				return filter.value(forKey: "inputText") as? NSString
+				return self.filter.value(forKey: "inputText") as? NSString
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputText")
+				self.filter.setValue(newValue, forKey: "inputText")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputFontName: NSString? {
 			get {
-				return filter.value(forKey: "inputFontName") as? NSString
+				return self.filter.value(forKey: "inputFontName") as? NSString
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputFontName")
+				self.filter.setValue(newValue, forKey: "inputFontName")
 			}
 		}
 
@@ -86,10 +86,10 @@ import Foundation
 		let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputFontSize: NSNumber? {
 			get {
-				return filter.value(forKey: "inputFontSize") as? NSNumber
+				return self.filter.value(forKey: "inputFontSize") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputFontSize_Range), forKey: "inputFontSize")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputFontSize_Range), forKey: "inputFontSize")
 			}
 		}
 
@@ -103,10 +103,10 @@ import Foundation
 		let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputScaleFactor: NSNumber? {
 			get {
-				return filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}

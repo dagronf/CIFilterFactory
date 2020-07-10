@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorCube/)
 	///
-	@objc(CIFilterFactory_CIColorCube) class CIColorCube: Core {
+	@objc(CIFilterFactory_CIColorCube) class CIColorCube: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCube")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
 		@objc public var inputCubeDimension: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCubeDimension") as? NSNumber
+				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCubeDimension_Range), forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
 
@@ -87,10 +87,10 @@ import Foundation
 		///
 		@objc public var inputCubeData: NSData? {
 			get {
-				return filter.value(forKey: "inputCubeData") as? NSData
+				return self.filter.value(forKey: "inputCubeData") as? NSData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCubeData")
+				self.filter.setValue(newValue, forKey: "inputCubeData")
 			}
 		}
 	}

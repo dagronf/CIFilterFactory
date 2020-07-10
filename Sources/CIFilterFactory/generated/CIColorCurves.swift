@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
-	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: Core {
+	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -69,10 +69,10 @@ import Foundation
 		///
 		@objc public var inputCurvesData: NSData? {
 			get {
-				return filter.value(forKey: "inputCurvesData") as? NSData
+				return self.filter.value(forKey: "inputCurvesData") as? NSData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCurvesData")
+				self.filter.setValue(newValue, forKey: "inputCurvesData")
 			}
 		}
 
@@ -83,10 +83,10 @@ import Foundation
 		///
 		@objc public var inputCurvesDomain: CIVector? {
 			get {
-				return filter.value(forKey: "inputCurvesDomain") as? CIVector
+				return self.filter.value(forKey: "inputCurvesDomain") as? CIVector
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputCurvesDomain")
+				self.filter.setValue(newValue, forKey: "inputCurvesDomain")
 			}
 		}
 
@@ -97,10 +97,10 @@ import Foundation
 		///
 		@objc public var inputColorSpace: NSObject? {
 			get {
-				return filter.value(forKey: "inputColorSpace") as? NSObject
+				return self.filter.value(forKey: "inputColorSpace") as? NSObject
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputColorSpace")
+				self.filter.setValue(newValue, forKey: "inputColorSpace")
 			}
 		}
 	}

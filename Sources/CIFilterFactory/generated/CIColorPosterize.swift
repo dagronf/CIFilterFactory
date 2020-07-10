@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
 	///
-	@objc(CIFilterFactory_CIColorPosterize) class CIColorPosterize: Core {
+	@objc(CIFilterFactory_CIColorPosterize) class CIColorPosterize: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorPosterize")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputLevels_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public var inputLevels: NSNumber? {
 			get {
-				return filter.value(forKey: "inputLevels") as? NSNumber
+				return self.filter.value(forKey: "inputLevels") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputLevels_Range), forKey: "inputLevels")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputLevels_Range), forKey: "inputLevels")
 			}
 		}
 	}

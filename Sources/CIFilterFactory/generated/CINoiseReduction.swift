@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CINoiseReduction/)
 	///
-	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: Core {
+	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputImage: CIImage? {
 			get {
-				return filter.value(forKey: "inputImage") as? CIImage
+				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputImage")
+				self.filter.setValue(newValue, forKey: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ import Foundation
 		let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputNoiseLevel: NSNumber? {
 			get {
-				return filter.value(forKey: "inputNoiseLevel") as? NSNumber
+				return self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputNoiseLevel_Range), forKey: "inputNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputNoiseLevel_Range), forKey: "inputNoiseLevel")
 			}
 		}
 
@@ -89,10 +89,10 @@ import Foundation
 		let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputSharpness: NSNumber? {
 			get {
-				return filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

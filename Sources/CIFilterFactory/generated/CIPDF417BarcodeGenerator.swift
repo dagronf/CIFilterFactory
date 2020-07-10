@@ -42,10 +42,10 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPDF417BarcodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIPDF417BarcodeGenerator) class CIPDF417BarcodeGenerator: Core {
+	@objc(CIFilterFactory_CIPDF417BarcodeGenerator) class CIPDF417BarcodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPDF417BarcodeGenerator")
-			filter.setDefaults()
+			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage
@@ -55,10 +55,10 @@ import Foundation
 		///
 		@objc public var inputMessage: NSData? {
 			get {
-				return filter.value(forKey: "inputMessage") as? NSData
+				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
 			set {
-				filter.setValue(newValue, forKey: "inputMessage")
+				self.filter.setValue(newValue, forKey: "inputMessage")
 			}
 		}
 
@@ -73,10 +73,10 @@ import Foundation
 		let inputMinWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public var inputMinWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputMinWidth") as? NSNumber
+				return self.filter.value(forKey: "inputMinWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputMinWidth_Range), forKey: "inputMinWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputMinWidth_Range), forKey: "inputMinWidth")
 			}
 		}
 
@@ -91,10 +91,10 @@ import Foundation
 		let inputMaxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public var inputMaxWidth: NSNumber? {
 			get {
-				return filter.value(forKey: "inputMaxWidth") as? NSNumber
+				return self.filter.value(forKey: "inputMaxWidth") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputMaxWidth_Range), forKey: "inputMaxWidth")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputMaxWidth_Range), forKey: "inputMaxWidth")
 			}
 		}
 
@@ -109,10 +109,10 @@ import Foundation
 		let inputMinHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public var inputMinHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputMinHeight") as? NSNumber
+				return self.filter.value(forKey: "inputMinHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputMinHeight_Range), forKey: "inputMinHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputMinHeight_Range), forKey: "inputMinHeight")
 			}
 		}
 
@@ -127,10 +127,10 @@ import Foundation
 		let inputMaxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public var inputMaxHeight: NSNumber? {
 			get {
-				return filter.value(forKey: "inputMaxHeight") as? NSNumber
+				return self.filter.value(forKey: "inputMaxHeight") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputMaxHeight_Range), forKey: "inputMaxHeight")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputMaxHeight_Range), forKey: "inputMaxHeight")
 			}
 		}
 
@@ -145,10 +145,10 @@ import Foundation
 		let inputDataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
 		@objc public var inputDataColumns: NSNumber? {
 			get {
-				return filter.value(forKey: "inputDataColumns") as? NSNumber
+				return self.filter.value(forKey: "inputDataColumns") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputDataColumns_Range), forKey: "inputDataColumns")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputDataColumns_Range), forKey: "inputDataColumns")
 			}
 		}
 
@@ -163,10 +163,10 @@ import Foundation
 		let inputRows_Range: ClosedRange<Float> = 3.0 ... 90.0
 		@objc public var inputRows: NSNumber? {
 			get {
-				return filter.value(forKey: "inputRows") as? NSNumber
+				return self.filter.value(forKey: "inputRows") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputRows_Range), forKey: "inputRows")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputRows_Range), forKey: "inputRows")
 			}
 		}
 
@@ -180,10 +180,10 @@ import Foundation
 		let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public var inputPreferredAspectRatio: NSNumber? {
 			get {
-				return filter.value(forKey: "inputPreferredAspectRatio") as? NSNumber
+				return self.filter.value(forKey: "inputPreferredAspectRatio") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputPreferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputPreferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
 			}
 		}
 
@@ -198,10 +198,10 @@ import Foundation
 		let inputCompactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
 		@objc public var inputCompactionMode: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCompactionMode") as? NSNumber
+				return self.filter.value(forKey: "inputCompactionMode") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCompactionMode_Range), forKey: "inputCompactionMode")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCompactionMode_Range), forKey: "inputCompactionMode")
 			}
 		}
 
@@ -216,10 +216,10 @@ import Foundation
 		let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputCompactStyle: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCompactStyle") as? NSNumber
+				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCompactStyle_Range), forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCompactStyle_Range), forKey: "inputCompactStyle")
 			}
 		}
 
@@ -234,10 +234,10 @@ import Foundation
 		let inputCorrectionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
 		@objc public var inputCorrectionLevel: NSNumber? {
 			get {
-				return filter.value(forKey: "inputCorrectionLevel") as? NSNumber
+				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
 			}
 		}
 
@@ -252,10 +252,10 @@ import Foundation
 		let inputAlwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public var inputAlwaysSpecifyCompaction: NSNumber? {
 			get {
-				return filter.value(forKey: "inputAlwaysSpecifyCompaction") as? NSNumber
+				return self.filter.value(forKey: "inputAlwaysSpecifyCompaction") as? NSNumber
 			}
 			set {
-				filter.setValue(newValue?.clamped(bounds: inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
+				self.filter.setValue(newValue?.clamped(bounds: self.inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
 			}
 		}
 	}
