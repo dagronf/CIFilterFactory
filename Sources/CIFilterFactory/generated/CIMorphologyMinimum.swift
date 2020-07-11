@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMorphologyMinimum) class CIMorphologyMinimum: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMorphologyMinimum")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

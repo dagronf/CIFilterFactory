@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputWidth

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

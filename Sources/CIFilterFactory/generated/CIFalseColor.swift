@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIFalseColor")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputColor

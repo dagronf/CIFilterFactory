@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCubesMixedWithMask) class CIColorCubesMixedWithMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCubesMixedWithMask")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

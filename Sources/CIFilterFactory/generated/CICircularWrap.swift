@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircularWrap) class CICircularWrap: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICircularWrap")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

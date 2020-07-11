@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGaborGradients) class CIGaborGradients: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGaborGradients")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

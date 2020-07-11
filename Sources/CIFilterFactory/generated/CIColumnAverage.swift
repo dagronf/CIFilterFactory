@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColumnAverage) class CIColumnAverage: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColumnAverage")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

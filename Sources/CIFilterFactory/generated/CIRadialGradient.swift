@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRadialGradient) class CIRadialGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRadialGradient")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

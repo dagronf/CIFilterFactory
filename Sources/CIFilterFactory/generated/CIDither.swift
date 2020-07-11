@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDither) class CIDither: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDither")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

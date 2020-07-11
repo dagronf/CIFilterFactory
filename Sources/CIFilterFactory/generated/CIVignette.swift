@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVignette) class CIVignette: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIVignette")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

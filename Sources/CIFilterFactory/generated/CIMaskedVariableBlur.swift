@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMaskedVariableBlur) class CIMaskedVariableBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMaskedVariableBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

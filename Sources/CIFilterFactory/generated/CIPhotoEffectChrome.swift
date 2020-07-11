@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectChrome) class CIPhotoEffectChrome: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectChrome")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

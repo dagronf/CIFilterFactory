@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISaliencyMapFilter) class CISaliencyMapFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISaliencyMapFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

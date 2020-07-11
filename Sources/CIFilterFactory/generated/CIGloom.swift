@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGloom) class CIGloom: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGloom")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlideReflectedTile) class CIGlideReflectedTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGlideReflectedTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

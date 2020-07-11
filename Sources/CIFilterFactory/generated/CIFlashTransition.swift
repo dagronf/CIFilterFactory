@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFlashTransition) class CIFlashTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIFlashTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

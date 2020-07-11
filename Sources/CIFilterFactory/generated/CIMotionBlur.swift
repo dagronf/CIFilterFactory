@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMotionBlur) class CIMotionBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMotionBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

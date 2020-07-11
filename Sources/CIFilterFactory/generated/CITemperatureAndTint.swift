@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITemperatureAndTint) class CITemperatureAndTint: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

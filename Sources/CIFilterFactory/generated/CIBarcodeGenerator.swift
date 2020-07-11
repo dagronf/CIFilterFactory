@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputBarcodeDescriptor

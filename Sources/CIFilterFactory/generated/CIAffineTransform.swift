@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAffineTransform) class CIAffineTransform: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAffineTransform")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHueAdjust) class CIHueAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHueAdjust")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

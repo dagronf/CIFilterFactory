@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILineScreen) class CILineScreen: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILineScreen")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

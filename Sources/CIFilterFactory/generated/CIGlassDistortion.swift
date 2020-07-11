@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlassDistortion) class CIGlassDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGlassDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

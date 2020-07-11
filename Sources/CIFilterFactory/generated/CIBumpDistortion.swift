@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBumpDistortion) class CIBumpDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBumpDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

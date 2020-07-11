@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCrossPolynomial) class CIColorCrossPolynomial: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCrossPolynomial")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectFade) class CIPhotoEffectFade: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectFade")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

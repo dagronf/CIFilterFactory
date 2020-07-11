@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIThermal) class CIThermal: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIThermal")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

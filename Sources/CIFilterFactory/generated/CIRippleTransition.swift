@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRippleTransition) class CIRippleTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRippleTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

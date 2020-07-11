@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMaximumComponent) class CIMaximumComponent: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMaximumComponent")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

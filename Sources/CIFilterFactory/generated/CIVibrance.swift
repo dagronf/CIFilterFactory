@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVibrance) class CIVibrance: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIVibrance")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

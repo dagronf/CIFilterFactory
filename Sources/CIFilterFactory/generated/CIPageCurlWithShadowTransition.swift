@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPageCurlWithShadowTransition) class CIPageCurlWithShadowTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICrop) class CICrop: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICrop")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

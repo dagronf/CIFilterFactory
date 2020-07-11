@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIEdgePreserveUpsampleFilter) class CIEdgePreserveUpsampleFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIEdgePreserveUpsampleFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

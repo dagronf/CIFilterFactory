@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

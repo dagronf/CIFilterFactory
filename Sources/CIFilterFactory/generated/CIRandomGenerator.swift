@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRandomGenerator) class CIRandomGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRandomGenerator")
-			self.filter.setDefaults()
 		}
 	}
 }

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBloom) class CIBloom: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBloom")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

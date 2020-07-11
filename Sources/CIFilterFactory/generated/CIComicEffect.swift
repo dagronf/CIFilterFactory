@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIComicEffect) class CIComicEffect: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIComicEffect")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

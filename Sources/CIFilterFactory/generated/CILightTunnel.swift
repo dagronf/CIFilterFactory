@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILightTunnel) class CILightTunnel: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILightTunnel")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

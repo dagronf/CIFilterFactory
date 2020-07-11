@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILinearToSRGBToneCurve) class CILinearToSRGBToneCurve: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILinearToSRGBToneCurve")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

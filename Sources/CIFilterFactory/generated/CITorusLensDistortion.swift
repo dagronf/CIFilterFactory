@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITorusLensDistortion) class CITorusLensDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITorusLensDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

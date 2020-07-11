@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHistogramDisplayFilter) class CIHistogramDisplayFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

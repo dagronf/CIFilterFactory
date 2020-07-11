@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIFourfoldReflectedTile) class CIFourfoldReflectedTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIFourfoldReflectedTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

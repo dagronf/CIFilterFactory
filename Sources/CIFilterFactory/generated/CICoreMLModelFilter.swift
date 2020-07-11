@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICoreMLModelFilter) class CICoreMLModelFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

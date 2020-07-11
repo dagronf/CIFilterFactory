@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIZoomBlur) class CIZoomBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIZoomBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

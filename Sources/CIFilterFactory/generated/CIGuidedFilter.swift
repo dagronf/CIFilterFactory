@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGuidedFilter) class CIGuidedFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGuidedFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

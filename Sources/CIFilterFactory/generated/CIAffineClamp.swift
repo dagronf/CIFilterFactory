@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAffineClamp) class CIAffineClamp: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAffineClamp")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

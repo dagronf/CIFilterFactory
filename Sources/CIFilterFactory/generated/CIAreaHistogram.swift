@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaHistogram) class CIAreaHistogram: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaHistogram")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

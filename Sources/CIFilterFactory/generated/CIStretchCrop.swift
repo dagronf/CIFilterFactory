@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStretchCrop) class CIStretchCrop: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStretchCrop")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

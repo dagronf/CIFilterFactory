@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPalettize) class CIPalettize: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPalettize")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

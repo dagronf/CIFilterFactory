@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorCubeWithColorSpace) class CIColorCubeWithColorSpace: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorCubeWithColorSpace")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

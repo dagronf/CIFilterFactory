@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDisplacementDistortion) class CIDisplacementDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

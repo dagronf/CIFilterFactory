@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveTile) class CIPerspectiveTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

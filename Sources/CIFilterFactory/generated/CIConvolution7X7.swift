@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConvolution7X7")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

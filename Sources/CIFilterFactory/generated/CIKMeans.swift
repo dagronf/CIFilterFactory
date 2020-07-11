@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIKMeans) class CIKMeans: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIKMeans")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

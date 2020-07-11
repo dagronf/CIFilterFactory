@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMorphologyGradient) class CIMorphologyGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMorphologyGradient")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

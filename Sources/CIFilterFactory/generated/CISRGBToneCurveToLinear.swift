@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISRGBToneCurveToLinear) class CISRGBToneCurveToLinear: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISRGBToneCurveToLinear")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

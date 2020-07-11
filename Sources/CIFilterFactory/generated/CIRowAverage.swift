@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRowAverage) class CIRowAverage: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRowAverage")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

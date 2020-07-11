@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

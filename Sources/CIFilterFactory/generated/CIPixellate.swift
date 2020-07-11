@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPixellate) class CIPixellate: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPixellate")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

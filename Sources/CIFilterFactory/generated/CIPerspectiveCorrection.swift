@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveCorrection) class CIPerspectiveCorrection: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveCorrection")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

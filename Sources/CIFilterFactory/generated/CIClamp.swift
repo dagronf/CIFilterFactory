@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIClamp) class CIClamp: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIClamp")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

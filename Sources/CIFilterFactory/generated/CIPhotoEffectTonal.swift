@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectTonal) class CIPhotoEffectTonal: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectTonal")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

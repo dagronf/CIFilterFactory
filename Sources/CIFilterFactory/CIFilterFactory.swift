@@ -16,17 +16,15 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-10 00:36:24 +0000.  Do not edit.
+//  Automatically generated on 2020-07-11 06:07:39 +0000.  Do not edit.
 
-import Foundation
 import CoreImage
+import Foundation
 
 /// A class factory for type-safe Core Image Filter objects
 @objc public class CIFilterFactory: NSObject {
-
 	/// Common filter base class. You never need need to create this yourself
 	@objc(CIFilterCore) public class FilterCommon: NSObject {
-
 		// The CIFilter wrapped instance for the filter
 		@objc public let filter: CIFilter
 
@@ -36,6 +34,8 @@ import CoreImage
 			}
 			self.filter = filter
 			super.init()
+
+			filter.setDefaults()
 		}
 
 		/// Returns a CIImage object that encapsulates the operations configured in the filter.
@@ -45,7 +45,7 @@ import CoreImage
 
 		/// The name of the filter
 		@objc public lazy var name: String = {
-			return self.filter.name
+			self.filter.name
 		}()
 
 		/// The localized version of the filter name that is displayed in the user interface
@@ -56,13 +56,13 @@ import CoreImage
 		/// Returns the localized name for the specified filter.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public lazy var localizedName: String = {
-			return CIFilter.localizedName(forFilterName: self.name) ?? self.name
+			CIFilter.localizedName(forFilterName: self.name) ?? self.name
 		}()
 
 		/// Returns the localized description of a filter for display in the user interface.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public lazy var localizedDescription: String? = {
-			return CIFilter.localizedDescription(forFilterName: self.name)
+			CIFilter.localizedDescription(forFilterName: self.name)
 		}()
 
 		/// Returns a dictionary containing key/value pairs describing the filter
@@ -72,13 +72,18 @@ import CoreImage
 
 		/// Returns the URL for the `CIFilter.io` webpage describing the filter
 		@objc public lazy var cifilterOnlineDocumentationURL: URL? = {
-			return URL(string: "https://cifilter.io/\(self.name)/")
+			URL(string: "https://cifilter.io/\(self.name)/")
 		}()
 
 		/// The localized reference documentation for the filter. The reference should provide developers with technical details.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public var onlineDocumentationURL: URL? {
-			return filter.attributes[kCIAttributeReferenceDocumentation] as? URL
+			return self.filter.attributes[kCIAttributeReferenceDocumentation] as? URL
+		}
+
+		/// Reset all the values in the filter to the defaults
+		@objc public func reset() {
+			self.filter.setDefaults()
 		}
 	}
 
@@ -90,27 +95,32 @@ import CoreImage
 				self.transform = transform
 				super.init()
 			}
+
 			@objc public convenience init?(filter: CIFilter, key: String) {
 				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
 					return nil
 				}
 				self.init(value)
 			}
+
 			func embeddedValue() -> AnyObject {
 				return self.transform
 			}
+
 		#else
 			@objc var transform: CGAffineTransform
 			@objc public init(_ transform: CGAffineTransform) {
 				self.transform = transform
 				super.init()
 			}
+
 			@objc public convenience init?(filter: CIFilter, key: String) {
 				guard let value = filter.value(forKey: key) as? NSValue else {
 					return nil
 				}
 				self.init(value.cgAffineTransformValue)
 			}
+
 			func embeddedValue() -> AnyObject {
 				return NSValue(cgAffineTransform: self.transform)
 			}
@@ -125,12 +135,14 @@ extension NSNumber {
 		}
 		return self
 	}
+
 	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
 		if bounds.upperBound < self.floatValue {
 			return NSNumber(value: bounds.upperBound)
 		}
 		return self
 	}
+
 	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
 		var value = max(bounds.lowerBound, self.floatValue)
 		value = min(bounds.upperBound, value)

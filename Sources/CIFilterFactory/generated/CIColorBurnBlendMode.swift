@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorBurnBlendMode) class CIColorBurnBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorBurnBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

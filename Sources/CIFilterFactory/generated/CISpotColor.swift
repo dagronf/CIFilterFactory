@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISpotColor) class CISpotColor: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISpotColor")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

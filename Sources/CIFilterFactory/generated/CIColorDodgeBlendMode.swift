@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorDodgeBlendMode) class CIColorDodgeBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorDodgeBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

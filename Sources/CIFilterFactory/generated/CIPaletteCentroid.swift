@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

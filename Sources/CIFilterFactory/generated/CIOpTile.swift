@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIOpTile) class CIOpTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIOpTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

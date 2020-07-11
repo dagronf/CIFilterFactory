@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMinimumAlpha) class CIAreaMinimumAlpha: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaMinimumAlpha")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

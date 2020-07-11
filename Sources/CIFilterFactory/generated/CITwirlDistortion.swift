@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITwirlDistortion) class CITwirlDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITwirlDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

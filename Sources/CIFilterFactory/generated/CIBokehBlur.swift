@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBokehBlur) class CIBokehBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

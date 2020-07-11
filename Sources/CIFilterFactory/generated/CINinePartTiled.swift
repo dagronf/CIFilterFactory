@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CINinePartTiled) class CINinePartTiled: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CINinePartTiled")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

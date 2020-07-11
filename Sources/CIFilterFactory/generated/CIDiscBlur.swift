@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDiscBlur) class CIDiscBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDiscBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

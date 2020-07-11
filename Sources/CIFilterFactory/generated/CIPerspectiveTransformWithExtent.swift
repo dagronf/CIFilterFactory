@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPerspectiveTransformWithExtent) class CIPerspectiveTransformWithExtent: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

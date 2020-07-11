@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectNoir) class CIPhotoEffectNoir: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectNoir")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

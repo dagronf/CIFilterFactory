@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIShadedMaterial) class CIShadedMaterial: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIShadedMaterial")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

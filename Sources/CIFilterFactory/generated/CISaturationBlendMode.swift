@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISaturationBlendMode) class CISaturationBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISaturationBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

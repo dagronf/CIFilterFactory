@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILenticularHaloGenerator) class CILenticularHaloGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILenticularHaloGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

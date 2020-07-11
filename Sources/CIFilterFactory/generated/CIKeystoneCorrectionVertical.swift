@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIKeystoneCorrectionVertical) class CIKeystoneCorrectionVertical: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionVertical")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

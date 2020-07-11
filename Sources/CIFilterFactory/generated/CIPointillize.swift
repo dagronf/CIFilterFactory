@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPointillize) class CIPointillize: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPointillize")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

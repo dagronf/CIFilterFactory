@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILinearGradient) class CILinearGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILinearGradient")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputPoint0

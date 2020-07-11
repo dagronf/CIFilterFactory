@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILinearBurnBlendMode) class CILinearBurnBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILinearBurnBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

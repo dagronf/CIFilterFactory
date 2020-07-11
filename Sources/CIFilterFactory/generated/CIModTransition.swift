@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIModTransition) class CIModTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIModTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

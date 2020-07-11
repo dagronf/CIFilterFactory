@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIExposureAdjust) class CIExposureAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIExposureAdjust")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

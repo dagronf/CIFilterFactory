@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMedianFilter) class CIMedianFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMedianFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

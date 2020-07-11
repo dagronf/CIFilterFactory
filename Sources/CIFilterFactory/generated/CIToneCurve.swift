@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIToneCurve) class CIToneCurve: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIToneCurve")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

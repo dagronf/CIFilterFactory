@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorInvert) class CIColorInvert: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorInvert")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

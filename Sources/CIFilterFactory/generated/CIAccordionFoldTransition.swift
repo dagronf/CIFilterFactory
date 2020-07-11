@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISubtractBlendMode) class CISubtractBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISubtractBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

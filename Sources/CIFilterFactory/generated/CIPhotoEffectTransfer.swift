@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectTransfer) class CIPhotoEffectTransfer: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectTransfer")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

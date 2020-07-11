@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHatchedScreen) class CIHatchedScreen: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHatchedScreen")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

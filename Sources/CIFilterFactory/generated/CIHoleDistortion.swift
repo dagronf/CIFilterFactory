@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHoleDistortion) class CIHoleDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHoleDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

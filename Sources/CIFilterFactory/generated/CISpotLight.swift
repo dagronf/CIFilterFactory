@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISpotLight) class CISpotLight: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISpotLight")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

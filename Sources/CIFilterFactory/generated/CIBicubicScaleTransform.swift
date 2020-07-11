@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBicubicScaleTransform) class CIBicubicScaleTransform: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBicubicScaleTransform")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIParallelogramTile) class CIParallelogramTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIParallelogramTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

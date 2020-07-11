@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILinearDodgeBlendMode) class CILinearDodgeBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILinearDodgeBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

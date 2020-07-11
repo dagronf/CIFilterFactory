@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

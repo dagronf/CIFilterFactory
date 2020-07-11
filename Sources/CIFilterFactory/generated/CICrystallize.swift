@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICrystallize) class CICrystallize: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICrystallize")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

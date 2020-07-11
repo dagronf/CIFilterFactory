@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBlendWithAlphaMask) class CIBlendWithAlphaMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBlendWithAlphaMask")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

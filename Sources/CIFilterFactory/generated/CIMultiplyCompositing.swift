@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMultiplyCompositing) class CIMultiplyCompositing: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMultiplyCompositing")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHighlightShadowAdjust) class CIHighlightShadowAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

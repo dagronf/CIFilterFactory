@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConvolution3X3) class CIConvolution3X3: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConvolution3X3")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

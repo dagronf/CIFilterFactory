@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIRoundedRectangleGenerator) class CIRoundedRectangleGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputExtent

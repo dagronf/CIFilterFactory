@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircleSplashDistortion) class CICircleSplashDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICircleSplashDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

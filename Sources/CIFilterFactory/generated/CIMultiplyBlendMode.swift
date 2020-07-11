@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMultiplyBlendMode) class CIMultiplyBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMultiplyBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStripesGenerator) class CIStripesGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStripesGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

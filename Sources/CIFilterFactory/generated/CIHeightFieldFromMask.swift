@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHeightFieldFromMask) class CIHeightFieldFromMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHeightFieldFromMask")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

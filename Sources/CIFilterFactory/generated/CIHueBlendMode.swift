@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHueBlendMode) class CIHueBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHueBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

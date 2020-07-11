@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMaximumAlpha) class CIAreaMaximumAlpha: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaMaximumAlpha")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIExclusionBlendMode) class CIExclusionBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIExclusionBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

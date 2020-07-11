@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGaussianBlur) class CIGaussianBlur: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGaussianBlur")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

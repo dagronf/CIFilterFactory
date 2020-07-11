@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaMinMaxRed) class CIAreaMinMaxRed: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaMinMaxRed")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

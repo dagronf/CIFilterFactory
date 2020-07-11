@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILanczosScaleTransform) class CILanczosScaleTransform: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILanczosScaleTransform")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

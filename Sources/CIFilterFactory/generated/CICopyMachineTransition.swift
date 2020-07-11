@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICopyMachineTransition) class CICopyMachineTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICopyMachineTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

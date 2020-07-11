@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage

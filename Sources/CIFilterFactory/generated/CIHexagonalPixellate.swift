@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIHexagonalPixellate) class CIHexagonalPixellate: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIHexagonalPixellate")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

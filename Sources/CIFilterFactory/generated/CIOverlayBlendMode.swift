@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIOverlayBlendMode) class CIOverlayBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIOverlayBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

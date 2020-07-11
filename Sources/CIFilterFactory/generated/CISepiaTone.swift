@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISepiaTone) class CISepiaTone: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISepiaTone")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

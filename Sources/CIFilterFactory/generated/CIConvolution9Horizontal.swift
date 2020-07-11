@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIConvolution9Horizontal) class CIConvolution9Horizontal: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIConvolution9Horizontal")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

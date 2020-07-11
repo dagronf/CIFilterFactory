@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILineOverlay")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

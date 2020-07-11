@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CILabDeltaE) class CILabDeltaE: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

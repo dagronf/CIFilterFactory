@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITextImageGenerator) class CITextImageGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITextImageGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputText

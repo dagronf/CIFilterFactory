@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDepthToDisparity) class CIDepthToDisparity: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDepthToDisparity")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

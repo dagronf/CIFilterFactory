@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIScreenBlendMode) class CIScreenBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIScreenBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

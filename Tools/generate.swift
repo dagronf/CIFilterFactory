@@ -107,7 +107,6 @@ import UIKit
 	out.print("   @objc(CIFilterFactory_\(filter.name)) class \(filter.name): FilterCommon {")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
-	out.print("         self.filter.setDefaults()")
 	out.print("      }")
 
 	for key in inputKeys {
@@ -267,6 +266,8 @@ import CoreImage
 			}
 			self.filter = filter
 			super.init()
+
+			filter.setDefaults()
 		}
 
 		/// Returns a CIImage object that encapsulates the operations configured in the filter.
@@ -310,6 +311,11 @@ import CoreImage
 		@available(macOS 10.10, iOS 9, *)
 		@objc public var onlineDocumentationURL: URL? {
 			return filter.attributes[kCIAttributeReferenceDocumentation] as? URL
+		}
+
+		/// Reset all the values in the filter to the defaults
+		@objc public func reset() {
+			self.filter.setDefaults()
 		}
 	}
 

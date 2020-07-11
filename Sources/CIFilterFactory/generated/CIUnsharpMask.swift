@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIUnsharpMask) class CIUnsharpMask: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIUnsharpMask")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

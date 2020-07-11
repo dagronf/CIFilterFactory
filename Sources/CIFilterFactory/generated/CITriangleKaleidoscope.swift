@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITriangleKaleidoscope) class CITriangleKaleidoscope: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

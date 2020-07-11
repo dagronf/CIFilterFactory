@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMinimumComponent) class CIMinimumComponent: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMinimumComponent")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

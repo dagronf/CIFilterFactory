@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorPosterize) class CIColorPosterize: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorPosterize")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

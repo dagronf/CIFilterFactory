@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorPolynomial) class CIColorPolynomial: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

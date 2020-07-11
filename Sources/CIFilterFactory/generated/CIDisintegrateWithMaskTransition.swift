@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDisintegrateWithMaskTransition) class CIDisintegrateWithMaskTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

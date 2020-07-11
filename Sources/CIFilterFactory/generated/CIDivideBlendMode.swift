@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDivideBlendMode) class CIDivideBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDivideBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

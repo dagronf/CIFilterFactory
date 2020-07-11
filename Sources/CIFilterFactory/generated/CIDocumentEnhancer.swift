@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

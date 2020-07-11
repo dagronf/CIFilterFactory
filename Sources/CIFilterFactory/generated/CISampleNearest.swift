@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISampleNearest) class CISampleNearest: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISampleNearest")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

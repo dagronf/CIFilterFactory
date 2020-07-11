@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorBlendMode) class CIColorBlendMode: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorBlendMode")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

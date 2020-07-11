@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CITriangleTile) class CITriangleTile: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CITriangleTile")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

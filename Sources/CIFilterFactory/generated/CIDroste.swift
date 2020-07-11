@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDroste) class CIDroste: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDroste")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

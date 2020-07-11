@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorMap) class CIColorMap: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorMap")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

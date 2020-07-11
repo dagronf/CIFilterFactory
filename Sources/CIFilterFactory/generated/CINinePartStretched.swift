@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CINinePartStretched) class CINinePartStretched: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CINinePartStretched")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

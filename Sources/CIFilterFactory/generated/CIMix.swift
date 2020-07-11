@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMix) class CIMix: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMix")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

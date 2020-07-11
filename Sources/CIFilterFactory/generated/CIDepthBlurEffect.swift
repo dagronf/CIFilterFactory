@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDepthBlurEffect) class CIDepthBlurEffect: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

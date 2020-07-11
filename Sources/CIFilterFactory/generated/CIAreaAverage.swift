@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIAreaAverage) class CIAreaAverage: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIAreaAverage")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

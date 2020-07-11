@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIStraightenFilter) class CIStraightenFilter: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIStraightenFilter")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

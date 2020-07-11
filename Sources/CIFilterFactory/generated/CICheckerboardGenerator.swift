@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICheckerboardGenerator) class CICheckerboardGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICheckerboardGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICMYKHalftone) class CICMYKHalftone: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICMYKHalftone")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

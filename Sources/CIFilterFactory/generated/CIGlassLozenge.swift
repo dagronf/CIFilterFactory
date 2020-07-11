@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGlassLozenge) class CIGlassLozenge: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGlassLozenge")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

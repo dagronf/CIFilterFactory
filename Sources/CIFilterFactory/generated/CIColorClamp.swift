@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIColorClamp) class CIColorClamp: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

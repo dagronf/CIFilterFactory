@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIEdgeWork) class CIEdgeWork: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIEdgeWork")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

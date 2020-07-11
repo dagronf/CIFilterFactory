@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPinchDistortion) class CIPinchDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPinchDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

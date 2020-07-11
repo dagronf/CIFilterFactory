@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGammaAdjust) class CIGammaAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGammaAdjust")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

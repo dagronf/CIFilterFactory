@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDotScreen) class CIDotScreen: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDotScreen")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

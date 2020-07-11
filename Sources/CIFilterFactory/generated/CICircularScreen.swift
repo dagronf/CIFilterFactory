@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CICircularScreen) class CICircularScreen: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CICircularScreen")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

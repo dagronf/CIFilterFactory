@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputCenter

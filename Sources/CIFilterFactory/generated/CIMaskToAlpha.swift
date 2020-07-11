@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMaskToAlpha) class CIMaskToAlpha: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMaskToAlpha")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

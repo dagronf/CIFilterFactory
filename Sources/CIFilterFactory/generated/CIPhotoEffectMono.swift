@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPhotoEffectMono) class CIPhotoEffectMono: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectMono")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

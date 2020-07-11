@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISharpenLuminance) class CISharpenLuminance: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

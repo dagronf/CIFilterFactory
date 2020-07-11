@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIBarsSwipeTransition) class CIBarsSwipeTransition: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIBarsSwipeTransition")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

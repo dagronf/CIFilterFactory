@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIMorphologyMaximum) class CIMorphologyMaximum: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIMorphologyMaximum")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIPDF417BarcodeGenerator) class CIPDF417BarcodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIPDF417BarcodeGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage

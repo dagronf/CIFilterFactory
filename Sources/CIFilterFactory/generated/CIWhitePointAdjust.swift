@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIWhitePointAdjust) class CIWhitePointAdjust: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIWhitePointAdjust")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

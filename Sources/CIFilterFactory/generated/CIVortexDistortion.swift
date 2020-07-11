@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIVortexDistortion) class CIVortexDistortion: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIVortexDistortion")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

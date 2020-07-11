@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIXRay) class CIXRay: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIXRay")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

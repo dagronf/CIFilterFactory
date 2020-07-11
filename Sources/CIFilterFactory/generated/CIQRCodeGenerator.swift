@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputMessage

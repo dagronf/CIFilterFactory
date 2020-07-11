@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISourceOverCompositing) class CISourceOverCompositing: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISourceOverCompositing")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

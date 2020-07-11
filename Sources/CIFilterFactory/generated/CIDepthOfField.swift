@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CIDepthOfField) class CIDepthOfField: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CIDepthOfField")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage

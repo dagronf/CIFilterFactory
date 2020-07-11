@@ -45,7 +45,6 @@ import Foundation
 	@objc(CIFilterFactory_CISourceInCompositing) class CISourceInCompositing: FilterCommon {
 		@objc public init?() {
 			super.init(name: "CISourceInCompositing")
-			self.filter.setDefaults()
 		}
 
 		// MARK: - inputImage
