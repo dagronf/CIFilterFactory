@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIMeshGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The width of the effect.
 		///

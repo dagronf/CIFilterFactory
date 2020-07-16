@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIAreaAverage")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image to process.
 		///
@@ -69,6 +71,16 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputImageMPS: Any? {
+			return self.filter.value(forKey: "outputImageMPS")
+		}
+
+		@objc public dynamic var outputImageNonMPS: Any? {
+			return self.filter.value(forKey: "outputImageNonMPS")
 		}
 	}
 }

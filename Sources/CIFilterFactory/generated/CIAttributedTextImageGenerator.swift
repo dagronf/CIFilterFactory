@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIAttributedTextImageGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// No Description
 		///

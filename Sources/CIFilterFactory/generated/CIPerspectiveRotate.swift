@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIPerspectiveRotate")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image to process.
 		///
@@ -114,6 +116,12 @@ import Foundation
 			set {
 				self.filter.setValue(newValue, forKey: "inputRoll")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputTransform: Any? {
+			return self.filter.value(forKey: "outputTransform")
 		}
 	}
 }

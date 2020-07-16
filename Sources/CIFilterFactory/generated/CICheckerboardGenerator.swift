@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CICheckerboardGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The center of the effect as x and y coordinates.
 		///

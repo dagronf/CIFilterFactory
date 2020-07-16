@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CICode128BarcodeGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The message to encode in the Code 128 Barcode
 		///
@@ -91,6 +93,12 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputCGImage: Any? {
+			return self.filter.value(forKey: "outputCGImage")
 		}
 	}
 }

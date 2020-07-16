@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// A rectangle that defines the extent of the effect.
 		///

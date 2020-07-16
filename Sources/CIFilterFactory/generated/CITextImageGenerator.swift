@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CITextImageGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// No Description
 		///

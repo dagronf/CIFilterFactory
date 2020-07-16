@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CITriangleKaleidoscope")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// Input image to generate kaleidoscope effect from.
 		///

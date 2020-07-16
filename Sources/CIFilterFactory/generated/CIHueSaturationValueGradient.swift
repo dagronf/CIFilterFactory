@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIHueSaturationValueGradient")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// No Description
 		///

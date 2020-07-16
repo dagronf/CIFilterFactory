@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CILabDeltaE")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The first input image for comparison.
 		///

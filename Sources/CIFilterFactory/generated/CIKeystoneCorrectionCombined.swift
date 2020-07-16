@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIKeystoneCorrectionCombined")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image to process.
 		///
@@ -125,6 +127,16 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.vector, forKey: "inputBottomLeft")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputTransform: Any? {
+			return self.filter.value(forKey: "outputTransform")
+		}
+
+		@objc public dynamic var outputRotationFilter: Any? {
+			return self.filter.value(forKey: "outputRotationFilter")
 		}
 	}
 }

@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CISmoothLinearGradient")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The starting position of the gradient -- where the first color begins.
 		///

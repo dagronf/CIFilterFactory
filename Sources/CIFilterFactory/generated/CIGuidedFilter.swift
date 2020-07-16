@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIGuidedFilter")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// A small image to upsample.
 		///

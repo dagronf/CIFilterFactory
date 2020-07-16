@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIAreaHistogram")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image whose histogram you want to calculate.
 		///
@@ -106,6 +108,20 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAreaHistogram.inputCount_Range), forKey: "inputCount")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputImageMPS: Any? {
+			return self.filter.value(forKey: "outputImageMPS")
+		}
+
+		@objc public dynamic var outputImageNonMPS: Any? {
+			return self.filter.value(forKey: "outputImageNonMPS")
+		}
+
+		@objc public dynamic var outputData: Any? {
+			return self.filter.value(forKey: "outputData")
 		}
 	}
 }

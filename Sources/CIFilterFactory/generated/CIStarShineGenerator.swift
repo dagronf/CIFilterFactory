@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIStarShineGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The x and y position to use as the center of the star.
 		///

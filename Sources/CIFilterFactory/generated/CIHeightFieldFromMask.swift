@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIHeightFieldFromMask")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The white values of the mask define those pixels that are inside the height field while the black values define those pixels that are outside. The field varies smoothly and continuously inside the mask, reaching the value 0 at the edge of the mask.
 		///

@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIStripesGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The x and y position to use as the center of the stripe pattern.
 		///

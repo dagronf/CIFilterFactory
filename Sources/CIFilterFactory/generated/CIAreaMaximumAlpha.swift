@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIAreaMaximumAlpha")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image to process.
 		///

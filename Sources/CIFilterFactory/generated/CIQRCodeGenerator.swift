@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIQRCodeGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The message to encode in the QR Code
 		///
@@ -67,6 +69,12 @@ import Foundation
 			set {
 				self.filter.setValue(newValue, forKey: "inputCorrectionLevel")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputCGImage: Any? {
+			return self.filter.value(forKey: "outputCGImage")
 		}
 	}
 }

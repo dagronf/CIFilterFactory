@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIBlendWithMask")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The image to use as a foreground image.
 		///

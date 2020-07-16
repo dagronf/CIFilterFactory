@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIPDF417BarcodeGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The message to encode in the PDF417 Barcode
 		///
@@ -239,6 +241,12 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputCGImage: Any? {
+			return self.filter.value(forKey: "outputCGImage")
 		}
 	}
 }

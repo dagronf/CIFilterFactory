@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIConstantColorGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The color to generate.
 		///

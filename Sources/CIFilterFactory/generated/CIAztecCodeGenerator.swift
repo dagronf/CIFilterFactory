@@ -42,6 +42,8 @@ import Foundation
 			super.init(name: "CIAztecCodeGenerator")
 		}
 
+		// MARK: - Inputs
+
 		///
 		/// The message to encode in the Aztec Barcode
 		///
@@ -105,6 +107,12 @@ import Foundation
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputCompactStyle_Range), forKey: "inputCompactStyle")
 			}
+		}
+
+		// MARK: - Additional Outputs
+
+		@objc public dynamic var outputCGImage: Any? {
+			return self.filter.value(forKey: "outputCGImage")
 		}
 	}
 }

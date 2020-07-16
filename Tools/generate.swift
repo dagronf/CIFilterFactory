@@ -104,6 +104,9 @@ import CoreImage
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("      }")
 
+	out.print("   // MARK: - Inputs")
+	out.print("")
+
 	for key in inputKeys {
 
 		guard let keyItem = filterAttributes[key] as? [String: Any],
@@ -203,6 +206,18 @@ import CoreImage
 			out.print("   }")
 		}
 	}
+
+	let outputs = filter.outputKeys.filter { $0 != "outputImage" && !$0.contains(":") }
+	if outputs.count > 0 {
+		out.print("   // MARK: - Additional Outputs")
+		out.print("")
+		outputs.forEach { key in
+			out.print("   @objc public dynamic var \(key): Any? {")
+			out.print("      return self.filter.value(forKey: \"\(key)\")")
+			out.print("   }")
+		}
+	}
+
 	out.print("   }\n")
 	out.print("}\n")
 }
