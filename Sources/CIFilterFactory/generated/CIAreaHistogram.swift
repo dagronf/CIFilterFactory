@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.5, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIAreaHistogram")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image whose histogram you want to calculate.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 640 80]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -79,42 +71,40 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputScale
-
 		///
 		/// The scale value to use for the histogram values. If the scale is 1.0, then the bins in the resulting image will add up to 1.0.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputScale: NSNumber? {
+		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: CIAreaHistogram.inputScale_Range), forKey: "inputScale")
 			}
 		}
-
-		// MARK: - inputCount
 
 		///
 		/// The number of bins for the histogram. This value will determine the width of the output image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  64
 		///   minValue: 1.0
 		///   maxValue: 2048.0
 		///
-		let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
-		@objc public var inputCount: NSNumber? {
+		static let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
+		@objc public dynamic var inputCount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: CIAreaHistogram.inputCount_Range), forKey: "inputCount")
 			}
 		}
 	}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIMix")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as a foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBackgroundImage
-
 		///
 		/// The image to use as a background image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputBackgroundImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputBackgroundImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
@@ -79,14 +70,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAmount
-
 		///
 		/// The amount of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputAmount: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
+		@objc public dynamic var inputAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}

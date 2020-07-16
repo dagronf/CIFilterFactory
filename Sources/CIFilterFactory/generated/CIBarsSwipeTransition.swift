@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.5, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIBarsSwipeTransition")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTargetImage
-
 		///
 		/// The target image for a transition.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputTargetImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
@@ -79,14 +70,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAngle
-
 		///
 		/// The angle (in radians) of the bars.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  3.141592653589793
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
@@ -95,61 +85,58 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputWidth
-
 		///
 		/// The width of each bar.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  30
 		///   minValue: 2.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(2.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(2.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputBarOffset
 
 		///
 		/// The offset of one bar with respect to another
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  10
 		///   minValue: 1.0
 		///
-		let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputBarOffset: NSNumber? {
+		static let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputBarOffset: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBarOffset") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputBarOffset_Range), forKey: "inputBarOffset")
+				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputBarOffset_Range), forKey: "inputBarOffset")
 			}
 		}
-
-		// MARK: - inputTime
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeTime
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeTime
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

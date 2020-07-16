@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIDepthBlurEffect")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputDisparityImage
-
 		///
 		/// No Description
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputDisparityImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputDisparityImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputDisparityImage") as? CIImage
 			}
@@ -79,14 +69,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMatteImage
-
 		///
 		/// A matting image.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputMatteImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputMatteImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMatteImage") as? CIImage
 			}
@@ -95,14 +82,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputHairImage
-
 		///
 		/// A matting image.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputHairImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputHairImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputHairImage") as? CIImage
 			}
@@ -111,98 +95,91 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAperture
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 22.0
 		///
-		let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
-		@objc public var inputAperture: NSNumber? {
+		static let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
+		@objc public dynamic var inputAperture: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAperture") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputAperture_Range), forKey: "inputAperture")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthBlurEffect.inputAperture_Range), forKey: "inputAperture")
 			}
 		}
-
-		// MARK: - inputLeftEyePositions
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputLeftEyePositions: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [-1 -1]
+		@objc public dynamic var inputLeftEyePositions: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputLeftEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputLeftEyePositions")
+				self.filter.setValue(newValue?.vector, forKey: "inputLeftEyePositions")
 			}
 		}
-
-		// MARK: - inputRightEyePositions
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputRightEyePositions: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [-1 -1]
+		@objc public dynamic var inputRightEyePositions: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputRightEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputRightEyePositions")
+				self.filter.setValue(newValue?.vector, forKey: "inputRightEyePositions")
 			}
 		}
-
-		// MARK: - inputChinPositions
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputChinPositions: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [-1 -1]
+		@objc public dynamic var inputChinPositions: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputChinPositions")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputChinPositions")
+				self.filter.setValue(newValue?.vector, forKey: "inputChinPositions")
 			}
 		}
-
-		// MARK: - inputNosePositions
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputNosePositions: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [-1 -1]
+		@objc public dynamic var inputNosePositions: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputNosePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputNosePositions")
+				self.filter.setValue(newValue?.vector, forKey: "inputNosePositions")
 			}
 		}
-
-		// MARK: - inputFocusRect
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputFocusRect: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		@objc public dynamic var inputFocusRect: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputFocusRect")
 			}
@@ -211,33 +188,31 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputLumaNoiseScale
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0
 		///   minValue: 0.0
 		///
-		let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputLumaNoiseScale: NSNumber? {
+		static let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputLumaNoiseScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthBlurEffect.inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
 			}
 		}
-
-		// MARK: - inputScaleFactor
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputScaleFactor: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
+		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
@@ -246,14 +221,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCalibrationData
-
 		///
 		/// No Description
 		///
-		///   Class: AVCameraCalibrationData, Type: Not specified
-		///
-		@objc public var inputCalibrationData: AVCameraCalibrationData? {
+		///   Class:    AVCameraCalibrationData
+		@objc public dynamic var inputCalibrationData: AVCameraCalibrationData? {
 			get {
 				return self.filter.value(forKey: "inputCalibrationData") as? AVCameraCalibrationData
 			}
@@ -262,14 +234,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAuxDataMetadata
-
 		///
 		/// No Description
 		///
-		///   Class: CGImageMetadataRef, Type: Not specified
-		///
-		@objc public var inputAuxDataMetadata: CGImageMetadata? {
+		///   Class:    CGImageMetadataRef
+		@objc public dynamic var inputAuxDataMetadata: CGImageMetadata? {
 			get {
 				return (self.filter.value(forKey: "inputAuxDataMetadata") as! CGImageMetadata)
 			}
@@ -278,14 +247,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputShape
-
 		///
 		/// No Description
 		///
-		///   Class: NSString, Type: Not specified
-		///
-		@objc public var inputShape: NSString? {
+		///   Class:    NSString
+		@objc public dynamic var inputShape: NSString? {
 			get {
 				return self.filter.value(forKey: "inputShape") as? NSString
 			}

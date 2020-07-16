@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.7, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CITemperatureAndTint")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,35 +56,33 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputNeutral
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputNeutral: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [6500 0]
+		@objc public dynamic var inputNeutral: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputNeutral")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputNeutral")
+				self.filter.setValue(newValue?.vector, forKey: "inputNeutral")
 			}
 		}
-
-		// MARK: - inputTargetNeutral
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputTargetNeutral: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [6500 0]
+		@objc public dynamic var inputTargetNeutral: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputTargetNeutral")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputTargetNeutral")
+				self.filter.setValue(newValue?.vector, forKey: "inputTargetNeutral")
 			}
 		}
 	}

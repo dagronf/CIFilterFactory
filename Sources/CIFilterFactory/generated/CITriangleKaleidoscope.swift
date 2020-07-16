@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CITriangleKaleidoscope")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// Input image to generate kaleidoscope effect from.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,30 +56,28 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPoint
-
 		///
 		/// The x and y position to use as the center of the triangular area in the input image.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputPoint: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint")
 			}
 		}
-
-		// MARK: - inputSize
 
 		///
 		/// The size in pixels of the triangle.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputSize: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  700
+		@objc public dynamic var inputSize: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSize") as? NSNumber
 			}
@@ -95,14 +86,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRotation
-
 		///
 		/// Rotation angle of the triangle.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputRotation: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  5.924285296593801
+		@objc public dynamic var inputRotation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
@@ -111,14 +101,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputDecay
-
 		///
 		/// The decay determines how fast the color fades from the center triangle.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputDecay: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.85
+		@objc public dynamic var inputDecay: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputDecay") as? NSNumber
 			}

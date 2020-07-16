@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIHoleDistortion")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,30 +56,28 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
-		@objc public var inputRadius: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  150
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}

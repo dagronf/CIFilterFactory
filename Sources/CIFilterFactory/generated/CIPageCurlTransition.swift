@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIPageCurlTransition")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTargetImage
-
 		///
 		/// The target image for a transition.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputTargetImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
@@ -79,14 +70,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBacksideImage
-
 		///
 		/// The image that appears on the back of the source image, as the page curls to reveal the target image.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputBacksideImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputBacksideImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBacksideImage") as? CIImage
 			}
@@ -95,14 +83,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputShadingImage
-
 		///
 		/// An image that looks like a shaded sphere enclosed in a square image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputShadingImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputShadingImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputShadingImage") as? CIImage
 			}
@@ -111,14 +97,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// The extent of the effect.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 300 300]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -127,34 +112,32 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTime
-
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeTime
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeTime
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CIPageCurlTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
-
-		// MARK: - inputAngle
 
 		///
 		/// The angle of the curling page.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
@@ -163,14 +146,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The radius of the curl.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
-		@objc public var inputRadius: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  100
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}

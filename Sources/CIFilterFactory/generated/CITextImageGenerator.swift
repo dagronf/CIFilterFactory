@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,11 @@ import Foundation
 			super.init(name: "CITextImageGenerator")
 		}
 
-		// MARK: - inputText
-
 		///
 		/// No Description
 		///
-		///   Class: NSString, Type: Not specified
-		///
-		@objc public var inputText: NSString? {
+		///   Class:    NSString
+		@objc public dynamic var inputText: NSString? {
 			get {
 				return self.filter.value(forKey: "inputText") as? NSString
 			}
@@ -63,14 +55,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputFontName
-
 		///
 		/// No Description
 		///
-		///   Class: NSString, Type: Not specified
-		///
-		@objc public var inputFontName: NSString? {
+		///   Class:    NSString
+		///   Default:  HelveticaNeue
+		@objc public dynamic var inputFontName: NSString? {
 			get {
 				return self.filter.value(forKey: "inputFontName") as? NSString
 			}
@@ -79,41 +69,39 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputFontSize
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  12
 		///   minValue: 0.0
 		///
-		let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputFontSize: NSNumber? {
+		static let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputFontSize: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFontSize") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputFontSize_Range), forKey: "inputFontSize")
+				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputFontSize_Range), forKey: "inputFontSize")
 			}
 		}
-
-		// MARK: - inputScaleFactor
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputScaleFactor: NSNumber? {
+		static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}

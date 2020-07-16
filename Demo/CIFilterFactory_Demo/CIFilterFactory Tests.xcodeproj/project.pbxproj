@@ -11,13 +11,13 @@
 		2352836E24B6AD360006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352836D24B6AD360006FC22 /* Assets.xcassets */; };
 		2352837124B6AD360006FC22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2352836F24B6AD360006FC22 /* MainMenu.xib */; };
 		2352837424B6AD360006FC22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352837324B6AD360006FC22 /* main.m */; };
-		2352837B24B6B0F50006FC22 /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 2352837A24B6B0F50006FC22 /* CIFilterFactory */; };
 		2352838324B6BAF60006FC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352838224B6BAF60006FC22 /* AppDelegate.swift */; };
 		2352838524B6BAF60006FC22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352838424B6BAF60006FC22 /* ViewController.swift */; };
 		2352838824B6BAF60006FC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838624B6BAF60006FC22 /* Main.storyboard */; };
 		2352838A24B6BAF60006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352838924B6BAF60006FC22 /* Assets.xcassets */; };
 		2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */; };
-		2352839324B6BB840006FC22 /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 2352839224B6BB840006FC22 /* CIFilterFactory */; };
+		2391E84124C0018D00094D9B /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2391E84024C0018D00094D9B /* CIFilterFactory-Library */; };
+		2391E84324C004DE00094D9B /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2391E84224C004DE00094D9B /* CIFilterFactory-Library */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2352837B24B6B0F50006FC22 /* CIFilterFactory in Frameworks */,
+				2391E84124C0018D00094D9B /* CIFilterFactory-Library in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2352839324B6BB840006FC22 /* CIFilterFactory in Frameworks */,
+				2391E84324C004DE00094D9B /* CIFilterFactory-Library in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 			);
 			name = "CIFilterFactory ObjectiveC Test";
 			packageProductDependencies = (
-				2352837A24B6B0F50006FC22 /* CIFilterFactory */,
+				2391E84024C0018D00094D9B /* CIFilterFactory-Library */,
 			);
 			productName = "CIFilterFactory ObjectiveC Test";
 			productReference = 2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */;
@@ -148,7 +148,7 @@
 			);
 			name = "CIFilterFactory Swift tvOS Test";
 			packageProductDependencies = (
-				2352839224B6BB840006FC22 /* CIFilterFactory */,
+				2391E84224C004DE00094D9B /* CIFilterFactory-Library */,
 			);
 			productName = "CIFilterFactory Swift tvOS Test";
 			productReference = 2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */;
@@ -508,22 +508,22 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dagronf/CIFilterFactory.git";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 10.15.3;
+				branch = "side-work";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2352837A24B6B0F50006FC22 /* CIFilterFactory */ = {
+		2391E84024C0018D00094D9B /* CIFilterFactory-Library */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
-			productName = CIFilterFactory;
+			productName = "CIFilterFactory-Library";
 		};
-		2352839224B6BB840006FC22 /* CIFilterFactory */ = {
+		2391E84224C004DE00094D9B /* CIFilterFactory-Library */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
-			productName = CIFilterFactory;
+			productName = "CIFilterFactory-Library";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

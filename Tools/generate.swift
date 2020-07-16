@@ -51,11 +51,6 @@ import AVFoundation
 import CoreML
 import CoreImage
 
-#if !os(macOS)
-// For access to NSValue.cgAffineTransformValue
-import UIKit
-#endif
-
 """)
 
 	let inputKeys = filter.inputKeys
@@ -104,41 +99,48 @@ import UIKit
 	out.print("   ///")
 
 
-	out.print("   @objc(CIFilterFactory_\(filter.name)) class \(filter.name): FilterCommon {")
+	out.print("   @objc(CIFilterFactory_\(filter.name)) public class \(filter.name): FilterCommon {")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("      }")
 
 	for key in inputKeys {
 
-		out.print("")
-		out.print("   // MARK: - \(key)")
-		out.print("")
-
-		guard let keyItem = filterAttributes[key] as? [String: Any] else {
+		guard let keyItem = filterAttributes[key] as? [String: Any],
+			  let keyClass = keyItem[kCIAttributeClass] as? String else {
 			continue
 		}
 
 		let keyDesc = keyItem[kCIAttributeDescription] as? String
-
-		guard var keyClass = keyItem[kCIAttributeClass] as? String else {
-			continue
-		}
-
 		let keySubType = keyItem[kCIAttributeType] as? String
+		let keyDefaultValue = keyItem[kCIAttributeDefault]
 
 		// Write out the description for the key
 
 		out.print("   ///")
 		out.print("   /// \(keyDesc ?? "No Description")")
 		out.print("   ///")
-		out.print("   ///   Class: \(keyClass), Type: \(keySubType ?? "Not specified")")
-		out.print("   ///")
-
+		out.print("   ///   Class:    \(keyClass)")
+		if let t = keySubType {
+			out.print("   ///   Type:     \(t)")
+		}
+		if let def = keyDefaultValue {
+			if keyClass == "NSAffineTransform" {
+				let tr = (def as! AffineTransform)
+				out.print("   ///   Default:  \(tr)")
+			}
+			else if keyClass == "CIColor" {
+				let tr = (def as! CIColor)
+				out.print("   ///   Default:  rgba(\(tr.stringRepresentation))")
+			}
+			else {
+				out.print("   ///   Default:  \(def)")
+			}
+		}
 		let rangeDef = handleRange(out: out, key: key, keyAttributes: keyItem)
 
 		if keySubType == "CIAttributeTypeRectangle" {
-			out.print("   @objc public var \(key): CIFilterFactory.Rect? {")
+			out.print("   @objc dynamic public var \(key): CIFilterFactory.Rect? {")
 			out.print("      get {")
 			out.print("         return CIFilterFactory.Rect(with: self.filter, key: \"\(key)\")")
 			out.print("      }")
@@ -148,7 +150,7 @@ import UIKit
 			out.print("   }")
 		}
 		else if keyClass == "NSAffineTransform" {
-			out.print("   @objc public var \(key): CIFilterFactory.AffineTransform? {")
+			out.print("   @objc dynamic public var \(key): CIFilterFactory.AffineTransform? {")
 			out.print("      get {")
 			out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
 			out.print("      }")
@@ -158,17 +160,17 @@ import UIKit
 			out.print("   }")
 		}
 		else if keySubType == "CIAttributeTypePosition" || keySubType == kCIAttributeTypeOffset {
-			out.print("   @objc public var \(key): CIFilterFactory.Point? {")
+			out.print("   @objc dynamic public var \(key): CIFilterFactory.Point? {")
 			out.print("      get {")
 			out.print("         return CIFilterFactory.Point(with: self.filter, key: \"\(key)\")")
 			out.print("      }")
 			out.print("      set {")
-			out.print("         self.filter.setValue(newValue?.point, forKey: \"\(key)\")")
+			out.print("         self.filter.setValue(newValue?.vector, forKey: \"\(key)\")")
 			out.print("      }")
 			out.print("   }")
 		}
 		else if keyClass == "CGImageMetadataRef" {
-			out.print("   @objc public var \(key): CGImageMetadata? {")
+			out.print("   @objc dynamic public var \(key): CGImageMetadata? {")
 			out.print("      get {")
 			out.print("         return (self.filter.value(forKey: \"\(key)\") as! CGImageMetadata)")
 			out.print("      }")
@@ -179,14 +181,14 @@ import UIKit
 		}
 		else {
 
-			out.print("   @objc public var \(key): \(keyClass)? {")
+			out.print("   @objc dynamic public var \(key): \(keyClass)? {")
 			out.print("      get {")
 			out.print("         return self.filter.value(forKey: \"\(key)\") as? \(keyClass)")
 			out.print("      }")
 
 			out.print("      set {")
 			if let rangeDef = rangeDef {
-				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(rangeDef)), forKey: \"\(key)\")")
+				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(filter.name).\(rangeDef)), forKey: \"\(key)\")")
 			}
 			else {
 				out.print("      self.filter.setValue(newValue, forKey: \"\(key)\")")
@@ -226,14 +228,14 @@ func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -
 
 	if let minValue = minValue {
 		if let maxValue = maxValue {
-			out.print("   let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
+			out.print("   static let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
 		}
 		else {
-			out.print("   let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
+			out.print("   static let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
 		}
 	}
 	else if let maxValue = maxValue {
-		out.print("   let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
+		out.print("   static let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
 	}
 	return " \(key)_Range"
 }

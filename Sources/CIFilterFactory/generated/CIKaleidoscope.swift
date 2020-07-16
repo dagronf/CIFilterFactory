@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIKaleidoscope")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,49 +56,46 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCount
-
 		///
 		/// The number of reflections in the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  6
 		///   minValue: 1.0
 		///
-		let inputCount_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputCount: NSNumber? {
+		static let inputCount_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputCount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: CIKaleidoscope.inputCount_Range), forKey: "inputCount")
 			}
 		}
-
-		// MARK: - inputCenter
 
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputAngle
 
 		///
 		/// The angle of reflection.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}

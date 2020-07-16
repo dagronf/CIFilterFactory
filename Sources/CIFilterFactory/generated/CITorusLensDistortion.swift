@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CITorusLensDistortion")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,76 +56,72 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the torus.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The outer radius of the torus.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  160
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CITorusLensDistortion.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputWidth
 
 		///
 		/// The width of the ring.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  80
 		///   minValue: 0.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CITorusLensDistortion.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputRefraction
 
 		///
 		/// The refraction of the glass.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1.7
 		///   minValue: 0.0
 		///
-		let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRefraction: NSNumber? {
+		static let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRefraction: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRefraction") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRefraction_Range), forKey: "inputRefraction")
+				self.filter.setValue(newValue?.clamped(bounds: CITorusLensDistortion.inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
 	}

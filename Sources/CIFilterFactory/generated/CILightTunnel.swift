@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CILightTunnel")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to process.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,30 +56,28 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// Center of the light tunnel.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputRotation
 
 		///
 		/// Rotation angle of the light tunnel.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputRotation: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputRotation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
@@ -95,14 +86,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// Center radius of the light tunnel.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
-		@objc public var inputRadius: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  100
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}

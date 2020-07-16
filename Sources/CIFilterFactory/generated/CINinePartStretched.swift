@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.12, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CINinePartStretched")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,51 +56,48 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBreakpoint0
-
 		///
 		/// Lower left corner of image to retain before stretching begins.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputBreakpoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [50 50]
+		@objc public dynamic var inputBreakpoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputBreakpoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputBreakpoint0")
 			}
 		}
-
-		// MARK: - inputBreakpoint1
 
 		///
 		/// Upper right corner of image to retain after stretching ends.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputBreakpoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputBreakpoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputBreakpoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputBreakpoint1")
 			}
 		}
-
-		// MARK: - inputGrowAmount
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputGrowAmount: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [100 100]
+		@objc public dynamic var inputGrowAmount: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputGrowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputGrowAmount")
+				self.filter.setValue(newValue?.vector, forKey: "inputGrowAmount")
 			}
 		}
 	}

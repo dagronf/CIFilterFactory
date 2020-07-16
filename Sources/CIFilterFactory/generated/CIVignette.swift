@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIVignette")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,43 +56,41 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputIntensity
-
 		///
 		/// The intensity of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public var inputIntensity: NSNumber? {
+		static let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIVignette.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///   maxValue: 2.0
 		///
-		let inputRadius_Range: ClosedRange<Float> = 0.0 ... 2.0
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 2.0
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIVignette.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

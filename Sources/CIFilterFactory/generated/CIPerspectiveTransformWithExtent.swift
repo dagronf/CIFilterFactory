@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIPerspectiveTransformWithExtent")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 300 300]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -79,67 +71,63 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTopLeft
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputTopLeft: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [118 484]
+		@objc public dynamic var inputTopLeft: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputTopLeft")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputTopLeft")
+				self.filter.setValue(newValue?.vector, forKey: "inputTopLeft")
 			}
 		}
-
-		// MARK: - inputTopRight
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputTopRight: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [646 507]
+		@objc public dynamic var inputTopRight: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputTopRight")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputTopRight")
+				self.filter.setValue(newValue?.vector, forKey: "inputTopRight")
 			}
 		}
-
-		// MARK: - inputBottomRight
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputBottomRight: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [548 140]
+		@objc public dynamic var inputBottomRight: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBottomRight")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputBottomRight")
+				self.filter.setValue(newValue?.vector, forKey: "inputBottomRight")
 			}
 		}
-
-		// MARK: - inputBottomLeft
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputBottomLeft: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [155 153]
+		@objc public dynamic var inputBottomLeft: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBottomLeft")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputBottomLeft")
+				self.filter.setValue(newValue?.vector, forKey: "inputBottomLeft")
 			}
 		}
 	}

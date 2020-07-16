@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.7, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIVibrance")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,23 +56,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAmount
-
 		///
 		/// The amount to adjust the saturation.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		let inputAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public var inputAmount: NSNumber? {
+		static let inputAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public dynamic var inputAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputAmount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: CIVibrance.inputAmount_Range), forKey: "inputAmount")
 			}
 		}
 	}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIMaskedVariableBlur")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMask
-
 		///
 		/// No Description
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputMask: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputMask: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMask") as? CIImage
 			}
@@ -79,22 +69,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  5
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIMaskedVariableBlur.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

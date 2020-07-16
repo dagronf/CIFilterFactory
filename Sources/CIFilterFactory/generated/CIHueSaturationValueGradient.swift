@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.12, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,90 +42,84 @@ import Foundation
 			super.init(name: "CIHueSaturationValueGradient")
 		}
 
-		// MARK: - inputValue
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputValue: NSNumber? {
+		static let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputValue: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputValue") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputValue_Range), forKey: "inputValue")
+				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputValue_Range), forKey: "inputValue")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  300
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputSoftness
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputSoftness: NSNumber? {
+		static let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputSoftness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSoftness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSoftness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
-
-		// MARK: - inputDither
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputDither: NSNumber? {
+		static let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputDither: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputDither") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputDither_Range), forKey: "inputDither")
+				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputDither_Range), forKey: "inputDither")
 			}
 		}
-
-		// MARK: - inputColorSpace
 
 		///
 		/// The CGColorSpaceRef that the color wheel should be generated in.
 		///
-		///   Class: NSObject, Type: Not specified
-		///
-		@objc public var inputColorSpace: NSObject? {
+		///   Class:    NSObject
+		///   Default:  <CGColorSpace 0x7f8e59dd91f0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
+		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
 				return self.filter.value(forKey: "inputColorSpace") as? NSObject
 			}

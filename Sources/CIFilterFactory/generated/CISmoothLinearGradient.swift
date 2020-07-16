@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,46 +42,43 @@ import Foundation
 			super.init(name: "CISmoothLinearGradient")
 		}
 
-		// MARK: - inputPoint0
-
 		///
 		/// The starting position of the gradient -- where the first color begins.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [0 0]
+		@objc public dynamic var inputPoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
 			}
 		}
-
-		// MARK: - inputPoint1
 
 		///
 		/// The ending position of the gradient -- where the second color begins.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [200 200]
+		@objc public dynamic var inputPoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
 			}
 		}
-
-		// MARK: - inputColor0
 
 		///
 		/// The first color to use in the gradient.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor0: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor0: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
@@ -95,14 +87,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor1
-
 		///
 		/// The second color to use in the gradient.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor1: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(0 0 0 1)
+		@objc public dynamic var inputColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}

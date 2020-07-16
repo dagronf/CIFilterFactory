@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.5, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIBoxBlur")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,22 +56,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  10
 		///   minValue: 1.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIBoxBlur.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

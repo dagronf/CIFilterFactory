@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,30 +42,27 @@ import Foundation
 			super.init(name: "CIStripesGenerator")
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the stripe pattern.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputColor0
 
 		///
 		/// A color to use for the odd stripes.
 		///
-		///   Class: CIColor, Type: Not specified
-		///
-		@objc public var inputColor0: CIColor? {
+		///   Class:    CIColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor0: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
@@ -79,14 +71,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor1
-
 		///
 		/// A color to use for the even stripes.
 		///
-		///   Class: CIColor, Type: Not specified
-		///
-		@objc public var inputColor1: CIColor? {
+		///   Class:    CIColor
+		///   Default:  rgba(0 0 0 1)
+		@objc public dynamic var inputColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
@@ -95,14 +85,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputWidth
-
 		///
 		/// The width of a stripe.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
-		@objc public var inputWidth: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  80
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
@@ -111,23 +100,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSharpness
-
 		///
 		/// The sharpness of the stripe pattern. The smaller the value, the more blurry the pattern. Values range from 0.0 to 1.0.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputSharpness: NSNumber? {
+		static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: CIStripesGenerator.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

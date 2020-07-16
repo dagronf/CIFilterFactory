@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIBlendWithRedMask")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBackgroundImage
-
 		///
 		/// The image to use as a background image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputBackgroundImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputBackgroundImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMaskImage
-
 		///
 		/// A masking image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputMaskImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputMaskImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMaskImage") as? CIImage
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIGlassLozenge")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,73 +56,69 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPoint0
-
 		///
 		/// The x and y position that defines the center of the circle at one end of the lozenge.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputPoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
 			}
 		}
-
-		// MARK: - inputPoint1
 
 		///
 		/// The x and y position that defines the center of the circle at the other end of the lozenge.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [350 150]
+		@objc public dynamic var inputPoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The radius of the lozenge. The larger the radius, the wider the extent of the distortion.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  100
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIGlassLozenge.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputRefraction
 
 		///
 		/// The refraction of the glass.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1.7
 		///   minValue: 0.0
 		///
-		let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRefraction: NSNumber? {
+		static let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRefraction: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRefraction") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRefraction_Range), forKey: "inputRefraction")
+				self.filter.setValue(newValue?.clamped(bounds: CIGlassLozenge.inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
 	}

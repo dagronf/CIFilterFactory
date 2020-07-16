@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIDisplacementDistortion")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputDisplacementImage
-
 		///
 		/// An image whose grayscale values will be applied to the source image.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputDisplacementImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputDisplacementImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputDisplacementImage") as? CIImage
 			}
@@ -79,22 +69,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputScale
-
 		///
 		/// The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  50
 		///   minValue: 0.0
 		///
-		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputScale: NSNumber? {
+		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: CIDisplacementDistortion.inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}

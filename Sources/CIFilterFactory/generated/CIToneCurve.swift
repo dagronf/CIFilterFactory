@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.7, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIToneCurve")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,83 +56,78 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPoint0
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputPoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [0 0]
+		@objc public dynamic var inputPoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
 			}
 		}
-
-		// MARK: - inputPoint1
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputPoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [0.25 0.25]
+		@objc public dynamic var inputPoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
 			}
 		}
-
-		// MARK: - inputPoint2
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputPoint2: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [0.5 0.5]
+		@objc public dynamic var inputPoint2: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint2")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint2")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint2")
 			}
 		}
-
-		// MARK: - inputPoint3
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputPoint3: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [0.75 0.75]
+		@objc public dynamic var inputPoint3: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint3")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint3")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint3")
 			}
 		}
-
-		// MARK: - inputPoint4
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypeOffset
-		///
-		@objc public var inputPoint4: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeOffset
+		///   Default:  [1 1]
+		@objc public dynamic var inputPoint4: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint4")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint4")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint4")
 			}
 		}
 	}

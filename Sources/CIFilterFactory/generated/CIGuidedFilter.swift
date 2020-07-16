@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIGuidedFilter")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// A small image to upsample.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputGuideImage
-
 		///
 		/// A larger image to use as a guide.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputGuideImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputGuideImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputGuideImage") as? CIImage
 			}
@@ -79,14 +69,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputRadius: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
@@ -95,14 +84,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputEpsilon
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputEpsilon: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.0001
+		@objc public dynamic var inputEpsilon: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
 			}

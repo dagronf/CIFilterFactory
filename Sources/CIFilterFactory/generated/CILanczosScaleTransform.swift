@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CILanczosScaleTransform")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,41 +56,39 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputScale
-
 		///
 		/// The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputScale: NSNumber? {
+		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputScale_Range), forKey: "inputScale")
 			}
 		}
-
-		// MARK: - inputAspectRatio
 
 		///
 		/// The additional horizontal scaling factor to use on the image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputAspectRatio: NSNumber? {
+		static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputAspectRatio: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputAspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
 	}

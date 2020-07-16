@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.6, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIDepthOfField")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,111 +56,105 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPoint0
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [0 300]
+		@objc public dynamic var inputPoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
 			}
 		}
-
-		// MARK: - inputPoint1
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputPoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [300 300]
+		@objc public dynamic var inputPoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
 			}
 		}
-
-		// MARK: - inputSaturation
 
 		///
 		/// The amount to adjust the saturation.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1.5
 		///   minValue: 0.0
 		///
-		let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputSaturation: NSNumber? {
+		static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputSaturation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSaturation") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSaturation_Range), forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputSaturation_Range), forKey: "inputSaturation")
 			}
 		}
-
-		// MARK: - inputUnsharpMaskRadius
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  2.5
 		///   minValue: 0.0
 		///
-		let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputUnsharpMaskRadius: NSNumber? {
+		static let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputUnsharpMaskRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
 			}
 		}
-
-		// MARK: - inputUnsharpMaskIntensity
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputUnsharpMaskIntensity: NSNumber? {
+		static let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputUnsharpMaskIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  6
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,11 @@ import Foundation
 			super.init(name: "CICode128BarcodeGenerator")
 		}
 
-		// MARK: - inputMessage
-
 		///
 		/// The message to encode in the Code 128 Barcode
 		///
-		///   Class: NSData, Type: Not specified
-		///
-		@objc public var inputMessage: NSData? {
+		///   Class:    NSData
+		@objc public dynamic var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
@@ -63,43 +55,41 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputQuietSpace
-
 		///
 		/// The number of empty white pixels that should surround the barcode.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  7
 		///   minValue: 0.0
 		///   maxValue: 100.0
 		///
-		let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
-		@objc public var inputQuietSpace: NSNumber? {
+		static let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
+		@objc public dynamic var inputQuietSpace: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputQuietSpace") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputQuietSpace_Range), forKey: "inputQuietSpace")
+				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputQuietSpace_Range), forKey: "inputQuietSpace")
 			}
 		}
-
-		// MARK: - inputBarcodeHeight
 
 		///
 		/// The height of the generated barcode in pixels.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  32
 		///   minValue: 1.0
 		///   maxValue: 500.0
 		///
-		let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
-		@objc public var inputBarcodeHeight: NSNumber? {
+		static let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
+		@objc public dynamic var inputBarcodeHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
+				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
 			}
 		}
 	}

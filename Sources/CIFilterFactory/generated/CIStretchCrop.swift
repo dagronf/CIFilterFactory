@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.6, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIStretchCrop")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,59 +56,56 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSize
-
 		///
 		/// The size in pixels of the output image.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputSize: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [1280 720]
+		@objc public dynamic var inputSize: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputSize")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputSize")
+				self.filter.setValue(newValue?.vector, forKey: "inputSize")
 			}
 		}
-
-		// MARK: - inputCropAmount
 
 		///
 		/// Determines if and how much cropping should be used to achieve the target size. If value is 0 then only stretching is used. If 1 then only cropping is used.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.25
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputCropAmount: NSNumber? {
+		static let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputCropAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCropAmount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCropAmount_Range), forKey: "inputCropAmount")
+				self.filter.setValue(newValue?.clamped(bounds: CIStretchCrop.inputCropAmount_Range), forKey: "inputCropAmount")
 			}
 		}
-
-		// MARK: - inputCenterStretchAmount
 
 		///
 		/// Determine how much the center of the image is stretched if stretching is used. If value is 0 then the center of the image maintains the original aspect ratio. If 1 then the image is stretched uniformly.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.25
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputCenterStretchAmount: NSNumber? {
+		static let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputCenterStretchAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
+				self.filter.setValue(newValue?.clamped(bounds: CIStretchCrop.inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
 			}
 		}
 	}

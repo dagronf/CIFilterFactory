@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,11 @@ import Foundation
 			super.init(name: "CIAttributedTextImageGenerator")
 		}
 
-		// MARK: - inputText
-
 		///
 		/// No Description
 		///
-		///   Class: NSAttributedString, Type: Not specified
-		///
-		@objc public var inputText: NSAttributedString? {
+		///   Class:    NSAttributedString
+		@objc public dynamic var inputText: NSAttributedString? {
 			get {
 				return self.filter.value(forKey: "inputText") as? NSAttributedString
 			}
@@ -63,22 +55,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputScaleFactor
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputScaleFactor: NSNumber? {
+		static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: CIAttributedTextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 	}

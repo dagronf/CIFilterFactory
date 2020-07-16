@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIColorMap")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputGradientImage
-
 		///
 		/// The image data from this image transforms the source image values.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeGradient
-		///
-		@objc public var inputGradientImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeGradient
+		@objc public dynamic var inputGradientImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputGradientImage") as? CIImage
 			}

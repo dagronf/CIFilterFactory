@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CICoreMLModelFilter")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputModel
-
 		///
 		/// The CoreML model to be used for applying effect on the image.
 		///
-		///   Class: MLModel, Type: Not specified
-		///
-		@objc public var inputModel: MLModel? {
+		///   Class:    MLModel
+		@objc public dynamic var inputModel: MLModel? {
 			get {
 				return self.filter.value(forKey: "inputModel") as? MLModel
 			}
@@ -79,43 +69,41 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputHeadIndex
-
 		///
 		/// A number to specify which output of a multi-head CoreML model should be used for applying effect on the image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeInteger
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeInteger
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
-		@objc public var inputHeadIndex: NSNumber? {
+		static let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
+		@objc public dynamic var inputHeadIndex: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputHeadIndex") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputHeadIndex_Range), forKey: "inputHeadIndex")
+				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputHeadIndex_Range), forKey: "inputHeadIndex")
 			}
 		}
-
-		// MARK: - inputSoftmaxNormalization
 
 		///
 		/// A boolean value to specify that Softmax normalization should be applied to the output of the model.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeBoolean
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeBoolean
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputSoftmaxNormalization: NSNumber? {
+		static let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputSoftmaxNormalization: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
+				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
 			}
 		}
 	}

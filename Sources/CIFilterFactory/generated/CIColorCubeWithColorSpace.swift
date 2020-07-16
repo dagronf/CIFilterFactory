@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -47,14 +42,12 @@ import Foundation
 			super.init(name: "CIColorCubeWithColorSpace")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,34 +56,31 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCubeDimension
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeCount
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeCount
+		///   Default:  2
 		///   minValue: 2.0
 		///   maxValue: 128.0
 		///
-		let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
-		@objc public var inputCubeDimension: NSNumber? {
+		static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
+		@objc public dynamic var inputCubeDimension: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCubeDimension_Range), forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: CIColorCubeWithColorSpace.inputCubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
-
-		// MARK: - inputCubeData
 
 		///
 		/// Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
 		///
-		///   Class: NSData, Type: Not specified
-		///
-		@objc public var inputCubeData: NSData? {
+		///   Class:    NSData
+		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
+		@objc public dynamic var inputCubeData: NSData? {
 			get {
 				return self.filter.value(forKey: "inputCubeData") as? NSData
 			}
@@ -99,14 +89,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColorSpace
-
 		///
 		/// No Description
 		///
-		///   Class: NSObject, Type: Not specified
-		///
-		@objc public var inputColorSpace: NSObject? {
+		///   Class:    NSObject
+		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
 				return self.filter.value(forKey: "inputColorSpace") as? NSObject
 			}
