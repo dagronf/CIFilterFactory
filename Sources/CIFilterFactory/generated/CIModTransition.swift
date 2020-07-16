@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -112,6 +120,8 @@ import Foundation
 		///
 		/// The angle of the mod hole pattern.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -125,6 +135,8 @@ import Foundation
 
 		///
 		/// The radius of the undistorted holes in the pattern.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 1.0
 		///
@@ -142,6 +154,8 @@ import Foundation
 
 		///
 		/// The amount of stretching applied to the mod hole pattern. Holes in the center are not distorted as much as those at the edge of the image.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 1.0
 		///

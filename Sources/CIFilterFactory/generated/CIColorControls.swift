@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The amount of saturation to apply. The larger the value, the more saturated the result.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -83,6 +87,8 @@ import Foundation
 		///
 		/// The amount of brightness to apply. The larger the value, the brighter the result.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: -1.0
 		///
 		let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
@@ -99,6 +105,8 @@ import Foundation
 
 		///
 		/// The amount of contrast to apply. The larger the value, the more contrast in the resulting image.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

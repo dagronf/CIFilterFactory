@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// The rectangle that specifies the crop to apply to the image.
 		///
-		@objc public var inputRectangle: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputRectangle: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputRectangle") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputRectangle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRectangle")
+				self.filter.setValue(newValue?.vector, forKey: "inputRectangle")
 			}
 		}
 	}

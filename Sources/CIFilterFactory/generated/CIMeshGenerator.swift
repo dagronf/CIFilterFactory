@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The width of the effect.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///
 		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -69,6 +71,8 @@ import Foundation
 		///
 		/// A color.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
@@ -82,6 +86,8 @@ import Foundation
 
 		///
 		/// An array of line segments stored as an array of CIVectors each containing a start point and end point.
+		///
+		///   Class: NSArray, Type: Not specified
 		///
 		@objc public var inputMesh: NSArray? {
 			get {

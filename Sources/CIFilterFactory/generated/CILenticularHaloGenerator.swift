@@ -52,12 +52,14 @@ import Foundation
 		///
 		/// The x and y position to use as the center of the halo.
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// A color.
+		///
+		///   Class: CIColor, Type: Not specified
 		///
 		@objc public var inputColor: CIColor? {
 			get {
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The radius of the halo.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -97,6 +103,8 @@ import Foundation
 		///
 		/// The width of the halo, from its inner radius to its outer radius.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///
 		let inputHaloWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -113,6 +121,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -131,6 +141,8 @@ import Foundation
 		///
 		/// The intensity of the halo colors. Larger values are more intense.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -148,6 +160,8 @@ import Foundation
 		///
 		/// The contrast of the halo colors. Larger values are higher contrast.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -164,6 +178,8 @@ import Foundation
 
 		///
 		/// The duration of the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputInsetPoint0: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputInsetPoint0: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputInsetPoint0") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputInsetPoint0")
+				self.filter.setValue(newValue?.point, forKey: "inputInsetPoint0")
 			}
 		}
 
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputInsetPoint1: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputInsetPoint1: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputInsetPoint1") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputInsetPoint1")
+				self.filter.setValue(newValue?.point, forKey: "inputInsetPoint1")
 			}
 		}
 
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: -10.0
 		///   maxValue: 10.0
@@ -112,6 +120,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 1.0
 		///
 		let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
@@ -129,6 +139,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputRotation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRotation") as? NSNumber
@@ -142,6 +154,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputZoom: NSNumber? {
 			get {

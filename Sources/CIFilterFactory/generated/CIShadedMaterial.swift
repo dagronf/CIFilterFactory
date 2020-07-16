@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// The image to use as the height field. The resulting image has greater heights with lighter shades, and lesser heights (lower areas) with darker shades.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputShadingImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputShadingImage") as? CIImage
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The scale of the effect. The higher the value, the more dramatic the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///

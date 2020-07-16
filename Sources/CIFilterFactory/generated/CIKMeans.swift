@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		@objc public var inputExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
 
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// Specifies the color seeds to use for k-means clustering, either passed as an image or an array of colors.
+		///
+		///   Class: CIImage, Type: Not specified
 		///
 		@objc public var inputMeans: CIImage? {
 			get {
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// Specifies how many k-means color clusters should be used.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeCount
 		///
 		///   minValue: 0.0
 		///   maxValue: 128.0
@@ -112,6 +120,8 @@ import Foundation
 		///
 		/// Specifies how many k-means passes should be performed.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeCount
+		///
 		///   minValue: 0.0
 		///   maxValue: 20.0
 		///
@@ -129,6 +139,8 @@ import Foundation
 
 		///
 		/// Specifies whether the k-means color palette should be computed in a perceptual color space.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeBoolean
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

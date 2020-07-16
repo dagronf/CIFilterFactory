@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -82,6 +86,8 @@ import Foundation
 
 		///
 		/// The angle of the motion determines which direction the blur smears.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
 		///
 		@objc public var inputAngle: NSNumber? {
 			get {

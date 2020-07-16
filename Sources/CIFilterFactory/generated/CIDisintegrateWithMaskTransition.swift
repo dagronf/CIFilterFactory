@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// An image that defines the shape to use when disintegrating from the source to the target image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputMaskImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMaskImage") as? CIImage
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -112,6 +120,8 @@ import Foundation
 		///
 		/// The radius of the shadow created by the mask.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///
 		let inputShadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -128,6 +138,8 @@ import Foundation
 
 		///
 		/// The density of the shadow created by the mask.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -147,12 +159,14 @@ import Foundation
 		///
 		/// The offset of the shadow created by the mask.
 		///
-		@objc public var inputShadowOffset: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeOffset
+		///
+		@objc public var inputShadowOffset: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputShadowOffset") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputShadowOffset")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputShadowOffset")
+				self.filter.setValue(newValue?.point, forKey: "inputShadowOffset")
 			}
 		}
 	}

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// Lower left corner of image to retain before stretching begins.
 		///
-		@objc public var inputBreakpoint0: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputBreakpoint0: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputBreakpoint0") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBreakpoint0")
+				self.filter.setValue(newValue?.point, forKey: "inputBreakpoint0")
 			}
 		}
 
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// Upper right corner of image to retain after stretching ends.
 		///
-		@objc public var inputBreakpoint1: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputBreakpoint1: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputBreakpoint1") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBreakpoint1")
+				self.filter.setValue(newValue?.point, forKey: "inputBreakpoint1")
 			}
 		}
 
@@ -94,12 +100,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputGrowAmount: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeOffset
+		///
+		@objc public var inputGrowAmount: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputGrowAmount") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputGrowAmount")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGrowAmount")
+				self.filter.setValue(newValue?.point, forKey: "inputGrowAmount")
 			}
 		}
 	}

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// The top left coordinate of a tile.
 		///
-		@objc public var inputTopLeft: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputTopLeft: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputTopLeft") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputTopLeft")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTopLeft")
+				self.filter.setValue(newValue?.point, forKey: "inputTopLeft")
 			}
 		}
 
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// The top right coordinate of a tile.
 		///
-		@objc public var inputTopRight: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputTopRight: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputTopRight") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputTopRight")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTopRight")
+				self.filter.setValue(newValue?.point, forKey: "inputTopRight")
 			}
 		}
 
@@ -94,12 +100,14 @@ import Foundation
 		///
 		/// The bottom right coordinate of a tile.
 		///
-		@objc public var inputBottomRight: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputBottomRight: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputBottomRight") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputBottomRight")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBottomRight")
+				self.filter.setValue(newValue?.point, forKey: "inputBottomRight")
 			}
 		}
 
@@ -108,12 +116,14 @@ import Foundation
 		///
 		/// The bottom left coordinate of a tile.
 		///
-		@objc public var inputBottomLeft: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputBottomLeft: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputBottomLeft") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputBottomLeft")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBottomLeft")
+				self.filter.setValue(newValue?.point, forKey: "inputBottomLeft")
 			}
 		}
 	}

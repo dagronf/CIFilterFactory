@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The image data from this image transforms the source image values.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeGradient
 		///
 		@objc public var inputGradientImage: CIImage? {
 			get {

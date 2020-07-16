@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The first input image for comparison.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The second input image for comparison.
+		///
+		///   Class: CIImage, Type: Not specified
 		///
 		@objc public var inputImage2: CIImage? {
 			get {

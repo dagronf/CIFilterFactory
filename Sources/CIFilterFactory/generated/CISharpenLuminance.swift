@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// The amount of sharpening to apply. Larger values are sharper.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		@objc public var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The distance from the center of the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputRadius: NSNumber? {
 			get {

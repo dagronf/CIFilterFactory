@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// The monochrome color to apply to the image.
 		///
+		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
+		///
 		@objc public var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The intensity of the monochrome effect. A value of 1.0 creates a monochrome image using the supplied color. A value of 0.0 has no effect on the image.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

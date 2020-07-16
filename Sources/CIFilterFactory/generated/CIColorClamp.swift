@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// Lower clamping values
 		///
+		///   Class: CIVector, Type: Not specified
+		///
 		@objc public var inputMinComponents: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputMinComponents") as? CIVector
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// Higher clamping values
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputMaxComponents: CIVector? {
 			get {

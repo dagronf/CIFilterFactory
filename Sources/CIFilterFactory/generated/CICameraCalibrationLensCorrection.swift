@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to process.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// AVCameraCalibrationData for the correction. Will be set from the inputImage if available and can be overridden here.
 		///
+		///   Class: AVCameraCalibrationData, Type: Not specified
+		///
 		@objc public var inputAVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
 				return self.filter.value(forKey: "inputAVCameraCalibrationData") as? AVCameraCalibrationData
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		@objc public var inputUseInverseLookUpTable: NSNumber? {
 			get {

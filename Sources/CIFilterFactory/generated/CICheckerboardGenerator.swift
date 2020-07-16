@@ -52,12 +52,14 @@ import Foundation
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// A color to use for the first set of squares.
+		///
+		///   Class: CIColor, Type: Not specified
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// A color to use for the second set of squares.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor1") as? CIColor
@@ -94,6 +100,8 @@ import Foundation
 		///
 		/// The width of the squares in the pattern.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		@objc public var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// The sharpness of the edges in pattern. The smaller the value, the more blurry the pattern. Values range from 0.0 to 1.0.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

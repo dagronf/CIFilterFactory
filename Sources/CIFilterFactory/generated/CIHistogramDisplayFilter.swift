@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The height of the displayable histogram image.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 1.0
 		///   maxValue: 200.0
@@ -84,6 +88,8 @@ import Foundation
 		///
 		/// The fraction of the right portion of the histogram image to make lighter.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
@@ -101,6 +107,8 @@ import Foundation
 
 		///
 		/// The fraction of the left portion of the histogram image to make darker
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

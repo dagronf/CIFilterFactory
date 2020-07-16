@@ -52,12 +52,14 @@ import Foundation
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The radius of the starting circle to use in the gradient.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -83,6 +87,8 @@ import Foundation
 		///
 		/// The radius of the ending circle to use in the gradient.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///
 		let inputRadius1_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -100,6 +106,8 @@ import Foundation
 		///
 		/// The first color to use in the gradient.
 		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
+		///
 		@objc public var inputColor0: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor0") as? CIColor
@@ -113,6 +121,8 @@ import Foundation
 
 		///
 		/// The second color to use in the gradient.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
 		///
 		@objc public var inputColor1: CIColor? {
 			get {

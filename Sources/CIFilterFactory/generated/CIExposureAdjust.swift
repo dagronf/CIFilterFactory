@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The amount to adjust the exposure of the image by. The larger the value, the brighter the exposure.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputEV: NSNumber? {
 			get {

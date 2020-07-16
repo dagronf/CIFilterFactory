@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The input depth data image to convert to disparity data.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage

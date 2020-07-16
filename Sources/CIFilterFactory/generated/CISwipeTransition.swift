@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// The extent of the effect.
 		///
-		@objc public var inputExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
 
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The color of the swipe.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
 		///
 		@objc public var inputColor: CIColor? {
 			get {
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -126,6 +136,8 @@ import Foundation
 		///
 		/// The angle of the swipe.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -140,6 +152,8 @@ import Foundation
 		///
 		/// The width of the swipe
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		@objc public var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -153,6 +167,8 @@ import Foundation
 
 		///
 		/// The opacity of the swipe.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

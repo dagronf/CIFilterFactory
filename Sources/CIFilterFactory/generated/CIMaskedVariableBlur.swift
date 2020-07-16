@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: CIImage, Type: Not specified
+		///
 		@objc public var inputMask: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMask") as? CIImage
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The distance from the center of the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

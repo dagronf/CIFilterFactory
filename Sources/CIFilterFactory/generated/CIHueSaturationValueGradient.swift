@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -68,6 +70,8 @@ import Foundation
 
 		///
 		/// The distance from the center of the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -86,6 +90,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -103,6 +109,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -119,6 +127,8 @@ import Foundation
 
 		///
 		/// The CGColorSpaceRef that the color wheel should be generated in.
+		///
+		///   Class: NSObject, Type: Not specified
 		///
 		@objc public var inputColorSpace: NSObject? {
 			get {

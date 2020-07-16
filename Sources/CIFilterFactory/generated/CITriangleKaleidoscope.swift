@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// Input image to generate kaleidoscope effect from.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// The x and y position to use as the center of the triangular area in the input image.
 		///
-		@objc public var inputPoint: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputPoint: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputPoint") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputPoint")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPoint")
+				self.filter.setValue(newValue?.point, forKey: "inputPoint")
 			}
 		}
 
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The size in pixels of the triangle.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputSize: NSNumber? {
 			get {
@@ -94,6 +100,8 @@ import Foundation
 		///
 		/// Rotation angle of the triangle.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputRotation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRotation") as? NSNumber
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// The decay determines how fast the color fades from the center triangle.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputDecay: NSNumber? {
 			get {

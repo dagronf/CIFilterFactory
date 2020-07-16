@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to process.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// A rectangle that specifies the subregion of the image that you want to process.
 		///
-		@objc public var inputExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
 	}

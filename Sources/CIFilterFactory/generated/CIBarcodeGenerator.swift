@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The CIBarcodeDescription object to generate an image for.
 		///
+		///   Class: CIBarcodeDescriptor, Type: Not specified
+		///
 		@objc public var inputBarcodeDescriptor: CIBarcodeDescriptor? {
 			get {
 				return self.filter.value(forKey: "inputBarcodeDescriptor") as? CIBarcodeDescriptor

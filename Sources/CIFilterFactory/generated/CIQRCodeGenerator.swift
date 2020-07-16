@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The message to encode in the QR Code
 		///
+		///   Class: NSData, Type: Not specified
+		///
 		@objc public var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// QR Code correction level L, M, Q, or H.
+		///
+		///   Class: NSString, Type: Not specified
 		///
 		@objc public var inputCorrectionLevel: NSString? {
 			get {

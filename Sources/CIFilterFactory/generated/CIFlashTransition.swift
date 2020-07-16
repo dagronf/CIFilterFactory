@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -94,12 +100,14 @@ import Foundation
 		///
 		/// The extent of the flash.
 		///
-		@objc public var inputExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
 
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// The color of the light rays emanating from the flash.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
 		///
 		@objc public var inputColor: CIColor? {
 			get {
@@ -121,6 +131,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -140,6 +152,8 @@ import Foundation
 		///
 		/// The radius of the light rays emanating from the flash.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -156,6 +170,8 @@ import Foundation
 
 		///
 		/// The strength of the light rays emanating from the flash.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -174,6 +190,8 @@ import Foundation
 		///
 		/// The contrast of the light rays emanating from the flash.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -190,6 +208,8 @@ import Foundation
 
 		///
 		/// The amount of fade between the flash and the target image. The higher the value, the more flash time and the less fade time.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// A small image to upsample.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// A larger image to use as a guide.
+		///
+		///   Class: CIImage, Type: Not specified
 		///
 		@objc public var inputGuideImage: CIImage? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// The distance from the center of the effect.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		@objc public var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputEpsilon: NSNumber? {
 			get {

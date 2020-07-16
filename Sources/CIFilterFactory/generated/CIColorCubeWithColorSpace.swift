@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeCount
 		///
 		///   minValue: 2.0
 		///   maxValue: 128.0
@@ -84,6 +88,8 @@ import Foundation
 		///
 		/// Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
 		///
+		///   Class: NSData, Type: Not specified
+		///
 		@objc public var inputCubeData: NSData? {
 			get {
 				return self.filter.value(forKey: "inputCubeData") as? NSData
@@ -97,6 +103,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSObject, Type: Not specified
 		///
 		@objc public var inputColorSpace: NSObject? {
 			get {

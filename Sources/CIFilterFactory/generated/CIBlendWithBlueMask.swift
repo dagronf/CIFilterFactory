@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// The image to use as a background image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputBackgroundImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// A masking image.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputMaskImage: CIImage? {
 			get {

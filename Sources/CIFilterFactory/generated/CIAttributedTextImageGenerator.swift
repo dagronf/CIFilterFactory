@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSAttributedString, Type: Not specified
+		///
 		@objc public var inputText: NSAttributedString? {
 			get {
 				return self.filter.value(forKey: "inputText") as? NSAttributedString
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

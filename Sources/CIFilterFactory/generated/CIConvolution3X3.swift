@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: CIVector, Type: Not specified
+		///
 		@objc public var inputWeights: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputWeights") as? CIVector
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		@objc public var inputBias: NSNumber? {
 			get {

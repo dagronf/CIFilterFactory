@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The color to generate.
 		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
+		///
 		@objc public var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor

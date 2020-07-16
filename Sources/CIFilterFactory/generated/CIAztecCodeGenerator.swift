@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The message to encode in the Aztec Barcode
 		///
+		///   Class: NSData, Type: Not specified
+		///
 		@objc public var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// Aztec error correction value between 5 and 95
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 5.0
 		///   maxValue: 95.0
@@ -84,6 +88,8 @@ import Foundation
 		///
 		/// Aztec layers value between 1 and 32. Set to nil for automatic.
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 1.0
 		///   maxValue: 32.0
 		///
@@ -101,6 +107,8 @@ import Foundation
 
 		///
 		/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

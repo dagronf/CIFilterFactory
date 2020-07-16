@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// The angle (in radians) of the bars.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The width of each bar.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 2.0
 		///
@@ -111,6 +119,8 @@ import Foundation
 		///
 		/// The offset of one bar with respect to another
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 1.0
 		///
 		let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
@@ -127,6 +137,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

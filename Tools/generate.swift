@@ -110,8 +110,6 @@ import UIKit
 	out.print("      }")
 
 	for key in inputKeys {
-		var keyType: String?
-		var keyDesc: String?
 
 		out.print("")
 		out.print("   // MARK: - \(key)")
@@ -121,85 +119,74 @@ import UIKit
 			continue
 		}
 
-		if let descr = keyItem[kCIAttributeDescription] as? String {
-			keyDesc = descr
-		}
+		let keyDesc = keyItem[kCIAttributeDescription] as? String
 
-		guard let paramType = keyItem[kCIAttributeClass] as? String else {
+		guard var keyClass = keyItem[kCIAttributeClass] as? String else {
 			continue
 		}
-		keyType = paramType
 
-		var needsTweaking = false
-		if keyType == "CGImageMetadataRef" {
-			keyType = "CGImageMetadata"
-			needsTweaking = true
-		}
+		let keySubType = keyItem[kCIAttributeType] as? String
 
-		var isAffineTweaked = false
-		if keyType == "NSAffineTransform" {
-			keyType = "CIFilterFactory.AffineTransform"
-			isAffineTweaked = true
-		}
+		// Write out the description for the key
 
-		var minValue: Float?
-		var maxValue: Float?
-		var rangeString = ""
-		if let paramMin = keyItem[kCIAttributeMin] as? Float {
-			minValue = paramMin
-			rangeString += "   ///   minValue: \(paramMin)"
-		}
-		if let paramMax = keyItem[kCIAttributeMax] as? Float {
-			maxValue = paramMax
-			if rangeString.count > 0 {
-				rangeString += "\n"
-			}
-			rangeString += "   ///   maxValue: \(paramMax)"
-		}
-		if !rangeString.isEmpty {
-			rangeString += "\n   ///"
-		}
+		out.print("   ///")
+		out.print("   /// \(keyDesc ?? "No Description")")
+		out.print("   ///")
+		out.print("   ///   Class: \(keyClass), Type: \(keySubType ?? "Not specified")")
+		out.print("   ///")
 
-		if let keyType = keyType {
+		let rangeDef = handleRange(out: out, key: key, keyAttributes: keyItem)
 
-			out.print("   ///")
-			out.print("   /// \(keyDesc ?? "No Description")")
-			out.print("   ///")
-			if !rangeString.isEmpty {
-				out.print(rangeString)
-			}
-
-			if let minValue = minValue {
-				if let maxValue = maxValue {
-					out.print("   let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
-				}
-				else {
-					out.print("   let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
-				}
-			}
-			else if let maxValue = maxValue {
-				out.print("   let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
-			}
-
-			out.print("   @objc public var \(key): \(keyType)? {")
+		if keySubType == "CIAttributeTypeRectangle" {
+			out.print("   @objc public var \(key): CIFilterFactory.Rect? {")
 			out.print("      get {")
-			if needsTweaking {
-				out.print("      return (self.filter.value(forKey: \"\(key)\") as! \(keyType))")
-			}
-			else if isAffineTweaked {
-				out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
-			}
-			else {
-				out.print("         return self.filter.value(forKey: \"\(key)\") as? \(keyType)")
-			}
+			out.print("         return CIFilterFactory.Rect(with: self.filter, key: \"\(key)\")")
+			out.print("      }")
+			out.print("      set {")
+			out.print("         self.filter.setValue(newValue?.vector, forKey: \"\(key)\")")
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keyClass == "NSAffineTransform" {
+			out.print("   @objc public var \(key): CIFilterFactory.AffineTransform? {")
+			out.print("      get {")
+			out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
+			out.print("      }")
+			out.print("      set {")
+			out.print("         self.filter.setValue(newValue?.embeddedValue(), forKey: \"\(key)\")")
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keySubType == "CIAttributeTypePosition" || keySubType == kCIAttributeTypeOffset {
+			out.print("   @objc public var \(key): CIFilterFactory.Point? {")
+			out.print("      get {")
+			out.print("         return CIFilterFactory.Point(with: self.filter, key: \"\(key)\")")
+			out.print("      }")
+			out.print("      set {")
+			out.print("         self.filter.setValue(newValue?.point, forKey: \"\(key)\")")
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keyClass == "CGImageMetadataRef" {
+			out.print("   @objc public var \(key): CGImageMetadata? {")
+			out.print("      get {")
+			out.print("         return (self.filter.value(forKey: \"\(key)\") as! CGImageMetadata)")
+			out.print("      }")
+			out.print("      set {")
+			out.print("         self.filter.setValue(newValue, forKey: \"\(key)\")")
+			out.print("      }")
+			out.print("   }")
+		}
+		else {
+
+			out.print("   @objc public var \(key): \(keyClass)? {")
+			out.print("      get {")
+			out.print("         return self.filter.value(forKey: \"\(key)\") as? \(keyClass)")
 			out.print("      }")
 
 			out.print("      set {")
-			if maxValue != nil || minValue != nil {
-				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(key)_Range), forKey: \"\(key)\")")
-			}
-			else if isAffineTweaked {
-				out.print("      self.filter.setValue(newValue?.embeddedValue(), forKey: \"\(key)\")")
+			if let rangeDef = rangeDef {
+				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(rangeDef)), forKey: \"\(key)\")")
 			}
 			else {
 				out.print("      self.filter.setValue(newValue, forKey: \"\(key)\")")
@@ -211,6 +198,46 @@ import UIKit
 	out.print("   }\n")
 	out.print("}\n")
 }
+
+func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -> String? {
+
+	var minValue: Float?
+	var maxValue: Float?
+	var rangeString = ""
+	if let paramMin = keyAttributes[kCIAttributeMin] as? Float {
+		minValue = paramMin
+		rangeString += "   ///   minValue: \(paramMin)"
+	}
+	if let paramMax = keyAttributes[kCIAttributeMax] as? Float {
+		maxValue = paramMax
+		if rangeString.count > 0 {
+			rangeString += "\n"
+		}
+		rangeString += "   ///   maxValue: \(paramMax)"
+	}
+	if !rangeString.isEmpty {
+		rangeString += "\n   ///"
+		out.print(rangeString)
+	}
+	else {
+		// No range specified for the key
+		return nil
+	}
+
+	if let minValue = minValue {
+		if let maxValue = maxValue {
+			out.print("   let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
+		}
+		else {
+			out.print("   let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
+		}
+	}
+	else if let maxValue = maxValue {
+		out.print("   let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
+	}
+	return " \(key)_Range"
+}
+
 
 class FileSquirter {
 	let name: String
@@ -224,177 +251,28 @@ class FileSquirter {
 	}
 }
 
-let out = FileSquirter(name: "CIFilterFactory.swift")
-
-
-out.print("""
-//
-// CIFilterFactory.swift
-//
-//  MIT license
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-//  documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the
-//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in all copies or substantial
-//  portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
-//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//  Automatically generated on \(NSDate.now).  Do not edit.
-
-import Foundation
-import CoreImage
-
-/// A class factory for type-safe Core Image Filter objects
-@objc public class CIFilterFactory: NSObject {
-
-	/// Common filter base class. You never need need to create this yourself
-	@objc(CIFilterCore) public class FilterCommon: NSObject {
-
-		// The CIFilter wrapped instance for the filter
-		@objc public let filter: CIFilter
-
-		init?(name: String) {
-			guard let filter = CIFilter(name: name) else {
-				return nil
-			}
-			self.filter = filter
-			super.init()
-
-			filter.setDefaults()
-		}
-
-		/// Returns a CIImage object that encapsulates the operations configured in the filter.
-		@objc public dynamic var outputImage: CIImage? {
-			return self.filter.outputImage
-		}
-
-		/// The name of the filter
-		@objc public lazy var name: String = {
-			return self.filter.name
-		}()
-
-		/// The localized version of the filter name that is displayed in the user interface
-		@objc public lazy var displayName: String = {
-			self.filter.attributes[kCIAttributeFilterDisplayName] as? String ?? self.name
-		}()
-
-		/// Returns the localized name for the specified filter.
-		@available(macOS 10.10, iOS 9, *)
-		@objc public lazy var localizedName: String = {
-			return CIFilter.localizedName(forFilterName: self.name) ?? self.name
-		}()
-
-		/// Returns the localized description of a filter for display in the user interface.
-		@available(macOS 10.10, iOS 9, *)
-		@objc public lazy var localizedDescription: String? = {
-			return CIFilter.localizedDescription(forFilterName: self.name)
-		}()
-
-		/// Returns a dictionary containing key/value pairs describing the filter
-		@objc public var attributes: [String: Any] {
-			return self.filter.attributes
-		}
-
-		/// Returns the URL for the `CIFilter.io` webpage describing the filter
-		@objc public lazy var cifilterOnlineDocumentationURL: URL? = {
-			return URL(string: "https://cifilter.io/\\(self.name)/")
-		}()
-
-		/// The localized reference documentation for the filter. The reference should provide developers with technical details.
-		@available(macOS 10.10, iOS 9, *)
-		@objc public var onlineDocumentationURL: URL? {
-			return filter.attributes[kCIAttributeReferenceDocumentation] as? URL
-		}
-
-		/// Reset all the values in the filter to the defaults
-		@objc public func reset() {
-			self.filter.setDefaults()
-		}
-	}
-
-	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
-	@objc(CIFilterFactoryAffineTransform) public class AffineTransform: NSObject {
-		#if os(macOS)
-			@objc var transform: NSAffineTransform
-			@objc public init(_ transform: NSAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
-					return nil
-				}
-				self.init(value)
-			}
-			func embeddedValue() -> AnyObject {
-				return self.transform
-			}
-		#else
-			@objc var transform: CGAffineTransform
-			@objc public init(_ transform: CGAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSValue else {
-					return nil
-				}
-				self.init(value.cgAffineTransformValue)
-			}
-			func embeddedValue() -> AnyObject {
-				return NSValue(cgAffineTransform: self.transform)
-			}
-		#endif
-	}
-}
-
-extension NSNumber {
-	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
-		if bounds.lowerBound > self.floatValue {
-			return NSNumber(value: bounds.lowerBound)
-		}
-		return self
-	}
-	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
-		if bounds.upperBound < self.floatValue {
-			return NSNumber(value: bounds.upperBound)
-		}
-		return self
-	}
-	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
-		var value = max(bounds.lowerBound, self.floatValue)
-		value = min(bounds.upperBound, value)
-		return NSNumber(value: value)
-	}
-}
-""")
+let out = FileSquirter(name: "CIFilterFactory+Generated.swift")
 
 let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
 guard CommandLine.arguments.count == 2,
-	let destinationURL = URL(string: CommandLine.arguments[1] ) else {
+	  let destinationURL = URL(string: CommandLine.arguments[1] ) else {
 	Swift.print("Bad command line, \(CommandLine.arguments)")
 	exit(-1)
 }
 
 
 let outURL = URL(string: CommandLine.arguments[1], relativeTo: currentDirectoryURL)!
-print(outURL)
-let outBase = outURL.appendingPathComponent("CIFilterFactory.swift")
-//let url = URL(fileURLWithPath: outFile)
-do {
-	try out.content.write(to: outBase, atomically: true, encoding: .utf8)
-}
-catch {
-	Swift.print("Cannot write file \(error)")
-}
+//print(outURL)
+
+//let outBase = outURL.appendingPathComponent("CIFilterFactory+Generated.swift")
+////let url = URL(fileURLWithPath: outFile)
+//do {
+//	try out.content.write(to: outBase, atomically: true, encoding: .utf8)
+//}
+//catch {
+//	Swift.print("Cannot write file \(error)")
+//}
 
 let generatedBase = outURL.appendingPathComponent("generated")
 try? FileManager.default.createDirectory(at: generatedBase, withIntermediateDirectories: false, attributes: nil)
@@ -406,10 +284,10 @@ for filterName in CIFilter.filterNames(inCategories: nil) {
 
 		do {
 
-		let fs = FileSquirter(name: "\(filterName).swift")
-		parseFilter(filter: filter, out: fs)
-		let outURL = generatedBase.appendingPathComponent("\(filterName).swift")
-		try fs.content.write(to: outURL, atomically: true, encoding: .utf8)
+			let fs = FileSquirter(name: "\(filterName).swift")
+			parseFilter(filter: filter, out: fs)
+			let outURL = generatedBase.appendingPathComponent("\(filterName).swift")
+			try fs.content.write(to: outURL, atomically: true, encoding: .utf8)
 
 		}
 		catch {

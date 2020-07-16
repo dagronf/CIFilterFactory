@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The amount of red to multiply the source color values by.
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputRVector: CIVector? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// The amount of green to multiply the source color values by.
 		///
+		///   Class: CIVector, Type: Not specified
+		///
 		@objc public var inputGVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputGVector") as? CIVector
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The amount of blue to multiply the source color values by.
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputBVector: CIVector? {
 			get {
@@ -108,6 +116,8 @@ import Foundation
 		///
 		/// The amount of alpha to multiply the source color values by.
 		///
+		///   Class: CIVector, Type: Not specified
+		///
 		@objc public var inputAVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputAVector") as? CIVector
@@ -121,6 +131,8 @@ import Foundation
 
 		///
 		/// A vector that’s added to each color component.
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputBiasVector: CIVector? {
 			get {

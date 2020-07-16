@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The message to encode in the PDF417 Barcode
 		///
+		///   Class: NSData, Type: Not specified
+		///
 		@objc public var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The minimum width of the generated barcode in pixels.
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 56.0
 		///   maxValue: 583.0
@@ -84,6 +88,8 @@ import Foundation
 		///
 		/// The maximum width of the generated barcode in pixels.
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 56.0
 		///   maxValue: 583.0
 		///
@@ -101,6 +107,8 @@ import Foundation
 
 		///
 		/// The minimum height of the generated barcode in pixels.
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 13.0
 		///   maxValue: 283.0
@@ -120,6 +128,8 @@ import Foundation
 		///
 		/// The maximum height of the generated barcode in pixels.
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 13.0
 		///   maxValue: 283.0
 		///
@@ -137,6 +147,8 @@ import Foundation
 
 		///
 		/// The number of data columns in the generated barcode
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 1.0
 		///   maxValue: 30.0
@@ -156,6 +168,8 @@ import Foundation
 		///
 		/// The number of rows in the generated barcode
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 3.0
 		///   maxValue: 90.0
 		///
@@ -174,6 +188,8 @@ import Foundation
 		///
 		/// The preferred aspect ratio of the generated barcode
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 0.0
 		///
 		let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -190,6 +206,8 @@ import Foundation
 
 		///
 		/// The compaction mode of the generated barcode.
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 0.0
 		///   maxValue: 3.0
@@ -209,6 +227,8 @@ import Foundation
 		///
 		/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
@@ -227,6 +247,8 @@ import Foundation
 		///
 		/// The correction level ratio of the generated barcode
 		///
+		///   Class: NSNumber, Type: Not specified
+		///
 		///   minValue: 0.0
 		///   maxValue: 8.0
 		///
@@ -244,6 +266,8 @@ import Foundation
 
 		///
 		/// Force compaction style to @YES or @NO. Set to nil for automatic.
+		///
+		///   Class: NSNumber, Type: Not specified
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

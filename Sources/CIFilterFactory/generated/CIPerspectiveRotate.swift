@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to process.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// 35mm equivalent focal length of the input image.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		@objc public var inputFocalLength: NSNumber? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// Pitch angle in radians.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputPitch: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPitch") as? NSNumber
@@ -94,6 +100,8 @@ import Foundation
 		///
 		/// Yaw angle in radians.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputYaw: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputYaw") as? NSNumber
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// Roll angle in radians.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
 		///
 		@objc public var inputRoll: NSNumber? {
 			get {

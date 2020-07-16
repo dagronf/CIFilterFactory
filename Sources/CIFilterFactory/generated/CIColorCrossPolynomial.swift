@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// Polynomial coefficients for red channel
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputRedCoefficients: CIVector? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// Polynomial coefficients for green channel
 		///
+		///   Class: CIVector, Type: Not specified
+		///
 		@objc public var inputGreenCoefficients: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputGreenCoefficients") as? CIVector
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// Polynomial coefficients for blue channel
+		///
+		///   Class: CIVector, Type: Not specified
 		///
 		@objc public var inputBlueCoefficients: CIVector? {
 			get {

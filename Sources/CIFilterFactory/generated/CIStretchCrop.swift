@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// The size in pixels of the output image.
 		///
-		@objc public var inputSize: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputSize: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputSize") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputSize")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputSize")
+				self.filter.setValue(newValue?.point, forKey: "inputSize")
 			}
 		}
 
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// Determines if and how much cropping should be used to achieve the target size. If value is 0 then only stretching is used. If 1 then only cropping is used.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -97,6 +103,8 @@ import Foundation
 
 		///
 		/// Determine how much the center of the image is stretched if stretching is used. If value is 0 then the center of the image maintains the original aspect ratio. If 1 then the image is stretched uniformly.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0

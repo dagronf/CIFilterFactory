@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: CIImage, Type: Not specified
 		///
 		@objc public var inputDisparityImage: CIImage? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// A matting image.
 		///
+		///   Class: CIImage, Type: Not specified
+		///
 		@objc public var inputMatteImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMatteImage") as? CIImage
@@ -94,6 +100,8 @@ import Foundation
 		///
 		/// A matting image.
 		///
+		///   Class: CIImage, Type: Not specified
+		///
 		@objc public var inputHairImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputHairImage") as? CIImage
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 22.0
@@ -126,12 +136,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputLeftEyePositions: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputLeftEyePositions: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputLeftEyePositions") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputLeftEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputLeftEyePositions")
+				self.filter.setValue(newValue?.point, forKey: "inputLeftEyePositions")
 			}
 		}
 
@@ -140,12 +152,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputRightEyePositions: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputRightEyePositions: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputRightEyePositions") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputRightEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRightEyePositions")
+				self.filter.setValue(newValue?.point, forKey: "inputRightEyePositions")
 			}
 		}
 
@@ -154,12 +168,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputChinPositions: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputChinPositions: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputChinPositions") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputChinPositions")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputChinPositions")
+				self.filter.setValue(newValue?.point, forKey: "inputChinPositions")
 			}
 		}
 
@@ -168,12 +184,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputNosePositions: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputNosePositions: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputNosePositions") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputNosePositions")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputNosePositions")
+				self.filter.setValue(newValue?.point, forKey: "inputNosePositions")
 			}
 		}
 
@@ -182,12 +200,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputFocusRect: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputFocusRect: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputFocusRect") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputFocusRect")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputFocusRect")
+				self.filter.setValue(newValue?.vector, forKey: "inputFocusRect")
 			}
 		}
 
@@ -195,6 +215,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -213,6 +235,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		@objc public var inputScaleFactor: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
@@ -226,6 +250,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: AVCameraCalibrationData, Type: Not specified
 		///
 		@objc public var inputCalibrationData: AVCameraCalibrationData? {
 			get {
@@ -241,6 +267,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: CGImageMetadataRef, Type: Not specified
+		///
 		@objc public var inputAuxDataMetadata: CGImageMetadata? {
 			get {
 				return (self.filter.value(forKey: "inputAuxDataMetadata") as! CGImageMetadata)
@@ -254,6 +282,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSString, Type: Not specified
 		///
 		@objc public var inputShape: NSString? {
 			get {

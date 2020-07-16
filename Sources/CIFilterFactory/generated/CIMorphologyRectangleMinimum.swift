@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeInteger
 		///
 		///   minValue: 1.0
 		///
@@ -82,6 +86,8 @@ import Foundation
 
 		///
 		/// The height in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeInteger
 		///
 		///   minValue: 1.0
 		///

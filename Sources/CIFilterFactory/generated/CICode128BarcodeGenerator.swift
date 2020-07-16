@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The message to encode in the Code 128 Barcode
 		///
+		///   Class: NSData, Type: Not specified
+		///
 		@objc public var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The number of empty white pixels that should surround the barcode.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 100.0
@@ -83,6 +87,8 @@ import Foundation
 
 		///
 		/// The height of the generated barcode in pixels.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 1.0
 		///   maxValue: 500.0

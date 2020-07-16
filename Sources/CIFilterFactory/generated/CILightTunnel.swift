@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to process.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// Center of the light tunnel.
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// Rotation angle of the light tunnel.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
 		///
 		@objc public var inputRotation: NSNumber? {
 			get {
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// Center radius of the light tunnel.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		@objc public var inputRadius: NSNumber? {
 			get {

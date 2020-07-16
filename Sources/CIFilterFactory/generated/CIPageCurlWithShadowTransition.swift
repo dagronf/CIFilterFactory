@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The target image for a transition.
+		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
 		///
 		@objc public var inputTargetImage: CIImage? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// The image that appears on the back of the source image, as the page curls to reveal the target image.
 		///
+		///   Class: CIImage, Type: Not specified
+		///
 		@objc public var inputBacksideImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBacksideImage") as? CIImage
@@ -94,12 +100,14 @@ import Foundation
 		///
 		/// The extent of the effect.
 		///
-		@objc public var inputExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
 
@@ -107,6 +115,8 @@ import Foundation
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeTime
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -126,6 +136,8 @@ import Foundation
 		///
 		/// The angle of the curling page.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -140,6 +152,8 @@ import Foundation
 		///
 		/// The radius of the curl.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		@objc public var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -153,6 +167,8 @@ import Foundation
 
 		///
 		/// The maximum size in pixels of the shadow.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
@@ -172,6 +188,8 @@ import Foundation
 		///
 		/// The strength of the shadow.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
@@ -190,12 +208,14 @@ import Foundation
 		///
 		/// The rectagular portion of input image that will cast a shadow.
 		///
-		@objc public var inputShadowExtent: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeRectangle
+		///
+		@objc public var inputShadowExtent: CIFilterFactory.Rect? {
 			get {
-				return self.filter.value(forKey: "inputShadowExtent") as? CIVector
+				return CIFilterFactory.Rect(with: self.filter, key: "inputShadowExtent")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputShadowExtent")
+				self.filter.setValue(newValue?.vector, forKey: "inputShadowExtent")
 			}
 		}
 	}

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The x and y position of the spotlight.
+		///
+		///   Class: CIVector, Type: CIAttributeTypePosition3
 		///
 		@objc public var inputLightPosition: CIVector? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// The x and y position that the spotlight points at.
 		///
+		///   Class: CIVector, Type: CIAttributeTypePosition3
+		///
 		@objc public var inputLightPointsAt: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputLightPointsAt") as? CIVector
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The brightness of the spotlight.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -111,6 +119,8 @@ import Foundation
 		///
 		/// The spotlight size. The smaller the value, the more tightly focused the light beam.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		@objc public var inputConcentration: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputConcentration") as? NSNumber
@@ -124,6 +134,8 @@ import Foundation
 
 		///
 		/// The color of the spotlight.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
 		///
 		@objc public var inputColor: CIColor? {
 			get {

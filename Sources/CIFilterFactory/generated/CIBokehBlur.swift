@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///   maxValue: 500.0
@@ -84,6 +88,8 @@ import Foundation
 		///
 		/// The amount of extra emphasis at the ring of the bokeh.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
@@ -102,6 +108,8 @@ import Foundation
 		///
 		/// The size of extra emphasis at the ring of the bokeh
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -118,6 +126,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///   maxValue: 10.0

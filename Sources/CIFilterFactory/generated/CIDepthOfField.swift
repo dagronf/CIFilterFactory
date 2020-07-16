@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputPoint0: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputPoint0: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputPoint0") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
 			}
 		}
 
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputPoint1: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputPoint1: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputPoint1") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
 			}
 		}
 
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The amount to adjust the saturation.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -111,6 +119,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -128,6 +138,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -144,6 +156,8 @@ import Foundation
 
 		///
 		/// The distance from the center of the effect.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The center value of the first color range to replace.
+		///
+		///   Class: CIColor, Type: Not specified
 		///
 		@objc public var inputCenterColor1: CIColor? {
 			get {
@@ -80,6 +84,8 @@ import Foundation
 		///
 		/// A replacement color for the first color range.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputReplacementColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputReplacementColor1") as? CIColor
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// A value that indicates how close the first color must match before it is replaced.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -111,6 +119,8 @@ import Foundation
 		///
 		/// The contrast of the first replacement color.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -128,6 +138,8 @@ import Foundation
 		///
 		/// The center value of the second color range to replace.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputCenterColor2: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputCenterColor2") as? CIColor
@@ -142,6 +154,8 @@ import Foundation
 		///
 		/// A replacement color for the second color range.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputReplacementColor2: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputReplacementColor2") as? CIColor
@@ -155,6 +169,8 @@ import Foundation
 
 		///
 		/// A value that indicates how close the second color must match before it is replaced.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -173,6 +189,8 @@ import Foundation
 		///
 		/// The contrast of the second replacement color.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -190,6 +208,8 @@ import Foundation
 		///
 		/// The center value of the third color range to replace.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputCenterColor3: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputCenterColor3") as? CIColor
@@ -204,6 +224,8 @@ import Foundation
 		///
 		/// A replacement color for the third color range.
 		///
+		///   Class: CIColor, Type: Not specified
+		///
 		@objc public var inputReplacementColor3: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputReplacementColor3") as? CIColor
@@ -217,6 +239,8 @@ import Foundation
 
 		///
 		/// A value that indicates how close the third color must match before it is replaced.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -234,6 +258,8 @@ import Foundation
 
 		///
 		/// The contrast of the third replacement color.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

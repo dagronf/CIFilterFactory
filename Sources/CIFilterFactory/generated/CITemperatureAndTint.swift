@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
+		///   Class: CIImage, Type: CIAttributeTypeImage
+		///
 		@objc public var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputNeutral: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeOffset
+		///
+		@objc public var inputNeutral: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputNeutral") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputNeutral")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputNeutral")
+				self.filter.setValue(newValue?.point, forKey: "inputNeutral")
 			}
 		}
 
@@ -80,12 +84,14 @@ import Foundation
 		///
 		/// No Description
 		///
-		@objc public var inputTargetNeutral: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypeOffset
+		///
+		@objc public var inputTargetNeutral: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputTargetNeutral") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputTargetNeutral")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetNeutral")
+				self.filter.setValue(newValue?.point, forKey: "inputTargetNeutral")
 			}
 		}
 	}

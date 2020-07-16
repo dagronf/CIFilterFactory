@@ -52,12 +52,14 @@ import Foundation
 		///
 		/// The x and y position to use as the center of the star.
 		///
-		@objc public var inputCenter: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputCenter: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputCenter") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenter")
+				self.filter.setValue(newValue?.point, forKey: "inputCenter")
 			}
 		}
 
@@ -65,6 +67,8 @@ import Foundation
 
 		///
 		/// The color to use for the outer shell of the circular star.
+		///
+		///   Class: CIColor, Type: Not specified
 		///
 		@objc public var inputColor: CIColor? {
 			get {
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The radius of the star.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
 		///
 		///   minValue: 0.0
 		///
@@ -97,6 +103,8 @@ import Foundation
 		///
 		/// The size of the cross pattern.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
+		///
 		///   minValue: 0.0
 		///
 		let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -114,6 +122,8 @@ import Foundation
 		///
 		/// The angle of the cross pattern.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeAngle
+		///
 		@objc public var inputCrossAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossAngle") as? NSNumber
@@ -127,6 +137,8 @@ import Foundation
 
 		///
 		/// The opacity of the cross pattern.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: -8.0
 		///
@@ -145,6 +157,8 @@ import Foundation
 		///
 		/// The width of the cross pattern.
 		///
+		///   Class: NSNumber, Type: CIAttributeTypeDistance
+		///
 		///   minValue: 0.0
 		///
 		let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
@@ -161,6 +175,8 @@ import Foundation
 
 		///
 		/// The length of the cross spikes.
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: -8.0
 		///

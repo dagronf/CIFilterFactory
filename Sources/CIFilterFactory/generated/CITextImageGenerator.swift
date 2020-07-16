@@ -52,6 +52,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSString, Type: Not specified
+		///
 		@objc public var inputText: NSString? {
 			get {
 				return self.filter.value(forKey: "inputText") as? NSString
@@ -66,6 +68,8 @@ import Foundation
 		///
 		/// No Description
 		///
+		///   Class: NSString, Type: Not specified
+		///
 		@objc public var inputFontName: NSString? {
 			get {
 				return self.filter.value(forKey: "inputFontName") as? NSString
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///
@@ -96,6 +102,8 @@ import Foundation
 
 		///
 		/// No Description
+		///
+		///   Class: NSNumber, Type: CIAttributeTypeScalar
 		///
 		///   minValue: 0.0
 		///

@@ -52,12 +52,14 @@ import Foundation
 		///
 		/// The starting position of the gradient -- where the first color begins.
 		///
-		@objc public var inputPoint0: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputPoint0: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputPoint0") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPoint0")
+				self.filter.setValue(newValue?.point, forKey: "inputPoint0")
 			}
 		}
 
@@ -66,12 +68,14 @@ import Foundation
 		///
 		/// The ending position of the gradient -- where the second color begins.
 		///
-		@objc public var inputPoint1: CIVector? {
+		///   Class: CIVector, Type: CIAttributeTypePosition
+		///
+		@objc public var inputPoint1: CIFilterFactory.Point? {
 			get {
-				return self.filter.value(forKey: "inputPoint1") as? CIVector
+				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPoint1")
+				self.filter.setValue(newValue?.point, forKey: "inputPoint1")
 			}
 		}
 
@@ -79,6 +83,8 @@ import Foundation
 
 		///
 		/// The first color to use in the gradient.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
 		///
 		@objc public var inputColor0: CIColor? {
 			get {
@@ -93,6 +99,8 @@ import Foundation
 
 		///
 		/// The second color to use in the gradient.
+		///
+		///   Class: CIColor, Type: CIAttributeTypeColor
 		///
 		@objc public var inputColor1: CIColor? {
 			get {

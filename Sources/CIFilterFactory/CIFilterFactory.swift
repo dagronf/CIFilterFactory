@@ -16,7 +16,7 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-11 06:07:39 +0000.  Do not edit.
+//  Automatically generated on 2020-07-15 23:42:08 +0000.  Do not edit.
 
 import CoreImage
 import Foundation
@@ -85,67 +85,5 @@ import Foundation
 		@objc public func reset() {
 			self.filter.setDefaults()
 		}
-	}
-
-	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
-	@objc(CIFilterFactoryAffineTransform) public class AffineTransform: NSObject {
-		#if os(macOS)
-			@objc var transform: NSAffineTransform
-			@objc public init(_ transform: NSAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
-					return nil
-				}
-				self.init(value)
-			}
-
-			func embeddedValue() -> AnyObject {
-				return self.transform
-			}
-
-		#else
-			@objc var transform: CGAffineTransform
-			@objc public init(_ transform: CGAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSValue else {
-					return nil
-				}
-				self.init(value.cgAffineTransformValue)
-			}
-
-			func embeddedValue() -> AnyObject {
-				return NSValue(cgAffineTransform: self.transform)
-			}
-		#endif
-	}
-}
-
-extension NSNumber {
-	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
-		if bounds.lowerBound > self.floatValue {
-			return NSNumber(value: bounds.lowerBound)
-		}
-		return self
-	}
-
-	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
-		if bounds.upperBound < self.floatValue {
-			return NSNumber(value: bounds.upperBound)
-		}
-		return self
-	}
-
-	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
-		var value = max(bounds.lowerBound, self.floatValue)
-		value = min(bounds.upperBound, value)
-		return NSNumber(value: value)
 	}
 }
