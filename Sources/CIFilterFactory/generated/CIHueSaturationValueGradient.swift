@@ -118,7 +118,7 @@ import Foundation
 		/// The CGColorSpaceRef that the color wheel should be generated in.
 		///
 		///   Class:    NSObject
-		///   Default:  <CGColorSpace 0x7f976f3a04a0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
+		///   Default:  (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
 		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
 				return self.filter.value(forKey: "inputColorSpace") as? NSObject

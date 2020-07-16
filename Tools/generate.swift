@@ -133,6 +133,12 @@ import CoreImage
 				let tr = (def as! CIColor)
 				out.print("   ///   Default:  rgba(\(tr.stringRepresentation))")
 			}
+			else if let cs = maybeCast(def, to: CGColorSpace.self) {
+				// <CGColorSpace 0x7f897ffeed70> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
+				let s = "\(cs)"
+				let ww = s.split(separator: ">")
+				out.print("   ///   Default: \(ww[1])")
+			}
 			else {
 				out.print("   ///   Default:  \(def)")
 			}
@@ -298,4 +304,27 @@ for filterName in CIFilter.filterNames(inCategories: nil) {
 		//Swift.print(fs.content)
 		// fns.append(filterName)
 	}
+}
+
+//////
+
+protocol CFTypeProtocol {
+  static var typeID: CFTypeID { get }
+}
+
+func maybeCast<T, U : CFTypeProtocol>(_ value: T, to cfType: U.Type) -> U? {
+  guard CFGetTypeID(value as CFTypeRef) == cfType.typeID else {
+	return nil
+  }
+  return (value as! U)
+}
+
+//extension CGColor : CFTypeProtocol {}
+//extension CGPath  : CFTypeProtocol {}
+extension CGColorSpace : CFTypeProtocol {}
+
+// Some CF types don't have their ID imported as the 'typeID' static member,
+// you have to implement it yourself by forwarding to their global function.
+extension CFDictionary : CFTypeProtocol {
+  static var typeID: CFTypeID { return CFDictionaryGetTypeID() }
 }
