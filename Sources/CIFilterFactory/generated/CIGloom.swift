@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIGloom/)
 	///
-	@objc(CIFilterFactory_CIGloom) class CIGloom: FilterCommon {
+	@objc(CIFilterFactory_CIGloom) class CIGloom: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGloom")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,41 +56,39 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The radius determines how many pixels are used to create the effect. The larger the radius, the greater the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  10
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIGloom.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputIntensity
 
 		///
 		/// The intensity of the effect. A value of 0.0 is no effect. A value of 1.0 is the maximum effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputIntensity: NSNumber? {
+		static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIGloom.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}

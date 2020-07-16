@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CINoiseReduction/)
 	///
-	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: FilterCommon {
+	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: FilterCore {
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,41 +56,39 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputNoiseLevel
-
 		///
 		/// The amount of noise reduction. The larger the value, the more noise reduction.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.02
 		///   minValue: 0.0
 		///
-		let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputNoiseLevel: NSNumber? {
+		static let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputNoiseLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputNoiseLevel_Range), forKey: "inputNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputNoiseLevel_Range), forKey: "inputNoiseLevel")
 			}
 		}
-
-		// MARK: - inputSharpness
 
 		///
 		/// The sharpness of the final image. The larger the value, the sharper the result.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.4
 		///   minValue: 0.0
 		///
-		let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputSharpness: NSNumber? {
+		static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

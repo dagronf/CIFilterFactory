@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICMYKHalftone/)
 	///
-	@objc(CIFilterFactory_CICMYKHalftone) class CICMYKHalftone: FilterCommon {
+	@objc(CIFilterFactory_CICMYKHalftone) class CICMYKHalftone: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICMYKHalftone")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,49 +56,46 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the halftone pattern
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputWidth
 
 		///
 		/// The distance between dots in the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  6
 		///   minValue: -2.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(-2.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(-2.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputAngle
 
 		///
 		/// The angle of the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
@@ -114,60 +104,57 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSharpness
-
 		///
 		/// The sharpness of the pattern. The larger the value, the sharper the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  0.7
 		///   minValue: 0.0
 		///
-		let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputSharpness: NSNumber? {
+		static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
-
-		// MARK: - inputGCR
 
 		///
 		/// The gray component replacement value. The value can vary from 0.0 (none) to 1.0.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputGCR_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputGCR: NSNumber? {
+		static let inputGCR_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputGCR: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputGCR") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputGCR_Range), forKey: "inputGCR")
+				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputGCR_Range), forKey: "inputGCR")
 			}
 		}
-
-		// MARK: - inputUCR
 
 		///
 		/// The under color removal value. The value can vary from 0.0 to 1.0.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		let inputUCR_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputUCR: NSNumber? {
+		static let inputUCR_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputUCR: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUCR") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputUCR_Range), forKey: "inputUCR")
+				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputUCR_Range), forKey: "inputUCR")
 			}
 		}
 	}

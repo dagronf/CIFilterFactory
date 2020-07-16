@@ -21,8 +21,13 @@
 
 import CoreImage
 
+#if !os(macOS)
+// For access to NSValue.cgAffineTransformValue
+import UIKit
+#endif
+
 public extension CIFilterFactory {
-	@objc(CIFilterFactoryRect) class Vector: NSObject {
+	@objc(CIFilterFactoryVector) class Vector: NSObject {
 		var vector: CIVector
 		init(vector: CIVector) {
 			self.vector = vector
@@ -34,7 +39,9 @@ public extension CIFilterFactory {
 				self.vector = vec
 				super.init()
 			}
-			return nil
+			else {
+				return nil
+			}
 		}
 	}
 
@@ -46,6 +53,10 @@ public extension CIFilterFactory {
 
 		@objc public init(_ rect: CGRect) {
 			super.init(vector: CIVector(cgRect: rect))
+		}
+
+		@objc public init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+			super.init(vector: CIVector(cgRect: CGRect(x: x, y: y, width: width, height: height)))
 		}
 
 		override init?(with filter: CIFilter, key: String) {
@@ -61,6 +72,10 @@ public extension CIFilterFactory {
 
 		@objc public init(_ point: CGPoint) {
 			super.init(vector: CIVector(cgPoint: point))
+		}
+
+		@objc public init(x: CGFloat, y: CGFloat) {
+			super.init(vector: CIVector(cgPoint: CGPoint(x: x, y: y)))
 		}
 
 		override init?(with filter: CIFilter, key: String) {

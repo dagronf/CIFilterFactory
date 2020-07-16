@@ -38,14 +38,18 @@
 	[crystalize setInputImage:[sepiaFilter outputImage]];
 	[crystalize setInputRadius:@(20)];
 
-	CIVector* vec = [[CIVector alloc] initWithX:150 Y:200];
-	[crystalize setInputCenter:vec];
+	CIFilterFactoryPoint* pt = [[CIFilterFactoryPoint alloc] initWithX:150 y:200];
+	[crystalize setInputCenter:pt];
 
 	CIImage* output = [crystalize outputImage];
 	struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
 
 	id outputImage = [[NSImage alloc] initWithCGImage:out size:[output extent].size];
 	[[self imageView] setImage:outputImage];
+
+	id c = [crystalize inputCenter];
+	assert([c point].x == 150);
+	assert([c point].y == 200);
 }
 
 

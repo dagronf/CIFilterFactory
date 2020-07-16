@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
 	///
-	@objc(CIFilterFactory_CIAreaMinMax) class CIAreaMinMax: FilterCommon {
+	@objc(CIFilterFactory_CIAreaMinMax) class CIAreaMinMax: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAreaMinMax")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to process.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that specifies the subregion of the image that you want to process.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 640 80]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}

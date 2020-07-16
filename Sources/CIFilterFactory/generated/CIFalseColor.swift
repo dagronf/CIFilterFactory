@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
 	///
-	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: FilterCommon {
+	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIFalseColor")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor0
-
 		///
 		/// The first color to use for the color ramp.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor0: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(0.3 0 0 1)
+		@objc public dynamic var inputColor0: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
@@ -79,14 +71,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor1
-
 		///
 		/// The second color to use for the color ramp.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor1: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(1 0.9 0.8 1)
+		@objc public dynamic var inputColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.12, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
 	///
-	@objc(CIFilterFactory_CIEdgePreserveUpsampleFilter) class CIEdgePreserveUpsampleFilter: FilterCommon {
+	@objc(CIFilterFactory_CIEdgePreserveUpsampleFilter) class CIEdgePreserveUpsampleFilter: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIEdgePreserveUpsampleFilter")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSmallImage
-
 		///
 		/// No Description
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputSmallImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputSmallImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputSmallImage") as? CIImage
 			}
@@ -79,43 +69,41 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSpatialSigma
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  3
 		///   minValue: 0.0
 		///   maxValue: 5.0
 		///
-		let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
-		@objc public var inputSpatialSigma: NSNumber? {
+		static let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
+		@objc public dynamic var inputSpatialSigma: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSpatialSigma_Range), forKey: "inputSpatialSigma")
+				self.filter.setValue(newValue?.clamped(bounds: CIEdgePreserveUpsampleFilter.inputSpatialSigma_Range), forKey: "inputSpatialSigma")
 			}
 		}
-
-		// MARK: - inputLumaSigma
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.15
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputLumaSigma: NSNumber? {
+		static let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputLumaSigma: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLumaSigma") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputLumaSigma_Range), forKey: "inputLumaSigma")
+				self.filter.setValue(newValue?.clamped(bounds: CIEdgePreserveUpsampleFilter.inputLumaSigma_Range), forKey: "inputLumaSigma")
 			}
 		}
 	}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorMonochrome/)
 	///
-	@objc(CIFilterFactory_CIColorMonochrome) class CIColorMonochrome: FilterCommon {
+	@objc(CIFilterFactory_CIColorMonochrome) class CIColorMonochrome: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorMonochrome")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor
-
 		///
 		/// The monochrome color to apply to the image.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeOpaqueColor
+		///   Default:  rgba(0.6 0.45 0.3 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
@@ -79,22 +71,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputIntensity
-
 		///
 		/// The intensity of the monochrome effect. A value of 1.0 creates a monochrome image using the supplied color. A value of 0.0 has no effect on the image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputIntensity: NSNumber? {
+		static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIColorMonochrome.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}

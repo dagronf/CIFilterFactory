@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.5, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
 	///
-	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: FilterCommon {
+	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILineOverlay")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,98 +56,93 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputNRNoiseLevel
-
 		///
 		/// The noise level of the image (used with camera data) that gets removed before tracing the edges of the image. Increasing the noise level helps to clean up the traced edges of the image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.07000000000000001
 		///   minValue: 0.0
 		///
-		let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputNRNoiseLevel: NSNumber? {
+		static let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputNRNoiseLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
 			}
 		}
-
-		// MARK: - inputNRSharpness
 
 		///
 		/// The amount of sharpening done when removing noise in the image before tracing the edges of the image. This improves the edge acquisition.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.71
 		///   minValue: 0.0
 		///
-		let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputNRSharpness: NSNumber? {
+		static let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputNRSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNRSharpness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputNRSharpness_Range), forKey: "inputNRSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRSharpness_Range), forKey: "inputNRSharpness")
 			}
 		}
-
-		// MARK: - inputEdgeIntensity
 
 		///
 		/// The accentuation factor of the Sobel gradient information when tracing the edges of the image. Higher values find more edges, although typically a low value (such as 1.0) is used.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///
-		let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputEdgeIntensity: NSNumber? {
+		static let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputEdgeIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
 			}
 		}
-
-		// MARK: - inputThreshold
 
 		///
 		/// This value determines edge visibility. Larger values thin out the edges.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.1
 		///   minValue: 0.0
 		///
-		let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputThreshold: NSNumber? {
+		static let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputThreshold: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputThreshold") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputThreshold_Range), forKey: "inputThreshold")
+				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputThreshold_Range), forKey: "inputThreshold")
 			}
 		}
-
-		// MARK: - inputContrast
 
 		///
 		/// The amount of anti-aliasing to use on the edges produced by this filter. Higher values produce higher contrast edges (they are less anti-aliased).
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  50
 		///   minValue: 0.25
 		///
-		let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
-		@objc public var inputContrast: NSNumber? {
+		static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
+		@objc public dynamic var inputContrast: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputContrast_Range), forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputContrast_Range), forKey: "inputContrast")
 			}
 		}
 	}

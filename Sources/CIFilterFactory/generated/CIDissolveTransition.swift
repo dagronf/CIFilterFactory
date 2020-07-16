@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
 	///
-	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: FilterCommon {
+	@objc(CIFilterFactory_CIDissolveTransition) class CIDissolveTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTargetImage
-
 		///
 		/// The target image for a transition.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputTargetImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
@@ -79,23 +70,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTime
-
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeTime
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeTime
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CIDissolveTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

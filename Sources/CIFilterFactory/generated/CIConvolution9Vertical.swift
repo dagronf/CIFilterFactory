@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution9Vertical/)
 	///
-	@objc(CIFilterFactory_CIConvolution9Vertical) class CIConvolution9Vertical: FilterCommon {
+	@objc(CIFilterFactory_CIConvolution9Vertical) class CIConvolution9Vertical: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIConvolution9Vertical")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputWeights
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputWeights: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 0 0 0 1 0 0 0 0]
+		@objc public dynamic var inputWeights: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputWeights") as? CIVector
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBias
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: Not specified
-		///
-		@objc public var inputBias: NSNumber? {
+		///   Class:    NSNumber
+		///   Default:  0
+		@objc public dynamic var inputBias: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBias") as? NSNumber
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,18 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)
 	///
-	@objc(CIFilterFactory_CIRoundedRectangleGenerator) class CIRoundedRectangleGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIRoundedRectangleGenerator) class CIRoundedRectangleGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 100 100]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -63,33 +57,31 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  10
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIRoundedRectangleGenerator.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputColor
 
 		///
 		/// A color.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}

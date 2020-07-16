@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDither/)
 	///
-	@objc(CIFilterFactory_CIDither) class CIDither: FilterCommon {
+	@objc(CIFilterFactory_CIDither) class CIDither: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDither")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,23 +56,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputIntensity
-
 		///
 		/// The intensity of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.1
 		///   minValue: 0.0
 		///   maxValue: 5.0
 		///
-		let inputIntensity_Range: ClosedRange<Float> = 0.0 ... 5.0
-		@objc public var inputIntensity: NSNumber? {
+		static let inputIntensity_Range: ClosedRange<Float> = 0.0 ... 5.0
+		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIDither.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
 	}

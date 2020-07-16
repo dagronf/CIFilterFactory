@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,35 +37,32 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
 	///
-	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: FilterCommon {
+	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the sunbeam pattern
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputColor
 
 		///
 		/// The color of the sun.
 		///
-		///   Class: CIColor, Type: Not specified
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Default:  rgba(1 0.5 0 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
@@ -79,99 +71,94 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputSunRadius
-
 		///
 		/// The radius of the sun.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  40
 		///   minValue: 0.0
 		///
-		let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputSunRadius: NSNumber? {
+		static let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputSunRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSunRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSunRadius_Range), forKey: "inputSunRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputSunRadius_Range), forKey: "inputSunRadius")
 			}
 		}
-
-		// MARK: - inputMaxStriationRadius
 
 		///
 		/// The radius of the sunbeams.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  2.58
 		///   minValue: 0.0
 		///
-		let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputMaxStriationRadius: NSNumber? {
+		static let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputMaxStriationRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
 			}
 		}
-
-		// MARK: - inputStriationStrength
 
 		///
 		/// The intensity of the sunbeams. Higher values result in more intensity.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputStriationStrength: NSNumber? {
+		static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputStriationStrength: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputStriationStrength_Range), forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputStriationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
-
-		// MARK: - inputStriationContrast
 
 		///
 		/// The contrast of the sunbeams. Higher values result in more contrast.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1.375
 		///   minValue: 0.0
 		///
-		let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputStriationContrast: NSNumber? {
+		static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputStriationContrast: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputStriationContrast_Range), forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputStriationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
-
-		// MARK: - inputTime
 
 		///
 		/// The duration of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

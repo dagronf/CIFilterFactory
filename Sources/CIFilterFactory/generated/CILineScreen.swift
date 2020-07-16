@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
 	///
-	@objc(CIFilterFactory_CILineScreen) class CILineScreen: FilterCommon {
+	@objc(CIFilterFactory_CILineScreen) class CILineScreen: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILineScreen")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,30 +56,28 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the line screen pattern
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputAngle
 
 		///
 		/// The angle of the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
@@ -95,42 +86,40 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputWidth
-
 		///
 		/// The distance between lines in the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  6
 		///   minValue: 1.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CILineScreen.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputSharpness
 
 		///
 		/// The sharpness of the pattern. The larger the value, the sharper the pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.7
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputSharpness: NSNumber? {
+		static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: CILineScreen.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
 	}

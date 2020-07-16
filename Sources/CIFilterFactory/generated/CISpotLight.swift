@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
-	@objc(CIFilterFactory_CISpotLight) class CISpotLight: FilterCommon {
+	@objc(CIFilterFactory_CISpotLight) class CISpotLight: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISpotLight")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputLightPosition
-
 		///
 		/// The x and y position of the spotlight.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition3
-		///
-		@objc public var inputLightPosition: CIVector? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition3
+		///   Default:  [400 600 150]
+		@objc public dynamic var inputLightPosition: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputLightPosition") as? CIVector
 			}
@@ -79,14 +71,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputLightPointsAt
-
 		///
 		/// The x and y position that the spotlight points at.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition3
-		///
-		@objc public var inputLightPointsAt: CIVector? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition3
+		///   Default:  [200 200 0]
+		@objc public dynamic var inputLightPointsAt: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputLightPointsAt") as? CIVector
 			}
@@ -95,33 +86,31 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBrightness
-
 		///
 		/// The brightness of the spotlight.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  3
 		///   minValue: 0.0
 		///
-		let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputBrightness: NSNumber? {
+		static let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputBrightness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBrightness") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputBrightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: CISpotLight.inputBrightness_Range), forKey: "inputBrightness")
 			}
 		}
-
-		// MARK: - inputConcentration
 
 		///
 		/// The spotlight size. The smaller the value, the more tightly focused the light beam.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputConcentration: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.1
+		@objc public dynamic var inputConcentration: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputConcentration") as? NSNumber
 			}
@@ -130,14 +119,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor
-
 		///
 		/// The color of the spotlight.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeOpaqueColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.5, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIHexagonalPixellate/)
 	///
-	@objc(CIFilterFactory_CIHexagonalPixellate) class CIHexagonalPixellate: FilterCommon {
+	@objc(CIFilterFactory_CIHexagonalPixellate) class CIHexagonalPixellate: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIHexagonalPixellate")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,38 +56,36 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputScale
 
 		///
 		/// The scale determines the size of the hexagons. Larger values result in larger hexagons.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  8
 		///   minValue: 1.0
 		///
-		let inputScale_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputScale: NSNumber? {
+		static let inputScale_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: CIHexagonalPixellate.inputScale_Range), forKey: "inputScale")
 			}
 		}
 	}

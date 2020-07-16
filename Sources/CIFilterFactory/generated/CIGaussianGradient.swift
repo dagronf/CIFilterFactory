@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,35 +37,33 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
 	///
-	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: FilterCommon {
+	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputColor0
 
 		///
 		/// The first color to use in the gradient.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor0: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor0: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor0") as? CIColor
 			}
@@ -79,14 +72,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor1
-
 		///
 		/// The second color to use in the gradient.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor1: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(0 0 0 0)
+		@objc public dynamic var inputColor1: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor1") as? CIColor
 			}
@@ -95,22 +87,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The radius of the Gaussian distribution.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  300
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIGaussianGradient.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
 	}

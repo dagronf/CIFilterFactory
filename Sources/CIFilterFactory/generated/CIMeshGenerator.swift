@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,38 +37,35 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
 	///
-	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
 		}
 
-		// MARK: - inputWidth
-
 		///
 		/// The width of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  1.5
 		///   minValue: 0.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CIMeshGenerator.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputColor
 
 		///
 		/// A color.
 		///
-		///   Class: CIColor, Type: Not specified
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Default:  rgba(1 1 1 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
@@ -82,14 +74,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMesh
-
 		///
 		/// An array of line segments stored as an array of CIVectors each containing a start point and end point.
 		///
-		///   Class: NSArray, Type: Not specified
-		///
-		@objc public var inputMesh: NSArray? {
+		///   Class:    NSArray
+		@objc public dynamic var inputMesh: NSArray? {
 			get {
 				return self.filter.value(forKey: "inputMesh") as? NSArray
 			}

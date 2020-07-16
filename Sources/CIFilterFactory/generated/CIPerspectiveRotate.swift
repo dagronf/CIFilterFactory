@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
 	///
-	@objc(CIFilterFactory_CIPerspectiveRotate) class CIPerspectiveRotate: FilterCommon {
+	@objc(CIFilterFactory_CIPerspectiveRotate) class CIPerspectiveRotate: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveRotate")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to process.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputFocalLength
-
 		///
 		/// 35mm equivalent focal length of the input image.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputFocalLength: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  28
+		@objc public dynamic var inputFocalLength: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFocalLength") as? NSNumber
 			}
@@ -79,14 +71,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPitch
-
 		///
 		/// Pitch angle in radians.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputPitch: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputPitch: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPitch") as? NSNumber
 			}
@@ -95,14 +86,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputYaw
-
 		///
 		/// Yaw angle in radians.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputYaw: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputYaw: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputYaw") as? NSNumber
 			}
@@ -111,14 +101,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRoll
-
 		///
 		/// Roll angle in radians.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputRoll: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputRoll: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRoll") as? NSNumber
 			}

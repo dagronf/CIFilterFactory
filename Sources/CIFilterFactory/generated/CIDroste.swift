@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.6, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDroste/)
 	///
-	@objc(CIFilterFactory_CIDroste) class CIDroste: FilterCommon {
+	@objc(CIFilterFactory_CIDroste) class CIDroste: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDroste")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,85 +56,80 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputInsetPoint0
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputInsetPoint0: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [200 200]
+		@objc public dynamic var inputInsetPoint0: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputInsetPoint0")
+				self.filter.setValue(newValue?.vector, forKey: "inputInsetPoint0")
 			}
 		}
-
-		// MARK: - inputInsetPoint1
 
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputInsetPoint1: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [400 400]
+		@objc public dynamic var inputInsetPoint1: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputInsetPoint1")
+				self.filter.setValue(newValue?.vector, forKey: "inputInsetPoint1")
 			}
 		}
-
-		// MARK: - inputStrands
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: -10.0
 		///   maxValue: 10.0
 		///
-		let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
-		@objc public var inputStrands: NSNumber? {
+		static let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
+		@objc public dynamic var inputStrands: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStrands") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputStrands_Range), forKey: "inputStrands")
+				self.filter.setValue(newValue?.clamped(bounds: CIDroste.inputStrands_Range), forKey: "inputStrands")
 			}
 		}
-
-		// MARK: - inputPeriodicity
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 1.0
 		///
-		let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputPeriodicity: NSNumber? {
+		static let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputPeriodicity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPeriodicity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputPeriodicity_Range), forKey: "inputPeriodicity")
+				self.filter.setValue(newValue?.clamped(bounds: CIDroste.inputPeriodicity_Range), forKey: "inputPeriodicity")
 			}
 		}
-
-		// MARK: - inputRotation
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputRotation: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
+		@objc public dynamic var inputRotation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRotation") as? NSNumber
 			}
@@ -150,14 +138,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputZoom
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
-		@objc public var inputZoom: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
+		@objc public dynamic var inputZoom: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputZoom") as? NSNumber
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,16 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
 		}
 
-		// MARK: - inputBarcodeDescriptor
-
 		///
 		/// The CIBarcodeDescription object to generate an image for.
 		///
-		///   Class: CIBarcodeDescriptor, Type: Not specified
-		///
-		@objc public var inputBarcodeDescriptor: CIBarcodeDescriptor? {
+		///   Class:    CIBarcodeDescriptor
+		@objc public dynamic var inputBarcodeDescriptor: CIBarcodeDescriptor? {
 			get {
 				return self.filter.value(forKey: "inputBarcodeDescriptor") as? CIBarcodeDescriptor
 			}

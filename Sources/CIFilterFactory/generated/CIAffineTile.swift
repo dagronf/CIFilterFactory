@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAffineTile/)
 	///
-	@objc(CIFilterFactory_CIAffineTile) class CIAffineTile: FilterCommon {
+	@objc(CIFilterFactory_CIAffineTile) class CIAffineTile: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAffineTile")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTransform
-
 		///
 		/// The transform to apply to the image.
 		///
-		///   Class: NSAffineTransform, Type: Not specified
-		///
-		@objc public var inputTransform: CIFilterFactory.AffineTransform? {
+		///   Class:    NSAffineTransform
+		///   Default:  {m11:0.4, m12:0.0, m21:0.0, m22:0.4, tX:0.0, tY:0.0}
+		@objc public dynamic var inputTransform: CIFilterFactory.AffineTransform? {
 			get {
 				return AffineTransform(filter: self.filter, key: "inputTransform")
 			}

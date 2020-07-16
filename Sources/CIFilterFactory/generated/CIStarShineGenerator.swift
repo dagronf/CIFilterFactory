@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,35 +37,32 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIStarShineGenerator/)
 	///
-	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIStarShineGenerator) class CIStarShineGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The x and y position to use as the center of the star.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputColor
 
 		///
 		/// The color to use for the outer shell of the circular star.
 		///
-		///   Class: CIColor, Type: Not specified
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Default:  rgba(1 0.8 0.6 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
@@ -79,52 +71,49 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRadius
-
 		///
 		/// The radius of the star.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  50
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputCrossScale
 
 		///
 		/// The size of the cross pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  15
 		///   minValue: 0.0
 		///
-		let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputCrossScale: NSNumber? {
+		static let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputCrossScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossScale") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossScale_Range), forKey: "inputCrossScale")
+				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossScale_Range), forKey: "inputCrossScale")
 			}
 		}
-
-		// MARK: - inputCrossAngle
 
 		///
 		/// The angle of the cross pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
-		@objc public var inputCrossAngle: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0.6
+		@objc public dynamic var inputCrossAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossAngle") as? NSNumber
 			}
@@ -133,60 +122,57 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCrossOpacity
-
 		///
 		/// The opacity of the cross pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  -2
 		///   minValue: -8.0
 		///
-		let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
-		@objc public var inputCrossOpacity: NSNumber? {
+		static let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
+		@objc public dynamic var inputCrossOpacity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossOpacity_Range), forKey: "inputCrossOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossOpacity_Range), forKey: "inputCrossOpacity")
 			}
 		}
-
-		// MARK: - inputCrossWidth
 
 		///
 		/// The width of the cross pattern.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  2.5
 		///   minValue: 0.0
 		///
-		let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputCrossWidth: NSNumber? {
+		static let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputCrossWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCrossWidth_Range), forKey: "inputCrossWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossWidth_Range), forKey: "inputCrossWidth")
 			}
 		}
-
-		// MARK: - inputEpsilon
 
 		///
 		/// The length of the cross spikes.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  -2
 		///   minValue: -8.0
 		///
-		let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
-		@objc public var inputEpsilon: NSNumber? {
+		static let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
+		@objc public dynamic var inputEpsilon: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputEpsilon_Range), forKey: "inputEpsilon")
+				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputEpsilon_Range), forKey: "inputEpsilon")
 			}
 		}
 	}

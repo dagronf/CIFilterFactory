@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
-	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: FilterCommon {
+	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTargetImage
-
 		///
 		/// The target image for a transition.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputTargetImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
@@ -79,82 +70,78 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBottomHeight
-
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  0
 		///   minValue: 0.0
 		///
-		let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputBottomHeight: NSNumber? {
+		static let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputBottomHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBottomHeight") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputBottomHeight_Range), forKey: "inputBottomHeight")
+				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputBottomHeight_Range), forKey: "inputBottomHeight")
 			}
 		}
-
-		// MARK: - inputNumberOfFolds
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  3
 		///   minValue: 1.0
 		///   maxValue: 50.0
 		///
-		let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
-		@objc public var inputNumberOfFolds: NSNumber? {
+		static let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
+		@objc public dynamic var inputNumberOfFolds: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
+				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
 			}
 		}
-
-		// MARK: - inputFoldShadowAmount
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.1
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputFoldShadowAmount: NSNumber? {
+		static let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputFoldShadowAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
 			}
 		}
-
-		// MARK: - inputTime
 
 		///
 		/// The duration of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeTime
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeTime
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
 	}

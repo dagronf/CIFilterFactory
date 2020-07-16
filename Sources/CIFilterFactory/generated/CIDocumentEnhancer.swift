@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
-	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: FilterCommon {
+	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,23 +56,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAmount
-
 		///
 		/// The amount of enhancement.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		let inputAmount_Range: ClosedRange<Float> = 0.0 ... 10.0
-		@objc public var inputAmount: NSNumber? {
+		static let inputAmount_Range: ClosedRange<Float> = 0.0 ... 10.0
+		@objc public dynamic var inputAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAmount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputAmount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: CIDocumentEnhancer.inputAmount_Range), forKey: "inputAmount")
 			}
 		}
 	}

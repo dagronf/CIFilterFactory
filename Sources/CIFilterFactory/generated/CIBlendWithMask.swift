@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIBlendWithMask/)
 	///
-	@objc(CIFilterFactory_CIBlendWithMask) class CIBlendWithMask: FilterCommon {
+	@objc(CIFilterFactory_CIBlendWithMask) class CIBlendWithMask: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBlendWithMask")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as a foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBackgroundImage
-
 		///
 		/// The image to use as a background image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputBackgroundImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputBackgroundImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMaskImage
-
 		///
 		/// A grayscale mask. When a mask value is 0.0, the result is the background. When the mask value is 1.0, the result is the image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputMaskImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputMaskImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMaskImage") as? CIImage
 			}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
-	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: FilterCommon {
+	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCurvesData
-
 		///
 		/// No Description
 		///
-		///   Class: NSData, Type: Not specified
-		///
-		@objc public var inputCurvesData: NSData? {
+		///   Class:    NSData
+		///   Default:  {length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }
+		@objc public dynamic var inputCurvesData: NSData? {
 			get {
 				return self.filter.value(forKey: "inputCurvesData") as? NSData
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCurvesDomain
-
 		///
 		/// No Description
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputCurvesDomain: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 1]
+		@objc public dynamic var inputCurvesDomain: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputCurvesDomain") as? CIVector
 			}
@@ -95,14 +84,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColorSpace
-
 		///
 		/// No Description
 		///
-		///   Class: NSObject, Type: Not specified
-		///
-		@objc public var inputColorSpace: NSObject? {
+		///   Class:    NSObject
+		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
 				return self.filter.value(forKey: "inputColorSpace") as? NSObject
 			}

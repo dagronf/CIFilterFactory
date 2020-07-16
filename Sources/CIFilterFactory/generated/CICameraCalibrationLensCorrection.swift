@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
-	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: FilterCommon {
+	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to process.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAVCameraCalibrationData
-
 		///
 		/// AVCameraCalibrationData for the correction. Will be set from the inputImage if available and can be overridden here.
 		///
-		///   Class: AVCameraCalibrationData, Type: Not specified
-		///
-		@objc public var inputAVCameraCalibrationData: AVCameraCalibrationData? {
+		///   Class:    AVCameraCalibrationData
+		@objc public dynamic var inputAVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
 				return self.filter.value(forKey: "inputAVCameraCalibrationData") as? AVCameraCalibrationData
 			}
@@ -79,14 +69,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputUseInverseLookUpTable
-
 		///
 		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData
 		///
-		///   Class: NSNumber, Type: Not specified
-		///
-		@objc public var inputUseInverseLookUpTable: NSNumber? {
+		///   Class:    NSNumber
+		///   Default:  0
+		@objc public dynamic var inputUseInverseLookUpTable: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUseInverseLookUpTable") as? NSNumber
 			}

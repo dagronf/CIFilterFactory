@@ -42,7 +42,7 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
 	///
-	@objc(CIFilterFactory_CIColorThreshold) class CIColorThreshold: FilterCommon {
+	@objc(CIFilterFactory_CIColorThreshold) class CIColorThreshold: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorThreshold")
 		}

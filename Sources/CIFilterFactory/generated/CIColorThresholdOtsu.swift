@@ -42,7 +42,7 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
 	///
-	@objc(CIFilterFactory_CIColorThresholdOtsu) class CIColorThresholdOtsu: FilterCommon {
+	@objc(CIFilterFactory_CIColorThresholdOtsu) class CIColorThresholdOtsu: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorThresholdOtsu")
 		}

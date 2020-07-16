@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
-	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: FilterCommon {
+	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRVector
-
 		///
 		/// The amount of red to multiply the source color values by.
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputRVector: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [1 0 0 0]
+		@objc public dynamic var inputRVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputRVector") as? CIVector
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputGVector
-
 		///
 		/// The amount of green to multiply the source color values by.
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputGVector: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 1 0 0]
+		@objc public dynamic var inputGVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputGVector") as? CIVector
 			}
@@ -95,14 +84,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBVector
-
 		///
 		/// The amount of blue to multiply the source color values by.
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputBVector: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 0 1 0]
+		@objc public dynamic var inputBVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputBVector") as? CIVector
 			}
@@ -111,14 +98,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputAVector
-
 		///
 		/// The amount of alpha to multiply the source color values by.
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputAVector: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 0 0 1]
+		@objc public dynamic var inputAVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputAVector") as? CIVector
 			}
@@ -127,14 +112,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBiasVector
-
 		///
 		/// A vector that’s added to each color component.
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputBiasVector: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 0 0 0]
+		@objc public dynamic var inputBiasVector: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputBiasVector") as? CIVector
 			}

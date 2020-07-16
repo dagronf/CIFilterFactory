@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorCrossPolynomial/)
 	///
-	@objc(CIFilterFactory_CIColorCrossPolynomial) class CIColorCrossPolynomial: FilterCommon {
+	@objc(CIFilterFactory_CIColorCrossPolynomial) class CIColorCrossPolynomial: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorCrossPolynomial")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputRedCoefficients
-
 		///
 		/// Polynomial coefficients for red channel
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputRedCoefficients: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [1 0 0 0 0 0 0 0 0 0]
+		@objc public dynamic var inputRedCoefficients: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputRedCoefficients") as? CIVector
 			}
@@ -79,14 +70,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputGreenCoefficients
-
 		///
 		/// Polynomial coefficients for green channel
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputGreenCoefficients: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 1 0 0 0 0 0 0 0 0]
+		@objc public dynamic var inputGreenCoefficients: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputGreenCoefficients") as? CIVector
 			}
@@ -95,14 +84,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputBlueCoefficients
-
 		///
 		/// Polynomial coefficients for blue channel
 		///
-		///   Class: CIVector, Type: Not specified
-		///
-		@objc public var inputBlueCoefficients: CIVector? {
+		///   Class:    CIVector
+		///   Default:  [0 0 1 0 0 0 0 0 0 0]
+		@objc public dynamic var inputBlueCoefficients: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputBlueCoefficients") as? CIVector
 			}

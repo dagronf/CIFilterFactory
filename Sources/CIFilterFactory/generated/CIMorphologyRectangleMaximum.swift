@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
 	///
-	@objc(CIFilterFactory_CIMorphologyRectangleMaximum) class CIMorphologyRectangleMaximum: FilterCommon {
+	@objc(CIFilterFactory_CIMorphologyRectangleMaximum) class CIMorphologyRectangleMaximum: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMorphologyRectangleMaximum")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,41 +56,39 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputWidth
-
 		///
 		/// The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeInteger
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeInteger
+		///   Default:  5
 		///   minValue: 1.0
 		///
-		let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputWidth: NSNumber? {
+		static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyRectangleMaximum.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
-
-		// MARK: - inputHeight
 
 		///
 		/// The height in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeInteger
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeInteger
+		///   Default:  5
 		///   minValue: 1.0
 		///
-		let inputHeight_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputHeight: NSNumber? {
+		static let inputHeight_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputHeight") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputHeight_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyRectangleMaximum.inputHeight_Range), forKey: "inputHeight")
 			}
 		}
 	}

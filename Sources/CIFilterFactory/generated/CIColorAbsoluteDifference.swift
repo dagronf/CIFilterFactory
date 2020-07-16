@@ -42,7 +42,7 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
 	///
-	@objc(CIFilterFactory_CIColorAbsoluteDifference) class CIColorAbsoluteDifference: FilterCommon {
+	@objc(CIFilterFactory_CIColorAbsoluteDifference) class CIColorAbsoluteDifference: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorAbsoluteDifference")
 		}

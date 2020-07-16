@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
 	///
-	@objc(CIFilterFactory_CIColorPosterize) class CIColorPosterize: FilterCommon {
+	@objc(CIFilterFactory_CIColorPosterize) class CIColorPosterize: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorPosterize")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,22 +56,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputLevels
-
 		///
 		/// The number of brightness levels to use for each color component. Lower values result in a more extreme poster effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  6
 		///   minValue: 1.0
 		///
-		let inputLevels_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public var inputLevels: NSNumber? {
+		static let inputLevels_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public dynamic var inputLevels: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLevels") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputLevels_Range), forKey: "inputLevels")
+				self.filter.setValue(newValue?.clamped(bounds: CIColorPosterize.inputLevels_Range), forKey: "inputLevels")
 			}
 		}
 	}

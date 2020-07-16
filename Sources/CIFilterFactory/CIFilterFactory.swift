@@ -24,7 +24,7 @@ import Foundation
 /// A class factory for type-safe Core Image Filter objects
 @objc public class CIFilterFactory: NSObject {
 	/// Common filter base class. You never need need to create this yourself
-	@objc(CIFilterCore) public class FilterCommon: NSObject {
+	@objc(CIFilterFactoryFilterCore) public class FilterCore: NSObject {
 		// The CIFilter wrapped instance for the filter
 		@objc public let filter: CIFilter
 

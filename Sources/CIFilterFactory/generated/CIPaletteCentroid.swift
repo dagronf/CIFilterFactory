@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
-	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: FilterCommon {
+	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPaletteImage
-
 		///
 		/// The input color palette, obtained using “CIKMeans“ filter.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputPaletteImage: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputPaletteImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputPaletteImage") as? CIImage
 			}
@@ -79,23 +69,22 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputPerceptual
-
 		///
 		/// Specifies whether the color palette should be applied in a perceptual color space.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeBoolean
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeBoolean
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputPerceptual: NSNumber? {
+		static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputPerceptual: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputPerceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: CIPaletteCentroid.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}

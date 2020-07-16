@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
 	///
-	@objc(CIFilterFactory_CIVignetteEffect) class CIVignetteEffect: FilterCommon {
+	@objc(CIFilterFactory_CIVignetteEffect) class CIVignetteEffect: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,78 +56,74 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCenter
-
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class: CIVector, Type: CIAttributeTypePosition
-		///
-		@objc public var inputCenter: CIFilterFactory.Point? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypePosition
+		///   Default:  [150 150]
+		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
 			get {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.point, forKey: "inputCenter")
+				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
-
-		// MARK: - inputRadius
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  150
 		///   minValue: 0.0
 		///
-		let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputRadius: NSNumber? {
+		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: CIVignetteEffect.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
-
-		// MARK: - inputIntensity
 
 		///
 		/// The intensity of the effect.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public var inputIntensity: NSNumber? {
+		static let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: CIVignetteEffect.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
-
-		// MARK: - inputFalloff
 
 		///
 		/// No Description
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputFalloff_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputFalloff: NSNumber? {
+		static let inputFalloff_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputFalloff: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFalloff") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputFalloff_Range), forKey: "inputFalloff")
+				self.filter.setValue(newValue?.clamped(bounds: CIVignetteEffect.inputFalloff_Range), forKey: "inputFalloff")
 			}
 		}
 	}

@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,16 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")
 		}
 
-		// MARK: - inputMessage
-
 		///
 		/// The message to encode in the Aztec Barcode
 		///
-		///   Class: NSData, Type: Not specified
-		///
-		@objc public var inputMessage: NSData? {
+		///   Class:    NSData
+		@objc public dynamic var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
@@ -63,63 +55,55 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCorrectionLevel
-
 		///
 		/// Aztec error correction value between 5 and 95
 		///
-		///   Class: NSNumber, Type: Not specified
-		///
+		///   Class:    NSNumber
+		///   Default:  23
 		///   minValue: 5.0
 		///   maxValue: 95.0
 		///
-		let inputCorrectionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
-		@objc public var inputCorrectionLevel: NSNumber? {
+		static let inputCorrectionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
+		@objc public dynamic var inputCorrectionLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
 			}
 		}
-
-		// MARK: - inputLayers
 
 		///
 		/// Aztec layers value between 1 and 32. Set to nil for automatic.
 		///
-		///   Class: NSNumber, Type: Not specified
-		///
+		///   Class:    NSNumber
 		///   minValue: 1.0
 		///   maxValue: 32.0
 		///
-		let inputLayers_Range: ClosedRange<Float> = 1.0 ... 32.0
-		@objc public var inputLayers: NSNumber? {
+		static let inputLayers_Range: ClosedRange<Float> = 1.0 ... 32.0
+		@objc public dynamic var inputLayers: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLayers") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputLayers_Range), forKey: "inputLayers")
+				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputLayers_Range), forKey: "inputLayers")
 			}
 		}
-
-		// MARK: - inputCompactStyle
 
 		///
 		/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
 		///
-		///   Class: NSNumber, Type: Not specified
-		///
+		///   Class:    NSNumber
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputCompactStyle: NSNumber? {
+		static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputCompactStyle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCompactStyle_Range), forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputCompactStyle_Range), forKey: "inputCompactStyle")
 			}
 		}
 	}

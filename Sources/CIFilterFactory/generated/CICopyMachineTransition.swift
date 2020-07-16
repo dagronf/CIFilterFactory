@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CICopyMachineTransition/)
 	///
-	@objc(CIFilterFactory_CICopyMachineTransition) class CICopyMachineTransition: FilterCommon {
+	@objc(CIFilterFactory_CICopyMachineTransition) class CICopyMachineTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICopyMachineTransition")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTargetImage
-
 		///
 		/// The target image for a transition.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputTargetImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputTargetImage") as? CIImage
 			}
@@ -79,14 +70,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 300 300]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -95,14 +85,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputColor
-
 		///
 		/// The color of the copier light.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeOpaqueColor
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeOpaqueColor
+		///   Default:  rgba(0.6 1 0.8 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}
@@ -111,53 +100,50 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputTime
-
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeTime
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeTime
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputTime: NSNumber? {
+		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: CICopyMachineTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
-
-		// MARK: - inputAngle
 
 		///
 		/// The angle of the copier light.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeAngle
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeAngle
+		///   Default:  0
 		///   minValue: 0.0
 		///
-		let inputAngle_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputAngle: NSNumber? {
+		static let inputAngle_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputAngle_Range), forKey: "inputAngle")
+				self.filter.setValue(newValue?.clamped(bounds: CICopyMachineTransition.inputAngle_Range), forKey: "inputAngle")
 			}
 		}
-
-		// MARK: - inputWidth
 
 		///
 		/// The width of the copier light.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeDistance
-		///
-		@objc public var inputWidth: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeDistance
+		///   Default:  200
+		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
 			}
@@ -166,22 +152,21 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputOpacity
-
 		///
 		/// The opacity of the copier light. A value of 0.0 is transparent. A value of 1.0 is opaque.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeScalar
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  1.3
 		///   minValue: 0.0
 		///
-		let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public var inputOpacity: NSNumber? {
+		static let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public dynamic var inputOpacity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputOpacity") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputOpacity_Range), forKey: "inputOpacity")
+				self.filter.setValue(newValue?.clamped(bounds: CICopyMachineTransition.inputOpacity_Range), forKey: "inputOpacity")
 			}
 		}
 	}

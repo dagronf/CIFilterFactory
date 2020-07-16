@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 		let crystalize = CIFilterFactory.CICrystallize()!
 		crystalize.inputImage = sepiaFilter.outputImage
 		crystalize.inputRadius = 20
-		crystalize.inputCenter = CIVector(x: 150, y: 200)
+		crystalize.inputCenter = CIFilterFactory.Point(x: 150, y: 200)
 
 		let output = crystalize.outputImage
 		let outputImage = UIImage(ciImage: output!)
@@ -40,8 +40,8 @@ class ViewController: UIViewController {
 
 		/// Just a simple check
 		assert(crystalize.inputRadius == 20)
-		assert(crystalize.inputCenter?.x == 150)
-		assert(crystalize.inputCenter?.y == 200)
+		assert(crystalize.inputCenter?.point.x == 150)
+		assert(crystalize.inputCenter?.point.y == 200)
 	}
 
 }

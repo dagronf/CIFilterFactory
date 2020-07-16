@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,17 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
 	///
-	@objc(CIFilterFactory_CIKMeans) class CIKMeans: FilterCommon {
+	@objc(CIFilterFactory_CIKMeans) class CIKMeans: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIKMeans")
 		}
 
-		// MARK: - inputImage
-
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class: CIImage, Type: CIAttributeTypeImage
-		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -63,14 +56,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputExtent
-
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class: CIVector, Type: CIAttributeTypeRectangle
-		///
-		@objc public var inputExtent: CIFilterFactory.Rect? {
+		///   Class:    CIVector
+		///   Type:     CIAttributeTypeRectangle
+		///   Default:  [0 0 640 80]
+		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
 			get {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
@@ -79,14 +71,11 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputMeans
-
 		///
 		/// Specifies the color seeds to use for k-means clustering, either passed as an image or an array of colors.
 		///
-		///   Class: CIImage, Type: Not specified
-		///
-		@objc public var inputMeans: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputMeans: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputMeans") as? CIImage
 			}
@@ -95,63 +84,60 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCount
-
 		///
 		/// Specifies how many k-means color clusters should be used.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeCount
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeCount
+		///   Default:  8
 		///   minValue: 0.0
 		///   maxValue: 128.0
 		///
-		let inputCount_Range: ClosedRange<Float> = 0.0 ... 128.0
-		@objc public var inputCount: NSNumber? {
+		static let inputCount_Range: ClosedRange<Float> = 0.0 ... 128.0
+		@objc public dynamic var inputCount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCount") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputCount_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputCount_Range), forKey: "inputCount")
 			}
 		}
-
-		// MARK: - inputPasses
 
 		///
 		/// Specifies how many k-means passes should be performed.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeCount
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeCount
+		///   Default:  5
 		///   minValue: 0.0
 		///   maxValue: 20.0
 		///
-		let inputPasses_Range: ClosedRange<Float> = 0.0 ... 20.0
-		@objc public var inputPasses: NSNumber? {
+		static let inputPasses_Range: ClosedRange<Float> = 0.0 ... 20.0
+		@objc public dynamic var inputPasses: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPasses") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputPasses_Range), forKey: "inputPasses")
+				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputPasses_Range), forKey: "inputPasses")
 			}
 		}
-
-		// MARK: - inputPerceptual
 
 		///
 		/// Specifies whether the k-means color palette should be computed in a perceptual color space.
 		///
-		///   Class: NSNumber, Type: CIAttributeTypeBoolean
-		///
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeBoolean
+		///   Default:  0
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public var inputPerceptual: NSNumber? {
+		static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public dynamic var inputPerceptual: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: self.inputPerceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 	}

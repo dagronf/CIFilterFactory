@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,18 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
 	///
-	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")
 		}
 
-		// MARK: - inputColor
-
 		///
 		/// The color to generate.
 		///
-		///   Class: CIColor, Type: CIAttributeTypeColor
-		///
-		@objc public var inputColor: CIColor? {
+		///   Class:    CIColor
+		///   Type:     CIAttributeTypeColor
+		///   Default:  rgba(1 0 0 1)
+		@objc public dynamic var inputColor: CIColor? {
 			get {
 				return self.filter.value(forKey: "inputColor") as? CIColor
 			}

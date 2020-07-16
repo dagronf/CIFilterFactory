@@ -24,11 +24,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
-
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -42,19 +37,16 @@ import Foundation
 	///
 	/// [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
 	///
-	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: FilterCommon {
+	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
 		}
 
-		// MARK: - inputMessage
-
 		///
 		/// The message to encode in the QR Code
 		///
-		///   Class: NSData, Type: Not specified
-		///
-		@objc public var inputMessage: NSData? {
+		///   Class:    NSData
+		@objc public dynamic var inputMessage: NSData? {
 			get {
 				return self.filter.value(forKey: "inputMessage") as? NSData
 			}
@@ -63,14 +55,12 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputCorrectionLevel
-
 		///
 		/// QR Code correction level L, M, Q, or H.
 		///
-		///   Class: NSString, Type: Not specified
-		///
-		@objc public var inputCorrectionLevel: NSString? {
+		///   Class:    NSString
+		///   Default:  M
+		@objc public dynamic var inputCorrectionLevel: NSString? {
 			get {
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSString
 			}
