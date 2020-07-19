@@ -35,7 +35,9 @@ import Foundation
 			self.filter = filter
 			super.init()
 
+			#if os(macOS)
 			filter.setDefaults()
+			#endif
 		}
 
 		/// Returns a CIImage object that encapsulates the operations configured in the filter.
