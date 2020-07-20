@@ -93,5 +93,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyRectangleMaximum.inputHeight_Range), forKey: "inputHeight")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputWidth: NSNumber = 5,
+			inputHeight: NSNumber = 5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputWidth = inputWidth
+			self.inputHeight = inputHeight
+		}
 	}
 }

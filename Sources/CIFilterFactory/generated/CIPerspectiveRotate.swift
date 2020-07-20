@@ -123,5 +123,23 @@ import Foundation
 		@objc public dynamic var outputTransform: Any? {
 			return self.filter.value(forKey: "outputTransform")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputFocalLength: NSNumber = 28,
+			inputPitch: NSNumber = 0,
+			inputYaw: NSNumber = 0,
+			inputRoll: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputFocalLength = inputFocalLength
+			self.inputPitch = inputPitch
+			self.inputYaw = inputYaw
+			self.inputRoll = inputRoll
+		}
 	}
 }

@@ -159,5 +159,27 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.0, y: 300.0),
+			inputPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 300.0, y: 300.0),
+			inputSaturation: NSNumber = 1.5,
+			inputUnsharpMaskRadius: NSNumber = 2.5,
+			inputUnsharpMaskIntensity: NSNumber = 0.5,
+			inputRadius: NSNumber = 6
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPoint0 = inputPoint0
+			self.inputPoint1 = inputPoint1
+			self.inputSaturation = inputSaturation
+			self.inputUnsharpMaskRadius = inputUnsharpMaskRadius
+			self.inputUnsharpMaskIntensity = inputUnsharpMaskIntensity
+			self.inputRadius = inputRadius
+		}
 	}
 }

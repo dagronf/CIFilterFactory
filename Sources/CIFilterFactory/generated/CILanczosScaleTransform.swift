@@ -93,5 +93,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputScale: NSNumber = 1,
+			inputAspectRatio: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputScale = inputScale
+			self.inputAspectRatio = inputAspectRatio
+		}
 	}
 }

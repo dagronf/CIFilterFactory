@@ -261,5 +261,43 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputShape")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputDisparityImage: CIImage,
+			inputMatteImage: CIImage,
+			inputHairImage: CIImage,
+			inputAperture: NSNumber = 0,
+			inputLeftEyePositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
+			inputRightEyePositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
+			inputChinPositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
+			inputNosePositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
+			inputFocusRect: CIFilterFactory.Rect,
+			inputLumaNoiseScale: NSNumber = 0,
+			inputScaleFactor: NSNumber = 1,
+			inputCalibrationData: AVCameraCalibrationData,
+			inputAuxDataMetadata: CGImageMetadata,
+			inputShape: NSString
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputDisparityImage = inputDisparityImage
+			self.inputMatteImage = inputMatteImage
+			self.inputHairImage = inputHairImage
+			self.inputAperture = inputAperture
+			self.inputLeftEyePositions = inputLeftEyePositions
+			self.inputRightEyePositions = inputRightEyePositions
+			self.inputChinPositions = inputChinPositions
+			self.inputNosePositions = inputNosePositions
+			self.inputFocusRect = inputFocusRect
+			self.inputLumaNoiseScale = inputLumaNoiseScale
+			self.inputScaleFactor = inputScaleFactor
+			self.inputCalibrationData = inputCalibrationData
+			self.inputAuxDataMetadata = inputAuxDataMetadata
+			self.inputShape = inputShape
+		}
 	}
 }

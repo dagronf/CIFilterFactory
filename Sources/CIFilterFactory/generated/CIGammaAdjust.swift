@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputPower")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPower: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPower = inputPower
+		}
 	}
 }

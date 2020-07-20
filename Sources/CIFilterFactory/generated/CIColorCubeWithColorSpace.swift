@@ -103,5 +103,21 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColorSpace")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCubeDimension: NSNumber = 2,
+			inputCubeData: NSData,
+			inputColorSpace: NSObject
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCubeDimension = inputCubeDimension
+			self.inputCubeData = inputCubeData
+			self.inputColorSpace = inputColorSpace
+		}
 	}
 }

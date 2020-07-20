@@ -147,5 +147,25 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputContrast_Range), forKey: "inputContrast")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputNRNoiseLevel: NSNumber = 0.07000000000000001,
+			inputNRSharpness: NSNumber = 0.71,
+			inputEdgeIntensity: NSNumber = 1,
+			inputThreshold: NSNumber = 0.1,
+			inputContrast: NSNumber = 50
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputNRNoiseLevel = inputNRNoiseLevel
+			self.inputNRSharpness = inputNRSharpness
+			self.inputEdgeIntensity = inputEdgeIntensity
+			self.inputThreshold = inputThreshold
+			self.inputContrast = inputContrast
+		}
 	}
 }

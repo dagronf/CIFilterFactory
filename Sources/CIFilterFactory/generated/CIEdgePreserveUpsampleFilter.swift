@@ -108,5 +108,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIEdgePreserveUpsampleFilter.inputLumaSigma_Range), forKey: "inputLumaSigma")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputSmallImage: CIImage,
+			inputSpatialSigma: NSNumber = 3,
+			inputLumaSigma: NSNumber = 0.15
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputSmallImage = inputSmallImage
+			self.inputSpatialSigma = inputSpatialSigma
+			self.inputLumaSigma = inputLumaSigma
+		}
 	}
 }

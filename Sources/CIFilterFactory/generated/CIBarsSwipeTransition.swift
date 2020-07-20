@@ -141,5 +141,25 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputAngle: NSNumber = 3.141592653589793,
+			inputWidth: NSNumber = 30,
+			inputBarOffset: NSNumber = 10,
+			inputTime: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputAngle = inputAngle
+			self.inputWidth = inputWidth
+			self.inputBarOffset = inputBarOffset
+			self.inputTime = inputTime
+		}
 	}
 }

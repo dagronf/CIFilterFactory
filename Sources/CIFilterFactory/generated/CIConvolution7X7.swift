@@ -85,5 +85,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputBias")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			inputBias: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputWeights = inputWeights
+			self.inputBias = inputBias
+		}
 	}
 }

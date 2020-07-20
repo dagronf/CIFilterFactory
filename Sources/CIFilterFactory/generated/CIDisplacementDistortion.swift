@@ -88,5 +88,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIDisplacementDistortion.inputScale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputDisplacementImage: CIImage,
+			inputScale: NSNumber = 50
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputDisplacementImage = inputDisplacementImage
+			self.inputScale = inputScale
+		}
 	}
 }

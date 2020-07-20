@@ -138,5 +138,25 @@ import Foundation
 		@objc public dynamic var outputRotationFilter: Any? {
 			return self.filter.value(forKey: "outputRotationFilter")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputFocalLength: NSNumber = 28,
+			inputTopLeft: CIFilterFactory.Point,
+			inputTopRight: CIFilterFactory.Point,
+			inputBottomRight: CIFilterFactory.Point,
+			inputBottomLeft: CIFilterFactory.Point
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputFocalLength = inputFocalLength
+			self.inputTopLeft = inputTopLeft
+			self.inputTopRight = inputTopRight
+			self.inputBottomRight = inputBottomRight
+			self.inputBottomLeft = inputBottomLeft
+		}
 	}
 }

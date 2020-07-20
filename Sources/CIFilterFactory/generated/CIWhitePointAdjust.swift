@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputColor: CIColor
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputColor = inputColor
+		}
 	}
 }

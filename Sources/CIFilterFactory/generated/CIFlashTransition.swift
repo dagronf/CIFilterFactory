@@ -208,5 +208,33 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputFadeThreshold_Range), forKey: "inputFadeThreshold")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
+			inputColor: CIColor,
+			inputTime: NSNumber = 0,
+			inputMaxStriationRadius: NSNumber = 2.58,
+			inputStriationStrength: NSNumber = 0.5,
+			inputStriationContrast: NSNumber = 1.375,
+			inputFadeThreshold: NSNumber = 0.85
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputCenter = inputCenter
+			self.inputExtent = inputExtent
+			self.inputColor = inputColor
+			self.inputTime = inputTime
+			self.inputMaxStriationRadius = inputMaxStriationRadius
+			self.inputStriationStrength = inputStriationStrength
+			self.inputStriationContrast = inputStriationContrast
+			self.inputFadeThreshold = inputFadeThreshold
+		}
 	}
 }

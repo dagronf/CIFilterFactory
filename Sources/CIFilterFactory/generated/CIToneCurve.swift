@@ -132,5 +132,25 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputPoint4")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.0, y: 0.0),
+			inputPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.25, y: 0.25),
+			inputPoint2: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.5, y: 0.5),
+			inputPoint3: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.75, y: 0.75),
+			inputPoint4: CIFilterFactory.Point = CIFilterFactory.Point(x: 1.0, y: 1.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPoint0 = inputPoint0
+			self.inputPoint1 = inputPoint1
+			self.inputPoint2 = inputPoint2
+			self.inputPoint3 = inputPoint3
+			self.inputPoint4 = inputPoint4
+		}
 	}
 }

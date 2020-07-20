@@ -117,5 +117,23 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputBottomLeft")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTopLeft: CIFilterFactory.Point = CIFilterFactory.Point(x: 118.0, y: 484.0),
+			inputTopRight: CIFilterFactory.Point = CIFilterFactory.Point(x: 646.0, y: 507.0),
+			inputBottomRight: CIFilterFactory.Point = CIFilterFactory.Point(x: 548.0, y: 140.0),
+			inputBottomLeft: CIFilterFactory.Point = CIFilterFactory.Point(x: 155.0, y: 153.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTopLeft = inputTopLeft
+			self.inputTopRight = inputTopRight
+			self.inputBottomRight = inputBottomRight
+			self.inputBottomLeft = inputBottomLeft
+		}
 	}
 }

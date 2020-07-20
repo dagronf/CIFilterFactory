@@ -110,5 +110,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIStretchCrop.inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputSize: CIFilterFactory.Point = CIFilterFactory.Point(x: 1280.0, y: 720.0),
+			inputCropAmount: NSNumber = 0.25,
+			inputCenterStretchAmount: NSNumber = 0.25
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputSize = inputSize
+			self.inputCropAmount = inputCropAmount
+			self.inputCenterStretchAmount = inputCenterStretchAmount
+		}
 	}
 }

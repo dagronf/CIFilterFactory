@@ -107,6 +107,15 @@ import CoreImage
 	out.print("   // MARK: - Inputs")
 	out.print("")
 
+	struct InitType {
+		let name: String
+		let `class`: String
+		let subtype: String?
+		let `default`: Any?
+	}
+
+	var initializers = [InitType]()
+
 	for key in inputKeys {
 
 		guard let keyItem = filterAttributes[key] as? [String: Any],
@@ -119,6 +128,8 @@ import CoreImage
 		let keyDefaultValue = keyItem[kCIAttributeDefault]
 
 		// Write out the description for the key
+
+		initializers.append( InitType(name: key, class: keyClass, subtype: keySubType, default: keyDefaultValue))
 
 		out.print("   ///")
 		out.print("   /// \(keyDesc ?? "No Description")")
@@ -216,6 +227,65 @@ import CoreImage
 			out.print("      return self.filter.value(forKey: \"\(key)\")")
 			out.print("   }")
 		}
+	}
+
+	var str = ""
+	var initializer = ""
+	initializers.forEach { key in
+		if !str.isEmpty { str += ", " }
+
+		let subtype: String = {
+			if key.subtype == "CIAttributeTypePosition" {
+				return "CIFilterFactory.Point"
+			}
+			else if key.subtype == "CIAttributeTypeRectangle" {
+				return "CIFilterFactory.Rect"
+			}
+			else if key.subtype == "CIAttributeTypeOffset" {
+				return "CIFilterFactory.Point"
+			}
+			else if key.class == "NSAffineTransform" {
+				return "CIFilterFactory.AffineTransform"
+			}
+			else if key.class == "CGImageMetadataRef" {
+				return "CGImageMetadata"
+			}
+			return key.class
+		}()
+
+		str += "\n         \(key.name): \(subtype)"
+		initializer += "\n         self.\(key.name) = \(key.name)"
+		if let def = key.default,
+		   key.class != "NSData",
+		   key.class != "CIColor",
+		   key.class != "NSObject",
+		   subtype != "CIFilterFactory.AffineTransform" {
+			var defValue = "\(def)"
+			if subtype == "CIFilterFactory.Point", let defv = def as? CIVector {
+				defValue = "CIFilterFactory.Point(x: \(defv.x), y: \(defv.y))"
+			}
+			else if subtype == "CIFilterFactory.Rect", let defv = def as? CIVector {
+				defValue = "CIFilterFactory.Rect(x: \(defv.x), y: \(defv.y), width: \(defv.cgRectValue.width), height: \(defv.cgRectValue.height))"
+			}
+			else if key.class == "NSString", let defv = def as? NSString {
+				defValue = "\"\(defv)\""
+			}
+			else if key.class == "CIVector", let defv = def as? CIVector {
+				defValue = "CIVector([\(defv.valuesStr)])"
+			}
+
+			str += " = \(defValue)"
+		}
+	}
+	
+	if str.count > 0 {
+		out.print("")
+		out.print("      // MARK: - Convenience initializer")
+		out.print("")
+		out.print("      @objc public convenience init?(\(str)) {")
+		out.print("         self.init()")
+		out.print("         \(initializer)")
+		out.print("      }")
 	}
 
 	out.print("   }\n")
@@ -342,4 +412,22 @@ extension CGColorSpace : CFTypeProtocol {}
 // you have to implement it yourself by forwarding to their global function.
 extension CFDictionary : CFTypeProtocol {
   static var typeID: CFTypeID { return CFDictionaryGetTypeID() }
+}
+
+extension CIVector {
+	convenience init(values: [CGFloat]) {
+		self.init(values: values, count: values.count)
+	}
+
+	var values: [CGFloat] {
+		return (0 ..< self.count).map { index in
+			self.value(at: index)
+		}
+	}
+	var valuesStr: String {
+		let vals = self.values.reduce("") { (result, value) in
+			return result.appending("\(result.isEmpty ? "" : ", ") \(value)")
+		}
+		return vals
+	}
 }

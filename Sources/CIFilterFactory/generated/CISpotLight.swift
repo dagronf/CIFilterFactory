@@ -135,5 +135,25 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputLightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),
+			inputLightPointsAt: CIVector = CIVector([200.0, 200.0, 0.0]),
+			inputBrightness: NSNumber = 3,
+			inputConcentration: NSNumber = 0.1,
+			inputColor: CIColor
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputLightPosition = inputLightPosition
+			self.inputLightPointsAt = inputLightPointsAt
+			self.inputBrightness = inputBrightness
+			self.inputConcentration = inputConcentration
+			self.inputColor = inputColor
+		}
 	}
 }

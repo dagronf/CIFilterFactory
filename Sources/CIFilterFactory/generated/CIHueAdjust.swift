@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputAngle: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputAngle = inputAngle
+		}
 	}
 }

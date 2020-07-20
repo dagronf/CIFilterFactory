@@ -76,5 +76,17 @@ import Foundation
 		@objc public dynamic var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputMessage: NSData,
+			inputCorrectionLevel: NSString = "M"
+		) {
+			self.init()
+
+			self.inputMessage = inputMessage
+			self.inputCorrectionLevel = inputCorrectionLevel
+		}
 	}
 }

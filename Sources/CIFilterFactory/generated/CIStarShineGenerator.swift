@@ -177,5 +177,29 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputEpsilon_Range), forKey: "inputEpsilon")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputColor: CIColor,
+			inputRadius: NSNumber = 50,
+			inputCrossScale: NSNumber = 15,
+			inputCrossAngle: NSNumber = 0.6,
+			inputCrossOpacity: NSNumber = -2,
+			inputCrossWidth: NSNumber = 2.5,
+			inputEpsilon: NSNumber = -2
+		) {
+			self.init()
+
+			self.inputCenter = inputCenter
+			self.inputColor = inputColor
+			self.inputRadius = inputRadius
+			self.inputCrossScale = inputCrossScale
+			self.inputCrossAngle = inputCrossAngle
+			self.inputCrossOpacity = inputCrossOpacity
+			self.inputCrossWidth = inputCrossWidth
+			self.inputEpsilon = inputEpsilon
+		}
 	}
 }

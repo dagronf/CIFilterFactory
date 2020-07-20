@@ -132,5 +132,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputSoftness_Range), forKey: "inputSoftness")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 20,
+			inputRingAmount: NSNumber = 0,
+			inputRingSize: NSNumber = 0.1,
+			inputSoftness: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+			self.inputRingAmount = inputRingAmount
+			self.inputRingSize = inputRingSize
+			self.inputSoftness = inputSoftness
+		}
 	}
 }

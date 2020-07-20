@@ -170,5 +170,29 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIRippleTransition.inputScale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputShadingImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
+			inputTime: NSNumber = 0,
+			inputWidth: NSNumber = 100,
+			inputScale: NSNumber = 50
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputShadingImage = inputShadingImage
+			self.inputCenter = inputCenter
+			self.inputExtent = inputExtent
+			self.inputTime = inputTime
+			self.inputWidth = inputWidth
+			self.inputScale = inputScale
+		}
 	}
 }

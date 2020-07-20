@@ -128,5 +128,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIVignetteEffect.inputFalloff_Range), forKey: "inputFalloff")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputRadius: NSNumber = 150,
+			inputIntensity: NSNumber = 1,
+			inputFalloff: NSNumber = 0.5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputRadius = inputRadius
+			self.inputIntensity = inputIntensity
+			self.inputFalloff = inputFalloff
+		}
 	}
 }

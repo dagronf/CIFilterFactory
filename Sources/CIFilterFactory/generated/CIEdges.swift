@@ -75,5 +75,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIEdges.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputIntensity: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputIntensity = inputIntensity
+		}
 	}
 }

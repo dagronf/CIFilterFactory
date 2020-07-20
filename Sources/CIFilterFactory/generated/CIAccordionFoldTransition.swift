@@ -146,5 +146,25 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputBottomHeight: NSNumber = 0,
+			inputNumberOfFolds: NSNumber = 3,
+			inputFoldShadowAmount: NSNumber = 0.1,
+			inputTime: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputBottomHeight = inputBottomHeight
+			self.inputNumberOfFolds = inputNumberOfFolds
+			self.inputFoldShadowAmount = inputFoldShadowAmount
+			self.inputTime = inputTime
+		}
 	}
 }

@@ -201,5 +201,33 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputShadowExtent")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputBacksideImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0),
+			inputTime: NSNumber = 0,
+			inputAngle: NSNumber = 0,
+			inputRadius: NSNumber = 100,
+			inputShadowSize: NSNumber = 0.5,
+			inputShadowAmount: NSNumber = 0.7,
+			inputShadowExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputBacksideImage = inputBacksideImage
+			self.inputExtent = inputExtent
+			self.inputTime = inputTime
+			self.inputAngle = inputAngle
+			self.inputRadius = inputRadius
+			self.inputShadowSize = inputShadowSize
+			self.inputShadowAmount = inputShadowAmount
+			self.inputShadowExtent = inputShadowExtent
+		}
 	}
 }

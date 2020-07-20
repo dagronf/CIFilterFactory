@@ -89,5 +89,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIPalettize.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPaletteImage: CIImage,
+			inputPerceptual: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPaletteImage = inputPaletteImage
+			self.inputPerceptual = inputPerceptual
+		}
 	}
 }

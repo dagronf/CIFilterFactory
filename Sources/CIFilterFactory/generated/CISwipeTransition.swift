@@ -168,5 +168,29 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CISwipeTransition.inputOpacity_Range), forKey: "inputOpacity")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
+			inputColor: CIColor,
+			inputTime: NSNumber = 0,
+			inputAngle: NSNumber = 0,
+			inputWidth: NSNumber = 300,
+			inputOpacity: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputExtent = inputExtent
+			self.inputColor = inputColor
+			self.inputTime = inputTime
+			self.inputAngle = inputAngle
+			self.inputWidth = inputWidth
+			self.inputOpacity = inputOpacity
+		}
 	}
 }

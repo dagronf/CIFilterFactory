@@ -76,5 +76,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIVibrance.inputAmount_Range), forKey: "inputAmount")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputAmount: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputAmount = inputAmount
+		}
 	}
 }

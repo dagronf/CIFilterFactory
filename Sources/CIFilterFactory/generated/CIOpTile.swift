@@ -123,5 +123,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIOpTile.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputScale: NSNumber = 2.8,
+			inputAngle: NSNumber = 0,
+			inputWidth: NSNumber = 65
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputScale = inputScale
+			self.inputAngle = inputAngle
+			self.inputWidth = inputWidth
+		}
 	}
 }

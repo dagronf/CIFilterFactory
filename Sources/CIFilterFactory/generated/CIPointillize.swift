@@ -90,5 +90,19 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 20,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+			self.inputCenter = inputCenter
+		}
 	}
 }

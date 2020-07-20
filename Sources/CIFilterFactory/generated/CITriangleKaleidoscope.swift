@@ -117,5 +117,23 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputDecay")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPoint: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputSize: NSNumber = 700,
+			inputRotation: NSNumber = 5.924285296593801,
+			inputDecay: NSNumber = 0.85
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPoint = inputPoint
+			self.inputSize = inputSize
+			self.inputRotation = inputRotation
+			self.inputDecay = inputDecay
+		}
 	}
 }

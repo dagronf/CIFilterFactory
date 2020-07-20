@@ -102,5 +102,21 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputGrowAmount")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputBreakpoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 50.0, y: 50.0),
+			inputBreakpoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputGrowAmount: CIFilterFactory.Point = CIFilterFactory.Point(x: 100.0, y: 100.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputBreakpoint0 = inputBreakpoint0
+			self.inputBreakpoint1 = inputBreakpoint1
+			self.inputGrowAmount = inputGrowAmount
+		}
 	}
 }

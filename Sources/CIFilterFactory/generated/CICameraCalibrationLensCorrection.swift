@@ -84,5 +84,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputUseInverseLookUpTable")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputAVCameraCalibrationData: AVCameraCalibrationData,
+			inputUseInverseLookUpTable: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputAVCameraCalibrationData = inputAVCameraCalibrationData
+			self.inputUseInverseLookUpTable = inputUseInverseLookUpTable
+		}
 	}
 }

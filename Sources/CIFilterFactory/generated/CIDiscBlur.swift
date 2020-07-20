@@ -75,5 +75,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIDiscBlur.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 8
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+		}
 	}
 }

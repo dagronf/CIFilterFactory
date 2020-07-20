@@ -105,5 +105,21 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputAngle")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputRadius: NSNumber = 150,
+			inputAngle: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputRadius = inputRadius
+			self.inputAngle = inputAngle
+		}
 	}
 }

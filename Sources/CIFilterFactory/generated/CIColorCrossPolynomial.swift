@@ -99,5 +99,21 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputBlueCoefficients")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRedCoefficients: CIVector = CIVector([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			inputGreenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			inputBlueCoefficients: CIVector = CIVector([0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRedCoefficients = inputRedCoefficients
+			self.inputGreenCoefficients = inputGreenCoefficients
+			self.inputBlueCoefficients = inputBlueCoefficients
+		}
 	}
 }

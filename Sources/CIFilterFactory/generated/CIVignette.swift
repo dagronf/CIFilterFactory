@@ -95,5 +95,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIVignette.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputIntensity: NSNumber = 0,
+			inputRadius: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputIntensity = inputIntensity
+			self.inputRadius = inputRadius
+		}
 	}
 }

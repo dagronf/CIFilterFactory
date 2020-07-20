@@ -89,5 +89,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIShadedMaterial.inputScale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputShadingImage: CIImage,
+			inputScale: NSNumber = 10
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputShadingImage = inputShadingImage
+			self.inputScale = inputScale
+		}
 	}
 }

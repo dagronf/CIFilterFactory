@@ -100,5 +100,19 @@ import Foundation
 		@objc public dynamic var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputMessage: NSData,
+			inputQuietSpace: NSNumber = 7,
+			inputBarcodeHeight: NSNumber = 32
+		) {
+			self.init()
+
+			self.inputMessage = inputMessage
+			self.inputQuietSpace = inputQuietSpace
+			self.inputBarcodeHeight = inputBarcodeHeight
+		}
 	}
 }

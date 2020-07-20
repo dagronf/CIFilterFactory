@@ -75,5 +75,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIColorPosterize.inputLevels_Range), forKey: "inputLevels")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputLevels: NSNumber = 6
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputLevels = inputLevels
+		}
 	}
 }

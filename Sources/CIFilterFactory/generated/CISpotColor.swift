@@ -249,5 +249,39 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast3_Range), forKey: "inputContrast3")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenterColor1: CIColor,
+			inputReplacementColor1: CIColor,
+			inputCloseness1: NSNumber = 0.22,
+			inputContrast1: NSNumber = 0.98,
+			inputCenterColor2: CIColor,
+			inputReplacementColor2: CIColor,
+			inputCloseness2: NSNumber = 0.15,
+			inputContrast2: NSNumber = 0.98,
+			inputCenterColor3: CIColor,
+			inputReplacementColor3: CIColor,
+			inputCloseness3: NSNumber = 0.5,
+			inputContrast3: NSNumber = 0.99
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenterColor1 = inputCenterColor1
+			self.inputReplacementColor1 = inputReplacementColor1
+			self.inputCloseness1 = inputCloseness1
+			self.inputContrast1 = inputContrast1
+			self.inputCenterColor2 = inputCenterColor2
+			self.inputReplacementColor2 = inputReplacementColor2
+			self.inputCloseness2 = inputCloseness2
+			self.inputContrast2 = inputContrast2
+			self.inputCenterColor3 = inputCenterColor3
+			self.inputReplacementColor3 = inputReplacementColor3
+			self.inputCloseness3 = inputCloseness3
+			self.inputContrast3 = inputContrast3
+		}
 	}
 }

@@ -90,5 +90,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIColorMonochrome.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputColor: CIColor,
+			inputIntensity: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputColor = inputColor
+			self.inputIntensity = inputIntensity
+		}
 	}
 }

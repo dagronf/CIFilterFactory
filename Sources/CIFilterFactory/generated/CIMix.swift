@@ -86,5 +86,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputAmount")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputBackgroundImage: CIImage,
+			inputAmount: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputBackgroundImage = inputBackgroundImage
+			self.inputAmount = inputAmount
+		}
 	}
 }

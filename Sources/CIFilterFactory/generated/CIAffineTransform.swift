@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue?.embeddedValue(), forKey: "inputTransform")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTransform: CIFilterFactory.AffineTransform
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTransform = inputTransform
+		}
 	}
 }

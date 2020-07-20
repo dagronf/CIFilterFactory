@@ -71,5 +71,17 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputGradientImage")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputGradientImage: CIImage
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputGradientImage = inputGradientImage
+		}
 	}
 }

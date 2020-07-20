@@ -120,5 +120,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIStripesGenerator.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputColor0: CIColor,
+			inputColor1: CIColor,
+			inputWidth: NSNumber = 80,
+			inputSharpness: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputCenter = inputCenter
+			self.inputColor0 = inputColor0
+			self.inputColor1 = inputColor1
+			self.inputWidth = inputWidth
+			self.inputSharpness = inputSharpness
+		}
 	}
 }

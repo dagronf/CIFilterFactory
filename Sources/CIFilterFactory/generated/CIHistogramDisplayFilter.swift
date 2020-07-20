@@ -114,5 +114,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputLowLimit_Range), forKey: "inputLowLimit")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputHeight: NSNumber = 100,
+			inputHighLimit: NSNumber = 1,
+			inputLowLimit: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputHeight = inputHeight
+			self.inputHighLimit = inputHighLimit
+			self.inputLowLimit = inputLowLimit
+		}
 	}
 }

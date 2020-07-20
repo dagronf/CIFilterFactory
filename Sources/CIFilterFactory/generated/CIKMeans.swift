@@ -142,5 +142,25 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputPerceptual_Range), forKey: "inputPerceptual")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 640.0, height: 80.0),
+			inputMeans: CIImage,
+			inputCount: NSNumber = 8,
+			inputPasses: NSNumber = 5,
+			inputPerceptual: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputExtent = inputExtent
+			self.inputMeans = inputMeans
+			self.inputCount = inputCount
+			self.inputPasses = inputPasses
+			self.inputPerceptual = inputPerceptual
+		}
 	}
 }

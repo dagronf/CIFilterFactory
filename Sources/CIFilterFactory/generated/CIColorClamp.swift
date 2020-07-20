@@ -85,5 +85,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputMaxComponents")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputMinComponents: CIVector = CIVector([0.0, 0.0, 0.0, 0.0]),
+			inputMaxComponents: CIVector = CIVector([1.0, 1.0, 1.0, 1.0])
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputMinComponents = inputMinComponents
+			self.inputMaxComponents = inputMaxComponents
+		}
 	}
 }

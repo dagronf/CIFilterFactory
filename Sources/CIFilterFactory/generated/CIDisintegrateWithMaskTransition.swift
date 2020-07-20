@@ -156,5 +156,27 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputShadowOffset")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputMaskImage: CIImage,
+			inputTime: NSNumber = 0,
+			inputShadowRadius: NSNumber = 8,
+			inputShadowDensity: NSNumber = 0.65,
+			inputShadowOffset: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.0, y: -10.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputMaskImage = inputMaskImage
+			self.inputTime = inputTime
+			self.inputShadowRadius = inputShadowRadius
+			self.inputShadowDensity = inputShadowDensity
+			self.inputShadowOffset = inputShadowOffset
+		}
 	}
 }

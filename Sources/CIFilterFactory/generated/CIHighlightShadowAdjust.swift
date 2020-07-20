@@ -113,5 +113,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputHighlightAmount_Range), forKey: "inputHighlightAmount")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 0,
+			inputShadowAmount: NSNumber = 0,
+			inputHighlightAmount: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+			self.inputShadowAmount = inputShadowAmount
+			self.inputHighlightAmount = inputHighlightAmount
+		}
 	}
 }

@@ -163,5 +163,27 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputTime_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputColor: CIColor,
+			inputSunRadius: NSNumber = 40,
+			inputMaxStriationRadius: NSNumber = 2.58,
+			inputStriationStrength: NSNumber = 0.5,
+			inputStriationContrast: NSNumber = 1.375,
+			inputTime: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputCenter = inputCenter
+			self.inputColor = inputColor
+			self.inputSunRadius = inputSunRadius
+			self.inputMaxStriationRadius = inputMaxStriationRadius
+			self.inputStriationStrength = inputStriationStrength
+			self.inputStriationContrast = inputStriationContrast
+			self.inputTime = inputTime
+		}
 	}
 }

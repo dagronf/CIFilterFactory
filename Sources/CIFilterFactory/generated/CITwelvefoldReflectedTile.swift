@@ -105,5 +105,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CITwelvefoldReflectedTile.inputWidth_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputAngle: NSNumber = 0,
+			inputWidth: NSNumber = 100
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputAngle = inputAngle
+			self.inputWidth = inputWidth
+		}
 	}
 }

@@ -106,5 +106,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIGaussianGradient.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputColor0: CIColor,
+			inputColor1: CIColor,
+			inputRadius: NSNumber = 300
+		) {
+			self.init()
+
+			self.inputCenter = inputCenter
+			self.inputColor0 = inputColor0
+			self.inputColor1 = inputColor1
+			self.inputRadius = inputRadius
+		}
 	}
 }

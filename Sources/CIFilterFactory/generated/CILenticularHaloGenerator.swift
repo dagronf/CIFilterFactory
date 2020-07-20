@@ -181,5 +181,29 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputTime_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputColor: CIColor,
+			inputHaloRadius: NSNumber = 70,
+			inputHaloWidth: NSNumber = 87,
+			inputHaloOverlap: NSNumber = 0.77,
+			inputStriationStrength: NSNumber = 0.5,
+			inputStriationContrast: NSNumber = 1,
+			inputTime: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputCenter = inputCenter
+			self.inputColor = inputColor
+			self.inputHaloRadius = inputHaloRadius
+			self.inputHaloWidth = inputHaloWidth
+			self.inputHaloOverlap = inputHaloOverlap
+			self.inputStriationStrength = inputStriationStrength
+			self.inputStriationContrast = inputStriationContrast
+			self.inputTime = inputTime
+		}
 	}
 }

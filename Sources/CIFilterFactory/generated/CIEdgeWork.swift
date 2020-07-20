@@ -75,5 +75,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIEdgeWork.inputRadius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 3
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+		}
 	}
 }

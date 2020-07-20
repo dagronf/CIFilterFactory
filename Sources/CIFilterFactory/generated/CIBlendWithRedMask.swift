@@ -85,5 +85,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputMaskImage")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputBackgroundImage: CIImage,
+			inputMaskImage: CIImage
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputBackgroundImage = inputBackgroundImage
+			self.inputMaskImage = inputMaskImage
+		}
 	}
 }

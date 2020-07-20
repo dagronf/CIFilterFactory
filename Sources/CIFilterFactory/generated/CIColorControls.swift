@@ -111,5 +111,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputContrast_Range), forKey: "inputContrast")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputSaturation: NSNumber = 1,
+			inputBrightness: NSNumber = 0,
+			inputContrast: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputSaturation = inputSaturation
+			self.inputBrightness = inputBrightness
+			self.inputContrast = inputContrast
+		}
 	}
 }

@@ -87,5 +87,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputSharpness: NSNumber = 0.4,
+			inputRadius: NSNumber = 1.69
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputSharpness = inputSharpness
+			self.inputRadius = inputRadius
+		}
 	}
 }

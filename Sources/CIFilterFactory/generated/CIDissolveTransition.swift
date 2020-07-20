@@ -90,5 +90,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIDissolveTransition.inputTime_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputTime: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputTime = inputTime
+		}
 	}
 }

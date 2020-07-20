@@ -93,5 +93,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputNoiseLevel: NSNumber = 0.02,
+			inputSharpness: NSNumber = 0.4
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputNoiseLevel = inputNoiseLevel
+			self.inputSharpness = inputSharpness
+		}
 	}
 }

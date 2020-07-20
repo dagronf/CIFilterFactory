@@ -100,5 +100,21 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputEpsilon")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputGuideImage: CIImage,
+			inputRadius: NSNumber = 1,
+			inputEpsilon: NSNumber = 0.0001
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputGuideImage = inputGuideImage
+			self.inputRadius = inputRadius
+			self.inputEpsilon = inputEpsilon
+		}
 	}
 }

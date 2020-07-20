@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputExtent = inputExtent
+		}
 	}
 }

@@ -156,5 +156,27 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIModTransition.inputCompression_Range), forKey: "inputCompression")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputTime: NSNumber = 0,
+			inputAngle: NSNumber = 2,
+			inputRadius: NSNumber = 150,
+			inputCompression: NSNumber = 300
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputCenter = inputCenter
+			self.inputTime = inputTime
+			self.inputAngle = inputAngle
+			self.inputRadius = inputRadius
+			self.inputCompression = inputCompression
+		}
 	}
 }

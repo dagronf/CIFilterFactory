@@ -103,5 +103,21 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColor1")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.0, y: 0.0),
+			inputPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 200.0, y: 200.0),
+			inputColor0: CIColor,
+			inputColor1: CIColor
+		) {
+			self.init()
+
+			self.inputPoint0 = inputPoint0
+			self.inputPoint1 = inputPoint1
+			self.inputColor0 = inputColor0
+			self.inputColor1 = inputColor1
+		}
 	}
 }

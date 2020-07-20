@@ -123,5 +123,21 @@ import Foundation
 		@objc public dynamic var outputData: Any? {
 			return self.filter.value(forKey: "outputData")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 640.0, height: 80.0),
+			inputScale: NSNumber = 1,
+			inputCount: NSNumber = 64
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputExtent = inputExtent
+			self.inputScale = inputScale
+			self.inputCount = inputCount
+		}
 	}
 }

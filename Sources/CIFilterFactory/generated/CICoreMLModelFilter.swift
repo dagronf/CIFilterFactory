@@ -108,5 +108,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputModel: MLModel,
+			inputHeadIndex: NSNumber = 0,
+			inputSoftmaxNormalization: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputModel = inputModel
+			self.inputHeadIndex = inputHeadIndex
+			self.inputSoftmaxNormalization = inputSoftmaxNormalization
+		}
 	}
 }

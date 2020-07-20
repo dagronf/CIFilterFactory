@@ -124,5 +124,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIHatchedScreen.inputSharpness_Range), forKey: "inputSharpness")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputAngle: NSNumber = 0,
+			inputWidth: NSNumber = 6,
+			inputSharpness: NSNumber = 0.7
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputAngle = inputAngle
+			self.inputWidth = inputWidth
+			self.inputSharpness = inputSharpness
+		}
 	}
 }

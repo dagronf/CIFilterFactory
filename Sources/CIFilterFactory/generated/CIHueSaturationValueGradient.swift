@@ -129,5 +129,23 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColorSpace")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputValue: NSNumber = 1,
+			inputRadius: NSNumber = 300,
+			inputSoftness: NSNumber = 1,
+			inputDither: NSNumber = 1,
+			inputColorSpace: NSObject
+		) {
+			self.init()
+
+			self.inputValue = inputValue
+			self.inputRadius = inputRadius
+			self.inputSoftness = inputSoftness
+			self.inputDither = inputDither
+			self.inputColorSpace = inputColorSpace
+		}
 	}
 }

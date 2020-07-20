@@ -106,5 +106,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputText: NSString,
+			inputFontName: NSString = "HelveticaNeue",
+			inputFontSize: NSNumber = 12,
+			inputScaleFactor: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputText = inputText
+			self.inputFontName = inputFontName
+			self.inputFontSize = inputFontSize
+			self.inputScaleFactor = inputScaleFactor
+		}
 	}
 }

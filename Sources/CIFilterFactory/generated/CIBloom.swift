@@ -93,5 +93,19 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIBloom.inputIntensity_Range), forKey: "inputIntensity")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRadius: NSNumber = 10,
+			inputIntensity: NSNumber = 0.5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRadius = inputRadius
+			self.inputIntensity = inputIntensity
+		}
 	}
 }

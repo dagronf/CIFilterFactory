@@ -159,5 +159,27 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputUCR_Range), forKey: "inputUCR")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputWidth: NSNumber = 6,
+			inputAngle: NSNumber = 0,
+			inputSharpness: NSNumber = 0.7,
+			inputGCR: NSNumber = 1,
+			inputUCR: NSNumber = 0.5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputWidth = inputWidth
+			self.inputAngle = inputAngle
+			self.inputSharpness = inputSharpness
+			self.inputGCR = inputGCR
+			self.inputUCR = inputUCR
+		}
 	}
 }

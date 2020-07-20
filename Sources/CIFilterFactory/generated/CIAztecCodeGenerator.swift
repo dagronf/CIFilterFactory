@@ -114,5 +114,21 @@ import Foundation
 		@objc public dynamic var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputMessage: NSData,
+			inputCorrectionLevel: NSNumber = 23,
+			inputLayers: NSNumber,
+			inputCompactStyle: NSNumber
+		) {
+			self.init()
+
+			self.inputMessage = inputMessage
+			self.inputCorrectionLevel = inputCorrectionLevel
+			self.inputLayers = inputLayers
+			self.inputCompactStyle = inputCompactStyle
+		}
 	}
 }

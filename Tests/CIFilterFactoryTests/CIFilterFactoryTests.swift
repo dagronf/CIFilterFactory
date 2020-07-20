@@ -12,4 +12,11 @@ final class CIFilterFactoryTests: XCTestCase {
 //    static var allTests = [
 //        ("testExample", testExample),
 //    ]
+
+	func testExample() {
+		let sepiaFilter = CIFilterFactory.CISepiaTone(inputImage: CIImage(), inputIntensity: 0.5)
+		XCTAssertNotNil(sepiaFilter)
+
+		XCTAssertEqual(0.5, sepiaFilter!.inputIntensity)
+	}
 }

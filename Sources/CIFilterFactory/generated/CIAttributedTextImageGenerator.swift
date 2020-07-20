@@ -74,5 +74,17 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIAttributedTextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputText: NSAttributedString,
+			inputScaleFactor: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputText = inputText
+			self.inputScaleFactor = inputScaleFactor
+		}
 	}
 }

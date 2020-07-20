@@ -123,5 +123,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIBumpDistortionLinear.inputScale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputRadius: NSNumber = 300,
+			inputAngle: NSNumber = 0,
+			inputScale: NSNumber = 0.5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCenter = inputCenter
+			self.inputRadius = inputRadius
+			self.inputAngle = inputAngle
+			self.inputScale = inputScale
+		}
 	}
 }

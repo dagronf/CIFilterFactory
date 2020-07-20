@@ -87,5 +87,19 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputTargetNeutral")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputNeutral: CIFilterFactory.Point = CIFilterFactory.Point(x: 6500.0, y: 0.0),
+			inputTargetNeutral: CIFilterFactory.Point = CIFilterFactory.Point(x: 6500.0, y: 0.0)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputNeutral = inputNeutral
+			self.inputTargetNeutral = inputTargetNeutral
+		}
 	}
 }

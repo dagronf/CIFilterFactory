@@ -162,5 +162,29 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTargetImage: CIImage,
+			inputBacksideImage: CIImage,
+			inputShadingImage: CIImage,
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
+			inputTime: NSNumber = 0,
+			inputAngle: NSNumber = 0,
+			inputRadius: NSNumber = 100
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTargetImage = inputTargetImage
+			self.inputBacksideImage = inputBacksideImage
+			self.inputShadingImage = inputShadingImage
+			self.inputExtent = inputExtent
+			self.inputTime = inputTime
+			self.inputAngle = inputAngle
+			self.inputRadius = inputRadius
+		}
 	}
 }

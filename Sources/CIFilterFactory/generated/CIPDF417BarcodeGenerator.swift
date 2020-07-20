@@ -248,5 +248,37 @@ import Foundation
 		@objc public dynamic var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputMessage: NSData,
+			inputMinWidth: NSNumber,
+			inputMaxWidth: NSNumber,
+			inputMinHeight: NSNumber,
+			inputMaxHeight: NSNumber,
+			inputDataColumns: NSNumber,
+			inputRows: NSNumber,
+			inputPreferredAspectRatio: NSNumber,
+			inputCompactionMode: NSNumber,
+			inputCompactStyle: NSNumber,
+			inputCorrectionLevel: NSNumber,
+			inputAlwaysSpecifyCompaction: NSNumber
+		) {
+			self.init()
+
+			self.inputMessage = inputMessage
+			self.inputMinWidth = inputMinWidth
+			self.inputMaxWidth = inputMaxWidth
+			self.inputMinHeight = inputMinHeight
+			self.inputMaxHeight = inputMaxHeight
+			self.inputDataColumns = inputDataColumns
+			self.inputRows = inputRows
+			self.inputPreferredAspectRatio = inputPreferredAspectRatio
+			self.inputCompactionMode = inputCompactionMode
+			self.inputCompactStyle = inputCompactStyle
+			self.inputCorrectionLevel = inputCorrectionLevel
+			self.inputAlwaysSpecifyCompaction = inputAlwaysSpecifyCompaction
+		}
 	}
 }

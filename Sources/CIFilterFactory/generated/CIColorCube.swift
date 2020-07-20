@@ -90,5 +90,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputCubeData")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputCubeDimension: NSNumber = 2,
+			inputCubeData: NSData
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputCubeDimension = inputCubeDimension
+			self.inputCubeData = inputCubeData
+		}
 	}
 }

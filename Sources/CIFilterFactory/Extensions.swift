@@ -20,6 +20,7 @@
 //
 
 import Foundation
+import CoreImage
 
 extension NSNumber {
 	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
@@ -40,5 +41,23 @@ extension NSNumber {
 		var value = max(bounds.lowerBound, self.floatValue)
 		value = min(bounds.upperBound, value)
 		return NSNumber(value: value)
+	}
+}
+
+public extension CIVector {
+	convenience init(_ values: [CGFloat]) {
+		self.init(values: values, count: values.count)
+	}
+
+	var values: [CGFloat] {
+		return (0 ..< self.count).map { index in
+			self.value(at: index)
+		}
+	}
+	var valuesStr: String {
+		let vals = self.values.reduce("") { (result, value) in
+			return result.appending("\(result.isEmpty ? "" : ", ") \(value)")
+		}
+		return vals
 	}
 }

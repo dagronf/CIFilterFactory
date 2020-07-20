@@ -154,5 +154,27 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputZoom")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputInsetPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 200.0, y: 200.0),
+			inputInsetPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 400.0, y: 400.0),
+			inputStrands: NSNumber = 1,
+			inputPeriodicity: NSNumber = 1,
+			inputRotation: NSNumber = 0,
+			inputZoom: NSNumber = 1
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputInsetPoint0 = inputInsetPoint0
+			self.inputInsetPoint1 = inputInsetPoint1
+			self.inputStrands = inputStrands
+			self.inputPeriodicity = inputPeriodicity
+			self.inputRotation = inputRotation
+			self.inputZoom = inputZoom
+		}
 	}
 }

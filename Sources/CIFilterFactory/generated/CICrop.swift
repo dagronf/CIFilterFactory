@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue?.vector, forKey: "inputRectangle")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRectangle: CIFilterFactory.Rect = CIFilterFactory.Rect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRectangle = inputRectangle
+		}
 	}
 }

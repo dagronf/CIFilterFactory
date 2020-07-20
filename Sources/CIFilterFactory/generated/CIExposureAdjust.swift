@@ -72,5 +72,17 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputEV")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputEV: NSNumber = 0
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputEV = inputEV
+		}
 	}
 }

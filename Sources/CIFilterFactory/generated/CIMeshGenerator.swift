@@ -88,5 +88,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputMesh")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputWidth: NSNumber = 1.5,
+			inputColor: CIColor,
+			inputMesh: NSArray
+		) {
+			self.init()
+
+			self.inputWidth = inputWidth
+			self.inputColor = inputColor
+			self.inputMesh = inputMesh
+		}
 	}
 }

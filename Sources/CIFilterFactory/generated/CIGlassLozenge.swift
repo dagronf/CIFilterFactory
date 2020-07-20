@@ -123,5 +123,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIGlassLozenge.inputRefraction_Range), forKey: "inputRefraction")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 350.0, y: 150.0),
+			inputRadius: NSNumber = 100,
+			inputRefraction: NSNumber = 1.7
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputPoint0 = inputPoint0
+			self.inputPoint1 = inputPoint1
+			self.inputRadius = inputRadius
+			self.inputRefraction = inputRefraction
+		}
 	}
 }

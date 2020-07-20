@@ -91,5 +91,19 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputColor")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 100.0, height: 100.0),
+			inputRadius: NSNumber = 10,
+			inputColor: CIColor
+		) {
+			self.init()
+
+			self.inputExtent = inputExtent
+			self.inputRadius = inputRadius
+			self.inputColor = inputColor
+		}
 	}
 }

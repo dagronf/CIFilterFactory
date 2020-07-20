@@ -104,5 +104,21 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIGlassDistortion.inputScale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputTexture: CIImage,
+			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
+			inputScale: NSNumber = 200
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputTexture = inputTexture
+			self.inputCenter = inputCenter
+			self.inputScale = inputScale
+		}
 	}
 }

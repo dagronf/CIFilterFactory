@@ -127,5 +127,25 @@ import Foundation
 				self.filter.setValue(newValue, forKey: "inputBiasVector")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputRVector: CIVector = CIVector([1.0, 0.0, 0.0, 0.0]),
+			inputGVector: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
+			inputBVector: CIVector = CIVector([0.0, 0.0, 1.0, 0.0]),
+			inputAVector: CIVector = CIVector([0.0, 0.0, 0.0, 1.0]),
+			inputBiasVector: CIVector = CIVector([0.0, 0.0, 0.0, 0.0])
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputRVector = inputRVector
+			self.inputGVector = inputGVector
+			self.inputBVector = inputBVector
+			self.inputAVector = inputAVector
+			self.inputBiasVector = inputBiasVector
+		}
 	}
 }

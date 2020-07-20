@@ -131,5 +131,23 @@ import Foundation
 				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputC_Range), forKey: "inputC")
 			}
 		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputScale: NSNumber = 1,
+			inputAspectRatio: NSNumber = 1,
+			inputB: NSNumber = 0,
+			inputC: NSNumber = 0.75
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputScale = inputScale
+			self.inputAspectRatio = inputAspectRatio
+			self.inputB = inputB
+			self.inputC = inputC
+		}
 	}
 }
