@@ -104,8 +104,10 @@ import CoreImage
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("      }")
 
-	out.print("   // MARK: - Inputs")
-	out.print("")
+	if inputKeys.count > 0 {
+		out.print("   // MARK: - Inputs")
+		out.print("")
+	}
 
 	struct InitType {
 		let name: String
@@ -120,6 +122,7 @@ import CoreImage
 
 		guard let keyItem = filterAttributes[key] as? [String: Any],
 			  let keyClass = keyItem[kCIAttributeClass] as? String else {
+			out.print(#"   /// \#(key) has no type or class defined. "#)
 			continue
 		}
 

@@ -59,24 +59,24 @@ import Foundation
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputCGImageForPDF417CodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForPDF417CodeDescriptor")
-		}
-
-		@objc public dynamic var outputCGImageForQRCodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForQRCodeDescriptor")
-		}
-
-		@objc public dynamic var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
-		}
-
 		@objc public dynamic var outputCGImageForDataMatrixCodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForDataMatrixCodeDescriptor")
 		}
 
 		@objc public dynamic var outputCGImageForAztecCodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForAztecCodeDescriptor")
+		}
+
+		@objc public dynamic var outputCGImage: Any? {
+			return self.filter.value(forKey: "outputCGImage")
+		}
+
+		@objc public dynamic var outputCGImageForPDF417CodeDescriptor: Any? {
+			return self.filter.value(forKey: "outputCGImageForPDF417CodeDescriptor")
+		}
+
+		@objc public dynamic var outputCGImageForQRCodeDescriptor: Any? {
+			return self.filter.value(forKey: "outputCGImageForQRCodeDescriptor")
 		}
 
 		// MARK: - Convenience initializer

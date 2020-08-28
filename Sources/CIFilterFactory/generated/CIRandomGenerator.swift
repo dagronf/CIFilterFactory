@@ -41,7 +41,5 @@ import Foundation
 		@objc public init?() {
 			super.init(name: "CIRandomGenerator")
 		}
-
-		// MARK: - Inputs
 	}
 }
