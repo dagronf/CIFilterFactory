@@ -131,12 +131,12 @@ import Foundation
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputTransform: Any? {
-			return self.filter.value(forKey: "outputTransform")
-		}
-
 		@objc public dynamic var outputRotationFilter: Any? {
 			return self.filter.value(forKey: "outputRotationFilter")
+		}
+
+		@objc public dynamic var outputTransform: Any? {
+			return self.filter.value(forKey: "outputTransform")
 		}
 
 		// MARK: - Convenience initializer

@@ -112,16 +112,16 @@ import Foundation
 
 		// MARK: - Additional Outputs
 
+		@objc public dynamic var outputData: Any? {
+			return self.filter.value(forKey: "outputData")
+		}
+
 		@objc public dynamic var outputImageMPS: Any? {
 			return self.filter.value(forKey: "outputImageMPS")
 		}
 
 		@objc public dynamic var outputImageNonMPS: Any? {
 			return self.filter.value(forKey: "outputImageNonMPS")
-		}
-
-		@objc public dynamic var outputData: Any? {
-			return self.filter.value(forKey: "outputData")
 		}
 
 		// MARK: - Convenience initializer

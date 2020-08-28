@@ -225,7 +225,7 @@ import CoreImage
 	if outputs.count > 0 {
 		out.print("   // MARK: - Additional Outputs")
 		out.print("")
-		outputs.forEach { key in
+		outputs.sorted().forEach { key in
 			out.print("   @objc public dynamic var \(key): Any? {")
 			out.print("      return self.filter.value(forKey: \"\(key)\")")
 			out.print("   }")
