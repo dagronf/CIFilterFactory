@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.5, iOS 6, *)
+	@inlinable @objc static func FourfoldReflectedTile() -> CIFilterFactory.CIFourfoldReflectedTile? {
+		return CIFilterFactory.CIFourfoldReflectedTile()
+	}
+}
+
 @available(macOS 10.5, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///

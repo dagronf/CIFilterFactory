@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.15, iOS 13, *)
+	@inlinable @objc static func KeystoneCorrectionHorizontal() -> CIFilterFactory.CIKeystoneCorrectionHorizontal? {
+		return CIFilterFactory.CIKeystoneCorrectionHorizontal()
+	}
+}
+
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///

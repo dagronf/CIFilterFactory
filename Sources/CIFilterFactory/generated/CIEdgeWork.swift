@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 9, *)
+	@inlinable @objc static func EdgeWork() -> CIFilterFactory.CIEdgeWork? {
+		return CIFilterFactory.CIEdgeWork()
+	}
+}
+
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

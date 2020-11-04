@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.7, iOS 5, *)
+	@inlinable @objc static func StraightenFilter() -> CIFilterFactory.CIStraightenFilter? {
+		return CIFilterFactory.CIStraightenFilter()
+	}
+}
+
 @available(macOS 10.7, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///

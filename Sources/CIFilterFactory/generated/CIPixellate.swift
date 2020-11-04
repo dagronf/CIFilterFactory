@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 6, *)
+	@inlinable @objc static func Pixellate() -> CIFilterFactory.CIPixellate? {
+		return CIFilterFactory.CIPixellate()
+	}
+}
+
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///

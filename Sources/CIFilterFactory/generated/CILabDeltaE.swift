@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.13, iOS 11, *)
+	@inlinable @objc static func LabDeltaE() -> CIFilterFactory.CILabDeltaE? {
+		return CIFilterFactory.CILabDeltaE()
+	}
+}
+
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///

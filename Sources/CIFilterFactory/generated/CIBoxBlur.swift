@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.5, iOS 9, *)
+	@inlinable @objc static func BoxBlur() -> CIFilterFactory.CIBoxBlur? {
+		return CIFilterFactory.CIBoxBlur()
+	}
+}
+
 @available(macOS 10.5, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

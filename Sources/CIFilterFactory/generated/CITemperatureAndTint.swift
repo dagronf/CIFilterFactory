@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.7, iOS 5, *)
+	@inlinable @objc static func TemperatureAndTint() -> CIFilterFactory.CITemperatureAndTint? {
+		return CIFilterFactory.CITemperatureAndTint()
+	}
+}
+
 @available(macOS 10.7, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///

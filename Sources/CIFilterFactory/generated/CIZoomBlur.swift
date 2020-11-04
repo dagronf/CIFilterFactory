@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 8.3, *)
+	@inlinable @objc static func ZoomBlur() -> CIFilterFactory.CIZoomBlur? {
+		return CIFilterFactory.CIZoomBlur()
+	}
+}
+
 @available(macOS 10.4, iOS 8.3, *)
 @objc public extension CIFilterFactory {
 	///

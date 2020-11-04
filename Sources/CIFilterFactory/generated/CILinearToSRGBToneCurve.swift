@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.10, iOS 7, *)
+	@inlinable @objc static func LinearToSRGBToneCurve() -> CIFilterFactory.CILinearToSRGBToneCurve? {
+		return CIFilterFactory.CILinearToSRGBToneCurve()
+	}
+}
+
 @available(macOS 10.10, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
@@ -61,7 +68,8 @@ import Foundation
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage) {
+			inputImage: CIImage)
+		{
 			self.init()
 
 			self.inputImage = inputImage

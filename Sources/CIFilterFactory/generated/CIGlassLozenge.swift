@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 9, *)
+	@inlinable @objc static func GlassLozenge() -> CIFilterFactory.CIGlassLozenge? {
+		return CIFilterFactory.CIGlassLozenge()
+	}
+}
+
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

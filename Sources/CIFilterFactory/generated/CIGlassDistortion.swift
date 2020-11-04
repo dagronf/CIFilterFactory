@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 8, *)
+	@inlinable @objc static func GlassDistortion() -> CIFilterFactory.CIGlassDistortion? {
+		return CIFilterFactory.CIGlassDistortion()
+	}
+}
+
 @available(macOS 10.4, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///

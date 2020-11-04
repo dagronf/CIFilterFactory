@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.9, iOS 7, *)
+	@inlinable @objc static func ColorPolynomial() -> CIFilterFactory.CIColorPolynomial? {
+		return CIFilterFactory.CIColorPolynomial()
+	}
+}
+
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///

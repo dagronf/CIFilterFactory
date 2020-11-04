@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 5, *)
+	@inlinable @objc static func SourceOverCompositing() -> CIFilterFactory.CISourceOverCompositing? {
+		return CIFilterFactory.CISourceOverCompositing()
+	}
+}
+
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///

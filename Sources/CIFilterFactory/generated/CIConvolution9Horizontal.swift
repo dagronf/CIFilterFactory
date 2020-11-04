@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.9, iOS 7, *)
+	@inlinable @objc static func Convolution9Horizontal() -> CIFilterFactory.CIConvolution9Horizontal? {
+		return CIFilterFactory.CIConvolution9Horizontal()
+	}
+}
+
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///

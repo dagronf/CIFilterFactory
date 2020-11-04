@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.14, iOS 12, *)
+	@inlinable @objc static func Mix() -> CIFilterFactory.CIMix? {
+		return CIFilterFactory.CIMix()
+	}
+}
+
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///

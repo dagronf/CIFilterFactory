@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.11, iOS 9, *)
+	@inlinable @objc static func PDF417BarcodeGenerator() -> CIFilterFactory.CIPDF417BarcodeGenerator? {
+		return CIFilterFactory.CIPDF417BarcodeGenerator()
+	}
+}
+
 @available(macOS 10.11, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

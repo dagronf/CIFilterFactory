@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.12, iOS 10, *)
+	@inlinable @objc static func EdgePreserveUpsampleFilter() -> CIFilterFactory.CIEdgePreserveUpsampleFilter? {
+		return CIFilterFactory.CIEdgePreserveUpsampleFilter()
+	}
+}
+
 @available(macOS 10.12, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///

@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.14, iOS 12, *)
+	@inlinable @objc static func SampleNearest() -> CIFilterFactory.CISampleNearest? {
+		return CIFilterFactory.CISampleNearest()
+	}
+}
+
 @available(macOS 10.14, iOS 12, *)
 @objc public extension CIFilterFactory {
 	///
@@ -61,7 +68,8 @@ import Foundation
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage) {
+			inputImage: CIImage)
+		{
 			self.init()
 
 			self.inputImage = inputImage

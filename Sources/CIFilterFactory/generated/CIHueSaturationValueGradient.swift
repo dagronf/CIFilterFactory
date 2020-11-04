@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.12, iOS 10, *)
+	@inlinable @objc static func HueSaturationValueGradient() -> CIFilterFactory.CIHueSaturationValueGradient? {
+		return CIFilterFactory.CIHueSaturationValueGradient()
+	}
+}
+
 @available(macOS 10.12, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///

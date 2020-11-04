@@ -24,9 +24,11 @@ import Cocoa
 
 private func parseFilter(filter: CIFilter, out: FileSquirter) {
 
+	let name = filter.name
+
 	out.print("""
 //
-//  \(filter.name).swift  (AUTOMATICALLY GENERATED FILE)
+//  \(name).swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -53,6 +55,15 @@ import CoreImage
 
 """)
 
+	let staticName: String = {
+		var nn = name.replacingOccurrences(of: " ", with: "")
+		if nn.starts(with: "CI") {
+			let i1 = nn.index(nn.startIndex, offsetBy: 2)
+			nn = String(nn[ (i1 ..< nn.endIndex) ])
+		}
+		return nn
+	}()
+
 	let inputKeys = filter.inputKeys
 
 	let filterAttributes = filter.attributes
@@ -71,10 +82,20 @@ import CoreImage
 			avail += "iOS \(iosAvail)"
 		}
 	}
+
+	out.print("public extension CIFilter {")
 	if !avail.isEmpty {
 		out.print("@available(\(avail), *)")
 	}
+	out.print("   @inlinable @objc static public func \(staticName)() -> CIFilterFactory.\(filter.name)? {")
+	out.print("      return CIFilterFactory.\(filter.name)()")
+	out.print("   }")
+	out.print("}")
+	out.print("")
 
+	if !avail.isEmpty {
+		out.print("@available(\(avail), *)")
+	}
 	out.print("@objc public extension CIFilterFactory {")
 
 	out.print("   ///")

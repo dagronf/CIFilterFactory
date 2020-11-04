@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.6, iOS 9, *)
+	@inlinable @objc static func Droste() -> CIFilterFactory.CIDroste? {
+		return CIFilterFactory.CIDroste()
+	}
+}
+
 @available(macOS 10.6, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

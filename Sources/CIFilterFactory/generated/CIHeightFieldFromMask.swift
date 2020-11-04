@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 9, *)
+	@inlinable @objc static func HeightFieldFromMask() -> CIFilterFactory.CIHeightFieldFromMask? {
+		return CIFilterFactory.CIHeightFieldFromMask()
+	}
+}
+
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

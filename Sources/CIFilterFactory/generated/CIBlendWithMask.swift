@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 6, *)
+	@inlinable @objc static func BlendWithMask() -> CIFilterFactory.CIBlendWithMask? {
+		return CIFilterFactory.CIBlendWithMask()
+	}
+}
+
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///

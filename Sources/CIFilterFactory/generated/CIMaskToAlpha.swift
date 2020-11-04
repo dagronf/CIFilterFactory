@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 6, *)
+	@inlinable @objc static func MaskToAlpha() -> CIFilterFactory.CIMaskToAlpha? {
+		return CIFilterFactory.CIMaskToAlpha()
+	}
+}
+
 @available(macOS 10.4, iOS 6, *)
 @objc public extension CIFilterFactory {
 	///
@@ -61,7 +68,8 @@ import Foundation
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage) {
+			inputImage: CIImage)
+		{
 			self.init()
 
 			self.inputImage = inputImage

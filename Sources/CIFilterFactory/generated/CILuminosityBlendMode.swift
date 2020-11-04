@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 5, *)
+	@inlinable @objc static func LuminosityBlendMode() -> CIFilterFactory.CILuminosityBlendMode? {
+		return CIFilterFactory.CILuminosityBlendMode()
+	}
+}
+
 @available(macOS 10.4, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///

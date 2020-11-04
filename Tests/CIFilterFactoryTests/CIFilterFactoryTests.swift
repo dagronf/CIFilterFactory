@@ -18,5 +18,10 @@ final class CIFilterFactoryTests: XCTestCase {
 		XCTAssertNotNil(sepiaFilter)
 
 		XCTAssertEqual(0.5, sepiaFilter!.inputIntensity)
+
+
+		let sepiaFilter2 = CIFilter.SepiaTone()
+		XCTAssertNotNil(sepiaFilter2)
+		XCTAssertEqual(0.5, sepiaFilter2!.inputIntensity)
 	}
 }

@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.15, iOS 13, *)
+	@inlinable @objc static func MorphologyRectangleMaximum() -> CIFilterFactory.CIMorphologyRectangleMaximum? {
+		return CIFilterFactory.CIMorphologyRectangleMaximum()
+	}
+}
+
 @available(macOS 10.15, iOS 13, *)
 @objc public extension CIFilterFactory {
 	///

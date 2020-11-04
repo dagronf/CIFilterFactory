@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.9, iOS 5, *)
+	@inlinable @objc static func Vignette() -> CIFilterFactory.CIVignette? {
+		return CIFilterFactory.CIVignette()
+	}
+}
+
 @available(macOS 10.9, iOS 5, *)
 @objc public extension CIFilterFactory {
 	///

@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.9, iOS 9, *)
+	@inlinable @objc static func PageCurlWithShadowTransition() -> CIFilterFactory.CIPageCurlWithShadowTransition? {
+		return CIFilterFactory.CIPageCurlWithShadowTransition()
+	}
+}
+
 @available(macOS 10.9, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

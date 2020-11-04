@@ -125,21 +125,21 @@ Using `CIFilterFactory`, Xcode can now code-complete and type check classes and 
 #### Before
 
 ```swift
-let bloomFilter = CIFilter(name: "CIBloom")
-bloomFilter?.setValue(input, forKey: kCIInputImageKey)
-bloomFilter?.setValue(intensity, forKey: kCIInputIntensityKey)
-bloomFilter?.setValue(radius, forKey: kCIInputRadiusKey)
-return bloomFilter?.outputImage
+guard let bloomFilter = CIFilter(name: "CIBloom") else { fatalError() }
+bloomFilter.setValue(input, forKey: kCIInputImageKey)
+bloomFilter.setValue(intensity, forKey: kCIInputIntensityKey)
+bloomFilter.setValue(radius, forKey: kCIInputRadiusKey)
+return bloomFilter.outputImage
 ```
 
 #### After
 
 ```swift
-let bloomFilter = CIFilterFactory.CIBloom()
-bloomFilter?.inputImage = image
-bloomFilter?.inputIntensity = intensity
-bloomFilter?.inputRadius = radius
-let outputImage = bloomFilter?.outputImage
+guard let bloomFilter = CIFilterFactory.CIBloom() else { fatalError() }
+bloomFilter.inputImage = image
+bloomFilter.inputIntensity = intensity
+bloomFilter.inputRadius = radius
+let outputImage = bloomFilter.outputImage
 ```
 
 ### Objective-C example

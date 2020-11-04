@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.10, iOS 8, *)
+	@inlinable @objc static func LinearBurnBlendMode() -> CIFilterFactory.CILinearBurnBlendMode? {
+		return CIFilterFactory.CILinearBurnBlendMode()
+	}
+}
+
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///

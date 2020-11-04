@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.13, iOS 11, *)
+	@inlinable @objc static func BicubicScaleTransform() -> CIFilterFactory.CIBicubicScaleTransform? {
+		return CIFilterFactory.CIBicubicScaleTransform()
+	}
+}
+
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///

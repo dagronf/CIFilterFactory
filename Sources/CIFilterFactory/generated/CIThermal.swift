@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.11, iOS 10, *)
+	@inlinable @objc static func Thermal() -> CIFilterFactory.CIThermal? {
+		return CIFilterFactory.CIThermal()
+	}
+}
+
 @available(macOS 10.11, iOS 10, *)
 @objc public extension CIFilterFactory {
 	///
@@ -61,7 +68,8 @@ import Foundation
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage) {
+			inputImage: CIImage)
+		{
 			self.init()
 
 			self.inputImage = inputImage

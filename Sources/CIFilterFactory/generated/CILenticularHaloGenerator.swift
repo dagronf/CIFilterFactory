@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 9, *)
+	@inlinable @objc static func LenticularHaloGenerator() -> CIFilterFactory.CILenticularHaloGenerator? {
+		return CIFilterFactory.CILenticularHaloGenerator()
+	}
+}
+
 @available(macOS 10.4, iOS 9, *)
 @objc public extension CIFilterFactory {
 	///

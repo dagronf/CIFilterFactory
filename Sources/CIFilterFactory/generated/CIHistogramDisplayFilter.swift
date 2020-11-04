@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(iOS 8, *)
+	@inlinable @objc static func HistogramDisplayFilter() -> CIFilterFactory.CIHistogramDisplayFilter? {
+		return CIFilterFactory.CIHistogramDisplayFilter()
+	}
+}
+
 @available(iOS 8, *)
 @objc public extension CIFilterFactory {
 	///

@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.10, iOS 8, *)
+	@inlinable @objc static func MaskedVariableBlur() -> CIFilterFactory.CIMaskedVariableBlur? {
+		return CIFilterFactory.CIMaskedVariableBlur()
+	}
+}
+
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///

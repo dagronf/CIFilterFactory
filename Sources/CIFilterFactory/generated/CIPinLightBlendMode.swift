@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.10, iOS 8, *)
+	@inlinable @objc static func PinLightBlendMode() -> CIFilterFactory.CIPinLightBlendMode? {
+		return CIFilterFactory.CIPinLightBlendMode()
+	}
+}
+
 @available(macOS 10.10, iOS 8, *)
 @objc public extension CIFilterFactory {
 	///

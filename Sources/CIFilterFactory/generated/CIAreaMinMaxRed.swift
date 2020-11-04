@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.13, iOS 11, *)
+	@inlinable @objc static func AreaMinMaxRed() -> CIFilterFactory.CIAreaMinMaxRed? {
+		return CIFilterFactory.CIAreaMinMaxRed()
+	}
+}
+
 @available(macOS 10.13, iOS 11, *)
 @objc public extension CIFilterFactory {
 	///

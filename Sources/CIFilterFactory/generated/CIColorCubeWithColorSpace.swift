@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.9, iOS 7, *)
+	@inlinable @objc static func ColorCubeWithColorSpace() -> CIFilterFactory.CIColorCubeWithColorSpace? {
+		return CIFilterFactory.CIColorCubeWithColorSpace()
+	}
+}
+
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///

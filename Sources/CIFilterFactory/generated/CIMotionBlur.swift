@@ -24,6 +24,13 @@ import CoreImage
 import CoreML
 import Foundation
 
+public extension CIFilter {
+	@available(macOS 10.4, iOS 8.3, *)
+	@inlinable @objc static func MotionBlur() -> CIFilterFactory.CIMotionBlur? {
+		return CIFilterFactory.CIMotionBlur()
+	}
+}
+
 @available(macOS 10.4, iOS 8.3, *)
 @objc public extension CIFilterFactory {
 	///
