@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 100.0
 		///
-		static let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
+		public static let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
 		@objc public dynamic var inputQuietSpace: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputQuietSpace") as? NSNumber
@@ -92,7 +92,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 500.0
 		///
-		static let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
+		public static let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
 		@objc public dynamic var inputBarcodeHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber

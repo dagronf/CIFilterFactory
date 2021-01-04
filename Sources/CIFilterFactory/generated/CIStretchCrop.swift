@@ -89,7 +89,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCropAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCropAmount") as? NSNumber
@@ -108,7 +108,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCenterStretchAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber

@@ -87,7 +87,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		static let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
+		public static let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public dynamic var inputHeadIndex: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputHeadIndex") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSoftmaxNormalization: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber

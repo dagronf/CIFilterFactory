@@ -74,7 +74,7 @@ public extension CIFilter {
 		///   minValue: 2.0
 		///   maxValue: 128.0
 		///
-		static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
+		public static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
 		@objc public dynamic var inputCubeDimension: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber

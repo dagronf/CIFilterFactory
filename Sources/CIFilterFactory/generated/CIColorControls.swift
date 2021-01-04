@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSaturation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSaturation") as? NSNumber
@@ -91,7 +91,7 @@ public extension CIFilter {
 		///   Default:  0
 		///   minValue: -1.0
 		///
-		static let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
+		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
 		@objc public dynamic var inputBrightness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBrightness") as? NSNumber
@@ -109,7 +109,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast") as? NSNumber

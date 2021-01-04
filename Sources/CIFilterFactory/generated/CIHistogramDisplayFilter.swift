@@ -74,7 +74,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 200.0
 		///
-		static let inputHeight_Range: ClosedRange<Float> = 1.0 ... 200.0
+		public static let inputHeight_Range: ClosedRange<Float> = 1.0 ... 200.0
 		@objc public dynamic var inputHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputHeight") as? NSNumber
@@ -93,7 +93,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputHighLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputHighLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputHighLimit: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputHighLimit") as? NSNumber
@@ -112,7 +112,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputLowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputLowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputLowLimit: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLowLimit") as? NSNumber

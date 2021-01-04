@@ -87,7 +87,7 @@ public extension CIFilter {
 		///   Default:  10
 		///   minValue: 0.0
 		///
-		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber

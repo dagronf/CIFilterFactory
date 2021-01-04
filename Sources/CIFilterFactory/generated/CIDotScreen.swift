@@ -103,7 +103,7 @@ public extension CIFilter {
 		///   Default:  6
 		///   minValue: 1.0
 		///
-		static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
+		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -122,7 +122,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber

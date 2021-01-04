@@ -101,7 +101,7 @@ public extension CIFilter {
 		///   Default:  0.22
 		///   minValue: 0.0
 		///
-		static let inputCloseness1_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputCloseness1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness1: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCloseness1") as? NSNumber
@@ -119,7 +119,7 @@ public extension CIFilter {
 		///   Default:  0.98
 		///   minValue: 0.0
 		///
-		static let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast1: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast1") as? NSNumber
@@ -165,7 +165,7 @@ public extension CIFilter {
 		///   Default:  0.15
 		///   minValue: 0.0
 		///
-		static let inputCloseness2_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputCloseness2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness2: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCloseness2") as? NSNumber
@@ -183,7 +183,7 @@ public extension CIFilter {
 		///   Default:  0.98
 		///   minValue: 0.0
 		///
-		static let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast2: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast2") as? NSNumber
@@ -229,7 +229,7 @@ public extension CIFilter {
 		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		static let inputCloseness3_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputCloseness3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness3: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCloseness3") as? NSNumber
@@ -247,7 +247,7 @@ public extension CIFilter {
 		///   Default:  0.99
 		///   minValue: 0.0
 		///
-		static let inputContrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputContrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast3: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast3") as? NSNumber

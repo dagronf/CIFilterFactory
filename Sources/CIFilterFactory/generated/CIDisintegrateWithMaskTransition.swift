@@ -102,7 +102,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
@@ -120,7 +120,7 @@ public extension CIFilter {
 		///   Default:  8
 		///   minValue: 0.0
 		///
-		static let inputShadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputShadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputShadowRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputShadowRadius") as? NSNumber
@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputShadowDensity_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputShadowDensity_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputShadowDensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputShadowDensity") as? NSNumber

@@ -118,7 +118,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber
@@ -136,7 +136,7 @@ public extension CIFilter {
 		///   Default:  0
 		///   minValue: 0.0
 		///
-		static let inputAngle_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputAngle_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputAngle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -169,7 +169,7 @@ public extension CIFilter {
 		///   Default:  1.3
 		///   minValue: 0.0
 		///
-		static let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputOpacity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputOpacity") as? NSNumber

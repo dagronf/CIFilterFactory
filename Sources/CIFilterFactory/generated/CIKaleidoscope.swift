@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  6
 		///   minValue: 1.0
 		///
-		static let inputCount_Range: PartialRangeFrom<Float> = Float(1.0)...
+		public static let inputCount_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputCount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCount") as? NSNumber

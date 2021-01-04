@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 22.0
 		///
-		static let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
+		public static let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
 		@objc public dynamic var inputAperture: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAperture") as? NSNumber
@@ -231,7 +231,7 @@ public extension CIFilter {
 		///   Default:  0
 		///   minValue: 0.0
 		///
-		static let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputLumaNoiseScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber

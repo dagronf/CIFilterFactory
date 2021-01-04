@@ -71,7 +71,7 @@ public extension CIFilter {
 		///   minValue: 56.0
 		///   maxValue: 583.0
 		///
-		static let inputMinWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
+		public static let inputMinWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public dynamic var inputMinWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMinWidth") as? NSNumber
@@ -88,7 +88,7 @@ public extension CIFilter {
 		///   minValue: 56.0
 		///   maxValue: 583.0
 		///
-		static let inputMaxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
+		public static let inputMaxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public dynamic var inputMaxWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMaxWidth") as? NSNumber
@@ -105,7 +105,7 @@ public extension CIFilter {
 		///   minValue: 13.0
 		///   maxValue: 283.0
 		///
-		static let inputMinHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
+		public static let inputMinHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public dynamic var inputMinHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMinHeight") as? NSNumber
@@ -122,7 +122,7 @@ public extension CIFilter {
 		///   minValue: 13.0
 		///   maxValue: 283.0
 		///
-		static let inputMaxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
+		public static let inputMaxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public dynamic var inputMaxHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMaxHeight") as? NSNumber
@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 30.0
 		///
-		static let inputDataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
+		public static let inputDataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
 		@objc public dynamic var inputDataColumns: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputDataColumns") as? NSNumber
@@ -156,7 +156,7 @@ public extension CIFilter {
 		///   minValue: 3.0
 		///   maxValue: 90.0
 		///
-		static let inputRows_Range: ClosedRange<Float> = 3.0 ... 90.0
+		public static let inputRows_Range: ClosedRange<Float> = 3.0 ... 90.0
 		@objc public dynamic var inputRows: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRows") as? NSNumber
@@ -172,7 +172,7 @@ public extension CIFilter {
 		///   Class:    NSNumber
 		///   minValue: 0.0
 		///
-		static let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputPreferredAspectRatio: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPreferredAspectRatio") as? NSNumber
@@ -189,7 +189,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 3.0
 		///
-		static let inputCompactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
+		public static let inputCompactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
 		@objc public dynamic var inputCompactionMode: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCompactionMode") as? NSNumber
@@ -206,7 +206,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCompactStyle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
@@ -223,7 +223,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 8.0
 		///
-		static let inputCorrectionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
+		public static let inputCorrectionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
 		@objc public dynamic var inputCorrectionLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
@@ -240,7 +240,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputAlwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputAlwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputAlwaysSpecifyCompaction: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAlwaysSpecifyCompaction") as? NSNumber

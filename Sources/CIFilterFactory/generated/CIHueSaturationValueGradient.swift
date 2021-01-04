@@ -59,7 +59,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputValue: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputValue") as? NSNumber
@@ -77,7 +77,7 @@ public extension CIFilter {
 		///   Default:  300
 		///   minValue: 0.0
 		///
-		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -95,7 +95,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSoftness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSoftness") as? NSNumber
@@ -113,7 +113,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputDither: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputDither") as? NSNumber

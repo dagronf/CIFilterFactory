@@ -74,7 +74,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 500.0
 		///
-		static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 500.0
+		public static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 500.0
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -93,7 +93,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputRingAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputRingAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputRingAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRingAmount") as? NSNumber
@@ -111,7 +111,7 @@ public extension CIFilter {
 		///   Default:  0.1
 		///   minValue: 0.0
 		///
-		static let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRingSize: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRingSize") as? NSNumber
@@ -130,7 +130,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		static let inputSoftness_Range: ClosedRange<Float> = 0.0 ... 10.0
+		public static let inputSoftness_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public dynamic var inputSoftness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSoftness") as? NSNumber

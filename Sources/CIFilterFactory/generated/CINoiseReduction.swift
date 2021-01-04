@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  0.02
 		///   minValue: 0.0
 		///
-		static let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNoiseLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
@@ -91,7 +91,7 @@ public extension CIFilter {
 		///   Default:  0.4
 		///   minValue: 0.0
 		///
-		static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber

@@ -103,7 +103,7 @@ public extension CIFilter {
 		///   Default:  1.5
 		///   minValue: 0.0
 		///
-		static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSaturation: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSaturation") as? NSNumber
@@ -121,7 +121,7 @@ public extension CIFilter {
 		///   Default:  2.5
 		///   minValue: 0.0
 		///
-		static let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUnsharpMaskRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		static let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUnsharpMaskIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
@@ -157,7 +157,7 @@ public extension CIFilter {
 		///   Default:  6
 		///   minValue: 0.0
 		///
-		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber

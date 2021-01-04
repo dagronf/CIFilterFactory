@@ -87,7 +87,7 @@ public extension CIFilter {
 		///   Default:  0
 		///   minValue: 0.0
 		///
-		static let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputBottomHeight: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBottomHeight") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 50.0
 		///
-		static let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
+		public static let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
 		@objc public dynamic var inputNumberOfFolds: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
@@ -125,7 +125,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputFoldShadowAmount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
@@ -144,7 +144,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber

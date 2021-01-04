@@ -343,14 +343,14 @@ func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -
 
 	if let minValue = minValue {
 		if let maxValue = maxValue {
-			out.print("   static let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
+			out.print("   public static let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
 		}
 		else {
-			out.print("   static let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
+			out.print("   public static let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
 		}
 	}
 	else if let maxValue = maxValue {
-		out.print("   static let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
+		out.print("   public static let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
 	}
 	return " \(key)_Range"
 }

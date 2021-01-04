@@ -88,7 +88,7 @@ public extension CIFilter {
 		///   Default:  40
 		///   minValue: 0.0
 		///
-		static let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSunRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSunRadius") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   Default:  2.58
 		///   minValue: 0.0
 		///
-		static let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputMaxStriationRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
@@ -124,7 +124,7 @@ public extension CIFilter {
 		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationStrength: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
@@ -142,7 +142,7 @@ public extension CIFilter {
 		///   Default:  1.375
 		///   minValue: 0.0
 		///
-		static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationContrast: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
@@ -161,7 +161,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputTime") as? NSNumber

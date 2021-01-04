@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
@@ -91,7 +91,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputAspectRatio: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
@@ -110,7 +110,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputB_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputB_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputB: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputB") as? NSNumber
@@ -129,7 +129,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputC_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputC_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputC: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputC") as? NSNumber

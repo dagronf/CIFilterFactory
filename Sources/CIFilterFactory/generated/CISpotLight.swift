@@ -103,7 +103,7 @@ public extension CIFilter {
 		///   Default:  3
 		///   minValue: 0.0
 		///
-		static let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputBrightness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputBrightness") as? NSNumber

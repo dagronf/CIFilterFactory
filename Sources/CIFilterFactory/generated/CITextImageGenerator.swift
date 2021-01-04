@@ -86,7 +86,7 @@ public extension CIFilter {
 		///   Default:  12
 		///   minValue: 0.0
 		///
-		static let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputFontSize: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputFontSize") as? NSNumber
@@ -104,7 +104,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber

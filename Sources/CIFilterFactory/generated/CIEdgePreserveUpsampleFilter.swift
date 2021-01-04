@@ -87,7 +87,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 5.0
 		///
-		static let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
+		public static let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
 		@objc public dynamic var inputSpatialSigma: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputLumaSigma: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLumaSigma") as? NSNumber

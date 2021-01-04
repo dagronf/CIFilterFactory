@@ -72,7 +72,7 @@ public extension CIFilter {
 		///   minValue: 5.0
 		///   maxValue: 95.0
 		///
-		static let inputCorrectionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
+		public static let inputCorrectionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
 		@objc public dynamic var inputCorrectionLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
@@ -89,7 +89,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 32.0
 		///
-		static let inputLayers_Range: ClosedRange<Float> = 1.0 ... 32.0
+		public static let inputLayers_Range: ClosedRange<Float> = 1.0 ... 32.0
 		@objc public dynamic var inputLayers: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputLayers") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCompactStyle: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber

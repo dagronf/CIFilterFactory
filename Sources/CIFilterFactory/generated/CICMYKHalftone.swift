@@ -88,7 +88,7 @@ public extension CIFilter {
 		///   Default:  6
 		///   minValue: -2.0
 		///
-		static let inputWidth_Range: PartialRangeFrom<Float> = Float(-2.0)...
+		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(-2.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -121,7 +121,7 @@ public extension CIFilter {
 		///   Default:  0.7
 		///   minValue: 0.0
 		///
-		static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputGCR_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputGCR_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputGCR: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputGCR") as? NSNumber
@@ -157,7 +157,7 @@ public extension CIFilter {
 		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		static let inputUCR_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputUCR_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUCR: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputUCR") as? NSNumber

@@ -74,7 +74,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 5.0
 		///
-		static let inputIntensity_Range: ClosedRange<Float> = 0.0 ... 5.0
+		public static let inputIntensity_Range: ClosedRange<Float> = 0.0 ... 5.0
 		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber

@@ -118,7 +118,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputSharpness") as? NSNumber

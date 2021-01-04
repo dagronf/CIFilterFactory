@@ -87,7 +87,7 @@ public extension CIFilter {
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		public static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputPerceptual: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPerceptual") as? NSNumber

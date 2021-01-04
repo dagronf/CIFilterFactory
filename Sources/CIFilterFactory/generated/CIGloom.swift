@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  10
 		///   minValue: 0.0
 		///
-		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -91,7 +91,7 @@ public extension CIFilter {
 		///   Default:  0.5
 		///   minValue: 0.0
 		///
-		static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputIntensity") as? NSNumber

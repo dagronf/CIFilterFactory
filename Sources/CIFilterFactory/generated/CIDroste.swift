@@ -104,7 +104,7 @@ public extension CIFilter {
 		///   minValue: -10.0
 		///   maxValue: 10.0
 		///
-		static let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
+		public static let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
 		@objc public dynamic var inputStrands: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputStrands") as? NSNumber
@@ -122,7 +122,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 1.0
 		///
-		static let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
+		public static let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputPeriodicity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputPeriodicity") as? NSNumber

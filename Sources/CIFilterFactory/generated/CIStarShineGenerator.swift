@@ -88,7 +88,7 @@ public extension CIFilter {
 		///   Default:  50
 		///   minValue: 0.0
 		///
-		static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -106,7 +106,7 @@ public extension CIFilter {
 		///   Default:  15
 		///   minValue: 0.0
 		///
-		static let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCrossScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossScale") as? NSNumber
@@ -139,7 +139,7 @@ public extension CIFilter {
 		///   Default:  -2
 		///   minValue: -8.0
 		///
-		static let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
+		public static let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public dynamic var inputCrossOpacity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
@@ -157,7 +157,7 @@ public extension CIFilter {
 		///   Default:  2.5
 		///   minValue: 0.0
 		///
-		static let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCrossWidth: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCrossWidth") as? NSNumber
@@ -175,7 +175,7 @@ public extension CIFilter {
 		///   Default:  -2
 		///   minValue: -8.0
 		///
-		static let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
+		public static let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public dynamic var inputEpsilon: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputEpsilon") as? NSNumber

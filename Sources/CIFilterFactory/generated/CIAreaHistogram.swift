@@ -88,7 +88,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputScale") as? NSNumber
@@ -107,7 +107,7 @@ public extension CIFilter {
 		///   minValue: 1.0
 		///   maxValue: 2048.0
 		///
-		static let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
+		public static let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
 		@objc public dynamic var inputCount: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputCount") as? NSNumber

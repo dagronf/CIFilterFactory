@@ -73,7 +73,7 @@ public extension CIFilter {
 		///   Default:  0.07000000000000001
 		///   minValue: 0.0
 		///
-		static let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNRNoiseLevel: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
@@ -91,7 +91,7 @@ public extension CIFilter {
 		///   Default:  0.71
 		///   minValue: 0.0
 		///
-		static let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNRSharpness: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputNRSharpness") as? NSNumber
@@ -109,7 +109,7 @@ public extension CIFilter {
 		///   Default:  1
 		///   minValue: 0.0
 		///
-		static let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputEdgeIntensity: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
@@ -127,7 +127,7 @@ public extension CIFilter {
 		///   Default:  0.1
 		///   minValue: 0.0
 		///
-		static let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputThreshold: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputThreshold") as? NSNumber
@@ -145,7 +145,7 @@ public extension CIFilter {
 		///   Default:  50
 		///   minValue: 0.25
 		///
-		static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
+		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
 		@objc public dynamic var inputContrast: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputContrast") as? NSNumber
