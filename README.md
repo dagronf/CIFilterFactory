@@ -23,13 +23,12 @@ Supports macOS, tvOS, iOS and mac Catalyst
 
 CIFilters are incredibly powerful and performant image processing tools that are quite difficult to use and bug-prone due to the String-based interface.
 
-I've always found the `CIFilter` interfaces to be :-
+I've always found the `CIFilter` interfaces to be 
 
-1. Totally undiscoverable
-2. Easy to make mistakes as important keys are Strings
-3. Opaque - argument types are not enforced
+1. Hard to use due to the opaque interface (no code completion!), and 
+2. Easy to make basic mistakes such as type mismatches etc. which would be very difficult to identify in a review (for example).  Given that the parameters to filters are Any? values, there is no type checking around the api.
 
-This library is an attempt to provide a typesafe, discoverable interface to CIFilter.
+This library is an attempt to automatically generate a typesafe, discoverable wrapper interface to CIFilter.
 
 ### Type safety and discovery
 
@@ -39,12 +38,12 @@ This library pulls out the 'soft' string-based parameters eg :-
 
 ```swift
 // compiles, but filter is nil as there's a typo in CIBloom
-let filter = CIFilter("CIBLoom")
+let filter = CIFilter("CIBLoom")!
 
 // no code completion, no type safety
 filter.setValue(11.8, forKey: "inputRadius")
 
-// These compile fine, undefined behaviour during runtime
+// These compile fine, but result in undefined behaviour during runtime.
 filter.setValue(vector, forKey: "inputRadius")
 filter.setValue(12.0, forKey: "inputNoodles")
 ```
@@ -53,13 +52,14 @@ and creates type-safe parameters like :-
 
 ```swift
 // No chance of a poorly named filter
-let filter = CIFilterFactory.CIBloom()
+let filter = CIFilterFactory.CIBloom()!
 
 // code completion support, type safe
 filter.inputRadius = 11.8
 
 // compile fails, invalid type
 filter.inputRadius = vector
+filter.inputNoodles = 12.0
 ```
 
 ### Documentation
@@ -102,9 +102,7 @@ let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 
 ### Value ranges
 
-A lot of the APIs define minimum and/or maximum values for input values.  Unfortunately, these values are only publicly visible from Apple's documentation or via the programmatic interface.
-
-This library embeds the min/max definitions into the code comments, as well as defining clamping ranges for input values to ensure correct behaviour.
+A lot of the APIs define minimum and/or maximum values for input values.  Unfortunately, these values are only publicly visible from Apple's documentation or via the programmatic interface.  The generated code embeds the min/max definitions into the code comments, as well as defining clamping ranges for input values to ensure correct behaviour. Range definitions for each range-appropriate parameter are also automatically generated and made available for your code to validate against if needed.
 
 ### OS Dependent types
 
@@ -126,21 +124,28 @@ Using `CIFilterFactory`, Xcode can now code-complete and type check classes and 
 
 ```swift
 guard let bloomFilter = CIFilter(name: "CIBloom") else { fatalError() }
-bloomFilter.setValue(input, forKey: kCIInputImageKey)
-bloomFilter.setValue(intensity, forKey: kCIInputIntensityKey)
-bloomFilter.setValue(radius, forKey: kCIInputRadiusKey)
-return bloomFilter.outputImage
+bloomFilter.setValue(inputImage, forKey: kCIInputImageKey)
+bloomFilter.setValue(0.3, forKey: kCIInputIntensityKey)
+bloomFilter.setValue(5, forKey: kCIInputRadiusKey)
+let outputImage = bloomFilter.outputImage
 ```
 
 #### After
 
 ```swift
 guard let bloomFilter = CIFilterFactory.CIBloom() else { fatalError() }
-bloomFilter.inputImage = image
-bloomFilter.inputIntensity = intensity
-bloomFilter.inputRadius = radius
+bloomFilter.inputImage = inputImage
+bloomFilter.inputIntensity = 0.3
+bloomFilter.inputRadius = 5
 let outputImage = bloomFilter.outputImage
 ```
+
+Using the generated interface provides :-
+
+1. Avoid mistakes from incorrect parameter string identifiers
+2. Code completion
+3. Type checking
+4. Automatic range validation
 
 ### Objective-C example
 
@@ -173,6 +178,18 @@ You can find some really simple examples for both Swift and Objective-C in the `
 
 * Clean up the generator script
 * Better type support
+
+## History
+
+`11.1.0`
+
+* Regenerated on macOS 11.1 to update for the latest filters
+* (convenience) Generate convenience initializer with default parameters for each filter
+* (convenience) Generate static filter creator on `CIFilter` so you can use
+
+	```swift
+	var filter = CIFilter.Sepia()
+	```
 
 ## License
 
