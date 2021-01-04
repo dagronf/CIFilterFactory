@@ -23,24 +23,43 @@ import Foundation
 import CoreImage
 
 extension NSNumber {
-	func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
+
+	// PartialRangeFrom
+
+	@inlinable func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
 		if bounds.lowerBound > self.floatValue {
 			return NSNumber(value: bounds.lowerBound)
 		}
 		return self
 	}
 
-	func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
+	@inlinable func validate(bounds: PartialRangeFrom<Float>) -> Bool {
+		return bounds.lowerBound <= self.floatValue
+	}
+
+	// PartialRangeThrough
+
+	@inlinable func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
 		if bounds.upperBound < self.floatValue {
 			return NSNumber(value: bounds.upperBound)
 		}
 		return self
 	}
 
-	func clamped(bounds: ClosedRange<Float>) -> NSNumber {
+	@inlinable func validate(bounds: PartialRangeThrough<Float>) -> Bool {
+		return bounds.upperBound >= self.floatValue
+	}
+
+	// ClosedRange
+
+	@inlinable func clamped(bounds: ClosedRange<Float>) -> NSNumber {
 		var value = max(bounds.lowerBound, self.floatValue)
 		value = min(bounds.upperBound, value)
 		return NSNumber(value: value)
+	}
+
+	@inlinable func validate(bounds: ClosedRange<Float>) -> Bool {
+		return self.floatValue >= bounds.lowerBound && self.floatValue <= bounds.upperBound
 	}
 }
 
