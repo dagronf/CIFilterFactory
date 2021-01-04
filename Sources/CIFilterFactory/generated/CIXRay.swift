@@ -36,7 +36,7 @@ public extension CIFilter {
 	///
 	/// X-Ray
 	///
-	/// Apply a “XRay” style effect to an image
+	/// Apply an “XRay” style effect to an image
 	///
 	/// **Links**
 	///

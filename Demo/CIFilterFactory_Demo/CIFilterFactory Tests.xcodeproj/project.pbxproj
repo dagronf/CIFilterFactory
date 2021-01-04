@@ -16,8 +16,8 @@
 		2352838824B6BAF60006FC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838624B6BAF60006FC22 /* Main.storyboard */; };
 		2352838A24B6BAF60006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352838924B6BAF60006FC22 /* Assets.xcassets */; };
 		2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */; };
-		2391E84124C0018D00094D9B /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2391E84024C0018D00094D9B /* CIFilterFactory-Library */; };
-		2391E84324C004DE00094D9B /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2391E84224C004DE00094D9B /* CIFilterFactory-Library */; };
+		2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */; };
+		2358BA5E25A3B1DC00872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +36,7 @@
 		2352838924B6BAF60006FC22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2352838C24B6BAF60006FC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2352838E24B6BAF60006FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2358BA5225A3B1A300872159 /* CIFilterFactory */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CIFilterFactory; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2391E84124C0018D00094D9B /* CIFilterFactory-Library in Frameworks */,
+				2358BA5E25A3B1DC00872159 /* CIFilterFactory-Library in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2391E84324C004DE00094D9B /* CIFilterFactory-Library in Frameworks */,
+				2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +96,7 @@
 		23C2F6C822A3374D002A354E = {
 			isa = PBXGroup;
 			children = (
+				2358BA5225A3B1A300872159 /* CIFilterFactory */,
 				2352836924B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */,
 				2352838124B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */,
 				23C2F6D222A3374D002A354E /* Products */,
@@ -128,7 +130,7 @@
 			);
 			name = "CIFilterFactory ObjectiveC Test";
 			packageProductDependencies = (
-				2391E84024C0018D00094D9B /* CIFilterFactory-Library */,
+				2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */,
 			);
 			productName = "CIFilterFactory ObjectiveC Test";
 			productReference = 2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */;
@@ -148,7 +150,7 @@
 			);
 			name = "CIFilterFactory Swift tvOS Test";
 			packageProductDependencies = (
-				2391E84224C004DE00094D9B /* CIFilterFactory-Library */,
+				2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */,
 			);
 			productName = "CIFilterFactory Swift tvOS Test";
 			productReference = 2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */;
@@ -182,7 +184,6 @@
 			);
 			mainGroup = 23C2F6C822A3374D002A354E;
 			packageReferences = (
-				2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */,
 			);
 			productRefGroup = 23C2F6D222A3374D002A354E /* Products */;
 			projectDirPath = "";
@@ -282,7 +283,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-ObjectiveC-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -305,7 +306,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.CIFilterFactory-ObjectiveC-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -329,7 +330,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 11.3;
 			};
 			name = Debug;
 		};
@@ -351,7 +352,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 11.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -407,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -462,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -503,26 +504,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dagronf/CIFilterFactory.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.15.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		2391E84024C0018D00094D9B /* CIFilterFactory-Library */ = {
+		2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
 			productName = "CIFilterFactory-Library";
 		};
-		2391E84224C004DE00094D9B /* CIFilterFactory-Library */ = {
+		2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2352836124B6A92A0006FC22 /* XCRemoteSwiftPackageReference "CIFilterFactory" */;
 			productName = "CIFilterFactory-Library";
 		};
 /* End XCSwiftPackageProductDependency section */

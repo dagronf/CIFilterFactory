@@ -24,12 +24,14 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
+public extension CIFilter {
+	@available(macOS 11.0, iOS 14, *)
+	@inlinable @objc static func ColorAbsoluteDifference() -> CIFilterFactory.CIColorAbsoluteDifference? {
+		return CIFilterFactory.CIColorAbsoluteDifference()
+	}
+}
 
-@available(macOS 10.16, iOS 14, *)
+@available(macOS 11.0, iOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Absolute Difference
@@ -47,12 +49,14 @@ import Foundation
 			super.init(name: "CIColorAbsoluteDifference")
 		}
 
-		// MARK: - inputImage
+		// MARK: - Inputs
 
 		///
 		/// The first input image for differencing.
 		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -61,18 +65,29 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputImage2
-
 		///
 		/// The second input image for differencing.
 		///
-		@objc public var inputImage2: CIImage? {
+		///   Class:    CIImage
+		@objc public dynamic var inputImage2: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage2") as? CIImage
 			}
 			set {
 				self.filter.setValue(newValue, forKey: "inputImage2")
 			}
+		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputImage2: CIImage
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputImage2 = inputImage2
 		}
 	}
 }

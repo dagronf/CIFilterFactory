@@ -24,12 +24,14 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
+public extension CIFilter {
+	@available(macOS 11.0, iOS 14, *)
+	@inlinable @objc static func ColorThreshold() -> CIFilterFactory.CIColorThreshold? {
+		return CIFilterFactory.CIColorThreshold()
+	}
+}
 
-@available(macOS 10.16, iOS 14, *)
+@available(macOS 11.0, iOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Threshold
@@ -47,12 +49,14 @@ import Foundation
 			super.init(name: "CIColorThreshold")
 		}
 
-		// MARK: - inputImage
+		// MARK: - Inputs
 
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
@@ -61,18 +65,31 @@ import Foundation
 			}
 		}
 
-		// MARK: - inputThreshold
-
 		///
 		/// No Description
 		///
-		@objc public var inputThreshold: NSNumber? {
+		///   Class:    NSNumber
+		///   Type:     CIAttributeTypeScalar
+		///   Default:  0.5
+		@objc public dynamic var inputThreshold: NSNumber? {
 			get {
 				return self.filter.value(forKey: "inputThreshold") as? NSNumber
 			}
 			set {
 				self.filter.setValue(newValue, forKey: "inputThreshold")
 			}
+		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage,
+			inputThreshold: NSNumber = 0.5
+		) {
+			self.init()
+
+			self.inputImage = inputImage
+			self.inputThreshold = inputThreshold
 		}
 	}
 }

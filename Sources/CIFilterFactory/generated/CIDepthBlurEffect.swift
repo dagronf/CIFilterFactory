@@ -92,7 +92,7 @@ public extension CIFilter {
 		}
 
 		///
-		/// A matting image.
+		/// A segmentation matte image that corresponds to people’s hair.
 		///
 		///   Class:    CIImage
 		@objc public dynamic var inputHairImage: CIImage? {
@@ -101,6 +101,32 @@ public extension CIFilter {
 			}
 			set {
 				self.filter.setValue(newValue, forKey: "inputHairImage")
+			}
+		}
+
+		///
+		/// A segmentation matte image that corresponds to people’s glasses.
+		///
+		///   Class:    CIImage
+		@objc public dynamic var inputGlassesImage: CIImage? {
+			get {
+				return self.filter.value(forKey: "inputGlassesImage") as? CIImage
+			}
+			set {
+				self.filter.setValue(newValue, forKey: "inputGlassesImage")
+			}
+		}
+
+		///
+		/// No Description
+		///
+		///   Class:    CIImage
+		@objc public dynamic var inputGainMap: CIImage? {
+			get {
+				return self.filter.value(forKey: "inputGainMap") as? CIImage
+			}
+			set {
+				self.filter.setValue(newValue, forKey: "inputGainMap")
 			}
 		}
 
@@ -276,6 +302,8 @@ public extension CIFilter {
 			inputDisparityImage: CIImage,
 			inputMatteImage: CIImage,
 			inputHairImage: CIImage,
+			inputGlassesImage: CIImage,
+			inputGainMap: CIImage,
 			inputAperture: NSNumber = 0,
 			inputLeftEyePositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
 			inputRightEyePositions: CIFilterFactory.Point = CIFilterFactory.Point(x: -1.0, y: -1.0),
@@ -294,6 +322,8 @@ public extension CIFilter {
 			self.inputDisparityImage = inputDisparityImage
 			self.inputMatteImage = inputMatteImage
 			self.inputHairImage = inputHairImage
+			self.inputGlassesImage = inputGlassesImage
+			self.inputGainMap = inputGainMap
 			self.inputAperture = inputAperture
 			self.inputLeftEyePositions = inputLeftEyePositions
 			self.inputRightEyePositions = inputRightEyePositions

@@ -24,12 +24,14 @@ import CoreImage
 import CoreML
 import Foundation
 
-#if !os(macOS)
-	// For access to NSValue.cgAffineTransformValue
-	import UIKit
-#endif
+public extension CIFilter {
+	@available(macOS 11.0, iOS 14, *)
+	@inlinable @objc static func ColorThresholdOtsu() -> CIFilterFactory.CIColorThresholdOtsu? {
+		return CIFilterFactory.CIColorThresholdOtsu()
+	}
+}
 
-@available(macOS 10.16, iOS 14, *)
+@available(macOS 11.0, iOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Threshold Otsu
@@ -47,18 +49,30 @@ import Foundation
 			super.init(name: "CIColorThresholdOtsu")
 		}
 
-		// MARK: - inputImage
+		// MARK: - Inputs
 
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		@objc public var inputImage: CIImage? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputImage: CIImage? {
 			get {
 				return self.filter.value(forKey: "inputImage") as? CIImage
 			}
 			set {
 				self.filter.setValue(newValue, forKey: "inputImage")
 			}
+		}
+
+		// MARK: - Convenience initializer
+
+		@objc public convenience init?(
+			inputImage: CIImage)
+		{
+			self.init()
+
+			self.inputImage = inputImage
 		}
 	}
 }

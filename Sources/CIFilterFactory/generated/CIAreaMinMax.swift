@@ -82,10 +82,6 @@ public extension CIFilter {
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputImageMPS: Any? {
-			return self.filter.value(forKey: "outputImageMPS")
-		}
-
 		@objc public dynamic var outputImageNonMPS: Any? {
 			return self.filter.value(forKey: "outputImageNonMPS")
 		}
