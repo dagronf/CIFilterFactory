@@ -1,5 +1,5 @@
 //
-//  CIConvolution7X7.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIPersonSegmentation.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -25,28 +25,28 @@ import CoreML
 import Foundation
 
 public extension CIFilter {
-	@available(macOS 10.9, iOS 9, *)
-	@inlinable @objc static func Convolution7X7() -> CIFilterFactory.CIConvolution7X7? {
-		return CIFilterFactory.CIConvolution7X7()
+	@available(macOS 12.0, iOS 15, *)
+	@inlinable @objc static func PersonSegmentation() -> CIFilterFactory.CIPersonSegmentation? {
+		return CIFilterFactory.CIPersonSegmentation()
 	}
 }
 
-@available(macOS 10.9, iOS 9, *)
+@available(macOS 12.0, iOS 15, *)
 @objc public extension CIFilterFactory {
 	///
-	/// 7 by 7 Convolution
+	/// Person Segmentation
 	///
-	/// Convolution with 7 by 7 matrix
+	/// Returns a segmentation mask that is red in the portions of an image that are likely to be persons. The returned image may have a different size and aspect ratio from the input image.
 	///
 	/// **Links**
 	///
-	/// [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
+	/// [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
+	/// [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
 	///
-	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCore {
+	@objc(CIFilterFactory_CIPersonSegmentation) class CIPersonSegmentation: FilterCore {
 		@objc public init?() {
-			super.init(name: "CIConvolution7X7")
+			super.init(name: "CIPersonSegmentation")
 		}
 
 		// MARK: - Inputs
@@ -66,30 +66,15 @@ public extension CIFilter {
 		}
 
 		///
-		/// No Description
-		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-		@objc public dynamic var inputWeights: CIVector? {
-			get {
-				return self.filter.value(forKey: "inputWeights") as? CIVector
-			}
-			set {
-				self.filter.setValue(newValue, forKey: "inputWeights")
-			}
-		}
-
-		///
-		/// No Description
+		/// Determines the size and quality of the resulting segmentation mask. The value can be a number where 0 is accurate, 1 is balanced, and 2 is fast.
 		///
 		///   Class:    NSNumber
-		///   Default:  0
-		@objc public dynamic var inputBias: NSNumber? {
+		@objc public dynamic var inputQualityLevel: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBias") as? NSNumber
+				return self.filter.value(forKey: "inputQualityLevel") as? NSNumber
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBias")
+				self.filter.setValue(newValue, forKey: "inputQualityLevel")
 			}
 		}
 
@@ -97,14 +82,12 @@ public extension CIFilter {
 
 		@objc public convenience init?(
 			inputImage: CIImage,
-			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
-			inputBias: NSNumber = 0
+			inputQualityLevel: NSNumber
 		) {
 			self.init()
 
 			self.inputImage = inputImage
-			self.inputWeights = inputWeights
-			self.inputBias = inputBias
+			self.inputQualityLevel = inputQualityLevel
 		}
 	}
 }

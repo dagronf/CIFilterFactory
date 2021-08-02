@@ -69,7 +69,7 @@ public extension CIFilter {
 		///
 		///   Class:    NSNumber
 		///   Type:     CIAttributeTypeScalar
-		///   Default:  7
+		///   Default:  10
 		///   minValue: 0.0
 		///   maxValue: 100.0
 		///
@@ -112,7 +112,7 @@ public extension CIFilter {
 
 		@objc public convenience init?(
 			inputMessage: NSData,
-			inputQuietSpace: NSNumber = 7,
+			inputQuietSpace: NSNumber = 10,
 			inputBarcodeHeight: NSNumber = 32
 		) {
 			self.init()

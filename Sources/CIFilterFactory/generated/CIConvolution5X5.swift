@@ -34,7 +34,7 @@ public extension CIFilter {
 @available(macOS 10.9, iOS 7, *)
 @objc public extension CIFilterFactory {
 	///
-	/// 5 by 5 convolution
+	/// 5 by 5 Convolution
 	///
 	/// Convolution with 5 by 5 matrix
 	///

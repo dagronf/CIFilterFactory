@@ -1,5 +1,5 @@
 //
-//  CIConvolution7X7.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIConvolutionRGB3X3.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -25,28 +25,28 @@ import CoreML
 import Foundation
 
 public extension CIFilter {
-	@available(macOS 10.9, iOS 9, *)
-	@inlinable @objc static func Convolution7X7() -> CIFilterFactory.CIConvolution7X7? {
-		return CIFilterFactory.CIConvolution7X7()
+	@available(macOS 12.0, iOS 15, *)
+	@inlinable @objc static func ConvolutionRGB3X3() -> CIFilterFactory.CIConvolutionRGB3X3? {
+		return CIFilterFactory.CIConvolutionRGB3X3()
 	}
 }
 
-@available(macOS 10.9, iOS 9, *)
+@available(macOS 12.0, iOS 15, *)
 @objc public extension CIFilterFactory {
 	///
-	/// 7 by 7 Convolution
+	/// 3 by 3 RGB Convolution
 	///
-	/// Convolution with 7 by 7 matrix
+	/// Convolution of RGB channels with 3 by 3 matrix
 	///
 	/// **Links**
 	///
-	/// [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
+	/// [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
+	/// [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)
 	///
-	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCore {
+	@objc(CIFilterFactory_CIConvolutionRGB3X3) class CIConvolutionRGB3X3: FilterCore {
 		@objc public init?() {
-			super.init(name: "CIConvolution7X7")
+			super.init(name: "CIConvolutionRGB3X3")
 		}
 
 		// MARK: - Inputs
@@ -69,7 +69,7 @@ public extension CIFilter {
 		/// No Description
 		///
 		///   Class:    CIVector
-		///   Default:  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+		///   Default:  [0 0 0 0 1 0 0 0 0]
 		@objc public dynamic var inputWeights: CIVector? {
 			get {
 				return self.filter.value(forKey: "inputWeights") as? CIVector
@@ -97,7 +97,7 @@ public extension CIFilter {
 
 		@objc public convenience init?(
 			inputImage: CIImage,
-			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]),
 			inputBias: NSNumber = 0
 		) {
 			self.init()

@@ -1,5 +1,5 @@
 //
-//  CIConvolution7X7.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIVividLightBlendMode.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -25,28 +25,28 @@ import CoreML
 import Foundation
 
 public extension CIFilter {
-	@available(macOS 10.9, iOS 9, *)
-	@inlinable @objc static func Convolution7X7() -> CIFilterFactory.CIConvolution7X7? {
-		return CIFilterFactory.CIConvolution7X7()
+	@available(macOS 12.0, iOS 15, *)
+	@inlinable @objc static func VividLightBlendMode() -> CIFilterFactory.CIVividLightBlendMode? {
+		return CIFilterFactory.CIVividLightBlendMode()
 	}
 }
 
-@available(macOS 10.9, iOS 9, *)
+@available(macOS 12.0, iOS 15, *)
 @objc public extension CIFilterFactory {
 	///
-	/// 7 by 7 Convolution
+	/// Vivid Light Blend Mode
 	///
-	/// Convolution with 7 by 7 matrix
+	/// A blend mode that is a combination of color burn and color dodge blend modes.
 	///
 	/// **Links**
 	///
-	/// [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
+	/// [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
+	/// [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
 	///
-	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCore {
+	@objc(CIFilterFactory_CIVividLightBlendMode) class CIVividLightBlendMode: FilterCore {
 		@objc public init?() {
-			super.init(name: "CIConvolution7X7")
+			super.init(name: "CIVividLightBlendMode")
 		}
 
 		// MARK: - Inputs
@@ -66,30 +66,16 @@ public extension CIFilter {
 		}
 
 		///
-		/// No Description
+		/// The image to use as a background image.
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-		@objc public dynamic var inputWeights: CIVector? {
+		///   Class:    CIImage
+		///   Type:     CIAttributeTypeImage
+		@objc public dynamic var inputBackgroundImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputWeights") as? CIVector
+				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputWeights")
-			}
-		}
-
-		///
-		/// No Description
-		///
-		///   Class:    NSNumber
-		///   Default:  0
-		@objc public dynamic var inputBias: NSNumber? {
-			get {
-				return self.filter.value(forKey: "inputBias") as? NSNumber
-			}
-			set {
-				self.filter.setValue(newValue, forKey: "inputBias")
+				self.filter.setValue(newValue, forKey: "inputBackgroundImage")
 			}
 		}
 
@@ -97,14 +83,12 @@ public extension CIFilter {
 
 		@objc public convenience init?(
 			inputImage: CIImage,
-			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
-			inputBias: NSNumber = 0
+			inputBackgroundImage: CIImage
 		) {
 			self.init()
 
 			self.inputImage = inputImage
-			self.inputWeights = inputWeights
-			self.inputBias = inputBias
+			self.inputBackgroundImage = inputBackgroundImage
 		}
 	}
 }

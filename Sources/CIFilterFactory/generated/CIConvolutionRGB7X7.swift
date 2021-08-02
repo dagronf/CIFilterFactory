@@ -1,5 +1,5 @@
 //
-//  CIConvolution7X7.swift  (AUTOMATICALLY GENERATED FILE)
+//  CIConvolutionRGB7X7.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -25,28 +25,28 @@ import CoreML
 import Foundation
 
 public extension CIFilter {
-	@available(macOS 10.9, iOS 9, *)
-	@inlinable @objc static func Convolution7X7() -> CIFilterFactory.CIConvolution7X7? {
-		return CIFilterFactory.CIConvolution7X7()
+	@available(macOS 12.0, iOS 15, *)
+	@inlinable @objc static func ConvolutionRGB7X7() -> CIFilterFactory.CIConvolutionRGB7X7? {
+		return CIFilterFactory.CIConvolutionRGB7X7()
 	}
 }
 
-@available(macOS 10.9, iOS 9, *)
+@available(macOS 12.0, iOS 15, *)
 @objc public extension CIFilterFactory {
 	///
-	/// 7 by 7 Convolution
+	/// 7 by 7 RGB Convolution
 	///
-	/// Convolution with 7 by 7 matrix
+	/// Convolution of RGB channels with 7 by 7 matrix
 	///
 	/// **Links**
 	///
-	/// [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
+	/// [CIConvolutionRGB7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB7X7)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
+	/// [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB7X7/)
 	///
-	@objc(CIFilterFactory_CIConvolution7X7) class CIConvolution7X7: FilterCore {
+	@objc(CIFilterFactory_CIConvolutionRGB7X7) class CIConvolutionRGB7X7: FilterCore {
 		@objc public init?() {
-			super.init(name: "CIConvolution7X7")
+			super.init(name: "CIConvolutionRGB7X7")
 		}
 
 		// MARK: - Inputs
