@@ -62,7 +62,7 @@ public extension CIFilter {
 		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIMeshGenerator.inputWidth_Range), forKey: "inputWidth")
@@ -76,10 +76,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -89,10 +89,10 @@ public extension CIFilter {
 		///   Class:    NSArray
 		@objc public dynamic var inputMesh: NSArray? {
 			get {
-				return self.filter.value(forKey: "inputMesh") as? NSArray
+				return self.keyedValue("inputMesh")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMesh")
+				self.setKeyedValue(newValue, for: "inputMesh")
 			}
 		}
 

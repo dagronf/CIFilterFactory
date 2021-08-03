@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.6 0.45 0.3 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputIntensity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputIntensity") as? NSNumber
+				return self.keyedValue("inputIntensity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorMonochrome.inputIntensity_Range), forKey: "inputIntensity")

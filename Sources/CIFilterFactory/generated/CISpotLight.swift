@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  [400 600 150]
 		@objc public dynamic var inputLightPosition: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputLightPosition") as? CIVector
+				return self.keyedValue("inputLightPosition")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputLightPosition")
+				self.setKeyedValue(newValue, for: "inputLightPosition")
 			}
 		}
 
@@ -88,10 +88,10 @@ public extension CIFilter {
 		///   Default:  [200 200 0]
 		@objc public dynamic var inputLightPointsAt: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputLightPointsAt") as? CIVector
+				return self.keyedValue("inputLightPointsAt")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputLightPointsAt")
+				self.setKeyedValue(newValue, for: "inputLightPointsAt")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputBrightness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBrightness") as? NSNumber
+				return self.keyedValue("inputBrightness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotLight.inputBrightness_Range), forKey: "inputBrightness")
@@ -121,10 +121,10 @@ public extension CIFilter {
 		///   Default:  0.1
 		@objc public dynamic var inputConcentration: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputConcentration") as? NSNumber
+				return self.keyedValue("inputConcentration")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputConcentration")
+				self.setKeyedValue(newValue, for: "inputConcentration")
 			}
 		}
 
@@ -136,10 +136,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 

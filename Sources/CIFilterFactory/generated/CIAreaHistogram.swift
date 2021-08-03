@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
+				self.setKeyedValue(newValue?.vector, for: "inputExtent")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScale") as? NSNumber
+				return self.keyedValue("inputScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAreaHistogram.inputScale_Range), forKey: "inputScale")
@@ -110,7 +110,7 @@ public extension CIFilter {
 		public static let inputCount_Range: ClosedRange<Float> = 1.0 ... 2048.0
 		@objc public dynamic var inputCount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCount") as? NSNumber
+				return self.keyedValue("inputCount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAreaHistogram.inputCount_Range), forKey: "inputCount")

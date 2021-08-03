@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    CIBarcodeDescriptor
 		@objc public dynamic var inputBarcodeDescriptor: CIBarcodeDescriptor? {
 			get {
-				return self.filter.value(forKey: "inputBarcodeDescriptor") as? CIBarcodeDescriptor
+				return self.keyedValue("inputBarcodeDescriptor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBarcodeDescriptor")
+				self.setKeyedValue(newValue, for: "inputBarcodeDescriptor")
 			}
 		}
 

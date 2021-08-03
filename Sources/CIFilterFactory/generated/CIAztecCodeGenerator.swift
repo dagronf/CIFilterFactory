@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSData
 		@objc public dynamic var inputMessage: NSData? {
 			get {
-				return self.filter.value(forKey: "inputMessage") as? NSData
+				return self.keyedValue("inputMessage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMessage")
+				self.setKeyedValue(newValue, for: "inputMessage")
 			}
 		}
 
@@ -75,7 +75,7 @@ public extension CIFilter {
 		public static let inputCorrectionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
 		@objc public dynamic var inputCorrectionLevel: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
+				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
@@ -92,7 +92,7 @@ public extension CIFilter {
 		public static let inputLayers_Range: ClosedRange<Float> = 1.0 ... 32.0
 		@objc public dynamic var inputLayers: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputLayers") as? NSNumber
+				return self.keyedValue("inputLayers")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputLayers_Range), forKey: "inputLayers")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCompactStyle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
+				return self.keyedValue("inputCompactStyle")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAztecCodeGenerator.inputCompactStyle_Range), forKey: "inputCompactStyle")

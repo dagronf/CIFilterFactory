@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSAttributedString
 		@objc public dynamic var inputText: NSAttributedString? {
 			get {
-				return self.filter.value(forKey: "inputText") as? NSAttributedString
+				return self.keyedValue("inputText")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputText")
+				self.setKeyedValue(newValue, for: "inputText")
 			}
 		}
 
@@ -75,7 +75,7 @@ public extension CIFilter {
 		public static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.keyedValue("inputScaleFactor")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAttributedTextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")

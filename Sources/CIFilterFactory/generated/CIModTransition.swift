@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIModTransition.inputTime_Range), forKey: "inputTime")
@@ -121,10 +121,10 @@ public extension CIFilter {
 		///   Default:  2
 		@objc public dynamic var inputAngle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAngle") as? NSNumber
+				return self.keyedValue("inputAngle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAngle")
+				self.setKeyedValue(newValue, for: "inputAngle")
 			}
 		}
 
@@ -139,7 +139,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIModTransition.inputRadius_Range), forKey: "inputRadius")
@@ -157,7 +157,7 @@ public extension CIFilter {
 		public static let inputCompression_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputCompression: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCompression") as? NSNumber
+				return self.keyedValue("inputCompression")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIModTransition.inputCompression_Range), forKey: "inputCompression")

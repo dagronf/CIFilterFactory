@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  [0 0 0 0]
 		@objc public dynamic var inputMinComponents: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputMinComponents") as? CIVector
+				return self.keyedValue("inputMinComponents")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMinComponents")
+				self.setKeyedValue(newValue, for: "inputMinComponents")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  [1 1 1 1]
 		@objc public dynamic var inputMaxComponents: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputMaxComponents") as? CIVector
+				return self.keyedValue("inputMaxComponents")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMaxComponents")
+				self.setKeyedValue(newValue, for: "inputMaxComponents")
 			}
 		}
 

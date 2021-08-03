@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    AVCameraCalibrationData
 		@objc public dynamic var inputAVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
-				return self.filter.value(forKey: "inputAVCameraCalibrationData") as? AVCameraCalibrationData
+				return self.keyedValue("inputAVCameraCalibrationData")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAVCameraCalibrationData")
+				self.setKeyedValue(newValue, for: "inputAVCameraCalibrationData")
 			}
 		}
 
@@ -85,10 +85,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputUseInverseLookUpTable: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputUseInverseLookUpTable") as? NSNumber
+				return self.keyedValue("inputUseInverseLookUpTable")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputUseInverseLookUpTable")
+				self.setKeyedValue(newValue, for: "inputUseInverseLookUpTable")
 			}
 		}
 

@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint0")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint1")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIGlassLozenge.inputRadius_Range), forKey: "inputRadius")
@@ -124,7 +124,7 @@ public extension CIFilter {
 		public static let inputRefraction_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRefraction: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRefraction") as? NSNumber
+				return self.keyedValue("inputRefraction")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIGlassLozenge.inputRefraction_Range), forKey: "inputRefraction")

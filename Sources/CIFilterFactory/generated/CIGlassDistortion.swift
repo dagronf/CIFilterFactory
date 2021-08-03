@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTexture: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTexture") as? CIImage
+				return self.keyedValue("inputTexture")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTexture")
+				self.setKeyedValue(newValue, for: "inputTexture")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -105,7 +105,7 @@ public extension CIFilter {
 		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScale") as? NSNumber
+				return self.keyedValue("inputScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIGlassDistortion.inputScale_Range), forKey: "inputScale")

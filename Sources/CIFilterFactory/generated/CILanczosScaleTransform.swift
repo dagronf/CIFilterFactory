@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScale") as? NSNumber
+				return self.keyedValue("inputScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputScale_Range), forKey: "inputScale")
@@ -94,7 +94,7 @@ public extension CIFilter {
 		public static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputAspectRatio: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
+				return self.keyedValue("inputAspectRatio")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")

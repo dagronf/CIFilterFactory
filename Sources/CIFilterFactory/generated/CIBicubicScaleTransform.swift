@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScale") as? NSNumber
+				return self.keyedValue("inputScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputScale_Range), forKey: "inputScale")
@@ -94,7 +94,7 @@ public extension CIFilter {
 		public static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputAspectRatio: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAspectRatio") as? NSNumber
+				return self.keyedValue("inputAspectRatio")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")
@@ -113,7 +113,7 @@ public extension CIFilter {
 		public static let inputB_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputB: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputB") as? NSNumber
+				return self.keyedValue("inputB")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputB_Range), forKey: "inputB")
@@ -132,7 +132,7 @@ public extension CIFilter {
 		public static let inputC_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputC: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputC") as? NSNumber
+				return self.keyedValue("inputC")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputC_Range), forKey: "inputC")

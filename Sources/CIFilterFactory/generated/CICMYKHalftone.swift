@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(-2.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputWidth_Range), forKey: "inputWidth")
@@ -106,10 +106,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputAngle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAngle") as? NSNumber
+				return self.keyedValue("inputAngle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAngle")
+				self.setKeyedValue(newValue, for: "inputAngle")
 			}
 		}
 
@@ -124,7 +124,7 @@ public extension CIFilter {
 		public static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.keyedValue("inputSharpness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputSharpness_Range), forKey: "inputSharpness")
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputGCR_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputGCR: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputGCR") as? NSNumber
+				return self.keyedValue("inputGCR")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputGCR_Range), forKey: "inputGCR")
@@ -160,7 +160,7 @@ public extension CIFilter {
 		public static let inputUCR_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUCR: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputUCR") as? NSNumber
+				return self.keyedValue("inputUCR")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICMYKHalftone.inputUCR_Range), forKey: "inputUCR")

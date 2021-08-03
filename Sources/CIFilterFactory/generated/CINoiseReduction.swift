@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNoiseLevel: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
+				return self.keyedValue("inputNoiseLevel")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputNoiseLevel_Range), forKey: "inputNoiseLevel")
@@ -94,7 +94,7 @@ public extension CIFilter {
 		public static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.keyedValue("inputSharpness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputSharpness_Range), forKey: "inputSharpness")

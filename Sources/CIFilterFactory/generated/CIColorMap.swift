@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeGradient
 		@objc public dynamic var inputGradientImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputGradientImage") as? CIImage
+				return self.keyedValue("inputGradientImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGradientImage")
+				self.setKeyedValue(newValue, for: "inputGradientImage")
 			}
 		}
 

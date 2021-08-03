@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputTopLeft")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputTopLeft")
+				self.setKeyedValue(newValue?.vector, for: "inputTopLeft")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputTopRight")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputTopRight")
+				self.setKeyedValue(newValue?.vector, for: "inputTopRight")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBottomRight")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputBottomRight")
+				self.setKeyedValue(newValue?.vector, for: "inputBottomRight")
 			}
 		}
 
@@ -121,7 +121,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBottomLeft")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputBottomLeft")
+				self.setKeyedValue(newValue?.vector, for: "inputBottomLeft")
 			}
 		}
 

@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  {length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }
 		@objc public dynamic var inputCurvesData: NSData? {
 			get {
-				return self.filter.value(forKey: "inputCurvesData") as? NSData
+				return self.keyedValue("inputCurvesData")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCurvesData")
+				self.setKeyedValue(newValue, for: "inputCurvesData")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  [0 1]
 		@objc public dynamic var inputCurvesDomain: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputCurvesDomain") as? CIVector
+				return self.keyedValue("inputCurvesDomain")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCurvesDomain")
+				self.setKeyedValue(newValue, for: "inputCurvesDomain")
 			}
 		}
 
@@ -99,10 +99,10 @@ public extension CIFilter {
 		///   Class:    NSObject
 		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
-				return self.filter.value(forKey: "inputColorSpace") as? NSObject
+				return self.keyedValue("inputColorSpace")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColorSpace")
+				self.setKeyedValue(newValue, for: "inputColorSpace")
 			}
 		}
 

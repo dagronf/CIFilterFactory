@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputGuideImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputGuideImage") as? CIImage
+				return self.keyedValue("inputGuideImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGuideImage")
+				self.setKeyedValue(newValue, for: "inputGuideImage")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  1
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRadius")
+				self.setKeyedValue(newValue, for: "inputRadius")
 			}
 		}
 
@@ -101,10 +101,10 @@ public extension CIFilter {
 		///   Default:  0.0001
 		@objc public dynamic var inputEpsilon: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
+				return self.keyedValue("inputEpsilon")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputEpsilon")
+				self.setKeyedValue(newValue, for: "inputEpsilon")
 			}
 		}
 

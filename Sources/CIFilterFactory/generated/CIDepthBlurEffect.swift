@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputDisparityImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputDisparityImage") as? CIImage
+				return self.keyedValue("inputDisparityImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputDisparityImage")
+				self.setKeyedValue(newValue, for: "inputDisparityImage")
 			}
 		}
 
@@ -84,10 +84,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputMatteImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputMatteImage") as? CIImage
+				return self.keyedValue("inputMatteImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMatteImage")
+				self.setKeyedValue(newValue, for: "inputMatteImage")
 			}
 		}
 
@@ -97,10 +97,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputHairImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputHairImage") as? CIImage
+				return self.keyedValue("inputHairImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputHairImage")
+				self.setKeyedValue(newValue, for: "inputHairImage")
 			}
 		}
 
@@ -110,10 +110,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputGlassesImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputGlassesImage") as? CIImage
+				return self.keyedValue("inputGlassesImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGlassesImage")
+				self.setKeyedValue(newValue, for: "inputGlassesImage")
 			}
 		}
 
@@ -123,10 +123,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputGainMap: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputGainMap") as? CIImage
+				return self.keyedValue("inputGainMap")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGainMap")
+				self.setKeyedValue(newValue, for: "inputGainMap")
 			}
 		}
 
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputAperture_Range: ClosedRange<Float> = 0.0 ... 22.0
 		@objc public dynamic var inputAperture: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAperture") as? NSNumber
+				return self.keyedValue("inputAperture")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthBlurEffect.inputAperture_Range), forKey: "inputAperture")
@@ -160,7 +160,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputLeftEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputLeftEyePositions")
+				self.setKeyedValue(newValue?.vector, for: "inputLeftEyePositions")
 			}
 		}
 
@@ -175,7 +175,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputRightEyePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputRightEyePositions")
+				self.setKeyedValue(newValue?.vector, for: "inputRightEyePositions")
 			}
 		}
 
@@ -190,7 +190,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputChinPositions")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputChinPositions")
+				self.setKeyedValue(newValue?.vector, for: "inputChinPositions")
 			}
 		}
 
@@ -205,7 +205,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputNosePositions")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputNosePositions")
+				self.setKeyedValue(newValue?.vector, for: "inputNosePositions")
 			}
 		}
 
@@ -219,7 +219,7 @@ public extension CIFilter {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputFocusRect")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputFocusRect")
+				self.setKeyedValue(newValue?.vector, for: "inputFocusRect")
 			}
 		}
 
@@ -234,7 +234,7 @@ public extension CIFilter {
 		public static let inputLumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputLumaNoiseScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
+				return self.keyedValue("inputLumaNoiseScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthBlurEffect.inputLumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
@@ -249,10 +249,10 @@ public extension CIFilter {
 		///   Default:  1
 		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.keyedValue("inputScaleFactor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputScaleFactor")
+				self.setKeyedValue(newValue, for: "inputScaleFactor")
 			}
 		}
 
@@ -262,10 +262,10 @@ public extension CIFilter {
 		///   Class:    AVCameraCalibrationData
 		@objc public dynamic var inputCalibrationData: AVCameraCalibrationData? {
 			get {
-				return self.filter.value(forKey: "inputCalibrationData") as? AVCameraCalibrationData
+				return self.keyedValue("inputCalibrationData")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCalibrationData")
+				self.setKeyedValue(newValue, for: "inputCalibrationData")
 			}
 		}
 
@@ -275,10 +275,10 @@ public extension CIFilter {
 		///   Class:    CGImageMetadataRef
 		@objc public dynamic var inputAuxDataMetadata: CGImageMetadata? {
 			get {
-				return (self.filter.value(forKey: "inputAuxDataMetadata") as! CGImageMetadata)
+				return self.keyedValue("inputAuxDataMetadata")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAuxDataMetadata")
+				self.setKeyedValue(newValue, for: "inputAuxDataMetadata")
 			}
 		}
 
@@ -288,10 +288,10 @@ public extension CIFilter {
 		///   Class:    NSString
 		@objc public dynamic var inputShape: NSString? {
 			get {
-				return self.filter.value(forKey: "inputShape") as? NSString
+				return self.keyedValue("inputShape")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputShape")
+				self.setKeyedValue(newValue, for: "inputShape")
 			}
 		}
 

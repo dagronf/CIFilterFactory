@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint0")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint1")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 		public static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSaturation: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSaturation") as? NSNumber
+				return self.keyedValue("inputSaturation")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputSaturation_Range), forKey: "inputSaturation")
@@ -124,7 +124,7 @@ public extension CIFilter {
 		public static let inputUnsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUnsharpMaskRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
+				return self.keyedValue("inputUnsharpMaskRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputUnsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputUnsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputUnsharpMaskIntensity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
+				return self.keyedValue("inputUnsharpMaskIntensity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputUnsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
@@ -160,7 +160,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDepthOfField.inputRadius_Range), forKey: "inputRadius")

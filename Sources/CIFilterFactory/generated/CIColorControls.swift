@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSaturation: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSaturation") as? NSNumber
+				return self.keyedValue("inputSaturation")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputSaturation_Range), forKey: "inputSaturation")
@@ -94,7 +94,7 @@ public extension CIFilter {
 		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
 		@objc public dynamic var inputBrightness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBrightness") as? NSNumber
+				return self.keyedValue("inputBrightness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputBrightness_Range), forKey: "inputBrightness")
@@ -112,7 +112,7 @@ public extension CIFilter {
 		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputContrast") as? NSNumber
+				return self.keyedValue("inputContrast")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputContrast_Range), forKey: "inputContrast")

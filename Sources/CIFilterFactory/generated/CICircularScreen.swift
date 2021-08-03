@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICircularScreen.inputWidth_Range), forKey: "inputWidth")
@@ -110,7 +110,7 @@ public extension CIFilter {
 		public static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.keyedValue("inputSharpness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICircularScreen.inputSharpness_Range), forKey: "inputSharpness")

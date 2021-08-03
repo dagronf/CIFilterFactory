@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  1
 		@objc public dynamic var inputPower: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPower") as? NSNumber
+				return self.keyedValue("inputPower")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPower")
+				self.setKeyedValue(newValue, for: "inputPower")
 			}
 		}
 

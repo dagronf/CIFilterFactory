@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  [1 0 0 0]
 		@objc public dynamic var inputRVector: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputRVector") as? CIVector
+				return self.keyedValue("inputRVector")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRVector")
+				self.setKeyedValue(newValue, for: "inputRVector")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  [0 1 0 0]
 		@objc public dynamic var inputGVector: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputGVector") as? CIVector
+				return self.keyedValue("inputGVector")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGVector")
+				self.setKeyedValue(newValue, for: "inputGVector")
 			}
 		}
 
@@ -100,10 +100,10 @@ public extension CIFilter {
 		///   Default:  [0 0 1 0]
 		@objc public dynamic var inputBVector: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputBVector") as? CIVector
+				return self.keyedValue("inputBVector")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBVector")
+				self.setKeyedValue(newValue, for: "inputBVector")
 			}
 		}
 
@@ -114,10 +114,10 @@ public extension CIFilter {
 		///   Default:  [0 0 0 1]
 		@objc public dynamic var inputAVector: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputAVector") as? CIVector
+				return self.keyedValue("inputAVector")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAVector")
+				self.setKeyedValue(newValue, for: "inputAVector")
 			}
 		}
 
@@ -128,10 +128,10 @@ public extension CIFilter {
 		///   Default:  [0 0 0 0]
 		@objc public dynamic var inputBiasVector: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputBiasVector") as? CIVector
+				return self.keyedValue("inputBiasVector")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBiasVector")
+				self.setKeyedValue(newValue, for: "inputBiasVector")
 			}
 		}
 

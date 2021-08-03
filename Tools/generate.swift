@@ -189,7 +189,7 @@ import CoreImage
 			out.print("         return CIFilterFactory.Rect(with: self.filter, key: \"\(key)\")")
 			out.print("      }")
 			out.print("      set {")
-			out.print("         self.filter.setValue(newValue?.vector, forKey: \"\(key)\")")
+			out.print(#"         self.setKeyedValue(newValue?.vector, for: "\#(key)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
@@ -199,7 +199,7 @@ import CoreImage
 			out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
 			out.print("      }")
 			out.print("      set {")
-			out.print("         self.filter.setValue(newValue?.embeddedValue(), forKey: \"\(key)\")")
+			out.print(#"         self.setKeyedValue(newValue?.embeddedValue, for: "\#(key)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
@@ -209,17 +209,17 @@ import CoreImage
 			out.print("         return CIFilterFactory.Point(with: self.filter, key: \"\(key)\")")
 			out.print("      }")
 			out.print("      set {")
-			out.print("         self.filter.setValue(newValue?.vector, forKey: \"\(key)\")")
+			out.print(#"         self.setKeyedValue(newValue?.vector, for: "\#(key)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
 		else if keyClass == "CGImageMetadataRef" {
 			out.print("   @objc dynamic public var \(key): CGImageMetadata? {")
 			out.print("      get {")
-			out.print("         return (self.filter.value(forKey: \"\(key)\") as! CGImageMetadata)")
+			out.print(#"         return self.keyedValue("\#(key)")"#)
 			out.print("      }")
 			out.print("      set {")
-			out.print("         self.filter.setValue(newValue, forKey: \"\(key)\")")
+			out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
@@ -227,7 +227,7 @@ import CoreImage
 
 			out.print("   @objc dynamic public var \(key): \(keyClass)? {")
 			out.print("      get {")
-			out.print("         return self.filter.value(forKey: \"\(key)\") as? \(keyClass)")
+			out.print(#"         return self.keyedValue("\#(key)")"#)
 			out.print("      }")
 
 			out.print("      set {")
@@ -235,7 +235,7 @@ import CoreImage
 				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(filter.name).\(rangeDef)), forKey: \"\(key)\")")
 			}
 			else {
-				out.print("      self.filter.setValue(newValue, forKey: \"\(key)\")")
+				out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
 			}
 			out.print("      }")
 			out.print("   }")
@@ -410,8 +410,6 @@ for filterName in CIFilter.filterNames(inCategories: nil) {
 		catch {
 			Swift.print("Cannot write file \(error)")
 		}
-		//Swift.print(fs.content)
-		// fns.append(filterName)
 	}
 }
 

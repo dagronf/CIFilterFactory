@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSData
 		@objc public dynamic var inputMessage: NSData? {
 			get {
-				return self.filter.value(forKey: "inputMessage") as? NSData
+				return self.keyedValue("inputMessage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMessage")
+				self.setKeyedValue(newValue, for: "inputMessage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
 		@objc public dynamic var inputQuietSpace: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputQuietSpace") as? NSNumber
+				return self.keyedValue("inputQuietSpace")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputQuietSpace_Range), forKey: "inputQuietSpace")
@@ -95,7 +95,7 @@ public extension CIFilter {
 		public static let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
 		@objc public dynamic var inputBarcodeHeight: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
+				return self.keyedValue("inputBarcodeHeight")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")

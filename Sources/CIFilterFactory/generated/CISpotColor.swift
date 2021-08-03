@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.0784 0.0627 0.0706 1)
 		@objc public dynamic var inputCenterColor1: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputCenterColor1") as? CIColor
+				return self.keyedValue("inputCenterColor1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenterColor1")
+				self.setKeyedValue(newValue, for: "inputCenterColor1")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.4392 0.1922 0.1961 1)
 		@objc public dynamic var inputReplacementColor1: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputReplacementColor1") as? CIColor
+				return self.keyedValue("inputReplacementColor1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputReplacementColor1")
+				self.setKeyedValue(newValue, for: "inputReplacementColor1")
 			}
 		}
 
@@ -104,7 +104,7 @@ public extension CIFilter {
 		public static let inputCloseness1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness1: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCloseness1") as? NSNumber
+				return self.keyedValue("inputCloseness1")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness1_Range), forKey: "inputCloseness1")
@@ -122,7 +122,7 @@ public extension CIFilter {
 		public static let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast1: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputContrast1") as? NSNumber
+				return self.keyedValue("inputContrast1")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast1_Range), forKey: "inputContrast1")
@@ -136,10 +136,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.5255 0.3059 0.3451 1)
 		@objc public dynamic var inputCenterColor2: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputCenterColor2") as? CIColor
+				return self.keyedValue("inputCenterColor2")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenterColor2")
+				self.setKeyedValue(newValue, for: "inputCenterColor2")
 			}
 		}
 
@@ -150,10 +150,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.9137 0.5608 0.5059 1)
 		@objc public dynamic var inputReplacementColor2: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputReplacementColor2") as? CIColor
+				return self.keyedValue("inputReplacementColor2")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputReplacementColor2")
+				self.setKeyedValue(newValue, for: "inputReplacementColor2")
 			}
 		}
 
@@ -168,7 +168,7 @@ public extension CIFilter {
 		public static let inputCloseness2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness2: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCloseness2") as? NSNumber
+				return self.keyedValue("inputCloseness2")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness2_Range), forKey: "inputCloseness2")
@@ -186,7 +186,7 @@ public extension CIFilter {
 		public static let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast2: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputContrast2") as? NSNumber
+				return self.keyedValue("inputContrast2")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast2_Range), forKey: "inputContrast2")
@@ -200,10 +200,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.9216 0.4549 0.3333 1)
 		@objc public dynamic var inputCenterColor3: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputCenterColor3") as? CIColor
+				return self.keyedValue("inputCenterColor3")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCenterColor3")
+				self.setKeyedValue(newValue, for: "inputCenterColor3")
 			}
 		}
 
@@ -214,10 +214,10 @@ public extension CIFilter {
 		///   Default:  rgba(0.9098 0.7529 0.6078 1)
 		@objc public dynamic var inputReplacementColor3: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputReplacementColor3") as? CIColor
+				return self.keyedValue("inputReplacementColor3")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputReplacementColor3")
+				self.setKeyedValue(newValue, for: "inputReplacementColor3")
 			}
 		}
 
@@ -232,7 +232,7 @@ public extension CIFilter {
 		public static let inputCloseness3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCloseness3: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCloseness3") as? NSNumber
+				return self.keyedValue("inputCloseness3")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness3_Range), forKey: "inputCloseness3")
@@ -250,7 +250,7 @@ public extension CIFilter {
 		public static let inputContrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputContrast3: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputContrast3") as? NSNumber
+				return self.keyedValue("inputContrast3")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast3_Range), forKey: "inputContrast3")

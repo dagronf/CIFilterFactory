@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -77,7 +77,7 @@ public extension CIFilter {
 		public static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
 		@objc public dynamic var inputCubeDimension: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
+				return self.keyedValue("inputCubeDimension")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorCube.inputCubeDimension_Range), forKey: "inputCubeDimension")
@@ -91,10 +91,10 @@ public extension CIFilter {
 		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
 		@objc public dynamic var inputCubeData: NSData? {
 			get {
-				return self.filter.value(forKey: "inputCubeData") as? NSData
+				return self.keyedValue("inputCubeData")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCubeData")
+				self.setKeyedValue(newValue, for: "inputCubeData")
 			}
 		}
 

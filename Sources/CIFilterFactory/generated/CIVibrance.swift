@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -77,7 +77,7 @@ public extension CIFilter {
 		public static let inputAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
 		@objc public dynamic var inputAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAmount") as? NSNumber
+				return self.keyedValue("inputAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIVibrance.inputAmount_Range), forKey: "inputAmount")

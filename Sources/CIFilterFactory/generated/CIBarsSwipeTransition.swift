@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -87,10 +87,10 @@ public extension CIFilter {
 		///   Default:  3.141592653589793
 		@objc public dynamic var inputAngle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAngle") as? NSNumber
+				return self.keyedValue("inputAngle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAngle")
+				self.setKeyedValue(newValue, for: "inputAngle")
 			}
 		}
 
@@ -105,7 +105,7 @@ public extension CIFilter {
 		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(2.0)...
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputWidth_Range), forKey: "inputWidth")
@@ -123,7 +123,7 @@ public extension CIFilter {
 		public static let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputBarOffset: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBarOffset") as? NSNumber
+				return self.keyedValue("inputBarOffset")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputBarOffset_Range), forKey: "inputBarOffset")
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputTime_Range), forKey: "inputTime")

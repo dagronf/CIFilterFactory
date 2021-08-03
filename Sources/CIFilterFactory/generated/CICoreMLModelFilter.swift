@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    MLModel
 		@objc public dynamic var inputModel: MLModel? {
 			get {
-				return self.filter.value(forKey: "inputModel") as? MLModel
+				return self.keyedValue("inputModel")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputModel")
+				self.setKeyedValue(newValue, for: "inputModel")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 		public static let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public dynamic var inputHeadIndex: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHeadIndex") as? NSNumber
+				return self.keyedValue("inputHeadIndex")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputHeadIndex_Range), forKey: "inputHeadIndex")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSoftmaxNormalization: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
+				return self.keyedValue("inputSoftmaxNormalization")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")

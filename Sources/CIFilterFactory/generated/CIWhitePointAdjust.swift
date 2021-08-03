@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 

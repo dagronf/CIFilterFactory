@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputRadius_Range), forKey: "inputRadius")
@@ -95,7 +95,7 @@ public extension CIFilter {
 		public static let inputShadowAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
 		@objc public dynamic var inputShadowAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputShadowAmount") as? NSNumber
+				return self.keyedValue("inputShadowAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputShadowAmount_Range), forKey: "inputShadowAmount")
@@ -114,7 +114,7 @@ public extension CIFilter {
 		public static let inputHighlightAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputHighlightAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHighlightAmount") as? NSNumber
+				return self.keyedValue("inputHighlightAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputHighlightAmount_Range), forKey: "inputHighlightAmount")

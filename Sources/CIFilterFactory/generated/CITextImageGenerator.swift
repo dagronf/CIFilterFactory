@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSString
 		@objc public dynamic var inputText: NSString? {
 			get {
-				return self.filter.value(forKey: "inputText") as? NSString
+				return self.keyedValue("inputText")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputText")
+				self.setKeyedValue(newValue, for: "inputText")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Default:  HelveticaNeue
 		@objc public dynamic var inputFontName: NSString? {
 			get {
-				return self.filter.value(forKey: "inputFontName") as? NSString
+				return self.keyedValue("inputFontName")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputFontName")
+				self.setKeyedValue(newValue, for: "inputFontName")
 			}
 		}
 
@@ -89,7 +89,7 @@ public extension CIFilter {
 		public static let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputFontSize: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputFontSize") as? NSNumber
+				return self.keyedValue("inputFontSize")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputFontSize_Range), forKey: "inputFontSize")
@@ -107,7 +107,7 @@ public extension CIFilter {
 		public static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputScaleFactor: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return self.keyedValue("inputScaleFactor")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")

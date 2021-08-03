@@ -62,7 +62,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint0")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint0")
 			}
 		}
 
@@ -77,7 +77,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint1")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint1")
 			}
 		}
 
@@ -89,10 +89,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor0: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor0") as? CIColor
+				return self.keyedValue("inputColor0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor0")
+				self.setKeyedValue(newValue, for: "inputColor0")
 			}
 		}
 
@@ -104,10 +104,10 @@ public extension CIFilter {
 		///   Default:  rgba(0 0 0 1)
 		@objc public dynamic var inputColor1: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor1") as? CIColor
+				return self.keyedValue("inputColor1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor1")
+				self.setKeyedValue(newValue, for: "inputColor1")
 			}
 		}
 

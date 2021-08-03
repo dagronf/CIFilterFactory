@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
+				self.setKeyedValue(newValue?.vector, for: "inputExtent")
 			}
 		}
 
@@ -102,10 +102,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -121,7 +121,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISwipeTransition.inputTime_Range), forKey: "inputTime")
@@ -136,10 +136,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputAngle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAngle") as? NSNumber
+				return self.keyedValue("inputAngle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputAngle")
+				self.setKeyedValue(newValue, for: "inputAngle")
 			}
 		}
 
@@ -151,10 +151,10 @@ public extension CIFilter {
 		///   Default:  300
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputWidth")
+				self.setKeyedValue(newValue, for: "inputWidth")
 			}
 		}
 
@@ -169,7 +169,7 @@ public extension CIFilter {
 		public static let inputOpacity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputOpacity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputOpacity") as? NSNumber
+				return self.keyedValue("inputOpacity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CISwipeTransition.inputOpacity_Range), forKey: "inputOpacity")

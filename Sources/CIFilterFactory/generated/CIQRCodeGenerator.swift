@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSData
 		@objc public dynamic var inputMessage: NSData? {
 			get {
-				return self.filter.value(forKey: "inputMessage") as? NSData
+				return self.keyedValue("inputMessage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMessage")
+				self.setKeyedValue(newValue, for: "inputMessage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Default:  M
 		@objc public dynamic var inputCorrectionLevel: NSString? {
 			get {
-				return self.filter.value(forKey: "inputCorrectionLevel") as? NSString
+				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCorrectionLevel")
+				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
 			}
 		}
 

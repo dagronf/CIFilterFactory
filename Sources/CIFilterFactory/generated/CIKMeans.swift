@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
+				self.setKeyedValue(newValue?.vector, for: "inputExtent")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputMeans: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputMeans") as? CIImage
+				return self.keyedValue("inputMeans")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMeans")
+				self.setKeyedValue(newValue, for: "inputMeans")
 			}
 		}
 
@@ -105,7 +105,7 @@ public extension CIFilter {
 		public static let inputCount_Range: ClosedRange<Float> = 0.0 ... 128.0
 		@objc public dynamic var inputCount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCount") as? NSNumber
+				return self.keyedValue("inputCount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputCount_Range), forKey: "inputCount")
@@ -124,7 +124,7 @@ public extension CIFilter {
 		public static let inputPasses_Range: ClosedRange<Float> = 0.0 ... 20.0
 		@objc public dynamic var inputPasses: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPasses") as? NSNumber
+				return self.keyedValue("inputPasses")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputPasses_Range), forKey: "inputPasses")
@@ -143,7 +143,7 @@ public extension CIFilter {
 		public static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputPerceptual: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
+				return self.keyedValue("inputPerceptual")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIKMeans.inputPerceptual_Range), forKey: "inputPerceptual")

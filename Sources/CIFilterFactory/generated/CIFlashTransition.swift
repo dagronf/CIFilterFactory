@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -105,7 +105,7 @@ public extension CIFilter {
 				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputExtent")
+				self.setKeyedValue(newValue?.vector, for: "inputExtent")
 			}
 		}
 
@@ -117,10 +117,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 0.8 0.6 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -136,7 +136,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputTime_Range), forKey: "inputTime")
@@ -154,7 +154,7 @@ public extension CIFilter {
 		public static let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputMaxStriationRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
+				return self.keyedValue("inputMaxStriationRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
@@ -172,7 +172,7 @@ public extension CIFilter {
 		public static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationStrength: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
+				return self.keyedValue("inputStriationStrength")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputStriationStrength_Range), forKey: "inputStriationStrength")
@@ -190,7 +190,7 @@ public extension CIFilter {
 		public static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationContrast: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
+				return self.keyedValue("inputStriationContrast")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputStriationContrast_Range), forKey: "inputStriationContrast")
@@ -209,7 +209,7 @@ public extension CIFilter {
 		public static let inputFadeThreshold_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputFadeThreshold: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputFadeThreshold") as? NSNumber
+				return self.keyedValue("inputFadeThreshold")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIFlashTransition.inputFadeThreshold_Range), forKey: "inputFadeThreshold")

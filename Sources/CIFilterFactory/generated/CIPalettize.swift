@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputPaletteImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputPaletteImage") as? CIImage
+				return self.keyedValue("inputPaletteImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPaletteImage")
+				self.setKeyedValue(newValue, for: "inputPaletteImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 		public static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputPerceptual: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPerceptual") as? NSNumber
+				return self.keyedValue("inputPerceptual")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPalettize.inputPerceptual_Range), forKey: "inputPerceptual")

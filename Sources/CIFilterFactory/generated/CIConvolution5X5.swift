@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0]
 		@objc public dynamic var inputWeights: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputWeights") as? CIVector
+				return self.keyedValue("inputWeights")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputWeights")
+				self.setKeyedValue(newValue, for: "inputWeights")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputBias: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBias") as? NSNumber
+				return self.keyedValue("inputBias")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBias")
+				self.setKeyedValue(newValue, for: "inputBias")
 			}
 		}
 

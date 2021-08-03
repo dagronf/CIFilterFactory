@@ -57,10 +57,10 @@ public extension CIFilter {
 		///   Class:    NSData
 		@objc public dynamic var inputMessage: NSData? {
 			get {
-				return self.filter.value(forKey: "inputMessage") as? NSData
+				return self.keyedValue("inputMessage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMessage")
+				self.setKeyedValue(newValue, for: "inputMessage")
 			}
 		}
 
@@ -74,7 +74,7 @@ public extension CIFilter {
 		public static let inputMinWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public dynamic var inputMinWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputMinWidth") as? NSNumber
+				return self.keyedValue("inputMinWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMinWidth_Range), forKey: "inputMinWidth")
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputMaxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
 		@objc public dynamic var inputMaxWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputMaxWidth") as? NSNumber
+				return self.keyedValue("inputMaxWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMaxWidth_Range), forKey: "inputMaxWidth")
@@ -108,7 +108,7 @@ public extension CIFilter {
 		public static let inputMinHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public dynamic var inputMinHeight: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputMinHeight") as? NSNumber
+				return self.keyedValue("inputMinHeight")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMinHeight_Range), forKey: "inputMinHeight")
@@ -125,7 +125,7 @@ public extension CIFilter {
 		public static let inputMaxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
 		@objc public dynamic var inputMaxHeight: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputMaxHeight") as? NSNumber
+				return self.keyedValue("inputMaxHeight")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMaxHeight_Range), forKey: "inputMaxHeight")
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputDataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
 		@objc public dynamic var inputDataColumns: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputDataColumns") as? NSNumber
+				return self.keyedValue("inputDataColumns")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputDataColumns_Range), forKey: "inputDataColumns")
@@ -159,7 +159,7 @@ public extension CIFilter {
 		public static let inputRows_Range: ClosedRange<Float> = 3.0 ... 90.0
 		@objc public dynamic var inputRows: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRows") as? NSNumber
+				return self.keyedValue("inputRows")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputRows_Range), forKey: "inputRows")
@@ -175,7 +175,7 @@ public extension CIFilter {
 		public static let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputPreferredAspectRatio: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPreferredAspectRatio") as? NSNumber
+				return self.keyedValue("inputPreferredAspectRatio")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputPreferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
@@ -192,7 +192,7 @@ public extension CIFilter {
 		public static let inputCompactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
 		@objc public dynamic var inputCompactionMode: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCompactionMode") as? NSNumber
+				return self.keyedValue("inputCompactionMode")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCompactionMode_Range), forKey: "inputCompactionMode")
@@ -209,7 +209,7 @@ public extension CIFilter {
 		public static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCompactStyle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCompactStyle") as? NSNumber
+				return self.keyedValue("inputCompactStyle")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCompactStyle_Range), forKey: "inputCompactStyle")
@@ -226,7 +226,7 @@ public extension CIFilter {
 		public static let inputCorrectionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
 		@objc public dynamic var inputCorrectionLevel: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCorrectionLevel") as? NSNumber
+				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
@@ -243,7 +243,7 @@ public extension CIFilter {
 		public static let inputAlwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputAlwaysSpecifyCompaction: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputAlwaysSpecifyCompaction") as? NSNumber
+				return self.keyedValue("inputAlwaysSpecifyCompaction")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")

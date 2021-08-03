@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Default:  [1 0 0 0 0 0 0 0 0 0]
 		@objc public dynamic var inputRedCoefficients: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputRedCoefficients") as? CIVector
+				return self.keyedValue("inputRedCoefficients")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRedCoefficients")
+				self.setKeyedValue(newValue, for: "inputRedCoefficients")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Default:  [0 1 0 0 0 0 0 0 0 0]
 		@objc public dynamic var inputGreenCoefficients: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputGreenCoefficients") as? CIVector
+				return self.keyedValue("inputGreenCoefficients")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputGreenCoefficients")
+				self.setKeyedValue(newValue, for: "inputGreenCoefficients")
 			}
 		}
 
@@ -100,10 +100,10 @@ public extension CIFilter {
 		///   Default:  [0 0 1 0 0 0 0 0 0 0]
 		@objc public dynamic var inputBlueCoefficients: CIVector? {
 			get {
-				return self.filter.value(forKey: "inputBlueCoefficients") as? CIVector
+				return self.keyedValue("inputBlueCoefficients")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBlueCoefficients")
+				self.setKeyedValue(newValue, for: "inputBlueCoefficients")
 			}
 		}
 

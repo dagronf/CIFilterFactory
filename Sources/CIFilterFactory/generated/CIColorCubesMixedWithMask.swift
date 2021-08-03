@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputMaskImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputMaskImage") as? CIImage
+				return self.keyedValue("inputMaskImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMaskImage")
+				self.setKeyedValue(newValue, for: "inputMaskImage")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
 		@objc public dynamic var inputCubeDimension: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCubeDimension") as? NSNumber
+				return self.keyedValue("inputCubeDimension")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIColorCubesMixedWithMask.inputCubeDimension_Range), forKey: "inputCubeDimension")
@@ -105,10 +105,10 @@ public extension CIFilter {
 		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
 		@objc public dynamic var inputCube0Data: NSData? {
 			get {
-				return self.filter.value(forKey: "inputCube0Data") as? NSData
+				return self.keyedValue("inputCube0Data")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCube0Data")
+				self.setKeyedValue(newValue, for: "inputCube0Data")
 			}
 		}
 
@@ -119,10 +119,10 @@ public extension CIFilter {
 		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
 		@objc public dynamic var inputCube1Data: NSData? {
 			get {
-				return self.filter.value(forKey: "inputCube1Data") as? NSData
+				return self.keyedValue("inputCube1Data")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCube1Data")
+				self.setKeyedValue(newValue, for: "inputCube1Data")
 			}
 		}
 
@@ -132,10 +132,10 @@ public extension CIFilter {
 		///   Class:    NSObject
 		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
-				return self.filter.value(forKey: "inputColorSpace") as? NSObject
+				return self.keyedValue("inputColorSpace")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColorSpace")
+				self.setKeyedValue(newValue, for: "inputColorSpace")
 			}
 		}
 

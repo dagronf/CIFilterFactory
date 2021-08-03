@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputPoint")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputPoint")
+				self.setKeyedValue(newValue?.vector, for: "inputPoint")
 			}
 		}
 
@@ -88,10 +88,10 @@ public extension CIFilter {
 		///   Default:  700
 		@objc public dynamic var inputSize: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSize") as? NSNumber
+				return self.keyedValue("inputSize")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputSize")
+				self.setKeyedValue(newValue, for: "inputSize")
 			}
 		}
 
@@ -103,10 +103,10 @@ public extension CIFilter {
 		///   Default:  5.924285296593801
 		@objc public dynamic var inputRotation: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRotation") as? NSNumber
+				return self.keyedValue("inputRotation")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRotation")
+				self.setKeyedValue(newValue, for: "inputRotation")
 			}
 		}
 
@@ -118,10 +118,10 @@ public extension CIFilter {
 		///   Default:  0.85
 		@objc public dynamic var inputDecay: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputDecay") as? NSNumber
+				return self.keyedValue("inputDecay")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputDecay")
+				self.setKeyedValue(newValue, for: "inputDecay")
 			}
 		}
 

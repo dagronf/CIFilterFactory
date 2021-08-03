@@ -62,7 +62,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 0.9 0.8 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputHaloRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputHaloRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHaloRadius") as? NSNumber
+				return self.keyedValue("inputHaloRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloRadius_Range), forKey: "inputHaloRadius")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputHaloWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputHaloWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHaloWidth") as? NSNumber
+				return self.keyedValue("inputHaloWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloWidth_Range), forKey: "inputHaloWidth")
@@ -127,7 +127,7 @@ public extension CIFilter {
 		public static let inputHaloOverlap_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputHaloOverlap: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
+				return self.keyedValue("inputHaloOverlap")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloOverlap_Range), forKey: "inputHaloOverlap")
@@ -145,7 +145,7 @@ public extension CIFilter {
 		public static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationStrength: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputStriationStrength") as? NSNumber
+				return self.keyedValue("inputStriationStrength")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputStriationStrength_Range), forKey: "inputStriationStrength")
@@ -163,7 +163,7 @@ public extension CIFilter {
 		public static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputStriationContrast: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputStriationContrast") as? NSNumber
+				return self.keyedValue("inputStriationContrast")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputStriationContrast_Range), forKey: "inputStriationContrast")
@@ -182,7 +182,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputTime_Range), forKey: "inputTime")

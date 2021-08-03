@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputBreakpoint0")
+				self.setKeyedValue(newValue?.vector, for: "inputBreakpoint0")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputBreakpoint1")
+				self.setKeyedValue(newValue?.vector, for: "inputBreakpoint1")
 			}
 		}
 
@@ -106,7 +106,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputGrowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputGrowAmount")
+				self.setKeyedValue(newValue?.vector, for: "inputGrowAmount")
 			}
 		}
 

@@ -62,7 +62,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 0.8 0.6 1)
 		@objc public dynamic var inputColor: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor") as? CIColor
+				return self.keyedValue("inputColor")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor")
+				self.setKeyedValue(newValue, for: "inputColor")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputRadius_Range), forKey: "inputRadius")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputCrossScale_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCrossScale: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCrossScale") as? NSNumber
+				return self.keyedValue("inputCrossScale")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossScale_Range), forKey: "inputCrossScale")
@@ -124,10 +124,10 @@ public extension CIFilter {
 		///   Default:  0.6
 		@objc public dynamic var inputCrossAngle: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCrossAngle") as? NSNumber
+				return self.keyedValue("inputCrossAngle")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputCrossAngle")
+				self.setKeyedValue(newValue, for: "inputCrossAngle")
 			}
 		}
 
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputCrossOpacity_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public dynamic var inputCrossOpacity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
+				return self.keyedValue("inputCrossOpacity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossOpacity_Range), forKey: "inputCrossOpacity")
@@ -160,7 +160,7 @@ public extension CIFilter {
 		public static let inputCrossWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputCrossWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCrossWidth") as? NSNumber
+				return self.keyedValue("inputCrossWidth")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputCrossWidth_Range), forKey: "inputCrossWidth")
@@ -178,7 +178,7 @@ public extension CIFilter {
 		public static let inputEpsilon_Range: PartialRangeFrom<Float> = Float(-8.0)...
 		@objc public dynamic var inputEpsilon: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputEpsilon") as? NSNumber
+				return self.keyedValue("inputEpsilon")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStarShineGenerator.inputEpsilon_Range), forKey: "inputEpsilon")

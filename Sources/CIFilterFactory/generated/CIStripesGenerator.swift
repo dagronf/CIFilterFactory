@@ -62,7 +62,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor0: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor0") as? CIColor
+				return self.keyedValue("inputColor0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor0")
+				self.setKeyedValue(newValue, for: "inputColor0")
 			}
 		}
 
@@ -87,10 +87,10 @@ public extension CIFilter {
 		///   Default:  rgba(0 0 0 1)
 		@objc public dynamic var inputColor1: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor1") as? CIColor
+				return self.keyedValue("inputColor1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor1")
+				self.setKeyedValue(newValue, for: "inputColor1")
 			}
 		}
 
@@ -102,10 +102,10 @@ public extension CIFilter {
 		///   Default:  80
 		@objc public dynamic var inputWidth: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputWidth") as? NSNumber
+				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputWidth")
+				self.setKeyedValue(newValue, for: "inputWidth")
 			}
 		}
 
@@ -121,7 +121,7 @@ public extension CIFilter {
 		public static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputSharpness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return self.keyedValue("inputSharpness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStripesGenerator.inputSharpness_Range), forKey: "inputSharpness")

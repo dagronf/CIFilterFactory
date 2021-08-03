@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -75,7 +75,7 @@ public extension CIFilter {
 				return AffineTransform(filter: self.filter, key: "inputTransform")
 			}
 			set {
-				self.filter.setValue(newValue?.embeddedValue(), forKey: "inputTransform")
+				self.setKeyedValue(newValue?.embeddedValue, for: "inputTransform")
 			}
 		}
 

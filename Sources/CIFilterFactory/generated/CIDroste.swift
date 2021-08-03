@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint0")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputInsetPoint0")
+				self.setKeyedValue(newValue?.vector, for: "inputInsetPoint0")
 			}
 		}
 
@@ -91,7 +91,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputInsetPoint1")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputInsetPoint1")
+				self.setKeyedValue(newValue?.vector, for: "inputInsetPoint1")
 			}
 		}
 
@@ -107,7 +107,7 @@ public extension CIFilter {
 		public static let inputStrands_Range: ClosedRange<Float> = -10.0 ... 10.0
 		@objc public dynamic var inputStrands: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputStrands") as? NSNumber
+				return self.keyedValue("inputStrands")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDroste.inputStrands_Range), forKey: "inputStrands")
@@ -125,7 +125,7 @@ public extension CIFilter {
 		public static let inputPeriodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
 		@objc public dynamic var inputPeriodicity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPeriodicity") as? NSNumber
+				return self.keyedValue("inputPeriodicity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDroste.inputPeriodicity_Range), forKey: "inputPeriodicity")
@@ -140,10 +140,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputRotation: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRotation") as? NSNumber
+				return self.keyedValue("inputRotation")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRotation")
+				self.setKeyedValue(newValue, for: "inputRotation")
 			}
 		}
 
@@ -155,10 +155,10 @@ public extension CIFilter {
 		///   Default:  1
 		@objc public dynamic var inputZoom: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputZoom") as? NSNumber
+				return self.keyedValue("inputZoom")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputZoom")
+				self.setKeyedValue(newValue, for: "inputZoom")
 			}
 		}
 

@@ -62,7 +62,7 @@ public extension CIFilter {
 		public static let inputValue_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputValue: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputValue") as? NSNumber
+				return self.keyedValue("inputValue")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputValue_Range), forKey: "inputValue")
@@ -80,7 +80,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputRadius_Range), forKey: "inputRadius")
@@ -98,7 +98,7 @@ public extension CIFilter {
 		public static let inputSoftness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputSoftness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSoftness") as? NSNumber
+				return self.keyedValue("inputSoftness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputSoftness_Range), forKey: "inputSoftness")
@@ -116,7 +116,7 @@ public extension CIFilter {
 		public static let inputDither_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputDither: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputDither") as? NSNumber
+				return self.keyedValue("inputDither")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHueSaturationValueGradient.inputDither_Range), forKey: "inputDither")
@@ -130,10 +130,10 @@ public extension CIFilter {
 		///   Default:  (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
 		@objc public dynamic var inputColorSpace: NSObject? {
 			get {
-				return self.filter.value(forKey: "inputColorSpace") as? NSObject
+				return self.keyedValue("inputColorSpace")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColorSpace")
+				self.setKeyedValue(newValue, for: "inputColorSpace")
 			}
 		}
 

@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputBackgroundImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputBackgroundImage") as? CIImage
+				return self.keyedValue("inputBackgroundImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputBackgroundImage")
+				self.setKeyedValue(newValue, for: "inputBackgroundImage")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputMaskImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputMaskImage") as? CIImage
+				return self.keyedValue("inputMaskImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMaskImage")
+				self.setKeyedValue(newValue, for: "inputMaskImage")
 			}
 		}
 

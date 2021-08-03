@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 		public static let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputBottomHeight: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputBottomHeight") as? NSNumber
+				return self.keyedValue("inputBottomHeight")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputBottomHeight_Range), forKey: "inputBottomHeight")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
 		@objc public dynamic var inputNumberOfFolds: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
+				return self.keyedValue("inputNumberOfFolds")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
@@ -128,7 +128,7 @@ public extension CIFilter {
 		public static let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputFoldShadowAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
+				return self.keyedValue("inputFoldShadowAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
@@ -147,7 +147,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputTime_Range), forKey: "inputTime")

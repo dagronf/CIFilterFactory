@@ -62,7 +62,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputCenter")
+				self.setKeyedValue(newValue?.vector, for: "inputCenter")
 			}
 		}
 
@@ -74,10 +74,10 @@ public extension CIFilter {
 		///   Default:  rgba(1 1 1 1)
 		@objc public dynamic var inputColor0: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor0") as? CIColor
+				return self.keyedValue("inputColor0")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor0")
+				self.setKeyedValue(newValue, for: "inputColor0")
 			}
 		}
 
@@ -89,10 +89,10 @@ public extension CIFilter {
 		///   Default:  rgba(0 0 0 0)
 		@objc public dynamic var inputColor1: CIColor? {
 			get {
-				return self.filter.value(forKey: "inputColor1") as? CIColor
+				return self.keyedValue("inputColor1")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputColor1")
+				self.setKeyedValue(newValue, for: "inputColor1")
 			}
 		}
 
@@ -107,7 +107,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIGaussianGradient.inputRadius_Range), forKey: "inputRadius")

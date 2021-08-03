@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -77,7 +77,7 @@ public extension CIFilter {
 		public static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 500.0
 		@objc public dynamic var inputRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRadius") as? NSNumber
+				return self.keyedValue("inputRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRadius_Range), forKey: "inputRadius")
@@ -96,7 +96,7 @@ public extension CIFilter {
 		public static let inputRingAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputRingAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRingAmount") as? NSNumber
+				return self.keyedValue("inputRingAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRingAmount_Range), forKey: "inputRingAmount")
@@ -114,7 +114,7 @@ public extension CIFilter {
 		public static let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputRingSize: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRingSize") as? NSNumber
+				return self.keyedValue("inputRingSize")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRingSize_Range), forKey: "inputRingSize")
@@ -133,7 +133,7 @@ public extension CIFilter {
 		public static let inputSoftness_Range: ClosedRange<Float> = 0.0 ... 10.0
 		@objc public dynamic var inputSoftness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSoftness") as? NSNumber
+				return self.keyedValue("inputSoftness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputSoftness_Range), forKey: "inputSoftness")

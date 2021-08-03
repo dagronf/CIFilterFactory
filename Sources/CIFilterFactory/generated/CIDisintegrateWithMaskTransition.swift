@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -72,10 +72,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputTargetImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputTargetImage") as? CIImage
+				return self.keyedValue("inputTargetImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputTargetImage")
+				self.setKeyedValue(newValue, for: "inputTargetImage")
 			}
 		}
 
@@ -86,10 +86,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputMaskImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputMaskImage") as? CIImage
+				return self.keyedValue("inputMaskImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputMaskImage")
+				self.setKeyedValue(newValue, for: "inputMaskImage")
 			}
 		}
 
@@ -105,7 +105,7 @@ public extension CIFilter {
 		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputTime: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputTime") as? NSNumber
+				return self.keyedValue("inputTime")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDisintegrateWithMaskTransition.inputTime_Range), forKey: "inputTime")
@@ -123,7 +123,7 @@ public extension CIFilter {
 		public static let inputShadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputShadowRadius: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputShadowRadius") as? NSNumber
+				return self.keyedValue("inputShadowRadius")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDisintegrateWithMaskTransition.inputShadowRadius_Range), forKey: "inputShadowRadius")
@@ -142,7 +142,7 @@ public extension CIFilter {
 		public static let inputShadowDensity_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputShadowDensity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputShadowDensity") as? NSNumber
+				return self.keyedValue("inputShadowDensity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIDisintegrateWithMaskTransition.inputShadowDensity_Range), forKey: "inputShadowDensity")
@@ -160,7 +160,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputShadowOffset")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputShadowOffset")
+				self.setKeyedValue(newValue?.vector, for: "inputShadowOffset")
 			}
 		}
 

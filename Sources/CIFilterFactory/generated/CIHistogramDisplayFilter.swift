@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -77,7 +77,7 @@ public extension CIFilter {
 		public static let inputHeight_Range: ClosedRange<Float> = 1.0 ... 200.0
 		@objc public dynamic var inputHeight: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHeight") as? NSNumber
+				return self.keyedValue("inputHeight")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputHeight_Range), forKey: "inputHeight")
@@ -96,7 +96,7 @@ public extension CIFilter {
 		public static let inputHighLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputHighLimit: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputHighLimit") as? NSNumber
+				return self.keyedValue("inputHighLimit")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputHighLimit_Range), forKey: "inputHighLimit")
@@ -115,7 +115,7 @@ public extension CIFilter {
 		public static let inputLowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputLowLimit: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputLowLimit") as? NSNumber
+				return self.keyedValue("inputLowLimit")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputLowLimit_Range), forKey: "inputLowLimit")

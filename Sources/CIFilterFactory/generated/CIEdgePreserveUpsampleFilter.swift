@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -71,10 +71,10 @@ public extension CIFilter {
 		///   Class:    CIImage
 		@objc public dynamic var inputSmallImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputSmallImage") as? CIImage
+				return self.keyedValue("inputSmallImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputSmallImage")
+				self.setKeyedValue(newValue, for: "inputSmallImage")
 			}
 		}
 
@@ -90,7 +90,7 @@ public extension CIFilter {
 		public static let inputSpatialSigma_Range: ClosedRange<Float> = 0.0 ... 5.0
 		@objc public dynamic var inputSpatialSigma: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
+				return self.keyedValue("inputSpatialSigma")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIEdgePreserveUpsampleFilter.inputSpatialSigma_Range), forKey: "inputSpatialSigma")
@@ -109,7 +109,7 @@ public extension CIFilter {
 		public static let inputLumaSigma_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputLumaSigma: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputLumaSigma") as? NSNumber
+				return self.keyedValue("inputLumaSigma")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIEdgePreserveUpsampleFilter.inputLumaSigma_Range), forKey: "inputLumaSigma")

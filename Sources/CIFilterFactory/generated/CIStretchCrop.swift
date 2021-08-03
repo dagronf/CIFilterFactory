@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 				return CIFilterFactory.Point(with: self.filter, key: "inputSize")
 			}
 			set {
-				self.filter.setValue(newValue?.vector, forKey: "inputSize")
+				self.setKeyedValue(newValue?.vector, for: "inputSize")
 			}
 		}
 
@@ -92,7 +92,7 @@ public extension CIFilter {
 		public static let inputCropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCropAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCropAmount") as? NSNumber
+				return self.keyedValue("inputCropAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStretchCrop.inputCropAmount_Range), forKey: "inputCropAmount")
@@ -111,7 +111,7 @@ public extension CIFilter {
 		public static let inputCenterStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
 		@objc public dynamic var inputCenterStretchAmount: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
+				return self.keyedValue("inputCenterStretchAmount")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CIStretchCrop.inputCenterStretchAmount_Range), forKey: "inputCenterStretchAmount")

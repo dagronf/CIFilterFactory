@@ -47,45 +47,57 @@ import Foundation
 
 		/// The name of the filter
 		@objc public lazy var name: String = {
-			self.filter.name
+			return self.filter.name
 		}()
 
 		/// The localized version of the filter name that is displayed in the user interface
 		@objc public lazy var displayName: String = {
-			self.filter.attributes[kCIAttributeFilterDisplayName] as? String ?? self.name
+			return self.filter.attributes[kCIAttributeFilterDisplayName] as? String ?? self.name
 		}()
 
 		/// Returns the localized name for the specified filter.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public lazy var localizedName: String = {
-			CIFilter.localizedName(forFilterName: self.name) ?? self.name
+			return CIFilter.localizedName(forFilterName: self.name) ?? self.name
 		}()
 
 		/// Returns the localized description of a filter for display in the user interface.
 		@available(macOS 10.10, iOS 9, *)
 		@objc public lazy var localizedDescription: String? = {
-			CIFilter.localizedDescription(forFilterName: self.name)
+			return CIFilter.localizedDescription(forFilterName: self.name)
 		}()
 
 		/// Returns a dictionary containing key/value pairs describing the filter
-		@objc public var attributes: [String: Any] {
+		@inlinable @objc public var attributes: [String: Any] {
 			return self.filter.attributes
 		}
 
 		/// Returns the URL for the `CIFilter.io` webpage describing the filter
 		@objc public lazy var cifilterOnlineDocumentationURL: URL? = {
-			URL(string: "https://cifilter.io/\(self.name)/")
+			return URL(string: "https://cifilter.io/\(self.name)/")
 		}()
 
 		/// The localized reference documentation for the filter. The reference should provide developers with technical details.
 		@available(macOS 10.10, iOS 9, *)
-		@objc public var onlineDocumentationURL: URL? {
+		@objc public lazy var onlineDocumentationURL: URL? = {
 			return self.filter.attributes[kCIAttributeReferenceDocumentation] as? URL
-		}
+		}()
 
 		/// Reset all the values in the filter to the defaults
-		@objc public func reset() {
-			self.filter.setDefaults()
+		@inlinable @objc public func reset() {
+			return self.filter.setDefaults()
 		}
+	}
+}
+
+extension CIFilterFactory.FilterCore {
+	// Convenience method for getting a value of a specific type
+	@inlinable internal func keyedValue<TYPE>(_ key: String) -> TYPE? {
+		return self.filter.value(forKey: key) as? TYPE
+	}
+
+	// Convenience method for setting a value with a specific type
+	@inlinable internal func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
+		return self.filter.setValue(value, forKey: key)
 	}
 }

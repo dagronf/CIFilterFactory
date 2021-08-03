@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -76,7 +76,7 @@ public extension CIFilter {
 		public static let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNRNoiseLevel: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
+				return self.keyedValue("inputNRNoiseLevel")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
@@ -94,7 +94,7 @@ public extension CIFilter {
 		public static let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputNRSharpness: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputNRSharpness") as? NSNumber
+				return self.keyedValue("inputNRSharpness")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRSharpness_Range), forKey: "inputNRSharpness")
@@ -112,7 +112,7 @@ public extension CIFilter {
 		public static let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputEdgeIntensity: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
+				return self.keyedValue("inputEdgeIntensity")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
@@ -130,7 +130,7 @@ public extension CIFilter {
 		public static let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
 		@objc public dynamic var inputThreshold: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputThreshold") as? NSNumber
+				return self.keyedValue("inputThreshold")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputThreshold_Range), forKey: "inputThreshold")
@@ -148,7 +148,7 @@ public extension CIFilter {
 		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
 		@objc public dynamic var inputContrast: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputContrast") as? NSNumber
+				return self.keyedValue("inputContrast")
 			}
 			set {
 				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputContrast_Range), forKey: "inputContrast")

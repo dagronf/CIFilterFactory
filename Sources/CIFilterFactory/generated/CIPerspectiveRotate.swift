@@ -58,10 +58,10 @@ public extension CIFilter {
 		///   Type:     CIAttributeTypeImage
 		@objc public dynamic var inputImage: CIImage? {
 			get {
-				return self.filter.value(forKey: "inputImage") as? CIImage
+				return self.keyedValue("inputImage")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputImage")
+				self.setKeyedValue(newValue, for: "inputImage")
 			}
 		}
 
@@ -73,10 +73,10 @@ public extension CIFilter {
 		///   Default:  28
 		@objc public dynamic var inputFocalLength: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputFocalLength") as? NSNumber
+				return self.keyedValue("inputFocalLength")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputFocalLength")
+				self.setKeyedValue(newValue, for: "inputFocalLength")
 			}
 		}
 
@@ -88,10 +88,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputPitch: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputPitch") as? NSNumber
+				return self.keyedValue("inputPitch")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputPitch")
+				self.setKeyedValue(newValue, for: "inputPitch")
 			}
 		}
 
@@ -103,10 +103,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputYaw: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputYaw") as? NSNumber
+				return self.keyedValue("inputYaw")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputYaw")
+				self.setKeyedValue(newValue, for: "inputYaw")
 			}
 		}
 
@@ -118,10 +118,10 @@ public extension CIFilter {
 		///   Default:  0
 		@objc public dynamic var inputRoll: NSNumber? {
 			get {
-				return self.filter.value(forKey: "inputRoll") as? NSNumber
+				return self.keyedValue("inputRoll")
 			}
 			set {
-				self.filter.setValue(newValue, forKey: "inputRoll")
+				self.setKeyedValue(newValue, for: "inputRoll")
 			}
 		}
 
