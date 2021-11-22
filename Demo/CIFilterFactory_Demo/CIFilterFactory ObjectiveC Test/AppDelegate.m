@@ -23,6 +23,17 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
 
+	{
+		// Simple QR Code generator example using native NSString and NSData
+		CIFilterFactory_CIQRCodeGenerator *filter = [[CIFilterFactory_CIQRCodeGenerator alloc] init];
+		[filter setInputCorrectionLevel:@"H"];
+		[filter setInputMessage: [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
+		id output = [filter outputImage];
+		struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
+		NSImage *im = [[NSImage alloc] initWithCGImage:out size:NSZeroSize];
+		assert(im != nil);
+	}
+
 	id appimage = [NSImage imageNamed:NSImageNameApplicationIcon];
 	id bir = [[NSBitmapImageRep alloc] initWithData:[appimage TIFFRepresentation]];
 	id image = [[CIImage alloc] initWithBitmapImageRep:bir];

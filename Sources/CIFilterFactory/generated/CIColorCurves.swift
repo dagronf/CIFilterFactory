@@ -70,12 +70,13 @@ public extension CIFilter {
 		///
 		///   Class:    NSData
 		///   Default:  {length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }
-		@objc public dynamic var inputCurvesData: NSData? {
+		@objc public dynamic var inputCurvesData: Data? {
 			get {
-				return self.keyedValue("inputCurvesData")
+				let tmp: NSData? = self.keyedValue("inputCurvesData")
+				return tmp as Data?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCurvesData")
+				self.setKeyedValue(newValue as NSData?, for: "inputCurvesData")
 			}
 		}
 
@@ -110,7 +111,7 @@ public extension CIFilter {
 
 		@objc public convenience init?(
 			inputImage: CIImage,
-			inputCurvesData: NSData,
+			inputCurvesData: Data,
 			inputCurvesDomain: CIVector = CIVector([0.0, 1.0]),
 			inputColorSpace: NSObject
 		) {

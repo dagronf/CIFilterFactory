@@ -21,6 +21,15 @@ class ViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 
+		do {
+			let filter = CIFilter.QRCodeGenerator()!
+			filter.inputMessage = "Hello".data(using: .utf8)!
+			filter.inputCorrectionLevel = "H"
+			let output = filter.outputImage!
+			let uiImage = UIImage(ciImage: output)
+			Swift.print(uiImage)
+		}
+
 		let appimage = UIImage(named: "AppIcon")!
 		let image = CIImage(cgImage: appimage.cgImage!)
 

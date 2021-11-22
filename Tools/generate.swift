@@ -142,7 +142,7 @@ import CoreImage
 	for key in inputKeys {
 
 		guard let keyItem = filterAttributes[key] as? [String: Any],
-			  let keyClass = keyItem[kCIAttributeClass] as? String else {
+				let keyClass = keyItem[kCIAttributeClass] as? String else {
 			out.print(#"   /// \#(key) has no type or class defined. "#)
 			continue
 		}
@@ -151,9 +151,19 @@ import CoreImage
 		let keySubType = keyItem[kCIAttributeType] as? String
 		let keyDefaultValue = keyItem[kCIAttributeDefault]
 
+		// Mapping for some standard swift types that bridge to objective-c
+		var mappedClass: String?
+
+		if keyClass == "NSData" {
+			mappedClass = "Data"
+		}
+		else if keyClass == "NSString" {
+			mappedClass = "String"
+		}
+
 		// Write out the description for the key
 
-		initializers.append( InitType(name: key, class: keyClass, subtype: keySubType, default: keyDefaultValue))
+		initializers.append( InitType(name: key, class: mappedClass ?? keyClass, subtype: keySubType, default: keyDefaultValue))
 
 		out.print("   ///")
 		out.print("   /// \(keyDesc ?? "No Description")")
@@ -225,9 +235,15 @@ import CoreImage
 		}
 		else {
 
-			out.print("   @objc dynamic public var \(key): \(keyClass)? {")
+			out.print("   @objc dynamic public var \(key): \(mappedClass ?? keyClass)? {")
 			out.print("      get {")
-			out.print(#"         return self.keyedValue("\#(key)")"#)
+			if let m = mappedClass {
+				out.print(#"         let tmp: \#(keyClass)? = self.keyedValue("\#(key)")"#)
+				out.print(#"         return tmp as \#(m)?"#)
+			}
+			else {
+				out.print(#"         return self.keyedValue("\#(key)")"#)
+			}
 			out.print("      }")
 
 			out.print("      set {")
@@ -235,7 +251,12 @@ import CoreImage
 				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(filter.name).\(rangeDef)), forKey: \"\(key)\")")
 			}
 			else {
-				out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
+				if let _ = mappedClass {
+					out.print(#"         self.setKeyedValue(newValue as \#(keyClass)?, for: "\#(key)")"#)
+				}
+				else {
+					out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
+				}
 			}
 			out.print("      }")
 			out.print("   }")
@@ -280,7 +301,7 @@ import CoreImage
 		str += "\n         \(key.name): \(subtype)"
 		initializer += "\n         self.\(key.name) = \(key.name)"
 		if let def = key.default,
-		   key.class != "NSData",
+		   key.class != "Data",
 		   key.class != "CIColor",
 		   key.class != "NSObject",
 		   subtype != "CIFilterFactory.AffineTransform" {
@@ -291,7 +312,7 @@ import CoreImage
 			else if subtype == "CIFilterFactory.Rect", let defv = def as? CIVector {
 				defValue = "CIFilterFactory.Rect(x: \(defv.x), y: \(defv.y), width: \(defv.cgRectValue.width), height: \(defv.cgRectValue.height))"
 			}
-			else if key.class == "NSString", let defv = def as? NSString {
+			else if key.class == "String", let defv = def as? NSString {
 				defValue = "\"\(defv)\""
 			}
 			else if key.class == "CIVector", let defv = def as? CIVector {
@@ -301,7 +322,7 @@ import CoreImage
 			str += " = \(defValue)"
 		}
 	}
-	
+
 	if str.count > 0 {
 		out.print("")
 		out.print("      // MARK: - Convenience initializer")

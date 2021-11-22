@@ -55,12 +55,13 @@ public extension CIFilter {
 		/// The message to encode in the Code 128 Barcode
 		///
 		///   Class:    NSData
-		@objc public dynamic var inputMessage: NSData? {
+		@objc public dynamic var inputMessage: Data? {
 			get {
-				return self.keyedValue("inputMessage")
+				let tmp: NSData? = self.keyedValue("inputMessage")
+				return tmp as Data?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputMessage")
+				self.setKeyedValue(newValue as NSData?, for: "inputMessage")
 			}
 		}
 
@@ -111,7 +112,7 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputMessage: NSData,
+			inputMessage: Data,
 			inputQuietSpace: NSNumber = 10,
 			inputBarcodeHeight: NSNumber = 32
 		) {

@@ -55,12 +55,13 @@ public extension CIFilter {
 		/// No Description
 		///
 		///   Class:    NSString
-		@objc public dynamic var inputText: NSString? {
+		@objc public dynamic var inputText: String? {
 			get {
-				return self.keyedValue("inputText")
+				let tmp: NSString? = self.keyedValue("inputText")
+				return tmp as String?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputText")
+				self.setKeyedValue(newValue as NSString?, for: "inputText")
 			}
 		}
 
@@ -69,12 +70,13 @@ public extension CIFilter {
 		///
 		///   Class:    NSString
 		///   Default:  HelveticaNeue
-		@objc public dynamic var inputFontName: NSString? {
+		@objc public dynamic var inputFontName: String? {
 			get {
-				return self.keyedValue("inputFontName")
+				let tmp: NSString? = self.keyedValue("inputFontName")
+				return tmp as String?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputFontName")
+				self.setKeyedValue(newValue as NSString?, for: "inputFontName")
 			}
 		}
 
@@ -117,8 +119,8 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputText: NSString,
-			inputFontName: NSString = "HelveticaNeue",
+			inputText: String,
+			inputFontName: String = "HelveticaNeue",
 			inputFontSize: NSNumber = 12,
 			inputScaleFactor: NSNumber = 1
 		) {

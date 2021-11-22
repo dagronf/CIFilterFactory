@@ -55,12 +55,13 @@ public extension CIFilter {
 		/// The message to encode in the QR Code
 		///
 		///   Class:    NSData
-		@objc public dynamic var inputMessage: NSData? {
+		@objc public dynamic var inputMessage: Data? {
 			get {
-				return self.keyedValue("inputMessage")
+				let tmp: NSData? = self.keyedValue("inputMessage")
+				return tmp as Data?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputMessage")
+				self.setKeyedValue(newValue as NSData?, for: "inputMessage")
 			}
 		}
 
@@ -69,12 +70,13 @@ public extension CIFilter {
 		///
 		///   Class:    NSString
 		///   Default:  M
-		@objc public dynamic var inputCorrectionLevel: NSString? {
+		@objc public dynamic var inputCorrectionLevel: String? {
 			get {
-				return self.keyedValue("inputCorrectionLevel")
+				let tmp: NSString? = self.keyedValue("inputCorrectionLevel")
+				return tmp as String?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
+				self.setKeyedValue(newValue as NSString?, for: "inputCorrectionLevel")
 			}
 		}
 
@@ -87,8 +89,8 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputMessage: NSData,
-			inputCorrectionLevel: NSString = "M"
+			inputMessage: Data,
+			inputCorrectionLevel: String = "M"
 		) {
 			self.init()
 

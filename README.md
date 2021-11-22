@@ -5,6 +5,7 @@ A Swift/Objective-C factory class (with generator) to provide type-safe and comp
 Supports macOS, tvOS, iOS and mac Catalyst
 
 <p align="center">
+    <img src="https://img.shields.io/github/v/tag/dagronf/CIFilterFactory" />
     <img src="https://img.shields.io/badge/macOS-10.10+-red" />
     <img src="https://img.shields.io/badge/iOS-9+-blue" />
     <img src="https://img.shields.io/badge/tvOS-11+-orange" />
@@ -180,6 +181,14 @@ You can find some really simple examples for both Swift and Objective-C in the `
 * Better type support
 
 ## History
+
+`12.1.0`
+
+* Directly support native Data and String types for Swift.
+
+`12.0.0`
+
+* Regenerated for macOS Monterey
 
 `11.1.0`
 

@@ -286,12 +286,13 @@ public extension CIFilter {
 		/// No Description
 		///
 		///   Class:    NSString
-		@objc public dynamic var inputShape: NSString? {
+		@objc public dynamic var inputShape: String? {
 			get {
-				return self.keyedValue("inputShape")
+				let tmp: NSString? = self.keyedValue("inputShape")
+				return tmp as String?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputShape")
+				self.setKeyedValue(newValue as NSString?, for: "inputShape")
 			}
 		}
 
@@ -314,7 +315,7 @@ public extension CIFilter {
 			inputScaleFactor: NSNumber = 1,
 			inputCalibrationData: AVCameraCalibrationData,
 			inputAuxDataMetadata: CGImageMetadata,
-			inputShape: NSString
+			inputShape: String
 		) {
 			self.init()
 

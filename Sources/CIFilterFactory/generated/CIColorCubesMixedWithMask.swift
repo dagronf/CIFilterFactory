@@ -103,12 +103,13 @@ public extension CIFilter {
 		///
 		///   Class:    NSData
 		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
-		@objc public dynamic var inputCube0Data: NSData? {
+		@objc public dynamic var inputCube0Data: Data? {
 			get {
-				return self.keyedValue("inputCube0Data")
+				let tmp: NSData? = self.keyedValue("inputCube0Data")
+				return tmp as Data?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCube0Data")
+				self.setKeyedValue(newValue as NSData?, for: "inputCube0Data")
 			}
 		}
 
@@ -117,12 +118,13 @@ public extension CIFilter {
 		///
 		///   Class:    NSData
 		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
-		@objc public dynamic var inputCube1Data: NSData? {
+		@objc public dynamic var inputCube1Data: Data? {
 			get {
-				return self.keyedValue("inputCube1Data")
+				let tmp: NSData? = self.keyedValue("inputCube1Data")
+				return tmp as Data?
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCube1Data")
+				self.setKeyedValue(newValue as NSData?, for: "inputCube1Data")
 			}
 		}
 
@@ -145,8 +147,8 @@ public extension CIFilter {
 			inputImage: CIImage,
 			inputMaskImage: CIImage,
 			inputCubeDimension: NSNumber = 2,
-			inputCube0Data: NSData,
-			inputCube1Data: NSData,
+			inputCube0Data: Data,
+			inputCube1Data: Data,
 			inputColorSpace: NSObject
 		) {
 			self.init()
