@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func GaussianGradient() -> CIFilterFactory.CIGaussianGradient? {
-		return CIFilterFactory.CIGaussianGradient()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Gaussian Gradient
@@ -40,39 +33,48 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIGaussianGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianGradient)
+	/// - [CIGaussianGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaussiangradient?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
-	///
-	@objc(CIFilterFactory_CIGaussianGradient) class CIGaussianGradient: FilterCore {
+	@objc(CIFilterFactory_GaussianGradient) class GaussianGradient: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - color0 (inputColor0)
 
 		///
 		/// The first color to use in the gradient.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor0: CIColor? {
+		///   - Attribute key: `inputColor0`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
 			}
@@ -81,13 +83,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color1 (inputColor1)
+
 		///
 		/// The second color to use in the gradient.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(0 0 0 0)
-		@objc public dynamic var inputColor1: CIColor? {
+		///   - Attribute key: `inputColor1`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(0 0 0 0`)
+		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
 			}
@@ -96,38 +101,41 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius of the Gaussian distribution.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  300
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `300`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIGaussianGradient.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: GaussianGradient.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputColor0: CIColor,
-			inputColor1: CIColor,
-			inputRadius: NSNumber = 300
+			center: CGPoint = GaussianGradient.center_default,
+			color0: CIColor,
+			color1: CIColor,
+			radius: NSNumber = 300
 		) {
 			self.init()
 
-			self.inputCenter = inputCenter
-			self.inputColor0 = inputColor0
-			self.inputColor1 = inputColor1
-			self.inputRadius = inputRadius
+			self.center = center
+			self.color0 = color0
+			self.color1 = color1
+			self.radius = radius
 		}
 	}
 }

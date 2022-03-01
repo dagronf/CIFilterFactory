@@ -79,19 +79,9 @@ import CoreImage
 			avail += ", "
 		}
 		if let _ = Float(iosAvail) {
-			avail += "iOS \(iosAvail)"
+			avail += "iOS \(iosAvail), tvOS \(iosAvail)"
 		}
 	}
-
-	out.print("public extension CIFilter {")
-	if !avail.isEmpty {
-		out.print("@available(\(avail), *)")
-	}
-	out.print("   @inlinable @objc static public func \(staticName)() -> CIFilterFactory.\(filter.name)? {")
-	out.print("      return CIFilterFactory.\(filter.name)()")
-	out.print("   }")
-	out.print("}")
-	out.print("")
 
 	if !avail.isEmpty {
 		out.print("@available(\(avail), *)")
@@ -112,15 +102,15 @@ import CoreImage
 	out.print("   ///")
 
 	if let refDoc = filterAttributes[kCIAttributeReferenceDocumentation] as? URL {
-		out.print("   /// [\(filter.name) Online Documentation](\(refDoc))")
-		out.print("   ///")
+		out.print("   /// - [\(filter.name) Online Documentation](\(refDoc))")
 	}
 
-	out.print("   /// [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)")
+	out.print("   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased())?language=objc)")
+	out.print("   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)")
 	out.print("   ///")
 
 
-	out.print("   @objc(CIFilterFactory_\(filter.name)) public class \(filter.name): FilterCore {")
+	out.print("   @objc(CIFilterFactory_\(staticName)) public class \(staticName): FilterCore {")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("      }")
@@ -139,11 +129,22 @@ import CoreImage
 
 	var initializers = [InitType]()
 
-	for key in inputKeys {
+	for key2 in inputKeys {
 
-		guard let keyItem = filterAttributes[key] as? [String: Any],
+		let userFriendlyKey: String = {
+			if key2.hasPrefix("input") {
+				let v = key2[key2.index(key2.startIndex, offsetBy: 5)...]
+				//let v = key2.substring(from: key2.index(key2.startIndex, offsetBy: 5))
+				return v.prefix(1).lowercased() + v.dropFirst()
+			}
+			return key2
+		}()
+
+		out.print("   // MARK: - \(userFriendlyKey) (\(key2))")
+
+		guard let keyItem = filterAttributes[key2] as? [String: Any],
 				let keyClass = keyItem[kCIAttributeClass] as? String else {
-			out.print(#"   /// \#(key) has no type or class defined. "#)
+			out.print(#"   /// \#(key2) has no type or class defined. "#)
 			continue
 		}
 
@@ -163,99 +164,109 @@ import CoreImage
 
 		// Write out the description for the key
 
-		initializers.append( InitType(name: key, class: mappedClass ?? keyClass, subtype: keySubType, default: keyDefaultValue))
+		initializers.append( InitType(name: userFriendlyKey, class: mappedClass ?? keyClass, subtype: keySubType, default: keyDefaultValue))
 
 		out.print("   ///")
 		out.print("   /// \(keyDesc ?? "No Description")")
 		out.print("   ///")
-		out.print("   ///   Class:    \(keyClass)")
+		out.print("   ///   - Attribute key: `\(key2)`")
+		out.print("   ///   - Internal class: `\(keyClass)`")
 		if let t = keySubType {
-			out.print("   ///   Type:     \(t)")
+			out.print("   ///   - Type: `\(t)`")
 		}
 		if let def = keyDefaultValue {
 			if keyClass == "NSAffineTransform" {
 				let tr = (def as! AffineTransform)
-				out.print("   ///   Default:  \(tr)")
+				out.print("   ///   - Default value: `\(tr)`")
 			}
 			else if keyClass == "CIColor" {
 				let tr = (def as! CIColor)
-				out.print("   ///   Default:  rgba(\(tr.stringRepresentation))")
+				out.print("   ///   - Default value: `rgba(\(tr.stringRepresentation)`)")
 			}
 			else if let cs = maybeCast(def, to: CGColorSpace.self) {
 				// <CGColorSpace 0x7f897ffeed70> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
 				let s = "\(cs)"
 				let ww = s.split(separator: ">")
-				out.print("   ///   Default: \(ww[1])")
+				out.print("   ///   - Default value: `\(ww[1])`")
 			}
 			else {
-				out.print("   ///   Default:  \(def)")
+				out.print("   ///   - Default value: `\(def)`")
 			}
 		}
-		let rangeDef = handleRange(out: out, key: key, keyAttributes: keyItem)
+		let rangeDef = handleRange(out: out, key: userFriendlyKey, keyAttributes: keyItem)
 
 		if keySubType == "CIAttributeTypeRectangle" {
-			out.print("   @objc dynamic public var \(key): CIFilterFactory.Rect? {")
+			let defaultValue = (keyDefaultValue as? CIVector)?.cgRectValue ?? .zero
+			out.print("   @objc public var \(userFriendlyKey): CGRect {")
 			out.print("      get {")
-			out.print("         return CIFilterFactory.Rect(with: self.filter, key: \"\(key)\")")
+			out.print("         return CGRect(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)_default)")
 			out.print("      }")
 			out.print("      set {")
-			out.print(#"         self.setKeyedValue(newValue?.vector, for: "\#(key)")"#)
+			out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key2)")"#)
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// \(userFriendlyKey) default value")
+			out.print("   @objc static public let \(userFriendlyKey)_default = CGRect(x: \(defaultValue.origin.x), y: \(defaultValue.origin.y), width: \(defaultValue.width), height: \(defaultValue.width))")
+			out.print("")
 		}
 		else if keyClass == "NSAffineTransform" {
-			out.print("   @objc dynamic public var \(key): CIFilterFactory.AffineTransform? {")
+			out.print("   @objc public var \(userFriendlyKey): CIAffineTransform? {")
 			out.print("      get {")
-			out.print("         return AffineTransform(filter: self.filter, key: \"\(key)\")")
+			out.print("         return CIAffineTransform(filter: self.filter, key: \"\(key2)\")")
 			out.print("      }")
 			out.print("      set {")
-			out.print(#"         self.setKeyedValue(newValue?.embeddedValue, for: "\#(key)")"#)
+			out.print(#"         self.setKeyedValue(newValue?.embeddedValue, for: "\#(key2)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
 		else if keySubType == "CIAttributeTypePosition" || keySubType == kCIAttributeTypeOffset {
-			out.print("   @objc dynamic public var \(key): CIFilterFactory.Point? {")
+			let defaultValue = (keyDefaultValue as? CIVector)?.cgPointValue ?? .zero
+			out.print("   @objc public var \(userFriendlyKey): CGPoint {")
 			out.print("      get {")
-			out.print("         return CIFilterFactory.Point(with: self.filter, key: \"\(key)\")")
+			out.print("         return CGPoint(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)_default)")
 			out.print("      }")
 			out.print("      set {")
-			out.print(#"         self.setKeyedValue(newValue?.vector, for: "\#(key)")"#)
+			out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key2)")"#)
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// \(userFriendlyKey) default value")
+			out.print("   @objc static public let \(userFriendlyKey)_default = CGPoint(x: \(defaultValue.x), y: \(defaultValue.y))")
+			out.print("")
 		}
 		else if keyClass == "CGImageMetadataRef" {
-			out.print("   @objc dynamic public var \(key): CGImageMetadata? {")
+			out.print("   @objc public var \(userFriendlyKey): CGImageMetadata? {")
 			out.print("      get {")
-			out.print(#"         return self.keyedValue("\#(key)")"#)
+			out.print(#"         return self.keyedValue("\#(key2)")"#)
 			out.print("      }")
 			out.print("      set {")
-			out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
+			out.print(#"         self.setKeyedValue(newValue, for: "\#(key2)")"#)
 			out.print("      }")
 			out.print("   }")
 		}
 		else {
-
-			out.print("   @objc dynamic public var \(key): \(mappedClass ?? keyClass)? {")
+			out.print("   @objc public var \(userFriendlyKey): \(mappedClass ?? keyClass)? {")
 			out.print("      get {")
 			if let m = mappedClass {
-				out.print(#"         let tmp: \#(keyClass)? = self.keyedValue("\#(key)")"#)
+				out.print(#"         let tmp: \#(keyClass)? = self.keyedValue("\#(key2)")"#)
 				out.print(#"         return tmp as \#(m)?"#)
 			}
 			else {
-				out.print(#"         return self.keyedValue("\#(key)")"#)
+				out.print(#"         return self.keyedValue("\#(key2)")"#)
 			}
 			out.print("      }")
 
 			out.print("      set {")
 			if let rangeDef = rangeDef {
-				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(filter.name).\(rangeDef)), forKey: \"\(key)\")")
+				out.print("      self.filter.setValue(newValue?.clamped(bounds: \(staticName).\(rangeDef)), forKey: \"\(key2)\")")
 			}
 			else {
 				if let _ = mappedClass {
-					out.print(#"         self.setKeyedValue(newValue as \#(keyClass)?, for: "\#(key)")"#)
+					out.print(#"         self.setKeyedValue(newValue as \#(keyClass)?, for: "\#(key2)")"#)
 				}
 				else {
-					out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
+					out.print(#"         self.setKeyedValue(newValue, for: "\#(key2)")"#)
 				}
 			}
 			out.print("      }")
@@ -268,7 +279,7 @@ import CoreImage
 		out.print("   // MARK: - Additional Outputs")
 		out.print("")
 		outputs.sorted().forEach { key in
-			out.print("   @objc public dynamic var \(key): Any? {")
+			out.print("   @objc public var \(key): Any? {")
 			out.print("      return self.filter.value(forKey: \"\(key)\")")
 			out.print("   }")
 		}
@@ -281,16 +292,16 @@ import CoreImage
 
 		let subtype: String = {
 			if key.subtype == "CIAttributeTypePosition" {
-				return "CIFilterFactory.Point"
+				return "CGPoint"
 			}
 			else if key.subtype == "CIAttributeTypeRectangle" {
-				return "CIFilterFactory.Rect"
+				return "CGRect"
 			}
 			else if key.subtype == "CIAttributeTypeOffset" {
-				return "CIFilterFactory.Point"
+				return "CGPoint"
 			}
 			else if key.class == "NSAffineTransform" {
-				return "CIFilterFactory.AffineTransform"
+				return "CIAffineTransform"
 			}
 			else if key.class == "CGImageMetadataRef" {
 				return "CGImageMetadata"
@@ -304,13 +315,13 @@ import CoreImage
 		   key.class != "Data",
 		   key.class != "CIColor",
 		   key.class != "NSObject",
-		   subtype != "CIFilterFactory.AffineTransform" {
+		   subtype != "CIAffineTransform" {
 			var defValue = "\(def)"
-			if subtype == "CIFilterFactory.Point", let defv = def as? CIVector {
-				defValue = "CIFilterFactory.Point(x: \(defv.x), y: \(defv.y))"
+			if subtype == "CGPoint" {
+				defValue = "\(staticName).\(key.name)_default"
 			}
-			else if subtype == "CIFilterFactory.Rect", let defv = def as? CIVector {
-				defValue = "CIFilterFactory.Rect(x: \(defv.x), y: \(defv.y), width: \(defv.cgRectValue.width), height: \(defv.cgRectValue.height))"
+			else if subtype == "CGRect" {
+				defValue = "\(staticName).\(key.name)_default"
 			}
 			else if key.class == "String", let defv = def as? NSString {
 				defValue = "\"\(defv)\""

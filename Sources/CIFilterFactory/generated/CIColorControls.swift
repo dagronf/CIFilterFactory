@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func ColorControls() -> CIFilterFactory.CIColorControls? {
-		return CIFilterFactory.CIColorControls()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Controls
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorControls Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorControls)
+	/// - [CIColorControls Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorControls)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcontrols?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
-	///
-	@objc(CIFilterFactory_CIColorControls) class CIColorControls: FilterCore {
+	@objc(CIFilterFactory_ColorControls) class ColorControls: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorControls")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,74 +61,83 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - saturation (inputSaturation)
+
 		///
 		/// The amount of saturation to apply. The larger the value, the more saturated the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputSaturation`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputSaturation_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputSaturation: NSNumber? {
+		public static let saturation_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var saturation: NSNumber? {
 			get {
 				return self.keyedValue("inputSaturation")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputSaturation_Range), forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: ColorControls.saturation_Range), forKey: "inputSaturation")
 			}
 		}
+
+		// MARK: - brightness (inputBrightness)
 
 		///
 		/// The amount of brightness to apply. The larger the value, the brighter the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputBrightness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: -1.0
 		///
-		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
-		@objc public dynamic var inputBrightness: NSNumber? {
+		public static let brightness_Range: PartialRangeFrom<Float> = Float(-1.0)...
+		@objc public var brightness: NSNumber? {
 			get {
 				return self.keyedValue("inputBrightness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputBrightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: ColorControls.brightness_Range), forKey: "inputBrightness")
 			}
 		}
+
+		// MARK: - contrast (inputContrast)
 
 		///
 		/// The amount of contrast to apply. The larger the value, the more contrast in the resulting image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputContrast`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputContrast: NSNumber? {
+		public static let contrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var contrast: NSNumber? {
 			get {
 				return self.keyedValue("inputContrast")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIColorControls.inputContrast_Range), forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: ColorControls.contrast_Range), forKey: "inputContrast")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputSaturation: NSNumber = 1,
-			inputBrightness: NSNumber = 0,
-			inputContrast: NSNumber = 1
+			image: CIImage,
+			saturation: NSNumber = 1,
+			brightness: NSNumber = 0,
+			contrast: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputSaturation = inputSaturation
-			self.inputBrightness = inputBrightness
-			self.inputContrast = inputContrast
+			self.image = image
+			self.saturation = saturation
+			self.brightness = brightness
+			self.contrast = contrast
 		}
 	}
 }

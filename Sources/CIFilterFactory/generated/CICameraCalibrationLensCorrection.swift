@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func CameraCalibrationLensCorrection() -> CIFilterFactory.CICameraCalibrationLensCorrection? {
-		return CIFilterFactory.CICameraCalibrationLensCorrection()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Lens Correction for AVC
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
+	/// - [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicameracalibrationlenscorrection?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
-	///
-	@objc(CIFilterFactory_CICameraCalibrationLensCorrection) class CICameraCalibrationLensCorrection: FilterCore {
+	@objc(CIFilterFactory_CameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - aVCameraCalibrationData (inputAVCameraCalibrationData)
+
 		///
 		/// AVCameraCalibrationData for the correction. Will be set from the inputImage if available and can be overridden here.
 		///
-		///   Class:    AVCameraCalibrationData
-		@objc public dynamic var inputAVCameraCalibrationData: AVCameraCalibrationData? {
+		///   - Attribute key: `inputAVCameraCalibrationData`
+		///   - Internal class: `AVCameraCalibrationData`
+		@objc public var aVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
 				return self.keyedValue("inputAVCameraCalibrationData")
 			}
@@ -78,12 +77,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - useInverseLookUpTable (inputUseInverseLookUpTable)
+
 		///
 		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData
 		///
-		///   Class:    NSNumber
-		///   Default:  0
-		@objc public dynamic var inputUseInverseLookUpTable: NSNumber? {
+		///   - Attribute key: `inputUseInverseLookUpTable`
+		///   - Internal class: `NSNumber`
+		///   - Default value: `0`
+		@objc public var useInverseLookUpTable: NSNumber? {
 			get {
 				return self.keyedValue("inputUseInverseLookUpTable")
 			}
@@ -95,15 +97,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputAVCameraCalibrationData: AVCameraCalibrationData,
-			inputUseInverseLookUpTable: NSNumber = 0
+			image: CIImage,
+			aVCameraCalibrationData: AVCameraCalibrationData,
+			useInverseLookUpTable: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputAVCameraCalibrationData = inputAVCameraCalibrationData
-			self.inputUseInverseLookUpTable = inputUseInverseLookUpTable
+			self.image = image
+			self.aVCameraCalibrationData = aVCameraCalibrationData
+			self.useInverseLookUpTable = useInverseLookUpTable
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func DisplacementDistortion() -> CIFilterFactory.CIDisplacementDistortion? {
-		return CIFilterFactory.CIDisplacementDistortion()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Displacement Distortion
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIDisplacementDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisplacementDistortion)
+	/// - [CIDisplacementDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisplacementDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisplacementdistortion?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
-	///
-	@objc(CIFilterFactory_CIDisplacementDistortion) class CIDisplacementDistortion: FilterCore {
+	@objc(CIFilterFactory_DisplacementDistortion) class DisplacementDistortion: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - displacementImage (inputDisplacementImage)
+
 		///
 		/// An image whose grayscale values will be applied to the source image.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputDisplacementImage: CIImage? {
+		///   - Attribute key: `inputDisplacementImage`
+		///   - Internal class: `CIImage`
+		@objc public var displacementImage: CIImage? {
 			get {
 				return self.keyedValue("inputDisplacementImage")
 			}
@@ -78,36 +77,39 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - scale (inputScale)
+
 		///
 		/// The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  50
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `50`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIDisplacementDistortion.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: DisplacementDistortion.scale_Range), forKey: "inputScale")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputDisplacementImage: CIImage,
-			inputScale: NSNumber = 50
+			image: CIImage,
+			displacementImage: CIImage,
+			scale: NSNumber = 50
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputDisplacementImage = inputDisplacementImage
-			self.inputScale = inputScale
+			self.image = image
+			self.displacementImage = displacementImage
+			self.scale = scale
 		}
 	}
 }

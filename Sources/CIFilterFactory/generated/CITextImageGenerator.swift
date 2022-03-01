@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func TextImageGenerator() -> CIFilterFactory.CITextImageGenerator? {
-		return CIFilterFactory.CITextImageGenerator()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Text Image Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
+	/// - [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citextimagegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
-	///
-	@objc(CIFilterFactory_CITextImageGenerator) class CITextImageGenerator: FilterCore {
+	@objc(CIFilterFactory_TextImageGenerator) class TextImageGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CITextImageGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - text (inputText)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSString
-		@objc public dynamic var inputText: String? {
+		///   - Attribute key: `inputText`
+		///   - Internal class: `NSString`
+		@objc public var text: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputText")
 				return tmp as String?
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - fontName (inputFontName)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSString
-		///   Default:  HelveticaNeue
-		@objc public dynamic var inputFontName: String? {
+		///   - Attribute key: `inputFontName`
+		///   - Internal class: `NSString`
+		///   - Default value: `HelveticaNeue`
+		@objc public var fontName: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputFontName")
 				return tmp as String?
@@ -80,56 +79,62 @@ public extension CIFilter {
 			}
 		}
 
-		///
-		/// No Description
-		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  12
-		///   minValue: 0.0
-		///
-		public static let inputFontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputFontSize: NSNumber? {
-			get {
-				return self.keyedValue("inputFontSize")
-			}
-			set {
-				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputFontSize_Range), forKey: "inputFontSize")
-			}
-		}
+		// MARK: - fontSize (inputFontSize)
 
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputFontSize`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `12`
 		///   minValue: 0.0
 		///
-		public static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScaleFactor: NSNumber? {
+		public static let fontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var fontSize: NSNumber? {
+			get {
+				return self.keyedValue("inputFontSize")
+			}
+			set {
+				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.fontSize_Range), forKey: "inputFontSize")
+			}
+		}
+
+		// MARK: - scaleFactor (inputScaleFactor)
+
+		///
+		/// No Description
+		///
+		///   - Attribute key: `inputScaleFactor`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
+		///   minValue: 0.0
+		///
+		public static let scaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scaleFactor: NSNumber? {
 			get {
 				return self.keyedValue("inputScaleFactor")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CITextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.scaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputText: String,
-			inputFontName: String = "HelveticaNeue",
-			inputFontSize: NSNumber = 12,
-			inputScaleFactor: NSNumber = 1
+			text: String,
+			fontName: String = "HelveticaNeue",
+			fontSize: NSNumber = 12,
+			scaleFactor: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputText = inputText
-			self.inputFontName = inputFontName
-			self.inputFontSize = inputFontSize
-			self.inputScaleFactor = inputScaleFactor
+			self.text = text
+			self.fontName = fontName
+			self.fontSize = fontSize
+			self.scaleFactor = scaleFactor
 		}
 	}
 }

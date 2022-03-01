@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.7, iOS 5, *)
-	@inlinable @objc static func StraightenFilter() -> CIFilterFactory.CIStraightenFilter? {
-		return CIFilterFactory.CIStraightenFilter()
-	}
-}
-
-@available(macOS 10.7, iOS 5, *)
+@available(macOS 10.7, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Straighten
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIStraightenFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStraightenFilter)
+	/// - [CIStraightenFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStraightenFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistraightenfilter?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIStraightenFilter/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIStraightenFilter/)
-	///
-	@objc(CIFilterFactory_CIStraightenFilter) class CIStraightenFilter: FilterCore {
+	@objc(CIFilterFactory_StraightenFilter) class StraightenFilter: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIStraightenFilter")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - angle (inputAngle)
+
 		///
 		/// An angle in radians.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputAngle: NSNumber? {
+		///   - Attribute key: `inputAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputAngle: NSNumber = 0
+			image: CIImage,
+			angle: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputAngle = inputAngle
+			self.image = image
+			self.angle = angle
 		}
 	}
 }

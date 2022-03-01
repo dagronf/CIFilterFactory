@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func DocumentEnhancer() -> CIFilterFactory.CIDocumentEnhancer? {
-		return CIFilterFactory.CIDocumentEnhancer()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Document Enhancer
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
+	/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidocumentenhancer?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
-	///
-	@objc(CIFilterFactory_CIDocumentEnhancer) class CIDocumentEnhancer: FilterCore {
+	@objc(CIFilterFactory_DocumentEnhancer) class DocumentEnhancer: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,35 +61,38 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - amount (inputAmount)
+
 		///
 		/// The amount of enhancement.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		public static let inputAmount_Range: ClosedRange<Float> = 0.0 ... 10.0
-		@objc public dynamic var inputAmount: NSNumber? {
+		public static let amount_Range: ClosedRange<Float> = 0.0 ... 10.0
+		@objc public var amount: NSNumber? {
 			get {
 				return self.keyedValue("inputAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIDocumentEnhancer.inputAmount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: DocumentEnhancer.amount_Range), forKey: "inputAmount")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputAmount: NSNumber = 1
+			image: CIImage,
+			amount: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputAmount = inputAmount
+			self.image = image
+			self.amount = amount
 		}
 	}
 }

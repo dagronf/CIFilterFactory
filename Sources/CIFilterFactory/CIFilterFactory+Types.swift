@@ -26,102 +26,65 @@ import CoreImage
 import UIKit
 #endif
 
-public extension CIFilterFactory {
-	@objc(CIFilterFactoryVector) class Vector: NSObject {
-		var vector: CIVector
-		init(vector: CIVector) {
-			self.vector = vector
+/// A wrapped AffineTransform class to abstract away affine transform differences per platform
+@objc(CIAffineTransform) public class CIAffineTransform: NSObject {
+	#if os(macOS)
+		@objc var transform: NSAffineTransform
+		@objc public init(_ transform: NSAffineTransform) {
+			self.transform = transform
 			super.init()
 		}
 
-		init?(with filter: CIFilter, key: String) {
-			if let vec = filter.value(forKey: key) as? CIVector {
-				self.vector = vec
-				super.init()
-			}
-			else {
+		@objc public convenience init?(filter: CIFilter, key: String) {
+			guard let value = filter.value(forKey: key) as? NSAffineTransform else {
 				return nil
 			}
-		}
-	}
-
-	/// A wrapped Rect class
-	@objc(CIFilterFactoryRect) class Rect: Vector {
-		@objc public var rect: CGRect {
-			return super.vector.cgRectValue
+			self.init(value)
 		}
 
-		@objc public init(_ rect: CGRect) {
-			super.init(vector: CIVector(cgRect: rect))
+		func embeddedValue() -> AnyObject {
+			return self.transform
+		}
+	#else
+		@objc var transform: CGAffineTransform
+		@objc public init(_ transform: CGAffineTransform) {
+			self.transform = transform
+			super.init()
 		}
 
-		@objc public init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
-			super.init(vector: CIVector(cgRect: CGRect(x: x, y: y, width: width, height: height)))
+		@objc public convenience init?(filter: CIFilter, key: String) {
+			guard let value = filter.value(forKey: key) as? NSValue else {
+				return nil
+			}
+			self.init(value.cgAffineTransformValue)
 		}
 
-		override init?(with filter: CIFilter, key: String) {
-			super.init(with: filter, key: key)
+		func embeddedValue() -> AnyObject {
+			return NSValue(cgAffineTransform: self.transform)
 		}
-	}
+	#endif
+}
 
-	/// A wrapped Point class
-	@objc(CIFilterFactoryPoint) class Point: Vector {
-		@objc public var point: CGPoint {
-			return super.vector.cgPointValue
+extension CGPoint {
+	public var ciVector: CIVector { return CIVector(cgPoint: self) }
+	public init(with filter: CIFilter, key: String, defaultValue: CGPoint) {
+		if let value = filter.value(forKey: key) as? CIVector {
+			self = value.cgPointValue
 		}
-
-		@objc public init(_ point: CGPoint) {
-			super.init(vector: CIVector(cgPoint: point))
-		}
-
-		@objc public init(x: CGFloat, y: CGFloat) {
-			super.init(vector: CIVector(cgPoint: CGPoint(x: x, y: y)))
-		}
-
-		override init?(with filter: CIFilter, key: String) {
-			super.init(with: filter, key: key)
+		else {
+			self = defaultValue
 		}
 	}
 }
 
-public extension CIFilterFactory {
-	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
-	@objc(CIFilterFactoryAffineTransform) class AffineTransform: NSObject {
-		#if os(macOS)
-			@objc var transform: NSAffineTransform
-			@objc public init(_ transform: NSAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSAffineTransform else {
-					return nil
-				}
-				self.init(value)
-			}
-
-			func embeddedValue() -> AnyObject {
-				return self.transform
-			}
-
-		#else
-			@objc var transform: CGAffineTransform
-			@objc public init(_ transform: CGAffineTransform) {
-				self.transform = transform
-				super.init()
-			}
-
-			@objc public convenience init?(filter: CIFilter, key: String) {
-				guard let value = filter.value(forKey: key) as? NSValue else {
-					return nil
-				}
-				self.init(value.cgAffineTransformValue)
-			}
-
-			func embeddedValue() -> AnyObject {
-				return NSValue(cgAffineTransform: self.transform)
-			}
-		#endif
+extension CGRect {
+	public var ciVector: CIVector { return CIVector(cgRect: self) }
+	public init(with filter: CIFilter, key: String, defaultValue: CGRect) {
+		if let value = filter.value(forKey: key) as? CIVector {
+			self = value.cgRectValue
+		}
+		else {
+			self = defaultValue
+		}
 	}
 }

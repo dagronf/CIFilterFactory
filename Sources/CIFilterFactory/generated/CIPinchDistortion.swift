@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func PinchDistortion() -> CIFilterFactory.CIPinchDistortion? {
-		return CIFilterFactory.CIPinchDistortion()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Pinch Distortion
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPinchDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinchDistortion)
+	/// - [CIPinchDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinchDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipinchdistortion?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPinchDistortion/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPinchDistortion/)
-	///
-	@objc(CIFilterFactory_CIPinchDistortion) class CIPinchDistortion: FilterCore {
+	@objc(CIFilterFactory_PinchDistortion) class PinchDistortion: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPinchDistortion")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,71 +61,83 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - radius (inputRadius)
 
 		///
 		/// The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  300
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `300`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPinchDistortion.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: PinchDistortion.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - scale (inputScale)
 
 		///
 		/// The amount of pinching. A value of 0.0 has no effect. A value of 1.0 is the maximum pinch.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPinchDistortion.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: PinchDistortion.scale_Range), forKey: "inputScale")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputRadius: NSNumber = 300,
-			inputScale: NSNumber = 0.5
+			image: CIImage,
+			center: CGPoint = PinchDistortion.center_default,
+			radius: NSNumber = 300,
+			scale: NSNumber = 0.5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCenter = inputCenter
-			self.inputRadius = inputRadius
-			self.inputScale = inputScale
+			self.image = image
+			self.center = center
+			self.radius = radius
+			self.scale = scale
 		}
 	}
 }

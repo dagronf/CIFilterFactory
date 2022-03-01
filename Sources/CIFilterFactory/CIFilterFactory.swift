@@ -90,14 +90,14 @@ import Foundation
 	}
 }
 
-extension CIFilterFactory.FilterCore {
+internal extension CIFilterFactory.FilterCore {
 	// Convenience method for getting a value of a specific type
-	@inlinable internal func keyedValue<TYPE>(_ key: String) -> TYPE? {
+	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
 		return self.filter.value(forKey: key) as? TYPE
 	}
 
 	// Convenience method for setting a value with a specific type
-	@inlinable internal func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
+	@inline(__always) func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
 		return self.filter.setValue(value, forKey: key)
 	}
 }

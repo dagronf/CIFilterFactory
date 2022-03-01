@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func MeshGenerator() -> CIFilterFactory.CIMeshGenerator? {
-		return CIFilterFactory.CIMeshGenerator()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Mesh Generator
@@ -40,41 +33,47 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMeshGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMeshGenerator)
+	/// - [CIMeshGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMeshGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimeshgenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
-	///
-	@objc(CIFilterFactory_CIMeshGenerator) class CIMeshGenerator: FilterCore {
+	@objc(CIFilterFactory_MeshGenerator) class MeshGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - width (inputWidth)
+
 		///
 		/// The width of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  1.5
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `1.5`
 		///   minValue: 0.0
 		///
-		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputWidth: NSNumber? {
+		public static let width_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMeshGenerator.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: MeshGenerator.width_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - color (inputColor)
 
 		///
 		/// A color.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -83,11 +82,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - mesh (inputMesh)
+
 		///
 		/// An array of line segments stored as an array of CIVectors each containing a start point and end point.
 		///
-		///   Class:    NSArray
-		@objc public dynamic var inputMesh: NSArray? {
+		///   - Attribute key: `inputMesh`
+		///   - Internal class: `NSArray`
+		@objc public var mesh: NSArray? {
 			get {
 				return self.keyedValue("inputMesh")
 			}
@@ -99,15 +101,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputWidth: NSNumber = 1.5,
-			inputColor: CIColor,
-			inputMesh: NSArray
+			width: NSNumber = 1.5,
+			color: CIColor,
+			mesh: NSArray
 		) {
 			self.init()
 
-			self.inputWidth = inputWidth
-			self.inputColor = inputColor
-			self.inputMesh = inputMesh
+			self.width = width
+			self.color = color
+			self.mesh = mesh
 		}
 	}
 }

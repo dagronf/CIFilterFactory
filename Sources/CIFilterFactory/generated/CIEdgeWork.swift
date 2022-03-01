@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func EdgeWork() -> CIFilterFactory.CIEdgeWork? {
-		return CIFilterFactory.CIEdgeWork()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Edge Work
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
+	/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedgework?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)
-	///
-	@objc(CIFilterFactory_CIEdgeWork) class CIEdgeWork: FilterCore {
+	@objc(CIFilterFactory_EdgeWork) class EdgeWork: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIEdgeWork")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,34 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The thickness of the edges. The larger the value, the thicker the edges.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  3
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `3`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIEdgeWork.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: EdgeWork.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 3
+			image: CIImage,
+			radius: NSNumber = 3
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
+			self.image = image
+			self.radius = radius
 		}
 	}
 }

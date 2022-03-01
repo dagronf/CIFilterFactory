@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func CoreMLModelFilter() -> CIFilterFactory.CICoreMLModelFilter? {
-		return CIFilterFactory.CICoreMLModelFilter()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// CoreML Model Filter
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
+	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicoremlmodelfilter?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
-	///
-	@objc(CIFilterFactory_CICoreMLModelFilter) class CICoreMLModelFilter: FilterCore {
+	@objc(CIFilterFactory_CoreMLModelFilter) class CoreMLModelFilter: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - model (inputModel)
+
 		///
 		/// The CoreML model to be used for applying effect on the image.
 		///
-		///   Class:    MLModel
-		@objc public dynamic var inputModel: MLModel? {
+		///   - Attribute key: `inputModel`
+		///   - Internal class: `MLModel`
+		@objc public var model: MLModel? {
 			get {
 				return self.keyedValue("inputModel")
 			}
@@ -78,58 +77,64 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - headIndex (inputHeadIndex)
+
 		///
 		/// A number to specify which output of a multi-head CoreML model should be used for applying effect on the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeInteger
-		///   Default:  0
+		///   - Attribute key: `inputHeadIndex`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeInteger`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		public static let inputHeadIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
-		@objc public dynamic var inputHeadIndex: NSNumber? {
+		public static let headIndex_Range: ClosedRange<Float> = 0.0 ... 10.0
+		@objc public var headIndex: NSNumber? {
 			get {
 				return self.keyedValue("inputHeadIndex")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputHeadIndex_Range), forKey: "inputHeadIndex")
+				self.filter.setValue(newValue?.clamped(bounds: CoreMLModelFilter.headIndex_Range), forKey: "inputHeadIndex")
 			}
 		}
+
+		// MARK: - softmaxNormalization (inputSoftmaxNormalization)
 
 		///
 		/// A boolean value to specify that Softmax normalization should be applied to the output of the model.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeBoolean
-		///   Default:  0
+		///   - Attribute key: `inputSoftmaxNormalization`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeBoolean`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputSoftmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputSoftmaxNormalization: NSNumber? {
+		public static let softmaxNormalization_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var softmaxNormalization: NSNumber? {
 			get {
 				return self.keyedValue("inputSoftmaxNormalization")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CICoreMLModelFilter.inputSoftmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
+				self.filter.setValue(newValue?.clamped(bounds: CoreMLModelFilter.softmaxNormalization_Range), forKey: "inputSoftmaxNormalization")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputModel: MLModel,
-			inputHeadIndex: NSNumber = 0,
-			inputSoftmaxNormalization: NSNumber = 0
+			image: CIImage,
+			model: MLModel,
+			headIndex: NSNumber = 0,
+			softmaxNormalization: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputModel = inputModel
-			self.inputHeadIndex = inputHeadIndex
-			self.inputSoftmaxNormalization = inputSoftmaxNormalization
+			self.image = image
+			self.model = model
+			self.headIndex = headIndex
+			self.softmaxNormalization = softmaxNormalization
 		}
 	}
 }

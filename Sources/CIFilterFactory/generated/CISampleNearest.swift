@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func SampleNearest() -> CIFilterFactory.CISampleNearest? {
-		return CIFilterFactory.CISampleNearest()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Sample Nearest
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISampleNearest Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISampleNearest)
+	/// - [CISampleNearest Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISampleNearest)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisamplenearest?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISampleNearest/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISampleNearest/)
-	///
-	@objc(CIFilterFactory_CISampleNearest) class CISampleNearest: FilterCore {
+	@objc(CIFilterFactory_SampleNearest) class SampleNearest: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISampleNearest")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

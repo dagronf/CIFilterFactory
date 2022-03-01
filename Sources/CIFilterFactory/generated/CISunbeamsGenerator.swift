@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func SunbeamsGenerator() -> CIFilterFactory.CISunbeamsGenerator? {
-		return CIFilterFactory.CISunbeamsGenerator()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Sunbeams
@@ -40,38 +33,47 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
+	/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
-	///
-	@objc(CIFilterFactory_CISunbeamsGenerator) class CISunbeamsGenerator: FilterCore {
+	@objc(CIFilterFactory_SunbeamsGenerator) class SunbeamsGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The x and y position to use as the center of the sunbeam pattern
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - color (inputColor)
 
 		///
 		/// The color of the sun.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(1 0.5 0 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(1 0.5 0 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -80,117 +82,132 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - sunRadius (inputSunRadius)
+
 		///
 		/// The radius of the sun.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  40
+		///   - Attribute key: `inputSunRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `40`
 		///   minValue: 0.0
 		///
-		public static let inputSunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputSunRadius: NSNumber? {
+		public static let sunRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var sunRadius: NSNumber? {
 			get {
 				return self.keyedValue("inputSunRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputSunRadius_Range), forKey: "inputSunRadius")
+				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.sunRadius_Range), forKey: "inputSunRadius")
 			}
 		}
+
+		// MARK: - maxStriationRadius (inputMaxStriationRadius)
 
 		///
 		/// The radius of the sunbeams.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  2.58
+		///   - Attribute key: `inputMaxStriationRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `2.58`
 		///   minValue: 0.0
 		///
-		public static let inputMaxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputMaxStriationRadius: NSNumber? {
+		public static let maxStriationRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var maxStriationRadius: NSNumber? {
 			get {
 				return self.keyedValue("inputMaxStriationRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputMaxStriationRadius_Range), forKey: "inputMaxStriationRadius")
+				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.maxStriationRadius_Range), forKey: "inputMaxStriationRadius")
 			}
 		}
+
+		// MARK: - striationStrength (inputStriationStrength)
 
 		///
 		/// The intensity of the sunbeams. Higher values result in more intensity.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
+		///   - Attribute key: `inputStriationStrength`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///
-		public static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputStriationStrength: NSNumber? {
+		public static let striationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var striationStrength: NSNumber? {
 			get {
 				return self.keyedValue("inputStriationStrength")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputStriationStrength_Range), forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.striationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
+
+		// MARK: - striationContrast (inputStriationContrast)
 
 		///
 		/// The contrast of the sunbeams. Higher values result in more contrast.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1.375
+		///   - Attribute key: `inputStriationContrast`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1.375`
 		///   minValue: 0.0
 		///
-		public static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputStriationContrast: NSNumber? {
+		public static let striationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var striationContrast: NSNumber? {
 			get {
 				return self.keyedValue("inputStriationContrast")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputStriationContrast_Range), forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.striationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The duration of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISunbeamsGenerator.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.time_Range), forKey: "inputTime")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputColor: CIColor,
-			inputSunRadius: NSNumber = 40,
-			inputMaxStriationRadius: NSNumber = 2.58,
-			inputStriationStrength: NSNumber = 0.5,
-			inputStriationContrast: NSNumber = 1.375,
-			inputTime: NSNumber = 0
+			center: CGPoint = SunbeamsGenerator.center_default,
+			color: CIColor,
+			sunRadius: NSNumber = 40,
+			maxStriationRadius: NSNumber = 2.58,
+			striationStrength: NSNumber = 0.5,
+			striationContrast: NSNumber = 1.375,
+			time: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputCenter = inputCenter
-			self.inputColor = inputColor
-			self.inputSunRadius = inputSunRadius
-			self.inputMaxStriationRadius = inputMaxStriationRadius
-			self.inputStriationStrength = inputStriationStrength
-			self.inputStriationContrast = inputStriationContrast
-			self.inputTime = inputTime
+			self.center = center
+			self.color = color
+			self.sunRadius = sunRadius
+			self.maxStriationRadius = maxStriationRadius
+			self.striationStrength = striationStrength
+			self.striationContrast = striationContrast
+			self.time = time
 		}
 	}
 }

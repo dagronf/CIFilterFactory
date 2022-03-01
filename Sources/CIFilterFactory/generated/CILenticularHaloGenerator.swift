@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func LenticularHaloGenerator() -> CIFilterFactory.CILenticularHaloGenerator? {
-		return CIFilterFactory.CILenticularHaloGenerator()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Lenticular Halo
@@ -40,38 +33,47 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILenticularHaloGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILenticularHaloGenerator)
+	/// - [CILenticularHaloGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILenticularHaloGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILenticularHaloGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILenticularHaloGenerator/)
-	///
-	@objc(CIFilterFactory_CILenticularHaloGenerator) class CILenticularHaloGenerator: FilterCore {
+	@objc(CIFilterFactory_LenticularHaloGenerator) class LenticularHaloGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILenticularHaloGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The x and y position to use as the center of the halo.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - color (inputColor)
 
 		///
 		/// A color.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(1 0.9 0.8 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(1 0.9 0.8 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -80,137 +82,155 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - haloRadius (inputHaloRadius)
+
 		///
 		/// The radius of the halo.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  70
+		///   - Attribute key: `inputHaloRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `70`
 		///   minValue: 0.0
 		///
-		public static let inputHaloRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputHaloRadius: NSNumber? {
+		public static let haloRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var haloRadius: NSNumber? {
 			get {
 				return self.keyedValue("inputHaloRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloRadius_Range), forKey: "inputHaloRadius")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloRadius_Range), forKey: "inputHaloRadius")
 			}
 		}
+
+		// MARK: - haloWidth (inputHaloWidth)
 
 		///
 		/// The width of the halo, from its inner radius to its outer radius.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  87
+		///   - Attribute key: `inputHaloWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `87`
 		///   minValue: 0.0
 		///
-		public static let inputHaloWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputHaloWidth: NSNumber? {
+		public static let haloWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var haloWidth: NSNumber? {
 			get {
 				return self.keyedValue("inputHaloWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloWidth_Range), forKey: "inputHaloWidth")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloWidth_Range), forKey: "inputHaloWidth")
 			}
 		}
+
+		// MARK: - haloOverlap (inputHaloOverlap)
 
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.77
+		///   - Attribute key: `inputHaloOverlap`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.77`
 		///   minValue: 0.0
 		///
-		public static let inputHaloOverlap_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputHaloOverlap: NSNumber? {
+		public static let haloOverlap_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var haloOverlap: NSNumber? {
 			get {
 				return self.keyedValue("inputHaloOverlap")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputHaloOverlap_Range), forKey: "inputHaloOverlap")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloOverlap_Range), forKey: "inputHaloOverlap")
 			}
 		}
+
+		// MARK: - striationStrength (inputStriationStrength)
 
 		///
 		/// The intensity of the halo colors. Larger values are more intense.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
+		///   - Attribute key: `inputStriationStrength`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///
-		public static let inputStriationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputStriationStrength: NSNumber? {
+		public static let striationStrength_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var striationStrength: NSNumber? {
 			get {
 				return self.keyedValue("inputStriationStrength")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputStriationStrength_Range), forKey: "inputStriationStrength")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.striationStrength_Range), forKey: "inputStriationStrength")
 			}
 		}
+
+		// MARK: - striationContrast (inputStriationContrast)
 
 		///
 		/// The contrast of the halo colors. Larger values are higher contrast.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputStriationContrast`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputStriationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputStriationContrast: NSNumber? {
+		public static let striationContrast_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var striationContrast: NSNumber? {
 			get {
 				return self.keyedValue("inputStriationContrast")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputStriationContrast_Range), forKey: "inputStriationContrast")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.striationContrast_Range), forKey: "inputStriationContrast")
 			}
 		}
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The duration of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILenticularHaloGenerator.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.time_Range), forKey: "inputTime")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputColor: CIColor,
-			inputHaloRadius: NSNumber = 70,
-			inputHaloWidth: NSNumber = 87,
-			inputHaloOverlap: NSNumber = 0.77,
-			inputStriationStrength: NSNumber = 0.5,
-			inputStriationContrast: NSNumber = 1,
-			inputTime: NSNumber = 0
+			center: CGPoint = LenticularHaloGenerator.center_default,
+			color: CIColor,
+			haloRadius: NSNumber = 70,
+			haloWidth: NSNumber = 87,
+			haloOverlap: NSNumber = 0.77,
+			striationStrength: NSNumber = 0.5,
+			striationContrast: NSNumber = 1,
+			time: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputCenter = inputCenter
-			self.inputColor = inputColor
-			self.inputHaloRadius = inputHaloRadius
-			self.inputHaloWidth = inputHaloWidth
-			self.inputHaloOverlap = inputHaloOverlap
-			self.inputStriationStrength = inputStriationStrength
-			self.inputStriationContrast = inputStriationContrast
-			self.inputTime = inputTime
+			self.center = center
+			self.color = color
+			self.haloRadius = haloRadius
+			self.haloWidth = haloWidth
+			self.haloOverlap = haloOverlap
+			self.striationStrength = striationStrength
+			self.striationContrast = striationContrast
+			self.time = time
 		}
 	}
 }

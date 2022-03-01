@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func RandomGenerator() -> CIFilterFactory.CIRandomGenerator? {
-		return CIFilterFactory.CIRandomGenerator()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Random Generator
@@ -40,11 +33,11 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
+	/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirandomgenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
-	///
-	@objc(CIFilterFactory_CIRandomGenerator) class CIRandomGenerator: FilterCore {
+	@objc(CIFilterFactory_RandomGenerator) class RandomGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIRandomGenerator")
 		}

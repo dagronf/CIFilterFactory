@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 6, *)
-	@inlinable @objc static func BarsSwipeTransition() -> CIFilterFactory.CIBarsSwipeTransition? {
-		return CIFilterFactory.CIBarsSwipeTransition()
-	}
-}
-
-@available(macOS 10.5, iOS 6, *)
+@available(macOS 10.5, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Bars Swipe Transition
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBarsSwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarsSwipeTransition)
+	/// - [CIBarsSwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarsSwipeTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarsswipetransition?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBarsSwipeTransition/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBarsSwipeTransition/)
-	///
-	@objc(CIFilterFactory_CIBarsSwipeTransition) class CIBarsSwipeTransition: FilterCore {
+	@objc(CIFilterFactory_BarsSwipeTransition) class BarsSwipeTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBarsSwipeTransition")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - targetImage (inputTargetImage)
+
 		///
 		/// The target image for a transition.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputTargetImage: CIImage? {
+		///   - Attribute key: `inputTargetImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
 			}
@@ -79,13 +78,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - angle (inputAngle)
+
 		///
 		/// The angle (in radians) of the bars.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  3.141592653589793
-		@objc public dynamic var inputAngle: NSNumber? {
+		///   - Attribute key: `inputAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `3.141592653589793`
+		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
 			}
@@ -94,79 +96,88 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - width (inputWidth)
+
 		///
 		/// The width of each bar.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  30
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `30`
 		///   minValue: 2.0
 		///
-		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(2.0)...
-		@objc public dynamic var inputWidth: NSNumber? {
+		public static let width_Range: PartialRangeFrom<Float> = Float(2.0)...
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.width_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - barOffset (inputBarOffset)
 
 		///
 		/// The offset of one bar with respect to another
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  10
+		///   - Attribute key: `inputBarOffset`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `10`
 		///   minValue: 1.0
 		///
-		public static let inputBarOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public dynamic var inputBarOffset: NSNumber? {
+		public static let barOffset_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public var barOffset: NSNumber? {
 			get {
 				return self.keyedValue("inputBarOffset")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputBarOffset_Range), forKey: "inputBarOffset")
+				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.barOffset_Range), forKey: "inputBarOffset")
 			}
 		}
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeTime
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeTime`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBarsSwipeTransition.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.time_Range), forKey: "inputTime")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTargetImage: CIImage,
-			inputAngle: NSNumber = 3.141592653589793,
-			inputWidth: NSNumber = 30,
-			inputBarOffset: NSNumber = 10,
-			inputTime: NSNumber = 0
+			image: CIImage,
+			targetImage: CIImage,
+			angle: NSNumber = 3.141592653589793,
+			width: NSNumber = 30,
+			barOffset: NSNumber = 10,
+			time: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTargetImage = inputTargetImage
-			self.inputAngle = inputAngle
-			self.inputWidth = inputWidth
-			self.inputBarOffset = inputBarOffset
-			self.inputTime = inputTime
+			self.image = image
+			self.targetImage = targetImage
+			self.angle = angle
+			self.width = width
+			self.barOffset = barOffset
+			self.time = time
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func ColorCubeWithColorSpace() -> CIFilterFactory.CIColorCubeWithColorSpace? {
-		return CIFilterFactory.CIColorCubeWithColorSpace()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Cube with ColorSpace
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
+	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
-	///
-	@objc(CIFilterFactory_CIColorCubeWithColorSpace) class CIColorCubeWithColorSpace: FilterCore {
+	@objc(CIFilterFactory_ColorCubeWithColorSpace) class ColorCubeWithColorSpace: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorCubeWithColorSpace")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,31 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - cubeDimension (inputCubeDimension)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeCount
-		///   Default:  2
+		///   - Attribute key: `inputCubeDimension`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeCount`
+		///   - Default value: `2`
 		///   minValue: 2.0
 		///   maxValue: 128.0
 		///
-		public static let inputCubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
-		@objc public dynamic var inputCubeDimension: NSNumber? {
+		public static let cubeDimension_Range: ClosedRange<Float> = 2.0 ... 128.0
+		@objc public var cubeDimension: NSNumber? {
 			get {
 				return self.keyedValue("inputCubeDimension")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIColorCubeWithColorSpace.inputCubeDimension_Range), forKey: "inputCubeDimension")
+				self.filter.setValue(newValue?.clamped(bounds: ColorCubeWithColorSpace.cubeDimension_Range), forKey: "inputCubeDimension")
 			}
 		}
+
+		// MARK: - cubeData (inputCubeData)
 
 		///
 		/// Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
 		///
-		///   Class:    NSData
-		///   Default:  {length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }
-		@objc public dynamic var inputCubeData: Data? {
+		///   - Attribute key: `inputCubeData`
+		///   - Internal class: `NSData`
+		///   - Default value: `{length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }`
+		@objc public var cubeData: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCubeData")
 				return tmp as Data?
@@ -99,11 +101,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - colorSpace (inputColorSpace)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSObject
-		@objc public dynamic var inputColorSpace: NSObject? {
+		///   - Attribute key: `inputColorSpace`
+		///   - Internal class: `NSObject`
+		@objc public var colorSpace: NSObject? {
 			get {
 				return self.keyedValue("inputColorSpace")
 			}
@@ -115,17 +120,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCubeDimension: NSNumber = 2,
-			inputCubeData: Data,
-			inputColorSpace: NSObject
+			image: CIImage,
+			cubeDimension: NSNumber = 2,
+			cubeData: Data,
+			colorSpace: NSObject
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCubeDimension = inputCubeDimension
-			self.inputCubeData = inputCubeData
-			self.inputColorSpace = inputColorSpace
+			self.image = image
+			self.cubeDimension = cubeDimension
+			self.cubeData = cubeData
+			self.colorSpace = colorSpace
 		}
 	}
 }

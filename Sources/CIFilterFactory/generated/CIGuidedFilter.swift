@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func GuidedFilter() -> CIFilterFactory.CIGuidedFilter? {
-		return CIFilterFactory.CIGuidedFilter()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Guided Filter
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
+	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciguidedfilter?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
-	///
-	@objc(CIFilterFactory_CIGuidedFilter) class CIGuidedFilter: FilterCore {
+	@objc(CIFilterFactory_GuidedFilter) class GuidedFilter: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGuidedFilter")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// A small image to upsample.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - guideImage (inputGuideImage)
+
 		///
 		/// A larger image to use as a guide.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputGuideImage: CIImage? {
+		///   - Attribute key: `inputGuideImage`
+		///   - Internal class: `CIImage`
+		@objc public var guideImage: CIImage? {
 			get {
 				return self.keyedValue("inputGuideImage")
 			}
@@ -78,13 +77,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
-		@objc public dynamic var inputRadius: NSNumber? {
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
@@ -93,13 +95,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - epsilon (inputEpsilon)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.0001
-		@objc public dynamic var inputEpsilon: NSNumber? {
+		///   - Attribute key: `inputEpsilon`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.0001`
+		@objc public var epsilon: NSNumber? {
 			get {
 				return self.keyedValue("inputEpsilon")
 			}
@@ -111,17 +116,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputGuideImage: CIImage,
-			inputRadius: NSNumber = 1,
-			inputEpsilon: NSNumber = 0.0001
+			image: CIImage,
+			guideImage: CIImage,
+			radius: NSNumber = 1,
+			epsilon: NSNumber = 0.0001
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputGuideImage = inputGuideImage
-			self.inputRadius = inputRadius
-			self.inputEpsilon = inputEpsilon
+			self.image = image
+			self.guideImage = guideImage
+			self.radius = radius
+			self.epsilon = epsilon
 		}
 	}
 }

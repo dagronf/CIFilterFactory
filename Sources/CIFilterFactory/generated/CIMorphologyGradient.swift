@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func MorphologyGradient() -> CIFilterFactory.CIMorphologyGradient? {
-		return CIFilterFactory.CIMorphologyGradient()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Morphology Gradient
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
+	/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologygradient?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
-	///
-	@objc(CIFilterFactory_CIMorphologyGradient) class CIMorphologyGradient: FilterCore {
+	@objc(CIFilterFactory_MorphologyGradient) class MorphologyGradient: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMorphologyGradient")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,34 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The desired radius of the circular morphological operation to the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  5
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `5`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyGradient.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: MorphologyGradient.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 5
+			image: CIImage,
+			radius: NSNumber = 5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
+			self.image = image
+			self.radius = radius
 		}
 	}
 }

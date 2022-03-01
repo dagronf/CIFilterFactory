@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.11, iOS 9, *)
-	@inlinable @objc static func PDF417BarcodeGenerator() -> CIFilterFactory.CIPDF417BarcodeGenerator? {
-		return CIFilterFactory.CIPDF417BarcodeGenerator()
-	}
-}
-
-@available(macOS 10.11, iOS 9, *)
+@available(macOS 10.11, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// PDF417 Barcode Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPDF417BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPDF417BarcodeGenerator)
+	/// - [CIPDF417BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPDF417BarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPDF417BarcodeGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPDF417BarcodeGenerator/)
-	///
-	@objc(CIFilterFactory_CIPDF417BarcodeGenerator) class CIPDF417BarcodeGenerator: FilterCore {
+	@objc(CIFilterFactory_PDF417BarcodeGenerator) class PDF417BarcodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPDF417BarcodeGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - message (inputMessage)
+
 		///
 		/// The message to encode in the PDF417 Barcode
 		///
-		///   Class:    NSData
-		@objc public dynamic var inputMessage: Data? {
+		///   - Attribute key: `inputMessage`
+		///   - Internal class: `NSData`
+		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
 				return tmp as Data?
@@ -65,228 +61,261 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - minWidth (inputMinWidth)
+
 		///
 		/// The minimum width of the generated barcode in pixels.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputMinWidth`
+		///   - Internal class: `NSNumber`
 		///   minValue: 56.0
 		///   maxValue: 583.0
 		///
-		public static let inputMinWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
-		@objc public dynamic var inputMinWidth: NSNumber? {
+		public static let minWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
+		@objc public var minWidth: NSNumber? {
 			get {
 				return self.keyedValue("inputMinWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMinWidth_Range), forKey: "inputMinWidth")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.minWidth_Range), forKey: "inputMinWidth")
 			}
 		}
+
+		// MARK: - maxWidth (inputMaxWidth)
 
 		///
 		/// The maximum width of the generated barcode in pixels.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputMaxWidth`
+		///   - Internal class: `NSNumber`
 		///   minValue: 56.0
 		///   maxValue: 583.0
 		///
-		public static let inputMaxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
-		@objc public dynamic var inputMaxWidth: NSNumber? {
+		public static let maxWidth_Range: ClosedRange<Float> = 56.0 ... 583.0
+		@objc public var maxWidth: NSNumber? {
 			get {
 				return self.keyedValue("inputMaxWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMaxWidth_Range), forKey: "inputMaxWidth")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.maxWidth_Range), forKey: "inputMaxWidth")
 			}
 		}
+
+		// MARK: - minHeight (inputMinHeight)
 
 		///
 		/// The minimum height of the generated barcode in pixels.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputMinHeight`
+		///   - Internal class: `NSNumber`
 		///   minValue: 13.0
 		///   maxValue: 283.0
 		///
-		public static let inputMinHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
-		@objc public dynamic var inputMinHeight: NSNumber? {
+		public static let minHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
+		@objc public var minHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputMinHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMinHeight_Range), forKey: "inputMinHeight")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.minHeight_Range), forKey: "inputMinHeight")
 			}
 		}
+
+		// MARK: - maxHeight (inputMaxHeight)
 
 		///
 		/// The maximum height of the generated barcode in pixels.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputMaxHeight`
+		///   - Internal class: `NSNumber`
 		///   minValue: 13.0
 		///   maxValue: 283.0
 		///
-		public static let inputMaxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
-		@objc public dynamic var inputMaxHeight: NSNumber? {
+		public static let maxHeight_Range: ClosedRange<Float> = 13.0 ... 283.0
+		@objc public var maxHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputMaxHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputMaxHeight_Range), forKey: "inputMaxHeight")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.maxHeight_Range), forKey: "inputMaxHeight")
 			}
 		}
+
+		// MARK: - dataColumns (inputDataColumns)
 
 		///
 		/// The number of data columns in the generated barcode
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputDataColumns`
+		///   - Internal class: `NSNumber`
 		///   minValue: 1.0
 		///   maxValue: 30.0
 		///
-		public static let inputDataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
-		@objc public dynamic var inputDataColumns: NSNumber? {
+		public static let dataColumns_Range: ClosedRange<Float> = 1.0 ... 30.0
+		@objc public var dataColumns: NSNumber? {
 			get {
 				return self.keyedValue("inputDataColumns")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputDataColumns_Range), forKey: "inputDataColumns")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.dataColumns_Range), forKey: "inputDataColumns")
 			}
 		}
+
+		// MARK: - rows (inputRows)
 
 		///
 		/// The number of rows in the generated barcode
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputRows`
+		///   - Internal class: `NSNumber`
 		///   minValue: 3.0
 		///   maxValue: 90.0
 		///
-		public static let inputRows_Range: ClosedRange<Float> = 3.0 ... 90.0
-		@objc public dynamic var inputRows: NSNumber? {
+		public static let rows_Range: ClosedRange<Float> = 3.0 ... 90.0
+		@objc public var rows: NSNumber? {
 			get {
 				return self.keyedValue("inputRows")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputRows_Range), forKey: "inputRows")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.rows_Range), forKey: "inputRows")
 			}
 		}
+
+		// MARK: - preferredAspectRatio (inputPreferredAspectRatio)
 
 		///
 		/// The preferred aspect ratio of the generated barcode
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputPreferredAspectRatio`
+		///   - Internal class: `NSNumber`
 		///   minValue: 0.0
 		///
-		public static let inputPreferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputPreferredAspectRatio: NSNumber? {
+		public static let preferredAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var preferredAspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputPreferredAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputPreferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.preferredAspectRatio_Range), forKey: "inputPreferredAspectRatio")
 			}
 		}
+
+		// MARK: - compactionMode (inputCompactionMode)
 
 		///
 		/// The compaction mode of the generated barcode.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputCompactionMode`
+		///   - Internal class: `NSNumber`
 		///   minValue: 0.0
 		///   maxValue: 3.0
 		///
-		public static let inputCompactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
-		@objc public dynamic var inputCompactionMode: NSNumber? {
+		public static let compactionMode_Range: ClosedRange<Float> = 0.0 ... 3.0
+		@objc public var compactionMode: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactionMode")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCompactionMode_Range), forKey: "inputCompactionMode")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.compactionMode_Range), forKey: "inputCompactionMode")
 			}
 		}
+
+		// MARK: - compactStyle (inputCompactStyle)
 
 		///
 		/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputCompactStyle`
+		///   - Internal class: `NSNumber`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputCompactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputCompactStyle: NSNumber? {
+		public static let compactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var compactStyle: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactStyle")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCompactStyle_Range), forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.compactStyle_Range), forKey: "inputCompactStyle")
 			}
 		}
+
+		// MARK: - correctionLevel (inputCorrectionLevel)
 
 		///
 		/// The correction level ratio of the generated barcode
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputCorrectionLevel`
+		///   - Internal class: `NSNumber`
 		///   minValue: 0.0
 		///   maxValue: 8.0
 		///
-		public static let inputCorrectionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
-		@objc public dynamic var inputCorrectionLevel: NSNumber? {
+		public static let correctionLevel_Range: ClosedRange<Float> = 0.0 ... 8.0
+		@objc public var correctionLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputCorrectionLevel_Range), forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.correctionLevel_Range), forKey: "inputCorrectionLevel")
 			}
 		}
+
+		// MARK: - alwaysSpecifyCompaction (inputAlwaysSpecifyCompaction)
 
 		///
 		/// Force compaction style to @YES or @NO. Set to nil for automatic.
 		///
-		///   Class:    NSNumber
+		///   - Attribute key: `inputAlwaysSpecifyCompaction`
+		///   - Internal class: `NSNumber`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputAlwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputAlwaysSpecifyCompaction: NSNumber? {
+		public static let alwaysSpecifyCompaction_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var alwaysSpecifyCompaction: NSNumber? {
 			get {
 				return self.keyedValue("inputAlwaysSpecifyCompaction")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPDF417BarcodeGenerator.inputAlwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
+				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.alwaysSpecifyCompaction_Range), forKey: "inputAlwaysSpecifyCompaction")
 			}
 		}
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputCGImage: Any? {
+		@objc public var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputMessage: Data,
-			inputMinWidth: NSNumber,
-			inputMaxWidth: NSNumber,
-			inputMinHeight: NSNumber,
-			inputMaxHeight: NSNumber,
-			inputDataColumns: NSNumber,
-			inputRows: NSNumber,
-			inputPreferredAspectRatio: NSNumber,
-			inputCompactionMode: NSNumber,
-			inputCompactStyle: NSNumber,
-			inputCorrectionLevel: NSNumber,
-			inputAlwaysSpecifyCompaction: NSNumber
+			message: Data,
+			minWidth: NSNumber,
+			maxWidth: NSNumber,
+			minHeight: NSNumber,
+			maxHeight: NSNumber,
+			dataColumns: NSNumber,
+			rows: NSNumber,
+			preferredAspectRatio: NSNumber,
+			compactionMode: NSNumber,
+			compactStyle: NSNumber,
+			correctionLevel: NSNumber,
+			alwaysSpecifyCompaction: NSNumber
 		) {
 			self.init()
 
-			self.inputMessage = inputMessage
-			self.inputMinWidth = inputMinWidth
-			self.inputMaxWidth = inputMaxWidth
-			self.inputMinHeight = inputMinHeight
-			self.inputMaxHeight = inputMaxHeight
-			self.inputDataColumns = inputDataColumns
-			self.inputRows = inputRows
-			self.inputPreferredAspectRatio = inputPreferredAspectRatio
-			self.inputCompactionMode = inputCompactionMode
-			self.inputCompactStyle = inputCompactStyle
-			self.inputCorrectionLevel = inputCorrectionLevel
-			self.inputAlwaysSpecifyCompaction = inputAlwaysSpecifyCompaction
+			self.message = message
+			self.minWidth = minWidth
+			self.maxWidth = maxWidth
+			self.minHeight = minHeight
+			self.maxHeight = maxHeight
+			self.dataColumns = dataColumns
+			self.rows = rows
+			self.preferredAspectRatio = preferredAspectRatio
+			self.compactionMode = compactionMode
+			self.compactStyle = compactStyle
+			self.correctionLevel = correctionLevel
+			self.alwaysSpecifyCompaction = alwaysSpecifyCompaction
 		}
 	}
 }

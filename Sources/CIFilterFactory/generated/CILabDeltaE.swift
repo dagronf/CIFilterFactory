@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func LabDeltaE() -> CIFilterFactory.CILabDeltaE? {
-		return CIFilterFactory.CILabDeltaE()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Lab ∆E
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILabDeltaE Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILabDeltaE)
+	/// - [CILabDeltaE Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILabDeltaE)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilabdeltae?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILabDeltaE/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILabDeltaE/)
-	///
-	@objc(CIFilterFactory_CILabDeltaE) class CILabDeltaE: FilterCore {
+	@objc(CIFilterFactory_LabDeltaE) class LabDeltaE: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The first input image for comparison.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - image2 (inputImage2)
+
 		///
 		/// The second input image for comparison.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputImage2: CIImage? {
+		///   - Attribute key: `inputImage2`
+		///   - Internal class: `CIImage`
+		@objc public var image2: CIImage? {
 			get {
 				return self.keyedValue("inputImage2")
 			}
@@ -81,13 +80,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputImage2: CIImage
+			image: CIImage,
+			image2: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputImage2 = inputImage2
+			self.image = image
+			self.image2 = image2
 		}
 	}
 }

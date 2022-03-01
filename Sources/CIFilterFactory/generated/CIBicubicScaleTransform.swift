@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func BicubicScaleTransform() -> CIFilterFactory.CIBicubicScaleTransform? {
-		return CIFilterFactory.CIBicubicScaleTransform()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Bicubic Scale Transform
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
+	/// - [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibicubicscaletransform?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
-	///
-	@objc(CIFilterFactory_CIBicubicScaleTransform) class CIBicubicScaleTransform: FilterCore {
+	@objc(CIFilterFactory_BicubicScaleTransform) class BicubicScaleTransform: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBicubicScaleTransform")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,96 +61,108 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - scale (inputScale)
+
 		///
 		/// The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.scale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - aspectRatio (inputAspectRatio)
 
 		///
 		/// The additional horizontal scaling factor to use on the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputAspectRatio`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputAspectRatio: NSNumber? {
+		public static let aspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var aspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.aspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
+
+		// MARK: - b (inputB)
 
 		///
 		/// Specifies the value of B to use for the cubic resampling function.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputB`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputB_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputB: NSNumber? {
+		public static let b_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var b: NSNumber? {
 			get {
 				return self.keyedValue("inputB")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputB_Range), forKey: "inputB")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.b_Range), forKey: "inputB")
 			}
 		}
+
+		// MARK: - c (inputC)
 
 		///
 		/// Specifies the value of C to use for the cubic resampling function.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.75
+		///   - Attribute key: `inputC`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.75`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputC_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputC: NSNumber? {
+		public static let c_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var c: NSNumber? {
 			get {
 				return self.keyedValue("inputC")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBicubicScaleTransform.inputC_Range), forKey: "inputC")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.c_Range), forKey: "inputC")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputScale: NSNumber = 1,
-			inputAspectRatio: NSNumber = 1,
-			inputB: NSNumber = 0,
-			inputC: NSNumber = 0.75
+			image: CIImage,
+			scale: NSNumber = 1,
+			aspectRatio: NSNumber = 1,
+			b: NSNumber = 0,
+			c: NSNumber = 0.75
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputScale = inputScale
-			self.inputAspectRatio = inputAspectRatio
-			self.inputB = inputB
-			self.inputC = inputC
+			self.image = image
+			self.scale = scale
+			self.aspectRatio = aspectRatio
+			self.b = b
+			self.c = c
 		}
 	}
 }

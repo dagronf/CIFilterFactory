@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func KeystoneCorrectionCombined() -> CIFilterFactory.CIKeystoneCorrectionCombined? {
-		return CIFilterFactory.CIKeystoneCorrectionCombined()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Combined Keystone Correction
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
+	/// - [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectioncombined?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
-	///
-	@objc(CIFilterFactory_CIKeystoneCorrectionCombined) class CIKeystoneCorrectionCombined: FilterCore {
+	@objc(CIFilterFactory_KeystoneCorrectionCombined) class KeystoneCorrectionCombined: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionCombined")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - focalLength (inputFocalLength)
+
 		///
 		/// 35mm equivalent focal length of the input image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  28
-		@objc public dynamic var inputFocalLength: NSNumber? {
+		///   - Attribute key: `inputFocalLength`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `28`
+		@objc public var focalLength: NSNumber? {
 			get {
 				return self.keyedValue("inputFocalLength")
 			}
@@ -80,90 +79,114 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - topLeft (inputTopLeft)
+
 		///
 		/// The top left coordinate of the guide.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		@objc public dynamic var inputTopLeft: CIFilterFactory.Point? {
+		///   - Attribute key: `inputTopLeft`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		@objc public var topLeft: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputTopLeft")
+				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeft_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputTopLeft")
+				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
 			}
 		}
+
+		/// topLeft default value
+		@objc public static let topLeft_default = CGPoint(x: 0.0, y: 0.0)
+
+		// MARK: - topRight (inputTopRight)
 
 		///
 		/// The top right coordinate of the guide.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		@objc public dynamic var inputTopRight: CIFilterFactory.Point? {
+		///   - Attribute key: `inputTopRight`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		@objc public var topRight: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputTopRight")
+				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRight_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputTopRight")
+				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
 			}
 		}
+
+		/// topRight default value
+		@objc public static let topRight_default = CGPoint(x: 0.0, y: 0.0)
+
+		// MARK: - bottomRight (inputBottomRight)
 
 		///
 		/// The bottom right coordinate of the guide.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		@objc public dynamic var inputBottomRight: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBottomRight`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		@objc public var bottomRight: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBottomRight")
+				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRight_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBottomRight")
+				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
 			}
 		}
+
+		/// bottomRight default value
+		@objc public static let bottomRight_default = CGPoint(x: 0.0, y: 0.0)
+
+		// MARK: - bottomLeft (inputBottomLeft)
 
 		///
 		/// The bottom left coordinate of the guide.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		@objc public dynamic var inputBottomLeft: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBottomLeft`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		@objc public var bottomLeft: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBottomLeft")
+				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeft_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBottomLeft")
+				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")
 			}
 		}
+
+		/// bottomLeft default value
+		@objc public static let bottomLeft_default = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputRotationFilter: Any? {
+		@objc public var outputRotationFilter: Any? {
 			return self.filter.value(forKey: "outputRotationFilter")
 		}
 
-		@objc public dynamic var outputTransform: Any? {
+		@objc public var outputTransform: Any? {
 			return self.filter.value(forKey: "outputTransform")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputFocalLength: NSNumber = 28,
-			inputTopLeft: CIFilterFactory.Point,
-			inputTopRight: CIFilterFactory.Point,
-			inputBottomRight: CIFilterFactory.Point,
-			inputBottomLeft: CIFilterFactory.Point
+			image: CIImage,
+			focalLength: NSNumber = 28,
+			topLeft: CGPoint,
+			topRight: CGPoint,
+			bottomRight: CGPoint,
+			bottomLeft: CGPoint
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputFocalLength = inputFocalLength
-			self.inputTopLeft = inputTopLeft
-			self.inputTopRight = inputTopRight
-			self.inputBottomRight = inputBottomRight
-			self.inputBottomLeft = inputBottomLeft
+			self.image = image
+			self.focalLength = focalLength
+			self.topLeft = topLeft
+			self.topRight = topRight
+			self.bottomRight = bottomRight
+			self.bottomLeft = bottomLeft
 		}
 	}
 }

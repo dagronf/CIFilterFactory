@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func AffineTransform() -> CIFilterFactory.CIAffineTransform? {
-		return CIFilterFactory.CIAffineTransform()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Affine Transform
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIAffineTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineTransform)
+	/// - [CIAffineTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineTransform)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaffinetransform?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineTransform/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIAffineTransform/)
-	///
-	@objc(CIFilterFactory_CIAffineTransform) class CIAffineTransform: FilterCore {
+	@objc(CIFilterFactory_AffineTransform) class AffineTransform: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAffineTransform")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,15 +61,18 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - transform (inputTransform)
+
 		///
 		/// A transform to apply to the image.
 		///
-		///   Class:    NSAffineTransform
-		///   Type:     CIAttributeTypeTransform
-		///   Default:  {m11:1.0, m12:0.0, m21:0.0, m22:1.0, tX:0.0, tY:0.0}
-		@objc public dynamic var inputTransform: CIFilterFactory.AffineTransform? {
+		///   - Attribute key: `inputTransform`
+		///   - Internal class: `NSAffineTransform`
+		///   - Type: `CIAttributeTypeTransform`
+		///   - Default value: `{m11:1.0, m12:0.0, m21:0.0, m22:1.0, tX:0.0, tY:0.0}`
+		@objc public var transform: CIAffineTransform? {
 			get {
-				return AffineTransform(filter: self.filter, key: "inputTransform")
+				return CIAffineTransform(filter: self.filter, key: "inputTransform")
 			}
 			set {
 				self.setKeyedValue(newValue?.embeddedValue, for: "inputTransform")
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTransform: CIFilterFactory.AffineTransform
+			image: CIImage,
+			transform: CIAffineTransform
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTransform = inputTransform
+			self.image = image
+			self.transform = transform
 		}
 	}
 }

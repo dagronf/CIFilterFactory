@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func MorphologyMaximum() -> CIFilterFactory.CIMorphologyMaximum? {
-		return CIFilterFactory.CIMorphologyMaximum()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Morphology Maximum
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
+	/// - [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologymaximum?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMaximum/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMorphologyMaximum/)
-	///
-	@objc(CIFilterFactory_CIMorphologyMaximum) class CIMorphologyMaximum: FilterCore {
+	@objc(CIFilterFactory_MorphologyMaximum) class MorphologyMaximum: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMorphologyMaximum")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The desired radius of the circular morphological operation to the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  0
-		@objc public dynamic var inputRadius: NSNumber? {
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `0`
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 0
+			image: CIImage,
+			radius: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
+			self.image = image
+			self.radius = radius
 		}
 	}
 }

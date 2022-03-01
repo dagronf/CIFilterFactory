@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func BlendWithBlueMask() -> CIFilterFactory.CIBlendWithBlueMask? {
-		return CIFilterFactory.CIBlendWithBlueMask()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Blend With Blue Mask
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBlendWithBlueMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithBlueMask)
+	/// - [CIBlendWithBlueMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithBlueMask)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblendwithbluemask?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithBlueMask/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBlendWithBlueMask/)
-	///
-	@objc(CIFilterFactory_CIBlendWithBlueMask) class CIBlendWithBlueMask: FilterCore {
+	@objc(CIFilterFactory_BlendWithBlueMask) class BlendWithBlueMask: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBlendWithBlueMask")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backgroundImage (inputBackgroundImage)
+
 		///
 		/// The image to use as a background image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputBackgroundImage: CIImage? {
+		///   - Attribute key: `inputBackgroundImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - maskImage (inputMaskImage)
+
 		///
 		/// A masking image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputMaskImage: CIImage? {
+		///   - Attribute key: `inputMaskImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var maskImage: CIImage? {
 			get {
 				return self.keyedValue("inputMaskImage")
 			}
@@ -96,15 +98,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBackgroundImage: CIImage,
-			inputMaskImage: CIImage
+			image: CIImage,
+			backgroundImage: CIImage,
+			maskImage: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBackgroundImage = inputBackgroundImage
-			self.inputMaskImage = inputMaskImage
+			self.image = image
+			self.backgroundImage = backgroundImage
+			self.maskImage = maskImage
 		}
 	}
 }

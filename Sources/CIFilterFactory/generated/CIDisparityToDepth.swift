@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func DisparityToDepth() -> CIFilterFactory.CIDisparityToDepth? {
-		return CIFilterFactory.CIDisparityToDepth()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Disparity To Depth
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
+	/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisparitytodepth?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
-	///
-	@objc(CIFilterFactory_CIDisparityToDepth) class CIDisparityToDepth: FilterCore {
+	@objc(CIFilterFactory_DisparityToDepth) class DisparityToDepth: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDisparityToDepth")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The input disparity data image to convert to depth data.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

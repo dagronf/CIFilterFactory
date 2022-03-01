@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 5, *)
-	@inlinable @objc static func Vignette() -> CIFilterFactory.CIVignette? {
-		return CIFilterFactory.CIVignette()
-	}
-}
-
-@available(macOS 10.9, iOS 5, *)
+@available(macOS 10.9, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Vignette
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIVignette Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignette)
+	/// - [CIVignette Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignette)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignette?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVignette/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIVignette/)
-	///
-	@objc(CIFilterFactory_CIVignette) class CIVignette: FilterCore {
+	@objc(CIFilterFactory_Vignette) class Vignette: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIVignette")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,56 +61,62 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - intensity (inputIntensity)
+
 		///
 		/// The intensity of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		public static let inputIntensity_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIVignette.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: Vignette.intensity_Range), forKey: "inputIntensity")
 			}
 		}
+
+		// MARK: - radius (inputRadius)
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 2.0
 		///
-		public static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 2.0
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: ClosedRange<Float> = 0.0 ... 2.0
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIVignette.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: Vignette.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputIntensity: NSNumber = 0,
-			inputRadius: NSNumber = 1
+			image: CIImage,
+			intensity: NSNumber = 0,
+			radius: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputIntensity = inputIntensity
-			self.inputRadius = inputRadius
+			self.image = image
+			self.intensity = intensity
+			self.radius = radius
 		}
 	}
 }

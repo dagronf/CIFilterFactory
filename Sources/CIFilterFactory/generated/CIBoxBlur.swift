@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 9, *)
-	@inlinable @objc static func BoxBlur() -> CIFilterFactory.CIBoxBlur? {
-		return CIFilterFactory.CIBoxBlur()
-	}
-}
-
-@available(macOS 10.5, iOS 9, *)
+@available(macOS 10.5, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Box Blur
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
+	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciboxblur?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
-	///
-	@objc(CIFilterFactory_CIBoxBlur) class CIBoxBlur: FilterCore {
+	@objc(CIFilterFactory_BoxBlur) class BoxBlur: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBoxBlur")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,34 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  10
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `10`
 		///   minValue: 1.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBoxBlur.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: BoxBlur.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 10
+			image: CIImage,
+			radius: NSNumber = 10
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
+			self.image = image
+			self.radius = radius
 		}
 	}
 }

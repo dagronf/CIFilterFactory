@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.7, iOS 5, *)
-	@inlinable @objc static func TemperatureAndTint() -> CIFilterFactory.CITemperatureAndTint? {
-		return CIFilterFactory.CITemperatureAndTint()
-	}
-}
-
-@available(macOS 10.7, iOS 5, *)
+@available(macOS 10.7, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Temperature and Tint
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
+	/// - [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citemperatureandtint?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
-	///
-	@objc(CIFilterFactory_CITemperatureAndTint) class CITemperatureAndTint: FilterCore {
+	@objc(CIFilterFactory_TemperatureAndTint) class TemperatureAndTint: FilterCore {
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,48 +61,60 @@ public extension CIFilter {
 			}
 		}
 
-		///
-		/// No Description
-		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeOffset
-		///   Default:  [6500 0]
-		@objc public dynamic var inputNeutral: CIFilterFactory.Point? {
-			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputNeutral")
-			}
-			set {
-				self.setKeyedValue(newValue?.vector, for: "inputNeutral")
-			}
-		}
+		// MARK: - neutral (inputNeutral)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeOffset
-		///   Default:  [6500 0]
-		@objc public dynamic var inputTargetNeutral: CIFilterFactory.Point? {
+		///   - Attribute key: `inputNeutral`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeOffset`
+		///   - Default value: `[6500 0]`
+		@objc public var neutral: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputTargetNeutral")
+				return CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutral_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputTargetNeutral")
+				self.setKeyedValue(newValue.ciVector, for: "inputNeutral")
 			}
 		}
+
+		/// neutral default value
+		@objc public static let neutral_default = CGPoint(x: 6500.0, y: 0.0)
+
+		// MARK: - targetNeutral (inputTargetNeutral)
+
+		///
+		/// No Description
+		///
+		///   - Attribute key: `inputTargetNeutral`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeOffset`
+		///   - Default value: `[6500 0]`
+		@objc public var targetNeutral: CGPoint {
+			get {
+				return CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutral_default)
+			}
+			set {
+				self.setKeyedValue(newValue.ciVector, for: "inputTargetNeutral")
+			}
+		}
+
+		/// targetNeutral default value
+		@objc public static let targetNeutral_default = CGPoint(x: 6500.0, y: 0.0)
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputNeutral: CIFilterFactory.Point = CIFilterFactory.Point(x: 6500.0, y: 0.0),
-			inputTargetNeutral: CIFilterFactory.Point = CIFilterFactory.Point(x: 6500.0, y: 0.0)
+			image: CIImage,
+			neutral: CGPoint = TemperatureAndTint.neutral_default,
+			targetNeutral: CGPoint = TemperatureAndTint.targetNeutral_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputNeutral = inputNeutral
-			self.inputTargetNeutral = inputTargetNeutral
+			self.image = image
+			self.neutral = neutral
+			self.targetNeutral = targetNeutral
 		}
 	}
 }

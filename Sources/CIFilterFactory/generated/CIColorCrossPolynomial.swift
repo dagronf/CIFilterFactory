@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func ColorCrossPolynomial() -> CIFilterFactory.CIColorCrossPolynomial? {
-		return CIFilterFactory.CIColorCrossPolynomial()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Cross Polynomial
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorCrossPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCrossPolynomial)
+	/// - [CIColorCrossPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCrossPolynomial)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCrossPolynomial/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorCrossPolynomial/)
-	///
-	@objc(CIFilterFactory_CIColorCrossPolynomial) class CIColorCrossPolynomial: FilterCore {
+	@objc(CIFilterFactory_ColorCrossPolynomial) class ColorCrossPolynomial: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorCrossPolynomial")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - redCoefficients (inputRedCoefficients)
+
 		///
 		/// Polynomial coefficients for red channel
 		///
-		///   Class:    CIVector
-		///   Default:  [1 0 0 0 0 0 0 0 0 0]
-		@objc public dynamic var inputRedCoefficients: CIVector? {
+		///   - Attribute key: `inputRedCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[1 0 0 0 0 0 0 0 0 0]`
+		@objc public var redCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputRedCoefficients")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - greenCoefficients (inputGreenCoefficients)
+
 		///
 		/// Polynomial coefficients for green channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0 0 0 0 0 0 0]
-		@objc public dynamic var inputGreenCoefficients: CIVector? {
+		///   - Attribute key: `inputGreenCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0 0 0 0 0 0 0]`
+		@objc public var greenCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputGreenCoefficients")
 			}
@@ -93,12 +95,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - blueCoefficients (inputBlueCoefficients)
+
 		///
 		/// Polynomial coefficients for blue channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 1 0 0 0 0 0 0 0]
-		@objc public dynamic var inputBlueCoefficients: CIVector? {
+		///   - Attribute key: `inputBlueCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 1 0 0 0 0 0 0 0]`
+		@objc public var blueCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputBlueCoefficients")
 			}
@@ -110,17 +115,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRedCoefficients: CIVector = CIVector([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
-			inputGreenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
-			inputBlueCoefficients: CIVector = CIVector([0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+			image: CIImage,
+			redCoefficients: CIVector = CIVector([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			greenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
+			blueCoefficients: CIVector = CIVector([0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRedCoefficients = inputRedCoefficients
-			self.inputGreenCoefficients = inputGreenCoefficients
-			self.inputBlueCoefficients = inputBlueCoefficients
+			self.image = image
+			self.redCoefficients = redCoefficients
+			self.greenCoefficients = greenCoefficients
+			self.blueCoefficients = blueCoefficients
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func BokehBlur() -> CIFilterFactory.CIBokehBlur? {
-		return CIFilterFactory.CIBokehBlur()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Bokeh Blur
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
+	/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibokehblur?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
-	///
-	@objc(CIFilterFactory_CIBokehBlur) class CIBokehBlur: FilterCore {
+	@objc(CIFilterFactory_BokehBlur) class BokehBlur: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,97 +61,109 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  20
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `20`
 		///   minValue: 0.0
 		///   maxValue: 500.0
 		///
-		public static let inputRadius_Range: ClosedRange<Float> = 0.0 ... 500.0
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: ClosedRange<Float> = 0.0 ... 500.0
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - ringAmount (inputRingAmount)
 
 		///
 		/// The amount of extra emphasis at the ring of the bokeh.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputRingAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputRingAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputRingAmount: NSNumber? {
+		public static let ringAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var ringAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputRingAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRingAmount_Range), forKey: "inputRingAmount")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringAmount_Range), forKey: "inputRingAmount")
 			}
 		}
+
+		// MARK: - ringSize (inputRingSize)
 
 		///
 		/// The size of extra emphasis at the ring of the bokeh
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.1
+		///   - Attribute key: `inputRingSize`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.1`
 		///   minValue: 0.0
 		///
-		public static let inputRingSize_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRingSize: NSNumber? {
+		public static let ringSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var ringSize: NSNumber? {
 			get {
 				return self.keyedValue("inputRingSize")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputRingSize_Range), forKey: "inputRingSize")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringSize_Range), forKey: "inputRingSize")
 			}
 		}
+
+		// MARK: - softness (inputSoftness)
 
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputSoftness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 10.0
 		///
-		public static let inputSoftness_Range: ClosedRange<Float> = 0.0 ... 10.0
-		@objc public dynamic var inputSoftness: NSNumber? {
+		public static let softness_Range: ClosedRange<Float> = 0.0 ... 10.0
+		@objc public var softness: NSNumber? {
 			get {
 				return self.keyedValue("inputSoftness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIBokehBlur.inputSoftness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.softness_Range), forKey: "inputSoftness")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 20,
-			inputRingAmount: NSNumber = 0,
-			inputRingSize: NSNumber = 0.1,
-			inputSoftness: NSNumber = 1
+			image: CIImage,
+			radius: NSNumber = 20,
+			ringAmount: NSNumber = 0,
+			ringSize: NSNumber = 0.1,
+			softness: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
-			self.inputRingAmount = inputRingAmount
-			self.inputRingSize = inputRingSize
-			self.inputSoftness = inputSoftness
+			self.image = image
+			self.radius = radius
+			self.ringAmount = ringAmount
+			self.ringSize = ringSize
+			self.softness = softness
 		}
 	}
 }

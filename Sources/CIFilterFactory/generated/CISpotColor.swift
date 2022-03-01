@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 9, *)
-	@inlinable @objc static func SpotColor() -> CIFilterFactory.CISpotColor? {
-		return CIFilterFactory.CISpotColor()
-	}
-}
-
-@available(macOS 10.5, iOS 9, *)
+@available(macOS 10.5, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Spot Color
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
+	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotcolor?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
-	///
-	@objc(CIFilterFactory_CISpotColor) class CISpotColor: FilterCore {
+	@objc(CIFilterFactory_SpotColor) class SpotColor: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISpotColor")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - centerColor1 (inputCenterColor1)
+
 		///
 		/// The center value of the first color range to replace.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.0784 0.0627 0.0706 1)
-		@objc public dynamic var inputCenterColor1: CIColor? {
+		///   - Attribute key: `inputCenterColor1`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.0784 0.0627 0.0706 1`)
+		@objc public var centerColor1: CIColor? {
 			get {
 				return self.keyedValue("inputCenterColor1")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - replacementColor1 (inputReplacementColor1)
+
 		///
 		/// A replacement color for the first color range.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.4392 0.1922 0.1961 1)
-		@objc public dynamic var inputReplacementColor1: CIColor? {
+		///   - Attribute key: `inputReplacementColor1`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.4392 0.1922 0.1961 1`)
+		@objc public var replacementColor1: CIColor? {
 			get {
 				return self.keyedValue("inputReplacementColor1")
 			}
@@ -93,48 +95,57 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - closeness1 (inputCloseness1)
+
 		///
 		/// A value that indicates how close the first color must match before it is replaced.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.22
+		///   - Attribute key: `inputCloseness1`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.22`
 		///   minValue: 0.0
 		///
-		public static let inputCloseness1_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputCloseness1: NSNumber? {
+		public static let closeness1_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var closeness1: NSNumber? {
 			get {
 				return self.keyedValue("inputCloseness1")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness1_Range), forKey: "inputCloseness1")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness1_Range), forKey: "inputCloseness1")
 			}
 		}
+
+		// MARK: - contrast1 (inputContrast1)
 
 		///
 		/// The contrast of the first replacement color.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.98
+		///   - Attribute key: `inputContrast1`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.98`
 		///   minValue: 0.0
 		///
-		public static let inputContrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputContrast1: NSNumber? {
+		public static let contrast1_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var contrast1: NSNumber? {
 			get {
 				return self.keyedValue("inputContrast1")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast1_Range), forKey: "inputContrast1")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast1_Range), forKey: "inputContrast1")
 			}
 		}
+
+		// MARK: - centerColor2 (inputCenterColor2)
 
 		///
 		/// The center value of the second color range to replace.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.5255 0.3059 0.3451 1)
-		@objc public dynamic var inputCenterColor2: CIColor? {
+		///   - Attribute key: `inputCenterColor2`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.5255 0.3059 0.3451 1`)
+		@objc public var centerColor2: CIColor? {
 			get {
 				return self.keyedValue("inputCenterColor2")
 			}
@@ -143,12 +154,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - replacementColor2 (inputReplacementColor2)
+
 		///
 		/// A replacement color for the second color range.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.9137 0.5608 0.5059 1)
-		@objc public dynamic var inputReplacementColor2: CIColor? {
+		///   - Attribute key: `inputReplacementColor2`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.9137 0.5608 0.5059 1`)
+		@objc public var replacementColor2: CIColor? {
 			get {
 				return self.keyedValue("inputReplacementColor2")
 			}
@@ -157,48 +171,57 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - closeness2 (inputCloseness2)
+
 		///
 		/// A value that indicates how close the second color must match before it is replaced.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.15
+		///   - Attribute key: `inputCloseness2`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.15`
 		///   minValue: 0.0
 		///
-		public static let inputCloseness2_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputCloseness2: NSNumber? {
+		public static let closeness2_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var closeness2: NSNumber? {
 			get {
 				return self.keyedValue("inputCloseness2")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness2_Range), forKey: "inputCloseness2")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness2_Range), forKey: "inputCloseness2")
 			}
 		}
+
+		// MARK: - contrast2 (inputContrast2)
 
 		///
 		/// The contrast of the second replacement color.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.98
+		///   - Attribute key: `inputContrast2`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.98`
 		///   minValue: 0.0
 		///
-		public static let inputContrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputContrast2: NSNumber? {
+		public static let contrast2_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var contrast2: NSNumber? {
 			get {
 				return self.keyedValue("inputContrast2")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast2_Range), forKey: "inputContrast2")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast2_Range), forKey: "inputContrast2")
 			}
 		}
+
+		// MARK: - centerColor3 (inputCenterColor3)
 
 		///
 		/// The center value of the third color range to replace.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.9216 0.4549 0.3333 1)
-		@objc public dynamic var inputCenterColor3: CIColor? {
+		///   - Attribute key: `inputCenterColor3`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.9216 0.4549 0.3333 1`)
+		@objc public var centerColor3: CIColor? {
 			get {
 				return self.keyedValue("inputCenterColor3")
 			}
@@ -207,12 +230,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - replacementColor3 (inputReplacementColor3)
+
 		///
 		/// A replacement color for the third color range.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0.9098 0.7529 0.6078 1)
-		@objc public dynamic var inputReplacementColor3: CIColor? {
+		///   - Attribute key: `inputReplacementColor3`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0.9098 0.7529 0.6078 1`)
+		@objc public var replacementColor3: CIColor? {
 			get {
 				return self.keyedValue("inputReplacementColor3")
 			}
@@ -221,74 +247,80 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - closeness3 (inputCloseness3)
+
 		///
 		/// A value that indicates how close the third color must match before it is replaced.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
+		///   - Attribute key: `inputCloseness3`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///
-		public static let inputCloseness3_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputCloseness3: NSNumber? {
+		public static let closeness3_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var closeness3: NSNumber? {
 			get {
 				return self.keyedValue("inputCloseness3")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputCloseness3_Range), forKey: "inputCloseness3")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness3_Range), forKey: "inputCloseness3")
 			}
 		}
+
+		// MARK: - contrast3 (inputContrast3)
 
 		///
 		/// The contrast of the third replacement color.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.99
+		///   - Attribute key: `inputContrast3`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.99`
 		///   minValue: 0.0
 		///
-		public static let inputContrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputContrast3: NSNumber? {
+		public static let contrast3_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var contrast3: NSNumber? {
 			get {
 				return self.keyedValue("inputContrast3")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotColor.inputContrast3_Range), forKey: "inputContrast3")
+				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast3_Range), forKey: "inputContrast3")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCenterColor1: CIColor,
-			inputReplacementColor1: CIColor,
-			inputCloseness1: NSNumber = 0.22,
-			inputContrast1: NSNumber = 0.98,
-			inputCenterColor2: CIColor,
-			inputReplacementColor2: CIColor,
-			inputCloseness2: NSNumber = 0.15,
-			inputContrast2: NSNumber = 0.98,
-			inputCenterColor3: CIColor,
-			inputReplacementColor3: CIColor,
-			inputCloseness3: NSNumber = 0.5,
-			inputContrast3: NSNumber = 0.99
+			image: CIImage,
+			centerColor1: CIColor,
+			replacementColor1: CIColor,
+			closeness1: NSNumber = 0.22,
+			contrast1: NSNumber = 0.98,
+			centerColor2: CIColor,
+			replacementColor2: CIColor,
+			closeness2: NSNumber = 0.15,
+			contrast2: NSNumber = 0.98,
+			centerColor3: CIColor,
+			replacementColor3: CIColor,
+			closeness3: NSNumber = 0.5,
+			contrast3: NSNumber = 0.99
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCenterColor1 = inputCenterColor1
-			self.inputReplacementColor1 = inputReplacementColor1
-			self.inputCloseness1 = inputCloseness1
-			self.inputContrast1 = inputContrast1
-			self.inputCenterColor2 = inputCenterColor2
-			self.inputReplacementColor2 = inputReplacementColor2
-			self.inputCloseness2 = inputCloseness2
-			self.inputContrast2 = inputContrast2
-			self.inputCenterColor3 = inputCenterColor3
-			self.inputReplacementColor3 = inputReplacementColor3
-			self.inputCloseness3 = inputCloseness3
-			self.inputContrast3 = inputContrast3
+			self.image = image
+			self.centerColor1 = centerColor1
+			self.replacementColor1 = replacementColor1
+			self.closeness1 = closeness1
+			self.contrast1 = contrast1
+			self.centerColor2 = centerColor2
+			self.replacementColor2 = replacementColor2
+			self.closeness2 = closeness2
+			self.contrast2 = contrast2
+			self.centerColor3 = centerColor3
+			self.replacementColor3 = replacementColor3
+			self.closeness3 = closeness3
+			self.contrast3 = contrast3
 		}
 	}
 }

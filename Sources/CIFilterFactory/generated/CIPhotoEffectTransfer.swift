@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func PhotoEffectTransfer() -> CIFilterFactory.CIPhotoEffectTransfer? {
-		return CIFilterFactory.CIPhotoEffectTransfer()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Photo Effect Transfer
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
+	/// - [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttransfer?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTransfer/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTransfer/)
-	///
-	@objc(CIFilterFactory_CIPhotoEffectTransfer) class CIPhotoEffectTransfer: FilterCore {
+	@objc(CIFilterFactory_PhotoEffectTransfer) class PhotoEffectTransfer: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectTransfer")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

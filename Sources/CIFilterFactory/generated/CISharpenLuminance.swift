@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func SharpenLuminance() -> CIFilterFactory.CISharpenLuminance? {
-		return CIFilterFactory.CISharpenLuminance()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Sharpen Luminance
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
+	/// - [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisharpenluminance?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
-	///
-	@objc(CIFilterFactory_CISharpenLuminance) class CISharpenLuminance: FilterCore {
+	@objc(CIFilterFactory_SharpenLuminance) class SharpenLuminance: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - sharpness (inputSharpness)
+
 		///
 		/// The amount of sharpening to apply. Larger values are sharper.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.4
-		@objc public dynamic var inputSharpness: NSNumber? {
+		///   - Attribute key: `inputSharpness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.4`
+		@objc public var sharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputSharpness")
 			}
@@ -80,13 +79,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1.69
-		@objc public dynamic var inputRadius: NSNumber? {
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1.69`
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
@@ -98,15 +100,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputSharpness: NSNumber = 0.4,
-			inputRadius: NSNumber = 1.69
+			image: CIImage,
+			sharpness: NSNumber = 0.4,
+			radius: NSNumber = 1.69
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputSharpness = inputSharpness
-			self.inputRadius = inputRadius
+			self.image = image
+			self.sharpness = sharpness
+			self.radius = radius
 		}
 	}
 }

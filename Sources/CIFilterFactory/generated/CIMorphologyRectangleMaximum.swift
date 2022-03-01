@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func MorphologyRectangleMaximum() -> CIFilterFactory.CIMorphologyRectangleMaximum? {
-		return CIFilterFactory.CIMorphologyRectangleMaximum()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Morphology Rectangle Maximum
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
+	/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
-	///
-	@objc(CIFilterFactory_CIMorphologyRectangleMaximum) class CIMorphologyRectangleMaximum: FilterCore {
+	@objc(CIFilterFactory_MorphologyRectangleMaximum) class MorphologyRectangleMaximum: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMorphologyRectangleMaximum")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,54 +61,60 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - width (inputWidth)
+
 		///
 		/// The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeInteger
-		///   Default:  5
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeInteger`
+		///   - Default value: `5`
 		///   minValue: 1.0
 		///
-		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public dynamic var inputWidth: NSNumber? {
+		public static let width_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyRectangleMaximum.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.width_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - height (inputHeight)
 
 		///
 		/// The height in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeInteger
-		///   Default:  5
+		///   - Attribute key: `inputHeight`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeInteger`
+		///   - Default value: `5`
 		///   minValue: 1.0
 		///
-		public static let inputHeight_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public dynamic var inputHeight: NSNumber? {
+		public static let height_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public var height: NSNumber? {
 			get {
 				return self.keyedValue("inputHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMorphologyRectangleMaximum.inputHeight_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.height_Range), forKey: "inputHeight")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputWidth: NSNumber = 5,
-			inputHeight: NSNumber = 5
+			image: CIImage,
+			width: NSNumber = 5,
+			height: NSNumber = 5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputWidth = inputWidth
-			self.inputHeight = inputHeight
+			self.image = image
+			self.width = width
+			self.height = height
 		}
 	}
 }

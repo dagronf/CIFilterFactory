@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 11.0, iOS 14, *)
-	@inlinable @objc static func ColorThresholdOtsu() -> CIFilterFactory.CIColorThresholdOtsu? {
-		return CIFilterFactory.CIColorThresholdOtsu()
-	}
-}
-
-@available(macOS 11.0, iOS 14, *)
+@available(macOS 11.0, iOS 14, tvOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Threshold Otsu
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
+	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthresholdotsu?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
-	///
-	@objc(CIFilterFactory_CIColorThresholdOtsu) class CIColorThresholdOtsu: FilterCore {
+	@objc(CIFilterFactory_ColorThresholdOtsu) class ColorThresholdOtsu: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorThresholdOtsu")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func AttributedTextImageGenerator() -> CIFilterFactory.CIAttributedTextImageGenerator? {
-		return CIFilterFactory.CIAttributedTextImageGenerator()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Attributed Text Image Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
+	/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
-	///
-	@objc(CIFilterFactory_CIAttributedTextImageGenerator) class CIAttributedTextImageGenerator: FilterCore {
+	@objc(CIFilterFactory_AttributedTextImageGenerator) class AttributedTextImageGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAttributedTextImageGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - text (inputText)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSAttributedString
-		@objc public dynamic var inputText: NSAttributedString? {
+		///   - Attribute key: `inputText`
+		///   - Internal class: `NSAttributedString`
+		@objc public var text: NSAttributedString? {
 			get {
 				return self.keyedValue("inputText")
 			}
@@ -64,34 +60,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - scaleFactor (inputScaleFactor)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputScaleFactor`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputScaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScaleFactor: NSNumber? {
+		public static let scaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scaleFactor: NSNumber? {
 			get {
 				return self.keyedValue("inputScaleFactor")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIAttributedTextImageGenerator.inputScaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: AttributedTextImageGenerator.scaleFactor_Range), forKey: "inputScaleFactor")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputText: NSAttributedString,
-			inputScaleFactor: NSNumber = 1
+			text: NSAttributedString,
+			scaleFactor: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputText = inputText
-			self.inputScaleFactor = inputScaleFactor
+			self.text = text
+			self.scaleFactor = scaleFactor
 		}
 	}
 }

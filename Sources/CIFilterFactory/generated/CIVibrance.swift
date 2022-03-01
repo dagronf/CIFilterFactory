@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.7, iOS 5, *)
-	@inlinable @objc static func Vibrance() -> CIFilterFactory.CIVibrance? {
-		return CIFilterFactory.CIVibrance()
-	}
-}
-
-@available(macOS 10.7, iOS 5, *)
+@available(macOS 10.7, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Vibrance
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIVibrance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance)
+	/// - [CIVibrance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civibrance?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVibrance/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIVibrance/)
-	///
-	@objc(CIFilterFactory_CIVibrance) class CIVibrance: FilterCore {
+	@objc(CIFilterFactory_Vibrance) class Vibrance: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIVibrance")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,35 +61,38 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - amount (inputAmount)
+
 		///
 		/// The amount to adjust the saturation.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		public static let inputAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public dynamic var inputAmount: NSNumber? {
+		public static let amount_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public var amount: NSNumber? {
 			get {
 				return self.keyedValue("inputAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIVibrance.inputAmount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: Vibrance.amount_Range), forKey: "inputAmount")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputAmount: NSNumber = 0
+			image: CIImage,
+			amount: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputAmount = inputAmount
+			self.image = image
+			self.amount = amount
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 12.0, iOS 15, *)
-	@inlinable @objc static func PersonSegmentation() -> CIFilterFactory.CIPersonSegmentation? {
-		return CIFilterFactory.CIPersonSegmentation()
-	}
-}
-
-@available(macOS 12.0, iOS 15, *)
+@available(macOS 12.0, iOS 15, tvOS 15, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Person Segmentation
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
+	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipersonsegmentation?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
-	///
-	@objc(CIFilterFactory_CIPersonSegmentation) class CIPersonSegmentation: FilterCore {
+	@objc(CIFilterFactory_PersonSegmentation) class PersonSegmentation: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPersonSegmentation")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - qualityLevel (inputQualityLevel)
+
 		///
 		/// Determines the size and quality of the resulting segmentation mask. The value can be a number where 0 is accurate, 1 is balanced, and 2 is fast.
 		///
-		///   Class:    NSNumber
-		@objc public dynamic var inputQualityLevel: NSNumber? {
+		///   - Attribute key: `inputQualityLevel`
+		///   - Internal class: `NSNumber`
+		@objc public var qualityLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputQualityLevel")
 			}
@@ -81,13 +80,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputQualityLevel: NSNumber
+			image: CIImage,
+			qualityLevel: NSNumber
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputQualityLevel = inputQualityLevel
+			self.image = image
+			self.qualityLevel = qualityLevel
 		}
 	}
 }

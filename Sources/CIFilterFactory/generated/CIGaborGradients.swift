@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func GaborGradients() -> CIFilterFactory.CIGaborGradients? {
-		return CIFilterFactory.CIGaborGradients()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Gabor Gradients
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
+	/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaborgradients?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
-	///
-	@objc(CIFilterFactory_CIGaborGradients) class CIGaborGradients: FilterCore {
+	@objc(CIFilterFactory_GaborGradients) class GaborGradients: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGaborGradients")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

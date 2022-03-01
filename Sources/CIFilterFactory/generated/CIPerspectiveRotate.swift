@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func PerspectiveRotate() -> CIFilterFactory.CIPerspectiveRotate? {
-		return CIFilterFactory.CIPerspectiveRotate()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Perspective Rotate
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
+	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectiverotate?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
-	///
-	@objc(CIFilterFactory_CIPerspectiveRotate) class CIPerspectiveRotate: FilterCore {
+	@objc(CIFilterFactory_PerspectiveRotate) class PerspectiveRotate: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveRotate")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - focalLength (inputFocalLength)
+
 		///
 		/// 35mm equivalent focal length of the input image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  28
-		@objc public dynamic var inputFocalLength: NSNumber? {
+		///   - Attribute key: `inputFocalLength`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `28`
+		@objc public var focalLength: NSNumber? {
 			get {
 				return self.keyedValue("inputFocalLength")
 			}
@@ -80,13 +79,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - pitch (inputPitch)
+
 		///
 		/// Pitch angle in radians.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputPitch: NSNumber? {
+		///   - Attribute key: `inputPitch`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var pitch: NSNumber? {
 			get {
 				return self.keyedValue("inputPitch")
 			}
@@ -95,13 +97,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - yaw (inputYaw)
+
 		///
 		/// Yaw angle in radians.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputYaw: NSNumber? {
+		///   - Attribute key: `inputYaw`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var yaw: NSNumber? {
 			get {
 				return self.keyedValue("inputYaw")
 			}
@@ -110,13 +115,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - roll (inputRoll)
+
 		///
 		/// Roll angle in radians.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputRoll: NSNumber? {
+		///   - Attribute key: `inputRoll`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var roll: NSNumber? {
 			get {
 				return self.keyedValue("inputRoll")
 			}
@@ -127,26 +135,26 @@ public extension CIFilter {
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputTransform: Any? {
+		@objc public var outputTransform: Any? {
 			return self.filter.value(forKey: "outputTransform")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputFocalLength: NSNumber = 28,
-			inputPitch: NSNumber = 0,
-			inputYaw: NSNumber = 0,
-			inputRoll: NSNumber = 0
+			image: CIImage,
+			focalLength: NSNumber = 28,
+			pitch: NSNumber = 0,
+			yaw: NSNumber = 0,
+			roll: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputFocalLength = inputFocalLength
-			self.inputPitch = inputPitch
-			self.inputYaw = inputYaw
-			self.inputRoll = inputRoll
+			self.image = image
+			self.focalLength = focalLength
+			self.pitch = pitch
+			self.yaw = yaw
+			self.roll = roll
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func ColorMonochrome() -> CIFilterFactory.CIColorMonochrome? {
-		return CIFilterFactory.CIColorMonochrome()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Monochrome
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorMonochrome Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMonochrome)
+	/// - [CIColorMonochrome Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMonochrome)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormonochrome?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMonochrome/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorMonochrome/)
-	///
-	@objc(CIFilterFactory_CIColorMonochrome) class CIColorMonochrome: FilterCore {
+	@objc(CIFilterFactory_ColorMonochrome) class ColorMonochrome: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorMonochrome")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color (inputColor)
+
 		///
 		/// The monochrome color to apply to the image.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeOpaqueColor
-		///   Default:  rgba(0.6 0.45 0.3 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeOpaqueColor`
+		///   - Default value: `rgba(0.6 0.45 0.3 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -80,36 +79,39 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - intensity (inputIntensity)
+
 		///
 		/// The intensity of the monochrome effect. A value of 1.0 creates a monochrome image using the supplied color. A value of 0.0 has no effect on the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIColorMonochrome.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: ColorMonochrome.intensity_Range), forKey: "inputIntensity")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputColor: CIColor,
-			inputIntensity: NSNumber = 1
+			image: CIImage,
+			color: CIColor,
+			intensity: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputColor = inputColor
-			self.inputIntensity = inputIntensity
+			self.image = image
+			self.color = color
+			self.intensity = intensity
 		}
 	}
 }

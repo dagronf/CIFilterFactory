@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 8.3, *)
-	@inlinable @objc static func MotionBlur() -> CIFilterFactory.CIMotionBlur? {
-		return CIFilterFactory.CIMotionBlur()
-	}
-}
-
-@available(macOS 10.4, iOS 8.3, *)
+@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Motion Blur
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
+	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimotionblur?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
-	///
-	@objc(CIFilterFactory_CIMotionBlur) class CIMotionBlur: FilterCore {
+	@objc(CIFilterFactory_MotionBlur) class MotionBlur: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMotionBlur")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,31 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  20
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `20`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMotionBlur.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: MotionBlur.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - angle (inputAngle)
 
 		///
 		/// The angle of the motion determines which direction the blur smears.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputAngle: NSNumber? {
+		///   - Attribute key: `inputAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
 			}
@@ -101,15 +103,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 20,
-			inputAngle: NSNumber = 0
+			image: CIImage,
+			radius: NSNumber = 20,
+			angle: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
-			self.inputAngle = inputAngle
+			self.image = image
+			self.radius = radius
+			self.angle = angle
 		}
 	}
 }

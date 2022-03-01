@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 6, *)
-	@inlinable @objc static func MaximumComponent() -> CIFilterFactory.CIMaximumComponent? {
-		return CIFilterFactory.CIMaximumComponent()
-	}
-}
-
-@available(macOS 10.5, iOS 6, *)
+@available(macOS 10.5, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Maximum Component
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
+	/// - [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcomponent?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMaximumComponent/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMaximumComponent/)
-	///
-	@objc(CIFilterFactory_CIMaximumComponent) class CIMaximumComponent: FilterCore {
+	@objc(CIFilterFactory_MaximumComponent) class MaximumComponent: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMaximumComponent")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

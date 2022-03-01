@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func ColorMap() -> CIFilterFactory.CIColorMap? {
-		return CIFilterFactory.CIColorMap()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Map
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorMap Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMap)
+	/// - [CIColorMap Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMap)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormap?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMap/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorMap/)
-	///
-	@objc(CIFilterFactory_CIColorMap) class CIColorMap: FilterCore {
+	@objc(CIFilterFactory_ColorMap) class ColorMap: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorMap")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - gradientImage (inputGradientImage)
+
 		///
 		/// The image data from this image transforms the source image values.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeGradient
-		@objc public dynamic var inputGradientImage: CIImage? {
+		///   - Attribute key: `inputGradientImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeGradient`
+		@objc public var gradientImage: CIImage? {
 			get {
 				return self.keyedValue("inputGradientImage")
 			}
@@ -82,13 +81,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputGradientImage: CIImage
+			image: CIImage,
+			gradientImage: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputGradientImage = inputGradientImage
+			self.image = image
+			self.gradientImage = gradientImage
 		}
 	}
 }

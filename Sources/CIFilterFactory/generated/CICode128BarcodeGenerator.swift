@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func Code128BarcodeGenerator() -> CIFilterFactory.CICode128BarcodeGenerator? {
-		return CIFilterFactory.CICode128BarcodeGenerator()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Code 128 Barcode Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
+	/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
-	///
-	@objc(CIFilterFactory_CICode128BarcodeGenerator) class CICode128BarcodeGenerator: FilterCore {
+	@objc(CIFilterFactory_Code128BarcodeGenerator) class Code128BarcodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICode128BarcodeGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - message (inputMessage)
+
 		///
 		/// The message to encode in the Code 128 Barcode
 		///
-		///   Class:    NSData
-		@objc public dynamic var inputMessage: Data? {
+		///   - Attribute key: `inputMessage`
+		///   - Internal class: `NSData`
+		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
 				return tmp as Data?
@@ -65,62 +61,68 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - quietSpace (inputQuietSpace)
+
 		///
 		/// The number of empty white pixels that should surround the barcode.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  10
+		///   - Attribute key: `inputQuietSpace`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `10`
 		///   minValue: 0.0
 		///   maxValue: 100.0
 		///
-		public static let inputQuietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
-		@objc public dynamic var inputQuietSpace: NSNumber? {
+		public static let quietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
+		@objc public var quietSpace: NSNumber? {
 			get {
 				return self.keyedValue("inputQuietSpace")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputQuietSpace_Range), forKey: "inputQuietSpace")
+				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.quietSpace_Range), forKey: "inputQuietSpace")
 			}
 		}
+
+		// MARK: - barcodeHeight (inputBarcodeHeight)
 
 		///
 		/// The height of the generated barcode in pixels.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  32
+		///   - Attribute key: `inputBarcodeHeight`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `32`
 		///   minValue: 1.0
 		///   maxValue: 500.0
 		///
-		public static let inputBarcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
-		@objc public dynamic var inputBarcodeHeight: NSNumber? {
+		public static let barcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
+		@objc public var barcodeHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputBarcodeHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CICode128BarcodeGenerator.inputBarcodeHeight_Range), forKey: "inputBarcodeHeight")
+				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.barcodeHeight_Range), forKey: "inputBarcodeHeight")
 			}
 		}
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputCGImage: Any? {
+		@objc public var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputMessage: Data,
-			inputQuietSpace: NSNumber = 10,
-			inputBarcodeHeight: NSNumber = 32
+			message: Data,
+			quietSpace: NSNumber = 10,
+			barcodeHeight: NSNumber = 32
 		) {
 			self.init()
 
-			self.inputMessage = inputMessage
-			self.inputQuietSpace = inputQuietSpace
-			self.inputBarcodeHeight = inputBarcodeHeight
+			self.message = message
+			self.quietSpace = quietSpace
+			self.barcodeHeight = barcodeHeight
 		}
 	}
 }

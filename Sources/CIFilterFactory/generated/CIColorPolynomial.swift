@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func ColorPolynomial() -> CIFilterFactory.CIColorPolynomial? {
-		return CIFilterFactory.CIColorPolynomial()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Polynomial
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPolynomial)
+	/// - [CIColorPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPolynomial)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorpolynomial?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
-	///
-	@objc(CIFilterFactory_CIColorPolynomial) class CIColorPolynomial: FilterCore {
+	@objc(CIFilterFactory_ColorPolynomial) class ColorPolynomial: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - redCoefficients (inputRedCoefficients)
+
 		///
 		/// Polynomial coefficients for red channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0]
-		@objc public dynamic var inputRedCoefficients: CIVector? {
+		///   - Attribute key: `inputRedCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0]`
+		@objc public var redCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputRedCoefficients")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - greenCoefficients (inputGreenCoefficients)
+
 		///
 		/// Polynomial coefficients for green channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0]
-		@objc public dynamic var inputGreenCoefficients: CIVector? {
+		///   - Attribute key: `inputGreenCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0]`
+		@objc public var greenCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputGreenCoefficients")
 			}
@@ -93,12 +95,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - blueCoefficients (inputBlueCoefficients)
+
 		///
 		/// Polynomial coefficients for blue channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0]
-		@objc public dynamic var inputBlueCoefficients: CIVector? {
+		///   - Attribute key: `inputBlueCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0]`
+		@objc public var blueCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputBlueCoefficients")
 			}
@@ -107,12 +112,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - alphaCoefficients (inputAlphaCoefficients)
+
 		///
 		/// Polynomial coefficients for alpha channel
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0]
-		@objc public dynamic var inputAlphaCoefficients: CIVector? {
+		///   - Attribute key: `inputAlphaCoefficients`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0]`
+		@objc public var alphaCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputAlphaCoefficients")
 			}
@@ -124,19 +132,19 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRedCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			inputGreenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			inputBlueCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			inputAlphaCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0])
+			image: CIImage,
+			redCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
+			greenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
+			blueCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
+			alphaCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0])
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRedCoefficients = inputRedCoefficients
-			self.inputGreenCoefficients = inputGreenCoefficients
-			self.inputBlueCoefficients = inputBlueCoefficients
-			self.inputAlphaCoefficients = inputAlphaCoefficients
+			self.image = image
+			self.redCoefficients = redCoefficients
+			self.greenCoefficients = greenCoefficients
+			self.blueCoefficients = blueCoefficients
+			self.alphaCoefficients = alphaCoefficients
 		}
 	}
 }

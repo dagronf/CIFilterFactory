@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func RippleTransition() -> CIFilterFactory.CIRippleTransition? {
-		return CIFilterFactory.CIRippleTransition()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Ripple
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
+	/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
-	///
-	@objc(CIFilterFactory_CIRippleTransition) class CIRippleTransition: FilterCore {
+	@objc(CIFilterFactory_RippleTransition) class RippleTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIRippleTransition")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - targetImage (inputTargetImage)
+
 		///
 		/// The target image for a transition.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputTargetImage: CIImage? {
+		///   - Attribute key: `inputTargetImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - shadingImage (inputShadingImage)
+
 		///
 		/// An image that looks like a shaded sphere enclosed in a square image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputShadingImage: CIImage? {
+		///   - Attribute key: `inputShadingImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var shadingImage: CIImage? {
 			get {
 				return self.keyedValue("inputShadingImage")
 			}
@@ -93,113 +95,134 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - extent (inputExtent)
 
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 300 300]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 300 300]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
+
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeTime
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeTime`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIRippleTransition.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.time_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - width (inputWidth)
 
 		///
 		/// The width of the ripple.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  100
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `100`
 		///   minValue: 1.0
 		///
-		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(1.0)...
-		@objc public dynamic var inputWidth: NSNumber? {
+		public static let width_Range: PartialRangeFrom<Float> = Float(1.0)...
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIRippleTransition.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.width_Range), forKey: "inputWidth")
 			}
 		}
+
+		// MARK: - scale (inputScale)
 
 		///
 		/// A value that determines whether the ripple starts as a bulge (higher value) or a dimple (lower value).
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  50
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `50`
 		///   minValue: -50.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(-50.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(-50.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIRippleTransition.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.scale_Range), forKey: "inputScale")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTargetImage: CIImage,
-			inputShadingImage: CIImage,
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
-			inputTime: NSNumber = 0,
-			inputWidth: NSNumber = 100,
-			inputScale: NSNumber = 50
+			image: CIImage,
+			targetImage: CIImage,
+			shadingImage: CIImage,
+			center: CGPoint = RippleTransition.center_default,
+			extent: CGRect = RippleTransition.extent_default,
+			time: NSNumber = 0,
+			width: NSNumber = 100,
+			scale: NSNumber = 50
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTargetImage = inputTargetImage
-			self.inputShadingImage = inputShadingImage
-			self.inputCenter = inputCenter
-			self.inputExtent = inputExtent
-			self.inputTime = inputTime
-			self.inputWidth = inputWidth
-			self.inputScale = inputScale
+			self.image = image
+			self.targetImage = targetImage
+			self.shadingImage = shadingImage
+			self.center = center
+			self.extent = extent
+			self.time = time
+			self.width = width
+			self.scale = scale
 		}
 	}
 }

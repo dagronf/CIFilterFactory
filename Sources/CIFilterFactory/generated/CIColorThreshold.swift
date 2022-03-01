@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 11.0, iOS 14, *)
-	@inlinable @objc static func ColorThreshold() -> CIFilterFactory.CIColorThreshold? {
-		return CIFilterFactory.CIColorThreshold()
-	}
-}
-
-@available(macOS 11.0, iOS 14, *)
+@available(macOS 11.0, iOS 14, tvOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Threshold
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
+	/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthreshold?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
-	///
-	@objc(CIFilterFactory_CIColorThreshold) class CIColorThreshold: FilterCore {
+	@objc(CIFilterFactory_ColorThreshold) class ColorThreshold: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorThreshold")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - threshold (inputThreshold)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
-		@objc public dynamic var inputThreshold: NSNumber? {
+		///   - Attribute key: `inputThreshold`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
+		@objc public var threshold: NSNumber? {
 			get {
 				return self.keyedValue("inputThreshold")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputThreshold: NSNumber = 0.5
+			image: CIImage,
+			threshold: NSNumber = 0.5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputThreshold = inputThreshold
+			self.image = image
+			self.threshold = threshold
 		}
 	}
 }

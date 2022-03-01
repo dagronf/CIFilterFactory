@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func LinearBurnBlendMode() -> CIFilterFactory.CILinearBurnBlendMode? {
-		return CIFilterFactory.CILinearBurnBlendMode()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Linear Burn Blend Mode
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILinearBurnBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearBurnBlendMode)
+	/// - [CILinearBurnBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearBurnBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilinearburnblendmode?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILinearBurnBlendMode/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILinearBurnBlendMode/)
-	///
-	@objc(CIFilterFactory_CILinearBurnBlendMode) class CILinearBurnBlendMode: FilterCore {
+	@objc(CIFilterFactory_LinearBurnBlendMode) class LinearBurnBlendMode: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILinearBurnBlendMode")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backgroundImage (inputBackgroundImage)
+
 		///
 		/// The image to use as a background image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputBackgroundImage: CIImage? {
+		///   - Attribute key: `inputBackgroundImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
 			}
@@ -82,13 +81,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBackgroundImage: CIImage
+			image: CIImage,
+			backgroundImage: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBackgroundImage = inputBackgroundImage
+			self.image = image
+			self.backgroundImage = backgroundImage
 		}
 	}
 }

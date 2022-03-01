@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func Edges() -> CIFilterFactory.CIEdges? {
-		return CIFilterFactory.CIEdges()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Edges
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIEdges Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdges)
+	/// - [CIEdges Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdges)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedges?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIEdges/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIEdges/)
-	///
-	@objc(CIFilterFactory_CIEdges) class CIEdges: FilterCore {
+	@objc(CIFilterFactory_Edges) class Edges: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIEdges")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,34 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - intensity (inputIntensity)
+
 		///
 		/// The intensity of the edges. The larger the value, the higher the intensity.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIEdges.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: Edges.intensity_Range), forKey: "inputIntensity")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputIntensity: NSNumber = 1
+			image: CIImage,
+			intensity: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputIntensity = inputIntensity
+			self.image = image
+			self.intensity = intensity
 		}
 	}
 }

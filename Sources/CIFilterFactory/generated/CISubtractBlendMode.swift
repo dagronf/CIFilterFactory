@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func SubtractBlendMode() -> CIFilterFactory.CISubtractBlendMode? {
-		return CIFilterFactory.CISubtractBlendMode()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Subtract Blend Mode
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
+	/// - [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisubtractblendmode?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
-	///
-	@objc(CIFilterFactory_CISubtractBlendMode) class CISubtractBlendMode: FilterCore {
+	@objc(CIFilterFactory_SubtractBlendMode) class SubtractBlendMode: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISubtractBlendMode")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backgroundImage (inputBackgroundImage)
+
 		///
 		/// The image to use as a background image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputBackgroundImage: CIImage? {
+		///   - Attribute key: `inputBackgroundImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
 			}
@@ -82,13 +81,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBackgroundImage: CIImage
+			image: CIImage,
+			backgroundImage: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBackgroundImage = inputBackgroundImage
+			self.image = image
+			self.backgroundImage = backgroundImage
 		}
 	}
 }

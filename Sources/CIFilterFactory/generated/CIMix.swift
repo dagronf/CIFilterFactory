@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func Mix() -> CIFilterFactory.CIMix? {
-		return CIFilterFactory.CIMix()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Mix
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMix)
+	/// - [CIMix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMix)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimix?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMix/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMix/)
-	///
-	@objc(CIFilterFactory_CIMix) class CIMix: FilterCore {
+	@objc(CIFilterFactory_Mix) class Mix: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMix")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as a foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backgroundImage (inputBackgroundImage)
+
 		///
 		/// The image to use as a background image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputBackgroundImage: CIImage? {
+		///   - Attribute key: `inputBackgroundImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
 			}
@@ -79,13 +78,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - amount (inputAmount)
+
 		///
 		/// The amount of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
-		@objc public dynamic var inputAmount: NSNumber? {
+		///   - Attribute key: `inputAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
+		@objc public var amount: NSNumber? {
 			get {
 				return self.keyedValue("inputAmount")
 			}
@@ -97,15 +99,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBackgroundImage: CIImage,
-			inputAmount: NSNumber = 1
+			image: CIImage,
+			backgroundImage: CIImage,
+			amount: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBackgroundImage = inputBackgroundImage
-			self.inputAmount = inputAmount
+			self.image = image
+			self.backgroundImage = backgroundImage
+			self.amount = amount
 		}
 	}
 }

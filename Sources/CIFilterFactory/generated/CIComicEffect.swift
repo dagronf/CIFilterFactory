@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 9, *)
-	@inlinable @objc static func ComicEffect() -> CIFilterFactory.CIComicEffect? {
-		return CIFilterFactory.CIComicEffect()
-	}
-}
-
-@available(macOS 10.5, iOS 9, *)
+@available(macOS 10.5, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Comic Effect
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIComicEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIComicEffect)
+	/// - [CIComicEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIComicEffect)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicomiceffect?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIComicEffect/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIComicEffect/)
-	///
-	@objc(CIFilterFactory_CIComicEffect) class CIComicEffect: FilterCore {
+	@objc(CIFilterFactory_ComicEffect) class ComicEffect: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIComicEffect")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

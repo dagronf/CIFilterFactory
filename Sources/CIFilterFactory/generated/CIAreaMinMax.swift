@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func AreaMinMax() -> CIFilterFactory.CIAreaMinMax? {
-		return CIFilterFactory.CIAreaMinMax()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Area Min and Max
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
+	/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmax?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
-	///
-	@objc(CIFilterFactory_CIAreaMinMax) class CIAreaMinMax: FilterCore {
+	@objc(CIFilterFactory_AreaMinMax) class AreaMinMax: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAreaMinMax")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,37 +61,43 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - extent (inputExtent)
+
 		///
 		/// A rectangle that specifies the subregion of the image that you want to process.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 640 80]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 640 80]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
 
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputImageNonMPS: Any? {
+		@objc public var outputImageNonMPS: Any? {
 			return self.filter.value(forKey: "outputImageNonMPS")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
+			image: CIImage,
+			extent: CGRect = AreaMinMax.extent_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputExtent = inputExtent
+			self.image = image
+			self.extent = extent
 		}
 	}
 }

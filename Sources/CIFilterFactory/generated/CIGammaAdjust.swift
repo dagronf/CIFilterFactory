@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func GammaAdjust() -> CIFilterFactory.CIGammaAdjust? {
-		return CIFilterFactory.CIGammaAdjust()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Gamma Adjust
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
+	/// - [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigammaadjust?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGammaAdjust/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIGammaAdjust/)
-	///
-	@objc(CIFilterFactory_CIGammaAdjust) class CIGammaAdjust: FilterCore {
+	@objc(CIFilterFactory_GammaAdjust) class GammaAdjust: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGammaAdjust")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - power (inputPower)
+
 		///
 		/// A gamma value to use to correct image brightness. The larger the value, the darker the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
-		@objc public dynamic var inputPower: NSNumber? {
+		///   - Attribute key: `inputPower`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
+		@objc public var power: NSNumber? {
 			get {
 				return self.keyedValue("inputPower")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputPower: NSNumber = 1
+			image: CIImage,
+			power: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputPower = inputPower
+			self.image = image
+			self.power = power
 		}
 	}
 }

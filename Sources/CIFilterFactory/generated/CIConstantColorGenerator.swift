@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func ConstantColorGenerator() -> CIFilterFactory.CIConstantColorGenerator? {
-		return CIFilterFactory.CIConstantColorGenerator()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Constant Color
@@ -40,24 +33,27 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIConstantColorGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConstantColorGenerator)
+	/// - [CIConstantColorGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConstantColorGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconstantcolorgenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
-	///
-	@objc(CIFilterFactory_CIConstantColorGenerator) class CIConstantColorGenerator: FilterCore {
+	@objc(CIFilterFactory_ConstantColorGenerator) class ConstantColorGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - color (inputColor)
+
 		///
 		/// The color to generate.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 0 0 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 0 0 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -69,11 +65,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputColor: CIColor)
+			color: CIColor)
 		{
 			self.init()
 
-			self.inputColor = inputColor
+			self.color = color
 		}
 	}
 }

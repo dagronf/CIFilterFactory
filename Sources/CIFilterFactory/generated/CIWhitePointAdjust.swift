@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func WhitePointAdjust() -> CIFilterFactory.CIWhitePointAdjust? {
-		return CIFilterFactory.CIWhitePointAdjust()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// White Point Adjust
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
+	/// - [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciwhitepointadjust?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
-	///
-	@objc(CIFilterFactory_CIWhitePointAdjust) class CIWhitePointAdjust: FilterCore {
+	@objc(CIFilterFactory_WhitePointAdjust) class WhitePointAdjust: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIWhitePointAdjust")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color (inputColor)
+
 		///
 		/// A color to use as the white point.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputColor: CIColor
+			image: CIImage,
+			color: CIColor
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputColor = inputColor
+			self.image = image
+			self.color = color
 		}
 	}
 }

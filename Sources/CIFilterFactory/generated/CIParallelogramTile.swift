@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func ParallelogramTile() -> CIFilterFactory.CIParallelogramTile? {
-		return CIFilterFactory.CIParallelogramTile()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Parallelogram Tile
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
+	/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciparallelogramtile?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
-	///
-	@objc(CIFilterFactory_CIParallelogramTile) class CIParallelogramTile: FilterCore {
+	@objc(CIFilterFactory_ParallelogramTile) class ParallelogramTile: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIParallelogramTile")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,28 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - angle (inputAngle)
 
 		///
 		/// The angle (in radians) of the tiled pattern.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputAngle: NSNumber? {
+		///   - Attribute key: `inputAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
 			}
@@ -95,13 +100,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - acuteAngle (inputAcuteAngle)
+
 		///
 		/// The primary angle for the repeating parallelogram tile. Small values create thin diamond tiles, and higher values create fatter parallelogram tiles.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  1.570796326794897
-		@objc public dynamic var inputAcuteAngle: NSNumber? {
+		///   - Attribute key: `inputAcuteAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `1.570796326794897`
+		@objc public var acuteAngle: NSNumber? {
 			get {
 				return self.keyedValue("inputAcuteAngle")
 			}
@@ -110,40 +118,43 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - width (inputWidth)
+
 		///
 		/// The width of a tile.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  100
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `100`
 		///   minValue: 0.0
 		///
-		public static let inputWidth_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputWidth: NSNumber? {
+		public static let width_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIParallelogramTile.inputWidth_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: ParallelogramTile.width_Range), forKey: "inputWidth")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputAngle: NSNumber = 0,
-			inputAcuteAngle: NSNumber = 1.570796326794897,
-			inputWidth: NSNumber = 100
+			image: CIImage,
+			center: CGPoint = ParallelogramTile.center_default,
+			angle: NSNumber = 0,
+			acuteAngle: NSNumber = 1.570796326794897,
+			width: NSNumber = 100
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCenter = inputCenter
-			self.inputAngle = inputAngle
-			self.inputAcuteAngle = inputAcuteAngle
-			self.inputWidth = inputWidth
+			self.image = image
+			self.center = center
+			self.angle = angle
+			self.acuteAngle = acuteAngle
+			self.width = width
 		}
 	}
 }

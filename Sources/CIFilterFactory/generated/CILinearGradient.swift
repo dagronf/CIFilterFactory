@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func LinearGradient() -> CIFilterFactory.CILinearGradient? {
-		return CIFilterFactory.CILinearGradient()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Linear Gradient
@@ -40,54 +33,69 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearGradient)
+	/// - [CILinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineargradient?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILinearGradient/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILinearGradient/)
-	///
-	@objc(CIFilterFactory_CILinearGradient) class CILinearGradient: FilterCore {
+	@objc(CIFilterFactory_LinearGradient) class LinearGradient: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILinearGradient")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - point0 (inputPoint0)
+
 		///
 		/// The starting position of the gradient -- where the first color begins.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [0 0]
-		@objc public dynamic var inputPoint0: CIFilterFactory.Point? {
+		///   - Attribute key: `inputPoint0`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[0 0]`
+		@objc public var point0: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputPoint0")
+				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputPoint0")
+				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
 			}
 		}
+
+		/// point0 default value
+		@objc public static let point0_default = CGPoint(x: 0.0, y: 0.0)
+
+		// MARK: - point1 (inputPoint1)
 
 		///
 		/// The ending position of the gradient -- where the second color begins.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [200 200]
-		@objc public dynamic var inputPoint1: CIFilterFactory.Point? {
+		///   - Attribute key: `inputPoint1`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[200 200]`
+		@objc public var point1: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputPoint1")
+				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputPoint1")
+				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")
 			}
 		}
+
+		/// point1 default value
+		@objc public static let point1_default = CGPoint(x: 200.0, y: 200.0)
+
+		// MARK: - color0 (inputColor0)
 
 		///
 		/// The first color to use in the gradient.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor0: CIColor? {
+		///   - Attribute key: `inputColor0`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
 			}
@@ -96,13 +104,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color1 (inputColor1)
+
 		///
 		/// The second color to use in the gradient.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(0 0 0 1)
-		@objc public dynamic var inputColor1: CIColor? {
+		///   - Attribute key: `inputColor1`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(0 0 0 1`)
+		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
 			}
@@ -114,17 +125,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputPoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 0.0, y: 0.0),
-			inputPoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 200.0, y: 200.0),
-			inputColor0: CIColor,
-			inputColor1: CIColor
+			point0: CGPoint = LinearGradient.point0_default,
+			point1: CGPoint = LinearGradient.point1_default,
+			color0: CIColor,
+			color1: CIColor
 		) {
 			self.init()
 
-			self.inputPoint0 = inputPoint0
-			self.inputPoint1 = inputPoint1
-			self.inputColor0 = inputColor0
-			self.inputColor1 = inputColor1
+			self.point0 = point0
+			self.point1 = point1
+			self.color0 = color0
+			self.color1 = color1
 		}
 	}
 }

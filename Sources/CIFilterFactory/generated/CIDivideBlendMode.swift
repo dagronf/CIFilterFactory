@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func DivideBlendMode() -> CIFilterFactory.CIDivideBlendMode? {
-		return CIFilterFactory.CIDivideBlendMode()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Divide Blend Mode
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIDivideBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDivideBlendMode)
+	/// - [CIDivideBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDivideBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidivideblendmode?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDivideBlendMode/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIDivideBlendMode/)
-	///
-	@objc(CIFilterFactory_CIDivideBlendMode) class CIDivideBlendMode: FilterCore {
+	@objc(CIFilterFactory_DivideBlendMode) class DivideBlendMode: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDivideBlendMode")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backgroundImage (inputBackgroundImage)
+
 		///
 		/// The image to use as a background image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputBackgroundImage: CIImage? {
+		///   - Attribute key: `inputBackgroundImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
 			}
@@ -82,13 +81,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBackgroundImage: CIImage
+			image: CIImage,
+			backgroundImage: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBackgroundImage = inputBackgroundImage
+			self.image = image
+			self.backgroundImage = backgroundImage
 		}
 	}
 }

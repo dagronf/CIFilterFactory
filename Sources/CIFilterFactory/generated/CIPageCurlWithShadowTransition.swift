@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 9, *)
-	@inlinable @objc static func PageCurlWithShadowTransition() -> CIFilterFactory.CIPageCurlWithShadowTransition? {
-		return CIFilterFactory.CIPageCurlWithShadowTransition()
-	}
-}
-
-@available(macOS 10.9, iOS 9, *)
+@available(macOS 10.9, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Page Curl With Shadow
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
+	/// - [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
-	///
-	@objc(CIFilterFactory_CIPageCurlWithShadowTransition) class CIPageCurlWithShadowTransition: FilterCore {
+	@objc(CIFilterFactory_PageCurlWithShadowTransition) class PageCurlWithShadowTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - targetImage (inputTargetImage)
+
 		///
 		/// The target image for a transition.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputTargetImage: CIImage? {
+		///   - Attribute key: `inputTargetImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
 			}
@@ -79,11 +78,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - backsideImage (inputBacksideImage)
+
 		///
 		/// The image that appears on the back of the source image, as the page curls to reveal the target image.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputBacksideImage: CIImage? {
+		///   - Attribute key: `inputBacksideImage`
+		///   - Internal class: `CIImage`
+		@objc public var backsideImage: CIImage? {
 			get {
 				return self.keyedValue("inputBacksideImage")
 			}
@@ -92,47 +94,59 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - extent (inputExtent)
+
 		///
 		/// The extent of the effect.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 0 0]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 0 0]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
+
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeTime
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeTime`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPageCurlWithShadowTransition.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: PageCurlWithShadowTransition.time_Range), forKey: "inputTime")
 			}
 		}
+
+		// MARK: - angle (inputAngle)
 
 		///
 		/// The angle of the curling page.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputAngle: NSNumber? {
+		///   - Attribute key: `inputAngle`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
 			}
@@ -141,13 +155,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius of the curl.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  100
-		@objc public dynamic var inputRadius: NSNumber? {
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `100`
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
@@ -156,85 +173,97 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - shadowSize (inputShadowSize)
+
 		///
 		/// The maximum size in pixels of the shadow.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  0.5
+		///   - Attribute key: `inputShadowSize`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputShadowSize_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputShadowSize: NSNumber? {
+		public static let shadowSize_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var shadowSize: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowSize")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPageCurlWithShadowTransition.inputShadowSize_Range), forKey: "inputShadowSize")
+				self.filter.setValue(newValue?.clamped(bounds: PageCurlWithShadowTransition.shadowSize_Range), forKey: "inputShadowSize")
 			}
 		}
+
+		// MARK: - shadowAmount (inputShadowAmount)
 
 		///
 		/// The strength of the shadow.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  0.7
+		///   - Attribute key: `inputShadowAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `0.7`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputShadowAmount: NSNumber? {
+		public static let shadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var shadowAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPageCurlWithShadowTransition.inputShadowAmount_Range), forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: PageCurlWithShadowTransition.shadowAmount_Range), forKey: "inputShadowAmount")
 			}
 		}
+
+		// MARK: - shadowExtent (inputShadowExtent)
 
 		///
 		/// The rectagular portion of input image that will cast a shadow.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 0 0]
-		@objc public dynamic var inputShadowExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputShadowExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 0 0]`
+		@objc public var shadowExtent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputShadowExtent")
+				return CGRect(with: self.filter, key: "inputShadowExtent", defaultValue: Self.shadowExtent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputShadowExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputShadowExtent")
 			}
 		}
+
+		/// shadowExtent default value
+		@objc public static let shadowExtent_default = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTargetImage: CIImage,
-			inputBacksideImage: CIImage,
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0),
-			inputTime: NSNumber = 0,
-			inputAngle: NSNumber = 0,
-			inputRadius: NSNumber = 100,
-			inputShadowSize: NSNumber = 0.5,
-			inputShadowAmount: NSNumber = 0.7,
-			inputShadowExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+			image: CIImage,
+			targetImage: CIImage,
+			backsideImage: CIImage,
+			extent: CGRect = PageCurlWithShadowTransition.extent_default,
+			time: NSNumber = 0,
+			angle: NSNumber = 0,
+			radius: NSNumber = 100,
+			shadowSize: NSNumber = 0.5,
+			shadowAmount: NSNumber = 0.7,
+			shadowExtent: CGRect = PageCurlWithShadowTransition.shadowExtent_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTargetImage = inputTargetImage
-			self.inputBacksideImage = inputBacksideImage
-			self.inputExtent = inputExtent
-			self.inputTime = inputTime
-			self.inputAngle = inputAngle
-			self.inputRadius = inputRadius
-			self.inputShadowSize = inputShadowSize
-			self.inputShadowAmount = inputShadowAmount
-			self.inputShadowExtent = inputShadowExtent
+			self.image = image
+			self.targetImage = targetImage
+			self.backsideImage = backsideImage
+			self.extent = extent
+			self.time = time
+			self.angle = angle
+			self.radius = radius
+			self.shadowSize = shadowSize
+			self.shadowAmount = shadowAmount
+			self.shadowExtent = shadowExtent
 		}
 	}
 }

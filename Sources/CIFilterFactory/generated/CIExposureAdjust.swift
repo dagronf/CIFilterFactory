@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func ExposureAdjust() -> CIFilterFactory.CIExposureAdjust? {
-		return CIFilterFactory.CIExposureAdjust()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Exposure Adjust
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
+	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexposureadjust?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
-	///
-	@objc(CIFilterFactory_CIExposureAdjust) class CIExposureAdjust: FilterCore {
+	@objc(CIFilterFactory_ExposureAdjust) class ExposureAdjust: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIExposureAdjust")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - eV (inputEV)
+
 		///
 		/// The amount to adjust the exposure of the image by. The larger the value, the brighter the exposure.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
-		@objc public dynamic var inputEV: NSNumber? {
+		///   - Attribute key: `inputEV`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
+		@objc public var eV: NSNumber? {
 			get {
 				return self.keyedValue("inputEV")
 			}
@@ -83,13 +82,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputEV: NSNumber = 0
+			image: CIImage,
+			eV: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputEV = inputEV
+			self.image = image
+			self.eV = eV
 		}
 	}
 }

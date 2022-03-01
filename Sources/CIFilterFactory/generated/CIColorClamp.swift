@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func ColorClamp() -> CIFilterFactory.CIColorClamp? {
-		return CIFilterFactory.CIColorClamp()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Clamp
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
+	/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorclamp?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
-	///
-	@objc(CIFilterFactory_CIColorClamp) class CIColorClamp: FilterCore {
+	@objc(CIFilterFactory_ColorClamp) class ColorClamp: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - minComponents (inputMinComponents)
+
 		///
 		/// Lower clamping values
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 0]
-		@objc public dynamic var inputMinComponents: CIVector? {
+		///   - Attribute key: `inputMinComponents`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 0 0]`
+		@objc public var minComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMinComponents")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - maxComponents (inputMaxComponents)
+
 		///
 		/// Higher clamping values
 		///
-		///   Class:    CIVector
-		///   Default:  [1 1 1 1]
-		@objc public dynamic var inputMaxComponents: CIVector? {
+		///   - Attribute key: `inputMaxComponents`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[1 1 1 1]`
+		@objc public var maxComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMaxComponents")
 			}
@@ -96,15 +98,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputMinComponents: CIVector = CIVector([0.0, 0.0, 0.0, 0.0]),
-			inputMaxComponents: CIVector = CIVector([1.0, 1.0, 1.0, 1.0])
+			image: CIImage,
+			minComponents: CIVector = CIVector([0.0, 0.0, 0.0, 0.0]),
+			maxComponents: CIVector = CIVector([1.0, 1.0, 1.0, 1.0])
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputMinComponents = inputMinComponents
-			self.inputMaxComponents = inputMaxComponents
+			self.image = image
+			self.minComponents = minComponents
+			self.maxComponents = maxComponents
 		}
 	}
 }

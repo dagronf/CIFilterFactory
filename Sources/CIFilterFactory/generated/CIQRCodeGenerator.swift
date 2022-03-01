@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.9, iOS 7, *)
-	@inlinable @objc static func QRCodeGenerator() -> CIFilterFactory.CIQRCodeGenerator? {
-		return CIFilterFactory.CIQRCodeGenerator()
-	}
-}
-
-@available(macOS 10.9, iOS 7, *)
+@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// QR Code Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
+	/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
-	///
-	@objc(CIFilterFactory_CIQRCodeGenerator) class CIQRCodeGenerator: FilterCore {
+	@objc(CIFilterFactory_QRCodeGenerator) class QRCodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - message (inputMessage)
+
 		///
 		/// The message to encode in the QR Code
 		///
-		///   Class:    NSData
-		@objc public dynamic var inputMessage: Data? {
+		///   - Attribute key: `inputMessage`
+		///   - Internal class: `NSData`
+		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
 				return tmp as Data?
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - correctionLevel (inputCorrectionLevel)
+
 		///
 		/// QR Code correction level L, M, Q, or H.
 		///
-		///   Class:    NSString
-		///   Default:  M
-		@objc public dynamic var inputCorrectionLevel: String? {
+		///   - Attribute key: `inputCorrectionLevel`
+		///   - Internal class: `NSString`
+		///   - Default value: `M`
+		@objc public var correctionLevel: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputCorrectionLevel")
 				return tmp as String?
@@ -82,20 +81,20 @@ public extension CIFilter {
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputCGImage: Any? {
+		@objc public var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputMessage: Data,
-			inputCorrectionLevel: String = "M"
+			message: Data,
+			correctionLevel: String = "M"
 		) {
 			self.init()
 
-			self.inputMessage = inputMessage
-			self.inputCorrectionLevel = inputCorrectionLevel
+			self.message = message
+			self.correctionLevel = correctionLevel
 		}
 	}
 }

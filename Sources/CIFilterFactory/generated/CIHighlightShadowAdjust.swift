@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.7, iOS 5, *)
-	@inlinable @objc static func HighlightShadowAdjust() -> CIFilterFactory.CIHighlightShadowAdjust? {
-		return CIFilterFactory.CIHighlightShadowAdjust()
-	}
-}
-
-@available(macOS 10.7, iOS 5, *)
+@available(macOS 10.7, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Highlight and Shadow Adjust
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
+	/// - [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
-	///
-	@objc(CIFilterFactory_CIHighlightShadowAdjust) class CIHighlightShadowAdjust: FilterCore {
+	@objc(CIFilterFactory_HighlightShadowAdjust) class HighlightShadowAdjust: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,76 +61,85 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// Shadow Highlight Radius
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - shadowAmount (inputShadowAmount)
 
 		///
 		/// The amount of adjustment to the shadows of the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputShadowAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: -1.0
 		///   maxValue: 1.0
 		///
-		public static let inputShadowAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
-		@objc public dynamic var inputShadowAmount: NSNumber? {
+		public static let shadowAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
+		@objc public var shadowAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputShadowAmount_Range), forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.shadowAmount_Range), forKey: "inputShadowAmount")
 			}
 		}
+
+		// MARK: - highlightAmount (inputHighlightAmount)
 
 		///
 		/// The amount of adjustment to the highlights of the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputHighlightAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputHighlightAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputHighlightAmount: NSNumber? {
+		public static let highlightAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var highlightAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputHighlightAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHighlightShadowAdjust.inputHighlightAmount_Range), forKey: "inputHighlightAmount")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.highlightAmount_Range), forKey: "inputHighlightAmount")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 0,
-			inputShadowAmount: NSNumber = 0,
-			inputHighlightAmount: NSNumber = 1
+			image: CIImage,
+			radius: NSNumber = 0,
+			shadowAmount: NSNumber = 0,
+			highlightAmount: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
-			self.inputShadowAmount = inputShadowAmount
-			self.inputHighlightAmount = inputHighlightAmount
+			self.image = image
+			self.radius = radius
+			self.shadowAmount = shadowAmount
+			self.highlightAmount = highlightAmount
 		}
 	}
 }

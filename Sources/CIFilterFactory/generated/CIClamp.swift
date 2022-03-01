@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.12, iOS 10, *)
-	@inlinable @objc static func Clamp() -> CIFilterFactory.CIClamp? {
-		return CIFilterFactory.CIClamp()
-	}
-}
-
-@available(macOS 10.12, iOS 10, *)
+@available(macOS 10.12, iOS 10, tvOS 10, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Clamp
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
+	/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciclamp?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIClamp/)
-	///
-	@objc(CIFilterFactory_CIClamp) class CIClamp: FilterCore {
+	@objc(CIFilterFactory_Clamp) class Clamp: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIClamp")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,31 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - extent (inputExtent)
+
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 640 80]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 640 80]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
+
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
+			image: CIImage,
+			extent: CGRect = Clamp.extent_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputExtent = inputExtent
+			self.image = image
+			self.extent = extent
 		}
 	}
 }

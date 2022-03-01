@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 7, *)
-	@inlinable @objc static func LinearToSRGBToneCurve() -> CIFilterFactory.CILinearToSRGBToneCurve? {
-		return CIFilterFactory.CILinearToSRGBToneCurve()
-	}
-}
-
-@available(macOS 10.10, iOS 7, *)
+@available(macOS 10.10, iOS 7, tvOS 7, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Linear to sRGB Tone Curve
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILinearToSRGBToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearToSRGBToneCurve)
+	/// - [CILinearToSRGBToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearToSRGBToneCurve)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineartosrgbtonecurve?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILinearToSRGBToneCurve/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILinearToSRGBToneCurve/)
-	///
-	@objc(CIFilterFactory_CILinearToSRGBToneCurve) class CILinearToSRGBToneCurve: FilterCore {
+	@objc(CIFilterFactory_LinearToSRGBToneCurve) class LinearToSRGBToneCurve: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILinearToSRGBToneCurve")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

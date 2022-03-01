@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func RoundedRectangleGenerator() -> CIFilterFactory.CIRoundedRectangleGenerator? {
-		return CIFilterFactory.CIRoundedRectangleGenerator()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Rounded Rectangle Generator
@@ -40,57 +33,69 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIRoundedRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleGenerator)
+	/// - [CIRoundedRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)
-	///
-	@objc(CIFilterFactory_CIRoundedRectangleGenerator) class CIRoundedRectangleGenerator: FilterCore {
+	@objc(CIFilterFactory_RoundedRectangleGenerator) class RoundedRectangleGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - extent (inputExtent)
+
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 100 100]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 100 100]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
+
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+
+		// MARK: - radius (inputRadius)
 
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  10
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `10`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIRoundedRectangleGenerator.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: RoundedRectangleGenerator.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - color (inputColor)
 
 		///
 		/// A color.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -102,15 +107,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 100.0, height: 100.0),
-			inputRadius: NSNumber = 10,
-			inputColor: CIColor
+			extent: CGRect = RoundedRectangleGenerator.extent_default,
+			radius: NSNumber = 10,
+			color: CIColor
 		) {
 			self.init()
 
-			self.inputExtent = inputExtent
-			self.inputRadius = inputRadius
-			self.inputColor = inputColor
+			self.extent = extent
+			self.radius = radius
+			self.color = color
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func ColorCurves() -> CIFilterFactory.CIColorCurves? {
-		return CIFilterFactory.CIColorCurves()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Curves
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
+	/// - [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcurves?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
-	///
-	@objc(CIFilterFactory_CIColorCurves) class CIColorCurves: FilterCore {
+	@objc(CIFilterFactory_ColorCurves) class ColorCurves: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - curvesData (inputCurvesData)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSData
-		///   Default:  {length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }
-		@objc public dynamic var inputCurvesData: Data? {
+		///   - Attribute key: `inputCurvesData`
+		///   - Internal class: `NSData`
+		///   - Default value: `{length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }`
+		@objc public var curvesData: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCurvesData")
 				return tmp as Data?
@@ -80,12 +79,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - curvesDomain (inputCurvesDomain)
+
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1]
-		@objc public dynamic var inputCurvesDomain: CIVector? {
+		///   - Attribute key: `inputCurvesDomain`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1]`
+		@objc public var curvesDomain: CIVector? {
 			get {
 				return self.keyedValue("inputCurvesDomain")
 			}
@@ -94,11 +96,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - colorSpace (inputColorSpace)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSObject
-		@objc public dynamic var inputColorSpace: NSObject? {
+		///   - Attribute key: `inputColorSpace`
+		///   - Internal class: `NSObject`
+		@objc public var colorSpace: NSObject? {
 			get {
 				return self.keyedValue("inputColorSpace")
 			}
@@ -110,17 +115,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCurvesData: Data,
-			inputCurvesDomain: CIVector = CIVector([0.0, 1.0]),
-			inputColorSpace: NSObject
+			image: CIImage,
+			curvesData: Data,
+			curvesDomain: CIVector = CIVector([0.0, 1.0]),
+			colorSpace: NSObject
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCurvesData = inputCurvesData
-			self.inputCurvesDomain = inputCurvesDomain
-			self.inputColorSpace = inputColorSpace
+			self.image = image
+			self.curvesData = curvesData
+			self.curvesDomain = curvesDomain
+			self.colorSpace = colorSpace
 		}
 	}
 }

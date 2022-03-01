@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.14, iOS 12, *)
-	@inlinable @objc static func Dither() -> CIFilterFactory.CIDither? {
-		return CIFilterFactory.CIDither()
-	}
-}
-
-@available(macOS 10.14, iOS 12, *)
+@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Dither
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIDither Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDither)
+	/// - [CIDither Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDither)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidither?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDither/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIDither/)
-	///
-	@objc(CIFilterFactory_CIDither) class CIDither: FilterCore {
+	@objc(CIFilterFactory_Dither) class Dither: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIDither")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,35 +61,38 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - intensity (inputIntensity)
+
 		///
 		/// The intensity of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.1
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.1`
 		///   minValue: 0.0
 		///   maxValue: 5.0
 		///
-		public static let inputIntensity_Range: ClosedRange<Float> = 0.0 ... 5.0
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: ClosedRange<Float> = 0.0 ... 5.0
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIDither.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: Dither.intensity_Range), forKey: "inputIntensity")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputIntensity: NSNumber = 0.1
+			image: CIImage,
+			intensity: NSNumber = 0.1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputIntensity = inputIntensity
+			self.image = image
+			self.intensity = intensity
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 8, *)
-	@inlinable @objc static func GlassDistortion() -> CIFilterFactory.CIGlassDistortion? {
-		return CIFilterFactory.CIGlassDistortion()
-	}
-}
-
-@available(macOS 10.4, iOS 8, *)
+@available(macOS 10.4, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Glass Distortion
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
+	/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglassdistortion?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
-	///
-	@objc(CIFilterFactory_CIGlassDistortion) class CIGlassDistortion: FilterCore {
+	@objc(CIFilterFactory_GlassDistortion) class GlassDistortion: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIGlassDistortion")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - texture (inputTexture)
+
 		///
 		/// A texture to apply to the source image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputTexture: CIImage? {
+		///   - Attribute key: `inputTexture`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var texture: CIImage? {
 			get {
 				return self.keyedValue("inputTexture")
 			}
@@ -79,53 +78,62 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - scale (inputScale)
 
 		///
 		/// The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  200
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `200`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIGlassDistortion.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: GlassDistortion.scale_Range), forKey: "inputScale")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTexture: CIImage,
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputScale: NSNumber = 200
+			image: CIImage,
+			texture: CIImage,
+			center: CGPoint = GlassDistortion.center_default,
+			scale: NSNumber = 200
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTexture = inputTexture
-			self.inputCenter = inputCenter
-			self.inputScale = inputScale
+			self.image = image
+			self.texture = texture
+			self.center = center
+			self.scale = scale
 		}
 	}
 }

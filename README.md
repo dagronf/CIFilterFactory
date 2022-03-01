@@ -6,8 +6,8 @@ Supports macOS, tvOS, iOS and mac Catalyst
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/CIFilterFactory" />
-    <img src="https://img.shields.io/badge/macOS-10.10+-red" />
-    <img src="https://img.shields.io/badge/iOS-9+-blue" />
+    <img src="https://img.shields.io/badge/macOS-10.11+-red" />
+    <img src="https://img.shields.io/badge/iOS-10+-blue" />
     <img src="https://img.shields.io/badge/tvOS-11+-orange" />
     <img src="https://img.shields.io/badge/mac Catalyst-supported-green" />
 </p>
@@ -31,6 +31,15 @@ I've always found the `CIFilter` interfaces to be
 
 This library is an attempt to automatically generate a typesafe, discoverable wrapper interface to CIFilter.
 
+## What about `import CoreImage.CIFilterBuiltins`?
+
+In more recent versions of Xcode, the SDK now comes with a pre-generated set of CIFilter classes (like `CIFilter.pixellate()`). This library was written before `CIFilterBuiltins` was available, and was also required to support Objective-C (admittedly, becoming less and less of a problem as time goes on).
+
+* only available for newer versions of Xcode.
+* No objective-c support.
+* Some filters are not generated (eg. `CICrop`)
+* Basically undocumented. `CIFilterFactory` embeds ALL the documentation within the generated code so it's directly available when you need it.
+
 ### Type safety and discovery
 
 `CIFilter` use string constants to define the argument parameters.  Incredibly powerful and extensible but not overly discoverable without having to resort to online documentation like [CIFilter.io](https://cifilter.io).  And forget Xcode code completion. As the parameter values are defined as `String: Any?`, you can spend a long time debugging an issue because you put in the wrong key string or an incorrect value type.
@@ -53,14 +62,14 @@ and creates type-safe parameters like :-
 
 ```swift
 // No chance of a poorly named filter
-let filter = CIFilterFactory.CIBloom()!
+guard let filter = CIFilterFactory.Bloom() else { fatalError() }
 
-// code completion support, type safe
+// code completion support, type safe, range safe. Read documentation directly in Xcode
 filter.inputRadius = 11.8
 
-// compile fails, invalid type
+// compile time error, invalid type
 filter.inputRadius = vector
-filter.inputNoodles = 12.0
+filter.inputTitle = 12.0
 ```
 
 ### Documentation
@@ -83,7 +92,7 @@ For example :-
 ///
 /// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 ///
-@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: Core {
+@objc(CIFilterFactory_AccordionFoldTransition) class AccordionFoldTransition: Core {
    ...
 ```
 
@@ -115,13 +124,20 @@ Some of the supported types (like an affine transform) use different class types
 
 `CIFilterFactory` is automatically generated using a swift script file, which enumerates the available filters on the system and builds up a type-safe class structure for each of the filters.  It also uses the discovery apis to document the generated code, meaning that Xcode has the ability to fully document each of the created classes.  Not only that, but CIFilter also defines which operating systems it supports (macOS, tvOS, iOS) and when the filter became available, and the generated code takes advantage of this by wrapping generated classes in `#available` calls.
 
-Using `CIFilterFactory`, Xcode can now code-complete and type check classes and filter parameters.
+Using `CIFilterFactory`, Xcode can now :-
+
+* Check available filters for platform/os version at compile time
+* code-complete
+* type check methods and generate error(s) at compile-time
+* clamp input values to defined ranges.
+
+Cool!
 
 ## Example
 
 ### Swift example
 
-#### Before
+#### Using CIFilter methods
 
 ```swift
 guard let bloomFilter = CIFilter(name: "CIBloom") else { fatalError() }
@@ -131,13 +147,13 @@ bloomFilter.setValue(5, forKey: kCIInputRadiusKey)
 let outputImage = bloomFilter.outputImage
 ```
 
-#### After
+#### Using CIFilterFactory
 
 ```swift
-guard let bloomFilter = CIFilterFactory.CIBloom() else { fatalError() }
-bloomFilter.inputImage = inputImage
-bloomFilter.inputIntensity = 0.3
-bloomFilter.inputRadius = 5
+guard let bloomFilter = CIFilterFactory.Bloom() else { fatalError() }
+bloomFilter.image = image
+bloomFilter.intensity = 0.3
+bloomFilter.radius = 5
 let outputImage = bloomFilter.outputImage
 ```
 
@@ -147,6 +163,7 @@ Using the generated interface provides :-
 2. Code completion
 3. Type checking
 4. Automatic range validation
+5. Automatically generate expressive Xcode documentation within the 
 
 ### Objective-C example
 
@@ -155,13 +172,12 @@ id appimage = [NSImage imageNamed:NSImageNameApplicationIcon];
 id bir = [[NSBitmapImageRep alloc] initWithData:[appimage TIFFRepresentation]];
 id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 
-id filter = [[CIFilterFactory_CIBloom alloc] init];
-[filter setInputImage:image];
-[filter setInputRadius:@(10)];
-[filter setInputIntensity:@(4)];
-
-CIImage *im = [filter outputImage];
-assert(im != nil);
+CIFilterFactory_Bloom* filter = [[CIFilterFactory_Bloom alloc] init];
+[filter setImage: image];
+[filter setRadius: @(10)];
+[filter setIntensity: @(4)];
+CIImage* output = [filter outputImage];
+assert(output != nil);
 ```
 
 ## Usage
@@ -182,15 +198,47 @@ You can find some really simple examples for both Swift and Objective-C in the `
 
 ## History
 
-`12.1.0`
+### `13.0.0`
+
+* Changed names to remove 'CI' prefix to class names.
+
+```swift
+// @objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator
+let filter = CIFilterFactory.CIAztecCodeGenerator()
+```
+
+becomes
+
+```swift
+// @objc(CIFilterFactory_AztecCodeGenerator) class AztecCodeGenerator
+let filter = CIFilterFactory.AztecCodeGenerator()
+```
+
+* Removed `input` from the start of filter attributes where appropriate. Any attributes not starting with `input` are not changed
+
+```swift
+@objc public dynamic var inputCorrectionLevel: NSNumber?
+```
+
+becomes
+
+```swift
+@objc public var correctionLevel: NSNumber?
+```
+
+* Removed static filter creator function. The change to the class names to remove the `CI` prefix reduces the need. Also declutters the `CIFilter` namespace.
+* Changed `CIFilterFactory.AffineTransform` -> `CIAffineTransform` to declutter code.
+* Removed `CIFilterFactory.Rectangle` and `CIFilterFactory.Point` (not needed)
+
+### `12.1.0`
 
 * Directly support native Data and String types for Swift.
 
-`12.0.0`
+### `12.0.0`
 
 * Regenerated for macOS Monterey
 
-`11.1.0`
+### `11.1.0`
 
 * Regenerated on macOS 11.1 to update for the latest filters
 * (convenience) Generate convenience initializer with default parameters for each filter

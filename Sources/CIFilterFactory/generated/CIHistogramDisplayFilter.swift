@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(iOS 8, *)
-	@inlinable @objc static func HistogramDisplayFilter() -> CIFilterFactory.CIHistogramDisplayFilter? {
-		return CIFilterFactory.CIHistogramDisplayFilter()
-	}
-}
-
-@available(iOS 8, *)
+@available(iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Histogram Display
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
+	/// - [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihistogramdisplayfilter?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
-	///
-	@objc(CIFilterFactory_CIHistogramDisplayFilter) class CIHistogramDisplayFilter: FilterCore {
+	@objc(CIFilterFactory_HistogramDisplayFilter) class HistogramDisplayFilter: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,77 +61,86 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - height (inputHeight)
+
 		///
 		/// The height of the displayable histogram image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  100
+		///   - Attribute key: `inputHeight`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `100`
 		///   minValue: 1.0
 		///   maxValue: 200.0
 		///
-		public static let inputHeight_Range: ClosedRange<Float> = 1.0 ... 200.0
-		@objc public dynamic var inputHeight: NSNumber? {
+		public static let height_Range: ClosedRange<Float> = 1.0 ... 200.0
+		@objc public var height: NSNumber? {
 			get {
 				return self.keyedValue("inputHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputHeight_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.height_Range), forKey: "inputHeight")
 			}
 		}
+
+		// MARK: - highLimit (inputHighLimit)
 
 		///
 		/// The fraction of the right portion of the histogram image to make lighter.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputHighLimit`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputHighLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputHighLimit: NSNumber? {
+		public static let highLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var highLimit: NSNumber? {
 			get {
 				return self.keyedValue("inputHighLimit")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputHighLimit_Range), forKey: "inputHighLimit")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.highLimit_Range), forKey: "inputHighLimit")
 			}
 		}
+
+		// MARK: - lowLimit (inputLowLimit)
 
 		///
 		/// The fraction of the left portion of the histogram image to make darker
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0
+		///   - Attribute key: `inputLowLimit`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputLowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputLowLimit: NSNumber? {
+		public static let lowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var lowLimit: NSNumber? {
 			get {
 				return self.keyedValue("inputLowLimit")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIHistogramDisplayFilter.inputLowLimit_Range), forKey: "inputLowLimit")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.lowLimit_Range), forKey: "inputLowLimit")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputHeight: NSNumber = 100,
-			inputHighLimit: NSNumber = 1,
-			inputLowLimit: NSNumber = 0
+			image: CIImage,
+			height: NSNumber = 100,
+			highLimit: NSNumber = 1,
+			lowLimit: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputHeight = inputHeight
-			self.inputHighLimit = inputHighLimit
-			self.inputLowLimit = inputLowLimit
+			self.image = image
+			self.height = height
+			self.highLimit = highLimit
+			self.lowLimit = lowLimit
 		}
 	}
 }

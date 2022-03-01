@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.11, iOS 10, *)
-	@inlinable @objc static func Thermal() -> CIFilterFactory.CIThermal? {
-		return CIFilterFactory.CIThermal()
-	}
-}
-
-@available(macOS 10.11, iOS 10, *)
+@available(macOS 10.11, iOS 10, tvOS 10, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Thermal
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIThermal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIThermal)
+	/// - [CIThermal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIThermal)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cithermal?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIThermal/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIThermal/)
-	///
-	@objc(CIFilterFactory_CIThermal) class CIThermal: FilterCore {
+	@objc(CIFilterFactory_Thermal) class Thermal: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIThermal")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -68,11 +64,11 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage)
+			image: CIImage)
 		{
 			self.init()
 
-			self.inputImage = inputImage
+			self.image = image
 		}
 	}
 }

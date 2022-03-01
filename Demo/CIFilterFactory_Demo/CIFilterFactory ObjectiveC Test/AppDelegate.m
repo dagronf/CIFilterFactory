@@ -25,10 +25,10 @@
 
 	{
 		// Simple QR Code generator example using native NSString and NSData
-		CIFilterFactory_CIQRCodeGenerator *filter = [[CIFilterFactory_CIQRCodeGenerator alloc] init];
-		[filter setInputCorrectionLevel:@"H"];
-		[filter setInputMessage: [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
-		id output = [filter outputImage];
+		CIFilterFactory_QRCodeGenerator *filter = [[CIFilterFactory_QRCodeGenerator alloc] init];
+		[filter setCorrectionLevel:@"H"];
+		[filter setMessage: [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
+		CIImage* output = [filter outputImage];
 		struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
 		NSImage *im = [[NSImage alloc] initWithCGImage:out size:NSZeroSize];
 		assert(im != nil);
@@ -39,18 +39,25 @@
 	id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 	assert(image);
 
-	id sepiaFilter = [[CIFilterFactory_CISepiaTone alloc] init];
+	{
+		CIFilterFactory_Bloom* filter = [[CIFilterFactory_Bloom alloc] init];
+		[filter setImage:image];
+		[filter setRadius:@(10)];
+		[filter setIntensity:@(4)];
+		CIImage* output = [filter outputImage];
+		assert(output != nil);
+	}
+
+	id sepiaFilter = [[CIFilterFactory_SepiaTone alloc] init];
 	assert(sepiaFilter);
-	[sepiaFilter setInputImage:image];
-	[sepiaFilter setInputIntensity: @(1.0)];
+	[sepiaFilter setImage:image];
+	[sepiaFilter setIntensity: @(1.0)];
 
-	id crystalize = [[CIFilterFactory_CICrystallize alloc] init];
+	CIFilterFactory_Crystallize* crystalize = [[CIFilterFactory_Crystallize alloc] init];
 	assert(crystalize);
-	[crystalize setInputImage:[sepiaFilter outputImage]];
-	[crystalize setInputRadius:@(20)];
-
-	CIFilterFactoryPoint* pt = [[CIFilterFactoryPoint alloc] initWithX:150 y:200];
-	[crystalize setInputCenter:pt];
+	[crystalize setImage:[sepiaFilter outputImage]];
+	[crystalize setRadius:@(20)];
+	[crystalize setCenter:CGPointMake(150, 200)];
 
 	CIImage* output = [crystalize outputImage];
 	struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
@@ -58,9 +65,9 @@
 	id outputImage = [[NSImage alloc] initWithCGImage:out size:[output extent].size];
 	[[self imageView] setImage:outputImage];
 
-	id c = [crystalize inputCenter];
-	assert([c point].x == 150);
-	assert([c point].y == 200);
+	CGPoint c = [crystalize center];
+	assert(c.x == 150);
+	assert(c.y == 200);
 }
 
 

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 12.0, iOS 15, *)
-	@inlinable @objc static func ConvolutionRGB9Vertical() -> CIFilterFactory.CIConvolutionRGB9Vertical? {
-		return CIFilterFactory.CIConvolutionRGB9Vertical()
-	}
-}
-
-@available(macOS 12.0, iOS 15, *)
+@available(macOS 12.0, iOS 15, tvOS 15, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Vertical 9 RGB Convolution
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
+	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb9vertical?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
-	///
-	@objc(CIFilterFactory_CIConvolutionRGB9Vertical) class CIConvolutionRGB9Vertical: FilterCore {
+	@objc(CIFilterFactory_ConvolutionRGB9Vertical) class ConvolutionRGB9Vertical: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIConvolutionRGB9Vertical")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - weights (inputWeights)
+
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 0 1 0 0 0 0]
-		@objc public dynamic var inputWeights: CIVector? {
+		///   - Attribute key: `inputWeights`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 0 0 1 0 0 0 0]`
+		@objc public var weights: CIVector? {
 			get {
 				return self.keyedValue("inputWeights")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - bias (inputBias)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Default:  0
-		@objc public dynamic var inputBias: NSNumber? {
+		///   - Attribute key: `inputBias`
+		///   - Internal class: `NSNumber`
+		///   - Default value: `0`
+		@objc public var bias: NSNumber? {
 			get {
 				return self.keyedValue("inputBias")
 			}
@@ -96,15 +98,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputWeights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]),
-			inputBias: NSNumber = 0
+			image: CIImage,
+			weights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]),
+			bias: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputWeights = inputWeights
-			self.inputBias = inputBias
+			self.image = image
+			self.weights = weights
+			self.bias = bias
 		}
 	}
 }

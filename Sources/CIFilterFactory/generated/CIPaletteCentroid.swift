@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.15, iOS 13, *)
-	@inlinable @objc static func PaletteCentroid() -> CIFilterFactory.CIPaletteCentroid? {
-		return CIFilterFactory.CIPaletteCentroid()
-	}
-}
-
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Palette Centroid
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
+	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipalettecentroid?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
-	///
-	@objc(CIFilterFactory_CIPaletteCentroid) class CIPaletteCentroid: FilterCore {
+	@objc(CIFilterFactory_PaletteCentroid) class PaletteCentroid: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - paletteImage (inputPaletteImage)
+
 		///
 		/// The input color palette, obtained using “CIKMeans“ filter.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputPaletteImage: CIImage? {
+		///   - Attribute key: `inputPaletteImage`
+		///   - Internal class: `CIImage`
+		@objc public var paletteImage: CIImage? {
 			get {
 				return self.keyedValue("inputPaletteImage")
 			}
@@ -78,37 +77,40 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - perceptual (inputPerceptual)
+
 		///
 		/// Specifies whether the color palette should be applied in a perceptual color space.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeBoolean
-		///   Default:  0
+		///   - Attribute key: `inputPerceptual`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeBoolean`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputPerceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputPerceptual: NSNumber? {
+		public static let perceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var perceptual: NSNumber? {
 			get {
 				return self.keyedValue("inputPerceptual")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIPaletteCentroid.inputPerceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: PaletteCentroid.perceptual_Range), forKey: "inputPerceptual")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputPaletteImage: CIImage,
-			inputPerceptual: NSNumber = 0
+			image: CIImage,
+			paletteImage: CIImage,
+			perceptual: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputPaletteImage = inputPaletteImage
-			self.inputPerceptual = inputPerceptual
+			self.image = image
+			self.paletteImage = paletteImage
+			self.perceptual = perceptual
 		}
 	}
 }

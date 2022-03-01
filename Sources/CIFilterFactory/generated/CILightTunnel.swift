@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 6, *)
-	@inlinable @objc static func LightTunnel() -> CIFilterFactory.CILightTunnel? {
-		return CIFilterFactory.CILightTunnel()
-	}
-}
-
-@available(macOS 10.10, iOS 6, *)
+@available(macOS 10.10, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Light Tunnel Distortion
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
+	/// - [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilighttunnel?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
-	///
-	@objc(CIFilterFactory_CILightTunnel) class CILightTunnel: FilterCore {
+	@objc(CIFilterFactory_LightTunnel) class LightTunnel: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILightTunnel")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to process.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,28 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// Center of the light tunnel.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - rotation (inputRotation)
 
 		///
 		/// Rotation angle of the light tunnel.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeAngle
-		///   Default:  0
-		@objc public dynamic var inputRotation: NSNumber? {
+		///   - Attribute key: `inputRotation`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeAngle`
+		///   - Default value: `0`
+		@objc public var rotation: NSNumber? {
 			get {
 				return self.keyedValue("inputRotation")
 			}
@@ -95,13 +100,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// Center radius of the light tunnel.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  100
-		@objc public dynamic var inputRadius: NSNumber? {
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `100`
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
@@ -113,17 +121,17 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputRotation: NSNumber = 0,
-			inputRadius: NSNumber = 100
+			image: CIImage,
+			center: CGPoint = LightTunnel.center_default,
+			rotation: NSNumber = 0,
+			radius: NSNumber = 100
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputCenter = inputCenter
-			self.inputRotation = inputRotation
-			self.inputRadius = inputRadius
+			self.image = image
+			self.center = center
+			self.rotation = rotation
+			self.radius = radius
 		}
 	}
 }

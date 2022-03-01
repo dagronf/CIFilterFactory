@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.5, iOS 9, *)
-	@inlinable @objc static func LineOverlay() -> CIFilterFactory.CILineOverlay? {
-		return CIFilterFactory.CILineOverlay()
-	}
-}
-
-@available(macOS 10.5, iOS 9, *)
+@available(macOS 10.5, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Line Overlay
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
+	/// - [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineoverlay?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
-	///
-	@objc(CIFilterFactory_CILineOverlay) class CILineOverlay: FilterCore {
+	@objc(CIFilterFactory_LineOverlay) class LineOverlay: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILineOverlay")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,114 +61,129 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - nRNoiseLevel (inputNRNoiseLevel)
+
 		///
 		/// The noise level of the image (used with camera data) that gets removed before tracing the edges of the image. Increasing the noise level helps to clean up the traced edges of the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.07000000000000001
+		///   - Attribute key: `inputNRNoiseLevel`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.07000000000000001`
 		///   minValue: 0.0
 		///
-		public static let inputNRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputNRNoiseLevel: NSNumber? {
+		public static let nRNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var nRNoiseLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputNRNoiseLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.nRNoiseLevel_Range), forKey: "inputNRNoiseLevel")
 			}
 		}
+
+		// MARK: - nRSharpness (inputNRSharpness)
 
 		///
 		/// The amount of sharpening done when removing noise in the image before tracing the edges of the image. This improves the edge acquisition.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.71
+		///   - Attribute key: `inputNRSharpness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.71`
 		///   minValue: 0.0
 		///
-		public static let inputNRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputNRSharpness: NSNumber? {
+		public static let nRSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var nRSharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputNRSharpness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputNRSharpness_Range), forKey: "inputNRSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.nRSharpness_Range), forKey: "inputNRSharpness")
 			}
 		}
+
+		// MARK: - edgeIntensity (inputEdgeIntensity)
 
 		///
 		/// The accentuation factor of the Sobel gradient information when tracing the edges of the image. Higher values find more edges, although typically a low value (such as 1.0) is used.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputEdgeIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputEdgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputEdgeIntensity: NSNumber? {
+		public static let edgeIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var edgeIntensity: NSNumber? {
 			get {
 				return self.keyedValue("inputEdgeIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputEdgeIntensity_Range), forKey: "inputEdgeIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.edgeIntensity_Range), forKey: "inputEdgeIntensity")
 			}
 		}
+
+		// MARK: - threshold (inputThreshold)
 
 		///
 		/// This value determines edge visibility. Larger values thin out the edges.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.1
+		///   - Attribute key: `inputThreshold`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.1`
 		///   minValue: 0.0
 		///
-		public static let inputThreshold_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputThreshold: NSNumber? {
+		public static let threshold_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var threshold: NSNumber? {
 			get {
 				return self.keyedValue("inputThreshold")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputThreshold_Range), forKey: "inputThreshold")
+				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.threshold_Range), forKey: "inputThreshold")
 			}
 		}
+
+		// MARK: - contrast (inputContrast)
 
 		///
 		/// The amount of anti-aliasing to use on the edges produced by this filter. Higher values produce higher contrast edges (they are less anti-aliased).
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  50
+		///   - Attribute key: `inputContrast`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `50`
 		///   minValue: 0.25
 		///
-		public static let inputContrast_Range: PartialRangeFrom<Float> = Float(0.25)...
-		@objc public dynamic var inputContrast: NSNumber? {
+		public static let contrast_Range: PartialRangeFrom<Float> = Float(0.25)...
+		@objc public var contrast: NSNumber? {
 			get {
 				return self.keyedValue("inputContrast")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILineOverlay.inputContrast_Range), forKey: "inputContrast")
+				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.contrast_Range), forKey: "inputContrast")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputNRNoiseLevel: NSNumber = 0.07000000000000001,
-			inputNRSharpness: NSNumber = 0.71,
-			inputEdgeIntensity: NSNumber = 1,
-			inputThreshold: NSNumber = 0.1,
-			inputContrast: NSNumber = 50
+			image: CIImage,
+			nRNoiseLevel: NSNumber = 0.07000000000000001,
+			nRSharpness: NSNumber = 0.71,
+			edgeIntensity: NSNumber = 1,
+			threshold: NSNumber = 0.1,
+			contrast: NSNumber = 50
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputNRNoiseLevel = inputNRNoiseLevel
-			self.inputNRSharpness = inputNRSharpness
-			self.inputEdgeIntensity = inputEdgeIntensity
-			self.inputThreshold = inputThreshold
-			self.inputContrast = inputContrast
+			self.image = image
+			self.nRNoiseLevel = nRNoiseLevel
+			self.nRSharpness = nRSharpness
+			self.edgeIntensity = edgeIntensity
+			self.threshold = threshold
+			self.contrast = contrast
 		}
 	}
 }

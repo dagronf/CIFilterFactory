@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.13, iOS 11, *)
-	@inlinable @objc static func BarcodeGenerator() -> CIFilterFactory.CIBarcodeGenerator? {
-		return CIFilterFactory.CIBarcodeGenerator()
-	}
-}
-
-@available(macOS 10.13, iOS 11, *)
+@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Barcode Generator
@@ -40,22 +33,25 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
+	/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
-	///
-	@objc(CIFilterFactory_CIBarcodeGenerator) class CIBarcodeGenerator: FilterCore {
+	@objc(CIFilterFactory_BarcodeGenerator) class BarcodeGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - barcodeDescriptor (inputBarcodeDescriptor)
+
 		///
 		/// The CIBarcodeDescription object to generate an image for.
 		///
-		///   Class:    CIBarcodeDescriptor
-		@objc public dynamic var inputBarcodeDescriptor: CIBarcodeDescriptor? {
+		///   - Attribute key: `inputBarcodeDescriptor`
+		///   - Internal class: `CIBarcodeDescriptor`
+		@objc public var barcodeDescriptor: CIBarcodeDescriptor? {
 			get {
 				return self.keyedValue("inputBarcodeDescriptor")
 			}
@@ -66,34 +62,34 @@ public extension CIFilter {
 
 		// MARK: - Additional Outputs
 
-		@objc public dynamic var outputCGImage: Any? {
+		@objc public var outputCGImage: Any? {
 			return self.filter.value(forKey: "outputCGImage")
 		}
 
-		@objc public dynamic var outputCGImageForAztecCodeDescriptor: Any? {
+		@objc public var outputCGImageForAztecCodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForAztecCodeDescriptor")
 		}
 
-		@objc public dynamic var outputCGImageForDataMatrixCodeDescriptor: Any? {
+		@objc public var outputCGImageForDataMatrixCodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForDataMatrixCodeDescriptor")
 		}
 
-		@objc public dynamic var outputCGImageForPDF417CodeDescriptor: Any? {
+		@objc public var outputCGImageForPDF417CodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForPDF417CodeDescriptor")
 		}
 
-		@objc public dynamic var outputCGImageForQRCodeDescriptor: Any? {
+		@objc public var outputCGImageForQRCodeDescriptor: Any? {
 			return self.filter.value(forKey: "outputCGImageForQRCodeDescriptor")
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputBarcodeDescriptor: CIBarcodeDescriptor)
+			barcodeDescriptor: CIBarcodeDescriptor)
 		{
 			self.init()
 
-			self.inputBarcodeDescriptor = inputBarcodeDescriptor
+			self.barcodeDescriptor = barcodeDescriptor
 		}
 	}
 }

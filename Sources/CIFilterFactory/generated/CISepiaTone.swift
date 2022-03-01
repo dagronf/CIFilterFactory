@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func SepiaTone() -> CIFilterFactory.CISepiaTone? {
-		return CIFilterFactory.CISepiaTone()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Sepia Tone
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISepiaTone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISepiaTone)
+	/// - [CISepiaTone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISepiaTone)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisepiatone?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISepiaTone/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISepiaTone/)
-	///
-	@objc(CIFilterFactory_CISepiaTone) class CISepiaTone: FilterCore {
+	@objc(CIFilterFactory_SepiaTone) class SepiaTone: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISepiaTone")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,34 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - intensity (inputIntensity)
+
 		///
 		/// The intensity of the sepia effect. A value of 1.0 creates a monochrome sepia image. A value of 0.0 has no effect on the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISepiaTone.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: SepiaTone.intensity_Range), forKey: "inputIntensity")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputIntensity: NSNumber = 1
+			image: CIImage,
+			intensity: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputIntensity = inputIntensity
+			self.image = image
+			self.intensity = intensity
 		}
 	}
 }

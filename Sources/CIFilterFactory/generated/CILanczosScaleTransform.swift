@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func LanczosScaleTransform() -> CIFilterFactory.CILanczosScaleTransform? {
-		return CIFilterFactory.CILanczosScaleTransform()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Lanczos Scale Transform
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
+	/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilanczosscaletransform?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
-	///
-	@objc(CIFilterFactory_CILanczosScaleTransform) class CILanczosScaleTransform: FilterCore {
+	@objc(CIFilterFactory_LanczosScaleTransform) class LanczosScaleTransform: FilterCore {
 		@objc public init?() {
 			super.init(name: "CILanczosScaleTransform")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,54 +61,60 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - scale (inputScale)
+
 		///
 		/// The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.scale_Range), forKey: "inputScale")
 			}
 		}
+
+		// MARK: - aspectRatio (inputAspectRatio)
 
 		///
 		/// The additional horizontal scaling factor to use on the image.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputAspectRatio`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///
-		public static let inputAspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputAspectRatio: NSNumber? {
+		public static let aspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var aspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CILanczosScaleTransform.inputAspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.aspectRatio_Range), forKey: "inputAspectRatio")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputScale: NSNumber = 1,
-			inputAspectRatio: NSNumber = 1
+			image: CIImage,
+			scale: NSNumber = 1,
+			aspectRatio: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputScale = inputScale
-			self.inputAspectRatio = inputAspectRatio
+			self.image = image
+			self.scale = scale
+			self.aspectRatio = aspectRatio
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func ColorMatrix() -> CIFilterFactory.CIColorMatrix? {
-		return CIFilterFactory.CIColorMatrix()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Matrix
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
+	/// - [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormatrix?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
-	///
-	@objc(CIFilterFactory_CIColorMatrix) class CIColorMatrix: FilterCore {
+	@objc(CIFilterFactory_ColorMatrix) class ColorMatrix: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - rVector (inputRVector)
+
 		///
 		/// The amount of red to multiply the source color values by.
 		///
-		///   Class:    CIVector
-		///   Default:  [1 0 0 0]
-		@objc public dynamic var inputRVector: CIVector? {
+		///   - Attribute key: `inputRVector`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[1 0 0 0]`
+		@objc public var rVector: CIVector? {
 			get {
 				return self.keyedValue("inputRVector")
 			}
@@ -79,12 +78,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - gVector (inputGVector)
+
 		///
 		/// The amount of green to multiply the source color values by.
 		///
-		///   Class:    CIVector
-		///   Default:  [0 1 0 0]
-		@objc public dynamic var inputGVector: CIVector? {
+		///   - Attribute key: `inputGVector`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 1 0 0]`
+		@objc public var gVector: CIVector? {
 			get {
 				return self.keyedValue("inputGVector")
 			}
@@ -93,12 +95,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - bVector (inputBVector)
+
 		///
 		/// The amount of blue to multiply the source color values by.
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 1 0]
-		@objc public dynamic var inputBVector: CIVector? {
+		///   - Attribute key: `inputBVector`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 1 0]`
+		@objc public var bVector: CIVector? {
 			get {
 				return self.keyedValue("inputBVector")
 			}
@@ -107,12 +112,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - aVector (inputAVector)
+
 		///
 		/// The amount of alpha to multiply the source color values by.
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 1]
-		@objc public dynamic var inputAVector: CIVector? {
+		///   - Attribute key: `inputAVector`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 0 1]`
+		@objc public var aVector: CIVector? {
 			get {
 				return self.keyedValue("inputAVector")
 			}
@@ -121,12 +129,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - biasVector (inputBiasVector)
+
 		///
 		/// A vector that’s added to each color component.
 		///
-		///   Class:    CIVector
-		///   Default:  [0 0 0 0]
-		@objc public dynamic var inputBiasVector: CIVector? {
+		///   - Attribute key: `inputBiasVector`
+		///   - Internal class: `CIVector`
+		///   - Default value: `[0 0 0 0]`
+		@objc public var biasVector: CIVector? {
 			get {
 				return self.keyedValue("inputBiasVector")
 			}
@@ -138,21 +149,21 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRVector: CIVector = CIVector([1.0, 0.0, 0.0, 0.0]),
-			inputGVector: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			inputBVector: CIVector = CIVector([0.0, 0.0, 1.0, 0.0]),
-			inputAVector: CIVector = CIVector([0.0, 0.0, 0.0, 1.0]),
-			inputBiasVector: CIVector = CIVector([0.0, 0.0, 0.0, 0.0])
+			image: CIImage,
+			rVector: CIVector = CIVector([1.0, 0.0, 0.0, 0.0]),
+			gVector: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
+			bVector: CIVector = CIVector([0.0, 0.0, 1.0, 0.0]),
+			aVector: CIVector = CIVector([0.0, 0.0, 0.0, 1.0]),
+			biasVector: CIVector = CIVector([0.0, 0.0, 0.0, 0.0])
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRVector = inputRVector
-			self.inputGVector = inputGVector
-			self.inputBVector = inputBVector
-			self.inputAVector = inputAVector
-			self.inputBiasVector = inputBiasVector
+			self.image = image
+			self.rVector = rVector
+			self.gVector = gVector
+			self.bVector = bVector
+			self.aVector = aVector
+			self.biasVector = biasVector
 		}
 	}
 }

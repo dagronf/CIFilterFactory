@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func SpotLight() -> CIFilterFactory.CISpotLight? {
-		return CIFilterFactory.CISpotLight()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Spot Light
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
+	/// - [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotlight?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
-	///
-	@objc(CIFilterFactory_CISpotLight) class CISpotLight: FilterCore {
+	@objc(CIFilterFactory_SpotLight) class SpotLight: FilterCore {
 		@objc public init?() {
 			super.init(name: "CISpotLight")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - lightPosition (inputLightPosition)
+
 		///
 		/// The x and y position of the spotlight.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition3
-		///   Default:  [400 600 150]
-		@objc public dynamic var inputLightPosition: CIVector? {
+		///   - Attribute key: `inputLightPosition`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition3`
+		///   - Default value: `[400 600 150]`
+		@objc public var lightPosition: CIVector? {
 			get {
 				return self.keyedValue("inputLightPosition")
 			}
@@ -80,13 +79,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - lightPointsAt (inputLightPointsAt)
+
 		///
 		/// The x and y position that the spotlight points at.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition3
-		///   Default:  [200 200 0]
-		@objc public dynamic var inputLightPointsAt: CIVector? {
+		///   - Attribute key: `inputLightPointsAt`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition3`
+		///   - Default value: `[200 200 0]`
+		@objc public var lightPointsAt: CIVector? {
 			get {
 				return self.keyedValue("inputLightPointsAt")
 			}
@@ -95,31 +97,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - brightness (inputBrightness)
+
 		///
 		/// The brightness of the spotlight.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  3
+		///   - Attribute key: `inputBrightness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `3`
 		///   minValue: 0.0
 		///
-		public static let inputBrightness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputBrightness: NSNumber? {
+		public static let brightness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var brightness: NSNumber? {
 			get {
 				return self.keyedValue("inputBrightness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CISpotLight.inputBrightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: SpotLight.brightness_Range), forKey: "inputBrightness")
 			}
 		}
+
+		// MARK: - concentration (inputConcentration)
 
 		///
 		/// The spotlight size. The smaller the value, the more tightly focused the light beam.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.1
-		@objc public dynamic var inputConcentration: NSNumber? {
+		///   - Attribute key: `inputConcentration`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.1`
+		@objc public var concentration: NSNumber? {
 			get {
 				return self.keyedValue("inputConcentration")
 			}
@@ -128,13 +136,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color (inputColor)
+
 		///
 		/// The color of the spotlight.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeOpaqueColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor: CIColor? {
+		///   - Attribute key: `inputColor`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeOpaqueColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
 			}
@@ -146,21 +157,21 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputLightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),
-			inputLightPointsAt: CIVector = CIVector([200.0, 200.0, 0.0]),
-			inputBrightness: NSNumber = 3,
-			inputConcentration: NSNumber = 0.1,
-			inputColor: CIColor
+			image: CIImage,
+			lightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),
+			lightPointsAt: CIVector = CIVector([200.0, 200.0, 0.0]),
+			brightness: NSNumber = 3,
+			concentration: NSNumber = 0.1,
+			color: CIColor
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputLightPosition = inputLightPosition
-			self.inputLightPointsAt = inputLightPointsAt
-			self.inputBrightness = inputBrightness
-			self.inputConcentration = inputConcentration
-			self.inputColor = inputColor
+			self.image = image
+			self.lightPosition = lightPosition
+			self.lightPointsAt = lightPointsAt
+			self.brightness = brightness
+			self.concentration = concentration
+			self.color = color
 		}
 	}
 }

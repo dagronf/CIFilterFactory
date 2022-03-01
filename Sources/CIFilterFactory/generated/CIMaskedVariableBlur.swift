@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func MaskedVariableBlur() -> CIFilterFactory.CIMaskedVariableBlur? {
-		return CIFilterFactory.CIMaskedVariableBlur()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Masked Variable Blur
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
+	/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaskedvariableblur?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
-	///
-	@objc(CIFilterFactory_CIMaskedVariableBlur) class CIMaskedVariableBlur: FilterCore {
+	@objc(CIFilterFactory_MaskedVariableBlur) class MaskedVariableBlur: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIMaskedVariableBlur")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - mask (inputMask)
+
 		///
 		/// No Description
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputMask: CIImage? {
+		///   - Attribute key: `inputMask`
+		///   - Internal class: `CIImage`
+		@objc public var mask: CIImage? {
 			get {
 				return self.keyedValue("inputMask")
 			}
@@ -78,36 +77,39 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The distance from the center of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  5
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `5`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIMaskedVariableBlur.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: MaskedVariableBlur.radius_Range), forKey: "inputRadius")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputMask: CIImage,
-			inputRadius: NSNumber = 5
+			image: CIImage,
+			mask: CIImage,
+			radius: NSNumber = 5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputMask = inputMask
-			self.inputRadius = inputRadius
+			self.image = image
+			self.mask = mask
+			self.radius = radius
 		}
 	}
 }

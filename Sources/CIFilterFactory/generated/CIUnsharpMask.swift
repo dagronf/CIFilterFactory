@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func UnsharpMask() -> CIFilterFactory.CIUnsharpMask? {
-		return CIFilterFactory.CIUnsharpMask()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Unsharp Mask
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIUnsharpMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIUnsharpMask)
+	/// - [CIUnsharpMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIUnsharpMask)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciunsharpmask?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIUnsharpMask/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIUnsharpMask/)
-	///
-	@objc(CIFilterFactory_CIUnsharpMask) class CIUnsharpMask: FilterCore {
+	@objc(CIFilterFactory_UnsharpMask) class UnsharpMask: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIUnsharpMask")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,54 +61,60 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - radius (inputRadius)
+
 		///
 		/// The radius around a given pixel to apply the unsharp mask. The larger the radius, the more of the image is affected.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  2.5
+		///   - Attribute key: `inputRadius`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `2.5`
 		///   minValue: 0.0
 		///
-		public static let inputRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputRadius: NSNumber? {
+		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIUnsharpMask.inputRadius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: UnsharpMask.radius_Range), forKey: "inputRadius")
 			}
 		}
+
+		// MARK: - intensity (inputIntensity)
 
 		///
 		/// The intensity of the effect. The larger the value, the more contrast in the affected area.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.5
+		///   - Attribute key: `inputIntensity`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.5`
 		///   minValue: 0.0
 		///
-		public static let inputIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputIntensity: NSNumber? {
+		public static let intensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIUnsharpMask.inputIntensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: UnsharpMask.intensity_Range), forKey: "inputIntensity")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRadius: NSNumber = 2.5,
-			inputIntensity: NSNumber = 0.5
+			image: CIImage,
+			radius: NSNumber = 2.5,
+			intensity: NSNumber = 0.5
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRadius = inputRadius
-			self.inputIntensity = inputIntensity
+			self.image = image
+			self.radius = radius
+			self.intensity = intensity
 		}
 	}
 }

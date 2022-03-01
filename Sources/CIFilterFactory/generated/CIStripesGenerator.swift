@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func StripesGenerator() -> CIFilterFactory.CIStripesGenerator? {
-		return CIFilterFactory.CIStripesGenerator()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Stripes
@@ -40,38 +33,47 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIStripesGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStripesGenerator)
+	/// - [CIStripesGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStripesGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistripesgenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIStripesGenerator/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIStripesGenerator/)
-	///
-	@objc(CIFilterFactory_CIStripesGenerator) class CIStripesGenerator: FilterCore {
+	@objc(CIFilterFactory_StripesGenerator) class StripesGenerator: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIStripesGenerator")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - center (inputCenter)
+
 		///
 		/// The x and y position to use as the center of the stripe pattern.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputCenter: CIFilterFactory.Point? {
+		///   - Attribute key: `inputCenter`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var center: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputCenter")
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputCenter")
+				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
 			}
 		}
+
+		/// center default value
+		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - color0 (inputColor0)
 
 		///
 		/// A color to use for the odd stripes.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(1 1 1 1)
-		@objc public dynamic var inputColor0: CIColor? {
+		///   - Attribute key: `inputColor0`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(1 1 1 1`)
+		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
 			}
@@ -80,12 +82,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color1 (inputColor1)
+
 		///
 		/// A color to use for the even stripes.
 		///
-		///   Class:    CIColor
-		///   Default:  rgba(0 0 0 1)
-		@objc public dynamic var inputColor1: CIColor? {
+		///   - Attribute key: `inputColor1`
+		///   - Internal class: `CIColor`
+		///   - Default value: `rgba(0 0 0 1`)
+		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
 			}
@@ -94,13 +99,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - width (inputWidth)
+
 		///
 		/// The width of a stripe.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  80
-		@objc public dynamic var inputWidth: NSNumber? {
+		///   - Attribute key: `inputWidth`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `80`
+		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
@@ -109,41 +117,44 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - sharpness (inputSharpness)
+
 		///
 		/// The sharpness of the stripe pattern. The smaller the value, the more blurry the pattern. Values range from 0.0 to 1.0.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  1
+		///   - Attribute key: `inputSharpness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputSharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputSharpness: NSNumber? {
+		public static let sharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var sharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputSharpness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIStripesGenerator.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: StripesGenerator.sharpness_Range), forKey: "inputSharpness")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputCenter: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputColor0: CIColor,
-			inputColor1: CIColor,
-			inputWidth: NSNumber = 80,
-			inputSharpness: NSNumber = 1
+			center: CGPoint = StripesGenerator.center_default,
+			color0: CIColor,
+			color1: CIColor,
+			width: NSNumber = 80,
+			sharpness: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputCenter = inputCenter
-			self.inputColor0 = inputColor0
-			self.inputColor1 = inputColor1
-			self.inputWidth = inputWidth
-			self.inputSharpness = inputSharpness
+			self.center = center
+			self.color0 = color0
+			self.color1 = color1
+			self.width = width
+			self.sharpness = sharpness
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 11.0, iOS 14, *)
-	@inlinable @objc static func ColorAbsoluteDifference() -> CIFilterFactory.CIColorAbsoluteDifference? {
-		return CIFilterFactory.CIColorAbsoluteDifference()
-	}
-}
-
-@available(macOS 11.0, iOS 14, *)
+@available(macOS 11.0, iOS 14, tvOS 14, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Color Absolute Difference
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIColorAbsoluteDifference Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorAbsoluteDifference)
+	/// - [CIColorAbsoluteDifference Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorAbsoluteDifference)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorabsolutedifference?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
-	///
-	@objc(CIFilterFactory_CIColorAbsoluteDifference) class CIColorAbsoluteDifference: FilterCore {
+	@objc(CIFilterFactory_ColorAbsoluteDifference) class ColorAbsoluteDifference: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIColorAbsoluteDifference")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The first input image for differencing.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,11 +61,14 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - image2 (inputImage2)
+
 		///
 		/// The second input image for differencing.
 		///
-		///   Class:    CIImage
-		@objc public dynamic var inputImage2: CIImage? {
+		///   - Attribute key: `inputImage2`
+		///   - Internal class: `CIImage`
+		@objc public var image2: CIImage? {
 			get {
 				return self.keyedValue("inputImage2")
 			}
@@ -81,13 +80,13 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputImage2: CIImage
+			image: CIImage,
+			image2: CIImage
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputImage2 = inputImage2
+			self.image = image
+			self.image2 = image2
 		}
 	}
 }

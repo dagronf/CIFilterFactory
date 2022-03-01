@@ -10,6 +10,8 @@ import UIKit
 
 import CIFilterFactory
 
+import CoreImage.CIFilterBuiltins
+
 class ViewController: UIViewController {
 
 	@IBOutlet weak var imageView: UIImageView!
@@ -20,11 +22,10 @@ class ViewController: UIViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-
 		do {
-			let filter = CIFilter.QRCodeGenerator()!
-			filter.inputMessage = "Hello".data(using: .utf8)!
-			filter.inputCorrectionLevel = "H"
+			let filter = CIFilterFactory.QRCodeGenerator()!
+			filter.message = "Hello".data(using: .utf8)!
+			filter.correctionLevel = "H"
 			let output = filter.outputImage!
 			let uiImage = UIImage(ciImage: output)
 			Swift.print(uiImage)
@@ -33,21 +34,29 @@ class ViewController: UIViewController {
 		let appimage = UIImage(named: "AppIcon")!
 		let image = CIImage(cgImage: appimage.cgImage!)
 
+		do {
+			guard let bloomFilter = CIFilterFactory.Bloom() else { fatalError() }
+			bloomFilter.image = image
+			bloomFilter.intensity = 0.3
+			bloomFilter.radius = 5
+			let outputImage = bloomFilter.outputImage
+		}
+
 		/// Test convenience initializer for sepia filter
-		guard let sepiaFilter = CIFilterFactory.CISepiaTone(inputImage: image, inputIntensity: 0.9) else {
+		guard let sepiaFilter = CIFilterFactory.SepiaTone(image: image, intensity: 0.9) else {
 			fatalError()
 		}
 
 		// Crystallize filter using the CIFilter extension
 
-		guard let crystalize = CIFilter.Crystallize() else {
+		guard let crystalize = CIFilterFactory.Crystallize() else {
 			fatalError()
 		}
 
 		// Use the output of the sepia filter as the input to the crystallize filter
-		crystalize.inputImage = sepiaFilter.outputImage
-		crystalize.inputRadius = 20
-		crystalize.inputCenter = CIFilterFactory.Point(x: 150, y: 200)
+		crystalize.image = sepiaFilter.outputImage
+		crystalize.radius = 20
+		crystalize.center = CGPoint(x: 150, y: 200)
 
 		let output = crystalize.outputImage
 		let outputImage = UIImage(ciImage: output!)
@@ -55,9 +64,9 @@ class ViewController: UIViewController {
 		self.imageView.image = outputImage
 
 		/// Just a simple check
-		assert(crystalize.inputRadius == 20)
-		assert(crystalize.inputCenter?.point.x == 150)
-		assert(crystalize.inputCenter?.point.y == 200)
+		assert(crystalize.radius == 20)
+		assert(crystalize.center.x == 150)
+		assert(crystalize.center.y == 200)
 	}
 
 }

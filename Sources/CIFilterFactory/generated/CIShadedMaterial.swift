@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func ShadedMaterial() -> CIFilterFactory.CIShadedMaterial? {
-		return CIFilterFactory.CIShadedMaterial()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Shaded Material
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIShadedMaterial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIShadedMaterial)
+	/// - [CIShadedMaterial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIShadedMaterial)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cishadedmaterial?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)
-	///
-	@objc(CIFilterFactory_CIShadedMaterial) class CIShadedMaterial: FilterCore {
+	@objc(CIFilterFactory_ShadedMaterial) class ShadedMaterial: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIShadedMaterial")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - shadingImage (inputShadingImage)
+
 		///
 		/// The image to use as the height field. The resulting image has greater heights with lighter shades, and lesser heights (lower areas) with darker shades.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputShadingImage: CIImage? {
+		///   - Attribute key: `inputShadingImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var shadingImage: CIImage? {
 			get {
 				return self.keyedValue("inputShadingImage")
 			}
@@ -79,36 +78,39 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - scale (inputScale)
+
 		///
 		/// The scale of the effect. The higher the value, the more dramatic the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  10
+		///   - Attribute key: `inputScale`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `10`
 		///   minValue: 0.0
 		///
-		public static let inputScale_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputScale: NSNumber? {
+		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIShadedMaterial.inputScale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: ShadedMaterial.scale_Range), forKey: "inputScale")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputShadingImage: CIImage,
-			inputScale: NSNumber = 10
+			image: CIImage,
+			shadingImage: CIImage,
+			scale: NSNumber = 10
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputShadingImage = inputShadingImage
-			self.inputScale = inputScale
+			self.image = image
+			self.shadingImage = shadingImage
+			self.scale = scale
 		}
 	}
 }

@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.10, iOS 8, *)
-	@inlinable @objc static func AccordionFoldTransition() -> CIFilterFactory.CIAccordionFoldTransition? {
-		return CIFilterFactory.CIAccordionFoldTransition()
-	}
-}
-
-@available(macOS 10.10, iOS 8, *)
+@available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Accordion Fold Transition
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
+	/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
-	///
-	@objc(CIFilterFactory_CIAccordionFoldTransition) class CIAccordionFoldTransition: FilterCore {
+	@objc(CIFilterFactory_AccordionFoldTransition) class AccordionFoldTransition: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,12 +61,15 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - targetImage (inputTargetImage)
+
 		///
 		/// The target image for a transition.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputTargetImage: CIImage? {
+		///   - Attribute key: `inputTargetImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
 			}
@@ -79,99 +78,111 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - bottomHeight (inputBottomHeight)
+
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeDistance
-		///   Default:  0
+		///   - Attribute key: `inputBottomHeight`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeDistance`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///
-		public static let inputBottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputBottomHeight: NSNumber? {
+		public static let bottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var bottomHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputBottomHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputBottomHeight_Range), forKey: "inputBottomHeight")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.bottomHeight_Range), forKey: "inputBottomHeight")
 			}
 		}
+
+		// MARK: - numberOfFolds (inputNumberOfFolds)
 
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  3
+		///   - Attribute key: `inputNumberOfFolds`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `3`
 		///   minValue: 1.0
 		///   maxValue: 50.0
 		///
-		public static let inputNumberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
-		@objc public dynamic var inputNumberOfFolds: NSNumber? {
+		public static let numberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
+		@objc public var numberOfFolds: NSNumber? {
 			get {
 				return self.keyedValue("inputNumberOfFolds")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputNumberOfFolds_Range), forKey: "inputNumberOfFolds")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.numberOfFolds_Range), forKey: "inputNumberOfFolds")
 			}
 		}
+
+		// MARK: - foldShadowAmount (inputFoldShadowAmount)
 
 		///
 		/// No Description
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.1
+		///   - Attribute key: `inputFoldShadowAmount`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.1`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputFoldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputFoldShadowAmount: NSNumber? {
+		public static let foldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var foldShadowAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputFoldShadowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputFoldShadowAmount_Range), forKey: "inputFoldShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.foldShadowAmount_Range), forKey: "inputFoldShadowAmount")
 			}
 		}
+
+		// MARK: - time (inputTime)
 
 		///
 		/// The duration of the effect.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeTime
-		///   Default:  0
+		///   - Attribute key: `inputTime`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeTime`
+		///   - Default value: `0`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputTime: NSNumber? {
+		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CIAccordionFoldTransition.inputTime_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.time_Range), forKey: "inputTime")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputTargetImage: CIImage,
-			inputBottomHeight: NSNumber = 0,
-			inputNumberOfFolds: NSNumber = 3,
-			inputFoldShadowAmount: NSNumber = 0.1,
-			inputTime: NSNumber = 0
+			image: CIImage,
+			targetImage: CIImage,
+			bottomHeight: NSNumber = 0,
+			numberOfFolds: NSNumber = 3,
+			foldShadowAmount: NSNumber = 0.1,
+			time: NSNumber = 0
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputTargetImage = inputTargetImage
-			self.inputBottomHeight = inputBottomHeight
-			self.inputNumberOfFolds = inputNumberOfFolds
-			self.inputFoldShadowAmount = inputFoldShadowAmount
-			self.inputTime = inputTime
+			self.image = image
+			self.targetImage = targetImage
+			self.bottomHeight = bottomHeight
+			self.numberOfFolds = numberOfFolds
+			self.foldShadowAmount = foldShadowAmount
+			self.time = time
 		}
 	}
 }

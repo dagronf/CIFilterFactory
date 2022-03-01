@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 9, *)
-	@inlinable @objc static func NoiseReduction() -> CIFilterFactory.CINoiseReduction? {
-		return CIFilterFactory.CINoiseReduction()
-	}
-}
-
-@available(macOS 10.4, iOS 9, *)
+@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Noise Reduction
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CINoiseReduction Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINoiseReduction)
+	/// - [CINoiseReduction Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINoiseReduction)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinoisereduction?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CINoiseReduction/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CINoiseReduction/)
-	///
-	@objc(CIFilterFactory_CINoiseReduction) class CINoiseReduction: FilterCore {
+	@objc(CIFilterFactory_NoiseReduction) class NoiseReduction: FilterCore {
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,54 +61,60 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - noiseLevel (inputNoiseLevel)
+
 		///
 		/// The amount of noise reduction. The larger the value, the more noise reduction.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.02
+		///   - Attribute key: `inputNoiseLevel`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.02`
 		///   minValue: 0.0
 		///
-		public static let inputNoiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputNoiseLevel: NSNumber? {
+		public static let noiseLevel_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var noiseLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputNoiseLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputNoiseLevel_Range), forKey: "inputNoiseLevel")
+				self.filter.setValue(newValue?.clamped(bounds: NoiseReduction.noiseLevel_Range), forKey: "inputNoiseLevel")
 			}
 		}
+
+		// MARK: - sharpness (inputSharpness)
 
 		///
 		/// The sharpness of the final image. The larger the value, the sharper the result.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeScalar
-		///   Default:  0.4
+		///   - Attribute key: `inputSharpness`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeScalar`
+		///   - Default value: `0.4`
 		///   minValue: 0.0
 		///
-		public static let inputSharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
-		@objc public dynamic var inputSharpness: NSNumber? {
+		public static let sharpness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		@objc public var sharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputSharpness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CINoiseReduction.inputSharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: NoiseReduction.sharpness_Range), forKey: "inputSharpness")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputNoiseLevel: NSNumber = 0.02,
-			inputSharpness: NSNumber = 0.4
+			image: CIImage,
+			noiseLevel: NSNumber = 0.02,
+			sharpness: NSNumber = 0.4
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputNoiseLevel = inputNoiseLevel
-			self.inputSharpness = inputSharpness
+			self.image = image
+			self.noiseLevel = noiseLevel
+			self.sharpness = sharpness
 		}
 	}
 }

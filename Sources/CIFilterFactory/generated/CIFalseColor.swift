@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func FalseColor() -> CIFilterFactory.CIFalseColor? {
-		return CIFilterFactory.CIFalseColor()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// False Color
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIFalseColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFalseColor)
+	/// - [CIFalseColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFalseColor)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cifalsecolor?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
-	///
-	@objc(CIFilterFactory_CIFalseColor) class CIFalseColor: FilterCore {
+	@objc(CIFilterFactory_FalseColor) class FalseColor: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIFalseColor")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,13 +61,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color0 (inputColor0)
+
 		///
 		/// The first color to use for the color ramp.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(0.3 0 0 1)
-		@objc public dynamic var inputColor0: CIColor? {
+		///   - Attribute key: `inputColor0`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(0.3 0 0 1`)
+		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
 			}
@@ -80,13 +79,16 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - color1 (inputColor1)
+
 		///
 		/// The second color to use for the color ramp.
 		///
-		///   Class:    CIColor
-		///   Type:     CIAttributeTypeColor
-		///   Default:  rgba(1 0.9 0.8 1)
-		@objc public dynamic var inputColor1: CIColor? {
+		///   - Attribute key: `inputColor1`
+		///   - Internal class: `CIColor`
+		///   - Type: `CIAttributeTypeColor`
+		///   - Default value: `rgba(1 0.9 0.8 1`)
+		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
 			}
@@ -98,15 +100,15 @@ public extension CIFilter {
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputColor0: CIColor,
-			inputColor1: CIColor
+			image: CIImage,
+			color0: CIColor,
+			color1: CIColor
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputColor0 = inputColor0
-			self.inputColor1 = inputColor1
+			self.image = image
+			self.color0 = color0
+			self.color1 = color1
 		}
 	}
 }

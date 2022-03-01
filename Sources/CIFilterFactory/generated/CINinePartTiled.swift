@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.12, iOS 10, *)
-	@inlinable @objc static func NinePartTiled() -> CIFilterFactory.CINinePartTiled? {
-		return CIFilterFactory.CINinePartTiled()
-	}
-}
-
-@available(macOS 10.12, iOS 10, *)
+@available(macOS 10.12, iOS 10, tvOS 10, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Nine Part Tiled
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
+	/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinineparttiled?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
-	///
-	@objc(CIFilterFactory_CINinePartTiled) class CINinePartTiled: FilterCore {
+	@objc(CIFilterFactory_NinePartTiled) class NinePartTiled: FilterCore {
 		@objc public init?() {
 			super.init(name: "CINinePartTiled")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,86 +61,107 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - breakpoint0 (inputBreakpoint0)
+
 		///
 		/// Lower left corner of image to retain before tiling begins.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [50 50]
-		@objc public dynamic var inputBreakpoint0: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBreakpoint0`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[50 50]`
+		@objc public var breakpoint0: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint0")
+				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBreakpoint0")
+				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint0")
 			}
 		}
+
+		/// breakpoint0 default value
+		@objc public static let breakpoint0_default = CGPoint(x: 50.0, y: 50.0)
+
+		// MARK: - breakpoint1 (inputBreakpoint1)
 
 		///
 		/// Upper right corner of image to retain after tiling ends.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [150 150]
-		@objc public dynamic var inputBreakpoint1: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBreakpoint1`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[150 150]`
+		@objc public var breakpoint1: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBreakpoint1")
+				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBreakpoint1")
+				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint1")
 			}
 		}
+
+		/// breakpoint1 default value
+		@objc public static let breakpoint1_default = CGPoint(x: 150.0, y: 150.0)
+
+		// MARK: - growAmount (inputGrowAmount)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeOffset
-		///   Default:  [100 100]
-		@objc public dynamic var inputGrowAmount: CIFilterFactory.Point? {
+		///   - Attribute key: `inputGrowAmount`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeOffset`
+		///   - Default value: `[100 100]`
+		@objc public var growAmount: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputGrowAmount")
+				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmount_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputGrowAmount")
+				self.setKeyedValue(newValue.ciVector, for: "inputGrowAmount")
 			}
 		}
+
+		/// growAmount default value
+		@objc public static let growAmount_default = CGPoint(x: 100.0, y: 100.0)
+
+		// MARK: - flipYTiles (inputFlipYTiles)
 
 		///
 		/// Indicates that Y-Axis flip should occur.
 		///
-		///   Class:    NSNumber
-		///   Type:     CIAttributeTypeBoolean
-		///   Default:  1
+		///   - Attribute key: `inputFlipYTiles`
+		///   - Internal class: `NSNumber`
+		///   - Type: `CIAttributeTypeBoolean`
+		///   - Default value: `1`
 		///   minValue: 0.0
 		///   maxValue: 1.0
 		///
-		public static let inputFlipYTiles_Range: ClosedRange<Float> = 0.0 ... 1.0
-		@objc public dynamic var inputFlipYTiles: NSNumber? {
+		public static let flipYTiles_Range: ClosedRange<Float> = 0.0 ... 1.0
+		@objc public var flipYTiles: NSNumber? {
 			get {
 				return self.keyedValue("inputFlipYTiles")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CINinePartTiled.inputFlipYTiles_Range), forKey: "inputFlipYTiles")
+				self.filter.setValue(newValue?.clamped(bounds: NinePartTiled.flipYTiles_Range), forKey: "inputFlipYTiles")
 			}
 		}
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputBreakpoint0: CIFilterFactory.Point = CIFilterFactory.Point(x: 50.0, y: 50.0),
-			inputBreakpoint1: CIFilterFactory.Point = CIFilterFactory.Point(x: 150.0, y: 150.0),
-			inputGrowAmount: CIFilterFactory.Point = CIFilterFactory.Point(x: 100.0, y: 100.0),
-			inputFlipYTiles: NSNumber = 1
+			image: CIImage,
+			breakpoint0: CGPoint = NinePartTiled.breakpoint0_default,
+			breakpoint1: CGPoint = NinePartTiled.breakpoint1_default,
+			growAmount: CGPoint = NinePartTiled.growAmount_default,
+			flipYTiles: NSNumber = 1
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputBreakpoint0 = inputBreakpoint0
-			self.inputBreakpoint1 = inputBreakpoint1
-			self.inputGrowAmount = inputGrowAmount
-			self.inputFlipYTiles = inputFlipYTiles
+			self.image = image
+			self.breakpoint0 = breakpoint0
+			self.breakpoint1 = breakpoint1
+			self.growAmount = growAmount
+			self.flipYTiles = flipYTiles
 		}
 	}
 }

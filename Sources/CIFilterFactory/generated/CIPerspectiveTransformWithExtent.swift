@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 6, *)
-	@inlinable @objc static func PerspectiveTransformWithExtent() -> CIFilterFactory.CIPerspectiveTransformWithExtent? {
-		return CIFilterFactory.CIPerspectiveTransformWithExtent()
-	}
-}
-
-@available(macOS 10.4, iOS 6, *)
+@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Perspective Transform with Extent
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CIPerspectiveTransformWithExtent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransformWithExtent)
+	/// - [CIPerspectiveTransformWithExtent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransformWithExtent)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetransformwithextent?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransformWithExtent/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransformWithExtent/)
-	///
-	@objc(CIFilterFactory_CIPerspectiveTransformWithExtent) class CIPerspectiveTransformWithExtent: FilterCore {
+	@objc(CIFilterFactory_PerspectiveTransformWithExtent) class PerspectiveTransformWithExtent: FilterCore {
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,99 +61,129 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - extent (inputExtent)
+
 		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [0 0 300 300]
-		@objc public dynamic var inputExtent: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputExtent`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[0 0 300 300]`
+		@objc public var extent: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputExtent")
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputExtent")
+				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
 			}
 		}
+
+		/// extent default value
+		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
+
+		// MARK: - topLeft (inputTopLeft)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [118 484]
-		@objc public dynamic var inputTopLeft: CIFilterFactory.Point? {
+		///   - Attribute key: `inputTopLeft`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[118 484]`
+		@objc public var topLeft: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputTopLeft")
+				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeft_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputTopLeft")
+				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
 			}
 		}
+
+		/// topLeft default value
+		@objc public static let topLeft_default = CGPoint(x: 118.0, y: 484.0)
+
+		// MARK: - topRight (inputTopRight)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [646 507]
-		@objc public dynamic var inputTopRight: CIFilterFactory.Point? {
+		///   - Attribute key: `inputTopRight`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[646 507]`
+		@objc public var topRight: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputTopRight")
+				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRight_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputTopRight")
+				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
 			}
 		}
+
+		/// topRight default value
+		@objc public static let topRight_default = CGPoint(x: 646.0, y: 507.0)
+
+		// MARK: - bottomRight (inputBottomRight)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [548 140]
-		@objc public dynamic var inputBottomRight: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBottomRight`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[548 140]`
+		@objc public var bottomRight: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBottomRight")
+				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRight_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBottomRight")
+				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
 			}
 		}
+
+		/// bottomRight default value
+		@objc public static let bottomRight_default = CGPoint(x: 548.0, y: 140.0)
+
+		// MARK: - bottomLeft (inputBottomLeft)
 
 		///
 		/// No Description
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypePosition
-		///   Default:  [155 153]
-		@objc public dynamic var inputBottomLeft: CIFilterFactory.Point? {
+		///   - Attribute key: `inputBottomLeft`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypePosition`
+		///   - Default value: `[155 153]`
+		@objc public var bottomLeft: CGPoint {
 			get {
-				return CIFilterFactory.Point(with: self.filter, key: "inputBottomLeft")
+				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeft_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputBottomLeft")
+				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")
 			}
 		}
+
+		/// bottomLeft default value
+		@objc public static let bottomLeft_default = CGPoint(x: 155.0, y: 153.0)
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputExtent: CIFilterFactory.Rect = CIFilterFactory.Rect(x: 0.0, y: 0.0, width: 300.0, height: 300.0),
-			inputTopLeft: CIFilterFactory.Point = CIFilterFactory.Point(x: 118.0, y: 484.0),
-			inputTopRight: CIFilterFactory.Point = CIFilterFactory.Point(x: 646.0, y: 507.0),
-			inputBottomRight: CIFilterFactory.Point = CIFilterFactory.Point(x: 548.0, y: 140.0),
-			inputBottomLeft: CIFilterFactory.Point = CIFilterFactory.Point(x: 155.0, y: 153.0)
+			image: CIImage,
+			extent: CGRect = PerspectiveTransformWithExtent.extent_default,
+			topLeft: CGPoint = PerspectiveTransformWithExtent.topLeft_default,
+			topRight: CGPoint = PerspectiveTransformWithExtent.topRight_default,
+			bottomRight: CGPoint = PerspectiveTransformWithExtent.bottomRight_default,
+			bottomLeft: CGPoint = PerspectiveTransformWithExtent.bottomLeft_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputExtent = inputExtent
-			self.inputTopLeft = inputTopLeft
-			self.inputTopRight = inputTopRight
-			self.inputBottomRight = inputBottomRight
-			self.inputBottomLeft = inputBottomLeft
+			self.image = image
+			self.extent = extent
+			self.topLeft = topLeft
+			self.topRight = topRight
+			self.bottomRight = bottomRight
+			self.bottomLeft = bottomLeft
 		}
 	}
 }

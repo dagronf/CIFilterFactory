@@ -24,14 +24,7 @@ import CoreImage
 import CoreML
 import Foundation
 
-public extension CIFilter {
-	@available(macOS 10.4, iOS 5, *)
-	@inlinable @objc static func Crop() -> CIFilterFactory.CICrop? {
-		return CIFilterFactory.CICrop()
-	}
-}
-
-@available(macOS 10.4, iOS 5, *)
+@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFilterFactory {
 	///
 	/// Crop
@@ -40,23 +33,26 @@ public extension CIFilter {
 	///
 	/// **Links**
 	///
-	/// [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
+	/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrop?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICrop/)
 	///
-	/// [CIFilter.io documentation](https://cifilter.io/CICrop/)
-	///
-	@objc(CIFilterFactory_CICrop) class CICrop: FilterCore {
+	@objc(CIFilterFactory_Crop) class Crop: FilterCore {
 		@objc public init?() {
 			super.init(name: "CICrop")
 		}
 
 		// MARK: - Inputs
 
+		// MARK: - image (inputImage)
+
 		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   Class:    CIImage
-		///   Type:     CIAttributeTypeImage
-		@objc public dynamic var inputImage: CIImage? {
+		///   - Attribute key: `inputImage`
+		///   - Internal class: `CIImage`
+		///   - Type: `CIAttributeTypeImage`
+		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -65,31 +61,37 @@ public extension CIFilter {
 			}
 		}
 
+		// MARK: - rectangle (inputRectangle)
+
 		///
 		/// The rectangle that specifies the crop to apply to the image.
 		///
-		///   Class:    CIVector
-		///   Type:     CIAttributeTypeRectangle
-		///   Default:  [-8.98847e+307 -8.98847e+307 1.79769e+308 1.79769e+308]
-		@objc public dynamic var inputRectangle: CIFilterFactory.Rect? {
+		///   - Attribute key: `inputRectangle`
+		///   - Internal class: `CIVector`
+		///   - Type: `CIAttributeTypeRectangle`
+		///   - Default value: `[-8.98847e+307 -8.98847e+307 1.79769e+308 1.79769e+308]`
+		@objc public var rectangle: CGRect {
 			get {
-				return CIFilterFactory.Rect(with: self.filter, key: "inputRectangle")
+				return CGRect(with: self.filter, key: "inputRectangle", defaultValue: Self.rectangle_default)
 			}
 			set {
-				self.setKeyedValue(newValue?.vector, for: "inputRectangle")
+				self.setKeyedValue(newValue.ciVector, for: "inputRectangle")
 			}
 		}
+
+		/// rectangle default value
+		@objc public static let rectangle_default = CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
 
 		// MARK: - Convenience initializer
 
 		@objc public convenience init?(
-			inputImage: CIImage,
-			inputRectangle: CIFilterFactory.Rect = CIFilterFactory.Rect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
+			image: CIImage,
+			rectangle: CGRect = Crop.rectangle_default
 		) {
 			self.init()
 
-			self.inputImage = inputImage
-			self.inputRectangle = inputRectangle
+			self.image = image
+			self.rectangle = rectangle
 		}
 	}
 }
