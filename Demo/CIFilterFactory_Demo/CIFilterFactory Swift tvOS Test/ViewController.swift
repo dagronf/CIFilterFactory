@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		do {
-			let filter = CIFilterFactory.QRCodeGenerator()!
+			let filter = CIFF.QRCodeGenerator()!
 			filter.message = "Hello".data(using: .utf8)!
 			filter.correctionLevel = "H"
 			let output = filter.outputImage!
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 		let image = CIImage(cgImage: appimage.cgImage!)
 
 		do {
-			guard let bloomFilter = CIFilterFactory.Bloom() else { fatalError() }
+			guard let bloomFilter = CIFF.Bloom() else { fatalError() }
 			bloomFilter.image = image
 			bloomFilter.intensity = 0.3
 			bloomFilter.radius = 5
@@ -43,13 +43,13 @@ class ViewController: UIViewController {
 		}
 
 		/// Test convenience initializer for sepia filter
-		guard let sepiaFilter = CIFilterFactory.SepiaTone(image: image, intensity: 0.9) else {
+		guard let sepiaFilter = CIFF.SepiaTone(image: image, intensity: 0.9) else {
 			fatalError()
 		}
 
 		// Crystallize filter using the CIFilter extension
 
-		guard let crystalize = CIFilterFactory.Crystallize() else {
+		guard let crystalize = CIFF.Crystallize() else {
 			fatalError()
 		}
 

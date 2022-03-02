@@ -25,7 +25,7 @@
 
 	{
 		// Simple QR Code generator example using native NSString and NSData
-		CIFilterFactory_QRCodeGenerator *filter = [[CIFilterFactory_QRCodeGenerator alloc] init];
+		CIFFQRCodeGenerator *filter = [[CIFFQRCodeGenerator alloc] init];
 		[filter setCorrectionLevel:@"H"];
 		[filter setMessage: [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
 		CIImage* output = [filter outputImage];
@@ -40,7 +40,7 @@
 	assert(image);
 
 	{
-		CIFilterFactory_Bloom* filter = [[CIFilterFactory_Bloom alloc] init];
+		CIFFBloom* filter = [[CIFFBloom alloc] init];
 		[filter setImage:image];
 		[filter setRadius:@(10)];
 		[filter setIntensity:@(4)];
@@ -48,12 +48,12 @@
 		assert(output != nil);
 	}
 
-	id sepiaFilter = [[CIFilterFactory_SepiaTone alloc] init];
+	id sepiaFilter = [[CIFFSepiaTone alloc] init];
 	assert(sepiaFilter);
 	[sepiaFilter setImage:image];
 	[sepiaFilter setIntensity: @(1.0)];
 
-	CIFilterFactory_Crystallize* crystalize = [[CIFilterFactory_Crystallize alloc] init];
+	CIFFCrystallize* crystalize = [[CIFFCrystallize alloc] init];
 	assert(crystalize);
 	[crystalize setImage:[sepiaFilter outputImage]];
 	[crystalize setRadius:@(20)];

@@ -29,13 +29,11 @@ extension String {
 	}
 }
 
-private func parseFilter(filter: CIFilter, out: FileSquirter) {
-
-	let name = filter.name
+private func parseFilter(filter: CIFilter, staticName: String, out: FileSquirter) {
 
 	out.print("""
 //
-//  \(name).swift  (AUTOMATICALLY GENERATED FILE)
+//  \(staticName).swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -61,15 +59,6 @@ import CoreImage
 
 """)
 
-	let staticName: String = {
-		var nn = name.replacingOccurrences(of: " ", with: "")
-		if nn.starts(with: "CI") {
-			let i1 = nn.index(nn.startIndex, offsetBy: 2)
-			nn = String(nn[ (i1 ..< nn.endIndex) ])
-		}
-		return nn
-	}()
-
 	let inputKeys = filter.inputKeys
 
 	let filterAttributes = filter.attributes
@@ -92,7 +81,7 @@ import CoreImage
 	if !avail.isEmpty {
 		out.print("@available(\(avail), *)")
 	}
-	out.print("@objc public extension CIFilterFactory {")
+	out.print("@objc public extension CIFF {")
 
 	out.print("   ///")
 	if let refDisplay = filterAttributes[kCIAttributeFilterDisplayName] as? String {
@@ -115,8 +104,10 @@ import CoreImage
 	out.print("   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)")
 	out.print("   ///")
 
-
-	out.print("   @objc(CIFilterFactory_\(staticName)) public class \(staticName): FilterCore {")
+	if !avail.isEmpty {
+		out.print("@available(\(avail), *)")
+	}
+	out.print("   @objc(CIFF\(staticName)) public class \(staticName): FilterCore {")
 	out.print("      /// Create an instance of the filter")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
@@ -364,7 +355,7 @@ import CoreImage
 	}
 
 	out.print("   }\n")
-	out.print("}\n")
+	out.print("}")
 }
 
 
@@ -456,9 +447,18 @@ for filterName in CIFilter.filterNames(inCategories: nil) {
 
 		do {
 
-			let fs = FileSquirter(name: "\(filterName).swift")
-			parseFilter(filter: filter, out: fs)
-			let outURL = generatedBase.appendingPathComponent("\(filterName).swift")
+			let staticName: String = {
+				var nn = filterName.replacingOccurrences(of: " ", with: "")
+				if nn.starts(with: "CI") {
+					let i1 = nn.index(nn.startIndex, offsetBy: 2)
+					nn = String(nn[ (i1 ..< nn.endIndex) ])
+				}
+				return nn
+			}()
+
+			let fs = FileSquirter(name: "\(staticName).swift")
+			parseFilter(filter: filter, staticName: staticName, out: fs)
+			let outURL = generatedBase.appendingPathComponent("\(staticName).swift")
 			try fs.content.write(to: outURL, atomically: true, encoding: .utf8)
 
 		}

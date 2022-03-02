@@ -26,43 +26,46 @@ import CoreImage
 import UIKit
 #endif
 
-/// A wrapped AffineTransform class to abstract away affine transform differences per platform
-@objc(CIAffineTransform) public class CIAffineTransform: NSObject {
-	#if os(macOS)
+public extension CIFF {
+	
+	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
+	@objc(CIFFCIAffineTransform) class CIAffineTransform: NSObject {
+#if os(macOS)
 		@objc var transform: NSAffineTransform
 		@objc public init(_ transform: NSAffineTransform) {
 			self.transform = transform
 			super.init()
 		}
-
+		
 		@objc public convenience init?(filter: CIFilter, key: String) {
 			guard let value = filter.value(forKey: key) as? NSAffineTransform else {
 				return nil
 			}
 			self.init(value)
 		}
-
+		
 		func embeddedValue() -> AnyObject {
 			return self.transform
 		}
-	#else
+#else
 		@objc var transform: CGAffineTransform
 		@objc public init(_ transform: CGAffineTransform) {
 			self.transform = transform
 			super.init()
 		}
-
+		
 		@objc public convenience init?(filter: CIFilter, key: String) {
 			guard let value = filter.value(forKey: key) as? NSValue else {
 				return nil
 			}
 			self.init(value.cgAffineTransformValue)
 		}
-
+		
 		func embeddedValue() -> AnyObject {
 			return NSValue(cgAffineTransform: self.transform)
 		}
-	#endif
+#endif
+	}
 }
 
 extension CGPoint {

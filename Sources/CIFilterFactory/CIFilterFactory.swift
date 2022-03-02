@@ -21,10 +21,13 @@
 import CoreImage
 import Foundation
 
-/// A class factory for type-safe Core Image Filter objects
-@objc public class CIFilterFactory: NSObject {
+/// The namespace object for the filter factory
+@objc public class CIFF: NSObject {
+
+	private override init() { }
+
 	/// Common filter base class. You never need need to create this yourself
-	@objc(CIFilterFactoryFilterCore) public class FilterCore: NSObject {
+	@objc public class FilterCore: NSObject {
 		// The CIFilter wrapped instance for the filter
 		@objc public let filter: CIFilter
 
@@ -35,9 +38,9 @@ import Foundation
 			self.filter = filter
 			super.init()
 
-			#if os(macOS)
+#if os(macOS)
 			filter.setDefaults()
-			#endif
+#endif
 		}
 
 		/// Returns a CIImage object that encapsulates the operations configured in the filter.
@@ -90,7 +93,7 @@ import Foundation
 	}
 }
 
-internal extension CIFilterFactory.FilterCore {
+internal extension CIFF.FilterCore {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
 		return self.filter.value(forKey: key) as? TYPE

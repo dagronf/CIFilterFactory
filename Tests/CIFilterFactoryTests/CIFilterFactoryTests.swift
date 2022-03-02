@@ -14,13 +14,13 @@ final class CIFilterFactoryTests: XCTestCase {
 //    ]
 
 	func testExample() {
-		let sepiaFilter = CIFilterFactory.SepiaTone(image: CIImage(), intensity: 0.5)
+		let sepiaFilter = CIFF.SepiaTone(image: CIImage(), intensity: 0.5)
 		XCTAssertNotNil(sepiaFilter)
 
 		XCTAssertEqual(0.5, sepiaFilter!.intensity)
 
 
-		let sepiaFilter2 = CIFilterFactory.SepiaTone()
+		let sepiaFilter2 = CIFF.SepiaTone()
 		XCTAssertNotNil(sepiaFilter2)
 		XCTAssertEqual(1.0, sepiaFilter2!.intensity)
 	}

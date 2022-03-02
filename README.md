@@ -22,23 +22,15 @@ Supports macOS, tvOS, iOS and mac Catalyst
 
 ## Why
 
-CIFilters are incredibly powerful and performant image processing tools that are quite difficult to use and bug-prone due to the String-based interface.
-
-I've always found the `CIFilter` interfaces to be 
+I like CIFilters. I've always found the `CIFilter` interfaces to be 
 
 1. Hard to use due to the opaque interface (no code completion!), and 
 2. Easy to make basic mistakes such as type mismatches etc. which would be very difficult to identify in a review (for example).  Given that the parameters to filters are Any? values, there is no type checking around the api.
+3. Xcode's documentation for each filter is lacking for the most part.
 
 This library is an attempt to automatically generate a typesafe, discoverable wrapper interface to CIFilter.
 
-## What about `import CoreImage.CIFilterBuiltins`?
-
-In more recent versions of Xcode, the SDK now comes with a pre-generated set of CIFilter classes (like `CIFilter.pixellate()`). This library was written before `CIFilterBuiltins` was available, and was also required to support Objective-C (admittedly, becoming less and less of a problem as time goes on).
-
-* only available for newer versions of Xcode.
-* No objective-c support.
-* Some filters are not generated (eg. `CICrop`)
-* Basically undocumented. `CIFilterFactory` embeds ALL the documentation within the generated code so it's directly available when you need it.
+## Features
 
 ### Type safety and discovery
 
@@ -62,7 +54,7 @@ and creates type-safe parameters like :-
 
 ```swift
 // No chance of a poorly named filter
-guard let filter = CIFilterFactory.Bloom() else { fatalError() }
+guard let filter = CIFF.Bloom() else { fatalError() }
 
 // code completion support, type safe, range safe. Read documentation directly in Xcode
 filter.inputRadius = 11.8
@@ -74,11 +66,11 @@ filter.inputTitle = 12.0
 
 ### Documentation
 
-`CIFilterFactory` defines all available documentation inline within the code itself, allowing Xcode to provide useful Quick Help for all available filters and parameters.
+CIFilterFactory defines all available documentation inline within the code itself, allowing Xcode to provide useful Quick Help for all available filters and parameters.
 
 For example :-
 
-####
+#### Filter definition
 
 ```swift
 ///
@@ -92,22 +84,26 @@ For example :-
 ///
 /// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 ///
-@objc(CIFilterFactory_AccordionFoldTransition) class AccordionFoldTransition: Core {
-   ...
+@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: FilterCore
 ```
 
 #### Api parameter definition
 
-```swift
+```
+/// The width of each bar.
 ///
-/// The duration of the effect.
-///
-///   minValue: 0.0
-///   maxValue: 1.0
-///
-let inputTime_Range: ClosedRange<Float> = 0.0 ... 1.0
-@objc public var inputTime: NSNumber? {
+/// CIFilter attribute information
+/// - Attribute key: `inputWidth`
+/// - Internal class: `NSNumber`
+/// - Type: `CIAttributeTypeDistance`
+/// - Default value: `30`
+/// - Minimum value: `2.0`
+@objc public var width: NSNumber? {
    ...
+}
+
+/// `width` range definition
+public static let widthRange: PartialRangeFrom<Float> = Float(2.0)...
 ```
 
 ### Value ranges
@@ -150,7 +146,7 @@ let outputImage = bloomFilter.outputImage
 #### Using CIFilterFactory
 
 ```swift
-guard let bloomFilter = CIFilterFactory.Bloom() else { fatalError() }
+guard let bloomFilter = CIFF.Bloom() else { fatalError() }
 bloomFilter.image = image
 bloomFilter.intensity = 0.3
 bloomFilter.radius = 5
@@ -172,7 +168,7 @@ id appimage = [NSImage imageNamed:NSImageNameApplicationIcon];
 id bir = [[NSBitmapImageRep alloc] initWithData:[appimage TIFFRepresentation]];
 id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 
-CIFilterFactory_Bloom* filter = [[CIFilterFactory_Bloom alloc] init];
+CIFFBloom* filter = [[CIFFBloom alloc] init];
 [filter setImage: image];
 [filter setRadius: @(10)];
 [filter setIntensity: @(4)];
@@ -180,9 +176,18 @@ CIImage* output = [filter outputImage];
 assert(output != nil);
 ```
 
+## What about `import CoreImage.CIFilterBuiltins`?
+
+In more recent versions of Xcode, the SDK now comes with a pre-generated set of CIFilter classes (like `CIFilter.pixellate()`). This library was written before `CIFilterBuiltins` was available, and was also required to support Objective-C (admittedly, becoming less and less of a problem as time goes on).
+
+* only available for newer versions of Xcode.
+* No objective-c support.
+* Some filters are not available (eg. `CICrop`)
+* Basically undocumented. `CIFilterFactory` embeds ALL the documentation within the generated code so it's directly available when you need it.
+
 ## Usage
 
-Use Swift Package Manager
+Use Swift Package Manager. 
 
 You can find some really simple examples for both Swift and Objective-C in the `Demo` subfolder.
 
@@ -204,6 +209,16 @@ NOTE: This is only available for Xcode 13 and later
 * Better type support
 
 ## History
+
+### `14.0.0`
+
+* Renamed generated classes from the verbose `CIFilterFactory.Bloom` to `CIFF.Bloom`.
+
+```swift
+let filter = CIFilterFactory.AztecCodeGenerator()
+...becomes
+let filter = CIFF.AztecCodeGenerator()
+```
 
 ### `13.0.1`
 
@@ -285,4 +300,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
