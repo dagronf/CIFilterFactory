@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
 	///
 	@objc(CIFilterFactory_ColorPosterize) class ColorPosterize: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorPosterize")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,27 +63,29 @@ import Foundation
 
 		// MARK: - levels (inputLevels)
 
-		///
 		/// The number of brightness levels to use for each color component. Lower values result in a more extreme poster effect.
 		///
-		///   - Attribute key: `inputLevels`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `6`
-		///   minValue: 1.0
-		///
-		public static let levels_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLevels`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `6`
+		/// - Minimum value: `1.0`
 		@objc public var levels: NSNumber? {
 			get {
 				return self.keyedValue("inputLevels")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorPosterize.levels_Range), forKey: "inputLevels")
+				self.filter.setValue(newValue?.clamped(bounds: ColorPosterize.levelsRange), forKey: "inputLevels")
 			}
 		}
 
+		/// `levels` range definition
+		public static let levelsRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			levels: NSNumber = 6

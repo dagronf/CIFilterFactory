@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
 	///
 	@objc(CIFilterFactory_DissolveTransition) class DissolveTransition: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - targetImage (inputTargetImage)
 
-		///
 		/// The target image for a transition.
 		///
-		///   - Attribute key: `inputTargetImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
@@ -80,28 +80,30 @@ import Foundation
 
 		// MARK: - time (inputTime)
 
-		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   - Attribute key: `inputTime`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeTime`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTime`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeTime`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DissolveTransition.time_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: DissolveTransition.timeRange), forKey: "inputTime")
 			}
 		}
 
+		/// `time` range definition
+		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,

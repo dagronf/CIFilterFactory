@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
 	///
 	@objc(CIFilterFactory_HistogramDisplayFilter) class HistogramDisplayFilter: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,72 +63,76 @@ import Foundation
 
 		// MARK: - height (inputHeight)
 
-		///
 		/// The height of the displayable histogram image.
 		///
-		///   - Attribute key: `inputHeight`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `100`
-		///   minValue: 1.0
-		///   maxValue: 200.0
-		///
-		public static let height_Range: ClosedRange<Float> = 1.0 ... 200.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputHeight`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `100`
+		/// - Minimum value: `1.0`
+		/// - Maximum value: `200.0`
 		@objc public var height: NSNumber? {
 			get {
 				return self.keyedValue("inputHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.height_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.heightRange), forKey: "inputHeight")
 			}
 		}
 
+		/// `height` range definition
+		public static let heightRange: ClosedRange<Float> = 1.0 ... 200.0
+
 		// MARK: - highLimit (inputHighLimit)
 
-		///
 		/// The fraction of the right portion of the histogram image to make lighter.
 		///
-		///   - Attribute key: `inputHighLimit`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let highLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputHighLimit`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var highLimit: NSNumber? {
 			get {
 				return self.keyedValue("inputHighLimit")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.highLimit_Range), forKey: "inputHighLimit")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.highLimitRange), forKey: "inputHighLimit")
 			}
 		}
 
+		/// `highLimit` range definition
+		public static let highLimitRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - lowLimit (inputLowLimit)
 
-		///
 		/// The fraction of the left portion of the histogram image to make darker
 		///
-		///   - Attribute key: `inputLowLimit`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let lowLimit_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLowLimit`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var lowLimit: NSNumber? {
 			get {
 				return self.keyedValue("inputLowLimit")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.lowLimit_Range), forKey: "inputLowLimit")
+				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.lowLimitRange), forKey: "inputLowLimit")
 			}
 		}
 
+		/// `lowLimit` range definition
+		public static let lowLimitRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			height: NSNumber = 100,

@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
 	///
 	@objc(CIFilterFactory_DepthOfField) class DepthOfField: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDepthOfField")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - point0 (inputPoint0)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputPoint0`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[0 300]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPoint0`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[0 300]`
 		@objc public var point0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0_default)
+				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// point0 default value
-		@objc public static let point0_default = CGPoint(x: 0.0, y: 300.0)
+		@objc public static let point0Default = CGPoint(x: 0.0, y: 300.0)
 
 		// MARK: - point1 (inputPoint1)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputPoint1`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[300 300]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPoint1`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[300 300]`
 		@objc public var point1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1_default)
+				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")
@@ -101,98 +101,103 @@ import Foundation
 		}
 
 		/// point1 default value
-		@objc public static let point1_default = CGPoint(x: 300.0, y: 300.0)
+		@objc public static let point1Default = CGPoint(x: 300.0, y: 300.0)
 
 		// MARK: - saturation (inputSaturation)
 
-		///
 		/// The amount to adjust the saturation.
 		///
-		///   - Attribute key: `inputSaturation`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1.5`
-		///   minValue: 0.0
-		///
-		public static let saturation_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSaturation`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1.5`
+		/// - Minimum value: `0.0`
 		@objc public var saturation: NSNumber? {
 			get {
 				return self.keyedValue("inputSaturation")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.saturation_Range), forKey: "inputSaturation")
+				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.saturationRange), forKey: "inputSaturation")
 			}
 		}
 
+		/// `saturation` range definition
+		public static let saturationRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - unsharpMaskRadius (inputUnsharpMaskRadius)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputUnsharpMaskRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `2.5`
-		///   minValue: 0.0
-		///
-		public static let unsharpMaskRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputUnsharpMaskRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `2.5`
+		/// - Minimum value: `0.0`
 		@objc public var unsharpMaskRadius: NSNumber? {
 			get {
 				return self.keyedValue("inputUnsharpMaskRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskRadius_Range), forKey: "inputUnsharpMaskRadius")
+				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskRadiusRange), forKey: "inputUnsharpMaskRadius")
 			}
 		}
 
+		/// `unsharpMaskRadius` range definition
+		public static let unsharpMaskRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - unsharpMaskIntensity (inputUnsharpMaskIntensity)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputUnsharpMaskIntensity`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.5`
-		///   minValue: 0.0
-		///
-		public static let unsharpMaskIntensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputUnsharpMaskIntensity`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.5`
+		/// - Minimum value: `0.0`
 		@objc public var unsharpMaskIntensity: NSNumber? {
 			get {
 				return self.keyedValue("inputUnsharpMaskIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskIntensity_Range), forKey: "inputUnsharpMaskIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskIntensityRange), forKey: "inputUnsharpMaskIntensity")
 			}
 		}
 
+		/// `unsharpMaskIntensity` range definition
+		public static let unsharpMaskIntensityRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The distance from the center of the effect.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `6`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `6`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			point0: CGPoint = DepthOfField.point0_default,
-			point1: CGPoint = DepthOfField.point1_default,
+			point0: CGPoint = DepthOfField.point0Default,
+			point1: CGPoint = DepthOfField.point1Default,
 			saturation: NSNumber = 1.5,
 			unsharpMaskRadius: NSNumber = 2.5,
 			unsharpMaskIntensity: NSNumber = 0.5,

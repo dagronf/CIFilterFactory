@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDroste/)
 	///
 	@objc(CIFilterFactory_Droste) class Droste: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDroste")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - insetPoint0 (inputInsetPoint0)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputInsetPoint0`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[200 200]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputInsetPoint0`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[200 200]`
 		@objc public var insetPoint0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputInsetPoint0", defaultValue: Self.insetPoint0_default)
+				return CGPoint(with: self.filter, key: "inputInsetPoint0", defaultValue: Self.insetPoint0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputInsetPoint0")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// insetPoint0 default value
-		@objc public static let insetPoint0_default = CGPoint(x: 200.0, y: 200.0)
+		@objc public static let insetPoint0Default = CGPoint(x: 200.0, y: 200.0)
 
 		// MARK: - insetPoint1 (inputInsetPoint1)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputInsetPoint1`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[400 400]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputInsetPoint1`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[400 400]`
 		@objc public var insetPoint1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputInsetPoint1", defaultValue: Self.insetPoint1_default)
+				return CGPoint(with: self.filter, key: "inputInsetPoint1", defaultValue: Self.insetPoint1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputInsetPoint1")
@@ -101,60 +101,62 @@ import Foundation
 		}
 
 		/// insetPoint1 default value
-		@objc public static let insetPoint1_default = CGPoint(x: 400.0, y: 400.0)
+		@objc public static let insetPoint1Default = CGPoint(x: 400.0, y: 400.0)
 
 		// MARK: - strands (inputStrands)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputStrands`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: -10.0
-		///   maxValue: 10.0
-		///
-		public static let strands_Range: ClosedRange<Float> = -10.0 ... 10.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputStrands`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `-10.0`
+		/// - Maximum value: `10.0`
 		@objc public var strands: NSNumber? {
 			get {
 				return self.keyedValue("inputStrands")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Droste.strands_Range), forKey: "inputStrands")
+				self.filter.setValue(newValue?.clamped(bounds: Droste.strandsRange), forKey: "inputStrands")
 			}
 		}
 
+		/// `strands` range definition
+		public static let strandsRange: ClosedRange<Float> = -10.0 ... 10.0
+
 		// MARK: - periodicity (inputPeriodicity)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputPeriodicity`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 1.0
-		///
-		public static let periodicity_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPeriodicity`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `1.0`
 		@objc public var periodicity: NSNumber? {
 			get {
 				return self.keyedValue("inputPeriodicity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Droste.periodicity_Range), forKey: "inputPeriodicity")
+				self.filter.setValue(newValue?.clamped(bounds: Droste.periodicityRange), forKey: "inputPeriodicity")
 			}
 		}
 
+		/// `periodicity` range definition
+		public static let periodicityRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - rotation (inputRotation)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputRotation`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRotation`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var rotation: NSNumber? {
 			get {
 				return self.keyedValue("inputRotation")
@@ -166,28 +168,33 @@ import Foundation
 
 		// MARK: - zoom (inputZoom)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputZoom`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputZoom`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.01`
 		@objc public var zoom: NSNumber? {
 			get {
 				return self.keyedValue("inputZoom")
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputZoom")
+				self.filter.setValue(newValue?.clamped(bounds: Droste.zoomRange), forKey: "inputZoom")
 			}
 		}
 
+		/// `zoom` range definition
+		public static let zoomRange: PartialRangeFrom<Float> = Float(0.01)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			insetPoint0: CGPoint = Droste.insetPoint0_default,
-			insetPoint1: CGPoint = Droste.insetPoint1_default,
+			insetPoint0: CGPoint = Droste.insetPoint0Default,
+			insetPoint1: CGPoint = Droste.insetPoint1Default,
 			strands: NSNumber = 1,
 			periodicity: NSNumber = 1,
 			rotation: NSNumber = 0,

@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
 	///
 	@objc(CIFilterFactory_SharpenLuminance) class SharpenLuminance: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,13 +63,13 @@ import Foundation
 
 		// MARK: - sharpness (inputSharpness)
 
-		///
 		/// The amount of sharpening to apply. Larger values are sharper.
 		///
-		///   - Attribute key: `inputSharpness`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.4`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSharpness`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.4`
 		@objc public var sharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputSharpness")
@@ -81,13 +81,13 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The distance from the center of the effect.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1.69`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1.69`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
@@ -99,6 +99,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			sharpness: NSNumber = 0.4,

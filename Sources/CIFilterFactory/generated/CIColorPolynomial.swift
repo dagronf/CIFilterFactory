@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
 	///
 	@objc(CIFilterFactory_ColorPolynomial) class ColorPolynomial: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - redCoefficients (inputRedCoefficients)
 
-		///
 		/// Polynomial coefficients for red channel
 		///
-		///   - Attribute key: `inputRedCoefficients`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRedCoefficients`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1 0 0]`
 		@objc public var redCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputRedCoefficients")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - greenCoefficients (inputGreenCoefficients)
 
-		///
 		/// Polynomial coefficients for green channel
 		///
-		///   - Attribute key: `inputGreenCoefficients`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputGreenCoefficients`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1 0 0]`
 		@objc public var greenCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputGreenCoefficients")
@@ -97,12 +97,12 @@ import Foundation
 
 		// MARK: - blueCoefficients (inputBlueCoefficients)
 
-		///
 		/// Polynomial coefficients for blue channel
 		///
-		///   - Attribute key: `inputBlueCoefficients`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBlueCoefficients`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1 0 0]`
 		@objc public var blueCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputBlueCoefficients")
@@ -114,12 +114,12 @@ import Foundation
 
 		// MARK: - alphaCoefficients (inputAlphaCoefficients)
 
-		///
 		/// Polynomial coefficients for alpha channel
 		///
-		///   - Attribute key: `inputAlphaCoefficients`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAlphaCoefficients`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1 0 0]`
 		@objc public var alphaCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputAlphaCoefficients")
@@ -131,6 +131,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			redCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),

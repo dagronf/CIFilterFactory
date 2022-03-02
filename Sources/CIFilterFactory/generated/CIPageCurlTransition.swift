@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)
 	///
 	@objc(CIFilterFactory_PageCurlTransition) class PageCurlTransition: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPageCurlTransition")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - targetImage (inputTargetImage)
 
-		///
 		/// The target image for a transition.
 		///
-		///   - Attribute key: `inputTargetImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
@@ -80,11 +80,11 @@ import Foundation
 
 		// MARK: - backsideImage (inputBacksideImage)
 
-		///
 		/// The image that appears on the back of the source image, as the page curls to reveal the target image.
 		///
-		///   - Attribute key: `inputBacksideImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBacksideImage`
+		/// - Internal class: `CIImage`
 		@objc public var backsideImage: CIImage? {
 			get {
 				return self.keyedValue("inputBacksideImage")
@@ -96,12 +96,12 @@ import Foundation
 
 		// MARK: - shadingImage (inputShadingImage)
 
-		///
 		/// An image that looks like a shaded sphere enclosed in a square image.
 		///
-		///   - Attribute key: `inputShadingImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShadingImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var shadingImage: CIImage? {
 			get {
 				return self.keyedValue("inputShadingImage")
@@ -113,16 +113,16 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		///
 		/// The extent of the effect.
 		///
-		///   - Attribute key: `inputExtent`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[0 0 300 300]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtent`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[0 0 300 300]`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -130,39 +130,40 @@ import Foundation
 		}
 
 		/// extent default value
-		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
 
 		// MARK: - time (inputTime)
 
-		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   - Attribute key: `inputTime`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeTime`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTime`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeTime`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PageCurlTransition.time_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: PageCurlTransition.timeRange), forKey: "inputTime")
 			}
 		}
 
+		/// `time` range definition
+		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - angle (inputAngle)
 
-		///
 		/// The angle of the curling page.
 		///
-		///   - Attribute key: `inputAngle`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAngle`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
@@ -174,30 +175,35 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The radius of the curl.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `100`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `100`
+		/// - Minimum value: `0.01`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: PageCurlTransition.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.01)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
 			backsideImage: CIImage,
 			shadingImage: CIImage,
-			extent: CGRect = PageCurlTransition.extent_default,
+			extent: CGRect = PageCurlTransition.extentDefault,
 			time: NSNumber = 0,
 			angle: NSNumber = 0,
 			radius: NSNumber = 100

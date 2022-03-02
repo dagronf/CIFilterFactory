@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
 	@objc(CIFilterFactory_SpotLight) class SpotLight: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISpotLight")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,13 +63,13 @@ import Foundation
 
 		// MARK: - lightPosition (inputLightPosition)
 
-		///
 		/// The x and y position of the spotlight.
 		///
-		///   - Attribute key: `inputLightPosition`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition3`
-		///   - Default value: `[400 600 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLightPosition`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition3`
+		/// - Default value: `[400 600 150]`
 		@objc public var lightPosition: CIVector? {
 			get {
 				return self.keyedValue("inputLightPosition")
@@ -81,13 +81,13 @@ import Foundation
 
 		// MARK: - lightPointsAt (inputLightPointsAt)
 
-		///
 		/// The x and y position that the spotlight points at.
 		///
-		///   - Attribute key: `inputLightPointsAt`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition3`
-		///   - Default value: `[200 200 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLightPointsAt`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition3`
+		/// - Default value: `[200 200 0]`
 		@objc public var lightPointsAt: CIVector? {
 			get {
 				return self.keyedValue("inputLightPointsAt")
@@ -99,52 +99,57 @@ import Foundation
 
 		// MARK: - brightness (inputBrightness)
 
-		///
 		/// The brightness of the spotlight.
 		///
-		///   - Attribute key: `inputBrightness`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `3`
-		///   minValue: 0.0
-		///
-		public static let brightness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBrightness`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `3`
+		/// - Minimum value: `0.0`
 		@objc public var brightness: NSNumber? {
 			get {
 				return self.keyedValue("inputBrightness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotLight.brightness_Range), forKey: "inputBrightness")
+				self.filter.setValue(newValue?.clamped(bounds: SpotLight.brightnessRange), forKey: "inputBrightness")
 			}
 		}
 
+		/// `brightness` range definition
+		public static let brightnessRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - concentration (inputConcentration)
 
-		///
 		/// The spotlight size. The smaller the value, the more tightly focused the light beam.
 		///
-		///   - Attribute key: `inputConcentration`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.1`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputConcentration`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.1`
+		/// - Minimum value: `0.001`
 		@objc public var concentration: NSNumber? {
 			get {
 				return self.keyedValue("inputConcentration")
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputConcentration")
+				self.filter.setValue(newValue?.clamped(bounds: SpotLight.concentrationRange), forKey: "inputConcentration")
 			}
 		}
 
+		/// `concentration` range definition
+		public static let concentrationRange: PartialRangeFrom<Float> = Float(0.001)...
+
 		// MARK: - color (inputColor)
 
-		///
 		/// The color of the spotlight.
 		///
-		///   - Attribute key: `inputColor`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeOpaqueColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeOpaqueColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -156,6 +161,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			lightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),

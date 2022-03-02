@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
 	///
 	@objc(CIFilterFactory_LanczosScaleTransform) class LanczosScaleTransform: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILanczosScaleTransform")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,48 +63,51 @@ import Foundation
 
 		// MARK: - scale (inputScale)
 
-		///
 		/// The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
 		///
-		///   - Attribute key: `inputScale`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScale`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.scale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.scaleRange), forKey: "inputScale")
 			}
 		}
 
+		/// `scale` range definition
+		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - aspectRatio (inputAspectRatio)
 
-		///
 		/// The additional horizontal scaling factor to use on the image.
 		///
-		///   - Attribute key: `inputAspectRatio`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let aspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAspectRatio`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var aspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.aspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.aspectRatioRange), forKey: "inputAspectRatio")
 			}
 		}
 
+		/// `aspectRatio` range definition
+		public static let aspectRatioRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			scale: NSNumber = 1,

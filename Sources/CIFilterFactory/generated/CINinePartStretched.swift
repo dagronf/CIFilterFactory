@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
 	///
 	@objc(CIFilterFactory_NinePartStretched) class NinePartStretched: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CINinePartStretched")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - breakpoint0 (inputBreakpoint0)
 
-		///
 		/// Lower left corner of image to retain before stretching begins.
 		///
-		///   - Attribute key: `inputBreakpoint0`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[50 50]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBreakpoint0`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[50 50]`
 		@objc public var breakpoint0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0_default)
+				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint0")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// breakpoint0 default value
-		@objc public static let breakpoint0_default = CGPoint(x: 50.0, y: 50.0)
+		@objc public static let breakpoint0Default = CGPoint(x: 50.0, y: 50.0)
 
 		// MARK: - breakpoint1 (inputBreakpoint1)
 
-		///
 		/// Upper right corner of image to retain after stretching ends.
 		///
-		///   - Attribute key: `inputBreakpoint1`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBreakpoint1`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var breakpoint1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1_default)
+				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint1")
@@ -101,20 +101,20 @@ import Foundation
 		}
 
 		/// breakpoint1 default value
-		@objc public static let breakpoint1_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let breakpoint1Default = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - growAmount (inputGrowAmount)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputGrowAmount`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeOffset`
-		///   - Default value: `[100 100]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputGrowAmount`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeOffset`
+		/// - Default value: `[100 100]`
 		@objc public var growAmount: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmount_default)
+				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmountDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputGrowAmount")
@@ -122,15 +122,16 @@ import Foundation
 		}
 
 		/// growAmount default value
-		@objc public static let growAmount_default = CGPoint(x: 100.0, y: 100.0)
+		@objc public static let growAmountDefault = CGPoint(x: 100.0, y: 100.0)
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			breakpoint0: CGPoint = NinePartStretched.breakpoint0_default,
-			breakpoint1: CGPoint = NinePartStretched.breakpoint1_default,
-			growAmount: CGPoint = NinePartStretched.growAmount_default
+			breakpoint0: CGPoint = NinePartStretched.breakpoint0Default,
+			breakpoint1: CGPoint = NinePartStretched.breakpoint1Default,
+			growAmount: CGPoint = NinePartStretched.growAmountDefault
 		) {
 			self.init()
 

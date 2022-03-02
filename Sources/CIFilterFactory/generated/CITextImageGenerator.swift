@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
 	///
 	@objc(CIFilterFactory_TextImageGenerator) class TextImageGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITextImageGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - text (inputText)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputText`
-		///   - Internal class: `NSString`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputText`
+		/// - Internal class: `NSString`
 		@objc public var text: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputText")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - fontName (inputFontName)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputFontName`
-		///   - Internal class: `NSString`
-		///   - Default value: `HelveticaNeue`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFontName`
+		/// - Internal class: `NSString`
+		/// - Default value: `HelveticaNeue`
 		@objc public var fontName: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputFontName")
@@ -81,48 +81,51 @@ import Foundation
 
 		// MARK: - fontSize (inputFontSize)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputFontSize`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `12`
-		///   minValue: 0.0
-		///
-		public static let fontSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFontSize`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `12`
+		/// - Minimum value: `0.0`
 		@objc public var fontSize: NSNumber? {
 			get {
 				return self.keyedValue("inputFontSize")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.fontSize_Range), forKey: "inputFontSize")
+				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.fontSizeRange), forKey: "inputFontSize")
 			}
 		}
 
+		/// `fontSize` range definition
+		public static let fontSizeRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - scaleFactor (inputScaleFactor)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputScaleFactor`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let scaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScaleFactor`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var scaleFactor: NSNumber? {
 			get {
 				return self.keyedValue("inputScaleFactor")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.scaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: TextImageGenerator.scaleFactorRange), forKey: "inputScaleFactor")
 			}
 		}
 
+		/// `scaleFactor` range definition
+		public static let scaleFactorRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: String,
 			fontName: String = "HelveticaNeue",

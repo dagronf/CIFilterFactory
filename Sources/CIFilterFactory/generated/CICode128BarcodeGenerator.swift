@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
 	///
 	@objc(CIFilterFactory_Code128BarcodeGenerator) class Code128BarcodeGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICode128BarcodeGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - message (inputMessage)
 
-		///
 		/// The message to encode in the Code 128 Barcode
 		///
-		///   - Attribute key: `inputMessage`
-		///   - Internal class: `NSData`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMessage`
+		/// - Internal class: `NSData`
 		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
@@ -63,47 +63,49 @@ import Foundation
 
 		// MARK: - quietSpace (inputQuietSpace)
 
-		///
 		/// The number of empty white pixels that should surround the barcode.
 		///
-		///   - Attribute key: `inputQuietSpace`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `10`
-		///   minValue: 0.0
-		///   maxValue: 100.0
-		///
-		public static let quietSpace_Range: ClosedRange<Float> = 0.0 ... 100.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputQuietSpace`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `10`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `100.0`
 		@objc public var quietSpace: NSNumber? {
 			get {
 				return self.keyedValue("inputQuietSpace")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.quietSpace_Range), forKey: "inputQuietSpace")
+				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.quietSpaceRange), forKey: "inputQuietSpace")
 			}
 		}
 
+		/// `quietSpace` range definition
+		public static let quietSpaceRange: ClosedRange<Float> = 0.0 ... 100.0
+
 		// MARK: - barcodeHeight (inputBarcodeHeight)
 
-		///
 		/// The height of the generated barcode in pixels.
 		///
-		///   - Attribute key: `inputBarcodeHeight`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `32`
-		///   minValue: 1.0
-		///   maxValue: 500.0
-		///
-		public static let barcodeHeight_Range: ClosedRange<Float> = 1.0 ... 500.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBarcodeHeight`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `32`
+		/// - Minimum value: `1.0`
+		/// - Maximum value: `500.0`
 		@objc public var barcodeHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputBarcodeHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.barcodeHeight_Range), forKey: "inputBarcodeHeight")
+				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.barcodeHeightRange), forKey: "inputBarcodeHeight")
 			}
 		}
+
+		/// `barcodeHeight` range definition
+		public static let barcodeHeightRange: ClosedRange<Float> = 1.0 ... 500.0
 
 		// MARK: - Additional Outputs
 
@@ -113,6 +115,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
 			quietSpace: NSNumber = 10,

@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransformWithExtent/)
 	///
 	@objc(CIFilterFactory_PerspectiveTransformWithExtent) class PerspectiveTransformWithExtent: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   - Attribute key: `inputExtent`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[0 0 300 300]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtent`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[0 0 300 300]`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// extent default value
-		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
 
 		// MARK: - topLeft (inputTopLeft)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputTopLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[118 484]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[118 484]`
 		@objc public var topLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeft_default)
+				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
@@ -101,20 +101,20 @@ import Foundation
 		}
 
 		/// topLeft default value
-		@objc public static let topLeft_default = CGPoint(x: 118.0, y: 484.0)
+		@objc public static let topLeftDefault = CGPoint(x: 118.0, y: 484.0)
 
 		// MARK: - topRight (inputTopRight)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputTopRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[646 507]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[646 507]`
 		@objc public var topRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRight_default)
+				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
@@ -122,20 +122,20 @@ import Foundation
 		}
 
 		/// topRight default value
-		@objc public static let topRight_default = CGPoint(x: 646.0, y: 507.0)
+		@objc public static let topRightDefault = CGPoint(x: 646.0, y: 507.0)
 
 		// MARK: - bottomRight (inputBottomRight)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputBottomRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[548 140]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[548 140]`
 		@objc public var bottomRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRight_default)
+				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
@@ -143,20 +143,20 @@ import Foundation
 		}
 
 		/// bottomRight default value
-		@objc public static let bottomRight_default = CGPoint(x: 548.0, y: 140.0)
+		@objc public static let bottomRightDefault = CGPoint(x: 548.0, y: 140.0)
 
 		// MARK: - bottomLeft (inputBottomLeft)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputBottomLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[155 153]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[155 153]`
 		@objc public var bottomLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeft_default)
+				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")
@@ -164,17 +164,18 @@ import Foundation
 		}
 
 		/// bottomLeft default value
-		@objc public static let bottomLeft_default = CGPoint(x: 155.0, y: 153.0)
+		@objc public static let bottomLeftDefault = CGPoint(x: 155.0, y: 153.0)
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			extent: CGRect = PerspectiveTransformWithExtent.extent_default,
-			topLeft: CGPoint = PerspectiveTransformWithExtent.topLeft_default,
-			topRight: CGPoint = PerspectiveTransformWithExtent.topRight_default,
-			bottomRight: CGPoint = PerspectiveTransformWithExtent.bottomRight_default,
-			bottomLeft: CGPoint = PerspectiveTransformWithExtent.bottomLeft_default
+			extent: CGRect = PerspectiveTransformWithExtent.extentDefault,
+			topLeft: CGPoint = PerspectiveTransformWithExtent.topLeftDefault,
+			topRight: CGPoint = PerspectiveTransformWithExtent.topRightDefault,
+			bottomRight: CGPoint = PerspectiveTransformWithExtent.bottomRightDefault,
+			bottomLeft: CGPoint = PerspectiveTransformWithExtent.bottomLeftDefault
 		) {
 			self.init()
 

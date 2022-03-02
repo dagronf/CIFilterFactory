@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIModTransition/)
 	///
 	@objc(CIFilterFactory_ModTransition) class ModTransition: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIModTransition")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - targetImage (inputTargetImage)
 
-		///
 		/// The target image for a transition.
 		///
-		///   - Attribute key: `inputTargetImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
@@ -80,16 +80,16 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -97,39 +97,40 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - time (inputTime)
 
-		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   - Attribute key: `inputTime`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeTime`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTime`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeTime`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.time_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: ModTransition.timeRange), forKey: "inputTime")
 			}
 		}
 
+		/// `time` range definition
+		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - angle (inputAngle)
 
-		///
 		/// The angle of the mod hole pattern.
 		///
-		///   - Attribute key: `inputAngle`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `2`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAngle`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `2`
 		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
@@ -141,52 +142,55 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The radius of the undistorted holes in the pattern.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `150`
-		///   minValue: 1.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `150`
+		/// - Minimum value: `1.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: ModTransition.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - compression (inputCompression)
 
-		///
 		/// The amount of stretching applied to the mod hole pattern. Holes in the center are not distorted as much as those at the edge of the image.
 		///
-		///   - Attribute key: `inputCompression`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `300`
-		///   minValue: 1.0
-		///
-		public static let compression_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCompression`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `300`
+		/// - Minimum value: `1.0`
 		@objc public var compression: NSNumber? {
 			get {
 				return self.keyedValue("inputCompression")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.compression_Range), forKey: "inputCompression")
+				self.filter.setValue(newValue?.clamped(bounds: ModTransition.compressionRange), forKey: "inputCompression")
 			}
 		}
 
+		/// `compression` range definition
+		public static let compressionRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			center: CGPoint = ModTransition.center_default,
+			center: CGPoint = ModTransition.centerDefault,
 			time: NSNumber = 0,
 			angle: NSNumber = 2,
 			radius: NSNumber = 150,

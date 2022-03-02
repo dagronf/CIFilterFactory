@@ -22,6 +22,13 @@
 
 import Cocoa
 
+extension String {
+	func index(at offset: Int) -> String.Index { self.index(self.startIndex, offsetBy: offset) }
+	func substring(from startIndex: String.Index, length: Int) -> String {
+		return String(self[startIndex ..< self.index(startIndex, offsetBy: length)])
+	}
+}
+
 private func parseFilter(filter: CIFilter, out: FileSquirter) {
 
 	let name = filter.name
@@ -46,7 +53,6 @@ private func parseFilter(filter: CIFilter, out: FileSquirter) {
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import Foundation
 import AVFoundation
@@ -111,6 +117,7 @@ import CoreImage
 
 
 	out.print("   @objc(CIFilterFactory_\(staticName)) public class \(staticName): FilterCore {")
+	out.print("      /// Create an instance of the filter")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
 	out.print("      }")
@@ -133,8 +140,7 @@ import CoreImage
 
 		let userFriendlyKey: String = {
 			if key2.hasPrefix("input") {
-				let v = key2[key2.index(key2.startIndex, offsetBy: 5)...]
-				//let v = key2.substring(from: key2.index(key2.startIndex, offsetBy: 5))
+				let v = key2.suffix(from: key2.index(at: 5))
 				return v.prefix(1).lowercased() + v.dropFirst()
 			}
 			return key2
@@ -166,40 +172,50 @@ import CoreImage
 
 		initializers.append( InitType(name: userFriendlyKey, class: mappedClass ?? keyClass, subtype: keySubType, default: keyDefaultValue))
 
-		out.print("   ///")
 		out.print("   /// \(keyDesc ?? "No Description")")
 		out.print("   ///")
-		out.print("   ///   - Attribute key: `\(key2)`")
-		out.print("   ///   - Internal class: `\(keyClass)`")
+		out.print("   /// CIFilter attribute information")
+		out.print("   /// - Attribute key: `\(key2)`")
+		out.print("   /// - Internal class: `\(keyClass)`")
 		if let t = keySubType {
-			out.print("   ///   - Type: `\(t)`")
+			out.print("   /// - Type: `\(t)`")
 		}
 		if let def = keyDefaultValue {
 			if keyClass == "NSAffineTransform" {
 				let tr = (def as! AffineTransform)
-				out.print("   ///   - Default value: `\(tr)`")
+				out.print("   /// - Default value: `\(tr)`")
 			}
 			else if keyClass == "CIColor" {
 				let tr = (def as! CIColor)
-				out.print("   ///   - Default value: `rgba(\(tr.stringRepresentation)`)")
+				out.print("   /// - Default value: `rgba(\(tr.stringRepresentation))`")
 			}
 			else if let cs = maybeCast(def, to: CGColorSpace.self) {
 				// <CGColorSpace 0x7f897ffeed70> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)
 				let s = "\(cs)"
 				let ww = s.split(separator: ">")
-				out.print("   ///   - Default value: `\(ww[1])`")
+				out.print("   /// - Default value: `\(ww[1])`")
 			}
 			else {
-				out.print("   ///   - Default value: `\(def)`")
+				out.print("   /// - Default value: `\(def)`")
 			}
 		}
-		let rangeDef = handleRange(out: out, key: userFriendlyKey, keyAttributes: keyItem)
+		if let range = getRangeInfo(keyAttributes: keyItem) {
+			if let mi = range.0 {
+				out.print("   /// - Minimum value: `\(mi)`")
+			}
+			if let ma = range.1 {
+				out.print("   /// - Maximum value: `\(ma)`")
+			}
+		}
+
+		let dummy = FileSquirter(name: "")
+		let rangeDef = handleRange(out: dummy, key: userFriendlyKey, keyAttributes: keyItem)
 
 		if keySubType == "CIAttributeTypeRectangle" {
 			let defaultValue = (keyDefaultValue as? CIVector)?.cgRectValue ?? .zero
 			out.print("   @objc public var \(userFriendlyKey): CGRect {")
 			out.print("      get {")
-			out.print("         return CGRect(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)_default)")
+			out.print("         return CGRect(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)Default)")
 			out.print("      }")
 			out.print("      set {")
 			out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key2)")"#)
@@ -207,7 +223,7 @@ import CoreImage
 			out.print("   }")
 			out.print("")
 			out.print("   /// \(userFriendlyKey) default value")
-			out.print("   @objc static public let \(userFriendlyKey)_default = CGRect(x: \(defaultValue.origin.x), y: \(defaultValue.origin.y), width: \(defaultValue.width), height: \(defaultValue.width))")
+			out.print("   @objc static public let \(userFriendlyKey)Default = CGRect(x: \(defaultValue.origin.x), y: \(defaultValue.origin.y), width: \(defaultValue.width), height: \(defaultValue.width))")
 			out.print("")
 		}
 		else if keyClass == "NSAffineTransform" {
@@ -224,7 +240,7 @@ import CoreImage
 			let defaultValue = (keyDefaultValue as? CIVector)?.cgPointValue ?? .zero
 			out.print("   @objc public var \(userFriendlyKey): CGPoint {")
 			out.print("      get {")
-			out.print("         return CGPoint(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)_default)")
+			out.print("         return CGPoint(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)Default)")
 			out.print("      }")
 			out.print("      set {")
 			out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key2)")"#)
@@ -232,7 +248,7 @@ import CoreImage
 			out.print("   }")
 			out.print("")
 			out.print("   /// \(userFriendlyKey) default value")
-			out.print("   @objc static public let \(userFriendlyKey)_default = CGPoint(x: \(defaultValue.x), y: \(defaultValue.y))")
+			out.print("   @objc static public let \(userFriendlyKey)Default = CGPoint(x: \(defaultValue.x), y: \(defaultValue.y))")
 			out.print("")
 		}
 		else if keyClass == "CGImageMetadataRef" {
@@ -272,6 +288,8 @@ import CoreImage
 			out.print("      }")
 			out.print("   }")
 		}
+
+		_ = handleRange(out: out, key: userFriendlyKey, keyAttributes: keyItem)
 	}
 
 	let outputs = filter.outputKeys.filter { $0 != "outputImage" && !$0.contains(":") }
@@ -318,10 +336,10 @@ import CoreImage
 		   subtype != "CIAffineTransform" {
 			var defValue = "\(def)"
 			if subtype == "CGPoint" {
-				defValue = "\(staticName).\(key.name)_default"
+				defValue = "\(staticName).\(key.name)Default"
 			}
 			else if subtype == "CGRect" {
-				defValue = "\(staticName).\(key.name)_default"
+				defValue = "\(staticName).\(key.name)Default"
 			}
 			else if key.class == "String", let defv = def as? NSString {
 				defValue = "\"\(defv)\""
@@ -338,6 +356,7 @@ import CoreImage
 		out.print("")
 		out.print("      // MARK: - Convenience initializer")
 		out.print("")
+		out.print("      /// Create an instance of the filter")
 		out.print("      @objc public convenience init?(\(str)) {")
 		out.print("         self.init()")
 		out.print("         \(initializer)")
@@ -348,43 +367,47 @@ import CoreImage
 	out.print("}\n")
 }
 
-func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -> String? {
 
-	var minValue: Float?
-	var maxValue: Float?
-	var rangeString = ""
-	if let paramMin = keyAttributes[kCIAttributeMin] as? Float {
+func getRangeInfo(keyAttributes: [String: Any]) -> (Double?, Double?)? {
+	var minValue: Double?
+	var maxValue: Double?
+	if let paramMin = keyAttributes[kCIAttributeMin] as? Double {
 		minValue = paramMin
-		rangeString += "   ///   minValue: \(paramMin)"
 	}
-	if let paramMax = keyAttributes[kCIAttributeMax] as? Float {
+	if let paramMax = keyAttributes[kCIAttributeMax] as? Double {
 		maxValue = paramMax
-		if rangeString.count > 0 {
-			rangeString += "\n"
-		}
-		rangeString += "   ///   maxValue: \(paramMax)"
 	}
-	if !rangeString.isEmpty {
-		rangeString += "\n   ///"
-		out.print(rangeString)
+	if minValue != nil || maxValue != nil {
+		return (minValue, maxValue)
 	}
 	else {
 		// No range specified for the key
 		return nil
 	}
+}
+
+func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -> String? {
+
+	guard let range = getRangeInfo(keyAttributes: keyAttributes) else {
+		return nil
+	}
+	let minValue = range.0
+	let maxValue = range.1
+
+	out.print("   /// `\(key)` range definition")
 
 	if let minValue = minValue {
 		if let maxValue = maxValue {
-			out.print("   public static let \(key)_Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
+			out.print("   public static let \(key)Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
 		}
 		else {
-			out.print("   public static let \(key)_Range: PartialRangeFrom<Float> = Float(\(minValue))...")
+			out.print("   public static let \(key)Range: PartialRangeFrom<Float> = Float(\(minValue))...")
 		}
 	}
 	else if let maxValue = maxValue {
-		out.print("   public static let \(key)_Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
+		out.print("   public static let \(key)Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
 	}
-	return " \(key)_Range"
+	return " \(key)Range"
 }
 
 

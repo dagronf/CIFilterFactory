@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)
 	///
 	@objc(CIFilterFactory_RoundedRectangleGenerator) class RoundedRectangleGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
@@ -46,16 +46,16 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   - Attribute key: `inputExtent`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[0 0 100 100]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtent`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[0 0 100 100]`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -63,38 +63,39 @@ import Foundation
 		}
 
 		/// extent default value
-		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The distance from the center of the effect.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `10`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `10`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RoundedRectangleGenerator.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: RoundedRectangleGenerator.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - color (inputColor)
 
-		///
 		/// A color.
 		///
-		///   - Attribute key: `inputColor`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -106,8 +107,9 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
-			extent: CGRect = RoundedRectangleGenerator.extent_default,
+			extent: CGRect = RoundedRectangleGenerator.extentDefault,
 			radius: NSNumber = 10,
 			color: CIColor
 		) {

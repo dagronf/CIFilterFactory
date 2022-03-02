@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
 	///
 	@objc(CIFilterFactory_AttributedTextImageGenerator) class AttributedTextImageGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAttributedTextImageGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - text (inputText)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputText`
-		///   - Internal class: `NSAttributedString`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputText`
+		/// - Internal class: `NSAttributedString`
 		@objc public var text: NSAttributedString? {
 			get {
 				return self.keyedValue("inputText")
@@ -62,27 +62,29 @@ import Foundation
 
 		// MARK: - scaleFactor (inputScaleFactor)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputScaleFactor`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let scaleFactor_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScaleFactor`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var scaleFactor: NSNumber? {
 			get {
 				return self.keyedValue("inputScaleFactor")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AttributedTextImageGenerator.scaleFactor_Range), forKey: "inputScaleFactor")
+				self.filter.setValue(newValue?.clamped(bounds: AttributedTextImageGenerator.scaleFactorRange), forKey: "inputScaleFactor")
 			}
 		}
 
+		/// `scaleFactor` range definition
+		public static let scaleFactorRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: NSAttributedString,
 			scaleFactor: NSNumber = 1

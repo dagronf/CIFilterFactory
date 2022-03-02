@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
 	///
 	@objc(CIFilterFactory_GaussianGradient) class GaussianGradient: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
 		}
@@ -46,16 +46,16 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -63,17 +63,17 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - color0 (inputColor0)
 
-		///
 		/// The first color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor0`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor0`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -85,13 +85,13 @@ import Foundation
 
 		// MARK: - color1 (inputColor1)
 
-		///
 		/// The second color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor1`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(0 0 0 0`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor1`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(0 0 0 0)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -103,29 +103,31 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The radius of the Gaussian distribution.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `300`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `300`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: GaussianGradient.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: GaussianGradient.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
-			center: CGPoint = GaussianGradient.center_default,
+			center: CGPoint = GaussianGradient.centerDefault,
 			color0: CIColor,
 			color1: CIColor,
 			radius: NSNumber = 300

@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
 	@objc(CIFilterFactory_AccordionFoldTransition) class AccordionFoldTransition: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - targetImage (inputTargetImage)
 
-		///
 		/// The target image for a transition.
 		///
-		///   - Attribute key: `inputTargetImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
@@ -80,93 +80,98 @@ import Foundation
 
 		// MARK: - bottomHeight (inputBottomHeight)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputBottomHeight`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///
-		public static let bottomHeight_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomHeight`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
 		@objc public var bottomHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputBottomHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.bottomHeight_Range), forKey: "inputBottomHeight")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.bottomHeightRange), forKey: "inputBottomHeight")
 			}
 		}
 
+		/// `bottomHeight` range definition
+		public static let bottomHeightRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - numberOfFolds (inputNumberOfFolds)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputNumberOfFolds`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `3`
-		///   minValue: 1.0
-		///   maxValue: 50.0
-		///
-		public static let numberOfFolds_Range: ClosedRange<Float> = 1.0 ... 50.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputNumberOfFolds`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `3`
+		/// - Minimum value: `1.0`
+		/// - Maximum value: `50.0`
 		@objc public var numberOfFolds: NSNumber? {
 			get {
 				return self.keyedValue("inputNumberOfFolds")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.numberOfFolds_Range), forKey: "inputNumberOfFolds")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.numberOfFoldsRange), forKey: "inputNumberOfFolds")
 			}
 		}
 
+		/// `numberOfFolds` range definition
+		public static let numberOfFoldsRange: ClosedRange<Float> = 1.0 ... 50.0
+
 		// MARK: - foldShadowAmount (inputFoldShadowAmount)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputFoldShadowAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.1`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let foldShadowAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFoldShadowAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var foldShadowAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputFoldShadowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.foldShadowAmount_Range), forKey: "inputFoldShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.foldShadowAmountRange), forKey: "inputFoldShadowAmount")
 			}
 		}
 
+		/// `foldShadowAmount` range definition
+		public static let foldShadowAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - time (inputTime)
 
-		///
 		/// The duration of the effect.
 		///
-		///   - Attribute key: `inputTime`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeTime`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTime`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeTime`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.time_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.timeRange), forKey: "inputTime")
 			}
 		}
 
+		/// `time` range definition
+		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,

@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
 	///
 	@objc(CIFilterFactory_KMeans) class KMeans: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIKMeans")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		///
 		/// A rectangle that defines the extent of the effect.
 		///
-		///   - Attribute key: `inputExtent`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[0 0 640 80]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtent`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[0 0 640 80]`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -80,15 +80,15 @@ import Foundation
 		}
 
 		/// extent default value
-		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
 
 		// MARK: - means (inputMeans)
 
-		///
 		/// Specifies the color seeds to use for k-means clustering, either passed as an image or an array of colors.
 		///
-		///   - Attribute key: `inputMeans`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMeans`
+		/// - Internal class: `CIImage`
 		@objc public var means: CIImage? {
 			get {
 				return self.keyedValue("inputMeans")
@@ -100,75 +100,79 @@ import Foundation
 
 		// MARK: - count (inputCount)
 
-		///
 		/// Specifies how many k-means color clusters should be used.
 		///
-		///   - Attribute key: `inputCount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeCount`
-		///   - Default value: `8`
-		///   minValue: 0.0
-		///   maxValue: 128.0
-		///
-		public static let count_Range: ClosedRange<Float> = 0.0 ... 128.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeCount`
+		/// - Default value: `8`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `128.0`
 		@objc public var count: NSNumber? {
 			get {
 				return self.keyedValue("inputCount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.count_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: KMeans.countRange), forKey: "inputCount")
 			}
 		}
 
+		/// `count` range definition
+		public static let countRange: ClosedRange<Float> = 0.0 ... 128.0
+
 		// MARK: - passes (inputPasses)
 
-		///
 		/// Specifies how many k-means passes should be performed.
 		///
-		///   - Attribute key: `inputPasses`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeCount`
-		///   - Default value: `5`
-		///   minValue: 0.0
-		///   maxValue: 20.0
-		///
-		public static let passes_Range: ClosedRange<Float> = 0.0 ... 20.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPasses`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeCount`
+		/// - Default value: `5`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `20.0`
 		@objc public var passes: NSNumber? {
 			get {
 				return self.keyedValue("inputPasses")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.passes_Range), forKey: "inputPasses")
+				self.filter.setValue(newValue?.clamped(bounds: KMeans.passesRange), forKey: "inputPasses")
 			}
 		}
 
+		/// `passes` range definition
+		public static let passesRange: ClosedRange<Float> = 0.0 ... 20.0
+
 		// MARK: - perceptual (inputPerceptual)
 
-		///
 		/// Specifies whether the k-means color palette should be computed in a perceptual color space.
 		///
-		///   - Attribute key: `inputPerceptual`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeBoolean`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let perceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPerceptual`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var perceptual: NSNumber? {
 			get {
 				return self.keyedValue("inputPerceptual")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.perceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: KMeans.perceptualRange), forKey: "inputPerceptual")
 			}
 		}
 
+		/// `perceptual` range definition
+		public static let perceptualRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			extent: CGRect = KMeans.extent_default,
+			extent: CGRect = KMeans.extentDefault,
 			means: CIImage,
 			count: NSNumber = 8,
 			passes: NSNumber = 5,

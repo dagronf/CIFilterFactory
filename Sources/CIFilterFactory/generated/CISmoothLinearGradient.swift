@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISmoothLinearGradient/)
 	///
 	@objc(CIFilterFactory_SmoothLinearGradient) class SmoothLinearGradient: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISmoothLinearGradient")
 		}
@@ -46,16 +46,16 @@ import Foundation
 
 		// MARK: - point0 (inputPoint0)
 
-		///
 		/// The starting position of the gradient -- where the first color begins.
 		///
-		///   - Attribute key: `inputPoint0`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPoint0`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[0 0]`
 		@objc public var point0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0_default)
+				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
@@ -63,20 +63,20 @@ import Foundation
 		}
 
 		/// point0 default value
-		@objc public static let point0_default = CGPoint(x: 0.0, y: 0.0)
+		@objc public static let point0Default = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - point1 (inputPoint1)
 
-		///
 		/// The ending position of the gradient -- where the second color begins.
 		///
-		///   - Attribute key: `inputPoint1`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[200 200]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPoint1`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[200 200]`
 		@objc public var point1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1_default)
+				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")
@@ -84,17 +84,17 @@ import Foundation
 		}
 
 		/// point1 default value
-		@objc public static let point1_default = CGPoint(x: 200.0, y: 200.0)
+		@objc public static let point1Default = CGPoint(x: 200.0, y: 200.0)
 
 		// MARK: - color0 (inputColor0)
 
-		///
 		/// The first color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor0`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor0`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -106,13 +106,13 @@ import Foundation
 
 		// MARK: - color1 (inputColor1)
 
-		///
 		/// The second color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor1`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(0 0 0 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor1`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(0 0 0 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -124,9 +124,10 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
-			point0: CGPoint = SmoothLinearGradient.point0_default,
-			point1: CGPoint = SmoothLinearGradient.point1_default,
+			point0: CGPoint = SmoothLinearGradient.point0Default,
+			point1: CGPoint = SmoothLinearGradient.point1Default,
 			color0: CIColor,
 			color1: CIColor
 		) {

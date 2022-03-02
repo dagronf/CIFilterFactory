@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
 	///
 	@objc(CIFilterFactory_QRCodeGenerator) class QRCodeGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - message (inputMessage)
 
-		///
 		/// The message to encode in the QR Code
 		///
-		///   - Attribute key: `inputMessage`
-		///   - Internal class: `NSData`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMessage`
+		/// - Internal class: `NSData`
 		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - correctionLevel (inputCorrectionLevel)
 
-		///
 		/// QR Code correction level L, M, Q, or H.
 		///
-		///   - Attribute key: `inputCorrectionLevel`
-		///   - Internal class: `NSString`
-		///   - Default value: `M`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCorrectionLevel`
+		/// - Internal class: `NSString`
+		/// - Default value: `M`
 		@objc public var correctionLevel: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputCorrectionLevel")
@@ -87,6 +87,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
 			correctionLevel: String = "M"

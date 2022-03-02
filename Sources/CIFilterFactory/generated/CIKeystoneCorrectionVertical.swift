@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
 	///
 	@objc(CIFilterFactory_KeystoneCorrectionVertical) class KeystoneCorrectionVertical: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionVertical")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to process.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,13 +63,13 @@ import Foundation
 
 		// MARK: - focalLength (inputFocalLength)
 
-		///
 		/// 35mm equivalent focal length of the input image.
 		///
-		///   - Attribute key: `inputFocalLength`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `28`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFocalLength`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `28`
 		@objc public var focalLength: NSNumber? {
 			get {
 				return self.keyedValue("inputFocalLength")
@@ -81,15 +81,15 @@ import Foundation
 
 		// MARK: - topLeft (inputTopLeft)
 
-		///
 		/// The top left coordinate of the guide.
 		///
-		///   - Attribute key: `inputTopLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
 		@objc public var topLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeft_default)
+				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
@@ -97,19 +97,19 @@ import Foundation
 		}
 
 		/// topLeft default value
-		@objc public static let topLeft_default = CGPoint(x: 0.0, y: 0.0)
+		@objc public static let topLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - topRight (inputTopRight)
 
-		///
 		/// The top right coordinate of the guide.
 		///
-		///   - Attribute key: `inputTopRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
 		@objc public var topRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRight_default)
+				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
@@ -117,19 +117,19 @@ import Foundation
 		}
 
 		/// topRight default value
-		@objc public static let topRight_default = CGPoint(x: 0.0, y: 0.0)
+		@objc public static let topRightDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - bottomRight (inputBottomRight)
 
-		///
 		/// The bottom right coordinate of the guide.
 		///
-		///   - Attribute key: `inputBottomRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
 		@objc public var bottomRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRight_default)
+				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
@@ -137,19 +137,19 @@ import Foundation
 		}
 
 		/// bottomRight default value
-		@objc public static let bottomRight_default = CGPoint(x: 0.0, y: 0.0)
+		@objc public static let bottomRightDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - bottomLeft (inputBottomLeft)
 
-		///
 		/// The bottom left coordinate of the guide.
 		///
-		///   - Attribute key: `inputBottomLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
 		@objc public var bottomLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeft_default)
+				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")
@@ -157,7 +157,7 @@ import Foundation
 		}
 
 		/// bottomLeft default value
-		@objc public static let bottomLeft_default = CGPoint(x: 0.0, y: 0.0)
+		@objc public static let bottomLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - Additional Outputs
 
@@ -171,6 +171,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			focalLength: NSNumber = 28,

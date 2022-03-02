@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrop/)
 	///
 	@objc(CIFilterFactory_Crop) class Crop: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICrop")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - rectangle (inputRectangle)
 
-		///
 		/// The rectangle that specifies the crop to apply to the image.
 		///
-		///   - Attribute key: `inputRectangle`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[-8.98847e+307 -8.98847e+307 1.79769e+308 1.79769e+308]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRectangle`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[-8.98847e+307 -8.98847e+307 1.79769e+308 1.79769e+308]`
 		@objc public var rectangle: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputRectangle", defaultValue: Self.rectangle_default)
+				return CGRect(with: self.filter, key: "inputRectangle", defaultValue: Self.rectangleDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputRectangle")
@@ -80,13 +80,14 @@ import Foundation
 		}
 
 		/// rectangle default value
-		@objc public static let rectangle_default = CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
+		@objc public static let rectangleDefault = CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			rectangle: CGRect = Crop.rectangle_default
+			rectangle: CGRect = Crop.rectangleDefault
 		) {
 			self.init()
 

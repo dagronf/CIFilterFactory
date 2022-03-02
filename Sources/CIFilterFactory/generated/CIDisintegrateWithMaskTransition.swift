@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)
 	///
 	@objc(CIFilterFactory_DisintegrateWithMaskTransition) class DisintegrateWithMaskTransition: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - targetImage (inputTargetImage)
 
-		///
 		/// The target image for a transition.
 		///
-		///   - Attribute key: `inputTargetImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var targetImage: CIImage? {
 			get {
 				return self.keyedValue("inputTargetImage")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - maskImage (inputMaskImage)
 
-		///
 		/// An image that defines the shape to use when disintegrating from the source to the target image.
 		///
-		///   - Attribute key: `inputMaskImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMaskImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var maskImage: CIImage? {
 			get {
 				return self.keyedValue("inputMaskImage")
@@ -97,81 +97,84 @@ import Foundation
 
 		// MARK: - time (inputTime)
 
-		///
 		/// The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		///
-		///   - Attribute key: `inputTime`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeTime`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let time_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTime`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeTime`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var time: NSNumber? {
 			get {
 				return self.keyedValue("inputTime")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.time_Range), forKey: "inputTime")
+				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.timeRange), forKey: "inputTime")
 			}
 		}
 
+		/// `time` range definition
+		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - shadowRadius (inputShadowRadius)
 
-		///
 		/// The radius of the shadow created by the mask.
 		///
-		///   - Attribute key: `inputShadowRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `8`
-		///   minValue: 0.0
-		///
-		public static let shadowRadius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShadowRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `8`
+		/// - Minimum value: `0.0`
 		@objc public var shadowRadius: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowRadius_Range), forKey: "inputShadowRadius")
+				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowRadiusRange), forKey: "inputShadowRadius")
 			}
 		}
 
+		/// `shadowRadius` range definition
+		public static let shadowRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - shadowDensity (inputShadowDensity)
 
-		///
 		/// The density of the shadow created by the mask.
 		///
-		///   - Attribute key: `inputShadowDensity`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.65`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let shadowDensity_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShadowDensity`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.65`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var shadowDensity: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowDensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowDensity_Range), forKey: "inputShadowDensity")
+				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowDensityRange), forKey: "inputShadowDensity")
 			}
 		}
 
+		/// `shadowDensity` range definition
+		public static let shadowDensityRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - shadowOffset (inputShadowOffset)
 
-		///
 		/// The offset of the shadow created by the mask.
 		///
-		///   - Attribute key: `inputShadowOffset`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeOffset`
-		///   - Default value: `[0 -10]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShadowOffset`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeOffset`
+		/// - Default value: `[0 -10]`
 		@objc public var shadowOffset: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffset_default)
+				return CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputShadowOffset")
@@ -179,10 +182,11 @@ import Foundation
 		}
 
 		/// shadowOffset default value
-		@objc public static let shadowOffset_default = CGPoint(x: 0.0, y: -10.0)
+		@objc public static let shadowOffsetDefault = CGPoint(x: 0.0, y: -10.0)
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
@@ -190,7 +194,7 @@ import Foundation
 			time: NSNumber = 0,
 			shadowRadius: NSNumber = 8,
 			shadowDensity: NSNumber = 0.65,
-			shadowOffset: CGPoint = DisintegrateWithMaskTransition.shadowOffset_default
+			shadowOffset: CGPoint = DisintegrateWithMaskTransition.shadowOffsetDefault
 		) {
 			self.init()
 

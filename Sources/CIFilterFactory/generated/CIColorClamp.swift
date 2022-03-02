@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
 	///
 	@objc(CIFilterFactory_ColorClamp) class ColorClamp: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - minComponents (inputMinComponents)
 
-		///
 		/// Lower clamping values
 		///
-		///   - Attribute key: `inputMinComponents`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 0 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMinComponents`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 0 0 0]`
 		@objc public var minComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMinComponents")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - maxComponents (inputMaxComponents)
 
-		///
 		/// Higher clamping values
 		///
-		///   - Attribute key: `inputMaxComponents`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[1 1 1 1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMaxComponents`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[1 1 1 1]`
 		@objc public var maxComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMaxComponents")
@@ -97,6 +97,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			minComponents: CIVector = CIVector([0.0, 0.0, 0.0, 0.0]),

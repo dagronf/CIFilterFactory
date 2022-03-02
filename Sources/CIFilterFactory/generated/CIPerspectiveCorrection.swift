@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveCorrection/)
 	///
 	@objc(CIFilterFactory_PerspectiveCorrection) class PerspectiveCorrection: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPerspectiveCorrection")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - topLeft (inputTopLeft)
 
-		///
 		/// The top left coordinate to be perspective corrected.
 		///
-		///   - Attribute key: `inputTopLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[118 484]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[118 484]`
 		@objc public var topLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeft_default)
+				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// topLeft default value
-		@objc public static let topLeft_default = CGPoint(x: 118.0, y: 484.0)
+		@objc public static let topLeftDefault = CGPoint(x: 118.0, y: 484.0)
 
 		// MARK: - topRight (inputTopRight)
 
-		///
 		/// The top right coordinate to be perspective corrected.
 		///
-		///   - Attribute key: `inputTopRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[646 507]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTopRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[646 507]`
 		@objc public var topRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRight_default)
+				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
@@ -101,20 +101,20 @@ import Foundation
 		}
 
 		/// topRight default value
-		@objc public static let topRight_default = CGPoint(x: 646.0, y: 507.0)
+		@objc public static let topRightDefault = CGPoint(x: 646.0, y: 507.0)
 
 		// MARK: - bottomRight (inputBottomRight)
 
-		///
 		/// The bottom right coordinate to be perspective corrected.
 		///
-		///   - Attribute key: `inputBottomRight`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[548 140]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomRight`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[548 140]`
 		@objc public var bottomRight: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRight_default)
+				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
@@ -122,20 +122,20 @@ import Foundation
 		}
 
 		/// bottomRight default value
-		@objc public static let bottomRight_default = CGPoint(x: 548.0, y: 140.0)
+		@objc public static let bottomRightDefault = CGPoint(x: 548.0, y: 140.0)
 
 		// MARK: - bottomLeft (inputBottomLeft)
 
-		///
 		/// The bottom left coordinate to be perspective corrected.
 		///
-		///   - Attribute key: `inputBottomLeft`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[155 153]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBottomLeft`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[155 153]`
 		@objc public var bottomLeft: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeft_default)
+				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")
@@ -143,17 +143,17 @@ import Foundation
 		}
 
 		/// bottomLeft default value
-		@objc public static let bottomLeft_default = CGPoint(x: 155.0, y: 153.0)
+		@objc public static let bottomLeftDefault = CGPoint(x: 155.0, y: 153.0)
 
 		// MARK: - crop (inputCrop)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputCrop`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeBoolean`
-		///   - Default value: `1`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCrop`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default value: `1`
 		@objc public var crop: NSNumber? {
 			get {
 				return self.keyedValue("inputCrop")
@@ -165,12 +165,13 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			topLeft: CGPoint = PerspectiveCorrection.topLeft_default,
-			topRight: CGPoint = PerspectiveCorrection.topRight_default,
-			bottomRight: CGPoint = PerspectiveCorrection.bottomRight_default,
-			bottomLeft: CGPoint = PerspectiveCorrection.bottomLeft_default,
+			topLeft: CGPoint = PerspectiveCorrection.topLeftDefault,
+			topRight: CGPoint = PerspectiveCorrection.topRightDefault,
+			bottomRight: CGPoint = PerspectiveCorrection.bottomRightDefault,
+			bottomLeft: CGPoint = PerspectiveCorrection.bottomLeftDefault,
 			crop: NSNumber = 1
 		) {
 			self.init()

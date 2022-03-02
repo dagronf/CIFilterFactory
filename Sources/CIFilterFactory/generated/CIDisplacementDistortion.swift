@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
 	///
 	@objc(CIFilterFactory_DisplacementDistortion) class DisplacementDistortion: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,11 +63,11 @@ import Foundation
 
 		// MARK: - displacementImage (inputDisplacementImage)
 
-		///
 		/// An image whose grayscale values will be applied to the source image.
 		///
-		///   - Attribute key: `inputDisplacementImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputDisplacementImage`
+		/// - Internal class: `CIImage`
 		@objc public var displacementImage: CIImage? {
 			get {
 				return self.keyedValue("inputDisplacementImage")
@@ -79,27 +79,29 @@ import Foundation
 
 		// MARK: - scale (inputScale)
 
-		///
 		/// The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		///
-		///   - Attribute key: `inputScale`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `50`
-		///   minValue: 0.0
-		///
-		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScale`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `50`
+		/// - Minimum value: `0.0`
 		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisplacementDistortion.scale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: DisplacementDistortion.scaleRange), forKey: "inputScale")
 			}
 		}
 
+		/// `scale` range definition
+		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			displacementImage: CIImage,

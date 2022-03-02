@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHatchedScreen/)
 	///
 	@objc(CIFilterFactory_HatchedScreen) class HatchedScreen: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHatchedScreen")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		///
 		/// The x and y position to use as the center of the hatched screen pattern
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -80,17 +80,17 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - angle (inputAngle)
 
-		///
 		/// The angle of the pattern.
 		///
-		///   - Attribute key: `inputAngle`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAngle`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
@@ -102,52 +102,55 @@ import Foundation
 
 		// MARK: - width (inputWidth)
 
-		///
 		/// The distance between lines in the pattern.
 		///
-		///   - Attribute key: `inputWidth`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `6`
-		///   minValue: 1.0
-		///
-		public static let width_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputWidth`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `6`
+		/// - Minimum value: `1.0`
 		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HatchedScreen.width_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: HatchedScreen.widthRange), forKey: "inputWidth")
 			}
 		}
 
+		/// `width` range definition
+		public static let widthRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - sharpness (inputSharpness)
 
-		///
 		/// The amount of sharpening to apply.
 		///
-		///   - Attribute key: `inputSharpness`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.7`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let sharpness_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSharpness`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.7`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var sharpness: NSNumber? {
 			get {
 				return self.keyedValue("inputSharpness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HatchedScreen.sharpness_Range), forKey: "inputSharpness")
+				self.filter.setValue(newValue?.clamped(bounds: HatchedScreen.sharpnessRange), forKey: "inputSharpness")
 			}
 		}
 
+		/// `sharpness` range definition
+		public static let sharpnessRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			center: CGPoint = HatchedScreen.center_default,
+			center: CGPoint = HatchedScreen.centerDefault,
 			angle: NSNumber = 0,
 			width: NSNumber = 6,
 			sharpness: NSNumber = 0.7

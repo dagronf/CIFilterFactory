@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
 	///
 	@objc(CIFilterFactory_BicubicScaleTransform) class BicubicScaleTransform: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBicubicScaleTransform")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,92 +63,97 @@ import Foundation
 
 		// MARK: - scale (inputScale)
 
-		///
 		/// The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
 		///
-		///   - Attribute key: `inputScale`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScale`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.scale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.scaleRange), forKey: "inputScale")
 			}
 		}
 
+		/// `scale` range definition
+		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - aspectRatio (inputAspectRatio)
 
-		///
 		/// The additional horizontal scaling factor to use on the image.
 		///
-		///   - Attribute key: `inputAspectRatio`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let aspectRatio_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAspectRatio`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var aspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.aspectRatio_Range), forKey: "inputAspectRatio")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.aspectRatioRange), forKey: "inputAspectRatio")
 			}
 		}
 
+		/// `aspectRatio` range definition
+		public static let aspectRatioRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - b (inputB)
 
-		///
 		/// Specifies the value of B to use for the cubic resampling function.
 		///
-		///   - Attribute key: `inputB`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let b_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputB`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var b: NSNumber? {
 			get {
 				return self.keyedValue("inputB")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.b_Range), forKey: "inputB")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.bRange), forKey: "inputB")
 			}
 		}
 
+		/// `b` range definition
+		public static let bRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - c (inputC)
 
-		///
 		/// Specifies the value of C to use for the cubic resampling function.
 		///
-		///   - Attribute key: `inputC`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.75`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let c_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputC`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.75`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var c: NSNumber? {
 			get {
 				return self.keyedValue("inputC")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.c_Range), forKey: "inputC")
+				self.filter.setValue(newValue?.clamped(bounds: BicubicScaleTransform.cRange), forKey: "inputC")
 			}
 		}
 
+		/// `c` range definition
+		public static let cRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			scale: NSNumber = 1,

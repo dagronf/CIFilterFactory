@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
 	///
 	@objc(CIFilterFactory_PerspectiveRotate) class PerspectiveRotate: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPerspectiveRotate")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to process.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,13 +63,13 @@ import Foundation
 
 		// MARK: - focalLength (inputFocalLength)
 
-		///
 		/// 35mm equivalent focal length of the input image.
 		///
-		///   - Attribute key: `inputFocalLength`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `28`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFocalLength`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `28`
 		@objc public var focalLength: NSNumber? {
 			get {
 				return self.keyedValue("inputFocalLength")
@@ -81,13 +81,13 @@ import Foundation
 
 		// MARK: - pitch (inputPitch)
 
-		///
 		/// Pitch angle in radians.
 		///
-		///   - Attribute key: `inputPitch`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPitch`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var pitch: NSNumber? {
 			get {
 				return self.keyedValue("inputPitch")
@@ -99,13 +99,13 @@ import Foundation
 
 		// MARK: - yaw (inputYaw)
 
-		///
 		/// Yaw angle in radians.
 		///
-		///   - Attribute key: `inputYaw`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputYaw`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var yaw: NSNumber? {
 			get {
 				return self.keyedValue("inputYaw")
@@ -117,13 +117,13 @@ import Foundation
 
 		// MARK: - roll (inputRoll)
 
-		///
 		/// Roll angle in radians.
 		///
-		///   - Attribute key: `inputRoll`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRoll`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var roll: NSNumber? {
 			get {
 				return self.keyedValue("inputRoll")
@@ -141,6 +141,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			focalLength: NSNumber = 28,

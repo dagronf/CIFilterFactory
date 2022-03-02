@@ -188,8 +188,15 @@ You can find some really simple examples for both Swift and Objective-C in the `
 
 ## Regenerating CIFilterFactory
 
-1. Open a terminal and navigate to the CIFilterFactory/Tools folder
+1. Open a terminal and navigate to the CIFilterFactory/tools folder
 2. run `sh regenerate.sh`
+
+## Generating a docarchive file
+
+NOTE: This is only available for Xcode 13 and later
+
+1. Open a terminal and navigate to the CIFilterFactory/tools folder
+2. run `sh make-docs.sh`
 
 ## What else?
 
@@ -197,6 +204,11 @@ You can find some really simple examples for both Swift and Objective-C in the `
 * Better type support
 
 ## History
+
+### `13.0.1`
+
+* Restructured generated source to better support Xcode documentation
+* Added script for generating docarchive file
 
 ### `13.0.0`
 
@@ -253,7 +265,7 @@ becomes
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2022 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

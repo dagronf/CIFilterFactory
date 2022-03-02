@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
 	///
 	@objc(CIFilterFactory_DepthBlurEffect) class DepthBlurEffect: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,11 +63,11 @@ import Foundation
 
 		// MARK: - disparityImage (inputDisparityImage)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputDisparityImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputDisparityImage`
+		/// - Internal class: `CIImage`
 		@objc public var disparityImage: CIImage? {
 			get {
 				return self.keyedValue("inputDisparityImage")
@@ -79,11 +79,11 @@ import Foundation
 
 		// MARK: - matteImage (inputMatteImage)
 
-		///
 		/// A matting image.
 		///
-		///   - Attribute key: `inputMatteImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMatteImage`
+		/// - Internal class: `CIImage`
 		@objc public var matteImage: CIImage? {
 			get {
 				return self.keyedValue("inputMatteImage")
@@ -95,11 +95,11 @@ import Foundation
 
 		// MARK: - hairImage (inputHairImage)
 
-		///
 		/// A segmentation matte image that corresponds to people’s hair.
 		///
-		///   - Attribute key: `inputHairImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputHairImage`
+		/// - Internal class: `CIImage`
 		@objc public var hairImage: CIImage? {
 			get {
 				return self.keyedValue("inputHairImage")
@@ -111,11 +111,11 @@ import Foundation
 
 		// MARK: - glassesImage (inputGlassesImage)
 
-		///
 		/// A segmentation matte image that corresponds to people’s glasses.
 		///
-		///   - Attribute key: `inputGlassesImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputGlassesImage`
+		/// - Internal class: `CIImage`
 		@objc public var glassesImage: CIImage? {
 			get {
 				return self.keyedValue("inputGlassesImage")
@@ -127,11 +127,11 @@ import Foundation
 
 		// MARK: - gainMap (inputGainMap)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputGainMap`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputGainMap`
+		/// - Internal class: `CIImage`
 		@objc public var gainMap: CIImage? {
 			get {
 				return self.keyedValue("inputGainMap")
@@ -143,38 +143,39 @@ import Foundation
 
 		// MARK: - aperture (inputAperture)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputAperture`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 22.0
-		///
-		public static let aperture_Range: ClosedRange<Float> = 0.0 ... 22.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAperture`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `22.0`
 		@objc public var aperture: NSNumber? {
 			get {
 				return self.keyedValue("inputAperture")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.aperture_Range), forKey: "inputAperture")
+				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.apertureRange), forKey: "inputAperture")
 			}
 		}
 
+		/// `aperture` range definition
+		public static let apertureRange: ClosedRange<Float> = 0.0 ... 22.0
+
 		// MARK: - leftEyePositions (inputLeftEyePositions)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputLeftEyePositions`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[-1 -1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLeftEyePositions`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[-1 -1]`
 		@objc public var leftEyePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositions_default)
+				return CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputLeftEyePositions")
@@ -182,20 +183,20 @@ import Foundation
 		}
 
 		/// leftEyePositions default value
-		@objc public static let leftEyePositions_default = CGPoint(x: -1.0, y: -1.0)
+		@objc public static let leftEyePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - rightEyePositions (inputRightEyePositions)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputRightEyePositions`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[-1 -1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRightEyePositions`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[-1 -1]`
 		@objc public var rightEyePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositions_default)
+				return CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputRightEyePositions")
@@ -203,20 +204,20 @@ import Foundation
 		}
 
 		/// rightEyePositions default value
-		@objc public static let rightEyePositions_default = CGPoint(x: -1.0, y: -1.0)
+		@objc public static let rightEyePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - chinPositions (inputChinPositions)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputChinPositions`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[-1 -1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputChinPositions`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[-1 -1]`
 		@objc public var chinPositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositions_default)
+				return CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputChinPositions")
@@ -224,20 +225,20 @@ import Foundation
 		}
 
 		/// chinPositions default value
-		@objc public static let chinPositions_default = CGPoint(x: -1.0, y: -1.0)
+		@objc public static let chinPositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - nosePositions (inputNosePositions)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputNosePositions`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[-1 -1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputNosePositions`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[-1 -1]`
 		@objc public var nosePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositions_default)
+				return CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputNosePositions")
@@ -245,19 +246,19 @@ import Foundation
 		}
 
 		/// nosePositions default value
-		@objc public static let nosePositions_default = CGPoint(x: -1.0, y: -1.0)
+		@objc public static let nosePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - focusRect (inputFocusRect)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputFocusRect`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFocusRect`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
 		@objc public var focusRect: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputFocusRect", defaultValue: Self.focusRect_default)
+				return CGRect(with: self.filter, key: "inputFocusRect", defaultValue: Self.focusRectDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputFocusRect")
@@ -265,38 +266,40 @@ import Foundation
 		}
 
 		/// focusRect default value
-		@objc public static let focusRect_default = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+		@objc public static let focusRectDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 		// MARK: - lumaNoiseScale (inputLumaNoiseScale)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputLumaNoiseScale`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///
-		public static let lumaNoiseScale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLumaNoiseScale`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `0.1`
 		@objc public var lumaNoiseScale: NSNumber? {
 			get {
 				return self.keyedValue("inputLumaNoiseScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.lumaNoiseScale_Range), forKey: "inputLumaNoiseScale")
+				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.lumaNoiseScaleRange), forKey: "inputLumaNoiseScale")
 			}
 		}
 
+		/// `lumaNoiseScale` range definition
+		public static let lumaNoiseScaleRange: ClosedRange<Float> = 0.0 ... 0.1
+
 		// MARK: - scaleFactor (inputScaleFactor)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputScaleFactor`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScaleFactor`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
 		@objc public var scaleFactor: NSNumber? {
 			get {
 				return self.keyedValue("inputScaleFactor")
@@ -308,11 +311,11 @@ import Foundation
 
 		// MARK: - calibrationData (inputCalibrationData)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputCalibrationData`
-		///   - Internal class: `AVCameraCalibrationData`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCalibrationData`
+		/// - Internal class: `AVCameraCalibrationData`
 		@objc public var calibrationData: AVCameraCalibrationData? {
 			get {
 				return self.keyedValue("inputCalibrationData")
@@ -324,11 +327,11 @@ import Foundation
 
 		// MARK: - auxDataMetadata (inputAuxDataMetadata)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputAuxDataMetadata`
-		///   - Internal class: `CGImageMetadataRef`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAuxDataMetadata`
+		/// - Internal class: `CGImageMetadataRef`
 		@objc public var auxDataMetadata: CGImageMetadata? {
 			get {
 				return self.keyedValue("inputAuxDataMetadata")
@@ -340,11 +343,11 @@ import Foundation
 
 		// MARK: - shape (inputShape)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputShape`
-		///   - Internal class: `NSString`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShape`
+		/// - Internal class: `NSString`
 		@objc public var shape: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputShape")
@@ -357,6 +360,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			disparityImage: CIImage,
@@ -365,10 +369,10 @@ import Foundation
 			glassesImage: CIImage,
 			gainMap: CIImage,
 			aperture: NSNumber = 0,
-			leftEyePositions: CGPoint = DepthBlurEffect.leftEyePositions_default,
-			rightEyePositions: CGPoint = DepthBlurEffect.rightEyePositions_default,
-			chinPositions: CGPoint = DepthBlurEffect.chinPositions_default,
-			nosePositions: CGPoint = DepthBlurEffect.nosePositions_default,
+			leftEyePositions: CGPoint = DepthBlurEffect.leftEyePositionsDefault,
+			rightEyePositions: CGPoint = DepthBlurEffect.rightEyePositionsDefault,
+			chinPositions: CGPoint = DepthBlurEffect.chinPositionsDefault,
+			nosePositions: CGPoint = DepthBlurEffect.nosePositionsDefault,
 			focusRect: CGRect,
 			lumaNoiseScale: NSNumber = 0,
 			scaleFactor: NSNumber = 1,

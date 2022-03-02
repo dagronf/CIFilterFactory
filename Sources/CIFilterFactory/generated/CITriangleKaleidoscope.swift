@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
 	///
 	@objc(CIFilterFactory_TriangleKaleidoscope) class TriangleKaleidoscope: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// Input image to generate kaleidoscope effect from.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - point (inputPoint)
 
-		///
 		/// The x and y position to use as the center of the triangular area in the input image.
 		///
-		///   - Attribute key: `inputPoint`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPoint`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var point: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint", defaultValue: Self.point_default)
+				return CGPoint(with: self.filter, key: "inputPoint", defaultValue: Self.pointDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint")
@@ -80,17 +80,17 @@ import Foundation
 		}
 
 		/// point default value
-		@objc public static let point_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let pointDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - size (inputSize)
 
-		///
 		/// The size in pixels of the triangle.
 		///
-		///   - Attribute key: `inputSize`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `700`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSize`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `700`
 		@objc public var size: NSNumber? {
 			get {
 				return self.keyedValue("inputSize")
@@ -102,13 +102,13 @@ import Foundation
 
 		// MARK: - rotation (inputRotation)
 
-		///
 		/// Rotation angle of the triangle.
 		///
-		///   - Attribute key: `inputRotation`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `5.924285296593801`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRotation`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `5.924285296593801`
 		@objc public var rotation: NSNumber? {
 			get {
 				return self.keyedValue("inputRotation")
@@ -120,13 +120,13 @@ import Foundation
 
 		// MARK: - decay (inputDecay)
 
-		///
 		/// The decay determines how fast the color fades from the center triangle.
 		///
-		///   - Attribute key: `inputDecay`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.85`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputDecay`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.85`
 		@objc public var decay: NSNumber? {
 			get {
 				return self.keyedValue("inputDecay")
@@ -138,9 +138,10 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			point: CGPoint = TriangleKaleidoscope.point_default,
+			point: CGPoint = TriangleKaleidoscope.pointDefault,
 			size: NSNumber = 700,
 			rotation: NSNumber = 5.924285296593801,
 			decay: NSNumber = 0.85

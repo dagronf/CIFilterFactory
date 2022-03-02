@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
 	///
 	@objc(CIFilterFactory_AreaHistogram) class AreaHistogram: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAreaHistogram")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image whose histogram you want to calculate.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		///
 		/// A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
 		///
-		///   - Attribute key: `inputExtent`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeRectangle`
-		///   - Default value: `[0 0 640 80]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtent`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeRectangle`
+		/// - Default value: `[0 0 640 80]`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extent_default)
+				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -80,50 +80,52 @@ import Foundation
 		}
 
 		/// extent default value
-		@objc public static let extent_default = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
 
 		// MARK: - scale (inputScale)
 
-		///
 		/// The scale value to use for the histogram values. If the scale is 1.0, then the bins in the resulting image will add up to 1.0.
 		///
-		///   - Attribute key: `inputScale`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let scale_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputScale`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var scale: NSNumber? {
 			get {
 				return self.keyedValue("inputScale")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.scale_Range), forKey: "inputScale")
+				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.scaleRange), forKey: "inputScale")
 			}
 		}
 
+		/// `scale` range definition
+		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - count (inputCount)
 
-		///
 		/// The number of bins for the histogram. This value will determine the width of the output image.
 		///
-		///   - Attribute key: `inputCount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `64`
-		///   minValue: 1.0
-		///   maxValue: 2048.0
-		///
-		public static let count_Range: ClosedRange<Float> = 1.0 ... 2048.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `64`
+		/// - Minimum value: `1.0`
+		/// - Maximum value: `2048.0`
 		@objc public var count: NSNumber? {
 			get {
 				return self.keyedValue("inputCount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.count_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.countRange), forKey: "inputCount")
 			}
 		}
+
+		/// `count` range definition
+		public static let countRange: ClosedRange<Float> = 1.0 ... 2048.0
 
 		// MARK: - Additional Outputs
 
@@ -141,9 +143,10 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			extent: CGRect = AreaHistogram.extent_default,
+			extent: CGRect = AreaHistogram.extentDefault,
 			scale: NSNumber = 1,
 			count: NSNumber = 64
 		) {

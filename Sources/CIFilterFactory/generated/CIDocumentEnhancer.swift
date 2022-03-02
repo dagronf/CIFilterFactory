@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
 	@objc(CIFilterFactory_DocumentEnhancer) class DocumentEnhancer: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,28 +63,30 @@ import Foundation
 
 		// MARK: - amount (inputAmount)
 
-		///
 		/// The amount of enhancement.
 		///
-		///   - Attribute key: `inputAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///   maxValue: 10.0
-		///
-		public static let amount_Range: ClosedRange<Float> = 0.0 ... 10.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `10.0`
 		@objc public var amount: NSNumber? {
 			get {
 				return self.keyedValue("inputAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DocumentEnhancer.amount_Range), forKey: "inputAmount")
+				self.filter.setValue(newValue?.clamped(bounds: DocumentEnhancer.amountRange), forKey: "inputAmount")
 			}
 		}
 
+		/// `amount` range definition
+		public static let amountRange: ClosedRange<Float> = 0.0 ... 10.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			amount: NSNumber = 1

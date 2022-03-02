@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
 	///
 	@objc(CIFilterFactory_VignetteEffect) class VignetteEffect: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -80,78 +80,82 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The distance from the center of the effect.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `150`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `150`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - intensity (inputIntensity)
 
-		///
 		/// The intensity of the effect.
 		///
-		///   - Attribute key: `inputIntensity`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: -1.0
-		///   maxValue: 1.0
-		///
-		public static let intensity_Range: ClosedRange<Float> = -1.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputIntensity`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `-1.0`
+		/// - Maximum value: `1.0`
 		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.intensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.intensityRange), forKey: "inputIntensity")
 			}
 		}
 
+		/// `intensity` range definition
+		public static let intensityRange: ClosedRange<Float> = -1.0 ... 1.0
+
 		// MARK: - falloff (inputFalloff)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputFalloff`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.5`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let falloff_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputFalloff`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.5`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var falloff: NSNumber? {
 			get {
 				return self.keyedValue("inputFalloff")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.falloff_Range), forKey: "inputFalloff")
+				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.falloffRange), forKey: "inputFalloff")
 			}
 		}
 
+		/// `falloff` range definition
+		public static let falloffRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			center: CGPoint = VignetteEffect.center_default,
+			center: CGPoint = VignetteEffect.centerDefault,
 			radius: NSNumber = 150,
 			intensity: NSNumber = 1,
 			falloff: NSNumber = 0.5

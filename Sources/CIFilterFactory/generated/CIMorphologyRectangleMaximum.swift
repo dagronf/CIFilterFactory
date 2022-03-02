@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
 	///
 	@objc(CIFilterFactory_MorphologyRectangleMaximum) class MorphologyRectangleMaximum: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMorphologyRectangleMaximum")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,48 +63,51 @@ import Foundation
 
 		// MARK: - width (inputWidth)
 
-		///
 		/// The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   - Attribute key: `inputWidth`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeInteger`
-		///   - Default value: `5`
-		///   minValue: 1.0
-		///
-		public static let width_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputWidth`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Default value: `5`
+		/// - Minimum value: `1.0`
 		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.width_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.widthRange), forKey: "inputWidth")
 			}
 		}
 
+		/// `width` range definition
+		public static let widthRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - height (inputHeight)
 
-		///
 		/// The height in pixels of the morphological operation. The value will be rounded to the nearest odd integer.
 		///
-		///   - Attribute key: `inputHeight`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeInteger`
-		///   - Default value: `5`
-		///   minValue: 1.0
-		///
-		public static let height_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputHeight`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Default value: `5`
+		/// - Minimum value: `1.0`
 		@objc public var height: NSNumber? {
 			get {
 				return self.keyedValue("inputHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.height_Range), forKey: "inputHeight")
+				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMaximum.heightRange), forKey: "inputHeight")
 			}
 		}
 
+		/// `height` range definition
+		public static let heightRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			width: NSNumber = 5,

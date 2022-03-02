@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
 	///
 	@objc(CIFilterFactory_StretchCrop) class StretchCrop: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIStretchCrop")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - size (inputSize)
 
-		///
 		/// The size in pixels of the output image.
 		///
-		///   - Attribute key: `inputSize`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[1280 720]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSize`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[1280 720]`
 		@objc public var size: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.size_default)
+				return CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.sizeDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputSize")
@@ -80,57 +80,60 @@ import Foundation
 		}
 
 		/// size default value
-		@objc public static let size_default = CGPoint(x: 1280.0, y: 720.0)
+		@objc public static let sizeDefault = CGPoint(x: 1280.0, y: 720.0)
 
 		// MARK: - cropAmount (inputCropAmount)
 
-		///
 		/// Determines if and how much cropping should be used to achieve the target size. If value is 0 then only stretching is used. If 1 then only cropping is used.
 		///
-		///   - Attribute key: `inputCropAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.25`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let cropAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCropAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.25`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var cropAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputCropAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.cropAmount_Range), forKey: "inputCropAmount")
+				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.cropAmountRange), forKey: "inputCropAmount")
 			}
 		}
 
+		/// `cropAmount` range definition
+		public static let cropAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - centerStretchAmount (inputCenterStretchAmount)
 
-		///
 		/// Determine how much the center of the image is stretched if stretching is used. If value is 0 then the center of the image maintains the original aspect ratio. If 1 then the image is stretched uniformly.
 		///
-		///   - Attribute key: `inputCenterStretchAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.25`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let centerStretchAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenterStretchAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.25`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var centerStretchAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputCenterStretchAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.centerStretchAmount_Range), forKey: "inputCenterStretchAmount")
+				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.centerStretchAmountRange), forKey: "inputCenterStretchAmount")
 			}
 		}
 
+		/// `centerStretchAmount` range definition
+		public static let centerStretchAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			size: CGPoint = StretchCrop.size_default,
+			size: CGPoint = StretchCrop.sizeDefault,
 			cropAmount: NSNumber = 0.25,
 			centerStretchAmount: NSNumber = 0.25
 		) {

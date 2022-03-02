@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
 	@objc(CIFilterFactory_ColorMatrix) class ColorMatrix: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - rVector (inputRVector)
 
-		///
 		/// The amount of red to multiply the source color values by.
 		///
-		///   - Attribute key: `inputRVector`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[1 0 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRVector`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[1 0 0 0]`
 		@objc public var rVector: CIVector? {
 			get {
 				return self.keyedValue("inputRVector")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - gVector (inputGVector)
 
-		///
 		/// The amount of green to multiply the source color values by.
 		///
-		///   - Attribute key: `inputGVector`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputGVector`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1 0 0]`
 		@objc public var gVector: CIVector? {
 			get {
 				return self.keyedValue("inputGVector")
@@ -97,12 +97,12 @@ import Foundation
 
 		// MARK: - bVector (inputBVector)
 
-		///
 		/// The amount of blue to multiply the source color values by.
 		///
-		///   - Attribute key: `inputBVector`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 0 1 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBVector`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 0 1 0]`
 		@objc public var bVector: CIVector? {
 			get {
 				return self.keyedValue("inputBVector")
@@ -114,12 +114,12 @@ import Foundation
 
 		// MARK: - aVector (inputAVector)
 
-		///
 		/// The amount of alpha to multiply the source color values by.
 		///
-		///   - Attribute key: `inputAVector`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 0 0 1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAVector`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 0 0 1]`
 		@objc public var aVector: CIVector? {
 			get {
 				return self.keyedValue("inputAVector")
@@ -131,12 +131,12 @@ import Foundation
 
 		// MARK: - biasVector (inputBiasVector)
 
-		///
 		/// A vector that’s added to each color component.
 		///
-		///   - Attribute key: `inputBiasVector`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 0 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBiasVector`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 0 0 0]`
 		@objc public var biasVector: CIVector? {
 			get {
 				return self.keyedValue("inputBiasVector")
@@ -148,6 +148,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			rVector: CIVector = CIVector([1.0, 0.0, 0.0, 0.0]),

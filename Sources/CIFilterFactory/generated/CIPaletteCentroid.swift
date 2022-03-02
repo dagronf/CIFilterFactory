@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
 	@objc(CIFilterFactory_PaletteCentroid) class PaletteCentroid: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,11 +63,11 @@ import Foundation
 
 		// MARK: - paletteImage (inputPaletteImage)
 
-		///
 		/// The input color palette, obtained using “CIKMeans“ filter.
 		///
-		///   - Attribute key: `inputPaletteImage`
-		///   - Internal class: `CIImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPaletteImage`
+		/// - Internal class: `CIImage`
 		@objc public var paletteImage: CIImage? {
 			get {
 				return self.keyedValue("inputPaletteImage")
@@ -79,28 +79,30 @@ import Foundation
 
 		// MARK: - perceptual (inputPerceptual)
 
-		///
 		/// Specifies whether the color palette should be applied in a perceptual color space.
 		///
-		///   - Attribute key: `inputPerceptual`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeBoolean`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let perceptual_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPerceptual`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var perceptual: NSNumber? {
 			get {
 				return self.keyedValue("inputPerceptual")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PaletteCentroid.perceptual_Range), forKey: "inputPerceptual")
+				self.filter.setValue(newValue?.clamped(bounds: PaletteCentroid.perceptualRange), forKey: "inputPerceptual")
 			}
 		}
 
+		/// `perceptual` range definition
+		public static let perceptualRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			paletteImage: CIImage,

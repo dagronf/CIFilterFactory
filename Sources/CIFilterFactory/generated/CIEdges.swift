@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdges/)
 	///
 	@objc(CIFilterFactory_Edges) class Edges: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIEdges")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,27 +63,29 @@ import Foundation
 
 		// MARK: - intensity (inputIntensity)
 
-		///
 		/// The intensity of the edges. The larger the value, the higher the intensity.
 		///
-		///   - Attribute key: `inputIntensity`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let intensity_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputIntensity`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var intensity: NSNumber? {
 			get {
 				return self.keyedValue("inputIntensity")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Edges.intensity_Range), forKey: "inputIntensity")
+				self.filter.setValue(newValue?.clamped(bounds: Edges.intensityRange), forKey: "inputIntensity")
 			}
 		}
 
+		/// `intensity` range definition
+		public static let intensityRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			intensity: NSNumber = 1

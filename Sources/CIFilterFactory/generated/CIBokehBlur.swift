@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
 	///
 	@objc(CIFilterFactory_BokehBlur) class BokehBlur: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,93 +63,99 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `20`
-		///   minValue: 0.0
-		///   maxValue: 500.0
-		///
-		public static let radius_Range: ClosedRange<Float> = 0.0 ... 500.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `20`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `500.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: ClosedRange<Float> = 0.0 ... 500.0
+
 		// MARK: - ringAmount (inputRingAmount)
 
-		///
 		/// The amount of extra emphasis at the ring of the bokeh.
 		///
-		///   - Attribute key: `inputRingAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let ringAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRingAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var ringAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputRingAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringAmount_Range), forKey: "inputRingAmount")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringAmountRange), forKey: "inputRingAmount")
 			}
 		}
 
+		/// `ringAmount` range definition
+		public static let ringAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - ringSize (inputRingSize)
 
-		///
 		/// The size of extra emphasis at the ring of the bokeh
 		///
-		///   - Attribute key: `inputRingSize`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0.1`
-		///   minValue: 0.0
-		///
-		public static let ringSize_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRingSize`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0.1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `0.2`
 		@objc public var ringSize: NSNumber? {
 			get {
 				return self.keyedValue("inputRingSize")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringSize_Range), forKey: "inputRingSize")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringSizeRange), forKey: "inputRingSize")
 			}
 		}
 
+		/// `ringSize` range definition
+		public static let ringSizeRange: ClosedRange<Float> = 0.0 ... 0.2
+
 		// MARK: - softness (inputSoftness)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputSoftness`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///   maxValue: 10.0
-		///
-		public static let softness_Range: ClosedRange<Float> = 0.0 ... 10.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSoftness`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `10.0`
 		@objc public var softness: NSNumber? {
 			get {
 				return self.keyedValue("inputSoftness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.softness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.softnessRange), forKey: "inputSoftness")
 			}
 		}
 
+		/// `softness` range definition
+		public static let softnessRange: ClosedRange<Float> = 0.0 ... 10.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			radius: NSNumber = 20,

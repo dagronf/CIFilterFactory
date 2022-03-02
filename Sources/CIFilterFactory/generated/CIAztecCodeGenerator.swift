@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
 	///
 	@objc(CIFilterFactory_AztecCodeGenerator) class AztecCodeGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - message (inputMessage)
 
-		///
 		/// The message to encode in the Aztec Barcode
 		///
-		///   - Attribute key: `inputMessage`
-		///   - Internal class: `NSData`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMessage`
+		/// - Internal class: `NSData`
 		@objc public var message: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputMessage")
@@ -63,64 +63,67 @@ import Foundation
 
 		// MARK: - correctionLevel (inputCorrectionLevel)
 
-		///
 		/// Aztec error correction value between 5 and 95
 		///
-		///   - Attribute key: `inputCorrectionLevel`
-		///   - Internal class: `NSNumber`
-		///   - Default value: `23`
-		///   minValue: 5.0
-		///   maxValue: 95.0
-		///
-		public static let correctionLevel_Range: ClosedRange<Float> = 5.0 ... 95.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCorrectionLevel`
+		/// - Internal class: `NSNumber`
+		/// - Default value: `23`
+		/// - Minimum value: `5.0`
+		/// - Maximum value: `95.0`
 		@objc public var correctionLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.correctionLevel_Range), forKey: "inputCorrectionLevel")
+				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.correctionLevelRange), forKey: "inputCorrectionLevel")
 			}
 		}
 
+		/// `correctionLevel` range definition
+		public static let correctionLevelRange: ClosedRange<Float> = 5.0 ... 95.0
+
 		// MARK: - layers (inputLayers)
 
-		///
 		/// Aztec layers value between 1 and 32. Set to nil for automatic.
 		///
-		///   - Attribute key: `inputLayers`
-		///   - Internal class: `NSNumber`
-		///   minValue: 1.0
-		///   maxValue: 32.0
-		///
-		public static let layers_Range: ClosedRange<Float> = 1.0 ... 32.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputLayers`
+		/// - Internal class: `NSNumber`
+		/// - Minimum value: `1.0`
+		/// - Maximum value: `32.0`
 		@objc public var layers: NSNumber? {
 			get {
 				return self.keyedValue("inputLayers")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.layers_Range), forKey: "inputLayers")
+				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.layersRange), forKey: "inputLayers")
 			}
 		}
 
+		/// `layers` range definition
+		public static let layersRange: ClosedRange<Float> = 1.0 ... 32.0
+
 		// MARK: - compactStyle (inputCompactStyle)
 
-		///
 		/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
 		///
-		///   - Attribute key: `inputCompactStyle`
-		///   - Internal class: `NSNumber`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let compactStyle_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCompactStyle`
+		/// - Internal class: `NSNumber`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var compactStyle: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactStyle")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.compactStyle_Range), forKey: "inputCompactStyle")
+				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.compactStyleRange), forKey: "inputCompactStyle")
 			}
 		}
+
+		/// `compactStyle` range definition
+		public static let compactStyleRange: ClosedRange<Float> = 0.0 ... 1.0
 
 		// MARK: - Additional Outputs
 
@@ -130,6 +133,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
 			correctionLevel: NSNumber = 23,

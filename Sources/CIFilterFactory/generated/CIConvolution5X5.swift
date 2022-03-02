@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution5X5/)
 	///
 	@objc(CIFilterFactory_Convolution5X5) class Convolution5X5: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConvolution5X5")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - weights (inputWeights)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputWeights`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputWeights`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0]`
 		@objc public var weights: CIVector? {
 			get {
 				return self.keyedValue("inputWeights")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - bias (inputBias)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputBias`
-		///   - Internal class: `NSNumber`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBias`
+		/// - Internal class: `NSNumber`
+		/// - Default value: `0`
 		@objc public var bias: NSNumber? {
 			get {
 				return self.keyedValue("inputBias")
@@ -97,6 +97,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			weights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),

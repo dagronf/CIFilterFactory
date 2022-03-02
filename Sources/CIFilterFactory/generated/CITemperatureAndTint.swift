@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
 	///
 	@objc(CIFilterFactory_TemperatureAndTint) class TemperatureAndTint: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,16 +63,16 @@ import Foundation
 
 		// MARK: - neutral (inputNeutral)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputNeutral`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeOffset`
-		///   - Default value: `[6500 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputNeutral`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeOffset`
+		/// - Default value: `[6500 0]`
 		@objc public var neutral: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutral_default)
+				return CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutralDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputNeutral")
@@ -80,20 +80,20 @@ import Foundation
 		}
 
 		/// neutral default value
-		@objc public static let neutral_default = CGPoint(x: 6500.0, y: 0.0)
+		@objc public static let neutralDefault = CGPoint(x: 6500.0, y: 0.0)
 
 		// MARK: - targetNeutral (inputTargetNeutral)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputTargetNeutral`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypeOffset`
-		///   - Default value: `[6500 0]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputTargetNeutral`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypeOffset`
+		/// - Default value: `[6500 0]`
 		@objc public var targetNeutral: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutral_default)
+				return CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutralDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTargetNeutral")
@@ -101,14 +101,15 @@ import Foundation
 		}
 
 		/// targetNeutral default value
-		@objc public static let targetNeutral_default = CGPoint(x: 6500.0, y: 0.0)
+		@objc public static let targetNeutralDefault = CGPoint(x: 6500.0, y: 0.0)
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			neutral: CGPoint = TemperatureAndTint.neutral_default,
-			targetNeutral: CGPoint = TemperatureAndTint.targetNeutral_default
+			neutral: CGPoint = TemperatureAndTint.neutralDefault,
+			targetNeutral: CGPoint = TemperatureAndTint.targetNeutralDefault
 		) {
 			self.init()
 

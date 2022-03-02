@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKaleidoscope/)
 	///
 	@objc(CIFilterFactory_Kaleidoscope) class Kaleidoscope: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIKaleidoscope")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,37 +63,38 @@ import Foundation
 
 		// MARK: - count (inputCount)
 
-		///
 		/// The number of reflections in the pattern.
 		///
-		///   - Attribute key: `inputCount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `6`
-		///   minValue: 1.0
-		///
-		public static let count_Range: PartialRangeFrom<Float> = Float(1.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `6`
+		/// - Minimum value: `1.0`
 		@objc public var count: NSNumber? {
 			get {
 				return self.keyedValue("inputCount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Kaleidoscope.count_Range), forKey: "inputCount")
+				self.filter.setValue(newValue?.clamped(bounds: Kaleidoscope.countRange), forKey: "inputCount")
 			}
 		}
 
+		/// `count` range definition
+		public static let countRange: PartialRangeFrom<Float> = Float(1.0)...
+
 		// MARK: - center (inputCenter)
 
-		///
 		/// The x and y position to use as the center of the effect
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -101,17 +102,17 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - angle (inputAngle)
 
-		///
 		/// The angle of reflection.
 		///
-		///   - Attribute key: `inputAngle`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeAngle`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAngle`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeAngle`
+		/// - Default value: `0`
 		@objc public var angle: NSNumber? {
 			get {
 				return self.keyedValue("inputAngle")
@@ -123,10 +124,11 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			count: NSNumber = 6,
-			center: CGPoint = Kaleidoscope.center_default,
+			center: CGPoint = Kaleidoscope.centerDefault,
 			angle: NSNumber = 0
 		) {
 			self.init()

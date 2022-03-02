@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
 	///
 	@objc(CIFilterFactory_MeshGenerator) class MeshGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
 		}
@@ -46,33 +46,34 @@ import Foundation
 
 		// MARK: - width (inputWidth)
 
-		///
 		/// The width of the effect.
 		///
-		///   - Attribute key: `inputWidth`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `1.5`
-		///   minValue: 0.0
-		///
-		public static let width_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputWidth`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `1.5`
+		/// - Minimum value: `0.0`
 		@objc public var width: NSNumber? {
 			get {
 				return self.keyedValue("inputWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MeshGenerator.width_Range), forKey: "inputWidth")
+				self.filter.setValue(newValue?.clamped(bounds: MeshGenerator.widthRange), forKey: "inputWidth")
 			}
 		}
 
+		/// `width` range definition
+		public static let widthRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - color (inputColor)
 
-		///
 		/// A color.
 		///
-		///   - Attribute key: `inputColor`
-		///   - Internal class: `CIColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor`
+		/// - Internal class: `CIColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -84,11 +85,11 @@ import Foundation
 
 		// MARK: - mesh (inputMesh)
 
-		///
 		/// An array of line segments stored as an array of CIVectors each containing a start point and end point.
 		///
-		///   - Attribute key: `inputMesh`
-		///   - Internal class: `NSArray`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMesh`
+		/// - Internal class: `NSArray`
 		@objc public var mesh: NSArray? {
 			get {
 				return self.keyedValue("inputMesh")
@@ -100,6 +101,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			width: NSNumber = 1.5,
 			color: CIColor,

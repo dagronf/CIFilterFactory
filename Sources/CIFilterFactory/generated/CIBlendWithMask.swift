@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithMask/)
 	///
 	@objc(CIFilterFactory_BlendWithMask) class BlendWithMask: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBlendWithMask")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as a foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - backgroundImage (inputBackgroundImage)
 
-		///
 		/// The image to use as a background image.
 		///
-		///   - Attribute key: `inputBackgroundImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBackgroundImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var backgroundImage: CIImage? {
 			get {
 				return self.keyedValue("inputBackgroundImage")
@@ -80,12 +80,12 @@ import Foundation
 
 		// MARK: - maskImage (inputMaskImage)
 
-		///
 		/// A grayscale mask. When a mask value is 0.0, the result is the background. When the mask value is 1.0, the result is the image.
 		///
-		///   - Attribute key: `inputMaskImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMaskImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var maskImage: CIImage? {
 			get {
 				return self.keyedValue("inputMaskImage")
@@ -97,6 +97,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			backgroundImage: CIImage,

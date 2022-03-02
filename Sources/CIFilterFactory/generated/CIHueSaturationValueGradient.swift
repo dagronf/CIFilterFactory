@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueSaturationValueGradient/)
 	///
 	@objc(CIFilterFactory_HueSaturationValueGradient) class HueSaturationValueGradient: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHueSaturationValueGradient")
 		}
@@ -46,96 +46,100 @@ import Foundation
 
 		// MARK: - value (inputValue)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputValue`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let value_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputValue`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var value: NSNumber? {
 			get {
 				return self.keyedValue("inputValue")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.value_Range), forKey: "inputValue")
+				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.valueRange), forKey: "inputValue")
 			}
 		}
 
+		/// `value` range definition
+		public static let valueRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - radius (inputRadius)
 
-		///
 		/// The distance from the center of the effect.
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `300`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `300`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - softness (inputSoftness)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputSoftness`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let softness_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputSoftness`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var softness: NSNumber? {
 			get {
 				return self.keyedValue("inputSoftness")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.softness_Range), forKey: "inputSoftness")
+				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.softnessRange), forKey: "inputSoftness")
 			}
 		}
 
+		/// `softness` range definition
+		public static let softnessRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - dither (inputDither)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputDither`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///
-		public static let dither_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputDither`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
 		@objc public var dither: NSNumber? {
 			get {
 				return self.keyedValue("inputDither")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.dither_Range), forKey: "inputDither")
+				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.ditherRange), forKey: "inputDither")
 			}
 		}
 
+		/// `dither` range definition
+		public static let ditherRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - colorSpace (inputColorSpace)
 
-		///
 		/// The CGColorSpaceRef that the color wheel should be generated in.
 		///
-		///   - Attribute key: `inputColorSpace`
-		///   - Internal class: `NSObject`
-		///   - Default value: ` (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColorSpace`
+		/// - Internal class: `NSObject`
+		/// - Default value: ` (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)`
 		@objc public var colorSpace: NSObject? {
 			get {
 				return self.keyedValue("inputColorSpace")
@@ -147,6 +151,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			value: NSNumber = 1,
 			radius: NSNumber = 300,

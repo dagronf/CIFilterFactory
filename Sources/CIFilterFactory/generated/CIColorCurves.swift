@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
 	@objc(CIFilterFactory_ColorCurves) class ColorCurves: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,12 +63,12 @@ import Foundation
 
 		// MARK: - curvesData (inputCurvesData)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputCurvesData`
-		///   - Internal class: `NSData`
-		///   - Default value: `{length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCurvesData`
+		/// - Internal class: `NSData`
+		/// - Default value: `{length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }`
 		@objc public var curvesData: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCurvesData")
@@ -81,12 +81,12 @@ import Foundation
 
 		// MARK: - curvesDomain (inputCurvesDomain)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputCurvesDomain`
-		///   - Internal class: `CIVector`
-		///   - Default value: `[0 1]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCurvesDomain`
+		/// - Internal class: `CIVector`
+		/// - Default value: `[0 1]`
 		@objc public var curvesDomain: CIVector? {
 			get {
 				return self.keyedValue("inputCurvesDomain")
@@ -98,11 +98,11 @@ import Foundation
 
 		// MARK: - colorSpace (inputColorSpace)
 
-		///
 		/// No Description
 		///
-		///   - Attribute key: `inputColorSpace`
-		///   - Internal class: `NSObject`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColorSpace`
+		/// - Internal class: `NSObject`
 		@objc public var colorSpace: NSObject? {
 			get {
 				return self.keyedValue("inputColorSpace")
@@ -114,6 +114,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			curvesData: Data,

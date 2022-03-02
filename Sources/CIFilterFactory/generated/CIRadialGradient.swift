@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRadialGradient/)
 	///
 	@objc(CIFilterFactory_RadialGradient) class RadialGradient: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIRadialGradient")
 		}
@@ -46,16 +46,16 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		///
 		/// The center of the effect as x and y coordinates.
 		///
-		///   - Attribute key: `inputCenter`
-		///   - Internal class: `CIVector`
-		///   - Type: `CIAttributeTypePosition`
-		///   - Default value: `[150 150]`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputCenter`
+		/// - Internal class: `CIVector`
+		/// - Type: `CIAttributeTypePosition`
+		/// - Default value: `[150 150]`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.center_default)
+				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -63,59 +63,61 @@ import Foundation
 		}
 
 		/// center default value
-		@objc public static let center_default = CGPoint(x: 150.0, y: 150.0)
+		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - radius0 (inputRadius0)
 
-		///
 		/// The radius of the starting circle to use in the gradient.
 		///
-		///   - Attribute key: `inputRadius0`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `5`
-		///   minValue: 0.0
-		///
-		public static let radius0_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius0`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `5`
+		/// - Minimum value: `0.0`
 		@objc public var radius0: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius0")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius0_Range), forKey: "inputRadius0")
+				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius0Range), forKey: "inputRadius0")
 			}
 		}
 
+		/// `radius0` range definition
+		public static let radius0Range: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - radius1 (inputRadius1)
 
-		///
 		/// The radius of the ending circle to use in the gradient.
 		///
-		///   - Attribute key: `inputRadius1`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeDistance`
-		///   - Default value: `100`
-		///   minValue: 0.0
-		///
-		public static let radius1_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius1`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeDistance`
+		/// - Default value: `100`
+		/// - Minimum value: `0.0`
 		@objc public var radius1: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius1")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius1_Range), forKey: "inputRadius1")
+				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius1Range), forKey: "inputRadius1")
 			}
 		}
 
+		/// `radius1` range definition
+		public static let radius1Range: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - color0 (inputColor0)
 
-		///
 		/// The first color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor0`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(1 1 1 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor0`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -127,13 +129,13 @@ import Foundation
 
 		// MARK: - color1 (inputColor1)
 
-		///
 		/// The second color to use in the gradient.
 		///
-		///   - Attribute key: `inputColor1`
-		///   - Internal class: `CIColor`
-		///   - Type: `CIAttributeTypeColor`
-		///   - Default value: `rgba(0 0 0 1`)
+		/// CIFilter attribute information
+		/// - Attribute key: `inputColor1`
+		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
+		/// - Default value: `rgba(0 0 0 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -145,8 +147,9 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
-			center: CGPoint = RadialGradient.center_default,
+			center: CGPoint = RadialGradient.centerDefault,
 			radius0: NSNumber = 5,
 			radius1: NSNumber = 100,
 			color0: CIColor,

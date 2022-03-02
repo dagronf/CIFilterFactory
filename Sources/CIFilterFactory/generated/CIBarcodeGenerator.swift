@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
 	///
 	@objc(CIFilterFactory_BarcodeGenerator) class BarcodeGenerator: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
 		}
@@ -46,11 +46,11 @@ import Foundation
 
 		// MARK: - barcodeDescriptor (inputBarcodeDescriptor)
 
-		///
 		/// The CIBarcodeDescription object to generate an image for.
 		///
-		///   - Attribute key: `inputBarcodeDescriptor`
-		///   - Internal class: `CIBarcodeDescriptor`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputBarcodeDescriptor`
+		/// - Internal class: `CIBarcodeDescriptor`
 		@objc public var barcodeDescriptor: CIBarcodeDescriptor? {
 			get {
 				return self.keyedValue("inputBarcodeDescriptor")
@@ -84,6 +84,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			barcodeDescriptor: CIBarcodeDescriptor)
 		{

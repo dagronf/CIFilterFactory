@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
 	///
 	@objc(CIFilterFactory_HighlightShadowAdjust) class HighlightShadowAdjust: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,71 +63,75 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		///
 		/// Shadow Highlight Radius
 		///
-		///   - Attribute key: `inputRadius`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: 0.0
-		///
-		public static let radius_Range: PartialRangeFrom<Float> = Float(0.0)...
+		/// CIFilter attribute information
+		/// - Attribute key: `inputRadius`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `0.0`
 		@objc public var radius: NSNumber? {
 			get {
 				return self.keyedValue("inputRadius")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.radius_Range), forKey: "inputRadius")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.radiusRange), forKey: "inputRadius")
 			}
 		}
 
+		/// `radius` range definition
+		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+
 		// MARK: - shadowAmount (inputShadowAmount)
 
-		///
 		/// The amount of adjustment to the shadows of the image.
 		///
-		///   - Attribute key: `inputShadowAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `0`
-		///   minValue: -1.0
-		///   maxValue: 1.0
-		///
-		public static let shadowAmount_Range: ClosedRange<Float> = -1.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputShadowAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `0`
+		/// - Minimum value: `-1.0`
+		/// - Maximum value: `1.0`
 		@objc public var shadowAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputShadowAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.shadowAmount_Range), forKey: "inputShadowAmount")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.shadowAmountRange), forKey: "inputShadowAmount")
 			}
 		}
 
+		/// `shadowAmount` range definition
+		public static let shadowAmountRange: ClosedRange<Float> = -1.0 ... 1.0
+
 		// MARK: - highlightAmount (inputHighlightAmount)
 
-		///
 		/// The amount of adjustment to the highlights of the image.
 		///
-		///   - Attribute key: `inputHighlightAmount`
-		///   - Internal class: `NSNumber`
-		///   - Type: `CIAttributeTypeScalar`
-		///   - Default value: `1`
-		///   minValue: 0.0
-		///   maxValue: 1.0
-		///
-		public static let highlightAmount_Range: ClosedRange<Float> = 0.0 ... 1.0
+		/// CIFilter attribute information
+		/// - Attribute key: `inputHighlightAmount`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default value: `1`
+		/// - Minimum value: `0.0`
+		/// - Maximum value: `1.0`
 		@objc public var highlightAmount: NSNumber? {
 			get {
 				return self.keyedValue("inputHighlightAmount")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.highlightAmount_Range), forKey: "inputHighlightAmount")
+				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.highlightAmountRange), forKey: "inputHighlightAmount")
 			}
 		}
 
+		/// `highlightAmount` range definition
+		public static let highlightAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			radius: NSNumber = 0,

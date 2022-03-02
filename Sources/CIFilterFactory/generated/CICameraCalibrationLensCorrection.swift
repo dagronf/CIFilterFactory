@@ -17,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-09 00:57:49 +0000.  Do not edit.
 
 import AVFoundation
 import CoreImage
@@ -38,6 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
 	@objc(CIFilterFactory_CameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: FilterCore {
+		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
 		}
@@ -46,12 +46,12 @@ import Foundation
 
 		// MARK: - image (inputImage)
 
-		///
 		/// The image to process.
 		///
-		///   - Attribute key: `inputImage`
-		///   - Internal class: `CIImage`
-		///   - Type: `CIAttributeTypeImage`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputImage`
+		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
@@ -63,11 +63,11 @@ import Foundation
 
 		// MARK: - aVCameraCalibrationData (inputAVCameraCalibrationData)
 
-		///
 		/// AVCameraCalibrationData for the correction. Will be set from the inputImage if available and can be overridden here.
 		///
-		///   - Attribute key: `inputAVCameraCalibrationData`
-		///   - Internal class: `AVCameraCalibrationData`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputAVCameraCalibrationData`
+		/// - Internal class: `AVCameraCalibrationData`
 		@objc public var aVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
 				return self.keyedValue("inputAVCameraCalibrationData")
@@ -79,12 +79,12 @@ import Foundation
 
 		// MARK: - useInverseLookUpTable (inputUseInverseLookUpTable)
 
-		///
 		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData
 		///
-		///   - Attribute key: `inputUseInverseLookUpTable`
-		///   - Internal class: `NSNumber`
-		///   - Default value: `0`
+		/// CIFilter attribute information
+		/// - Attribute key: `inputUseInverseLookUpTable`
+		/// - Internal class: `NSNumber`
+		/// - Default value: `0`
 		@objc public var useInverseLookUpTable: NSNumber? {
 			get {
 				return self.keyedValue("inputUseInverseLookUpTable")
@@ -96,6 +96,7 @@ import Foundation
 
 		// MARK: - Convenience initializer
 
+		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			aVCameraCalibrationData: AVCameraCalibrationData,
