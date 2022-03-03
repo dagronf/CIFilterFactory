@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `150`
 		/// - Minimum value: `0.01`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 150
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HoleDistortion.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: HoleDistortion.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.01)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.01)...
 
 		// MARK: - Convenience initializer
 
@@ -111,7 +113,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = HoleDistortion.centerDefault,
-			radius: NSNumber = 150
+			radius: Double = 150
 		) {
 			self.init()
 

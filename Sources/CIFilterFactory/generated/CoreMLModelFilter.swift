@@ -89,17 +89,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `10.0`
-		@objc public var headIndex: NSNumber? {
+		@objc public var headIndex: Int {
 			get {
-				return self.keyedValue("inputHeadIndex")
+				let number = self.filter.value(forKey: "inputHeadIndex") as? NSNumber
+				return number?.intValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CoreMLModelFilter.headIndexRange), forKey: "inputHeadIndex")
+				let number = NSNumber(value: newValue).clamped(bounds: CoreMLModelFilter.headIndexRange)
+				self.filter.setValue(number, forKey: "inputHeadIndex")
 			}
 		}
 
 		/// `headIndex` range definition
-		public static let headIndexRange: ClosedRange<Float> = 0.0 ... 10.0
+		public static let headIndexRange: ClosedRange<Double> = 0.0 ... 10.0
 
 		// MARK: - softmaxNormalization (inputSoftmaxNormalization)
 
@@ -112,17 +114,18 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var softmaxNormalization: NSNumber? {
+		@objc public var softmaxNormalization: Bool {
 			get {
-				return self.keyedValue("inputSoftmaxNormalization")
+				let number = self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
+				return number?.boolValue ?? false
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CoreMLModelFilter.softmaxNormalizationRange), forKey: "inputSoftmaxNormalization")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputSoftmaxNormalization")
 			}
 		}
 
 		/// `softmaxNormalization` range definition
-		public static let softmaxNormalizationRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let softmaxNormalizationRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -130,8 +133,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			model: MLModel,
-			headIndex: NSNumber = 0,
-			softmaxNormalization: NSNumber = 0
+			headIndex: Int = 0,
+			softmaxNormalization: Bool = false
 		) {
 			self.init()
 

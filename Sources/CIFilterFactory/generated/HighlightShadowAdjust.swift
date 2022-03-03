@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - shadowAmount (inputShadowAmount)
 
@@ -95,17 +97,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `-1.0`
 		/// - Maximum value: `1.0`
-		@objc public var shadowAmount: NSNumber? {
+		@objc public var shadowAmount: Double {
 			get {
-				return self.keyedValue("inputShadowAmount")
+				let number = self.filter.value(forKey: "inputShadowAmount") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.shadowAmountRange), forKey: "inputShadowAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.shadowAmountRange)
+				self.filter.setValue(number, forKey: "inputShadowAmount")
 			}
 		}
 
 		/// `shadowAmount` range definition
-		public static let shadowAmountRange: ClosedRange<Float> = -1.0 ... 1.0
+		public static let shadowAmountRange: ClosedRange<Double> = -1.0 ... 1.0
 
 		// MARK: - highlightAmount (inputHighlightAmount)
 
@@ -118,26 +122,28 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var highlightAmount: NSNumber? {
+		@objc public var highlightAmount: Double {
 			get {
-				return self.keyedValue("inputHighlightAmount")
+				let number = self.filter.value(forKey: "inputHighlightAmount") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HighlightShadowAdjust.highlightAmountRange), forKey: "inputHighlightAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.highlightAmountRange)
+				self.filter.setValue(number, forKey: "inputHighlightAmount")
 			}
 		}
 
 		/// `highlightAmount` range definition
-		public static let highlightAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let highlightAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 0,
-			shadowAmount: NSNumber = 0,
-			highlightAmount: NSNumber = 1
+			radius: Double = 0,
+			shadowAmount: Double = 0,
+			highlightAmount: Double = 1
 		) {
 			self.init()
 

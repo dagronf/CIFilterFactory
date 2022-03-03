@@ -73,17 +73,19 @@ import Foundation
 		/// - Default value: `10`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `100.0`
-		@objc public var quietSpace: NSNumber? {
+		@objc public var quietSpace: Double {
 			get {
-				return self.keyedValue("inputQuietSpace")
+				let number = self.filter.value(forKey: "inputQuietSpace") as? NSNumber
+				return number?.doubleValue ?? 10
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.quietSpaceRange), forKey: "inputQuietSpace")
+				let number = NSNumber(value: newValue).clamped(bounds: Code128BarcodeGenerator.quietSpaceRange)
+				self.filter.setValue(number, forKey: "inputQuietSpace")
 			}
 		}
 
 		/// `quietSpace` range definition
-		public static let quietSpaceRange: ClosedRange<Float> = 0.0 ... 100.0
+		public static let quietSpaceRange: ClosedRange<Double> = 0.0 ... 100.0
 
 		// MARK: - barcodeHeight (inputBarcodeHeight)
 
@@ -96,17 +98,19 @@ import Foundation
 		/// - Default value: `32`
 		/// - Minimum value: `1.0`
 		/// - Maximum value: `500.0`
-		@objc public var barcodeHeight: NSNumber? {
+		@objc public var barcodeHeight: Double {
 			get {
-				return self.keyedValue("inputBarcodeHeight")
+				let number = self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
+				return number?.doubleValue ?? 32
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Code128BarcodeGenerator.barcodeHeightRange), forKey: "inputBarcodeHeight")
+				let number = NSNumber(value: newValue).clamped(bounds: Code128BarcodeGenerator.barcodeHeightRange)
+				self.filter.setValue(number, forKey: "inputBarcodeHeight")
 			}
 		}
 
 		/// `barcodeHeight` range definition
-		public static let barcodeHeightRange: ClosedRange<Float> = 1.0 ... 500.0
+		public static let barcodeHeightRange: ClosedRange<Double> = 1.0 ... 500.0
 
 		// MARK: - Additional Outputs
 
@@ -119,8 +123,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			quietSpace: NSNumber = 10,
-			barcodeHeight: NSNumber = 32
+			quietSpace: Double = 10,
+			barcodeHeight: Double = 32
 		) {
 			self.init()
 

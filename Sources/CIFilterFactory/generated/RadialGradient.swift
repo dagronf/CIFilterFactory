@@ -76,17 +76,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `5`
 		/// - Minimum value: `0.0`
-		@objc public var radius0: NSNumber? {
+		@objc public var radius0: Double {
 			get {
-				return self.keyedValue("inputRadius0")
+				let number = self.filter.value(forKey: "inputRadius0") as? NSNumber
+				return number?.doubleValue ?? 5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius0Range), forKey: "inputRadius0")
+				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius0Range)
+				self.filter.setValue(number, forKey: "inputRadius0")
 			}
 		}
 
 		/// `radius0` range definition
-		public static let radius0Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radius0Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - radius1 (inputRadius1)
 
@@ -98,17 +100,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `100`
 		/// - Minimum value: `0.0`
-		@objc public var radius1: NSNumber? {
+		@objc public var radius1: Double {
 			get {
-				return self.keyedValue("inputRadius1")
+				let number = self.filter.value(forKey: "inputRadius1") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RadialGradient.radius1Range), forKey: "inputRadius1")
+				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius1Range)
+				self.filter.setValue(number, forKey: "inputRadius1")
 			}
 		}
 
 		/// `radius1` range definition
-		public static let radius1Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radius1Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - color0 (inputColor0)
 
@@ -151,8 +155,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			center: CGPoint = RadialGradient.centerDefault,
-			radius0: NSNumber = 5,
-			radius1: NSNumber = 100,
+			radius0: Double = 5,
+			radius1: Double = 100,
 			color0: CIColor,
 			color1: CIColor
 		) {

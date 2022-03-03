@@ -89,17 +89,19 @@ import Foundation
 		/// - Default value: `3`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `5.0`
-		@objc public var spatialSigma: NSNumber? {
+		@objc public var spatialSigma: Double {
 			get {
-				return self.keyedValue("inputSpatialSigma")
+				let number = self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
+				return number?.doubleValue ?? 3
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: EdgePreserveUpsampleFilter.spatialSigmaRange), forKey: "inputSpatialSigma")
+				let number = NSNumber(value: newValue).clamped(bounds: EdgePreserveUpsampleFilter.spatialSigmaRange)
+				self.filter.setValue(number, forKey: "inputSpatialSigma")
 			}
 		}
 
 		/// `spatialSigma` range definition
-		public static let spatialSigmaRange: ClosedRange<Float> = 0.0 ... 5.0
+		public static let spatialSigmaRange: ClosedRange<Double> = 0.0 ... 5.0
 
 		// MARK: - lumaSigma (inputLumaSigma)
 
@@ -112,17 +114,19 @@ import Foundation
 		/// - Default value: `0.15`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var lumaSigma: NSNumber? {
+		@objc public var lumaSigma: Double {
 			get {
-				return self.keyedValue("inputLumaSigma")
+				let number = self.filter.value(forKey: "inputLumaSigma") as? NSNumber
+				return number?.doubleValue ?? 0.15
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: EdgePreserveUpsampleFilter.lumaSigmaRange), forKey: "inputLumaSigma")
+				let number = NSNumber(value: newValue).clamped(bounds: EdgePreserveUpsampleFilter.lumaSigmaRange)
+				self.filter.setValue(number, forKey: "inputLumaSigma")
 			}
 		}
 
 		/// `lumaSigma` range definition
-		public static let lumaSigmaRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let lumaSigmaRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -130,8 +134,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			smallImage: CIImage,
-			spatialSigma: NSNumber = 3,
-			lumaSigma: NSNumber = 0.15
+			spatialSigma: Double = 3,
+			lumaSigma: Double = 0.15
 		) {
 			self.init()
 

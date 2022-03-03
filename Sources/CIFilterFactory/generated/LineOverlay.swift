@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.07000000000000001`
 		/// - Minimum value: `0.0`
-		@objc public var nRNoiseLevel: NSNumber? {
+		@objc public var nRNoiseLevel: Double {
 			get {
-				return self.keyedValue("inputNRNoiseLevel")
+				let number = self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
+				return number?.doubleValue ?? 0.07000000000000001
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.nRNoiseLevelRange), forKey: "inputNRNoiseLevel")
+				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.nRNoiseLevelRange)
+				self.filter.setValue(number, forKey: "inputNRNoiseLevel")
 			}
 		}
 
 		/// `nRNoiseLevel` range definition
-		public static let nRNoiseLevelRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let nRNoiseLevelRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - nRSharpness (inputNRSharpness)
 
@@ -94,17 +96,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.71`
 		/// - Minimum value: `0.0`
-		@objc public var nRSharpness: NSNumber? {
+		@objc public var nRSharpness: Double {
 			get {
-				return self.keyedValue("inputNRSharpness")
+				let number = self.filter.value(forKey: "inputNRSharpness") as? NSNumber
+				return number?.doubleValue ?? 0.71
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.nRSharpnessRange), forKey: "inputNRSharpness")
+				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.nRSharpnessRange)
+				self.filter.setValue(number, forKey: "inputNRSharpness")
 			}
 		}
 
 		/// `nRSharpness` range definition
-		public static let nRSharpnessRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let nRSharpnessRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - edgeIntensity (inputEdgeIntensity)
 
@@ -116,17 +120,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var edgeIntensity: NSNumber? {
+		@objc public var edgeIntensity: Double {
 			get {
-				return self.keyedValue("inputEdgeIntensity")
+				let number = self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.edgeIntensityRange), forKey: "inputEdgeIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.edgeIntensityRange)
+				self.filter.setValue(number, forKey: "inputEdgeIntensity")
 			}
 		}
 
 		/// `edgeIntensity` range definition
-		public static let edgeIntensityRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let edgeIntensityRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - threshold (inputThreshold)
 
@@ -138,17 +144,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.1`
 		/// - Minimum value: `0.0`
-		@objc public var threshold: NSNumber? {
+		@objc public var threshold: Double {
 			get {
-				return self.keyedValue("inputThreshold")
+				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
+				return number?.doubleValue ?? 0.1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.thresholdRange), forKey: "inputThreshold")
+				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.thresholdRange)
+				self.filter.setValue(number, forKey: "inputThreshold")
 			}
 		}
 
 		/// `threshold` range definition
-		public static let thresholdRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let thresholdRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - contrast (inputContrast)
 
@@ -160,28 +168,30 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `50`
 		/// - Minimum value: `0.25`
-		@objc public var contrast: NSNumber? {
+		@objc public var contrast: Double {
 			get {
-				return self.keyedValue("inputContrast")
+				let number = self.filter.value(forKey: "inputContrast") as? NSNumber
+				return number?.doubleValue ?? 50
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LineOverlay.contrastRange), forKey: "inputContrast")
+				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.contrastRange)
+				self.filter.setValue(number, forKey: "inputContrast")
 			}
 		}
 
 		/// `contrast` range definition
-		public static let contrastRange: PartialRangeFrom<Float> = Float(0.25)...
+		public static let contrastRange: PartialRangeFrom<Double> = Double(0.25)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			nRNoiseLevel: NSNumber = 0.07000000000000001,
-			nRSharpness: NSNumber = 0.71,
-			edgeIntensity: NSNumber = 1,
-			threshold: NSNumber = 0.1,
-			contrast: NSNumber = 50
+			nRNoiseLevel: Double = 0.07000000000000001,
+			nRSharpness: Double = 0.71,
+			edgeIntensity: Double = 1,
+			threshold: Double = 0.1,
+			contrast: Double = 50
 		) {
 			self.init()
 

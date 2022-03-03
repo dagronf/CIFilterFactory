@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.4`
-		@objc public var sharpness: NSNumber? {
+		@objc public var sharpness: Double {
 			get {
-				return self.keyedValue("inputSharpness")
+				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return number?.doubleValue ?? 0.4
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputSharpness")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputSharpness")
 			}
 		}
 
@@ -89,12 +90,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1.69`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 1.69
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRadius")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
 
@@ -103,8 +105,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			sharpness: NSNumber = 0.4,
-			radius: NSNumber = 1.69
+			sharpness: Double = 0.4,
+			radius: Double = 1.69
 		) {
 			self.init()
 

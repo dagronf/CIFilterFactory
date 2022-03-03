@@ -89,17 +89,18 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var perceptual: NSNumber? {
+		@objc public var perceptual: Bool {
 			get {
-				return self.keyedValue("inputPerceptual")
+				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
+				return number?.boolValue ?? false
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PaletteCentroid.perceptualRange), forKey: "inputPerceptual")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")
 			}
 		}
 
 		/// `perceptual` range definition
-		public static let perceptualRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let perceptualRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -107,7 +108,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			paletteImage: CIImage,
-			perceptual: NSNumber = 0
+			perceptual: Bool = false
 		) {
 			self.init()
 

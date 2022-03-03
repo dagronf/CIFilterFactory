@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `70`
 		/// - Minimum value: `0.0`
-		@objc public var haloRadius: NSNumber? {
+		@objc public var haloRadius: Double {
 			get {
-				return self.keyedValue("inputHaloRadius")
+				let number = self.filter.value(forKey: "inputHaloRadius") as? NSNumber
+				return number?.doubleValue ?? 70
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloRadiusRange), forKey: "inputHaloRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloRadiusRange)
+				self.filter.setValue(number, forKey: "inputHaloRadius")
 			}
 		}
 
 		/// `haloRadius` range definition
-		public static let haloRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let haloRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - haloWidth (inputHaloWidth)
 
@@ -115,17 +117,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `87`
 		/// - Minimum value: `0.0`
-		@objc public var haloWidth: NSNumber? {
+		@objc public var haloWidth: Double {
 			get {
-				return self.keyedValue("inputHaloWidth")
+				let number = self.filter.value(forKey: "inputHaloWidth") as? NSNumber
+				return number?.doubleValue ?? 87
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloWidthRange), forKey: "inputHaloWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloWidthRange)
+				self.filter.setValue(number, forKey: "inputHaloWidth")
 			}
 		}
 
 		/// `haloWidth` range definition
-		public static let haloWidthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let haloWidthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - haloOverlap (inputHaloOverlap)
 
@@ -137,17 +141,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.77`
 		/// - Minimum value: `0.0`
-		@objc public var haloOverlap: NSNumber? {
+		@objc public var haloOverlap: Double {
 			get {
-				return self.keyedValue("inputHaloOverlap")
+				let number = self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
+				return number?.doubleValue ?? 0.77
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.haloOverlapRange), forKey: "inputHaloOverlap")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloOverlapRange)
+				self.filter.setValue(number, forKey: "inputHaloOverlap")
 			}
 		}
 
 		/// `haloOverlap` range definition
-		public static let haloOverlapRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let haloOverlapRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - striationStrength (inputStriationStrength)
 
@@ -159,17 +165,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
-		@objc public var striationStrength: NSNumber? {
+		@objc public var striationStrength: Double {
 			get {
-				return self.keyedValue("inputStriationStrength")
+				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.striationStrengthRange), forKey: "inputStriationStrength")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationStrengthRange)
+				self.filter.setValue(number, forKey: "inputStriationStrength")
 			}
 		}
 
 		/// `striationStrength` range definition
-		public static let striationStrengthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - striationContrast (inputStriationContrast)
 
@@ -181,17 +189,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var striationContrast: NSNumber? {
+		@objc public var striationContrast: Double {
 			get {
-				return self.keyedValue("inputStriationContrast")
+				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.striationContrastRange), forKey: "inputStriationContrast")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationContrastRange)
+				self.filter.setValue(number, forKey: "inputStriationContrast")
 			}
 		}
 
 		/// `striationContrast` range definition
-		public static let striationContrastRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - time (inputTime)
 
@@ -204,17 +214,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LenticularHaloGenerator.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -222,12 +234,12 @@ import Foundation
 		@objc public convenience init?(
 			center: CGPoint = LenticularHaloGenerator.centerDefault,
 			color: CIColor,
-			haloRadius: NSNumber = 70,
-			haloWidth: NSNumber = 87,
-			haloOverlap: NSNumber = 0.77,
-			striationStrength: NSNumber = 0.5,
-			striationContrast: NSNumber = 1,
-			time: NSNumber = 0
+			haloRadius: Double = 70,
+			haloWidth: Double = 87,
+			haloOverlap: Double = 0.77,
+			striationStrength: Double = 0.5,
+			striationContrast: Double = 1,
+			time: Double = 0
 		) {
 			self.init()
 

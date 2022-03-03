@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
-		@objc public var threshold: NSNumber? {
+		@objc public var threshold: Double {
 			get {
-				return self.keyedValue("inputThreshold")
+				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputThreshold")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputThreshold")
 			}
 		}
 
@@ -85,7 +86,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			threshold: NSNumber = 0.5
+			threshold: Double = 0.5
 		) {
 			self.init()
 

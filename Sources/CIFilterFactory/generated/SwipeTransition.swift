@@ -129,17 +129,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SwipeTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - angle (inputAngle)
 
@@ -150,12 +152,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -169,17 +172,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `0.1`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SwipeTransition.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.1)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.1)...
 
 		// MARK: - opacity (inputOpacity)
 
@@ -191,17 +196,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
-		@objc public var opacity: NSNumber? {
+		@objc public var opacity: Double {
 			get {
-				return self.keyedValue("inputOpacity")
+				let number = self.filter.value(forKey: "inputOpacity") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SwipeTransition.opacityRange), forKey: "inputOpacity")
+				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.opacityRange)
+				self.filter.setValue(number, forKey: "inputOpacity")
 			}
 		}
 
 		/// `opacity` range definition
-		public static let opacityRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let opacityRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -211,10 +218,10 @@ import Foundation
 			targetImage: CIImage,
 			extent: CGRect = SwipeTransition.extentDefault,
 			color: CIColor,
-			time: NSNumber = 0,
-			angle: NSNumber = 0,
-			width: NSNumber = 300,
-			opacity: NSNumber = 0
+			time: Double = 0,
+			angle: Double = 0,
+			width: Double = 300,
+			opacity: Double = 0
 		) {
 			self.init()
 

@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `28`
-		@objc public var focalLength: NSNumber? {
+		@objc public var focalLength: Double {
 			get {
-				return self.keyedValue("inputFocalLength")
+				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
+				return number?.doubleValue ?? 28
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputFocalLength")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputFocalLength")
 			}
 		}
 
@@ -175,7 +176,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			focalLength: NSNumber = 28,
+			focalLength: Double = 28,
 			topLeft: CGPoint,
 			topRight: CGPoint,
 			bottomRight: CGPoint,

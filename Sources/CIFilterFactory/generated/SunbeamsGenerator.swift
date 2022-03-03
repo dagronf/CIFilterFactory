@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `40`
 		/// - Minimum value: `0.0`
-		@objc public var sunRadius: NSNumber? {
+		@objc public var sunRadius: Double {
 			get {
-				return self.keyedValue("inputSunRadius")
+				let number = self.filter.value(forKey: "inputSunRadius") as? NSNumber
+				return number?.doubleValue ?? 40
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.sunRadiusRange), forKey: "inputSunRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.sunRadiusRange)
+				self.filter.setValue(number, forKey: "inputSunRadius")
 			}
 		}
 
 		/// `sunRadius` range definition
-		public static let sunRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let sunRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - maxStriationRadius (inputMaxStriationRadius)
 
@@ -115,17 +117,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `2.58`
 		/// - Minimum value: `0.0`
-		@objc public var maxStriationRadius: NSNumber? {
+		@objc public var maxStriationRadius: Double {
 			get {
-				return self.keyedValue("inputMaxStriationRadius")
+				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
+				return number?.doubleValue ?? 2.58
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.maxStriationRadiusRange), forKey: "inputMaxStriationRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.maxStriationRadiusRange)
+				self.filter.setValue(number, forKey: "inputMaxStriationRadius")
 			}
 		}
 
 		/// `maxStriationRadius` range definition
-		public static let maxStriationRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let maxStriationRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - striationStrength (inputStriationStrength)
 
@@ -137,17 +141,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
-		@objc public var striationStrength: NSNumber? {
+		@objc public var striationStrength: Double {
 			get {
-				return self.keyedValue("inputStriationStrength")
+				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.striationStrengthRange), forKey: "inputStriationStrength")
+				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.striationStrengthRange)
+				self.filter.setValue(number, forKey: "inputStriationStrength")
 			}
 		}
 
 		/// `striationStrength` range definition
-		public static let striationStrengthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - striationContrast (inputStriationContrast)
 
@@ -159,17 +165,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1.375`
 		/// - Minimum value: `0.0`
-		@objc public var striationContrast: NSNumber? {
+		@objc public var striationContrast: Double {
 			get {
-				return self.keyedValue("inputStriationContrast")
+				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
+				return number?.doubleValue ?? 1.375
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.striationContrastRange), forKey: "inputStriationContrast")
+				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.striationContrastRange)
+				self.filter.setValue(number, forKey: "inputStriationContrast")
 			}
 		}
 
 		/// `striationContrast` range definition
-		public static let striationContrastRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - time (inputTime)
 
@@ -182,17 +190,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SunbeamsGenerator.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -200,11 +210,11 @@ import Foundation
 		@objc public convenience init?(
 			center: CGPoint = SunbeamsGenerator.centerDefault,
 			color: CIColor,
-			sunRadius: NSNumber = 40,
-			maxStriationRadius: NSNumber = 2.58,
-			striationStrength: NSNumber = 0.5,
-			striationContrast: NSNumber = 1.375,
-			time: NSNumber = 0
+			sunRadius: Double = 40,
+			maxStriationRadius: Double = 2.58,
+			striationStrength: Double = 0.5,
+			striationContrast: Double = 1.375,
+			time: Double = 0
 		) {
 			self.init()
 

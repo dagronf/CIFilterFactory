@@ -73,24 +73,26 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `-1.0`
 		/// - Maximum value: `1.0`
-		@objc public var amount: NSNumber? {
+		@objc public var amount: Double {
 			get {
-				return self.keyedValue("inputAmount")
+				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Vibrance.amountRange), forKey: "inputAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: Vibrance.amountRange)
+				self.filter.setValue(number, forKey: "inputAmount")
 			}
 		}
 
 		/// `amount` range definition
-		public static let amountRange: ClosedRange<Float> = -1.0 ... 1.0
+		public static let amountRange: ClosedRange<Double> = -1.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			amount: NSNumber = 0
+			amount: Double = 0
 		) {
 			self.init()
 

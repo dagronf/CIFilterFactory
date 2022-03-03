@@ -81,7 +81,7 @@ import Foundation
 		}
 
 		/// `minWidth` range definition
-		public static let minWidthRange: ClosedRange<Float> = 56.0 ... 583.0
+		public static let minWidthRange: ClosedRange<Double> = 56.0 ... 583.0
 
 		// MARK: - maxWidth (inputMaxWidth)
 
@@ -102,7 +102,7 @@ import Foundation
 		}
 
 		/// `maxWidth` range definition
-		public static let maxWidthRange: ClosedRange<Float> = 56.0 ... 583.0
+		public static let maxWidthRange: ClosedRange<Double> = 56.0 ... 583.0
 
 		// MARK: - minHeight (inputMinHeight)
 
@@ -123,7 +123,7 @@ import Foundation
 		}
 
 		/// `minHeight` range definition
-		public static let minHeightRange: ClosedRange<Float> = 13.0 ... 283.0
+		public static let minHeightRange: ClosedRange<Double> = 13.0 ... 283.0
 
 		// MARK: - maxHeight (inputMaxHeight)
 
@@ -144,7 +144,7 @@ import Foundation
 		}
 
 		/// `maxHeight` range definition
-		public static let maxHeightRange: ClosedRange<Float> = 13.0 ... 283.0
+		public static let maxHeightRange: ClosedRange<Double> = 13.0 ... 283.0
 
 		// MARK: - dataColumns (inputDataColumns)
 
@@ -165,7 +165,7 @@ import Foundation
 		}
 
 		/// `dataColumns` range definition
-		public static let dataColumnsRange: ClosedRange<Float> = 1.0 ... 30.0
+		public static let dataColumnsRange: ClosedRange<Double> = 1.0 ... 30.0
 
 		// MARK: - rows (inputRows)
 
@@ -186,7 +186,7 @@ import Foundation
 		}
 
 		/// `rows` range definition
-		public static let rowsRange: ClosedRange<Float> = 3.0 ... 90.0
+		public static let rowsRange: ClosedRange<Double> = 3.0 ... 90.0
 
 		// MARK: - preferredAspectRatio (inputPreferredAspectRatio)
 
@@ -206,7 +206,7 @@ import Foundation
 		}
 
 		/// `preferredAspectRatio` range definition
-		public static let preferredAspectRatioRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let preferredAspectRatioRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - compactionMode (inputCompactionMode)
 
@@ -227,7 +227,7 @@ import Foundation
 		}
 
 		/// `compactionMode` range definition
-		public static let compactionModeRange: ClosedRange<Float> = 0.0 ... 3.0
+		public static let compactionModeRange: ClosedRange<Double> = 0.0 ... 3.0
 
 		// MARK: - compactStyle (inputCompactStyle)
 
@@ -248,7 +248,7 @@ import Foundation
 		}
 
 		/// `compactStyle` range definition
-		public static let compactStyleRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let compactStyleRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - correctionLevel (inputCorrectionLevel)
 
@@ -269,7 +269,7 @@ import Foundation
 		}
 
 		/// `correctionLevel` range definition
-		public static let correctionLevelRange: ClosedRange<Float> = 0.0 ... 8.0
+		public static let correctionLevelRange: ClosedRange<Double> = 0.0 ... 8.0
 
 		// MARK: - alwaysSpecifyCompaction (inputAlwaysSpecifyCompaction)
 
@@ -290,7 +290,7 @@ import Foundation
 		}
 
 		/// `alwaysSpecifyCompaction` range definition
-		public static let alwaysSpecifyCompactionRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let alwaysSpecifyCompactionRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Additional Outputs
 

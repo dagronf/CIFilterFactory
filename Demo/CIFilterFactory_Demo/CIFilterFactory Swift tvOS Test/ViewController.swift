@@ -40,6 +40,7 @@ class ViewController: UIViewController {
 			bloomFilter.intensity = 0.3
 			bloomFilter.radius = 5
 			let outputImage = bloomFilter.outputImage
+			assert(outputImage != nil)
 		}
 
 		/// Test convenience initializer for sepia filter

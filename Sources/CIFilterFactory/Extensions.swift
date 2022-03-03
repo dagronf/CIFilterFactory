@@ -22,44 +22,44 @@
 import Foundation
 import CoreImage
 
-extension NSNumber {
+internal extension NSNumber {
 
 	// PartialRangeFrom
 
-	@inlinable func clamped(bounds: PartialRangeFrom<Float>) -> NSNumber {
-		if bounds.lowerBound > self.floatValue {
+	@inline(__always) func clamped(bounds: PartialRangeFrom<Double>) -> NSNumber {
+		if bounds.lowerBound > self.doubleValue {
 			return NSNumber(value: bounds.lowerBound)
 		}
 		return self
 	}
 
-	@inlinable func validate(bounds: PartialRangeFrom<Float>) -> Bool {
-		return bounds.lowerBound <= self.floatValue
+	@inline(__always) func validate(bounds: PartialRangeFrom<Double>) -> Bool {
+		return bounds.lowerBound <= self.doubleValue
 	}
 
 	// PartialRangeThrough
 
-	@inlinable func clamped(bounds: PartialRangeThrough<Float>) -> NSNumber {
-		if bounds.upperBound < self.floatValue {
+	@inline(__always) func clamped(bounds: PartialRangeThrough<Double>) -> NSNumber {
+		if bounds.upperBound < self.doubleValue {
 			return NSNumber(value: bounds.upperBound)
 		}
 		return self
 	}
 
-	@inlinable func validate(bounds: PartialRangeThrough<Float>) -> Bool {
-		return bounds.upperBound >= self.floatValue
+	@inline(__always) func validate(bounds: PartialRangeThrough<Double>) -> Bool {
+		return bounds.upperBound >= self.doubleValue
 	}
 
 	// ClosedRange
 
-	@inlinable func clamped(bounds: ClosedRange<Float>) -> NSNumber {
-		var value = max(bounds.lowerBound, self.floatValue)
+	@inline(__always) func clamped(bounds: ClosedRange<Double>) -> NSNumber {
+		var value = max(bounds.lowerBound, self.doubleValue)
 		value = min(bounds.upperBound, value)
 		return NSNumber(value: value)
 	}
 
-	@inlinable func validate(bounds: ClosedRange<Float>) -> Bool {
-		return self.floatValue >= bounds.lowerBound && self.floatValue <= bounds.upperBound
+	@inline(__always) func validate(bounds: ClosedRange<Double>) -> Bool {
+		return self.doubleValue >= bounds.lowerBound && self.doubleValue <= bounds.upperBound
 	}
 }
 

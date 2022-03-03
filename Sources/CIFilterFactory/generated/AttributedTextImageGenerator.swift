@@ -71,24 +71,26 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var scaleFactor: NSNumber? {
+		@objc public var scaleFactor: Double {
 			get {
-				return self.keyedValue("inputScaleFactor")
+				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AttributedTextImageGenerator.scaleFactorRange), forKey: "inputScaleFactor")
+				let number = NSNumber(value: newValue).clamped(bounds: AttributedTextImageGenerator.scaleFactorRange)
+				self.filter.setValue(number, forKey: "inputScaleFactor")
 			}
 		}
 
 		/// `scaleFactor` range definition
-		public static let scaleFactorRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let scaleFactorRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: NSAttributedString,
-			scaleFactor: NSNumber = 1
+			scaleFactor: Double = 1
 		) {
 			self.init()
 

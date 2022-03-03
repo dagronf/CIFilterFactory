@@ -114,17 +114,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1.5`
 		/// - Minimum value: `0.0`
-		@objc public var saturation: NSNumber? {
+		@objc public var saturation: Double {
 			get {
-				return self.keyedValue("inputSaturation")
+				let number = self.filter.value(forKey: "inputSaturation") as? NSNumber
+				return number?.doubleValue ?? 1.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.saturationRange), forKey: "inputSaturation")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.saturationRange)
+				self.filter.setValue(number, forKey: "inputSaturation")
 			}
 		}
 
 		/// `saturation` range definition
-		public static let saturationRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let saturationRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - unsharpMaskRadius (inputUnsharpMaskRadius)
 
@@ -136,17 +138,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `2.5`
 		/// - Minimum value: `0.0`
-		@objc public var unsharpMaskRadius: NSNumber? {
+		@objc public var unsharpMaskRadius: Double {
 			get {
-				return self.keyedValue("inputUnsharpMaskRadius")
+				let number = self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
+				return number?.doubleValue ?? 2.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskRadiusRange), forKey: "inputUnsharpMaskRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.unsharpMaskRadiusRange)
+				self.filter.setValue(number, forKey: "inputUnsharpMaskRadius")
 			}
 		}
 
 		/// `unsharpMaskRadius` range definition
-		public static let unsharpMaskRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let unsharpMaskRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - unsharpMaskIntensity (inputUnsharpMaskIntensity)
 
@@ -158,17 +162,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
-		@objc public var unsharpMaskIntensity: NSNumber? {
+		@objc public var unsharpMaskIntensity: Double {
 			get {
-				return self.keyedValue("inputUnsharpMaskIntensity")
+				let number = self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.unsharpMaskIntensityRange), forKey: "inputUnsharpMaskIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.unsharpMaskIntensityRange)
+				self.filter.setValue(number, forKey: "inputUnsharpMaskIntensity")
 			}
 		}
 
 		/// `unsharpMaskIntensity` range definition
-		public static let unsharpMaskIntensityRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let unsharpMaskIntensityRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - radius (inputRadius)
 
@@ -180,17 +186,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `6`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 6
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthOfField.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -199,10 +207,10 @@ import Foundation
 			image: CIImage,
 			point0: CGPoint = DepthOfField.point0Default,
 			point1: CGPoint = DepthOfField.point1Default,
-			saturation: NSNumber = 1.5,
-			unsharpMaskRadius: NSNumber = 2.5,
-			unsharpMaskIntensity: NSNumber = 0.5,
-			radius: NSNumber = 6
+			saturation: Double = 1.5,
+			unsharpMaskRadius: Double = 2.5,
+			unsharpMaskIntensity: Double = 0.5,
+			radius: Double = 6
 		) {
 			self.init()
 

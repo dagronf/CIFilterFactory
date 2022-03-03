@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `20`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 20
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MotionBlur.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: MotionBlur.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - angle (inputAngle)
 
@@ -93,12 +95,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -107,8 +110,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 20,
-			angle: NSNumber = 0
+			radius: Double = 20,
+			angle: Double = 0
 		) {
 			self.init()
 

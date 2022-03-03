@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `20`
 		/// - Minimum value: `1.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 20
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Crystallize.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: Crystallize.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - center (inputCenter)
 
@@ -110,7 +112,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 20,
+			radius: Double = 20,
 			center: CGPoint = Crystallize.centerDefault
 		) {
 			self.init()

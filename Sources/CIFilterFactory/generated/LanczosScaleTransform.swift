@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: LanczosScaleTransform.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - aspectRatio (inputAspectRatio)
 
@@ -94,25 +96,27 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var aspectRatio: NSNumber? {
+		@objc public var aspectRatio: Double {
 			get {
-				return self.keyedValue("inputAspectRatio")
+				let number = self.filter.value(forKey: "inputAspectRatio") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: LanczosScaleTransform.aspectRatioRange), forKey: "inputAspectRatio")
+				let number = NSNumber(value: newValue).clamped(bounds: LanczosScaleTransform.aspectRatioRange)
+				self.filter.setValue(number, forKey: "inputAspectRatio")
 			}
 		}
 
 		/// `aspectRatio` range definition
-		public static let aspectRatioRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let aspectRatioRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			scale: NSNumber = 1,
-			aspectRatio: NSNumber = 1
+			scale: Double = 1,
+			aspectRatio: Double = 1
 		) {
 			self.init()
 

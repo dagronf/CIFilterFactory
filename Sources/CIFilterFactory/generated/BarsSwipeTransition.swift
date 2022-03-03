@@ -88,12 +88,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `3.141592653589793`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 3.141592653589793
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -107,17 +108,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `30`
 		/// - Minimum value: `2.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 30
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(2.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(2.0)...
 
 		// MARK: - barOffset (inputBarOffset)
 
@@ -129,17 +132,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `10`
 		/// - Minimum value: `1.0`
-		@objc public var barOffset: NSNumber? {
+		@objc public var barOffset: Double {
 			get {
-				return self.keyedValue("inputBarOffset")
+				let number = self.filter.value(forKey: "inputBarOffset") as? NSNumber
+				return number?.doubleValue ?? 10
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.barOffsetRange), forKey: "inputBarOffset")
+				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.barOffsetRange)
+				self.filter.setValue(number, forKey: "inputBarOffset")
 			}
 		}
 
 		/// `barOffset` range definition
-		public static let barOffsetRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let barOffsetRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - time (inputTime)
 
@@ -152,17 +157,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BarsSwipeTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -170,10 +177,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			angle: NSNumber = 3.141592653589793,
-			width: NSNumber = 30,
-			barOffset: NSNumber = 10,
-			time: NSNumber = 0
+			angle: Double = 3.141592653589793,
+			width: Double = 30,
+			barOffset: Double = 10,
+			time: Double = 0
 		) {
 			self.init()
 

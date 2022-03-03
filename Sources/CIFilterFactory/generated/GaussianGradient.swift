@@ -112,17 +112,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: GaussianGradient.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: GaussianGradient.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -131,7 +133,7 @@ import Foundation
 			center: CGPoint = GaussianGradient.centerDefault,
 			color0: CIColor,
 			color1: CIColor,
-			radius: NSNumber = 300
+			radius: Double = 300
 		) {
 			self.init()
 

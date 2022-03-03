@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var saturation: NSNumber? {
+		@objc public var saturation: Double {
 			get {
-				return self.keyedValue("inputSaturation")
+				let number = self.filter.value(forKey: "inputSaturation") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorControls.saturationRange), forKey: "inputSaturation")
+				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.saturationRange)
+				self.filter.setValue(number, forKey: "inputSaturation")
 			}
 		}
 
 		/// `saturation` range definition
-		public static let saturationRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let saturationRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - brightness (inputBrightness)
 
@@ -94,17 +96,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0`
 		/// - Minimum value: `-1.0`
-		@objc public var brightness: NSNumber? {
+		@objc public var brightness: Double {
 			get {
-				return self.keyedValue("inputBrightness")
+				let number = self.filter.value(forKey: "inputBrightness") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorControls.brightnessRange), forKey: "inputBrightness")
+				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.brightnessRange)
+				self.filter.setValue(number, forKey: "inputBrightness")
 			}
 		}
 
 		/// `brightness` range definition
-		public static let brightnessRange: PartialRangeFrom<Float> = Float(-1.0)...
+		public static let brightnessRange: PartialRangeFrom<Double> = Double(-1.0)...
 
 		// MARK: - contrast (inputContrast)
 
@@ -116,26 +120,28 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var contrast: NSNumber? {
+		@objc public var contrast: Double {
 			get {
-				return self.keyedValue("inputContrast")
+				let number = self.filter.value(forKey: "inputContrast") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorControls.contrastRange), forKey: "inputContrast")
+				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.contrastRange)
+				self.filter.setValue(number, forKey: "inputContrast")
 			}
 		}
 
 		/// `contrast` range definition
-		public static let contrastRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let contrastRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			saturation: NSNumber = 1,
-			brightness: NSNumber = 0,
-			contrast: NSNumber = 1
+			saturation: Double = 1,
+			brightness: Double = 0,
+			contrast: Double = 1
 		) {
 			self.init()
 

@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `50`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 50
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StarShineGenerator.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: StarShineGenerator.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - crossScale (inputCrossScale)
 
@@ -115,17 +117,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `15`
 		/// - Minimum value: `0.0`
-		@objc public var crossScale: NSNumber? {
+		@objc public var crossScale: Double {
 			get {
-				return self.keyedValue("inputCrossScale")
+				let number = self.filter.value(forKey: "inputCrossScale") as? NSNumber
+				return number?.doubleValue ?? 15
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StarShineGenerator.crossScaleRange), forKey: "inputCrossScale")
+				let number = NSNumber(value: newValue).clamped(bounds: StarShineGenerator.crossScaleRange)
+				self.filter.setValue(number, forKey: "inputCrossScale")
 			}
 		}
 
 		/// `crossScale` range definition
-		public static let crossScaleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let crossScaleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - crossAngle (inputCrossAngle)
 
@@ -136,12 +140,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0.6`
-		@objc public var crossAngle: NSNumber? {
+		@objc public var crossAngle: Double {
 			get {
-				return self.keyedValue("inputCrossAngle")
+				let number = self.filter.value(forKey: "inputCrossAngle") as? NSNumber
+				return number?.doubleValue ?? 0.6
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCrossAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputCrossAngle")
 			}
 		}
 
@@ -155,17 +160,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `-2`
 		/// - Minimum value: `-8.0`
-		@objc public var crossOpacity: NSNumber? {
+		@objc public var crossOpacity: Double {
 			get {
-				return self.keyedValue("inputCrossOpacity")
+				let number = self.filter.value(forKey: "inputCrossOpacity") as? NSNumber
+				return number?.doubleValue ?? -2
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StarShineGenerator.crossOpacityRange), forKey: "inputCrossOpacity")
+				let number = NSNumber(value: newValue).clamped(bounds: StarShineGenerator.crossOpacityRange)
+				self.filter.setValue(number, forKey: "inputCrossOpacity")
 			}
 		}
 
 		/// `crossOpacity` range definition
-		public static let crossOpacityRange: PartialRangeFrom<Float> = Float(-8.0)...
+		public static let crossOpacityRange: PartialRangeFrom<Double> = Double(-8.0)...
 
 		// MARK: - crossWidth (inputCrossWidth)
 
@@ -177,17 +184,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `2.5`
 		/// - Minimum value: `0.0`
-		@objc public var crossWidth: NSNumber? {
+		@objc public var crossWidth: Double {
 			get {
-				return self.keyedValue("inputCrossWidth")
+				let number = self.filter.value(forKey: "inputCrossWidth") as? NSNumber
+				return number?.doubleValue ?? 2.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StarShineGenerator.crossWidthRange), forKey: "inputCrossWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: StarShineGenerator.crossWidthRange)
+				self.filter.setValue(number, forKey: "inputCrossWidth")
 			}
 		}
 
 		/// `crossWidth` range definition
-		public static let crossWidthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let crossWidthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - epsilon (inputEpsilon)
 
@@ -199,17 +208,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `-2`
 		/// - Minimum value: `-8.0`
-		@objc public var epsilon: NSNumber? {
+		@objc public var epsilon: Double {
 			get {
-				return self.keyedValue("inputEpsilon")
+				let number = self.filter.value(forKey: "inputEpsilon") as? NSNumber
+				return number?.doubleValue ?? -2
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StarShineGenerator.epsilonRange), forKey: "inputEpsilon")
+				let number = NSNumber(value: newValue).clamped(bounds: StarShineGenerator.epsilonRange)
+				self.filter.setValue(number, forKey: "inputEpsilon")
 			}
 		}
 
 		/// `epsilon` range definition
-		public static let epsilonRange: PartialRangeFrom<Float> = Float(-8.0)...
+		public static let epsilonRange: PartialRangeFrom<Double> = Double(-8.0)...
 
 		// MARK: - Convenience initializer
 
@@ -217,12 +228,12 @@ import Foundation
 		@objc public convenience init?(
 			center: CGPoint = StarShineGenerator.centerDefault,
 			color: CIColor,
-			radius: NSNumber = 50,
-			crossScale: NSNumber = 15,
-			crossAngle: NSNumber = 0.6,
-			crossOpacity: NSNumber = -2,
-			crossWidth: NSNumber = 2.5,
-			epsilon: NSNumber = -2
+			radius: Double = 50,
+			crossScale: Double = 15,
+			crossAngle: Double = 0.6,
+			crossOpacity: Double = -2,
+			crossWidth: Double = 2.5,
+			epsilon: Double = -2
 		) {
 			self.init()
 

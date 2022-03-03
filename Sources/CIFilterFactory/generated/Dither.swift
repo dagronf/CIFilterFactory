@@ -73,24 +73,26 @@ import Foundation
 		/// - Default value: `0.1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `5.0`
-		@objc public var intensity: NSNumber? {
+		@objc public var intensity: Double {
 			get {
-				return self.keyedValue("inputIntensity")
+				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
+				return number?.doubleValue ?? 0.1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Dither.intensityRange), forKey: "inputIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: Dither.intensityRange)
+				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
 
 		/// `intensity` range definition
-		public static let intensityRange: ClosedRange<Float> = 0.0 ... 5.0
+		public static let intensityRange: ClosedRange<Double> = 0.0 ... 5.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			intensity: NSNumber = 0.1
+			intensity: Double = 0.1
 		) {
 			self.init()
 

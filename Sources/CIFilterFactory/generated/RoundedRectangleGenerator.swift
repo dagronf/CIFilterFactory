@@ -76,17 +76,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `10`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 10
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RoundedRectangleGenerator.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: RoundedRectangleGenerator.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - color (inputColor)
 
@@ -111,7 +113,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			extent: CGRect = RoundedRectangleGenerator.extentDefault,
-			radius: NSNumber = 10,
+			radius: Double = 10,
 			color: CIColor
 		) {
 			self.init()

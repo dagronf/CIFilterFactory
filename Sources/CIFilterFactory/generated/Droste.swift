@@ -115,17 +115,19 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `-10.0`
 		/// - Maximum value: `10.0`
-		@objc public var strands: NSNumber? {
+		@objc public var strands: Double {
 			get {
-				return self.keyedValue("inputStrands")
+				let number = self.filter.value(forKey: "inputStrands") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Droste.strandsRange), forKey: "inputStrands")
+				let number = NSNumber(value: newValue).clamped(bounds: Droste.strandsRange)
+				self.filter.setValue(number, forKey: "inputStrands")
 			}
 		}
 
 		/// `strands` range definition
-		public static let strandsRange: ClosedRange<Float> = -10.0 ... 10.0
+		public static let strandsRange: ClosedRange<Double> = -10.0 ... 10.0
 
 		// MARK: - periodicity (inputPeriodicity)
 
@@ -137,17 +139,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `1.0`
-		@objc public var periodicity: NSNumber? {
+		@objc public var periodicity: Double {
 			get {
-				return self.keyedValue("inputPeriodicity")
+				let number = self.filter.value(forKey: "inputPeriodicity") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Droste.periodicityRange), forKey: "inputPeriodicity")
+				let number = NSNumber(value: newValue).clamped(bounds: Droste.periodicityRange)
+				self.filter.setValue(number, forKey: "inputPeriodicity")
 			}
 		}
 
 		/// `periodicity` range definition
-		public static let periodicityRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let periodicityRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - rotation (inputRotation)
 
@@ -158,12 +162,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var rotation: NSNumber? {
+		@objc public var rotation: Double {
 			get {
-				return self.keyedValue("inputRotation")
+				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRotation")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
 
@@ -177,17 +182,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.01`
-		@objc public var zoom: NSNumber? {
+		@objc public var zoom: Double {
 			get {
-				return self.keyedValue("inputZoom")
+				let number = self.filter.value(forKey: "inputZoom") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Droste.zoomRange), forKey: "inputZoom")
+				let number = NSNumber(value: newValue).clamped(bounds: Droste.zoomRange)
+				self.filter.setValue(number, forKey: "inputZoom")
 			}
 		}
 
 		/// `zoom` range definition
-		public static let zoomRange: PartialRangeFrom<Float> = Float(0.01)...
+		public static let zoomRange: PartialRangeFrom<Double> = Double(0.01)...
 
 		// MARK: - Convenience initializer
 
@@ -196,10 +203,10 @@ import Foundation
 			image: CIImage,
 			insetPoint0: CGPoint = Droste.insetPoint0Default,
 			insetPoint1: CGPoint = Droste.insetPoint1Default,
-			strands: NSNumber = 1,
-			periodicity: NSNumber = 1,
-			rotation: NSNumber = 0,
-			zoom: NSNumber = 1
+			strands: Double = 1,
+			periodicity: Double = 1,
+			rotation: Double = 0,
+			zoom: Double = 1
 		) {
 			self.init()
 

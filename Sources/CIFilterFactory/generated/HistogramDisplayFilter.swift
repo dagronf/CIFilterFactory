@@ -73,17 +73,19 @@ import Foundation
 		/// - Default value: `100`
 		/// - Minimum value: `1.0`
 		/// - Maximum value: `200.0`
-		@objc public var height: NSNumber? {
+		@objc public var height: Double {
 			get {
-				return self.keyedValue("inputHeight")
+				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.heightRange), forKey: "inputHeight")
+				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.heightRange)
+				self.filter.setValue(number, forKey: "inputHeight")
 			}
 		}
 
 		/// `height` range definition
-		public static let heightRange: ClosedRange<Float> = 1.0 ... 200.0
+		public static let heightRange: ClosedRange<Double> = 1.0 ... 200.0
 
 		// MARK: - highLimit (inputHighLimit)
 
@@ -96,17 +98,19 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var highLimit: NSNumber? {
+		@objc public var highLimit: Double {
 			get {
-				return self.keyedValue("inputHighLimit")
+				let number = self.filter.value(forKey: "inputHighLimit") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.highLimitRange), forKey: "inputHighLimit")
+				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.highLimitRange)
+				self.filter.setValue(number, forKey: "inputHighLimit")
 			}
 		}
 
 		/// `highLimit` range definition
-		public static let highLimitRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let highLimitRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - lowLimit (inputLowLimit)
 
@@ -119,26 +123,28 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var lowLimit: NSNumber? {
+		@objc public var lowLimit: Double {
 			get {
-				return self.keyedValue("inputLowLimit")
+				let number = self.filter.value(forKey: "inputLowLimit") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HistogramDisplayFilter.lowLimitRange), forKey: "inputLowLimit")
+				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.lowLimitRange)
+				self.filter.setValue(number, forKey: "inputLowLimit")
 			}
 		}
 
 		/// `lowLimit` range definition
-		public static let lowLimitRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let lowLimitRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			height: NSNumber = 100,
-			highLimit: NSNumber = 1,
-			lowLimit: NSNumber = 0
+			height: Double = 100,
+			highLimit: Double = 1,
+			lowLimit: Double = 0
 		) {
 			self.init()
 

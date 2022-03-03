@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeInteger`
 		/// - Default value: `5`
 		/// - Minimum value: `1.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Int {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.intValue ?? 5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMinimum.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMinimum.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - height (inputHeight)
 
@@ -94,25 +96,27 @@ import Foundation
 		/// - Type: `CIAttributeTypeInteger`
 		/// - Default value: `5`
 		/// - Minimum value: `1.0`
-		@objc public var height: NSNumber? {
+		@objc public var height: Int {
 			get {
-				return self.keyedValue("inputHeight")
+				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
+				return number?.intValue ?? 5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MorphologyRectangleMinimum.heightRange), forKey: "inputHeight")
+				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMinimum.heightRange)
+				self.filter.setValue(number, forKey: "inputHeight")
 			}
 		}
 
 		/// `height` range definition
-		public static let heightRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let heightRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			width: NSNumber = 5,
-			height: NSNumber = 5
+			width: Int = 5,
+			height: Int = 5
 		) {
 			self.init()
 

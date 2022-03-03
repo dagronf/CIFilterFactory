@@ -155,12 +155,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeBoolean`
 		/// - Default value: `1`
-		@objc public var crop: NSNumber? {
+		@objc public var crop: Bool {
 			get {
-				return self.keyedValue("inputCrop")
+				let number = self.filter.value(forKey: "inputCrop") as? NSNumber
+				return number?.boolValue ?? false
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCrop")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputCrop")
 			}
 		}
 
@@ -173,7 +174,7 @@ import Foundation
 			topRight: CGPoint = PerspectiveCorrection.topRightDefault,
 			bottomRight: CGPoint = PerspectiveCorrection.bottomRightDefault,
 			bottomLeft: CGPoint = PerspectiveCorrection.bottomLeftDefault,
-			crop: NSNumber = 1
+			crop: Bool = false
 		) {
 			self.init()
 

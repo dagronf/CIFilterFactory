@@ -153,17 +153,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `22.0`
-		@objc public var aperture: NSNumber? {
+		@objc public var aperture: Double {
 			get {
-				return self.keyedValue("inputAperture")
+				let number = self.filter.value(forKey: "inputAperture") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.apertureRange), forKey: "inputAperture")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.apertureRange)
+				self.filter.setValue(number, forKey: "inputAperture")
 			}
 		}
 
 		/// `aperture` range definition
-		public static let apertureRange: ClosedRange<Float> = 0.0 ... 22.0
+		public static let apertureRange: ClosedRange<Double> = 0.0 ... 22.0
 
 		// MARK: - leftEyePositions (inputLeftEyePositions)
 
@@ -280,17 +282,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `0.1`
-		@objc public var lumaNoiseScale: NSNumber? {
+		@objc public var lumaNoiseScale: Double {
 			get {
-				return self.keyedValue("inputLumaNoiseScale")
+				let number = self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DepthBlurEffect.lumaNoiseScaleRange), forKey: "inputLumaNoiseScale")
+				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.lumaNoiseScaleRange)
+				self.filter.setValue(number, forKey: "inputLumaNoiseScale")
 			}
 		}
 
 		/// `lumaNoiseScale` range definition
-		public static let lumaNoiseScaleRange: ClosedRange<Float> = 0.0 ... 0.1
+		public static let lumaNoiseScaleRange: ClosedRange<Double> = 0.0 ... 0.1
 
 		// MARK: - scaleFactor (inputScaleFactor)
 
@@ -301,12 +305,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
-		@objc public var scaleFactor: NSNumber? {
+		@objc public var scaleFactor: Double {
 			get {
-				return self.keyedValue("inputScaleFactor")
+				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputScaleFactor")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputScaleFactor")
 			}
 		}
 
@@ -369,14 +374,14 @@ import Foundation
 			hairImage: CIImage,
 			glassesImage: CIImage,
 			gainMap: CIImage,
-			aperture: NSNumber = 0,
+			aperture: Double = 0,
 			leftEyePositions: CGPoint = DepthBlurEffect.leftEyePositionsDefault,
 			rightEyePositions: CGPoint = DepthBlurEffect.rightEyePositionsDefault,
 			chinPositions: CGPoint = DepthBlurEffect.chinPositionsDefault,
 			nosePositions: CGPoint = DepthBlurEffect.nosePositionsDefault,
 			focusRect: CGRect,
-			lumaNoiseScale: NSNumber = 0,
-			scaleFactor: NSNumber = 1,
+			lumaNoiseScale: Double = 0,
+			scaleFactor: Double = 1,
 			calibrationData: AVCameraCalibrationData,
 			auxDataMetadata: CGImageMetadata,
 			shape: String

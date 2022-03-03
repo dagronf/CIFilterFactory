@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRadius")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
 
@@ -85,7 +86,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 0
+			radius: Double = 0
 		) {
 			self.init()
 

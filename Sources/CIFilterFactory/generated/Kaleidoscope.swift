@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `6`
 		/// - Minimum value: `1.0`
-		@objc public var count: NSNumber? {
+		@objc public var count: Double {
 			get {
-				return self.keyedValue("inputCount")
+				let number = self.filter.value(forKey: "inputCount") as? NSNumber
+				return number?.doubleValue ?? 6
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Kaleidoscope.countRange), forKey: "inputCount")
+				let number = NSNumber(value: newValue).clamped(bounds: Kaleidoscope.countRange)
+				self.filter.setValue(number, forKey: "inputCount")
 			}
 		}
 
 		/// `count` range definition
-		public static let countRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let countRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - center (inputCenter)
 
@@ -114,12 +116,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -128,9 +131,9 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			count: NSNumber = 6,
+			count: Double = 6,
 			center: CGPoint = Kaleidoscope.centerDefault,
-			angle: NSNumber = 0
+			angle: Double = 0
 		) {
 			self.init()
 

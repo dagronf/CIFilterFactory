@@ -252,6 +252,83 @@ import CoreImage
 			out.print("      }")
 			out.print("   }")
 		}
+		else if keyClass == "NSNumber",
+				  keySubType == kCIAttributeTypeScalar ||
+					keySubType == kCIAttributeTypeDistance ||
+					keySubType == kCIAttributeTypeTime ||
+					keySubType == kCIAttributeTypeAngle
+		{
+			let defaultValue = keyDefaultValue ?? "0"
+			out.print("   @objc public var \(userFriendlyKey): Double {")
+			out.print("      get {")
+			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
+			out.print(#"         return number?.doubleValue ?? \#(defaultValue)"#)
+			out.print("      }")
+			out.print("      set {")
+			if let rangeDef = rangeDef {
+				out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(rangeDef))")
+				out.print("         self.filter.setValue(number, forKey: \"\(key2)\")")
+			}
+			else {
+				out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
+			}
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keyClass == "NSNumber",
+				  keySubType == kCIAttributeTypeInteger
+		{
+			let defaultValue = keyDefaultValue ?? "0"
+			out.print("   @objc public var \(userFriendlyKey): Int {")
+			out.print("      get {")
+			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
+			out.print(#"         return number?.intValue ?? \#(defaultValue)"#)
+			out.print("      }")
+			out.print("      set {")
+			if let rangeDef = rangeDef {
+				out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(rangeDef))")
+				out.print("         self.filter.setValue(number, forKey: \"\(key2)\")")
+			}
+			else {
+				out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
+			}
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keyClass == "NSNumber",
+				  keySubType == kCIAttributeTypeBoolean
+		{
+			let defaultValue = (keyDefaultValue as? String) == "1" ? "true" : "false"
+			out.print("   @objc public var \(userFriendlyKey): Bool {")
+			out.print("      get {")
+			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
+			out.print(#"         return number?.boolValue ?? \#(defaultValue)"#)
+			out.print("      }")
+			out.print("      set {")
+			out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
+			out.print("      }")
+			out.print("   }")
+		}
+		else if keyClass == "NSNumber",
+				  keySubType == kCIAttributeTypeCount
+		{
+			let defaultValue = keyDefaultValue ?? "0"
+			out.print("   @objc public var \(userFriendlyKey): UInt {")
+			out.print("      get {")
+			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
+			out.print(#"         return number?.uintValue ?? \#(defaultValue)"#)
+			out.print("      }")
+			out.print("      set {")
+			if let rangeDef = rangeDef {
+				out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(rangeDef))")
+				out.print("         self.filter.setValue(number, forKey: \"\(key2)\")")
+			}
+			else {
+				out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
+			}
+			out.print("      }")
+			out.print("   }")
+		}
 		else {
 			out.print("   @objc public var \(userFriendlyKey): \(mappedClass ?? keyClass)? {")
 			out.print("      get {")
@@ -315,6 +392,27 @@ import CoreImage
 			else if key.class == "CGImageMetadataRef" {
 				return "CGImageMetadata"
 			}
+			else if key.subtype == kCIAttributeTypeScalar {
+				return "Double"
+			}
+			else if key.subtype == kCIAttributeTypeDistance {
+				return "Double"
+			}
+			else if key.subtype == kCIAttributeTypeTime {
+				return "Double"
+			}
+			else if key.subtype == kCIAttributeTypeAngle {
+				return "Double"
+			}
+			else if key.subtype == kCIAttributeTypeInteger {
+				return "Int"
+			}
+			else if key.subtype == kCIAttributeTypeBoolean {
+				return "Bool"
+			}
+			else if key.subtype == kCIAttributeTypeCount {
+				return "UInt"
+			}
 			return key.class
 		}()
 
@@ -337,6 +435,25 @@ import CoreImage
 			}
 			else if key.class == "CIVector", let defv = def as? CIVector {
 				defValue = "CIVector([\(defv.valuesStr)])"
+			}
+			else if key.class == "NSNumber", subtype == "Double" {
+				if let d = def as? NSNumber {
+					defValue = d.stringValue
+				}
+				else {
+					defValue = "0"
+				}
+			}
+			else if key.class == "NSNumber", subtype == "Bool" {
+				let defv: String = {
+					if let d = def as? NSString {
+						return d.boolValue == true ? "true" : "false"
+					}
+					else {
+						return "false"
+					}
+				}()
+				defValue = "\(defv)"
 			}
 
 			str += " = \(defValue)"
@@ -389,14 +506,14 @@ func handleRange(out: FileSquirter, key: String, keyAttributes: [String: Any]) -
 
 	if let minValue = minValue {
 		if let maxValue = maxValue {
-			out.print("   public static let \(key)Range: ClosedRange<Float> = \(minValue)...\(maxValue)")
+			out.print("   public static let \(key)Range: ClosedRange<Double> = \(minValue)...\(maxValue)")
 		}
 		else {
-			out.print("   public static let \(key)Range: PartialRangeFrom<Float> = Float(\(minValue))...")
+			out.print("   public static let \(key)Range: PartialRangeFrom<Double> = Double(\(minValue))...")
 		}
 	}
 	else if let maxValue = maxValue {
-		out.print("   public static let \(key)Range: PartialRangeTo<Float> = ...Float(\(maxValue))")
+		out.print("   public static let \(key)Range: PartialRangeTo<Double> = ...Double(\(maxValue))")
 	}
 	return " \(key)Range"
 }

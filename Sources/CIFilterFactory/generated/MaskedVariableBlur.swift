@@ -88,17 +88,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `5`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MaskedVariableBlur.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: MaskedVariableBlur.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -106,7 +108,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			mask: CIImage,
-			radius: NSNumber = 5
+			radius: Double = 5
 		) {
 			self.init()
 

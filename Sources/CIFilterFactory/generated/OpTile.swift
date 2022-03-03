@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `2.8`
 		/// - Minimum value: `0.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 2.8
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: OpTile.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: OpTile.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - angle (inputAngle)
 
@@ -114,12 +116,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -133,17 +136,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `65`
 		/// - Minimum value: `0.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 65
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: OpTile.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: OpTile.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -151,9 +156,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = OpTile.centerDefault,
-			scale: NSNumber = 2.8,
-			angle: NSNumber = 0,
-			width: NSNumber = 65
+			scale: Double = 2.8,
+			angle: Double = 0,
+			width: Double = 65
 		) {
 			self.init()
 

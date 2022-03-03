@@ -92,12 +92,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `20`
-		@objc public var amount: NSNumber? {
+		@objc public var amount: Double {
 			get {
-				return self.keyedValue("inputAmount")
+				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
+				return number?.doubleValue ?? 20
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAmount")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAmount")
 			}
 		}
 
@@ -107,7 +108,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = ZoomBlur.centerDefault,
-			amount: NSNumber = 20
+			amount: Double = 20
 		) {
 			self.init()
 

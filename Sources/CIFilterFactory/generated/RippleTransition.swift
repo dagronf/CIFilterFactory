@@ -149,17 +149,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: RippleTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - width (inputWidth)
 
@@ -171,17 +173,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `100`
 		/// - Minimum value: `1.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: RippleTransition.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - scale (inputScale)
 
@@ -193,17 +197,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `50`
 		/// - Minimum value: `-50.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 50
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: RippleTransition.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: RippleTransition.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(-50.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(-50.0)...
 
 		// MARK: - Convenience initializer
 
@@ -214,9 +220,9 @@ import Foundation
 			shadingImage: CIImage,
 			center: CGPoint = RippleTransition.centerDefault,
 			extent: CGRect = RippleTransition.extentDefault,
-			time: NSNumber = 0,
-			width: NSNumber = 100,
-			scale: NSNumber = 50
+			time: Double = 0,
+			width: Double = 100,
+			scale: Double = 50
 		) {
 			self.init()
 

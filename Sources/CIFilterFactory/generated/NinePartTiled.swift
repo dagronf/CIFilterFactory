@@ -136,17 +136,18 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var flipYTiles: NSNumber? {
+		@objc public var flipYTiles: Bool {
 			get {
-				return self.keyedValue("inputFlipYTiles")
+				let number = self.filter.value(forKey: "inputFlipYTiles") as? NSNumber
+				return number?.boolValue ?? false
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: NinePartTiled.flipYTilesRange), forKey: "inputFlipYTiles")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputFlipYTiles")
 			}
 		}
 
 		/// `flipYTiles` range definition
-		public static let flipYTilesRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let flipYTilesRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -156,7 +157,7 @@ import Foundation
 			breakpoint0: CGPoint = NinePartTiled.breakpoint0Default,
 			breakpoint1: CGPoint = NinePartTiled.breakpoint1Default,
 			growAmount: CGPoint = NinePartTiled.growAmountDefault,
-			flipYTiles: NSNumber = 1
+			flipYTiles: Bool = false
 		) {
 			self.init()
 

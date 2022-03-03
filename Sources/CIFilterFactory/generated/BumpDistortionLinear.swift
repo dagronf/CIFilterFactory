@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BumpDistortionLinear.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: BumpDistortionLinear.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - angle (inputAngle)
 
@@ -114,12 +116,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -133,17 +136,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `-1.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BumpDistortionLinear.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: BumpDistortionLinear.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(-1.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(-1.0)...
 
 		// MARK: - Convenience initializer
 
@@ -151,9 +156,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = BumpDistortionLinear.centerDefault,
-			radius: NSNumber = 300,
-			angle: NSNumber = 0,
-			scale: NSNumber = 0.5
+			radius: Double = 300,
+			angle: Double = 0,
+			scale: Double = 0.5
 		) {
 			self.init()
 

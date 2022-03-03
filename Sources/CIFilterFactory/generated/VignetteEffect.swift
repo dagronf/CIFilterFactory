@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `150`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 150
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: VignetteEffect.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - intensity (inputIntensity)
 
@@ -116,17 +118,19 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `-1.0`
 		/// - Maximum value: `1.0`
-		@objc public var intensity: NSNumber? {
+		@objc public var intensity: Double {
 			get {
-				return self.keyedValue("inputIntensity")
+				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.intensityRange), forKey: "inputIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: VignetteEffect.intensityRange)
+				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
 
 		/// `intensity` range definition
-		public static let intensityRange: ClosedRange<Float> = -1.0 ... 1.0
+		public static let intensityRange: ClosedRange<Double> = -1.0 ... 1.0
 
 		// MARK: - falloff (inputFalloff)
 
@@ -139,17 +143,19 @@ import Foundation
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var falloff: NSNumber? {
+		@objc public var falloff: Double {
 			get {
-				return self.keyedValue("inputFalloff")
+				let number = self.filter.value(forKey: "inputFalloff") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: VignetteEffect.falloffRange), forKey: "inputFalloff")
+				let number = NSNumber(value: newValue).clamped(bounds: VignetteEffect.falloffRange)
+				self.filter.setValue(number, forKey: "inputFalloff")
 			}
 		}
 
 		/// `falloff` range definition
-		public static let falloffRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let falloffRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -157,9 +163,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = VignetteEffect.centerDefault,
-			radius: NSNumber = 150,
-			intensity: NSNumber = 1,
-			falloff: NSNumber = 0.5
+			radius: Double = 150,
+			intensity: Double = 1,
+			falloff: Double = 0.5
 		) {
 			self.init()
 

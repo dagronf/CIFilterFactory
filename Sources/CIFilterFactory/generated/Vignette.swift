@@ -73,17 +73,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `-1.0`
 		/// - Maximum value: `1.0`
-		@objc public var intensity: NSNumber? {
+		@objc public var intensity: Double {
 			get {
-				return self.keyedValue("inputIntensity")
+				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Vignette.intensityRange), forKey: "inputIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: Vignette.intensityRange)
+				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
 
 		/// `intensity` range definition
-		public static let intensityRange: ClosedRange<Float> = -1.0 ... 1.0
+		public static let intensityRange: ClosedRange<Double> = -1.0 ... 1.0
 
 		// MARK: - radius (inputRadius)
 
@@ -96,25 +98,27 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `2.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Vignette.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: Vignette.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: ClosedRange<Float> = 0.0 ... 2.0
+		public static let radiusRange: ClosedRange<Double> = 0.0 ... 2.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			intensity: NSNumber = 0,
-			radius: NSNumber = 1
+			intensity: Double = 0,
+			radius: Double = 1
 		) {
 			self.init()
 

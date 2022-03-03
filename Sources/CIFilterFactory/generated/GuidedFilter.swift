@@ -87,12 +87,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRadius")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
 
@@ -105,12 +106,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.0001`
-		@objc public var epsilon: NSNumber? {
+		@objc public var epsilon: Double {
 			get {
-				return self.keyedValue("inputEpsilon")
+				let number = self.filter.value(forKey: "inputEpsilon") as? NSNumber
+				return number?.doubleValue ?? 0.0001
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputEpsilon")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputEpsilon")
 			}
 		}
 
@@ -120,8 +122,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			guideImage: CIImage,
-			radius: NSNumber = 1,
-			epsilon: NSNumber = 0.0001
+			radius: Double = 1,
+			epsilon: Double = 0.0001
 		) {
 			self.init()
 

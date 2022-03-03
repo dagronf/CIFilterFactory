@@ -106,17 +106,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.22`
 		/// - Minimum value: `0.0`
-		@objc public var closeness1: NSNumber? {
+		@objc public var closeness1: Double {
 			get {
-				return self.keyedValue("inputCloseness1")
+				let number = self.filter.value(forKey: "inputCloseness1") as? NSNumber
+				return number?.doubleValue ?? 0.22
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness1Range), forKey: "inputCloseness1")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness1Range)
+				self.filter.setValue(number, forKey: "inputCloseness1")
 			}
 		}
 
 		/// `closeness1` range definition
-		public static let closeness1Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let closeness1Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - contrast1 (inputContrast1)
 
@@ -128,17 +130,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.98`
 		/// - Minimum value: `0.0`
-		@objc public var contrast1: NSNumber? {
+		@objc public var contrast1: Double {
 			get {
-				return self.keyedValue("inputContrast1")
+				let number = self.filter.value(forKey: "inputContrast1") as? NSNumber
+				return number?.doubleValue ?? 0.98
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast1Range), forKey: "inputContrast1")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast1Range)
+				self.filter.setValue(number, forKey: "inputContrast1")
 			}
 		}
 
 		/// `contrast1` range definition
-		public static let contrast1Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let contrast1Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - centerColor2 (inputCenterColor2)
 
@@ -184,17 +188,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.15`
 		/// - Minimum value: `0.0`
-		@objc public var closeness2: NSNumber? {
+		@objc public var closeness2: Double {
 			get {
-				return self.keyedValue("inputCloseness2")
+				let number = self.filter.value(forKey: "inputCloseness2") as? NSNumber
+				return number?.doubleValue ?? 0.15
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness2Range), forKey: "inputCloseness2")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness2Range)
+				self.filter.setValue(number, forKey: "inputCloseness2")
 			}
 		}
 
 		/// `closeness2` range definition
-		public static let closeness2Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let closeness2Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - contrast2 (inputContrast2)
 
@@ -206,17 +212,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.98`
 		/// - Minimum value: `0.0`
-		@objc public var contrast2: NSNumber? {
+		@objc public var contrast2: Double {
 			get {
-				return self.keyedValue("inputContrast2")
+				let number = self.filter.value(forKey: "inputContrast2") as? NSNumber
+				return number?.doubleValue ?? 0.98
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast2Range), forKey: "inputContrast2")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast2Range)
+				self.filter.setValue(number, forKey: "inputContrast2")
 			}
 		}
 
 		/// `contrast2` range definition
-		public static let contrast2Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let contrast2Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - centerColor3 (inputCenterColor3)
 
@@ -262,17 +270,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
-		@objc public var closeness3: NSNumber? {
+		@objc public var closeness3: Double {
 			get {
-				return self.keyedValue("inputCloseness3")
+				let number = self.filter.value(forKey: "inputCloseness3") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.closeness3Range), forKey: "inputCloseness3")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness3Range)
+				self.filter.setValue(number, forKey: "inputCloseness3")
 			}
 		}
 
 		/// `closeness3` range definition
-		public static let closeness3Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let closeness3Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - contrast3 (inputContrast3)
 
@@ -284,17 +294,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.99`
 		/// - Minimum value: `0.0`
-		@objc public var contrast3: NSNumber? {
+		@objc public var contrast3: Double {
 			get {
-				return self.keyedValue("inputContrast3")
+				let number = self.filter.value(forKey: "inputContrast3") as? NSNumber
+				return number?.doubleValue ?? 0.99
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotColor.contrast3Range), forKey: "inputContrast3")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast3Range)
+				self.filter.setValue(number, forKey: "inputContrast3")
 			}
 		}
 
 		/// `contrast3` range definition
-		public static let contrast3Range: PartialRangeFrom<Float> = Float(0.0)...
+		public static let contrast3Range: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -303,16 +315,16 @@ import Foundation
 			image: CIImage,
 			centerColor1: CIColor,
 			replacementColor1: CIColor,
-			closeness1: NSNumber = 0.22,
-			contrast1: NSNumber = 0.98,
+			closeness1: Double = 0.22,
+			contrast1: Double = 0.98,
 			centerColor2: CIColor,
 			replacementColor2: CIColor,
-			closeness2: NSNumber = 0.15,
-			contrast2: NSNumber = 0.98,
+			closeness2: Double = 0.15,
+			contrast2: Double = 0.98,
 			centerColor3: CIColor,
 			replacementColor3: CIColor,
-			closeness3: NSNumber = 0.5,
-			contrast3: NSNumber = 0.99
+			closeness3: Double = 0.5,
+			contrast3: Double = 0.99
 		) {
 			self.init()
 

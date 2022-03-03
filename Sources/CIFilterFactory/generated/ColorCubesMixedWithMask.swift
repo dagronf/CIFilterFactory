@@ -90,17 +90,19 @@ import Foundation
 		/// - Default value: `2`
 		/// - Minimum value: `2.0`
 		/// - Maximum value: `128.0`
-		@objc public var cubeDimension: NSNumber? {
+		@objc public var cubeDimension: UInt {
 			get {
-				return self.keyedValue("inputCubeDimension")
+				let number = self.filter.value(forKey: "inputCubeDimension") as? NSNumber
+				return number?.uintValue ?? 2
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorCubesMixedWithMask.cubeDimensionRange), forKey: "inputCubeDimension")
+				let number = NSNumber(value: newValue).clamped(bounds: ColorCubesMixedWithMask.cubeDimensionRange)
+				self.filter.setValue(number, forKey: "inputCubeDimension")
 			}
 		}
 
 		/// `cubeDimension` range definition
-		public static let cubeDimensionRange: ClosedRange<Float> = 2.0 ... 128.0
+		public static let cubeDimensionRange: ClosedRange<Double> = 2.0 ... 128.0
 
 		// MARK: - cube0Data (inputCube0Data)
 
@@ -160,7 +162,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			maskImage: CIImage,
-			cubeDimension: NSNumber = 2,
+			cubeDimension: UInt = 2,
 			cube0Data: Data,
 			cube1Data: Data,
 			colorSpace: NSObject

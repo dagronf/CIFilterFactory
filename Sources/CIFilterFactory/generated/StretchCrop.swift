@@ -94,17 +94,19 @@ import Foundation
 		/// - Default value: `0.25`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var cropAmount: NSNumber? {
+		@objc public var cropAmount: Double {
 			get {
-				return self.keyedValue("inputCropAmount")
+				let number = self.filter.value(forKey: "inputCropAmount") as? NSNumber
+				return number?.doubleValue ?? 0.25
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.cropAmountRange), forKey: "inputCropAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.cropAmountRange)
+				self.filter.setValue(number, forKey: "inputCropAmount")
 			}
 		}
 
 		/// `cropAmount` range definition
-		public static let cropAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let cropAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - centerStretchAmount (inputCenterStretchAmount)
 
@@ -117,17 +119,19 @@ import Foundation
 		/// - Default value: `0.25`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var centerStretchAmount: NSNumber? {
+		@objc public var centerStretchAmount: Double {
 			get {
-				return self.keyedValue("inputCenterStretchAmount")
+				let number = self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
+				return number?.doubleValue ?? 0.25
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: StretchCrop.centerStretchAmountRange), forKey: "inputCenterStretchAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.centerStretchAmountRange)
+				self.filter.setValue(number, forKey: "inputCenterStretchAmount")
 			}
 		}
 
 		/// `centerStretchAmount` range definition
-		public static let centerStretchAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let centerStretchAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -135,8 +139,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			size: CGPoint = StretchCrop.sizeDefault,
-			cropAmount: NSNumber = 0.25,
-			centerStretchAmount: NSNumber = 0.25
+			cropAmount: Double = 0.25,
+			centerStretchAmount: Double = 0.25
 		) {
 			self.init()
 

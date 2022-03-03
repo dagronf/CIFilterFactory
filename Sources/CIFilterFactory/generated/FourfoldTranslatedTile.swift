@@ -92,12 +92,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -111,17 +112,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `100`
 		/// - Minimum value: `0.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: FourfoldTranslatedTile.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: FourfoldTranslatedTile.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - acuteAngle (inputAcuteAngle)
 
@@ -132,12 +135,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `1.570796326794897`
-		@objc public var acuteAngle: NSNumber? {
+		@objc public var acuteAngle: Double {
 			get {
-				return self.keyedValue("inputAcuteAngle")
+				let number = self.filter.value(forKey: "inputAcuteAngle") as? NSNumber
+				return number?.doubleValue ?? 1.570796326794897
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAcuteAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAcuteAngle")
 			}
 		}
 
@@ -147,9 +151,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = FourfoldTranslatedTile.centerDefault,
-			angle: NSNumber = 0,
-			width: NSNumber = 100,
-			acuteAngle: NSNumber = 1.570796326794897
+			angle: Double = 0,
+			width: Double = 100,
+			acuteAngle: Double = 1.570796326794897
 		) {
 			self.init()
 

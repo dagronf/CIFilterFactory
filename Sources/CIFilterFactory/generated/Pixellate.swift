@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `8`
 		/// - Minimum value: `1.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 8
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: Pixellate.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: Pixellate.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - Convenience initializer
 
@@ -111,7 +113,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = Pixellate.centerDefault,
-			scale: NSNumber = 8
+			scale: Double = 8
 		) {
 			self.init()
 

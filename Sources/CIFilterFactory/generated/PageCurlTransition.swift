@@ -144,17 +144,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PageCurlTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: PageCurlTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - angle (inputAngle)
 
@@ -165,12 +167,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -184,17 +187,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `100`
 		/// - Minimum value: `0.01`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PageCurlTransition.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: PageCurlTransition.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.01)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.01)...
 
 		// MARK: - Convenience initializer
 
@@ -205,9 +210,9 @@ import Foundation
 			backsideImage: CIImage,
 			shadingImage: CIImage,
 			extent: CGRect = PageCurlTransition.extentDefault,
-			time: NSNumber = 0,
-			angle: NSNumber = 0,
-			radius: NSNumber = 100
+			time: Double = 0,
+			angle: Double = 0,
+			radius: Double = 100
 		) {
 			self.init()
 

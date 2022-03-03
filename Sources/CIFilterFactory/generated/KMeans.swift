@@ -110,17 +110,19 @@ import Foundation
 		/// - Default value: `8`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `128.0`
-		@objc public var count: NSNumber? {
+		@objc public var count: UInt {
 			get {
-				return self.keyedValue("inputCount")
+				let number = self.filter.value(forKey: "inputCount") as? NSNumber
+				return number?.uintValue ?? 8
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.countRange), forKey: "inputCount")
+				let number = NSNumber(value: newValue).clamped(bounds: KMeans.countRange)
+				self.filter.setValue(number, forKey: "inputCount")
 			}
 		}
 
 		/// `count` range definition
-		public static let countRange: ClosedRange<Float> = 0.0 ... 128.0
+		public static let countRange: ClosedRange<Double> = 0.0 ... 128.0
 
 		// MARK: - passes (inputPasses)
 
@@ -133,17 +135,19 @@ import Foundation
 		/// - Default value: `5`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `20.0`
-		@objc public var passes: NSNumber? {
+		@objc public var passes: UInt {
 			get {
-				return self.keyedValue("inputPasses")
+				let number = self.filter.value(forKey: "inputPasses") as? NSNumber
+				return number?.uintValue ?? 5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.passesRange), forKey: "inputPasses")
+				let number = NSNumber(value: newValue).clamped(bounds: KMeans.passesRange)
+				self.filter.setValue(number, forKey: "inputPasses")
 			}
 		}
 
 		/// `passes` range definition
-		public static let passesRange: ClosedRange<Float> = 0.0 ... 20.0
+		public static let passesRange: ClosedRange<Double> = 0.0 ... 20.0
 
 		// MARK: - perceptual (inputPerceptual)
 
@@ -156,17 +160,18 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var perceptual: NSNumber? {
+		@objc public var perceptual: Bool {
 			get {
-				return self.keyedValue("inputPerceptual")
+				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
+				return number?.boolValue ?? false
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: KMeans.perceptualRange), forKey: "inputPerceptual")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")
 			}
 		}
 
 		/// `perceptual` range definition
-		public static let perceptualRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let perceptualRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -175,9 +180,9 @@ import Foundation
 			image: CIImage,
 			extent: CGRect = KMeans.extentDefault,
 			means: CIImage,
-			count: NSNumber = 8,
-			passes: NSNumber = 5,
-			perceptual: NSNumber = 0
+			count: UInt = 8,
+			passes: UInt = 5,
+			perceptual: Bool = false
 		) {
 			self.init()
 

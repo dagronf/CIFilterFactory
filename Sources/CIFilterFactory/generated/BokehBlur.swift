@@ -73,17 +73,19 @@ import Foundation
 		/// - Default value: `20`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `500.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 20
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: ClosedRange<Float> = 0.0 ... 500.0
+		public static let radiusRange: ClosedRange<Double> = 0.0 ... 500.0
 
 		// MARK: - ringAmount (inputRingAmount)
 
@@ -96,17 +98,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var ringAmount: NSNumber? {
+		@objc public var ringAmount: Double {
 			get {
-				return self.keyedValue("inputRingAmount")
+				let number = self.filter.value(forKey: "inputRingAmount") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringAmountRange), forKey: "inputRingAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.ringAmountRange)
+				self.filter.setValue(number, forKey: "inputRingAmount")
 			}
 		}
 
 		/// `ringAmount` range definition
-		public static let ringAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let ringAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - ringSize (inputRingSize)
 
@@ -119,17 +123,19 @@ import Foundation
 		/// - Default value: `0.1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `0.2`
-		@objc public var ringSize: NSNumber? {
+		@objc public var ringSize: Double {
 			get {
-				return self.keyedValue("inputRingSize")
+				let number = self.filter.value(forKey: "inputRingSize") as? NSNumber
+				return number?.doubleValue ?? 0.1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.ringSizeRange), forKey: "inputRingSize")
+				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.ringSizeRange)
+				self.filter.setValue(number, forKey: "inputRingSize")
 			}
 		}
 
 		/// `ringSize` range definition
-		public static let ringSizeRange: ClosedRange<Float> = 0.0 ... 0.2
+		public static let ringSizeRange: ClosedRange<Double> = 0.0 ... 0.2
 
 		// MARK: - softness (inputSoftness)
 
@@ -142,27 +148,29 @@ import Foundation
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `10.0`
-		@objc public var softness: NSNumber? {
+		@objc public var softness: Double {
 			get {
-				return self.keyedValue("inputSoftness")
+				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BokehBlur.softnessRange), forKey: "inputSoftness")
+				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.softnessRange)
+				self.filter.setValue(number, forKey: "inputSoftness")
 			}
 		}
 
 		/// `softness` range definition
-		public static let softnessRange: ClosedRange<Float> = 0.0 ... 10.0
+		public static let softnessRange: ClosedRange<Double> = 0.0 ... 10.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 20,
-			ringAmount: NSNumber = 0,
-			ringSize: NSNumber = 0.1,
-			softness: NSNumber = 1
+			radius: Double = 20,
+			ringAmount: Double = 0,
+			ringSize: Double = 0.1,
+			softness: Double = 1
 		) {
 			self.init()
 

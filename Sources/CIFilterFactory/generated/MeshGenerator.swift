@@ -55,17 +55,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `1.5`
 		/// - Minimum value: `0.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 1.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: MeshGenerator.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: MeshGenerator.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - color (inputColor)
 
@@ -104,7 +106,7 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			width: NSNumber = 1.5,
+			width: Double = 1.5,
 			color: CIColor,
 			mesh: NSArray
 		) {

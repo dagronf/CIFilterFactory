@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: BumpDistortion.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: BumpDistortion.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - scale (inputScale)
 
@@ -114,12 +116,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputScale")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputScale")
 			}
 		}
 
@@ -129,8 +132,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = BumpDistortion.centerDefault,
-			radius: NSNumber = 300,
-			scale: NSNumber = 0.5
+			radius: Double = 300,
+			scale: Double = 0.5
 		) {
 			self.init()
 

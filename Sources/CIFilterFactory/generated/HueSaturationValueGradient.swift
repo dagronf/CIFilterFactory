@@ -55,17 +55,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var value: NSNumber? {
+		@objc public var value: Double {
 			get {
-				return self.keyedValue("inputValue")
+				let number = self.filter.value(forKey: "inputValue") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.valueRange), forKey: "inputValue")
+				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.valueRange)
+				self.filter.setValue(number, forKey: "inputValue")
 			}
 		}
 
 		/// `value` range definition
-		public static let valueRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let valueRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - radius (inputRadius)
 
@@ -77,17 +79,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - softness (inputSoftness)
 
@@ -99,17 +103,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var softness: NSNumber? {
+		@objc public var softness: Double {
 			get {
-				return self.keyedValue("inputSoftness")
+				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.softnessRange), forKey: "inputSoftness")
+				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.softnessRange)
+				self.filter.setValue(number, forKey: "inputSoftness")
 			}
 		}
 
 		/// `softness` range definition
-		public static let softnessRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let softnessRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - dither (inputDither)
 
@@ -121,17 +127,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var dither: NSNumber? {
+		@objc public var dither: Double {
 			get {
-				return self.keyedValue("inputDither")
+				let number = self.filter.value(forKey: "inputDither") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: HueSaturationValueGradient.ditherRange), forKey: "inputDither")
+				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.ditherRange)
+				self.filter.setValue(number, forKey: "inputDither")
 			}
 		}
 
 		/// `dither` range definition
-		public static let ditherRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let ditherRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - colorSpace (inputColorSpace)
 
@@ -154,10 +162,10 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			value: NSNumber = 1,
-			radius: NSNumber = 300,
-			softness: NSNumber = 1,
-			dither: NSNumber = 1,
+			value: Double = 1,
+			radius: Double = 300,
+			softness: Double = 1,
+			dither: Double = 1,
 			colorSpace: NSObject
 		) {
 			self.init()

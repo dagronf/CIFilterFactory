@@ -108,17 +108,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `3`
 		/// - Minimum value: `0.0`
-		@objc public var brightness: NSNumber? {
+		@objc public var brightness: Double {
 			get {
-				return self.keyedValue("inputBrightness")
+				let number = self.filter.value(forKey: "inputBrightness") as? NSNumber
+				return number?.doubleValue ?? 3
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotLight.brightnessRange), forKey: "inputBrightness")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotLight.brightnessRange)
+				self.filter.setValue(number, forKey: "inputBrightness")
 			}
 		}
 
 		/// `brightness` range definition
-		public static let brightnessRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let brightnessRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - concentration (inputConcentration)
 
@@ -130,17 +132,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.1`
 		/// - Minimum value: `0.001`
-		@objc public var concentration: NSNumber? {
+		@objc public var concentration: Double {
 			get {
-				return self.keyedValue("inputConcentration")
+				let number = self.filter.value(forKey: "inputConcentration") as? NSNumber
+				return number?.doubleValue ?? 0.1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: SpotLight.concentrationRange), forKey: "inputConcentration")
+				let number = NSNumber(value: newValue).clamped(bounds: SpotLight.concentrationRange)
+				self.filter.setValue(number, forKey: "inputConcentration")
 			}
 		}
 
 		/// `concentration` range definition
-		public static let concentrationRange: PartialRangeFrom<Float> = Float(0.001)...
+		public static let concentrationRange: PartialRangeFrom<Double> = Double(0.001)...
 
 		// MARK: - color (inputColor)
 
@@ -167,8 +171,8 @@ import Foundation
 			image: CIImage,
 			lightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),
 			lightPointsAt: CIVector = CIVector([200.0, 200.0, 0.0]),
-			brightness: NSNumber = 3,
-			concentration: NSNumber = 0.1,
+			brightness: Double = 3,
+			concentration: Double = 0.1,
 			color: CIColor
 		) {
 			self.init()

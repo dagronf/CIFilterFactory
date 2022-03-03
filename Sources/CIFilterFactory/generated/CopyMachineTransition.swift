@@ -129,17 +129,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CopyMachineTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: CopyMachineTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - angle (inputAngle)
 
@@ -151,17 +153,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CopyMachineTransition.angleRange), forKey: "inputAngle")
+				let number = NSNumber(value: newValue).clamped(bounds: CopyMachineTransition.angleRange)
+				self.filter.setValue(number, forKey: "inputAngle")
 			}
 		}
 
 		/// `angle` range definition
-		public static let angleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let angleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - width (inputWidth)
 
@@ -173,17 +177,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `200`
 		/// - Minimum value: `0.1`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 200
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CopyMachineTransition.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: CopyMachineTransition.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.1)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.1)...
 
 		// MARK: - opacity (inputOpacity)
 
@@ -195,17 +201,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1.3`
 		/// - Minimum value: `0.0`
-		@objc public var opacity: NSNumber? {
+		@objc public var opacity: Double {
 			get {
-				return self.keyedValue("inputOpacity")
+				let number = self.filter.value(forKey: "inputOpacity") as? NSNumber
+				return number?.doubleValue ?? 1.3
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CopyMachineTransition.opacityRange), forKey: "inputOpacity")
+				let number = NSNumber(value: newValue).clamped(bounds: CopyMachineTransition.opacityRange)
+				self.filter.setValue(number, forKey: "inputOpacity")
 			}
 		}
 
 		/// `opacity` range definition
-		public static let opacityRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let opacityRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -215,10 +223,10 @@ import Foundation
 			targetImage: CIImage,
 			extent: CGRect = CopyMachineTransition.extentDefault,
 			color: CIColor,
-			time: NSNumber = 0,
-			angle: NSNumber = 0,
-			width: NSNumber = 200,
-			opacity: NSNumber = 1.3
+			time: Double = 0,
+			angle: Double = 0,
+			width: Double = 200,
+			opacity: Double = 1.3
 		) {
 			self.init()
 

@@ -82,7 +82,7 @@ import Foundation
 		}
 
 		/// `correctionLevel` range definition
-		public static let correctionLevelRange: ClosedRange<Float> = 5.0 ... 95.0
+		public static let correctionLevelRange: ClosedRange<Double> = 5.0 ... 95.0
 
 		// MARK: - layers (inputLayers)
 
@@ -103,7 +103,7 @@ import Foundation
 		}
 
 		/// `layers` range definition
-		public static let layersRange: ClosedRange<Float> = 1.0 ... 32.0
+		public static let layersRange: ClosedRange<Double> = 1.0 ... 32.0
 
 		// MARK: - compactStyle (inputCompactStyle)
 
@@ -124,7 +124,7 @@ import Foundation
 		}
 
 		/// `compactStyle` range definition
-		public static let compactStyleRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let compactStyleRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Additional Outputs
 

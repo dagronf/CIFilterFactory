@@ -72,24 +72,26 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `6`
 		/// - Minimum value: `1.0`
-		@objc public var levels: NSNumber? {
+		@objc public var levels: Double {
 			get {
-				return self.keyedValue("inputLevels")
+				let number = self.filter.value(forKey: "inputLevels") as? NSNumber
+				return number?.doubleValue ?? 6
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ColorPosterize.levelsRange), forKey: "inputLevels")
+				let number = NSNumber(value: newValue).clamped(bounds: ColorPosterize.levelsRange)
+				self.filter.setValue(number, forKey: "inputLevels")
 			}
 		}
 
 		/// `levels` range definition
-		public static let levelsRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let levelsRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			levels: NSNumber = 6
+			levels: Double = 6
 		) {
 			self.init()
 

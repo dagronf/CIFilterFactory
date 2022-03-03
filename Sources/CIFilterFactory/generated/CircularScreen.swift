@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `6`
 		/// - Minimum value: `1.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 6
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CircularScreen.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: CircularScreen.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -116,17 +118,19 @@ import Foundation
 		/// - Default value: `0.7`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var sharpness: NSNumber? {
+		@objc public var sharpness: Double {
 			get {
-				return self.keyedValue("inputSharpness")
+				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return number?.doubleValue ?? 0.7
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: CircularScreen.sharpnessRange), forKey: "inputSharpness")
+				let number = NSNumber(value: newValue).clamped(bounds: CircularScreen.sharpnessRange)
+				self.filter.setValue(number, forKey: "inputSharpness")
 			}
 		}
 
 		/// `sharpness` range definition
-		public static let sharpnessRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let sharpnessRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -134,8 +138,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = CircularScreen.centerDefault,
-			width: NSNumber = 6,
-			sharpness: NSNumber = 0.7
+			width: Double = 6,
+			sharpness: Double = 0.7
 		) {
 			self.init()
 

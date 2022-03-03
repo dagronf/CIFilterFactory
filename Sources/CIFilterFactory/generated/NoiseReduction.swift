@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.02`
 		/// - Minimum value: `0.0`
-		@objc public var noiseLevel: NSNumber? {
+		@objc public var noiseLevel: Double {
 			get {
-				return self.keyedValue("inputNoiseLevel")
+				let number = self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
+				return number?.doubleValue ?? 0.02
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: NoiseReduction.noiseLevelRange), forKey: "inputNoiseLevel")
+				let number = NSNumber(value: newValue).clamped(bounds: NoiseReduction.noiseLevelRange)
+				self.filter.setValue(number, forKey: "inputNoiseLevel")
 			}
 		}
 
 		/// `noiseLevel` range definition
-		public static let noiseLevelRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let noiseLevelRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -94,25 +96,27 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.4`
 		/// - Minimum value: `0.0`
-		@objc public var sharpness: NSNumber? {
+		@objc public var sharpness: Double {
 			get {
-				return self.keyedValue("inputSharpness")
+				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
+				return number?.doubleValue ?? 0.4
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: NoiseReduction.sharpnessRange), forKey: "inputSharpness")
+				let number = NSNumber(value: newValue).clamped(bounds: NoiseReduction.sharpnessRange)
+				self.filter.setValue(number, forKey: "inputSharpness")
 			}
 		}
 
 		/// `sharpness` range definition
-		public static let sharpnessRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let sharpnessRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			noiseLevel: NSNumber = 0.02,
-			sharpness: NSNumber = 0.4
+			noiseLevel: Double = 0.02,
+			sharpness: Double = 0.4
 		) {
 			self.init()
 

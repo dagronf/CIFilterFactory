@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
 		/// - Minimum value: `0.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - count (inputCount)
 
@@ -116,17 +118,19 @@ import Foundation
 		/// - Default value: `64`
 		/// - Minimum value: `1.0`
 		/// - Maximum value: `2048.0`
-		@objc public var count: NSNumber? {
+		@objc public var count: Double {
 			get {
-				return self.keyedValue("inputCount")
+				let number = self.filter.value(forKey: "inputCount") as? NSNumber
+				return number?.doubleValue ?? 64
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AreaHistogram.countRange), forKey: "inputCount")
+				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.countRange)
+				self.filter.setValue(number, forKey: "inputCount")
 			}
 		}
 
 		/// `count` range definition
-		public static let countRange: ClosedRange<Float> = 1.0 ... 2048.0
+		public static let countRange: ClosedRange<Double> = 1.0 ... 2048.0
 
 		// MARK: - Additional Outputs
 
@@ -148,8 +152,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			extent: CGRect = AreaHistogram.extentDefault,
-			scale: NSNumber = 1,
-			count: NSNumber = 64
+			scale: Double = 1,
+			count: Double = 64
 		) {
 			self.init()
 

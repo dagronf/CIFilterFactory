@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
-		@objc public var power: NSNumber? {
+		@objc public var power: Double {
 			get {
-				return self.keyedValue("inputPower")
+				let number = self.filter.value(forKey: "inputPower") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputPower")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputPower")
 			}
 		}
 
@@ -85,7 +86,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			power: NSNumber = 1
+			power: Double = 1
 		) {
 			self.init()
 

@@ -24,6 +24,11 @@
 	// Insert code here to initialize your application
 
 	{
+		CIFFBokehBlur* bb = [[CIFFBokehBlur alloc] init];
+		bb.ringAmount = 14.4;
+	}
+
+	{
 		// Simple QR Code generator example using native NSString and NSData
 		CIFFQRCodeGenerator *filter = [[CIFFQRCodeGenerator alloc] init];
 		[filter setCorrectionLevel:@"H"];
@@ -42,21 +47,28 @@
 	{
 		CIFFBloom* filter = [[CIFFBloom alloc] init];
 		[filter setImage:image];
-		[filter setRadius:@(10)];
-		[filter setIntensity:@(4)];
+		[filter setRadius:10];
+		[filter setIntensity:4];
 		CIImage* output = [filter outputImage];
 		assert(output != nil);
+
+
+		CIFFKMeans* f = [[CIFFKMeans alloc] init];
+		[f setPerceptual: YES];
+		assert([f perceptual] == YES);
+		[f setPerceptual: NO];
+		assert([f perceptual] == NO);
 	}
 
 	id sepiaFilter = [[CIFFSepiaTone alloc] init];
 	assert(sepiaFilter);
 	[sepiaFilter setImage:image];
-	[sepiaFilter setIntensity: @(1.0)];
+	[sepiaFilter setIntensity:1.0];
 
 	CIFFCrystallize* crystalize = [[CIFFCrystallize alloc] init];
 	assert(crystalize);
 	[crystalize setImage:[sepiaFilter outputImage]];
-	[crystalize setRadius:@(20)];
+	[crystalize setRadius:20];
 	[crystalize setCenter:CGPointMake(150, 200)];
 
 	CIImage* output = [crystalize outputImage];

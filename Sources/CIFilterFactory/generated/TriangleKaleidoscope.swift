@@ -92,12 +92,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `700`
-		@objc public var size: NSNumber? {
+		@objc public var size: Double {
 			get {
-				return self.keyedValue("inputSize")
+				let number = self.filter.value(forKey: "inputSize") as? NSNumber
+				return number?.doubleValue ?? 700
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputSize")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputSize")
 			}
 		}
 
@@ -110,12 +111,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `5.924285296593801`
-		@objc public var rotation: NSNumber? {
+		@objc public var rotation: Double {
 			get {
-				return self.keyedValue("inputRotation")
+				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
+				return number?.doubleValue ?? 5.924285296593801
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRotation")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
 
@@ -128,12 +130,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.85`
-		@objc public var decay: NSNumber? {
+		@objc public var decay: Double {
 			get {
-				return self.keyedValue("inputDecay")
+				let number = self.filter.value(forKey: "inputDecay") as? NSNumber
+				return number?.doubleValue ?? 0.85
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputDecay")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputDecay")
 			}
 		}
 
@@ -143,9 +146,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			point: CGPoint = TriangleKaleidoscope.pointDefault,
-			size: NSNumber = 700,
-			rotation: NSNumber = 5.924285296593801,
-			decay: NSNumber = 0.85
+			size: Double = 700,
+			rotation: Double = 5.924285296593801,
+			decay: Double = 0.85
 		) {
 			self.init()
 

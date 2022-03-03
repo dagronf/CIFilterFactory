@@ -72,24 +72,26 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `8`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 8
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DiscBlur.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: DiscBlur.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 8
+			radius: Double = 8
 		) {
 			self.init()
 

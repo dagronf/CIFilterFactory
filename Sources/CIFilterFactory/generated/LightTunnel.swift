@@ -92,12 +92,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var rotation: NSNumber? {
+		@objc public var rotation: Double {
 			get {
-				return self.keyedValue("inputRotation")
+				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRotation")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
 
@@ -110,12 +111,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `100`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 100
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRadius")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
 
@@ -125,8 +127,8 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = LightTunnel.centerDefault,
-			rotation: NSNumber = 0,
-			radius: NSNumber = 100
+			rotation: Double = 0,
+			radius: Double = 100
 		) {
 			self.init()
 

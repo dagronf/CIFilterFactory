@@ -93,17 +93,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `160`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 160
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: TorusLensDistortion.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - width (inputWidth)
 
@@ -115,17 +117,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `80`
 		/// - Minimum value: `0.0`
-		@objc public var width: NSNumber? {
+		@objc public var width: Double {
 			get {
-				return self.keyedValue("inputWidth")
+				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
+				return number?.doubleValue ?? 80
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: TorusLensDistortion.widthRange), forKey: "inputWidth")
+				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.widthRange)
+				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - refraction (inputRefraction)
 
@@ -137,17 +141,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1.7`
 		/// - Minimum value: `0.0`
-		@objc public var refraction: NSNumber? {
+		@objc public var refraction: Double {
 			get {
-				return self.keyedValue("inputRefraction")
+				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
+				return number?.doubleValue ?? 1.7
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: TorusLensDistortion.refractionRange), forKey: "inputRefraction")
+				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.refractionRange)
+				self.filter.setValue(number, forKey: "inputRefraction")
 			}
 		}
 
 		/// `refraction` range definition
-		public static let refractionRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let refractionRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -155,9 +161,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = TorusLensDistortion.centerDefault,
-			radius: NSNumber = 160,
-			width: NSNumber = 80,
-			refraction: NSNumber = 1.7
+			radius: Double = 160,
+			width: Double = 80,
+			refraction: Double = 1.7
 		) {
 			self.init()
 

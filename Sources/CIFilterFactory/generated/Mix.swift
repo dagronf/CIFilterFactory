@@ -88,12 +88,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `1`
-		@objc public var amount: NSNumber? {
+		@objc public var amount: Double {
 			get {
-				return self.keyedValue("inputAmount")
+				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
+				return number?.doubleValue ?? 1
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAmount")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAmount")
 			}
 		}
 
@@ -103,7 +104,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			backgroundImage: CIImage,
-			amount: NSNumber = 1
+			amount: Double = 1
 		) {
 			self.init()
 

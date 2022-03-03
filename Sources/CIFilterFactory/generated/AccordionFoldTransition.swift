@@ -89,17 +89,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
-		@objc public var bottomHeight: NSNumber? {
+		@objc public var bottomHeight: Double {
 			get {
-				return self.keyedValue("inputBottomHeight")
+				let number = self.filter.value(forKey: "inputBottomHeight") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.bottomHeightRange), forKey: "inputBottomHeight")
+				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.bottomHeightRange)
+				self.filter.setValue(number, forKey: "inputBottomHeight")
 			}
 		}
 
 		/// `bottomHeight` range definition
-		public static let bottomHeightRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let bottomHeightRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - numberOfFolds (inputNumberOfFolds)
 
@@ -112,17 +114,19 @@ import Foundation
 		/// - Default value: `3`
 		/// - Minimum value: `1.0`
 		/// - Maximum value: `50.0`
-		@objc public var numberOfFolds: NSNumber? {
+		@objc public var numberOfFolds: Double {
 			get {
-				return self.keyedValue("inputNumberOfFolds")
+				let number = self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
+				return number?.doubleValue ?? 3
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.numberOfFoldsRange), forKey: "inputNumberOfFolds")
+				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.numberOfFoldsRange)
+				self.filter.setValue(number, forKey: "inputNumberOfFolds")
 			}
 		}
 
 		/// `numberOfFolds` range definition
-		public static let numberOfFoldsRange: ClosedRange<Float> = 1.0 ... 50.0
+		public static let numberOfFoldsRange: ClosedRange<Double> = 1.0 ... 50.0
 
 		// MARK: - foldShadowAmount (inputFoldShadowAmount)
 
@@ -135,17 +139,19 @@ import Foundation
 		/// - Default value: `0.1`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var foldShadowAmount: NSNumber? {
+		@objc public var foldShadowAmount: Double {
 			get {
-				return self.keyedValue("inputFoldShadowAmount")
+				let number = self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
+				return number?.doubleValue ?? 0.1
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.foldShadowAmountRange), forKey: "inputFoldShadowAmount")
+				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.foldShadowAmountRange)
+				self.filter.setValue(number, forKey: "inputFoldShadowAmount")
 			}
 		}
 
 		/// `foldShadowAmount` range definition
-		public static let foldShadowAmountRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let foldShadowAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - time (inputTime)
 
@@ -158,17 +164,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AccordionFoldTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - Convenience initializer
 
@@ -176,10 +184,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			bottomHeight: NSNumber = 0,
-			numberOfFolds: NSNumber = 3,
-			foldShadowAmount: NSNumber = 0.1,
-			time: NSNumber = 0
+			bottomHeight: Double = 0,
+			numberOfFolds: Double = 3,
+			foldShadowAmount: Double = 0.1,
+			time: Double = 0
 		) {
 			self.init()
 

@@ -72,17 +72,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `2.5`
 		/// - Minimum value: `0.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 2.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: UnsharpMask.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: UnsharpMask.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - intensity (inputIntensity)
 
@@ -94,25 +96,27 @@ import Foundation
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `0.5`
 		/// - Minimum value: `0.0`
-		@objc public var intensity: NSNumber? {
+		@objc public var intensity: Double {
 			get {
-				return self.keyedValue("inputIntensity")
+				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
+				return number?.doubleValue ?? 0.5
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: UnsharpMask.intensityRange), forKey: "inputIntensity")
+				let number = NSNumber(value: newValue).clamped(bounds: UnsharpMask.intensityRange)
+				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
 
 		/// `intensity` range definition
-		public static let intensityRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let intensityRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: NSNumber = 2.5,
-			intensity: NSNumber = 0.5
+			radius: Double = 2.5,
+			intensity: Double = 0.5
 		) {
 			self.init()
 

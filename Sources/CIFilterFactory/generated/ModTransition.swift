@@ -111,17 +111,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - angle (inputAngle)
 
@@ -132,12 +134,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `2`
-		@objc public var angle: NSNumber? {
+		@objc public var angle: Double {
 			get {
-				return self.keyedValue("inputAngle")
+				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
+				return number?.doubleValue ?? 2
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputAngle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
 
@@ -151,17 +154,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `150`
 		/// - Minimum value: `1.0`
-		@objc public var radius: NSNumber? {
+		@objc public var radius: Double {
 			get {
-				return self.keyedValue("inputRadius")
+				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
+				return number?.doubleValue ?? 150
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.radiusRange), forKey: "inputRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.radiusRange)
+				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let radiusRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - compression (inputCompression)
 
@@ -173,17 +178,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `300`
 		/// - Minimum value: `1.0`
-		@objc public var compression: NSNumber? {
+		@objc public var compression: Double {
 			get {
-				return self.keyedValue("inputCompression")
+				let number = self.filter.value(forKey: "inputCompression") as? NSNumber
+				return number?.doubleValue ?? 300
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ModTransition.compressionRange), forKey: "inputCompression")
+				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.compressionRange)
+				self.filter.setValue(number, forKey: "inputCompression")
 			}
 		}
 
 		/// `compression` range definition
-		public static let compressionRange: PartialRangeFrom<Float> = Float(1.0)...
+		public static let compressionRange: PartialRangeFrom<Double> = Double(1.0)...
 
 		// MARK: - Convenience initializer
 
@@ -192,10 +199,10 @@ import Foundation
 			image: CIImage,
 			targetImage: CIImage,
 			center: CGPoint = ModTransition.centerDefault,
-			time: NSNumber = 0,
-			angle: NSNumber = 2,
-			radius: NSNumber = 150,
-			compression: NSNumber = 300
+			time: Double = 0,
+			angle: Double = 2,
+			radius: Double = 150,
+			compression: Double = 300
 		) {
 			self.init()
 

@@ -89,7 +89,7 @@ For example :-
 
 #### Api parameter definition
 
-```
+```swift
 /// The width of each bar.
 ///
 /// CIFilter attribute information
@@ -98,12 +98,12 @@ For example :-
 /// - Type: `CIAttributeTypeDistance`
 /// - Default value: `30`
 /// - Minimum value: `2.0`
-@objc public var width: NSNumber? {
+@objc public var width: Double {
    ...
 }
 
 /// `width` range definition
-public static let widthRange: PartialRangeFrom<Float> = Float(2.0)...
+public static let widthRange: PartialRangeFrom<Double> = Double(2.0)...
 ```
 
 ### Value ranges
@@ -170,8 +170,8 @@ id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 
 CIFFBloom* filter = [[CIFFBloom alloc] init];
 [filter setImage: image];
-[filter setRadius: @(10)];
-[filter setIntensity: @(4)];
+[filter setRadius: 10];
+[filter setIntensity: 4];
 CIImage* output = [filter outputImage];
 assert(output != nil);
 ```
@@ -209,6 +209,10 @@ NOTE: This is only available for Xcode 13 and later
 * Better type support
 
 ## History
+
+### `14.0.1`
+
+* Changed API to use standard types (eg. Double, Bool, Int, UInt) instead of `NSNumber?`
 
 ### `14.0.0`
 

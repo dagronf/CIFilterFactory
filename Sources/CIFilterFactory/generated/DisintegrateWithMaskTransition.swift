@@ -107,17 +107,19 @@ import Foundation
 		/// - Default value: `0`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var time: NSNumber? {
+		@objc public var time: Double {
 			get {
-				return self.keyedValue("inputTime")
+				let number = self.filter.value(forKey: "inputTime") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.timeRange), forKey: "inputTime")
+				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.timeRange)
+				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
 
 		/// `time` range definition
-		public static let timeRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - shadowRadius (inputShadowRadius)
 
@@ -129,17 +131,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `8`
 		/// - Minimum value: `0.0`
-		@objc public var shadowRadius: NSNumber? {
+		@objc public var shadowRadius: Double {
 			get {
-				return self.keyedValue("inputShadowRadius")
+				let number = self.filter.value(forKey: "inputShadowRadius") as? NSNumber
+				return number?.doubleValue ?? 8
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowRadiusRange), forKey: "inputShadowRadius")
+				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowRadiusRange)
+				self.filter.setValue(number, forKey: "inputShadowRadius")
 			}
 		}
 
 		/// `shadowRadius` range definition
-		public static let shadowRadiusRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let shadowRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - shadowDensity (inputShadowDensity)
 
@@ -152,17 +156,19 @@ import Foundation
 		/// - Default value: `0.65`
 		/// - Minimum value: `0.0`
 		/// - Maximum value: `1.0`
-		@objc public var shadowDensity: NSNumber? {
+		@objc public var shadowDensity: Double {
 			get {
-				return self.keyedValue("inputShadowDensity")
+				let number = self.filter.value(forKey: "inputShadowDensity") as? NSNumber
+				return number?.doubleValue ?? 0.65
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: DisintegrateWithMaskTransition.shadowDensityRange), forKey: "inputShadowDensity")
+				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowDensityRange)
+				self.filter.setValue(number, forKey: "inputShadowDensity")
 			}
 		}
 
 		/// `shadowDensity` range definition
-		public static let shadowDensityRange: ClosedRange<Float> = 0.0 ... 1.0
+		public static let shadowDensityRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - shadowOffset (inputShadowOffset)
 
@@ -192,9 +198,9 @@ import Foundation
 			image: CIImage,
 			targetImage: CIImage,
 			maskImage: CIImage,
-			time: NSNumber = 0,
-			shadowRadius: NSNumber = 8,
-			shadowDensity: NSNumber = 0.65,
+			time: Double = 0,
+			shadowRadius: Double = 8,
+			shadowDensity: Double = 0.65,
 			shadowOffset: CGPoint = DisintegrateWithMaskTransition.shadowOffsetDefault
 		) {
 			self.init()

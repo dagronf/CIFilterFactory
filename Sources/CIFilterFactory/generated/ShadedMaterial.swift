@@ -89,17 +89,19 @@ import Foundation
 		/// - Type: `CIAttributeTypeDistance`
 		/// - Default value: `10`
 		/// - Minimum value: `0.0`
-		@objc public var scale: NSNumber? {
+		@objc public var scale: Double {
 			get {
-				return self.keyedValue("inputScale")
+				let number = self.filter.value(forKey: "inputScale") as? NSNumber
+				return number?.doubleValue ?? 10
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: ShadedMaterial.scaleRange), forKey: "inputScale")
+				let number = NSNumber(value: newValue).clamped(bounds: ShadedMaterial.scaleRange)
+				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Float> = Float(0.0)...
+		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - Convenience initializer
 
@@ -107,7 +109,7 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			shadingImage: CIImage,
-			scale: NSNumber = 10
+			scale: Double = 10
 		) {
 			self.init()
 

@@ -71,12 +71,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
 		/// - Default value: `28`
-		@objc public var focalLength: NSNumber? {
+		@objc public var focalLength: Double {
 			get {
-				return self.keyedValue("inputFocalLength")
+				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
+				return number?.doubleValue ?? 28
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputFocalLength")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputFocalLength")
 			}
 		}
 
@@ -89,12 +90,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var pitch: NSNumber? {
+		@objc public var pitch: Double {
 			get {
-				return self.keyedValue("inputPitch")
+				let number = self.filter.value(forKey: "inputPitch") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputPitch")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputPitch")
 			}
 		}
 
@@ -107,12 +109,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var yaw: NSNumber? {
+		@objc public var yaw: Double {
 			get {
-				return self.keyedValue("inputYaw")
+				let number = self.filter.value(forKey: "inputYaw") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputYaw")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputYaw")
 			}
 		}
 
@@ -125,12 +128,13 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
 		/// - Default value: `0`
-		@objc public var roll: NSNumber? {
+		@objc public var roll: Double {
 			get {
-				return self.keyedValue("inputRoll")
+				let number = self.filter.value(forKey: "inputRoll") as? NSNumber
+				return number?.doubleValue ?? 0
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputRoll")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputRoll")
 			}
 		}
 
@@ -145,10 +149,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			focalLength: NSNumber = 28,
-			pitch: NSNumber = 0,
-			yaw: NSNumber = 0,
-			roll: NSNumber = 0
+			focalLength: Double = 28,
+			pitch: Double = 0,
+			yaw: Double = 0,
+			roll: Double = 0
 		) {
 			self.init()
 
