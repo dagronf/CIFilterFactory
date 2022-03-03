@@ -1,6 +1,6 @@
 # CIFilterFactory
 
-A Swift/Objective-C factory class (with generator) to provide type-safe and compiler friendly CIFilter classes
+Swift and Objective-C generated classes for built-in CIFilter types. Type safe, auto-complete friendly and (mostly) documented.
 
 Supports macOS, tvOS, iOS and mac Catalyst
 
@@ -22,13 +22,52 @@ Supports macOS, tvOS, iOS and mac Catalyst
 
 ## Why
 
-I like CIFilters. I've always found the `CIFilter` interfaces to be 
+I like CIFilters a lot. I've always found the `CIFilter` interfaces to be 
 
 1. Hard to use due to the opaque interface (no code completion!), and 
 2. Easy to make basic mistakes such as type mismatches etc. which would be very difficult to identify in a review (for example).  Given that the parameters to filters are Any? values, there is no type checking around the api.
 3. Xcode's documentation for each filter is lacking for the most part.
+4. Information about the OS version in which the CIFilter appeared is buried within the opaque interface. 
 
-This library is an attempt to automatically generate a typesafe, discoverable wrapper interface to CIFilter.
+## What is `CIFilterFactory`?
+
+This package contains automatically generated type-safe and documented class wrappers for all of the built-in `CIFilter` types. 
+
+It also includes the scripts used to generate the classes, so that as new built-in `CIFilters` are added the classes can be easily (re)generated to include the new filters.
+
+|   |   |
+|---|---|
+| **Type safety** | All filter attributes are exposed via class properties using type-safe Swift/Objective-C classes and types where possible. |
+| **Range clamping** | Filters which define valid ranges for attributes have undefined behaviour when the assigned value is outside range. These classes automatically clamp assigned values to the valid range to avoid potential crashes for invalid values. |
+| **Auto-completion** | As the filter attributes are exposed as properties, Xcode can provide autocomplete information while you code. |
+| **Version information** | The generated classes are wrapped in `@available()` to make sure that only the filters your deployment target defines are available. |
+| **Documention** | All classes and attributes are documented such that Xcode can provide <br/>• meaningful inline documentation. <br/>• meaningful documentation in the Xcode quick-help inspector. <br/>• With Xcode 13, you can compile a docarchive and have the full documentation for all filters available within the Xcode documentation viewer |
+
+## TL;DR Show me something!
+
+### Before
+
+```swift
+let filter = CIFilter(name: "CICheckerboardGenerator")!
+filter.setValue(CIVector(x: 150.0, y: 150.0), forKey: "inputCenter")
+filter.setValue(CIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "inputColor0")
+filter.setValue(CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), forKey: "inputColor1")
+filter.setValue(80.0, forKey: "inputWidth")
+filter.setValue(1.0, forKey: "inputSharpness")
+let output = filter.outputImagelet output = filter.outputImage
+```
+
+### After
+
+```swift
+let filter = CIFF.CheckerboardGenerator()!
+filter.center = CGPoint(x: 150.0, y: 150.0)
+filter.color0 = CIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+filter.color1 = CIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+filter.width = 80.0
+filter.sharpness = 1.0
+let output = filter.outputImage
+```
 
 ## Features
 
@@ -84,7 +123,7 @@ For example :-
 ///
 /// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 ///
-@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: FilterCore
+@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition
 ```
 
 #### Api parameter definition

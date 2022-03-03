@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 		do {
 			let filter = CIFF.QRCodeGenerator()!
 			filter.message = "Hello".data(using: .utf8)!
-			filter.correctionLevel = "H"
+			filter.correction = .H
 			let output = filter.outputImage!
 			let uiImage = UIImage(ciImage: output)
 			Swift.print(uiImage)
