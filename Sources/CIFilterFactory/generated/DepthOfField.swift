@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
-	@objc(CIFFDepthOfField) class DepthOfField: FilterCore {
+	@objc(CIFFDepthOfField) class DepthOfField: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDepthOfField")

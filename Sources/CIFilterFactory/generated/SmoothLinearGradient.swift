@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISmoothLinearGradient/)
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
-	@objc(CIFFSmoothLinearGradient) class SmoothLinearGradient: FilterCore {
+	@objc(CIFFSmoothLinearGradient) class SmoothLinearGradient: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISmoothLinearGradient")

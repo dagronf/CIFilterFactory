@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISampleNearest/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFSampleNearest) class SampleNearest: FilterCore {
+	@objc(CIFFSampleNearest) class SampleNearest: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISampleNearest")

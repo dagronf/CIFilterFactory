@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
 	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
-	@objc(CIFFColorThreshold) class ColorThreshold: FilterCore {
+	@objc(CIFFColorThreshold) class ColorThreshold: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorThreshold")

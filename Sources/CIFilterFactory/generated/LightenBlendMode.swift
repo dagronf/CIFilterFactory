@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILightenBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFLightenBlendMode) class LightenBlendMode: FilterCore {
+	@objc(CIFFLightenBlendMode) class LightenBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILightenBlendMode")

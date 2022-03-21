@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
 	///
 	@available(macOS 10.4, iOS 8, tvOS 8, *)
-	@objc(CIFFGlassDistortion) class GlassDistortion: FilterCore {
+	@objc(CIFFGlassDistortion) class GlassDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGlassDistortion")

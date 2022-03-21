@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueSaturationValueGradient/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFHueSaturationValueGradient) class HueSaturationValueGradient: FilterCore {
+	@objc(CIFFHueSaturationValueGradient) class HueSaturationValueGradient: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHueSaturationValueGradient")

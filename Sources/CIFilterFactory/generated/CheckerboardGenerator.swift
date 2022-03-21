@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICheckerboardGenerator/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFCheckerboardGenerator) class CheckerboardGenerator: FilterCore {
+	@objc(CIFFCheckerboardGenerator) class CheckerboardGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICheckerboardGenerator")

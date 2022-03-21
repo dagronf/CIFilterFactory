@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFLanczosScaleTransform) class LanczosScaleTransform: FilterCore {
+	@objc(CIFFLanczosScaleTransform) class LanczosScaleTransform: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILanczosScaleTransform")

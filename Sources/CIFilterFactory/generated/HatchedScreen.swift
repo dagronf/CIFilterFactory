@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHatchedScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFHatchedScreen) class HatchedScreen: FilterCore {
+	@objc(CIFFHatchedScreen) class HatchedScreen: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHatchedScreen")

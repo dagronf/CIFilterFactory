@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDivideBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFDivideBlendMode) class DivideBlendMode: FilterCore {
+	@objc(CIFFDivideBlendMode) class DivideBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDivideBlendMode")

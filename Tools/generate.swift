@@ -107,7 +107,7 @@ import CoreImage
 	if !avail.isEmpty {
 		out.print("@available(\(avail), *)")
 	}
-	out.print("   @objc(CIFF\(staticName)) public class \(staticName): FilterCore {")
+	out.print("   @objc(CIFF\(staticName)) public class \(staticName): Core {")
 	out.print("      /// Create an instance of the filter")
 	out.print("      @objc public init?() {")
 	out.print("         super.init(name: \"\(filter.name)\")")
@@ -119,7 +119,9 @@ import CoreImage
 	}
 
 	struct InitType {
+		let attributeKey: String
 		let name: String
+		let description: String
 		let `class`: String
 		let subtype: String?
 		let `default`: Any?
@@ -145,7 +147,7 @@ import CoreImage
 			continue
 		}
 
-		let keyDesc = keyItem[kCIAttributeDescription] as? String
+		let keyDesc = keyItem[kCIAttributeDescription] as? String ?? "No Description"
 		let keySubType = keyItem[kCIAttributeType] as? String
 		let keyDefaultValue = keyItem[kCIAttributeDefault]
 
@@ -161,9 +163,18 @@ import CoreImage
 
 		// Write out the description for the key
 
-		initializers.append( InitType(name: userFriendlyKey, class: mappedClass ?? keyClass, subtype: keySubType, default: keyDefaultValue))
+		initializers.append(
+			InitType(
+				attributeKey: key2,
+				name: userFriendlyKey,
+				description: keyDesc,
+				class: mappedClass ?? keyClass,
+				subtype: keySubType,
+				default: keyDefaultValue
+			)
+		)
 
-		out.print("   /// \(keyDesc ?? "No Description")")
+		out.print("   /// \(keyDesc)")
 		out.print("   ///")
 		out.print("   /// CIFilter attribute information")
 		out.print("   /// - Attribute key: `\(key2)`")

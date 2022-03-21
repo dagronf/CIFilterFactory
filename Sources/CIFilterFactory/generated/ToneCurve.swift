@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIToneCurve/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
-	@objc(CIFFToneCurve) class ToneCurve: FilterCore {
+	@objc(CIFFToneCurve) class ToneCurve: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIToneCurve")

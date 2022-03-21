@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximumAlpha/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
-	@objc(CIFFAreaMaximumAlpha) class AreaMaximumAlpha: FilterCore {
+	@objc(CIFFAreaMaximumAlpha) class AreaMaximumAlpha: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAreaMaximumAlpha")

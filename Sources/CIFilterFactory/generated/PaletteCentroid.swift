@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFPaletteCentroid) class PaletteCentroid: FilterCore {
+	@objc(CIFFPaletteCentroid) class PaletteCentroid: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")

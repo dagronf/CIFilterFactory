@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: FilterCore {
+	@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")

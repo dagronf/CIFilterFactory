@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFBarcodeGenerator) class BarcodeGenerator: FilterCore {
+	@objc(CIFFBarcodeGenerator) class BarcodeGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDotScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFDotScreen) class DotScreen: FilterCore {
+	@objc(CIFFDotScreen) class DotScreen: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDotScreen")

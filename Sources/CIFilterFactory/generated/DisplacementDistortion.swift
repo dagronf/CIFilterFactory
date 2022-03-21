@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFDisplacementDistortion) class DisplacementDistortion: FilterCore {
+	@objc(CIFFDisplacementDistortion) class DisplacementDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")

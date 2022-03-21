@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMultiplyBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFMultiplyBlendMode) class MultiplyBlendMode: FilterCore {
+	@objc(CIFFMultiplyBlendMode) class MultiplyBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMultiplyBlendMode")

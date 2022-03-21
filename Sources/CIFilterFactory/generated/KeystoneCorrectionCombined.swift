@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFKeystoneCorrectionCombined) class KeystoneCorrectionCombined: FilterCore {
+	@objc(CIFFKeystoneCorrectionCombined) class KeystoneCorrectionCombined: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionCombined")

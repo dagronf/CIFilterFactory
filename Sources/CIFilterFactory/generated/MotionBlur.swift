@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
-	@objc(CIFFMotionBlur) class MotionBlur: FilterCore {
+	@objc(CIFFMotionBlur) class MotionBlur: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMotionBlur")

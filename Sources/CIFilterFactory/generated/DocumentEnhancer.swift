@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFDocumentEnhancer) class DocumentEnhancer: FilterCore {
+	@objc(CIFFDocumentEnhancer) class DocumentEnhancer: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHeightFieldFromMask/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFHeightFieldFromMask) class HeightFieldFromMask: FilterCore {
+	@objc(CIFFHeightFieldFromMask) class HeightFieldFromMask: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHeightFieldFromMask")

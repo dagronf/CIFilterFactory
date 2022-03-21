@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianBlur/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFGaussianBlur) class GaussianBlur: FilterCore {
+	@objc(CIFFGaussianBlur) class GaussianBlur: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGaussianBlur")

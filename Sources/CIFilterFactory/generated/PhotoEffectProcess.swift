@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectProcess/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFPhotoEffectProcess) class PhotoEffectProcess: FilterCore {
+	@objc(CIFFPhotoEffectProcess) class PhotoEffectProcess: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectProcess")

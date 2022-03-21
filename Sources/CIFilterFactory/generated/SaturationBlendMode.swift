@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISaturationBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFSaturationBlendMode) class SaturationBlendMode: FilterCore {
+	@objc(CIFFSaturationBlendMode) class SaturationBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISaturationBlendMode")

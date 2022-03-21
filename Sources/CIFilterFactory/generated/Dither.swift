@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDither/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFDither) class Dither: FilterCore {
+	@objc(CIFFDither) class Dither: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDither")

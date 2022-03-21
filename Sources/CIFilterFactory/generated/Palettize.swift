@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPalettize/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFPalettize) class Palettize: FilterCore {
+	@objc(CIFFPalettize) class Palettize: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPalettize")

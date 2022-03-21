@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILinearLightBlendMode/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
-	@objc(CIFFLinearLightBlendMode) class LinearLightBlendMode: FilterCore {
+	@objc(CIFFLinearLightBlendMode) class LinearLightBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILinearLightBlendMode")

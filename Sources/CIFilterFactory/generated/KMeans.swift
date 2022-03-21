@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFKMeans) class KMeans: FilterCore {
+	@objc(CIFFKMeans) class KMeans: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIKMeans")

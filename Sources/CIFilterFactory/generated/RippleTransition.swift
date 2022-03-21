@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFRippleTransition) class RippleTransition: FilterCore {
+	@objc(CIFFRippleTransition) class RippleTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIRippleTransition")

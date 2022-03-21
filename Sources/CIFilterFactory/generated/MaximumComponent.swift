@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaximumComponent/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFMaximumComponent) class MaximumComponent: FilterCore {
+	@objc(CIFFMaximumComponent) class MaximumComponent: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMaximumComponent")

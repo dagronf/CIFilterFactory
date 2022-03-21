@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFMorphologyGradient) class MorphologyGradient: FilterCore {
+	@objc(CIFFMorphologyGradient) class MorphologyGradient: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMorphologyGradient")

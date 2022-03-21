@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineTile/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFAffineTile) class AffineTile: FilterCore {
+	@objc(CIFFAffineTile) class AffineTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAffineTile")

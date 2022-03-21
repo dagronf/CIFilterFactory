@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILinearToSRGBToneCurve/)
 	///
 	@available(macOS 10.10, iOS 7, tvOS 7, *)
-	@objc(CIFFLinearToSRGBToneCurve) class LinearToSRGBToneCurve: FilterCore {
+	@objc(CIFFLinearToSRGBToneCurve) class LinearToSRGBToneCurve: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILinearToSRGBToneCurve")

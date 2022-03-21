@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFEdgeWork) class EdgeWork: FilterCore {
+	@objc(CIFFEdgeWork) class EdgeWork: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIEdgeWork")

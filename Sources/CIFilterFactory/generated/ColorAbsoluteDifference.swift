@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
 	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
-	@objc(CIFFColorAbsoluteDifference) class ColorAbsoluteDifference: FilterCore {
+	@objc(CIFFColorAbsoluteDifference) class ColorAbsoluteDifference: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorAbsoluteDifference")

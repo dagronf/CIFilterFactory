@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthToDisparity/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFDepthToDisparity) class DepthToDisparity: FilterCore {
+	@objc(CIFFDepthToDisparity) class DepthToDisparity: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDepthToDisparity")

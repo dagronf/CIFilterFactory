@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVortexDistortion/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFVortexDistortion) class VortexDistortion: FilterCore {
+	@objc(CIFFVortexDistortion) class VortexDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIVortexDistortion")

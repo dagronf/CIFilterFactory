@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFRoundedRectangleGenerator) class RoundedRectangleGenerator: FilterCore {
+	@objc(CIFFRoundedRectangleGenerator) class RoundedRectangleGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")

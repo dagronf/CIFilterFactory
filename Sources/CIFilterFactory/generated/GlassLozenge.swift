@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFGlassLozenge) class GlassLozenge: FilterCore {
+	@objc(CIFFGlassLozenge) class GlassLozenge: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGlassLozenge")

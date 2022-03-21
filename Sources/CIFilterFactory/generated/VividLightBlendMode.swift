@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
-	@objc(CIFFVividLightBlendMode) class VividLightBlendMode: FilterCore {
+	@objc(CIFFVividLightBlendMode) class VividLightBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIVividLightBlendMode")

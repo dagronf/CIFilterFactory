@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILabDeltaE/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFLabDeltaE) class LabDeltaE: FilterCore {
+	@objc(CIFFLabDeltaE) class LabDeltaE: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")

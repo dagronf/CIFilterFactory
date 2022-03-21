@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
 	///
 	@available(iOS 8, tvOS 8, *)
-	@objc(CIFFHistogramDisplayFilter) class HistogramDisplayFilter: FilterCore {
+	@objc(CIFFHistogramDisplayFilter) class HistogramDisplayFilter: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")

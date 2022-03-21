@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTonal/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFPhotoEffectTonal) class PhotoEffectTonal: FilterCore {
+	@objc(CIFFPhotoEffectTonal) class PhotoEffectTonal: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectTonal")

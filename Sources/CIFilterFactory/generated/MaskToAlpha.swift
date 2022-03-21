@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskToAlpha/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFMaskToAlpha) class MaskToAlpha: FilterCore {
+	@objc(CIFFMaskToAlpha) class MaskToAlpha: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMaskToAlpha")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFNinePartStretched) class NinePartStretched: FilterCore {
+	@objc(CIFFNinePartStretched) class NinePartStretched: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CINinePartStretched")

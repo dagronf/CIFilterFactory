@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
-	@objc(CIFFAreaAverage) class AreaAverage: FilterCore {
+	@objc(CIFFAreaAverage) class AreaAverage: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAreaAverage")

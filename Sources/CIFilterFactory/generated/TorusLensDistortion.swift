@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITorusLensDistortion/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFTorusLensDistortion) class TorusLensDistortion: FilterCore {
+	@objc(CIFFTorusLensDistortion) class TorusLensDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITorusLensDistortion")

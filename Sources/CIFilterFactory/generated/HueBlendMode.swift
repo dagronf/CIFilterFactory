@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFHueBlendMode) class HueBlendMode: FilterCore {
+	@objc(CIFFHueBlendMode) class HueBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHueBlendMode")

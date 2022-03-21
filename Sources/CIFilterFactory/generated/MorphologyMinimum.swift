@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMinimum/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFMorphologyMinimum) class MorphologyMinimum: FilterCore {
+	@objc(CIFFMorphologyMinimum) class MorphologyMinimum: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMorphologyMinimum")

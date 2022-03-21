@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveCorrection/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFPerspectiveCorrection) class PerspectiveCorrection: FilterCore {
+	@objc(CIFFPerspectiveCorrection) class PerspectiveCorrection: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPerspectiveCorrection")

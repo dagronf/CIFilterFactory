@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFDisintegrateWithMaskTransition) class DisintegrateWithMaskTransition: FilterCore {
+	@objc(CIFFDisintegrateWithMaskTransition) class DisintegrateWithMaskTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")

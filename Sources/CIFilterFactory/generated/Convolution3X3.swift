@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution3X3/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFConvolution3X3) class Convolution3X3: FilterCore {
+	@objc(CIFFConvolution3X3) class Convolution3X3: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConvolution3X3")

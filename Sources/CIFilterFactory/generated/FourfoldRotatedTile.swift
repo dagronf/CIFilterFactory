@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldRotatedTile/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFFourfoldRotatedTile) class FourfoldRotatedTile: FilterCore {
+	@objc(CIFFFourfoldRotatedTile) class FourfoldRotatedTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIFourfoldRotatedTile")

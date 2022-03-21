@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdges/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFEdges) class Edges: FilterCore {
+	@objc(CIFFEdges) class Edges: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIEdges")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISourceAtopCompositing/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFSourceAtopCompositing) class SourceAtopCompositing: FilterCore {
+	@objc(CIFFSourceAtopCompositing) class SourceAtopCompositing: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISourceAtopCompositing")

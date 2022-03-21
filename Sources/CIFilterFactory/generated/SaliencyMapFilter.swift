@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISaliencyMapFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFSaliencyMapFilter) class SaliencyMapFilter: FilterCore {
+	@objc(CIFFSaliencyMapFilter) class SaliencyMapFilter: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISaliencyMapFilter")

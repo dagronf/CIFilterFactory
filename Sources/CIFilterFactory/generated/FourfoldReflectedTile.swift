@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldReflectedTile/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFFourfoldReflectedTile) class FourfoldReflectedTile: FilterCore {
+	@objc(CIFFFourfoldReflectedTile) class FourfoldReflectedTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIFourfoldReflectedTile")

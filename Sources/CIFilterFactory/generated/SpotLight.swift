@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFSpotLight) class SpotLight: FilterCore {
+	@objc(CIFFSpotLight) class SpotLight: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISpotLight")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
-	@objc(CIFFTriangleKaleidoscope) class TriangleKaleidoscope: FilterCore {
+	@objc(CIFFTriangleKaleidoscope) class TriangleKaleidoscope: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")

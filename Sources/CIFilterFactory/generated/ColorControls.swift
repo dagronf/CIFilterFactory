@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFColorControls) class ColorControls: FilterCore {
+	@objc(CIFFColorControls) class ColorControls: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorControls")

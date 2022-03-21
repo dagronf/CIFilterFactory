@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubesMixedWithMask/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFColorCubesMixedWithMask) class ColorCubesMixedWithMask: FilterCore {
+	@objc(CIFFColorCubesMixedWithMask) class ColorCubesMixedWithMask: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorCubesMixedWithMask")

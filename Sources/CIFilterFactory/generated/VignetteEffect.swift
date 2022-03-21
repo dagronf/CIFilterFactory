@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFVignetteEffect) class VignetteEffect: FilterCore {
+	@objc(CIFFVignetteEffect) class VignetteEffect: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")

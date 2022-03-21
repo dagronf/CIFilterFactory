@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPinLightBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFPinLightBlendMode) class PinLightBlendMode: FilterCore {
+	@objc(CIFFPinLightBlendMode) class PinLightBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPinLightBlendMode")

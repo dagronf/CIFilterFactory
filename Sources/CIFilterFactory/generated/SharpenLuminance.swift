@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFSharpenLuminance) class SharpenLuminance: FilterCore {
+	@objc(CIFFSharpenLuminance) class SharpenLuminance: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")

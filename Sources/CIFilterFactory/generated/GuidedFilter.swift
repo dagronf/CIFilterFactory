@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFGuidedFilter) class GuidedFilter: FilterCore {
+	@objc(CIFFGuidedFilter) class GuidedFilter: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGuidedFilter")

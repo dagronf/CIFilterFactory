@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
-	@objc(CIFFZoomBlur) class ZoomBlur: FilterCore {
+	@objc(CIFFZoomBlur) class ZoomBlur: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIZoomBlur")

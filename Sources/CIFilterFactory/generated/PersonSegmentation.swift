@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
-	@objc(CIFFPersonSegmentation) class PersonSegmentation: FilterCore {
+	@objc(CIFFPersonSegmentation) class PersonSegmentation: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPersonSegmentation")

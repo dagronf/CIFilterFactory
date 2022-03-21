@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueAdjust/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFHueAdjust) class HueAdjust: FilterCore {
+	@objc(CIFFHueAdjust) class HueAdjust: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHueAdjust")

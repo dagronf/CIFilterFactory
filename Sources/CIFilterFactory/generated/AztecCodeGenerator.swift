@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFAztecCodeGenerator) class AztecCodeGenerator: FilterCore {
+	@objc(CIFFAztecCodeGenerator) class AztecCodeGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")

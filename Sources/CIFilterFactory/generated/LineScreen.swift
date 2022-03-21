@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFLineScreen) class LineScreen: FilterCore {
+	@objc(CIFFLineScreen) class LineScreen: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILineScreen")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineClamp/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFAffineClamp) class AffineClamp: FilterCore {
+	@objc(CIFFAffineClamp) class AffineClamp: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAffineClamp")

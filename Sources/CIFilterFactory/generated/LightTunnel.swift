@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
-	@objc(CIFFLightTunnel) class LightTunnel: FilterCore {
+	@objc(CIFFLightTunnel) class LightTunnel: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILightTunnel")

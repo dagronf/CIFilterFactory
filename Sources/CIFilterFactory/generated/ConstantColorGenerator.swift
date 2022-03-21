@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFConstantColorGenerator) class ConstantColorGenerator: FilterCore {
+	@objc(CIFFConstantColorGenerator) class ConstantColorGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")

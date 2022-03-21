@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFShadedMaterial) class ShadedMaterial: FilterCore {
+	@objc(CIFFShadedMaterial) class ShadedMaterial: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIShadedMaterial")

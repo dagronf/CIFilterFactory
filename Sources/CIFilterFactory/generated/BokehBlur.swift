@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFBokehBlur) class BokehBlur: FilterCore {
+	@objc(CIFFBokehBlur) class BokehBlur: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")

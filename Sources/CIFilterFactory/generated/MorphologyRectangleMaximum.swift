@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFMorphologyRectangleMaximum) class MorphologyRectangleMaximum: FilterCore {
+	@objc(CIFFMorphologyRectangleMaximum) class MorphologyRectangleMaximum: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMorphologyRectangleMaximum")

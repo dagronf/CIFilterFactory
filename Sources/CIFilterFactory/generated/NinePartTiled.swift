@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFNinePartTiled) class NinePartTiled: FilterCore {
+	@objc(CIFFNinePartTiled) class NinePartTiled: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CINinePartTiled")

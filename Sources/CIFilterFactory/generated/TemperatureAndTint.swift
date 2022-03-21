@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
-	@objc(CIFFTemperatureAndTint) class TemperatureAndTint: FilterCore {
+	@objc(CIFFTemperatureAndTint) class TemperatureAndTint: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")

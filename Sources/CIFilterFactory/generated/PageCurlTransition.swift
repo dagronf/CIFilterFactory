@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFPageCurlTransition) class PageCurlTransition: FilterCore {
+	@objc(CIFFPageCurlTransition) class PageCurlTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPageCurlTransition")

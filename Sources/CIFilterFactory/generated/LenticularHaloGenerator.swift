@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILenticularHaloGenerator/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFLenticularHaloGenerator) class LenticularHaloGenerator: FilterCore {
+	@objc(CIFFLenticularHaloGenerator) class LenticularHaloGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILenticularHaloGenerator")

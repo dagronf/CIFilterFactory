@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFAttributedTextImageGenerator) class AttributedTextImageGenerator: FilterCore {
+	@objc(CIFFAttributedTextImageGenerator) class AttributedTextImageGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAttributedTextImageGenerator")

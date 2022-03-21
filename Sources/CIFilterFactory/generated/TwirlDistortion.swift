@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwirlDistortion/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFTwirlDistortion) class TwirlDistortion: FilterCore {
+	@objc(CIFFTwirlDistortion) class TwirlDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITwirlDistortion")

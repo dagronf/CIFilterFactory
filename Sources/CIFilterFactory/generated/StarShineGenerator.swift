@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStarShineGenerator/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFStarShineGenerator) class StarShineGenerator: FilterCore {
+	@objc(CIFFStarShineGenerator) class StarShineGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")

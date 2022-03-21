@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFPhotoEffectInstant) class PhotoEffectInstant: FilterCore {
+	@objc(CIFFPhotoEffectInstant) class PhotoEffectInstant: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPhotoEffectInstant")

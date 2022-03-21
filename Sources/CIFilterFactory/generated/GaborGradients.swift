@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFGaborGradients) class GaborGradients: FilterCore {
+	@objc(CIFFGaborGradients) class GaborGradients: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGaborGradients")

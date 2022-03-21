@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFRandomGenerator) class RandomGenerator: FilterCore {
+	@objc(CIFFRandomGenerator) class RandomGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIRandomGenerator")

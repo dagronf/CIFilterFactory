@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFColorMatrix) class ColorMatrix: FilterCore {
+	@objc(CIFFColorMatrix) class ColorMatrix: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")

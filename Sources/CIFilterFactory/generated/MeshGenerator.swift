@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMeshGenerator/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFMeshGenerator) class MeshGenerator: FilterCore {
+	@objc(CIFFMeshGenerator) class MeshGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")

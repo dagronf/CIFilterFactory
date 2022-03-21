@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
-	@objc(CIFFHighlightShadowAdjust) class HighlightShadowAdjust: FilterCore {
+	@objc(CIFFHighlightShadowAdjust) class HighlightShadowAdjust: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")

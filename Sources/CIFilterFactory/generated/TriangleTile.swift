@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleTile/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFTriangleTile) class TriangleTile: FilterCore {
+	@objc(CIFFTriangleTile) class TriangleTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CITriangleTile")

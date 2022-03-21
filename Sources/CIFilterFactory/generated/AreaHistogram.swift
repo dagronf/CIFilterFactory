@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
 	///
 	@available(macOS 10.5, iOS 8, tvOS 8, *)
-	@objc(CIFFAreaHistogram) class AreaHistogram: FilterCore {
+	@objc(CIFFAreaHistogram) class AreaHistogram: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAreaHistogram")

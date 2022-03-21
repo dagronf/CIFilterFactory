@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFColorPosterize) class ColorPosterize: FilterCore {
+	@objc(CIFFColorPosterize) class ColorPosterize: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorPosterize")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignette/)
 	///
 	@available(macOS 10.9, iOS 5, tvOS 5, *)
-	@objc(CIFFVignette) class Vignette: FilterCore {
+	@objc(CIFFVignette) class Vignette: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIVignette")

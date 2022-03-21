@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOverlayBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFOverlayBlendMode) class OverlayBlendMode: FilterCore {
+	@objc(CIFFOverlayBlendMode) class OverlayBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIOverlayBlendMode")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFQRCodeGenerator) class QRCodeGenerator: FilterCore {
+	@objc(CIFFQRCodeGenerator) class QRCodeGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")

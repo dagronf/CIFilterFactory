@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFCircularScreen) class CircularScreen: FilterCore {
+	@objc(CIFFCircularScreen) class CircularScreen: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICircularScreen")

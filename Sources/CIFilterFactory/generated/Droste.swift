@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDroste/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
-	@objc(CIFFDroste) class Droste: FilterCore {
+	@objc(CIFFDroste) class Droste: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDroste")

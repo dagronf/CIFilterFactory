@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILinearDodgeBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFLinearDodgeBlendMode) class LinearDodgeBlendMode: FilterCore {
+	@objc(CIFFLinearDodgeBlendMode) class LinearDodgeBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILinearDodgeBlendMode")

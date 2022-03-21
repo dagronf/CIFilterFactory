@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIThermal/)
 	///
 	@available(macOS 10.11, iOS 10, tvOS 10, *)
-	@objc(CIFFThermal) class Thermal: FilterCore {
+	@objc(CIFFThermal) class Thermal: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIThermal")

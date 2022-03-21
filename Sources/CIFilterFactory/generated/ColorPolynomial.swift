@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFColorPolynomial) class ColorPolynomial: FilterCore {
+	@objc(CIFFColorPolynomial) class ColorPolynomial: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")

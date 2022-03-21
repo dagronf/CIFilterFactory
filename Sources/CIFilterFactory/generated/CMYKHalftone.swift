@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICMYKHalftone/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFCMYKHalftone) class CMYKHalftone: FilterCore {
+	@objc(CIFFCMYKHalftone) class CMYKHalftone: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICMYKHalftone")

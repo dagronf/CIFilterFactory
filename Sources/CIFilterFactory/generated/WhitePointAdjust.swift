@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFWhitePointAdjust) class WhitePointAdjust: FilterCore {
+	@objc(CIFFWhitePointAdjust) class WhitePointAdjust: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIWhitePointAdjust")

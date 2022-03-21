@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISixfoldReflectedTile/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFSixfoldReflectedTile) class SixfoldReflectedTile: FilterCore {
+	@objc(CIFFSixfoldReflectedTile) class SixfoldReflectedTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISixfoldReflectedTile")

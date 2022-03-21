@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILinearBurnBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFLinearBurnBlendMode) class LinearBurnBlendMode: FilterCore {
+	@objc(CIFFLinearBurnBlendMode) class LinearBurnBlendMode: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILinearBurnBlendMode")

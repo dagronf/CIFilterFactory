@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPinchDistortion/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFPinchDistortion) class PinchDistortion: FilterCore {
+	@objc(CIFFPinchDistortion) class PinchDistortion: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPinchDistortion")

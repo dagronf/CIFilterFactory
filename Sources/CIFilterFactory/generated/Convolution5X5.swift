@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution5X5/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFConvolution5X5) class Convolution5X5: FilterCore {
+	@objc(CIFFConvolution5X5) class Convolution5X5: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConvolution5X5")

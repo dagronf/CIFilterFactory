@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFColorClamp) class ColorClamp: FilterCore {
+	@objc(CIFFColorClamp) class ColorClamp: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorClamp")

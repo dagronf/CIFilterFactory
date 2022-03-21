@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
 	///
 	@available(macOS 10.9, iOS 9, tvOS 9, *)
-	@objc(CIFFPageCurlWithShadowTransition) class PageCurlWithShadowTransition: FilterCore {
+	@objc(CIFFPageCurlWithShadowTransition) class PageCurlWithShadowTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")

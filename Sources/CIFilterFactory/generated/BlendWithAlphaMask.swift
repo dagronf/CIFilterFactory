@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithAlphaMask/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFBlendWithAlphaMask) class BlendWithAlphaMask: FilterCore {
+	@objc(CIFFBlendWithAlphaMask) class BlendWithAlphaMask: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBlendWithAlphaMask")

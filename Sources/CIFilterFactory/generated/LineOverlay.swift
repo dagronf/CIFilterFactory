@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
-	@objc(CIFFLineOverlay) class LineOverlay: FilterCore {
+	@objc(CIFFLineOverlay) class LineOverlay: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CILineOverlay")

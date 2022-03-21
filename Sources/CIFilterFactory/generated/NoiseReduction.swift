@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CINoiseReduction/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFNoiseReduction) class NoiseReduction: FilterCore {
+	@objc(CIFFNoiseReduction) class NoiseReduction: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")

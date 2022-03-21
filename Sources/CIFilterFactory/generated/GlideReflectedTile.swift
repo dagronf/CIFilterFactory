@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlideReflectedTile/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFGlideReflectedTile) class GlideReflectedTile: FilterCore {
+	@objc(CIFFGlideReflectedTile) class GlideReflectedTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGlideReflectedTile")

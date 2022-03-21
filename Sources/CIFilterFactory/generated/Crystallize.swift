@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFCrystallize) class Crystallize: FilterCore {
+	@objc(CIFFCrystallize) class Crystallize: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICrystallize")

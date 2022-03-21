@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
-	@objc(CIFFStretchCrop) class StretchCrop: FilterCore {
+	@objc(CIFFStretchCrop) class StretchCrop: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIStretchCrop")

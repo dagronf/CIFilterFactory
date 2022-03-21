@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFDepthBlurEffect) class DepthBlurEffect: FilterCore {
+	@objc(CIFFDepthBlurEffect) class DepthBlurEffect: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")

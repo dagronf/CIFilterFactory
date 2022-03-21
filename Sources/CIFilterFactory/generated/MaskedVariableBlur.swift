@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
-	@objc(CIFFMaskedVariableBlur) class MaskedVariableBlur: FilterCore {
+	@objc(CIFFMaskedVariableBlur) class MaskedVariableBlur: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMaskedVariableBlur")

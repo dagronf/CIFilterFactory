@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
 	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
-	@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: FilterCore {
+	@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorThresholdOtsu")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFOpTile) class OpTile: FilterCore {
+	@objc(CIFFOpTile) class OpTile: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIOpTile")

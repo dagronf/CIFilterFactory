@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMinimumCompositing/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFMinimumCompositing) class MinimumCompositing: FilterCore {
+	@objc(CIFFMinimumCompositing) class MinimumCompositing: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMinimumCompositing")

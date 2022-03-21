@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBumpDistortionLinear/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFBumpDistortionLinear) class BumpDistortionLinear: FilterCore {
+	@objc(CIFFBumpDistortionLinear) class BumpDistortionLinear: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIBumpDistortionLinear")

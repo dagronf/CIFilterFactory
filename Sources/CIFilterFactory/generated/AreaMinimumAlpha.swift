@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinimumAlpha/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
-	@objc(CIFFAreaMinimumAlpha) class AreaMinimumAlpha: FilterCore {
+	@objc(CIFFAreaMinimumAlpha) class AreaMinimumAlpha: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAreaMinimumAlpha")

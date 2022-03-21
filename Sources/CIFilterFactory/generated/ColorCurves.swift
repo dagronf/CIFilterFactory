@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFColorCurves) class ColorCurves: FilterCore {
+	@objc(CIFFColorCurves) class ColorCurves: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorCurves")

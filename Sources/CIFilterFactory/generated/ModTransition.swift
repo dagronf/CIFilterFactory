@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIModTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFModTransition) class ModTransition: FilterCore {
+	@objc(CIFFModTransition) class ModTransition: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIModTransition")

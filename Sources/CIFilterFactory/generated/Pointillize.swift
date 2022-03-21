@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPointillize/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFPointillize) class Pointillize: FilterCore {
+	@objc(CIFFPointillize) class Pointillize: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPointillize")

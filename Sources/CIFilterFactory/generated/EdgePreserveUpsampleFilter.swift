@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFEdgePreserveUpsampleFilter) class EdgePreserveUpsampleFilter: FilterCore {
+	@objc(CIFFEdgePreserveUpsampleFilter) class EdgePreserveUpsampleFilter: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIEdgePreserveUpsampleFilter")

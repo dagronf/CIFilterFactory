@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMonochrome/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFColorMonochrome) class ColorMonochrome: FilterCore {
+	@objc(CIFFColorMonochrome) class ColorMonochrome: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIColorMonochrome")

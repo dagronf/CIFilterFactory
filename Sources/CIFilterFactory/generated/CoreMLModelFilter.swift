@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFCoreMLModelFilter) class CoreMLModelFilter: FilterCore {
+	@objc(CIFFCoreMLModelFilter) class CoreMLModelFilter: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")

@@ -24,10 +24,11 @@ import Foundation
 /// The namespace object for the filter factory
 @objc public class CIFF: NSObject {
 
+	// Disallow the creation of this class type
 	private override init() { }
 
 	/// Common filter base class. You never need need to create this yourself
-	@objc public class FilterCore: NSObject {
+	@objc public class Core: NSObject {
 		// The CIFilter wrapped instance for the filter
 		@objc public let filter: CIFilter
 
@@ -93,7 +94,7 @@ import Foundation
 	}
 }
 
-internal extension CIFF.FilterCore {
+internal extension CIFF.Core {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
 		return self.filter.value(forKey: key) as? TYPE

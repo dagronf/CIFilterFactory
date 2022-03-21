@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAdditionCompositing/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFAdditionCompositing) class AdditionCompositing: FilterCore {
+	@objc(CIFFAdditionCompositing) class AdditionCompositing: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIAdditionCompositing")

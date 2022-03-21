@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMinimumComponent/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
-	@objc(CIFFMinimumComponent) class MinimumComponent: FilterCore {
+	@objc(CIFFMinimumComponent) class MinimumComponent: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMinimumComponent")

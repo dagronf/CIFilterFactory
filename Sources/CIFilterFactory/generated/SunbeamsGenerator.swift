@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
-	@objc(CIFFSunbeamsGenerator) class SunbeamsGenerator: FilterCore {
+	@objc(CIFFSunbeamsGenerator) class SunbeamsGenerator: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")

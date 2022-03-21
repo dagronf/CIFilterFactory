@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFClamp) class Clamp: FilterCore {
+	@objc(CIFFClamp) class Clamp: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIClamp")

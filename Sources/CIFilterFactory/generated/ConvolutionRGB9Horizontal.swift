@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Horizontal/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
-	@objc(CIFFConvolutionRGB9Horizontal) class ConvolutionRGB9Horizontal: FilterCore {
+	@objc(CIFFConvolutionRGB9Horizontal) class ConvolutionRGB9Horizontal: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConvolutionRGB9Horizontal")

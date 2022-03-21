@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
-	@objc(CIFFCameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: FilterCore {
+	@objc(CIFFCameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")

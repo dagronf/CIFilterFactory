@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB7X7/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
-	@objc(CIFFConvolutionRGB7X7) class ConvolutionRGB7X7: FilterCore {
+	@objc(CIFFConvolutionRGB7X7) class ConvolutionRGB7X7: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIConvolutionRGB7X7")

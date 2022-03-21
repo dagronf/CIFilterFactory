@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIXRay/)
 	///
 	@available(macOS 10.11, iOS 10, tvOS 10, *)
-	@objc(CIFFXRay) class XRay: FilterCore {
+	@objc(CIFFXRay) class XRay: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIXRay")

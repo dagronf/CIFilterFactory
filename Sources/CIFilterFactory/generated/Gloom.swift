@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGloom/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFGloom) class Gloom: FilterCore {
+	@objc(CIFFGloom) class Gloom: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIGloom")

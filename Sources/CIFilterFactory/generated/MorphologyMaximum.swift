@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMaximum/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFMorphologyMaximum) class MorphologyMaximum: FilterCore {
+	@objc(CIFFMorphologyMaximum) class MorphologyMaximum: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIMorphologyMaximum")

@@ -37,7 +37,7 @@ import Foundation
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransformWithExtent/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFPerspectiveTransformWithExtent) class PerspectiveTransformWithExtent: FilterCore {
+	@objc(CIFFPerspectiveTransformWithExtent) class PerspectiveTransformWithExtent: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTransformWithExtent")
