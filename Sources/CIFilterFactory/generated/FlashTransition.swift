@@ -97,7 +97,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - extent (inputExtent)
@@ -118,7 +118,7 @@ import Foundation
 			}
 		}
 
-		/// extent default value
+		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
 
 		// MARK: - color (inputColor)
@@ -153,13 +153,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -177,13 +180,16 @@ import Foundation
 		@objc public var maxStriationRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
-				return number?.doubleValue ?? 2.58
+				return number?.doubleValue ?? Self.maxStriationRadiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.maxStriationRadiusRange)
 				self.filter.setValue(number, forKey: "inputMaxStriationRadius")
 			}
 		}
+
+		/// `maxStriationRadius` default value
+		@objc public static let maxStriationRadiusDefault: Double = 2.58
 
 		/// `maxStriationRadius` range definition
 		public static let maxStriationRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -201,13 +207,16 @@ import Foundation
 		@objc public var striationStrength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.striationStrengthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.striationStrengthRange)
 				self.filter.setValue(number, forKey: "inputStriationStrength")
 			}
 		}
+
+		/// `striationStrength` default value
+		@objc public static let striationStrengthDefault: Double = 0.5
 
 		/// `striationStrength` range definition
 		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -225,13 +234,16 @@ import Foundation
 		@objc public var striationContrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
-				return number?.doubleValue ?? 1.375
+				return number?.doubleValue ?? Self.striationContrastDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.striationContrastRange)
 				self.filter.setValue(number, forKey: "inputStriationContrast")
 			}
 		}
+
+		/// `striationContrast` default value
+		@objc public static let striationContrastDefault: Double = 1.375
 
 		/// `striationContrast` range definition
 		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -250,13 +262,16 @@ import Foundation
 		@objc public var fadeThreshold: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFadeThreshold") as? NSNumber
-				return number?.doubleValue ?? 0.85
+				return number?.doubleValue ?? Self.fadeThresholdDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.fadeThresholdRange)
 				self.filter.setValue(number, forKey: "inputFadeThreshold")
 			}
 		}
+
+		/// `fadeThreshold` default value
+		@objc public static let fadeThresholdDefault: Double = 0.85
 
 		/// `fadeThreshold` range definition
 		public static let fadeThresholdRange: ClosedRange<Double> = 0.0 ... 1.0

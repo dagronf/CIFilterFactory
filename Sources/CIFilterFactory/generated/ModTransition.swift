@@ -97,7 +97,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - time (inputTime)
@@ -114,13 +114,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -137,12 +140,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 2
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 2
 
 		// MARK: - radius (inputRadius)
 
@@ -157,13 +163,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 150
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 150
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -181,13 +190,16 @@ import Foundation
 		@objc public var compression: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCompression") as? NSNumber
-				return number?.doubleValue ?? 300
+				return number?.doubleValue ?? Self.compressionDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.compressionRange)
 				self.filter.setValue(number, forKey: "inputCompression")
 			}
 		}
+
+		/// `compression` default value
+		@objc public static let compressionDefault: Double = 300
 
 		/// `compression` range definition
 		public static let compressionRange: PartialRangeFrom<Double> = Double(1.0)...

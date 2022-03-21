@@ -75,13 +75,16 @@ import Foundation
 		@objc public var width: Int {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.intValue ?? 5
+				return number?.intValue ?? Self.widthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMaximum.widthRange)
 				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Int = 5
 
 		/// `width` range definition
 		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -99,13 +102,16 @@ import Foundation
 		@objc public var height: Int {
 			get {
 				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
-				return number?.intValue ?? 5
+				return number?.intValue ?? Self.heightDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMaximum.heightRange)
 				self.filter.setValue(number, forKey: "inputHeight")
 			}
 		}
+
+		/// `height` default value
+		@objc public static let heightDefault: Int = 5
 
 		/// `height` range definition
 		public static let heightRange: PartialRangeFrom<Double> = Double(1.0)...

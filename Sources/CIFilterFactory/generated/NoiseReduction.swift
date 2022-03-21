@@ -75,13 +75,16 @@ import Foundation
 		@objc public var noiseLevel: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
-				return number?.doubleValue ?? 0.02
+				return number?.doubleValue ?? Self.noiseLevelDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: NoiseReduction.noiseLevelRange)
 				self.filter.setValue(number, forKey: "inputNoiseLevel")
 			}
 		}
+
+		/// `noiseLevel` default value
+		@objc public static let noiseLevelDefault: Double = 0.02
 
 		/// `noiseLevel` range definition
 		public static let noiseLevelRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -99,13 +102,16 @@ import Foundation
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? 0.4
+				return number?.doubleValue ?? Self.sharpnessDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: NoiseReduction.sharpnessRange)
 				self.filter.setValue(number, forKey: "inputSharpness")
 			}
 		}
+
+		/// `sharpness` default value
+		@objc public static let sharpnessDefault: Double = 0.4
 
 		/// `sharpness` range definition
 		public static let sharpnessRange: PartialRangeFrom<Double> = Double(0.0)...

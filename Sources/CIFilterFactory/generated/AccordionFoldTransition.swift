@@ -92,13 +92,16 @@ import Foundation
 		@objc public var bottomHeight: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBottomHeight") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.bottomHeightDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.bottomHeightRange)
 				self.filter.setValue(number, forKey: "inputBottomHeight")
 			}
 		}
+
+		/// `bottomHeight` default value
+		@objc public static let bottomHeightDefault: Double = 0
 
 		/// `bottomHeight` range definition
 		public static let bottomHeightRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -117,13 +120,16 @@ import Foundation
 		@objc public var numberOfFolds: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
-				return number?.doubleValue ?? 3
+				return number?.doubleValue ?? Self.numberOfFoldsDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.numberOfFoldsRange)
 				self.filter.setValue(number, forKey: "inputNumberOfFolds")
 			}
 		}
+
+		/// `numberOfFolds` default value
+		@objc public static let numberOfFoldsDefault: Double = 3
 
 		/// `numberOfFolds` range definition
 		public static let numberOfFoldsRange: ClosedRange<Double> = 1.0 ... 50.0
@@ -142,13 +148,16 @@ import Foundation
 		@objc public var foldShadowAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
-				return number?.doubleValue ?? 0.1
+				return number?.doubleValue ?? Self.foldShadowAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.foldShadowAmountRange)
 				self.filter.setValue(number, forKey: "inputFoldShadowAmount")
 			}
 		}
+
+		/// `foldShadowAmount` default value
+		@objc public static let foldShadowAmountDefault: Double = 0.1
 
 		/// `foldShadowAmount` range definition
 		public static let foldShadowAmountRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -167,13 +176,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0

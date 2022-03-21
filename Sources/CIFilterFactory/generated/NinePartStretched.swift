@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// breakpoint0 default value
+		/// `breakpoint0` default value
 		@objc public static let breakpoint0Default = CGPoint(x: 50.0, y: 50.0)
 
 		// MARK: - breakpoint1 (inputBreakpoint1)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// breakpoint1 default value
+		/// `breakpoint1` default value
 		@objc public static let breakpoint1Default = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - growAmount (inputGrowAmount)
@@ -122,7 +122,7 @@ import Foundation
 			}
 		}
 
-		/// growAmount default value
+		/// `growAmount` default value
 		@objc public static let growAmountDefault = CGPoint(x: 100.0, y: 100.0)
 
 		// MARK: - Convenience initializer

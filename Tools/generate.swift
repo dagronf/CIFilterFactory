@@ -224,7 +224,7 @@ import CoreImage
 			out.print("      }")
 			out.print("   }")
 			out.print("")
-			out.print("   /// \(userFriendlyKey) default value")
+			out.print("   /// `\(userFriendlyKey)` default value")
 			out.print("   @objc static public let \(userFriendlyKey)Default = CGRect(x: \(defaultValue.origin.x), y: \(defaultValue.origin.y), width: \(defaultValue.width), height: \(defaultValue.width))")
 			out.print("")
 		}
@@ -245,11 +245,11 @@ import CoreImage
 			out.print("         return CGPoint(with: self.filter, key: \"\(key2)\", defaultValue: Self.\(userFriendlyKey)Default)")
 			out.print("      }")
 			out.print("      set {")
-			out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key2)")"#)
+			out.print("         self.setKeyedValue(newValue.ciVector, for: \"\(key2)\")")
 			out.print("      }")
 			out.print("   }")
 			out.print("")
-			out.print("   /// \(userFriendlyKey) default value")
+			out.print("   /// `\(userFriendlyKey)` default value")
 			out.print("   @objc static public let \(userFriendlyKey)Default = CGPoint(x: \(defaultValue.x), y: \(defaultValue.y))")
 			out.print("")
 		}
@@ -272,8 +272,8 @@ import CoreImage
 			let defaultValue = keyDefaultValue ?? "0"
 			out.print("   @objc public var \(userFriendlyKey): Double {")
 			out.print("      get {")
-			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
-			out.print(#"         return number?.doubleValue ?? \#(defaultValue)"#)
+			out.print("         let number = self.filter.value(forKey: \"\(key2)\") as? NSNumber")
+			out.print("         return number?.doubleValue ?? Self.\(userFriendlyKey)Default")
 			out.print("      }")
 			out.print("      set {")
 			if let rangeDef = rangeDef {
@@ -285,6 +285,10 @@ import CoreImage
 			}
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default: Double = \(defaultValue)")
+			out.print("")
 		}
 		else if keyClass == "NSNumber",
 				  keySubType == kCIAttributeTypeInteger
@@ -292,8 +296,8 @@ import CoreImage
 			let defaultValue = keyDefaultValue ?? "0"
 			out.print("   @objc public var \(userFriendlyKey): Int {")
 			out.print("      get {")
-			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
-			out.print(#"         return number?.intValue ?? \#(defaultValue)"#)
+			out.print(#"        let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
+			out.print("         return number?.intValue ?? Self.\(userFriendlyKey)Default")
 			out.print("      }")
 			out.print("      set {")
 			if let rangeDef = rangeDef {
@@ -301,10 +305,14 @@ import CoreImage
 				out.print("         self.filter.setValue(number, forKey: \"\(key2)\")")
 			}
 			else {
-				out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
+				out.print("         self.setKeyedValue(NSNumber(value: newValue), for: \"\(key2)\"")
 			}
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default: Int = \(defaultValue)")
+			out.print("")
 		}
 		else if keyClass == "NSNumber",
 				  keySubType == kCIAttributeTypeBoolean
@@ -312,13 +320,17 @@ import CoreImage
 			let defaultValue = (keyDefaultValue as? String) == "1" ? "true" : "false"
 			out.print("   @objc public var \(userFriendlyKey): Bool {")
 			out.print("      get {")
-			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
-			out.print(#"         return number?.boolValue ?? \#(defaultValue)"#)
+			out.print("         let number = self.filter.value(forKey: \"\(key2)\") as? NSNumber")
+			out.print("         return number?.boolValue ?? Self.\(userFriendlyKey)Default")
 			out.print("      }")
 			out.print("      set {")
 			out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key2)")"#)
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default: Bool = \(defaultValue)")
+			out.print("")
 		}
 		else if keyClass == "NSNumber",
 				  keySubType == kCIAttributeTypeCount
@@ -326,8 +338,8 @@ import CoreImage
 			let defaultValue = keyDefaultValue ?? "0"
 			out.print("   @objc public var \(userFriendlyKey): UInt {")
 			out.print("      get {")
-			out.print(#"         let number = self.filter.value(forKey: "\#(key2)") as? NSNumber"#)
-			out.print(#"         return number?.uintValue ?? \#(defaultValue)"#)
+			out.print("         let number = self.filter.value(forKey: \"\(key2)\") as? NSNumber")
+			out.print("         return number?.uintValue ?? Self.\(userFriendlyKey)Default")
 			out.print("      }")
 			out.print("      set {")
 			if let rangeDef = rangeDef {
@@ -339,6 +351,10 @@ import CoreImage
 			}
 			out.print("      }")
 			out.print("   }")
+			out.print("")
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default: UInt = \(defaultValue)")
+			out.print("")
 		}
 		else {
 			out.print("   @objc public var \(userFriendlyKey): \(mappedClass ?? keyClass)? {")

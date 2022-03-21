@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// extent default value
+		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
 
 		// MARK: - scale (inputScale)
@@ -96,13 +96,16 @@ import Foundation
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.scaleDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.scaleRange)
 				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
+
+		/// `scale` default value
+		@objc public static let scaleDefault: Double = 1
 
 		/// `scale` range definition
 		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -121,13 +124,16 @@ import Foundation
 		@objc public var count: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCount") as? NSNumber
-				return number?.doubleValue ?? 64
+				return number?.doubleValue ?? Self.countDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.countRange)
 				self.filter.setValue(number, forKey: "inputCount")
 			}
 		}
+
+		/// `count` default value
+		@objc public static let countDefault: Double = 64
 
 		/// `count` range definition
 		public static let countRange: ClosedRange<Double> = 1.0 ... 2048.0

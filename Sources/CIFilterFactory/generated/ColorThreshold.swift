@@ -74,12 +74,15 @@ import Foundation
 		@objc public var threshold: Double {
 			get {
 				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.thresholdDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputThreshold")
 			}
 		}
+
+		/// `threshold` default value
+		@objc public static let thresholdDefault: Double = 0.5
 
 		// MARK: - Convenience initializer
 

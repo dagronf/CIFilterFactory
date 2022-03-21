@@ -75,13 +75,16 @@ import Foundation
 		@objc public var count: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCount") as? NSNumber
-				return number?.doubleValue ?? 6
+				return number?.doubleValue ?? Self.countDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Kaleidoscope.countRange)
 				self.filter.setValue(number, forKey: "inputCount")
 			}
 		}
+
+		/// `count` default value
+		@objc public static let countDefault: Double = 6
 
 		/// `count` range definition
 		public static let countRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -104,7 +107,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - angle (inputAngle)
@@ -119,12 +122,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 0
 
 		// MARK: - Convenience initializer
 

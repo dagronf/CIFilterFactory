@@ -109,13 +109,16 @@ import Foundation
 		@objc public var closeness1: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCloseness1") as? NSNumber
-				return number?.doubleValue ?? 0.22
+				return number?.doubleValue ?? Self.closeness1Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness1Range)
 				self.filter.setValue(number, forKey: "inputCloseness1")
 			}
 		}
+
+		/// `closeness1` default value
+		@objc public static let closeness1Default: Double = 0.22
 
 		/// `closeness1` range definition
 		public static let closeness1Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -133,13 +136,16 @@ import Foundation
 		@objc public var contrast1: Double {
 			get {
 				let number = self.filter.value(forKey: "inputContrast1") as? NSNumber
-				return number?.doubleValue ?? 0.98
+				return number?.doubleValue ?? Self.contrast1Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast1Range)
 				self.filter.setValue(number, forKey: "inputContrast1")
 			}
 		}
+
+		/// `contrast1` default value
+		@objc public static let contrast1Default: Double = 0.98
 
 		/// `contrast1` range definition
 		public static let contrast1Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -191,13 +197,16 @@ import Foundation
 		@objc public var closeness2: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCloseness2") as? NSNumber
-				return number?.doubleValue ?? 0.15
+				return number?.doubleValue ?? Self.closeness2Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness2Range)
 				self.filter.setValue(number, forKey: "inputCloseness2")
 			}
 		}
+
+		/// `closeness2` default value
+		@objc public static let closeness2Default: Double = 0.15
 
 		/// `closeness2` range definition
 		public static let closeness2Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -215,13 +224,16 @@ import Foundation
 		@objc public var contrast2: Double {
 			get {
 				let number = self.filter.value(forKey: "inputContrast2") as? NSNumber
-				return number?.doubleValue ?? 0.98
+				return number?.doubleValue ?? Self.contrast2Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast2Range)
 				self.filter.setValue(number, forKey: "inputContrast2")
 			}
 		}
+
+		/// `contrast2` default value
+		@objc public static let contrast2Default: Double = 0.98
 
 		/// `contrast2` range definition
 		public static let contrast2Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -273,13 +285,16 @@ import Foundation
 		@objc public var closeness3: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCloseness3") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.closeness3Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.closeness3Range)
 				self.filter.setValue(number, forKey: "inputCloseness3")
 			}
 		}
+
+		/// `closeness3` default value
+		@objc public static let closeness3Default: Double = 0.5
 
 		/// `closeness3` range definition
 		public static let closeness3Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -297,13 +312,16 @@ import Foundation
 		@objc public var contrast3: Double {
 			get {
 				let number = self.filter.value(forKey: "inputContrast3") as? NSNumber
-				return number?.doubleValue ?? 0.99
+				return number?.doubleValue ?? Self.contrast3Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: SpotColor.contrast3Range)
 				self.filter.setValue(number, forKey: "inputContrast3")
 			}
 		}
+
+		/// `contrast3` default value
+		@objc public static let contrast3Default: Double = 0.99
 
 		/// `contrast3` range definition
 		public static let contrast3Range: PartialRangeFrom<Double> = Double(0.0)...

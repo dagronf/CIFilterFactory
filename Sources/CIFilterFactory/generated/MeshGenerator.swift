@@ -58,13 +58,16 @@ import Foundation
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? 1.5
+				return number?.doubleValue ?? Self.widthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: MeshGenerator.widthRange)
 				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Double = 1.5
 
 		/// `width` range definition
 		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...

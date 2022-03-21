@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - amount (inputAmount)
@@ -95,12 +95,15 @@ import Foundation
 		@objc public var amount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
-				return number?.doubleValue ?? 20
+				return number?.doubleValue ?? Self.amountDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAmount")
 			}
 		}
+
+		/// `amount` default value
+		@objc public static let amountDefault: Double = 20
 
 		// MARK: - Convenience initializer
 

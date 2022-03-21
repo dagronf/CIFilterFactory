@@ -74,12 +74,15 @@ import Foundation
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? 0.4
+				return number?.doubleValue ?? Self.sharpnessDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputSharpness")
 			}
 		}
+
+		/// `sharpness` default value
+		@objc public static let sharpnessDefault: Double = 0.4
 
 		// MARK: - radius (inputRadius)
 
@@ -93,12 +96,15 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 1.69
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 1.69
 
 		// MARK: - Convenience initializer
 

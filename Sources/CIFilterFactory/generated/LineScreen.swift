@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - angle (inputAngle)
@@ -95,12 +95,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 0
 
 		// MARK: - width (inputWidth)
 
@@ -115,13 +118,16 @@ import Foundation
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? 6
+				return number?.doubleValue ?? Self.widthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LineScreen.widthRange)
 				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Double = 6
 
 		/// `width` range definition
 		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -140,13 +146,16 @@ import Foundation
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? 0.7
+				return number?.doubleValue ?? Self.sharpnessDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LineScreen.sharpnessRange)
 				self.filter.setValue(number, forKey: "inputSharpness")
 			}
 		}
+
+		/// `sharpness` default value
+		@objc public static let sharpnessDefault: Double = 0.7
 
 		/// `sharpness` range definition
 		public static let sharpnessRange: ClosedRange<Double> = 0.0 ... 1.0

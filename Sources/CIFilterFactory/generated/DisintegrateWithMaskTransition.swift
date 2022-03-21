@@ -110,13 +110,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -134,13 +137,16 @@ import Foundation
 		@objc public var shadowRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowRadius") as? NSNumber
-				return number?.doubleValue ?? 8
+				return number?.doubleValue ?? Self.shadowRadiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowRadiusRange)
 				self.filter.setValue(number, forKey: "inputShadowRadius")
 			}
 		}
+
+		/// `shadowRadius` default value
+		@objc public static let shadowRadiusDefault: Double = 8
 
 		/// `shadowRadius` range definition
 		public static let shadowRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -159,13 +165,16 @@ import Foundation
 		@objc public var shadowDensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowDensity") as? NSNumber
-				return number?.doubleValue ?? 0.65
+				return number?.doubleValue ?? Self.shadowDensityDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowDensityRange)
 				self.filter.setValue(number, forKey: "inputShadowDensity")
 			}
 		}
+
+		/// `shadowDensity` default value
+		@objc public static let shadowDensityDefault: Double = 0.65
 
 		/// `shadowDensity` range definition
 		public static let shadowDensityRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -188,7 +197,7 @@ import Foundation
 			}
 		}
 
-		/// shadowOffset default value
+		/// `shadowOffset` default value
 		@objc public static let shadowOffsetDefault = CGPoint(x: 0.0, y: -10.0)
 
 		// MARK: - Convenience initializer

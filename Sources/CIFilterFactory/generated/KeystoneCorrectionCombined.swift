@@ -74,12 +74,15 @@ import Foundation
 		@objc public var focalLength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
-				return number?.doubleValue ?? 28
+				return number?.doubleValue ?? Self.focalLengthDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputFocalLength")
 			}
 		}
+
+		/// `focalLength` default value
+		@objc public static let focalLengthDefault: Double = 28
 
 		// MARK: - topLeft (inputTopLeft)
 
@@ -98,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// topLeft default value
+		/// `topLeft` default value
 		@objc public static let topLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - topRight (inputTopRight)
@@ -118,7 +121,7 @@ import Foundation
 			}
 		}
 
-		/// topRight default value
+		/// `topRight` default value
 		@objc public static let topRightDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - bottomRight (inputBottomRight)
@@ -138,7 +141,7 @@ import Foundation
 			}
 		}
 
-		/// bottomRight default value
+		/// `bottomRight` default value
 		@objc public static let bottomRightDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - bottomLeft (inputBottomLeft)
@@ -158,7 +161,7 @@ import Foundation
 			}
 		}
 
-		/// bottomLeft default value
+		/// `bottomLeft` default value
 		@objc public static let bottomLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - Additional Outputs

@@ -92,12 +92,15 @@ import Foundation
 		@objc public var perceptual: Bool {
 			get {
 				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
-				return number?.boolValue ?? false
+				return number?.boolValue ?? Self.perceptualDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")
 			}
 		}
+
+		/// `perceptual` default value
+		@objc public static let perceptualDefault: Bool = false
 
 		/// `perceptual` range definition
 		public static let perceptualRange: ClosedRange<Double> = 0.0 ... 1.0

@@ -75,13 +75,16 @@ import Foundation
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.scaleDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.scaleRange)
 				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
+
+		/// `scale` default value
+		@objc public static let scaleDefault: Double = 1
 
 		/// `scale` range definition
 		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -99,13 +102,16 @@ import Foundation
 		@objc public var aspectRatio: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAspectRatio") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.aspectRatioDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.aspectRatioRange)
 				self.filter.setValue(number, forKey: "inputAspectRatio")
 			}
 		}
+
+		/// `aspectRatio` default value
+		@objc public static let aspectRatioDefault: Double = 1
 
 		/// `aspectRatio` range definition
 		public static let aspectRatioRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -124,13 +130,16 @@ import Foundation
 		@objc public var b: Double {
 			get {
 				let number = self.filter.value(forKey: "inputB") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.bDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.bRange)
 				self.filter.setValue(number, forKey: "inputB")
 			}
 		}
+
+		/// `b` default value
+		@objc public static let bDefault: Double = 0
 
 		/// `b` range definition
 		public static let bRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -149,13 +158,16 @@ import Foundation
 		@objc public var c: Double {
 			get {
 				let number = self.filter.value(forKey: "inputC") as? NSNumber
-				return number?.doubleValue ?? 0.75
+				return number?.doubleValue ?? Self.cDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.cRange)
 				self.filter.setValue(number, forKey: "inputC")
 			}
 		}
+
+		/// `c` default value
+		@objc public static let cDefault: Double = 0.75
 
 		/// `c` range definition
 		public static let cRange: ClosedRange<Double> = 0.0 ... 1.0

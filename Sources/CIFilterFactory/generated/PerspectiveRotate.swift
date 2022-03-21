@@ -74,12 +74,15 @@ import Foundation
 		@objc public var focalLength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
-				return number?.doubleValue ?? 28
+				return number?.doubleValue ?? Self.focalLengthDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputFocalLength")
 			}
 		}
+
+		/// `focalLength` default value
+		@objc public static let focalLengthDefault: Double = 28
 
 		// MARK: - pitch (inputPitch)
 
@@ -93,12 +96,15 @@ import Foundation
 		@objc public var pitch: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPitch") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.pitchDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPitch")
 			}
 		}
+
+		/// `pitch` default value
+		@objc public static let pitchDefault: Double = 0
 
 		// MARK: - yaw (inputYaw)
 
@@ -112,12 +118,15 @@ import Foundation
 		@objc public var yaw: Double {
 			get {
 				let number = self.filter.value(forKey: "inputYaw") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.yawDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputYaw")
 			}
 		}
+
+		/// `yaw` default value
+		@objc public static let yawDefault: Double = 0
 
 		// MARK: - roll (inputRoll)
 
@@ -131,12 +140,15 @@ import Foundation
 		@objc public var roll: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRoll") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.rollDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRoll")
 			}
 		}
+
+		/// `roll` default value
+		@objc public static let rollDefault: Double = 0
 
 		// MARK: - Additional Outputs
 

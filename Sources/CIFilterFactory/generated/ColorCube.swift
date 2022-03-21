@@ -76,13 +76,16 @@ import Foundation
 		@objc public var cubeDimension: UInt {
 			get {
 				let number = self.filter.value(forKey: "inputCubeDimension") as? NSNumber
-				return number?.uintValue ?? 2
+				return number?.uintValue ?? Self.cubeDimensionDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorCube.cubeDimensionRange)
 				self.filter.setValue(number, forKey: "inputCubeDimension")
 			}
 		}
+
+		/// `cubeDimension` default value
+		@objc public static let cubeDimensionDefault: UInt = 2
 
 		/// `cubeDimension` range definition
 		public static let cubeDimensionRange: ClosedRange<Double> = 2.0 ... 128.0

@@ -90,12 +90,15 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 1
 
 		// MARK: - epsilon (inputEpsilon)
 
@@ -109,12 +112,15 @@ import Foundation
 		@objc public var epsilon: Double {
 			get {
 				let number = self.filter.value(forKey: "inputEpsilon") as? NSNumber
-				return number?.doubleValue ?? 0.0001
+				return number?.doubleValue ?? Self.epsilonDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputEpsilon")
 			}
 		}
+
+		/// `epsilon` default value
+		@objc public static let epsilonDefault: Double = 0.0001
 
 		// MARK: - Convenience initializer
 

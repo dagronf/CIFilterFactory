@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// size default value
+		/// `size` default value
 		@objc public static let sizeDefault = CGPoint(x: 1280.0, y: 720.0)
 
 		// MARK: - cropAmount (inputCropAmount)
@@ -97,13 +97,16 @@ import Foundation
 		@objc public var cropAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCropAmount") as? NSNumber
-				return number?.doubleValue ?? 0.25
+				return number?.doubleValue ?? Self.cropAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.cropAmountRange)
 				self.filter.setValue(number, forKey: "inputCropAmount")
 			}
 		}
+
+		/// `cropAmount` default value
+		@objc public static let cropAmountDefault: Double = 0.25
 
 		/// `cropAmount` range definition
 		public static let cropAmountRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -122,13 +125,16 @@ import Foundation
 		@objc public var centerStretchAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
-				return number?.doubleValue ?? 0.25
+				return number?.doubleValue ?? Self.centerStretchAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.centerStretchAmountRange)
 				self.filter.setValue(number, forKey: "inputCenterStretchAmount")
 			}
 		}
+
+		/// `centerStretchAmount` default value
+		@objc public static let centerStretchAmountDefault: Double = 0.25
 
 		/// `centerStretchAmount` range definition
 		public static let centerStretchAmountRange: ClosedRange<Double> = 0.0 ... 1.0

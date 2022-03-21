@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// extent default value
+		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
 
 		// MARK: - Additional Outputs

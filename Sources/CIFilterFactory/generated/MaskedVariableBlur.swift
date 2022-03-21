@@ -91,13 +91,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 5
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: MaskedVariableBlur.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 5
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...

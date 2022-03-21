@@ -92,13 +92,16 @@ import Foundation
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? 10
+				return number?.doubleValue ?? Self.scaleDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ShadedMaterial.scaleRange)
 				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
+
+		/// `scale` default value
+		@objc public static let scaleDefault: Double = 10
 
 		/// `scale` range definition
 		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...

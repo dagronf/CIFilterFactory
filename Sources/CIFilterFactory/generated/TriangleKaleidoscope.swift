@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// point default value
+		/// `point` default value
 		@objc public static let pointDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - size (inputSize)
@@ -95,12 +95,15 @@ import Foundation
 		@objc public var size: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSize") as? NSNumber
-				return number?.doubleValue ?? 700
+				return number?.doubleValue ?? Self.sizeDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputSize")
 			}
 		}
+
+		/// `size` default value
+		@objc public static let sizeDefault: Double = 700
 
 		// MARK: - rotation (inputRotation)
 
@@ -114,12 +117,15 @@ import Foundation
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? 5.924285296593801
+				return number?.doubleValue ?? Self.rotationDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
+
+		/// `rotation` default value
+		@objc public static let rotationDefault: Double = 5.924285296593801
 
 		// MARK: - decay (inputDecay)
 
@@ -133,12 +139,15 @@ import Foundation
 		@objc public var decay: Double {
 			get {
 				let number = self.filter.value(forKey: "inputDecay") as? NSNumber
-				return number?.doubleValue ?? 0.85
+				return number?.doubleValue ?? Self.decayDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputDecay")
 			}
 		}
+
+		/// `decay` default value
+		@objc public static let decayDefault: Double = 0.85
 
 		// MARK: - Convenience initializer
 

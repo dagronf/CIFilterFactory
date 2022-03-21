@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - rotation (inputRotation)
@@ -95,12 +95,15 @@ import Foundation
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.rotationDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
+
+		/// `rotation` default value
+		@objc public static let rotationDefault: Double = 0
 
 		// MARK: - radius (inputRadius)
 
@@ -114,12 +117,15 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 100
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 100
 
 		// MARK: - Convenience initializer
 

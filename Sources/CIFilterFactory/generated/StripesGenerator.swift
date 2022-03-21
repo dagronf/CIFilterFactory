@@ -63,7 +63,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - color0 (inputColor0)
@@ -112,12 +112,15 @@ import Foundation
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? 80
+				return number?.doubleValue ?? Self.widthDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Double = 80
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -133,13 +136,16 @@ import Foundation
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.sharpnessDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: StripesGenerator.sharpnessRange)
 				self.filter.setValue(number, forKey: "inputSharpness")
 			}
 		}
+
+		/// `sharpness` default value
+		@objc public static let sharpnessDefault: Double = 1
 
 		/// `sharpness` range definition
 		public static let sharpnessRange: ClosedRange<Double> = 0.0 ... 1.0

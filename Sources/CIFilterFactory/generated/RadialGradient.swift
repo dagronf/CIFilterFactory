@@ -63,7 +63,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - radius0 (inputRadius0)
@@ -79,13 +79,16 @@ import Foundation
 		@objc public var radius0: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius0") as? NSNumber
-				return number?.doubleValue ?? 5
+				return number?.doubleValue ?? Self.radius0Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius0Range)
 				self.filter.setValue(number, forKey: "inputRadius0")
 			}
 		}
+
+		/// `radius0` default value
+		@objc public static let radius0Default: Double = 5
 
 		/// `radius0` range definition
 		public static let radius0Range: PartialRangeFrom<Double> = Double(0.0)...
@@ -103,13 +106,16 @@ import Foundation
 		@objc public var radius1: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius1") as? NSNumber
-				return number?.doubleValue ?? 100
+				return number?.doubleValue ?? Self.radius1Default
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius1Range)
 				self.filter.setValue(number, forKey: "inputRadius1")
 			}
 		}
+
+		/// `radius1` default value
+		@objc public static let radius1Default: Double = 100
 
 		/// `radius1` range definition
 		public static let radius1Range: PartialRangeFrom<Double> = Double(0.0)...

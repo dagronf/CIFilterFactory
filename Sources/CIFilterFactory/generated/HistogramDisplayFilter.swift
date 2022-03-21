@@ -76,13 +76,16 @@ import Foundation
 		@objc public var height: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
-				return number?.doubleValue ?? 100
+				return number?.doubleValue ?? Self.heightDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.heightRange)
 				self.filter.setValue(number, forKey: "inputHeight")
 			}
 		}
+
+		/// `height` default value
+		@objc public static let heightDefault: Double = 100
 
 		/// `height` range definition
 		public static let heightRange: ClosedRange<Double> = 1.0 ... 200.0
@@ -101,13 +104,16 @@ import Foundation
 		@objc public var highLimit: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHighLimit") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.highLimitDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.highLimitRange)
 				self.filter.setValue(number, forKey: "inputHighLimit")
 			}
 		}
+
+		/// `highLimit` default value
+		@objc public static let highLimitDefault: Double = 1
 
 		/// `highLimit` range definition
 		public static let highLimitRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -126,13 +132,16 @@ import Foundation
 		@objc public var lowLimit: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLowLimit") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.lowLimitDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HistogramDisplayFilter.lowLimitRange)
 				self.filter.setValue(number, forKey: "inputLowLimit")
 			}
 		}
+
+		/// `lowLimit` default value
+		@objc public static let lowLimitDefault: Double = 0
 
 		/// `lowLimit` range definition
 		public static let lowLimitRange: ClosedRange<Double> = 0.0 ... 1.0

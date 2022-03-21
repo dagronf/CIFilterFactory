@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// insetPoint0 default value
+		/// `insetPoint0` default value
 		@objc public static let insetPoint0Default = CGPoint(x: 200.0, y: 200.0)
 
 		// MARK: - insetPoint1 (inputInsetPoint1)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// insetPoint1 default value
+		/// `insetPoint1` default value
 		@objc public static let insetPoint1Default = CGPoint(x: 400.0, y: 400.0)
 
 		// MARK: - strands (inputStrands)
@@ -118,13 +118,16 @@ import Foundation
 		@objc public var strands: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStrands") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.strandsDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Droste.strandsRange)
 				self.filter.setValue(number, forKey: "inputStrands")
 			}
 		}
+
+		/// `strands` default value
+		@objc public static let strandsDefault: Double = 1
 
 		/// `strands` range definition
 		public static let strandsRange: ClosedRange<Double> = -10.0 ... 10.0
@@ -142,13 +145,16 @@ import Foundation
 		@objc public var periodicity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPeriodicity") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.periodicityDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Droste.periodicityRange)
 				self.filter.setValue(number, forKey: "inputPeriodicity")
 			}
 		}
+
+		/// `periodicity` default value
+		@objc public static let periodicityDefault: Double = 1
 
 		/// `periodicity` range definition
 		public static let periodicityRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -165,12 +171,15 @@ import Foundation
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.rotationDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
 			}
 		}
+
+		/// `rotation` default value
+		@objc public static let rotationDefault: Double = 0
 
 		// MARK: - zoom (inputZoom)
 
@@ -185,13 +194,16 @@ import Foundation
 		@objc public var zoom: Double {
 			get {
 				let number = self.filter.value(forKey: "inputZoom") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.zoomDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Droste.zoomRange)
 				self.filter.setValue(number, forKey: "inputZoom")
 			}
 		}
+
+		/// `zoom` default value
+		@objc public static let zoomDefault: Double = 1
 
 		/// `zoom` range definition
 		public static let zoomRange: PartialRangeFrom<Double> = Double(0.01)...

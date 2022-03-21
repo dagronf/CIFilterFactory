@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// neutral default value
+		/// `neutral` default value
 		@objc public static let neutralDefault = CGPoint(x: 6500.0, y: 0.0)
 
 		// MARK: - targetNeutral (inputTargetNeutral)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// targetNeutral default value
+		/// `targetNeutral` default value
 		@objc public static let targetNeutralDefault = CGPoint(x: 6500.0, y: 0.0)
 
 		// MARK: - Convenience initializer

@@ -63,7 +63,7 @@ import Foundation
 			}
 		}
 
-		/// point0 default value
+		/// `point0` default value
 		@objc public static let point0Default = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - point1 (inputPoint1)
@@ -84,7 +84,7 @@ import Foundation
 			}
 		}
 
-		/// point1 default value
+		/// `point1` default value
 		@objc public static let point1Default = CGPoint(x: 200.0, y: 200.0)
 
 		// MARK: - color0 (inputColor0)

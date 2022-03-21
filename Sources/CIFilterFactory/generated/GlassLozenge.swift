@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// point0 default value
+		/// `point0` default value
 		@objc public static let point0Default = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - point1 (inputPoint1)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// point1 default value
+		/// `point1` default value
 		@objc public static let point1Default = CGPoint(x: 350.0, y: 150.0)
 
 		// MARK: - radius (inputRadius)
@@ -117,13 +117,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 100
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: GlassLozenge.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 100
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -141,13 +144,16 @@ import Foundation
 		@objc public var refraction: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
-				return number?.doubleValue ?? 1.7
+				return number?.doubleValue ?? Self.refractionDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: GlassLozenge.refractionRange)
 				self.filter.setValue(number, forKey: "inputRefraction")
 			}
 		}
+
+		/// `refraction` default value
+		@objc public static let refractionDefault: Double = 1.7
 
 		/// `refraction` range definition
 		public static let refractionRange: PartialRangeFrom<Double> = Double(0.0)...

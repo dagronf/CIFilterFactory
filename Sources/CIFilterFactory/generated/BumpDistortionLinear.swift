@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - radius (inputRadius)
@@ -96,13 +96,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 300
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BumpDistortionLinear.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 300
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -119,12 +122,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 0
 
 		// MARK: - scale (inputScale)
 
@@ -139,13 +145,16 @@ import Foundation
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.scaleDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BumpDistortionLinear.scaleRange)
 				self.filter.setValue(number, forKey: "inputScale")
 			}
 		}
+
+		/// `scale` default value
+		@objc public static let scaleDefault: Double = 0.5
 
 		/// `scale` range definition
 		public static let scaleRange: PartialRangeFrom<Double> = Double(-1.0)...

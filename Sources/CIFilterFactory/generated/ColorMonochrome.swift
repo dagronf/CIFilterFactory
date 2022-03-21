@@ -93,13 +93,16 @@ import Foundation
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.intensityDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorMonochrome.intensityRange)
 				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
+
+		/// `intensity` default value
+		@objc public static let intensityDefault: Double = 1
 
 		/// `intensity` range definition
 		public static let intensityRange: PartialRangeFrom<Double> = Double(0.0)...

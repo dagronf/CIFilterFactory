@@ -76,13 +76,16 @@ import Foundation
 		@objc public var quietSpace: Double {
 			get {
 				let number = self.filter.value(forKey: "inputQuietSpace") as? NSNumber
-				return number?.doubleValue ?? 10
+				return number?.doubleValue ?? Self.quietSpaceDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Code128BarcodeGenerator.quietSpaceRange)
 				self.filter.setValue(number, forKey: "inputQuietSpace")
 			}
 		}
+
+		/// `quietSpace` default value
+		@objc public static let quietSpaceDefault: Double = 10
 
 		/// `quietSpace` range definition
 		public static let quietSpaceRange: ClosedRange<Double> = 0.0 ... 100.0
@@ -101,13 +104,16 @@ import Foundation
 		@objc public var barcodeHeight: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
-				return number?.doubleValue ?? 32
+				return number?.doubleValue ?? Self.barcodeHeightDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Code128BarcodeGenerator.barcodeHeightRange)
 				self.filter.setValue(number, forKey: "inputBarcodeHeight")
 			}
 		}
+
+		/// `barcodeHeight` default value
+		@objc public static let barcodeHeightDefault: Double = 32
 
 		/// `barcodeHeight` range definition
 		public static let barcodeHeightRange: ClosedRange<Double> = 1.0 ... 500.0

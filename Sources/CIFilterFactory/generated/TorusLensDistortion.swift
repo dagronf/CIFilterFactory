@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - radius (inputRadius)
@@ -96,13 +96,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 160
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 160
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -120,13 +123,16 @@ import Foundation
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? 80
+				return number?.doubleValue ?? Self.widthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.widthRange)
 				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Double = 80
 
 		/// `width` range definition
 		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -144,13 +150,16 @@ import Foundation
 		@objc public var refraction: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
-				return number?.doubleValue ?? 1.7
+				return number?.doubleValue ?? Self.refractionDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.refractionRange)
 				self.filter.setValue(number, forKey: "inputRefraction")
 			}
 		}
+
+		/// `refraction` default value
+		@objc public static let refractionDefault: Double = 1.7
 
 		/// `refraction` range definition
 		public static let refractionRange: PartialRangeFrom<Double> = Double(0.0)...

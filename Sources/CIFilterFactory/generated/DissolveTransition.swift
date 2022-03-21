@@ -93,13 +93,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DissolveTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0

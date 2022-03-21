@@ -75,13 +75,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 20
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: MotionBlur.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 20
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -98,12 +101,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 0
 
 		// MARK: - Convenience initializer
 

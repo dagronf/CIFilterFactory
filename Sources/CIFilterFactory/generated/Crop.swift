@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// rectangle default value
+		/// `rectangle` default value
 		@objc public static let rectangleDefault = CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
 
 		// MARK: - Convenience initializer

@@ -156,13 +156,16 @@ import Foundation
 		@objc public var aperture: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAperture") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.apertureDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.apertureRange)
 				self.filter.setValue(number, forKey: "inputAperture")
 			}
 		}
+
+		/// `aperture` default value
+		@objc public static let apertureDefault: Double = 0
 
 		/// `aperture` range definition
 		public static let apertureRange: ClosedRange<Double> = 0.0 ... 22.0
@@ -185,7 +188,7 @@ import Foundation
 			}
 		}
 
-		/// leftEyePositions default value
+		/// `leftEyePositions` default value
 		@objc public static let leftEyePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - rightEyePositions (inputRightEyePositions)
@@ -206,7 +209,7 @@ import Foundation
 			}
 		}
 
-		/// rightEyePositions default value
+		/// `rightEyePositions` default value
 		@objc public static let rightEyePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - chinPositions (inputChinPositions)
@@ -227,7 +230,7 @@ import Foundation
 			}
 		}
 
-		/// chinPositions default value
+		/// `chinPositions` default value
 		@objc public static let chinPositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - nosePositions (inputNosePositions)
@@ -248,7 +251,7 @@ import Foundation
 			}
 		}
 
-		/// nosePositions default value
+		/// `nosePositions` default value
 		@objc public static let nosePositionsDefault = CGPoint(x: -1.0, y: -1.0)
 
 		// MARK: - focusRect (inputFocusRect)
@@ -268,7 +271,7 @@ import Foundation
 			}
 		}
 
-		/// focusRect default value
+		/// `focusRect` default value
 		@objc public static let focusRectDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 		// MARK: - lumaNoiseScale (inputLumaNoiseScale)
@@ -285,13 +288,16 @@ import Foundation
 		@objc public var lumaNoiseScale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.lumaNoiseScaleDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.lumaNoiseScaleRange)
 				self.filter.setValue(number, forKey: "inputLumaNoiseScale")
 			}
 		}
+
+		/// `lumaNoiseScale` default value
+		@objc public static let lumaNoiseScaleDefault: Double = 0
 
 		/// `lumaNoiseScale` range definition
 		public static let lumaNoiseScaleRange: ClosedRange<Double> = 0.0 ... 0.1
@@ -308,12 +314,15 @@ import Foundation
 		@objc public var scaleFactor: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.scaleFactorDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputScaleFactor")
 			}
 		}
+
+		/// `scaleFactor` default value
+		@objc public static let scaleFactorDefault: Double = 1
 
 		// MARK: - calibrationData (inputCalibrationData)
 

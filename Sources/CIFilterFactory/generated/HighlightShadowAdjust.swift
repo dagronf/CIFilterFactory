@@ -75,13 +75,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 0
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -100,13 +103,16 @@ import Foundation
 		@objc public var shadowAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowAmount") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.shadowAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.shadowAmountRange)
 				self.filter.setValue(number, forKey: "inputShadowAmount")
 			}
 		}
+
+		/// `shadowAmount` default value
+		@objc public static let shadowAmountDefault: Double = 0
 
 		/// `shadowAmount` range definition
 		public static let shadowAmountRange: ClosedRange<Double> = -1.0 ... 1.0
@@ -125,13 +131,16 @@ import Foundation
 		@objc public var highlightAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHighlightAmount") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.highlightAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: HighlightShadowAdjust.highlightAmountRange)
 				self.filter.setValue(number, forKey: "inputHighlightAmount")
 			}
 		}
+
+		/// `highlightAmount` default value
+		@objc public static let highlightAmountDefault: Double = 1
 
 		/// `highlightAmount` range definition
 		public static let highlightAmountRange: ClosedRange<Double> = 0.0 ... 1.0

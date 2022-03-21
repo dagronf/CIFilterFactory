@@ -91,12 +91,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 3.141592653589793
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 3.141592653589793
 
 		// MARK: - width (inputWidth)
 
@@ -111,13 +114,16 @@ import Foundation
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? 30
+				return number?.doubleValue ?? Self.widthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.widthRange)
 				self.filter.setValue(number, forKey: "inputWidth")
 			}
 		}
+
+		/// `width` default value
+		@objc public static let widthDefault: Double = 30
 
 		/// `width` range definition
 		public static let widthRange: PartialRangeFrom<Double> = Double(2.0)...
@@ -135,13 +141,16 @@ import Foundation
 		@objc public var barOffset: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBarOffset") as? NSNumber
-				return number?.doubleValue ?? 10
+				return number?.doubleValue ?? Self.barOffsetDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.barOffsetRange)
 				self.filter.setValue(number, forKey: "inputBarOffset")
 			}
 		}
+
+		/// `barOffset` default value
+		@objc public static let barOffsetDefault: Double = 10
 
 		/// `barOffset` range definition
 		public static let barOffsetRange: PartialRangeFrom<Double> = Double(1.0)...
@@ -160,13 +169,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0

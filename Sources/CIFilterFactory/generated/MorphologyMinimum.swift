@@ -74,12 +74,15 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 0
 
 		// MARK: - Convenience initializer
 

@@ -74,12 +74,15 @@ import Foundation
 		@objc public var eV: Double {
 			get {
 				let number = self.filter.value(forKey: "inputEV") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.eVDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputEV")
 			}
 		}
+
+		/// `eV` default value
+		@objc public static let eVDefault: Double = 0
 
 		// MARK: - Convenience initializer
 

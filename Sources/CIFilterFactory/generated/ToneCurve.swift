@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// point0 default value
+		/// `point0` default value
 		@objc public static let point0Default = CGPoint(x: 0.0, y: 0.0)
 
 		// MARK: - point1 (inputPoint1)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// point1 default value
+		/// `point1` default value
 		@objc public static let point1Default = CGPoint(x: 0.25, y: 0.25)
 
 		// MARK: - point2 (inputPoint2)
@@ -122,7 +122,7 @@ import Foundation
 			}
 		}
 
-		/// point2 default value
+		/// `point2` default value
 		@objc public static let point2Default = CGPoint(x: 0.5, y: 0.5)
 
 		// MARK: - point3 (inputPoint3)
@@ -143,7 +143,7 @@ import Foundation
 			}
 		}
 
-		/// point3 default value
+		/// `point3` default value
 		@objc public static let point3Default = CGPoint(x: 0.75, y: 0.75)
 
 		// MARK: - point4 (inputPoint4)
@@ -164,7 +164,7 @@ import Foundation
 			}
 		}
 
-		/// point4 default value
+		/// `point4` default value
 		@objc public static let point4Default = CGPoint(x: 1.0, y: 1.0)
 
 		// MARK: - Convenience initializer

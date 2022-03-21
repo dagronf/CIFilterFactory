@@ -74,12 +74,15 @@ import Foundation
 		@objc public var power: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPower") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.powerDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPower")
 			}
 		}
+
+		/// `power` default value
+		@objc public static let powerDefault: Double = 1
 
 		// MARK: - Convenience initializer
 

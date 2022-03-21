@@ -93,13 +93,16 @@ import Foundation
 		@objc public var fontSize: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFontSize") as? NSNumber
-				return number?.doubleValue ?? 12
+				return number?.doubleValue ?? Self.fontSizeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: TextImageGenerator.fontSizeRange)
 				self.filter.setValue(number, forKey: "inputFontSize")
 			}
 		}
+
+		/// `fontSize` default value
+		@objc public static let fontSizeDefault: Double = 12
 
 		/// `fontSize` range definition
 		public static let fontSizeRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -117,13 +120,16 @@ import Foundation
 		@objc public var scaleFactor: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.scaleFactorDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: TextImageGenerator.scaleFactorRange)
 				self.filter.setValue(number, forKey: "inputScaleFactor")
 			}
 		}
+
+		/// `scaleFactor` default value
+		@objc public static let scaleFactorDefault: Double = 1
 
 		/// `scaleFactor` range definition
 		public static let scaleFactorRange: PartialRangeFrom<Double> = Double(0.0)...

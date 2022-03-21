@@ -63,7 +63,7 @@ import Foundation
 			}
 		}
 
-		/// center default value
+		/// `center` default value
 		@objc public static let centerDefault = CGPoint(x: 150.0, y: 150.0)
 
 		// MARK: - color (inputColor)
@@ -96,13 +96,16 @@ import Foundation
 		@objc public var haloRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloRadius") as? NSNumber
-				return number?.doubleValue ?? 70
+				return number?.doubleValue ?? Self.haloRadiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloRadiusRange)
 				self.filter.setValue(number, forKey: "inputHaloRadius")
 			}
 		}
+
+		/// `haloRadius` default value
+		@objc public static let haloRadiusDefault: Double = 70
 
 		/// `haloRadius` range definition
 		public static let haloRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -120,13 +123,16 @@ import Foundation
 		@objc public var haloWidth: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloWidth") as? NSNumber
-				return number?.doubleValue ?? 87
+				return number?.doubleValue ?? Self.haloWidthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloWidthRange)
 				self.filter.setValue(number, forKey: "inputHaloWidth")
 			}
 		}
+
+		/// `haloWidth` default value
+		@objc public static let haloWidthDefault: Double = 87
 
 		/// `haloWidth` range definition
 		public static let haloWidthRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -144,13 +150,16 @@ import Foundation
 		@objc public var haloOverlap: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
-				return number?.doubleValue ?? 0.77
+				return number?.doubleValue ?? Self.haloOverlapDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloOverlapRange)
 				self.filter.setValue(number, forKey: "inputHaloOverlap")
 			}
 		}
+
+		/// `haloOverlap` default value
+		@objc public static let haloOverlapDefault: Double = 0.77
 
 		/// `haloOverlap` range definition
 		public static let haloOverlapRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -168,13 +177,16 @@ import Foundation
 		@objc public var striationStrength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.striationStrengthDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationStrengthRange)
 				self.filter.setValue(number, forKey: "inputStriationStrength")
 			}
 		}
+
+		/// `striationStrength` default value
+		@objc public static let striationStrengthDefault: Double = 0.5
 
 		/// `striationStrength` range definition
 		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -192,13 +204,16 @@ import Foundation
 		@objc public var striationContrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.striationContrastDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationContrastRange)
 				self.filter.setValue(number, forKey: "inputStriationContrast")
 			}
 		}
+
+		/// `striationContrast` default value
+		@objc public static let striationContrastDefault: Double = 1
 
 		/// `striationContrast` range definition
 		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -217,13 +232,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0

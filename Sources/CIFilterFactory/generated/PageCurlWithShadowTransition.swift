@@ -113,7 +113,7 @@ import Foundation
 			}
 		}
 
-		/// extent default value
+		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 		// MARK: - time (inputTime)
@@ -130,13 +130,16 @@ import Foundation
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.timeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.timeRange)
 				self.filter.setValue(number, forKey: "inputTime")
 			}
 		}
+
+		/// `time` default value
+		@objc public static let timeDefault: Double = 0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -153,12 +156,15 @@ import Foundation
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.angleDefault
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
 			}
 		}
+
+		/// `angle` default value
+		@objc public static let angleDefault: Double = 0
 
 		// MARK: - radius (inputRadius)
 
@@ -173,13 +179,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 100
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 100
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.01)...
@@ -198,13 +207,16 @@ import Foundation
 		@objc public var shadowSize: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowSize") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.shadowSizeDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.shadowSizeRange)
 				self.filter.setValue(number, forKey: "inputShadowSize")
 			}
 		}
+
+		/// `shadowSize` default value
+		@objc public static let shadowSizeDefault: Double = 0.5
 
 		/// `shadowSize` range definition
 		public static let shadowSizeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -223,13 +235,16 @@ import Foundation
 		@objc public var shadowAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowAmount") as? NSNumber
-				return number?.doubleValue ?? 0.7
+				return number?.doubleValue ?? Self.shadowAmountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.shadowAmountRange)
 				self.filter.setValue(number, forKey: "inputShadowAmount")
 			}
 		}
+
+		/// `shadowAmount` default value
+		@objc public static let shadowAmountDefault: Double = 0.7
 
 		/// `shadowAmount` range definition
 		public static let shadowAmountRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -252,7 +267,7 @@ import Foundation
 			}
 		}
 
-		/// shadowExtent default value
+		/// `shadowExtent` default value
 		@objc public static let shadowExtentDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 		// MARK: - Convenience initializer

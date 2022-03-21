@@ -75,13 +75,16 @@ import Foundation
 		@objc public var levels: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLevels") as? NSNumber
-				return number?.doubleValue ?? 6
+				return number?.doubleValue ?? Self.levelsDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorPosterize.levelsRange)
 				self.filter.setValue(number, forKey: "inputLevels")
 			}
 		}
+
+		/// `levels` default value
+		@objc public static let levelsDefault: Double = 6
 
 		/// `levels` range definition
 		public static let levelsRange: PartialRangeFrom<Double> = Double(1.0)...

@@ -76,13 +76,16 @@ import Foundation
 		@objc public var amount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.amountDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: DocumentEnhancer.amountRange)
 				self.filter.setValue(number, forKey: "inputAmount")
 			}
 		}
+
+		/// `amount` default value
+		@objc public static let amountDefault: Double = 1
 
 		/// `amount` range definition
 		public static let amountRange: ClosedRange<Double> = 0.0 ... 10.0

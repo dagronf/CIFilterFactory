@@ -75,13 +75,16 @@ import Foundation
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? 10
+				return number?.doubleValue ?? Self.radiusDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Bloom.radiusRange)
 				self.filter.setValue(number, forKey: "inputRadius")
 			}
 		}
+
+		/// `radius` default value
+		@objc public static let radiusDefault: Double = 10
 
 		/// `radius` range definition
 		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -99,13 +102,16 @@ import Foundation
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
-				return number?.doubleValue ?? 0.5
+				return number?.doubleValue ?? Self.intensityDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: Bloom.intensityRange)
 				self.filter.setValue(number, forKey: "inputIntensity")
 			}
 		}
+
+		/// `intensity` default value
+		@objc public static let intensityDefault: Double = 0.5
 
 		/// `intensity` range definition
 		public static let intensityRange: PartialRangeFrom<Double> = Double(0.0)...

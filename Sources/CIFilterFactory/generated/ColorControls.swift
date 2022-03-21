@@ -75,13 +75,16 @@ import Foundation
 		@objc public var saturation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSaturation") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.saturationDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.saturationRange)
 				self.filter.setValue(number, forKey: "inputSaturation")
 			}
 		}
+
+		/// `saturation` default value
+		@objc public static let saturationDefault: Double = 1
 
 		/// `saturation` range definition
 		public static let saturationRange: PartialRangeFrom<Double> = Double(0.0)...
@@ -99,13 +102,16 @@ import Foundation
 		@objc public var brightness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBrightness") as? NSNumber
-				return number?.doubleValue ?? 0
+				return number?.doubleValue ?? Self.brightnessDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.brightnessRange)
 				self.filter.setValue(number, forKey: "inputBrightness")
 			}
 		}
+
+		/// `brightness` default value
+		@objc public static let brightnessDefault: Double = 0
 
 		/// `brightness` range definition
 		public static let brightnessRange: PartialRangeFrom<Double> = Double(-1.0)...
@@ -123,13 +129,16 @@ import Foundation
 		@objc public var contrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputContrast") as? NSNumber
-				return number?.doubleValue ?? 1
+				return number?.doubleValue ?? Self.contrastDefault
 			}
 			set {
 				let number = NSNumber(value: newValue).clamped(bounds: ColorControls.contrastRange)
 				self.filter.setValue(number, forKey: "inputContrast")
 			}
 		}
+
+		/// `contrast` default value
+		@objc public static let contrastDefault: Double = 1
 
 		/// `contrast` range definition
 		public static let contrastRange: PartialRangeFrom<Double> = Double(0.0)...

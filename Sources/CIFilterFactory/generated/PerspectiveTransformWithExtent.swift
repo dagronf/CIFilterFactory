@@ -80,7 +80,7 @@ import Foundation
 			}
 		}
 
-		/// extent default value
+		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
 
 		// MARK: - topLeft (inputTopLeft)
@@ -101,7 +101,7 @@ import Foundation
 			}
 		}
 
-		/// topLeft default value
+		/// `topLeft` default value
 		@objc public static let topLeftDefault = CGPoint(x: 118.0, y: 484.0)
 
 		// MARK: - topRight (inputTopRight)
@@ -122,7 +122,7 @@ import Foundation
 			}
 		}
 
-		/// topRight default value
+		/// `topRight` default value
 		@objc public static let topRightDefault = CGPoint(x: 646.0, y: 507.0)
 
 		// MARK: - bottomRight (inputBottomRight)
@@ -143,7 +143,7 @@ import Foundation
 			}
 		}
 
-		/// bottomRight default value
+		/// `bottomRight` default value
 		@objc public static let bottomRightDefault = CGPoint(x: 548.0, y: 140.0)
 
 		// MARK: - bottomLeft (inputBottomLeft)
@@ -164,7 +164,7 @@ import Foundation
 			}
 		}
 
-		/// bottomLeft default value
+		/// `bottomLeft` default value
 		@objc public static let bottomLeftDefault = CGPoint(x: 155.0, y: 153.0)
 
 		// MARK: - Convenience initializer
