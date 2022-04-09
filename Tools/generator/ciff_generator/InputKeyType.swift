@@ -25,13 +25,13 @@ struct InputKeyType {
 
 	// Map between the CIFilter attribute type and the compatible Swift type
 	var swiftType: String {
-		if self.subtype == "CIAttributeTypePosition" {
+		if self.subtype == kCIAttributeTypePosition {
 			return "CGPoint"
 		}
-		else if self.subtype == "CIAttributeTypeRectangle" {
+		else if self.subtype == kCIAttributeTypeRectangle {
 			return "CGRect"
 		}
-		else if self.subtype == "CIAttributeTypeOffset" {
+		else if self.subtype == kCIAttributeTypeOffset {
 			return "CGPoint"
 		}
 		else if self.class == "NSAffineTransform" {
