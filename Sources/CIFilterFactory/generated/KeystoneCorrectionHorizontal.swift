@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIKeystoneCorrectionHorizontal")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputFocalLength`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `28`
+		/// - Default Value: `28.0`
 		@objc public var focalLength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
@@ -82,7 +80,7 @@ import Foundation
 		}
 
 		/// `focalLength` default value
-		@objc public static let focalLengthDefault: Double = 28
+		@objc public static let focalLengthDefault: Double = 28.0
 
 		// MARK: - topLeft (inputTopLeft)
 
@@ -164,29 +162,18 @@ import Foundation
 		/// `bottomLeft` default value
 		@objc public static let bottomLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
-		// MARK: - Additional Outputs
-
-		@objc public var outputRotationFilter: Any? {
-			return self.filter.value(forKey: "outputRotationFilter")
-		}
-
-		@objc public var outputTransform: Any? {
-			return self.filter.value(forKey: "outputTransform")
-		}
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			focalLength: Double = 28,
+			focalLength: Double = KeystoneCorrectionHorizontal.focalLengthDefault,
 			topLeft: CGPoint,
 			topRight: CGPoint,
 			bottomRight: CGPoint,
 			bottomLeft: CGPoint
 		) {
 			self.init()
-
 			self.image = image
 			self.focalLength = focalLength
 			self.topLeft = topLeft

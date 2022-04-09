@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIParallelogramTile")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -103,7 +101,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - acuteAngle (inputAcuteAngle)
 
@@ -113,7 +111,7 @@ import Foundation
 		/// - Attribute key: `inputAcuteAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `1.570796326794897`
+		/// - Default Value: `1.5707963267948966`
 		@objc public var acuteAngle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAcuteAngle") as? NSNumber
@@ -125,7 +123,7 @@ import Foundation
 		}
 
 		/// `acuteAngle` default value
-		@objc public static let acuteAngleDefault: Double = 1.570796326794897
+		@objc public static let acuteAngleDefault: Double = 1.5707963267948966
 
 		// MARK: - width (inputWidth)
 
@@ -135,8 +133,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `100.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -149,10 +147,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 100
+		@objc public static let widthDefault: Double = 100.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let widthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -160,12 +158,11 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = ParallelogramTile.centerDefault,
-			angle: Double = 0,
-			acuteAngle: Double = 1.570796326794897,
-			width: Double = 100
+			angle: Double = ParallelogramTile.angleDefault,
+			acuteAngle: Double = ParallelogramTile.acuteAngleDefault,
+			width: Double = ParallelogramTile.widthDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.angle = angle

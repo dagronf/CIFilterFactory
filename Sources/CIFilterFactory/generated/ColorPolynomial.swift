@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorPolynomial")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRedCoefficients`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1 0 0]`
 		@objc public var redCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputRedCoefficients")
@@ -86,7 +83,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGreenCoefficients`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1 0 0]`
 		@objc public var greenCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputGreenCoefficients")
@@ -103,7 +99,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBlueCoefficients`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1 0 0]`
 		@objc public var blueCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputBlueCoefficients")
@@ -120,7 +115,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAlphaCoefficients`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1 0 0]`
 		@objc public var alphaCoefficients: CIVector? {
 			get {
 				return self.keyedValue("inputAlphaCoefficients")
@@ -135,13 +129,12 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			redCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			greenCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			blueCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			alphaCoefficients: CIVector = CIVector([0.0, 1.0, 0.0, 0.0])
+			redCoefficients: CIVector,
+			greenCoefficients: CIVector,
+			blueCoefficients: CIVector,
+			alphaCoefficients: CIVector
 		) {
 			self.init()
-
 			self.image = image
 			self.redCoefficients = redCoefficients
 			self.greenCoefficients = greenCoefficients

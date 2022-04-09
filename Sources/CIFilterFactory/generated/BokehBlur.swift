@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIBokehBlur")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `20`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `500.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `500.0`
+		/// - Default Value: `20.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -85,7 +83,7 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 20
+		@objc public static let radiusDefault: Double = 20.0
 
 		/// `radius` range definition
 		public static let radiusRange: ClosedRange<Double> = 0.0 ... 500.0
@@ -98,9 +96,9 @@ import Foundation
 		/// - Attribute key: `inputRingAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var ringAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRingAmount") as? NSNumber
@@ -113,7 +111,7 @@ import Foundation
 		}
 
 		/// `ringAmount` default value
-		@objc public static let ringAmountDefault: Double = 0
+		@objc public static let ringAmountDefault: Double = 0.0
 
 		/// `ringAmount` range definition
 		public static let ringAmountRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -126,9 +124,9 @@ import Foundation
 		/// - Attribute key: `inputRingSize`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `0.2`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `0.2`
+		/// - Default Value: `0.1`
 		@objc public var ringSize: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRingSize") as? NSNumber
@@ -154,9 +152,9 @@ import Foundation
 		/// - Attribute key: `inputSoftness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `10.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `10.0`
+		/// - Default Value: `1.0`
 		@objc public var softness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
@@ -169,7 +167,7 @@ import Foundation
 		}
 
 		/// `softness` default value
-		@objc public static let softnessDefault: Double = 1
+		@objc public static let softnessDefault: Double = 1.0
 
 		/// `softness` range definition
 		public static let softnessRange: ClosedRange<Double> = 0.0 ... 10.0
@@ -179,13 +177,12 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: Double = 20,
-			ringAmount: Double = 0,
-			ringSize: Double = 0.1,
-			softness: Double = 1
+			radius: Double = BokehBlur.radiusDefault,
+			ringAmount: Double = BokehBlur.ringAmountDefault,
+			ringSize: Double = BokehBlur.ringSizeDefault,
+			softness: Double = BokehBlur.softnessDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.radius = radius
 			self.ringAmount = ringAmount

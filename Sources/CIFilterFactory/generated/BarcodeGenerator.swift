@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIBarcodeGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - barcodeDescriptor (inputBarcodeDescriptor)
 
 		/// The CIBarcodeDescription object to generate an image for.
@@ -61,28 +59,6 @@ import Foundation
 			}
 		}
 
-		// MARK: - Additional Outputs
-
-		@objc public var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
-		}
-
-		@objc public var outputCGImageForAztecCodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForAztecCodeDescriptor")
-		}
-
-		@objc public var outputCGImageForDataMatrixCodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForDataMatrixCodeDescriptor")
-		}
-
-		@objc public var outputCGImageForPDF417CodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForPDF417CodeDescriptor")
-		}
-
-		@objc public var outputCGImageForQRCodeDescriptor: Any? {
-			return self.filter.value(forKey: "outputCGImageForQRCodeDescriptor")
-		}
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
@@ -90,7 +66,6 @@ import Foundation
 			barcodeDescriptor: CIBarcodeDescriptor)
 		{
 			self.init()
-
 			self.barcodeDescriptor = barcodeDescriptor
 		}
 	}

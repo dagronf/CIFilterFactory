@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIMorphologyRectangleMaximum")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeInteger`
-		/// - Default value: `5`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1`
+		/// - Default Value: `5`
 		@objc public var width: Int {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -87,7 +85,7 @@ import Foundation
 		@objc public static let widthDefault: Int = 5
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let widthRange = PartialRangeFrom<Int>(1)
 
 		// MARK: - height (inputHeight)
 
@@ -97,8 +95,8 @@ import Foundation
 		/// - Attribute key: `inputHeight`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeInteger`
-		/// - Default value: `5`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1`
+		/// - Default Value: `5`
 		@objc public var height: Int {
 			get {
 				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
@@ -114,18 +112,17 @@ import Foundation
 		@objc public static let heightDefault: Int = 5
 
 		/// `height` range definition
-		public static let heightRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let heightRange = PartialRangeFrom<Int>(1)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			width: Int = 5,
-			height: Int = 5
+			width: Int = MorphologyRectangleMaximum.widthDefault,
+			height: Int = MorphologyRectangleMaximum.heightDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.width = width
 			self.height = height

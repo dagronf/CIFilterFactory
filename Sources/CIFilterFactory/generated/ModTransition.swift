@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIModTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -108,9 +106,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -123,7 +121,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -136,7 +134,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `2`
+		/// - Default Value: `2.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -148,7 +146,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 2
+		@objc public static let angleDefault: Double = 2.0
 
 		// MARK: - radius (inputRadius)
 
@@ -158,8 +156,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `150`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `150.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -172,10 +170,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 150
+		@objc public static let radiusDefault: Double = 150.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - compression (inputCompression)
 
@@ -185,8 +183,8 @@ import Foundation
 		/// - Attribute key: `inputCompression`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `300`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `300.0`
 		@objc public var compression: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCompression") as? NSNumber
@@ -199,10 +197,10 @@ import Foundation
 		}
 
 		/// `compression` default value
-		@objc public static let compressionDefault: Double = 300
+		@objc public static let compressionDefault: Double = 300.0
 
 		/// `compression` range definition
-		public static let compressionRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let compressionRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - Convenience initializer
 
@@ -211,13 +209,12 @@ import Foundation
 			image: CIImage,
 			targetImage: CIImage,
 			center: CGPoint = ModTransition.centerDefault,
-			time: Double = 0,
-			angle: Double = 2,
-			radius: Double = 150,
-			compression: Double = 300
+			time: Double = ModTransition.timeDefault,
+			angle: Double = ModTransition.angleDefault,
+			radius: Double = ModTransition.radiusDefault,
+			compression: Double = ModTransition.compressionDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.center = center

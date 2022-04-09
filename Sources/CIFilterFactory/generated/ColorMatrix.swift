@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorMatrix")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRVector`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[1 0 0 0]`
 		@objc public var rVector: CIVector? {
 			get {
 				return self.keyedValue("inputRVector")
@@ -86,7 +83,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGVector`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1 0 0]`
 		@objc public var gVector: CIVector? {
 			get {
 				return self.keyedValue("inputGVector")
@@ -103,7 +99,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBVector`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 0 1 0]`
 		@objc public var bVector: CIVector? {
 			get {
 				return self.keyedValue("inputBVector")
@@ -120,7 +115,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAVector`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 0 0 1]`
 		@objc public var aVector: CIVector? {
 			get {
 				return self.keyedValue("inputAVector")
@@ -137,7 +131,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBiasVector`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 0 0 0]`
 		@objc public var biasVector: CIVector? {
 			get {
 				return self.keyedValue("inputBiasVector")
@@ -152,14 +145,13 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			rVector: CIVector = CIVector([1.0, 0.0, 0.0, 0.0]),
-			gVector: CIVector = CIVector([0.0, 1.0, 0.0, 0.0]),
-			bVector: CIVector = CIVector([0.0, 0.0, 1.0, 0.0]),
-			aVector: CIVector = CIVector([0.0, 0.0, 0.0, 1.0]),
-			biasVector: CIVector = CIVector([0.0, 0.0, 0.0, 0.0])
+			rVector: CIVector,
+			gVector: CIVector,
+			bVector: CIVector,
+			aVector: CIVector,
+			biasVector: CIVector
 		) {
 			self.init()
-
 			self.image = image
 			self.rVector = rVector
 			self.gVector = gVector

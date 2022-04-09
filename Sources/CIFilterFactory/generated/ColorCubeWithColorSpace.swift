@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorCubeWithColorSpace")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputCubeDimension`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeCount`
-		/// - Default value: `2`
-		/// - Minimum value: `2.0`
-		/// - Maximum value: `128.0`
+		/// - Minimum Value: `2`
+		/// - Maximum Value: `128`
+		/// - Default Value: `2`
 		@objc public var cubeDimension: UInt {
 			get {
 				let number = self.filter.value(forKey: "inputCubeDimension") as? NSNumber
@@ -88,7 +86,7 @@ import Foundation
 		@objc public static let cubeDimensionDefault: UInt = 2
 
 		/// `cubeDimension` range definition
-		public static let cubeDimensionRange: ClosedRange<Double> = 2.0 ... 128.0
+		public static let cubeDimensionRange: ClosedRange<UInt> = 2 ... 128
 
 		// MARK: - cubeData (inputCubeData)
 
@@ -97,7 +95,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCubeData`
 		/// - Internal class: `NSData`
-		/// - Default value: `{length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }`
 		@objc public var cubeData: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCubeData")
@@ -129,12 +126,11 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			cubeDimension: UInt = 2,
+			cubeDimension: UInt = ColorCubeWithColorSpace.cubeDimensionDefault,
 			cubeData: Data,
 			colorSpace: NSObject
 		) {
 			self.init()
-
 			self.image = image
 			self.cubeDimension = cubeDimension
 			self.cubeData = cubeData

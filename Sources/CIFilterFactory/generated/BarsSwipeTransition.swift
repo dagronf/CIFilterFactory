@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIBarsSwipeTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `3.141592653589793`
+		/// - Default Value: `3.141592653589793`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -109,8 +107,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `30`
-		/// - Minimum value: `2.0`
+		/// - Minimum Value: `2.0`
+		/// - Default Value: `30.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -123,10 +121,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 30
+		@objc public static let widthDefault: Double = 30.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(2.0)...
+		public static let widthRange = PartialRangeFrom<Double>(2.0)
 
 		// MARK: - barOffset (inputBarOffset)
 
@@ -136,8 +134,8 @@ import Foundation
 		/// - Attribute key: `inputBarOffset`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `10`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `10.0`
 		@objc public var barOffset: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBarOffset") as? NSNumber
@@ -150,10 +148,10 @@ import Foundation
 		}
 
 		/// `barOffset` default value
-		@objc public static let barOffsetDefault: Double = 10
+		@objc public static let barOffsetDefault: Double = 10.0
 
 		/// `barOffset` range definition
-		public static let barOffsetRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let barOffsetRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - time (inputTime)
 
@@ -163,9 +161,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -178,7 +176,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -189,13 +187,12 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			angle: Double = 3.141592653589793,
-			width: Double = 30,
-			barOffset: Double = 10,
-			time: Double = 0
+			angle: Double = BarsSwipeTransition.angleDefault,
+			width: Double = BarsSwipeTransition.widthDefault,
+			barOffset: Double = BarsSwipeTransition.barOffsetDefault,
+			time: Double = BarsSwipeTransition.timeDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.angle = angle

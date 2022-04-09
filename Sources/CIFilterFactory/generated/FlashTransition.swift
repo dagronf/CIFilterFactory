@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIFlashTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -108,7 +106,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 300 300]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -129,7 +127,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 0.8 0.6 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -147,9 +144,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -162,7 +159,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -175,8 +172,8 @@ import Foundation
 		/// - Attribute key: `inputMaxStriationRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `2.58`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `2.58`
 		@objc public var maxStriationRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
@@ -192,7 +189,7 @@ import Foundation
 		@objc public static let maxStriationRadiusDefault: Double = 2.58
 
 		/// `maxStriationRadius` range definition
-		public static let maxStriationRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let maxStriationRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationStrength (inputStriationStrength)
 
@@ -202,8 +199,8 @@ import Foundation
 		/// - Attribute key: `inputStriationStrength`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
@@ -219,7 +216,7 @@ import Foundation
 		@objc public static let striationStrengthDefault: Double = 0.5
 
 		/// `striationStrength` range definition
-		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationStrengthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationContrast (inputStriationContrast)
 
@@ -229,8 +226,8 @@ import Foundation
 		/// - Attribute key: `inputStriationContrast`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.375`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.375`
 		@objc public var striationContrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
@@ -246,7 +243,7 @@ import Foundation
 		@objc public static let striationContrastDefault: Double = 1.375
 
 		/// `striationContrast` range definition
-		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationContrastRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - fadeThreshold (inputFadeThreshold)
 
@@ -256,9 +253,9 @@ import Foundation
 		/// - Attribute key: `inputFadeThreshold`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.85`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.85`
 		@objc public var fadeThreshold: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFadeThreshold") as? NSNumber
@@ -285,14 +282,13 @@ import Foundation
 			center: CGPoint = FlashTransition.centerDefault,
 			extent: CGRect = FlashTransition.extentDefault,
 			color: CIColor,
-			time: Double = 0,
-			maxStriationRadius: Double = 2.58,
-			striationStrength: Double = 0.5,
-			striationContrast: Double = 1.375,
-			fadeThreshold: Double = 0.85
+			time: Double = FlashTransition.timeDefault,
+			maxStriationRadius: Double = FlashTransition.maxStriationRadiusDefault,
+			striationStrength: Double = FlashTransition.striationStrengthDefault,
+			striationContrast: Double = FlashTransition.striationContrastDefault,
+			fadeThreshold: Double = FlashTransition.fadeThresholdDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.center = center

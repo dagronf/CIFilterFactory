@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIHistogramDisplayFilter")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputHeight`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `100`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `200.0`
+		/// - Minimum Value: `1.0`
+		/// - Maximum Value: `200.0`
+		/// - Default Value: `100.0`
 		@objc public var height: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
@@ -85,7 +83,7 @@ import Foundation
 		}
 
 		/// `height` default value
-		@objc public static let heightDefault: Double = 100
+		@objc public static let heightDefault: Double = 100.0
 
 		/// `height` range definition
 		public static let heightRange: ClosedRange<Double> = 1.0 ... 200.0
@@ -98,9 +96,9 @@ import Foundation
 		/// - Attribute key: `inputHighLimit`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `1.0`
 		@objc public var highLimit: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHighLimit") as? NSNumber
@@ -113,7 +111,7 @@ import Foundation
 		}
 
 		/// `highLimit` default value
-		@objc public static let highLimitDefault: Double = 1
+		@objc public static let highLimitDefault: Double = 1.0
 
 		/// `highLimit` range definition
 		public static let highLimitRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -126,9 +124,9 @@ import Foundation
 		/// - Attribute key: `inputLowLimit`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var lowLimit: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLowLimit") as? NSNumber
@@ -141,7 +139,7 @@ import Foundation
 		}
 
 		/// `lowLimit` default value
-		@objc public static let lowLimitDefault: Double = 0
+		@objc public static let lowLimitDefault: Double = 0.0
 
 		/// `lowLimit` range definition
 		public static let lowLimitRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -151,12 +149,11 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			height: Double = 100,
-			highLimit: Double = 1,
-			lowLimit: Double = 0
+			height: Double = HistogramDisplayFilter.heightDefault,
+			highLimit: Double = HistogramDisplayFilter.highLimitDefault,
+			lowLimit: Double = HistogramDisplayFilter.lowLimitDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.height = height
 			self.highLimit = highLimit

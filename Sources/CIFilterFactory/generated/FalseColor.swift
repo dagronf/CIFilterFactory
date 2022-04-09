@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIFalseColor")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,6 @@ import Foundation
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(0.3 0 0 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -88,7 +85,6 @@ import Foundation
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 0.9 0.8 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -107,7 +103,6 @@ import Foundation
 			color1: CIColor
 		) {
 			self.init()
-
 			self.image = image
 			self.color0 = color0
 			self.color1 = color1

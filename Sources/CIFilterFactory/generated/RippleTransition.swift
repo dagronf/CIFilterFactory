@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIRippleTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -104,7 +102,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -125,7 +123,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 300 300]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -146,9 +144,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -161,7 +159,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -174,8 +172,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `100.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -188,10 +186,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 100
+		@objc public static let widthDefault: Double = 100.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let widthRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - scale (inputScale)
 
@@ -201,8 +199,8 @@ import Foundation
 		/// - Attribute key: `inputScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `50`
-		/// - Minimum value: `-50.0`
+		/// - Minimum Value: `-50.0`
+		/// - Default Value: `50.0`
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
@@ -215,10 +213,10 @@ import Foundation
 		}
 
 		/// `scale` default value
-		@objc public static let scaleDefault: Double = 50
+		@objc public static let scaleDefault: Double = 50.0
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Double> = Double(-50.0)...
+		public static let scaleRange = PartialRangeFrom<Double>(-50.0)
 
 		// MARK: - Convenience initializer
 
@@ -229,12 +227,11 @@ import Foundation
 			shadingImage: CIImage,
 			center: CGPoint = RippleTransition.centerDefault,
 			extent: CGRect = RippleTransition.extentDefault,
-			time: Double = 0,
-			width: Double = 100,
-			scale: Double = 50
+			time: Double = RippleTransition.timeDefault,
+			width: Double = RippleTransition.widthDefault,
+			scale: Double = RippleTransition.scaleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.shadingImage = shadingImage

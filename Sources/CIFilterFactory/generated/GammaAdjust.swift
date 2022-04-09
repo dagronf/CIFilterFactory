@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIGammaAdjust")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputPower`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
+		/// - Default Value: `1.0`
 		@objc public var power: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPower") as? NSNumber
@@ -82,17 +80,16 @@ import Foundation
 		}
 
 		/// `power` default value
-		@objc public static let powerDefault: Double = 1
+		@objc public static let powerDefault: Double = 1.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			power: Double = 1
+			power: Double = GammaAdjust.powerDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.power = power
 		}

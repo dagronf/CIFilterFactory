@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICircularWrap")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,8 +89,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `150`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `150.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -105,10 +103,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 150
+		@objc public static let radiusDefault: Double = 150.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - angle (inputAngle)
 
@@ -118,7 +116,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -130,7 +128,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - Convenience initializer
 
@@ -138,11 +136,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = CircularWrap.centerDefault,
-			radius: Double = 150,
-			angle: Double = 0
+			radius: Double = CircularWrap.radiusDefault,
+			angle: Double = CircularWrap.angleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.radius = radius

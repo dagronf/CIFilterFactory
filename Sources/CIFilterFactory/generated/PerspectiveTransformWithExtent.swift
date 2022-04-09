@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPerspectiveTransformWithExtent")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 300 300]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputTopLeft`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[118 484]`
+		/// - Default Value: `CGPoint(x: 118.0, y: 118.0)`
 		@objc public var topLeft: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
@@ -112,7 +110,7 @@ import Foundation
 		/// - Attribute key: `inputTopRight`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[646 507]`
+		/// - Default Value: `CGPoint(x: 646.0, y: 646.0)`
 		@objc public var topRight: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
@@ -133,7 +131,7 @@ import Foundation
 		/// - Attribute key: `inputBottomRight`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[548 140]`
+		/// - Default Value: `CGPoint(x: 548.0, y: 548.0)`
 		@objc public var bottomRight: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
@@ -154,7 +152,7 @@ import Foundation
 		/// - Attribute key: `inputBottomLeft`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[155 153]`
+		/// - Default Value: `CGPoint(x: 155.0, y: 155.0)`
 		@objc public var bottomLeft: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
@@ -179,7 +177,6 @@ import Foundation
 			bottomLeft: CGPoint = PerspectiveTransformWithExtent.bottomLeftDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.extent = extent
 			self.topLeft = topLeft

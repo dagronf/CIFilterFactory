@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CISunbeamsGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - center (inputCenter)
 
 		/// The x and y position to use as the center of the sunbeam pattern
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -73,7 +71,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
-		/// - Default value: `rgba(1 0.5 0 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -91,8 +88,8 @@ import Foundation
 		/// - Attribute key: `inputSunRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `40`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `40.0`
 		@objc public var sunRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSunRadius") as? NSNumber
@@ -105,10 +102,10 @@ import Foundation
 		}
 
 		/// `sunRadius` default value
-		@objc public static let sunRadiusDefault: Double = 40
+		@objc public static let sunRadiusDefault: Double = 40.0
 
 		/// `sunRadius` range definition
-		public static let sunRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let sunRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - maxStriationRadius (inputMaxStriationRadius)
 
@@ -118,8 +115,8 @@ import Foundation
 		/// - Attribute key: `inputMaxStriationRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `2.58`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `2.58`
 		@objc public var maxStriationRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
@@ -135,7 +132,7 @@ import Foundation
 		@objc public static let maxStriationRadiusDefault: Double = 2.58
 
 		/// `maxStriationRadius` range definition
-		public static let maxStriationRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let maxStriationRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationStrength (inputStriationStrength)
 
@@ -145,8 +142,8 @@ import Foundation
 		/// - Attribute key: `inputStriationStrength`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
@@ -162,7 +159,7 @@ import Foundation
 		@objc public static let striationStrengthDefault: Double = 0.5
 
 		/// `striationStrength` range definition
-		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationStrengthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationContrast (inputStriationContrast)
 
@@ -172,8 +169,8 @@ import Foundation
 		/// - Attribute key: `inputStriationContrast`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.375`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.375`
 		@objc public var striationContrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
@@ -189,7 +186,7 @@ import Foundation
 		@objc public static let striationContrastDefault: Double = 1.375
 
 		/// `striationContrast` range definition
-		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationContrastRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - time (inputTime)
 
@@ -199,9 +196,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -214,7 +211,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -225,14 +222,13 @@ import Foundation
 		@objc public convenience init?(
 			center: CGPoint = SunbeamsGenerator.centerDefault,
 			color: CIColor,
-			sunRadius: Double = 40,
-			maxStriationRadius: Double = 2.58,
-			striationStrength: Double = 0.5,
-			striationContrast: Double = 1.375,
-			time: Double = 0
+			sunRadius: Double = SunbeamsGenerator.sunRadiusDefault,
+			maxStriationRadius: Double = SunbeamsGenerator.maxStriationRadiusDefault,
+			striationStrength: Double = SunbeamsGenerator.striationStrengthDefault,
+			striationContrast: Double = SunbeamsGenerator.striationContrastDefault,
+			time: Double = SunbeamsGenerator.timeDefault
 		) {
 			self.init()
-
 			self.center = center
 			self.color = color
 			self.sunRadius = sunRadius

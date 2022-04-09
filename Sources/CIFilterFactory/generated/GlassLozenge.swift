@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIGlassLozenge")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputPoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var point0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputPoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[350 150]`
+		/// - Default Value: `CGPoint(x: 350.0, y: 350.0)`
 		@objc public var point1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
@@ -112,8 +110,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -126,10 +124,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 100
+		@objc public static let radiusDefault: Double = 100.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - refraction (inputRefraction)
 
@@ -139,8 +137,8 @@ import Foundation
 		/// - Attribute key: `inputRefraction`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.7`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.7`
 		@objc public var refraction: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
@@ -156,7 +154,7 @@ import Foundation
 		@objc public static let refractionDefault: Double = 1.7
 
 		/// `refraction` range definition
-		public static let refractionRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let refractionRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -165,11 +163,10 @@ import Foundation
 			image: CIImage,
 			point0: CGPoint = GlassLozenge.point0Default,
 			point1: CGPoint = GlassLozenge.point1Default,
-			radius: Double = 100,
-			refraction: Double = 1.7
+			radius: Double = GlassLozenge.radiusDefault,
+			refraction: Double = GlassLozenge.refractionDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.point0 = point0
 			self.point1 = point1

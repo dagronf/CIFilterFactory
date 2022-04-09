@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDither")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `5.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `5.0`
+		/// - Default Value: `0.1`
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
@@ -95,10 +93,9 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			intensity: Double = 0.1
+			intensity: Double = Dither.intensityDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.intensity = intensity
 		}

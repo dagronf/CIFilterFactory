@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIConstantColorGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - color (inputColor)
 
 		/// The color to generate.
@@ -53,7 +51,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 0 0 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -70,7 +67,6 @@ import Foundation
 			color: CIColor)
 		{
 			self.init()
-
 			self.color = color
 		}
 	}

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIExposureAdjust")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputEV`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var eV: Double {
 			get {
 				let number = self.filter.value(forKey: "inputEV") as? NSNumber
@@ -82,17 +80,16 @@ import Foundation
 		}
 
 		/// `eV` default value
-		@objc public static let eVDefault: Double = 0
+		@objc public static let eVDefault: Double = 0.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			eV: Double = 0
+			eV: Double = ExposureAdjust.eVDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.eV = eV
 		}

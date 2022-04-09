@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CILightTunnel")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputRotation`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
@@ -103,7 +101,7 @@ import Foundation
 		}
 
 		/// `rotation` default value
-		@objc public static let rotationDefault: Double = 0
+		@objc public static let rotationDefault: Double = 0.0
 
 		// MARK: - radius (inputRadius)
 
@@ -113,7 +111,7 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
+		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -125,7 +123,7 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 100
+		@objc public static let radiusDefault: Double = 100.0
 
 		// MARK: - Convenience initializer
 
@@ -133,11 +131,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = LightTunnel.centerDefault,
-			rotation: Double = 0,
-			radius: Double = 100
+			rotation: Double = LightTunnel.rotationDefault,
+			radius: Double = LightTunnel.radiusDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.rotation = rotation

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIEdgePreserveUpsampleFilter")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,9 +84,9 @@ import Foundation
 		/// - Attribute key: `inputSpatialSigma`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `3`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `5.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `5.0`
+		/// - Default Value: `3.0`
 		@objc public var spatialSigma: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
@@ -101,7 +99,7 @@ import Foundation
 		}
 
 		/// `spatialSigma` default value
-		@objc public static let spatialSigmaDefault: Double = 3
+		@objc public static let spatialSigmaDefault: Double = 3.0
 
 		/// `spatialSigma` range definition
 		public static let spatialSigmaRange: ClosedRange<Double> = 0.0 ... 5.0
@@ -114,9 +112,9 @@ import Foundation
 		/// - Attribute key: `inputLumaSigma`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.15`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.15`
 		@objc public var lumaSigma: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLumaSigma") as? NSNumber
@@ -140,11 +138,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			smallImage: CIImage,
-			spatialSigma: Double = 3,
-			lumaSigma: Double = 0.15
+			spatialSigma: Double = EdgePreserveUpsampleFilter.spatialSigmaDefault,
+			lumaSigma: Double = EdgePreserveUpsampleFilter.lumaSigmaDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.smallImage = smallImage
 			self.spatialSigma = spatialSigma

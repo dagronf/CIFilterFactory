@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CILinearGradient")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - point0 (inputPoint0)
 
 		/// The starting position of the gradient -- where the first color begins.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputPoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[0 0]`
+		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var point0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
@@ -74,7 +72,7 @@ import Foundation
 		/// - Attribute key: `inputPoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[200 200]`
+		/// - Default Value: `CGPoint(x: 200.0, y: 200.0)`
 		@objc public var point1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
@@ -95,7 +93,6 @@ import Foundation
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -113,7 +110,6 @@ import Foundation
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(0 0 0 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -133,7 +129,6 @@ import Foundation
 			color1: CIColor
 		) {
 			self.init()
-
 			self.point0 = point0
 			self.point1 = point1
 			self.color0 = color0

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIConvolution9Vertical")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputWeights`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 0 0 0 1 0 0 0 0]`
 		@objc public var weights: CIVector? {
 			get {
 				return self.keyedValue("inputWeights")
@@ -86,7 +83,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBias`
 		/// - Internal class: `NSNumber`
-		/// - Default value: `0`
 		@objc public var bias: NSNumber? {
 			get {
 				return self.keyedValue("inputBias")
@@ -101,11 +97,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			weights: CIVector = CIVector([0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]),
-			bias: NSNumber = 0
+			weights: CIVector,
+			bias: NSNumber
 		) {
 			self.init()
-
 			self.image = image
 			self.weights = weights
 			self.bias = bias

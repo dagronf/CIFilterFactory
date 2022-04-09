@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAttributedTextImageGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - text (inputText)
 
 		/// No Description
@@ -69,8 +67,8 @@ import Foundation
 		/// - Attribute key: `inputScaleFactor`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
@@ -83,20 +81,19 @@ import Foundation
 		}
 
 		/// `scaleFactor` default value
-		@objc public static let scaleFactorDefault: Double = 1
+		@objc public static let scaleFactorDefault: Double = 1.0
 
 		/// `scaleFactor` range definition
-		public static let scaleFactorRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleFactorRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: NSAttributedString,
-			scaleFactor: Double = 1
+			scaleFactor: Double = AttributedTextImageGenerator.scaleFactorDefault
 		) {
 			self.init()
-
 			self.text = text
 			self.scaleFactor = scaleFactor
 		}

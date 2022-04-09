@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPointillize")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `20`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `20.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -84,10 +82,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 20
+		@objc public static let radiusDefault: Double = 20.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - center (inputCenter)
 
@@ -97,7 +95,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -115,11 +113,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: Double = 20,
+			radius: Double = Pointillize.radiusDefault,
 			center: CGPoint = Pointillize.centerDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.radius = radius
 			self.center = center

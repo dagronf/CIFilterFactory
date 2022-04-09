@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICoreMLModelFilter")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,9 +84,9 @@ import Foundation
 		/// - Attribute key: `inputHeadIndex`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeInteger`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `10.0`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `10`
+		/// - Default Value: `0`
 		@objc public var headIndex: Int {
 			get {
 				let number = self.filter.value(forKey: "inputHeadIndex") as? NSNumber
@@ -104,7 +102,7 @@ import Foundation
 		@objc public static let headIndexDefault: Int = 0
 
 		/// `headIndex` range definition
-		public static let headIndexRange: ClosedRange<Double> = 0.0 ... 10.0
+		public static let headIndexRange: ClosedRange<Int> = 0 ... 10
 
 		// MARK: - softmaxNormalization (inputSoftmaxNormalization)
 
@@ -114,9 +112,7 @@ import Foundation
 		/// - Attribute key: `inputSoftmaxNormalization`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeBoolean`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Default Value: `false`
 		@objc public var softmaxNormalization: Bool {
 			get {
 				let number = self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
@@ -130,20 +126,16 @@ import Foundation
 		/// `softmaxNormalization` default value
 		@objc public static let softmaxNormalizationDefault: Bool = false
 
-		/// `softmaxNormalization` range definition
-		public static let softmaxNormalizationRange: ClosedRange<Double> = 0.0 ... 1.0
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			model: MLModel,
-			headIndex: Int = 0,
-			softmaxNormalization: Bool = false
+			headIndex: Int = CoreMLModelFilter.headIndexDefault,
+			softmaxNormalization: Bool = CoreMLModelFilter.softmaxNormalizationDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.model = model
 			self.headIndex = headIndex

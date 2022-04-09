@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIMinimumComponent")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -69,7 +67,6 @@ import Foundation
 			image: CIImage)
 		{
 			self.init()
-
 			self.image = image
 		}
 	}

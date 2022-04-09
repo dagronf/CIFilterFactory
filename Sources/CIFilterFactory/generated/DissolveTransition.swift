@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDissolveTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,9 +85,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -102,7 +100,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -113,10 +111,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			time: Double = 0
+			time: Double = DissolveTransition.timeDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.time = time

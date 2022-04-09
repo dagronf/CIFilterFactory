@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CITriangleKaleidoscope")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// Input image to generate kaleidoscope effect from.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputPoint`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var point: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint", defaultValue: Self.pointDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputSize`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `700`
+		/// - Default Value: `700.0`
 		@objc public var size: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSize") as? NSNumber
@@ -103,7 +101,7 @@ import Foundation
 		}
 
 		/// `size` default value
-		@objc public static let sizeDefault: Double = 700
+		@objc public static let sizeDefault: Double = 700.0
 
 		// MARK: - rotation (inputRotation)
 
@@ -113,7 +111,7 @@ import Foundation
 		/// - Attribute key: `inputRotation`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `5.924285296593801`
+		/// - Default Value: `5.924285296593801`
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
@@ -135,7 +133,7 @@ import Foundation
 		/// - Attribute key: `inputDecay`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.85`
+		/// - Default Value: `0.85`
 		@objc public var decay: Double {
 			get {
 				let number = self.filter.value(forKey: "inputDecay") as? NSNumber
@@ -155,12 +153,11 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			point: CGPoint = TriangleKaleidoscope.pointDefault,
-			size: Double = 700,
-			rotation: Double = 5.924285296593801,
-			decay: Double = 0.85
+			size: Double = TriangleKaleidoscope.sizeDefault,
+			rotation: Double = TriangleKaleidoscope.rotationDefault,
+			decay: Double = TriangleKaleidoscope.decayDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.point = point
 			self.size = size

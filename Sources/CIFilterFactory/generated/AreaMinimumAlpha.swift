@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAreaMinimumAlpha")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 640 80]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -81,7 +79,7 @@ import Foundation
 		}
 
 		/// `extent` default value
-		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
 
 		// MARK: - Convenience initializer
 
@@ -91,7 +89,6 @@ import Foundation
 			extent: CGRect = AreaMinimumAlpha.extentDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.extent = extent
 		}

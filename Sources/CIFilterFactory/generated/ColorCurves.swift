@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorCurves")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCurvesData`
 		/// - Internal class: `NSData`
-		/// - Default value: `{length = 36, bytes = 0x00000000 00000000 00000000 0000003f ... 0000803f 0000803f }`
 		@objc public var curvesData: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCurvesData")
@@ -87,7 +84,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCurvesDomain`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 1]`
 		@objc public var curvesDomain: CIVector? {
 			get {
 				return self.keyedValue("inputCurvesDomain")
@@ -119,11 +115,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			curvesData: Data,
-			curvesDomain: CIVector = CIVector([0.0, 1.0]),
+			curvesDomain: CIVector,
 			colorSpace: NSObject
 		) {
 			self.init()
-
 			self.image = image
 			self.curvesData = curvesData
 			self.curvesDomain = curvesDomain

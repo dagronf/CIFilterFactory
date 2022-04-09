@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICrop")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputRectangle`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[-8.98847e+307 -8.98847e+307 1.79769e+308 1.79769e+308]`
+		/// - Default Value: `CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)`
 		@objc public var rectangle: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputRectangle", defaultValue: Self.rectangleDefault)
@@ -91,7 +89,6 @@ import Foundation
 			rectangle: CGRect = Crop.rectangleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.rectangle = rectangle
 		}

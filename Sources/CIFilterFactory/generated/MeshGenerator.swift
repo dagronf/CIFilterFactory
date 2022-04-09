@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIMeshGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - width (inputWidth)
 
 		/// The width of the effect.
@@ -53,8 +51,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `1.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.5`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -70,7 +68,7 @@ import Foundation
 		@objc public static let widthDefault: Double = 1.5
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let widthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - color (inputColor)
 
@@ -79,7 +77,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -109,12 +106,11 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			width: Double = 1.5,
+			width: Double = MeshGenerator.widthDefault,
 			color: CIColor,
 			mesh: NSArray
 		) {
 			self.init()
-
 			self.width = width
 			self.color = color
 			self.mesh = mesh

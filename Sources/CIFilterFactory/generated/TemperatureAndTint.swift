@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CITemperatureAndTint")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputNeutral`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[6500 0]`
+		/// - Default Value: `CGPoint(x: 6500.0, y: 6500.0)`
 		@objc public var neutral: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutralDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputTargetNeutral`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[6500 0]`
+		/// - Default Value: `CGPoint(x: 6500.0, y: 6500.0)`
 		@objc public var targetNeutral: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutralDefault)
@@ -113,7 +111,6 @@ import Foundation
 			targetNeutral: CGPoint = TemperatureAndTint.targetNeutralDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.neutral = neutral
 			self.targetNeutral = targetNeutral

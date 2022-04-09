@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CILenticularHaloGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - center (inputCenter)
 
 		/// The x and y position to use as the center of the halo.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -73,7 +71,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
-		/// - Default value: `rgba(1 0.9 0.8 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -91,8 +88,8 @@ import Foundation
 		/// - Attribute key: `inputHaloRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `70`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `70.0`
 		@objc public var haloRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloRadius") as? NSNumber
@@ -105,10 +102,10 @@ import Foundation
 		}
 
 		/// `haloRadius` default value
-		@objc public static let haloRadiusDefault: Double = 70
+		@objc public static let haloRadiusDefault: Double = 70.0
 
 		/// `haloRadius` range definition
-		public static let haloRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let haloRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - haloWidth (inputHaloWidth)
 
@@ -118,8 +115,8 @@ import Foundation
 		/// - Attribute key: `inputHaloWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `87`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `87.0`
 		@objc public var haloWidth: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloWidth") as? NSNumber
@@ -132,10 +129,10 @@ import Foundation
 		}
 
 		/// `haloWidth` default value
-		@objc public static let haloWidthDefault: Double = 87
+		@objc public static let haloWidthDefault: Double = 87.0
 
 		/// `haloWidth` range definition
-		public static let haloWidthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let haloWidthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - haloOverlap (inputHaloOverlap)
 
@@ -145,8 +142,8 @@ import Foundation
 		/// - Attribute key: `inputHaloOverlap`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.77`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.77`
 		@objc public var haloOverlap: Double {
 			get {
 				let number = self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
@@ -162,7 +159,7 @@ import Foundation
 		@objc public static let haloOverlapDefault: Double = 0.77
 
 		/// `haloOverlap` range definition
-		public static let haloOverlapRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let haloOverlapRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationStrength (inputStriationStrength)
 
@@ -172,8 +169,8 @@ import Foundation
 		/// - Attribute key: `inputStriationStrength`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
@@ -189,7 +186,7 @@ import Foundation
 		@objc public static let striationStrengthDefault: Double = 0.5
 
 		/// `striationStrength` range definition
-		public static let striationStrengthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationStrengthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - striationContrast (inputStriationContrast)
 
@@ -199,8 +196,8 @@ import Foundation
 		/// - Attribute key: `inputStriationContrast`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var striationContrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
@@ -213,10 +210,10 @@ import Foundation
 		}
 
 		/// `striationContrast` default value
-		@objc public static let striationContrastDefault: Double = 1
+		@objc public static let striationContrastDefault: Double = 1.0
 
 		/// `striationContrast` range definition
-		public static let striationContrastRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let striationContrastRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - time (inputTime)
 
@@ -226,9 +223,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -241,7 +238,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -252,15 +249,14 @@ import Foundation
 		@objc public convenience init?(
 			center: CGPoint = LenticularHaloGenerator.centerDefault,
 			color: CIColor,
-			haloRadius: Double = 70,
-			haloWidth: Double = 87,
-			haloOverlap: Double = 0.77,
-			striationStrength: Double = 0.5,
-			striationContrast: Double = 1,
-			time: Double = 0
+			haloRadius: Double = LenticularHaloGenerator.haloRadiusDefault,
+			haloWidth: Double = LenticularHaloGenerator.haloWidthDefault,
+			haloOverlap: Double = LenticularHaloGenerator.haloOverlapDefault,
+			striationStrength: Double = LenticularHaloGenerator.striationStrengthDefault,
+			striationContrast: Double = LenticularHaloGenerator.striationContrastDefault,
+			time: Double = LenticularHaloGenerator.timeDefault
 		) {
 			self.init()
-
 			self.center = center
 			self.color = color
 			self.haloRadius = haloRadius

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CINinePartTiled")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputBreakpoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[50 50]`
+		/// - Default Value: `CGPoint(x: 50.0, y: 50.0)`
 		@objc public var breakpoint0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputBreakpoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var breakpoint1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1Default)
@@ -112,7 +110,7 @@ import Foundation
 		/// - Attribute key: `inputGrowAmount`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[100 100]`
+		/// - Default Value: `CGPoint(x: 100.0, y: 100.0)`
 		@objc public var growAmount: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmountDefault)
@@ -133,9 +131,7 @@ import Foundation
 		/// - Attribute key: `inputFlipYTiles`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeBoolean`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Default Value: `false`
 		@objc public var flipYTiles: Bool {
 			get {
 				let number = self.filter.value(forKey: "inputFlipYTiles") as? NSNumber
@@ -149,9 +145,6 @@ import Foundation
 		/// `flipYTiles` default value
 		@objc public static let flipYTilesDefault: Bool = false
 
-		/// `flipYTiles` range definition
-		public static let flipYTilesRange: ClosedRange<Double> = 0.0 ... 1.0
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
@@ -160,10 +153,9 @@ import Foundation
 			breakpoint0: CGPoint = NinePartTiled.breakpoint0Default,
 			breakpoint1: CGPoint = NinePartTiled.breakpoint1Default,
 			growAmount: CGPoint = NinePartTiled.growAmountDefault,
-			flipYTiles: Bool = false
+			flipYTiles: Bool = NinePartTiled.flipYTilesDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.breakpoint0 = breakpoint0
 			self.breakpoint1 = breakpoint1

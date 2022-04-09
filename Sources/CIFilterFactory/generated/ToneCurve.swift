@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIToneCurve")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputPoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[0 0]`
+		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var point0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputPoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[0.25 0.25]`
+		/// - Default Value: `CGPoint(x: 0.25, y: 0.25)`
 		@objc public var point1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
@@ -112,7 +110,7 @@ import Foundation
 		/// - Attribute key: `inputPoint2`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[0.5 0.5]`
+		/// - Default Value: `CGPoint(x: 0.5, y: 0.5)`
 		@objc public var point2: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint2", defaultValue: Self.point2Default)
@@ -133,7 +131,7 @@ import Foundation
 		/// - Attribute key: `inputPoint3`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[0.75 0.75]`
+		/// - Default Value: `CGPoint(x: 0.75, y: 0.75)`
 		@objc public var point3: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint3", defaultValue: Self.point3Default)
@@ -154,7 +152,7 @@ import Foundation
 		/// - Attribute key: `inputPoint4`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[1 1]`
+		/// - Default Value: `CGPoint(x: 1.0, y: 1.0)`
 		@objc public var point4: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint4", defaultValue: Self.point4Default)
@@ -179,7 +177,6 @@ import Foundation
 			point4: CGPoint = ToneCurve.point4Default
 		) {
 			self.init()
-
 			self.image = image
 			self.point0 = point0
 			self.point1 = point1

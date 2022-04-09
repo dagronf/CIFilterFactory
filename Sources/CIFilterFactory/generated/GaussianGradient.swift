@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIGaussianGradient")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - center (inputCenter)
 
 		/// The center of the effect as x and y coordinates.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -74,7 +72,6 @@ import Foundation
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -92,7 +89,6 @@ import Foundation
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(0 0 0 0)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -110,8 +106,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `300`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `300.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -124,10 +120,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 300
+		@objc public static let radiusDefault: Double = 300.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -136,10 +132,9 @@ import Foundation
 			center: CGPoint = GaussianGradient.centerDefault,
 			color0: CIColor,
 			color1: CIColor,
-			radius: Double = 300
+			radius: Double = GaussianGradient.radiusDefault
 		) {
 			self.init()
-
 			self.center = center
 			self.color0 = color0
 			self.color1 = color1

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAccordionFoldTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,8 +85,8 @@ import Foundation
 		/// - Attribute key: `inputBottomHeight`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.0`
 		@objc public var bottomHeight: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBottomHeight") as? NSNumber
@@ -101,10 +99,10 @@ import Foundation
 		}
 
 		/// `bottomHeight` default value
-		@objc public static let bottomHeightDefault: Double = 0
+		@objc public static let bottomHeightDefault: Double = 0.0
 
 		/// `bottomHeight` range definition
-		public static let bottomHeightRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let bottomHeightRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - numberOfFolds (inputNumberOfFolds)
 
@@ -114,9 +112,9 @@ import Foundation
 		/// - Attribute key: `inputNumberOfFolds`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `3`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `50.0`
+		/// - Minimum Value: `1.0`
+		/// - Maximum Value: `50.0`
+		/// - Default Value: `3.0`
 		@objc public var numberOfFolds: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
@@ -129,7 +127,7 @@ import Foundation
 		}
 
 		/// `numberOfFolds` default value
-		@objc public static let numberOfFoldsDefault: Double = 3
+		@objc public static let numberOfFoldsDefault: Double = 3.0
 
 		/// `numberOfFolds` range definition
 		public static let numberOfFoldsRange: ClosedRange<Double> = 1.0 ... 50.0
@@ -142,9 +140,9 @@ import Foundation
 		/// - Attribute key: `inputFoldShadowAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.1`
 		@objc public var foldShadowAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
@@ -170,9 +168,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -185,7 +183,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -196,13 +194,12 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			targetImage: CIImage,
-			bottomHeight: Double = 0,
-			numberOfFolds: Double = 3,
-			foldShadowAmount: Double = 0.1,
-			time: Double = 0
+			bottomHeight: Double = AccordionFoldTransition.bottomHeightDefault,
+			numberOfFolds: Double = AccordionFoldTransition.numberOfFoldsDefault,
+			foldShadowAmount: Double = AccordionFoldTransition.foldShadowAmountDefault,
+			time: Double = AccordionFoldTransition.timeDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.bottomHeight = bottomHeight

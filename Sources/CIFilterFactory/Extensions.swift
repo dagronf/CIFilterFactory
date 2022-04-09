@@ -33,6 +33,13 @@ internal extension NSNumber {
 		return self
 	}
 
+	@inline(__always) func clamped(bounds: PartialRangeFrom<Int>) -> NSNumber {
+		if bounds.lowerBound > self.intValue {
+			return NSNumber(value: bounds.lowerBound)
+		}
+		return self
+	}
+
 	@inline(__always) func validate(bounds: PartialRangeFrom<Double>) -> Bool {
 		return bounds.lowerBound <= self.doubleValue
 	}
@@ -54,6 +61,18 @@ internal extension NSNumber {
 
 	@inline(__always) func clamped(bounds: ClosedRange<Double>) -> NSNumber {
 		var value = max(bounds.lowerBound, self.doubleValue)
+		value = min(bounds.upperBound, value)
+		return NSNumber(value: value)
+	}
+
+	@inline(__always) func clamped(bounds: ClosedRange<UInt>) -> NSNumber {
+		var value = max(bounds.lowerBound, self.uintValue)
+		value = min(bounds.upperBound, value)
+		return NSNumber(value: value)
+	}
+
+	@inline(__always) func clamped(bounds: ClosedRange<Int>) -> NSNumber {
+		var value = max(bounds.lowerBound, self.intValue)
 		value = min(bounds.upperBound, value)
 		return NSNumber(value: value)
 	}

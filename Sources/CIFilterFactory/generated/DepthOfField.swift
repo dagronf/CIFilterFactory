@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDepthOfField")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputPoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[0 300]`
+		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var point0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputPoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[300 300]`
+		/// - Default Value: `CGPoint(x: 300.0, y: 300.0)`
 		@objc public var point1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
@@ -112,8 +110,8 @@ import Foundation
 		/// - Attribute key: `inputSaturation`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.5`
 		@objc public var saturation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSaturation") as? NSNumber
@@ -129,7 +127,7 @@ import Foundation
 		@objc public static let saturationDefault: Double = 1.5
 
 		/// `saturation` range definition
-		public static let saturationRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let saturationRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - unsharpMaskRadius (inputUnsharpMaskRadius)
 
@@ -139,8 +137,8 @@ import Foundation
 		/// - Attribute key: `inputUnsharpMaskRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `2.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `2.5`
 		@objc public var unsharpMaskRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
@@ -156,7 +154,7 @@ import Foundation
 		@objc public static let unsharpMaskRadiusDefault: Double = 2.5
 
 		/// `unsharpMaskRadius` range definition
-		public static let unsharpMaskRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let unsharpMaskRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - unsharpMaskIntensity (inputUnsharpMaskIntensity)
 
@@ -166,8 +164,8 @@ import Foundation
 		/// - Attribute key: `inputUnsharpMaskIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var unsharpMaskIntensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
@@ -183,7 +181,7 @@ import Foundation
 		@objc public static let unsharpMaskIntensityDefault: Double = 0.5
 
 		/// `unsharpMaskIntensity` range definition
-		public static let unsharpMaskIntensityRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let unsharpMaskIntensityRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - radius (inputRadius)
 
@@ -193,8 +191,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `6`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `6.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -207,10 +205,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 6
+		@objc public static let radiusDefault: Double = 6.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -219,13 +217,12 @@ import Foundation
 			image: CIImage,
 			point0: CGPoint = DepthOfField.point0Default,
 			point1: CGPoint = DepthOfField.point1Default,
-			saturation: Double = 1.5,
-			unsharpMaskRadius: Double = 2.5,
-			unsharpMaskIntensity: Double = 0.5,
-			radius: Double = 6
+			saturation: Double = DepthOfField.saturationDefault,
+			unsharpMaskRadius: Double = DepthOfField.unsharpMaskRadiusDefault,
+			unsharpMaskIntensity: Double = DepthOfField.unsharpMaskIntensityDefault,
+			radius: Double = DepthOfField.radiusDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.point0 = point0
 			self.point1 = point1

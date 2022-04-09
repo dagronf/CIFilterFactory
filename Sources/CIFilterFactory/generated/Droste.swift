@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDroste")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputInsetPoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[200 200]`
+		/// - Default Value: `CGPoint(x: 200.0, y: 200.0)`
 		@objc public var insetPoint0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputInsetPoint0", defaultValue: Self.insetPoint0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputInsetPoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[400 400]`
+		/// - Default Value: `CGPoint(x: 400.0, y: 400.0)`
 		@objc public var insetPoint1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputInsetPoint1", defaultValue: Self.insetPoint1Default)
@@ -112,9 +110,9 @@ import Foundation
 		/// - Attribute key: `inputStrands`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `-10.0`
-		/// - Maximum value: `10.0`
+		/// - Minimum Value: `-10.0`
+		/// - Maximum Value: `10.0`
+		/// - Default Value: `1.0`
 		@objc public var strands: Double {
 			get {
 				let number = self.filter.value(forKey: "inputStrands") as? NSNumber
@@ -127,7 +125,7 @@ import Foundation
 		}
 
 		/// `strands` default value
-		@objc public static let strandsDefault: Double = 1
+		@objc public static let strandsDefault: Double = 1.0
 
 		/// `strands` range definition
 		public static let strandsRange: ClosedRange<Double> = -10.0 ... 10.0
@@ -140,8 +138,8 @@ import Foundation
 		/// - Attribute key: `inputPeriodicity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `1.0`
 		@objc public var periodicity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPeriodicity") as? NSNumber
@@ -154,10 +152,10 @@ import Foundation
 		}
 
 		/// `periodicity` default value
-		@objc public static let periodicityDefault: Double = 1
+		@objc public static let periodicityDefault: Double = 1.0
 
 		/// `periodicity` range definition
-		public static let periodicityRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let periodicityRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - rotation (inputRotation)
 
@@ -167,7 +165,7 @@ import Foundation
 		/// - Attribute key: `inputRotation`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var rotation: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
@@ -179,7 +177,7 @@ import Foundation
 		}
 
 		/// `rotation` default value
-		@objc public static let rotationDefault: Double = 0
+		@objc public static let rotationDefault: Double = 0.0
 
 		// MARK: - zoom (inputZoom)
 
@@ -189,8 +187,8 @@ import Foundation
 		/// - Attribute key: `inputZoom`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.01`
+		/// - Minimum Value: `0.01`
+		/// - Default Value: `1.0`
 		@objc public var zoom: Double {
 			get {
 				let number = self.filter.value(forKey: "inputZoom") as? NSNumber
@@ -203,10 +201,10 @@ import Foundation
 		}
 
 		/// `zoom` default value
-		@objc public static let zoomDefault: Double = 1
+		@objc public static let zoomDefault: Double = 1.0
 
 		/// `zoom` range definition
-		public static let zoomRange: PartialRangeFrom<Double> = Double(0.01)...
+		public static let zoomRange = PartialRangeFrom<Double>(0.01)
 
 		// MARK: - Convenience initializer
 
@@ -215,13 +213,12 @@ import Foundation
 			image: CIImage,
 			insetPoint0: CGPoint = Droste.insetPoint0Default,
 			insetPoint1: CGPoint = Droste.insetPoint1Default,
-			strands: Double = 1,
-			periodicity: Double = 1,
-			rotation: Double = 0,
-			zoom: Double = 1
+			strands: Double = Droste.strandsDefault,
+			periodicity: Double = Droste.periodicityDefault,
+			rotation: Double = Droste.rotationDefault,
+			zoom: Double = Droste.zoomDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.insetPoint0 = insetPoint0
 			self.insetPoint1 = insetPoint1

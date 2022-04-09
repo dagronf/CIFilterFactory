@@ -232,6 +232,13 @@ You can find some really simple examples for both Swift and Objective-C in the `
 
 ## Regenerating CIFilterFactory
 
+NOTE: This is only available for Xcode 13 and later
+
+There is a project in the `tools/generator` folder, called `ciff_generator`. Open this in XCode 13 and build/run
+the project.
+
+Additionally, there is a script in the tools directory which will rebuild the filters and update the XCode documentation.
+
 1. Open a terminal and navigate to the CIFilterFactory/tools folder
 2. run `sh regenerate.sh`
 
@@ -242,12 +249,12 @@ NOTE: This is only available for Xcode 13 and later
 1. Open a terminal and navigate to the CIFilterFactory/tools folder
 2. run `sh make-docs.sh`
 
-## What else?
-
-* Clean up the generator script
-* Better type support
-
 ## History
+
+### `15.0.0`
+
+* Rebuilt the generator to be somewhat cleaner, but as a result cannot be run as a script. It has to be compiled and run.
+This fixes a number of glitches relating to ranges and naming.
 
 ### `14.0.1`
 

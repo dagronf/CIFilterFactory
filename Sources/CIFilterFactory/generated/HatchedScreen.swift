@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIHatchedScreen")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -103,7 +101,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - width (inputWidth)
 
@@ -113,8 +111,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `6`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `6.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -127,10 +125,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 6
+		@objc public static let widthDefault: Double = 6.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let widthRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -140,9 +138,9 @@ import Foundation
 		/// - Attribute key: `inputSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.7`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.7`
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -166,12 +164,11 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = HatchedScreen.centerDefault,
-			angle: Double = 0,
-			width: Double = 6,
-			sharpness: Double = 0.7
+			angle: Double = HatchedScreen.angleDefault,
+			width: Double = HatchedScreen.widthDefault,
+			sharpness: Double = HatchedScreen.sharpnessDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.angle = angle

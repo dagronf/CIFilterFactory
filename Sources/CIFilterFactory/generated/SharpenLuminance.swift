@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CISharpenLuminance")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.4`
+		/// - Default Value: `0.4`
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -92,7 +90,7 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.69`
+		/// - Default Value: `1.69`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -111,11 +109,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			sharpness: Double = 0.4,
-			radius: Double = 1.69
+			sharpness: Double = SharpenLuminance.sharpnessDefault,
+			radius: Double = SharpenLuminance.radiusDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.sharpness = sharpness
 			self.radius = radius

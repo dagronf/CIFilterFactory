@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CINoiseReduction")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputNoiseLevel`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.02`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.02`
 		@objc public var noiseLevel: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNoiseLevel") as? NSNumber
@@ -87,7 +85,7 @@ import Foundation
 		@objc public static let noiseLevelDefault: Double = 0.02
 
 		/// `noiseLevel` range definition
-		public static let noiseLevelRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let noiseLevelRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -97,8 +95,8 @@ import Foundation
 		/// - Attribute key: `inputSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.4`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.4`
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -114,18 +112,17 @@ import Foundation
 		@objc public static let sharpnessDefault: Double = 0.4
 
 		/// `sharpness` range definition
-		public static let sharpnessRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let sharpnessRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			noiseLevel: Double = 0.02,
-			sharpness: Double = 0.4
+			noiseLevel: Double = NoiseReduction.noiseLevelDefault,
+			sharpness: Double = NoiseReduction.sharpnessDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.noiseLevel = noiseLevel
 			self.sharpness = sharpness

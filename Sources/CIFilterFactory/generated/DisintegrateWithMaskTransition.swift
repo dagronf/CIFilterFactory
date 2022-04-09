@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDisintegrateWithMaskTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -104,9 +102,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -119,7 +117,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -132,8 +130,8 @@ import Foundation
 		/// - Attribute key: `inputShadowRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `8`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `8.0`
 		@objc public var shadowRadius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowRadius") as? NSNumber
@@ -146,10 +144,10 @@ import Foundation
 		}
 
 		/// `shadowRadius` default value
-		@objc public static let shadowRadiusDefault: Double = 8
+		@objc public static let shadowRadiusDefault: Double = 8.0
 
 		/// `shadowRadius` range definition
-		public static let shadowRadiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let shadowRadiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - shadowDensity (inputShadowDensity)
 
@@ -159,9 +157,9 @@ import Foundation
 		/// - Attribute key: `inputShadowDensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.65`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.65`
 		@objc public var shadowDensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowDensity") as? NSNumber
@@ -187,7 +185,7 @@ import Foundation
 		/// - Attribute key: `inputShadowOffset`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[0 -10]`
+		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var shadowOffset: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
@@ -207,13 +205,12 @@ import Foundation
 			image: CIImage,
 			targetImage: CIImage,
 			maskImage: CIImage,
-			time: Double = 0,
-			shadowRadius: Double = 8,
-			shadowDensity: Double = 0.65,
+			time: Double = DisintegrateWithMaskTransition.timeDefault,
+			shadowRadius: Double = DisintegrateWithMaskTransition.shadowRadiusDefault,
+			shadowDensity: Double = DisintegrateWithMaskTransition.shadowDensityDefault,
 			shadowOffset: CGPoint = DisintegrateWithMaskTransition.shadowOffsetDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.maskImage = maskImage

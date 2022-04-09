@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPersonSegmentation")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,7 +84,6 @@ import Foundation
 			qualityLevel: NSNumber
 		) {
 			self.init()
-
 			self.image = image
 			self.qualityLevel = qualityLevel
 		}

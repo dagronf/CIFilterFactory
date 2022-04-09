@@ -60,6 +60,16 @@
 		assert([f perceptual] == NO);
 	}
 
+	{
+		CIFFGloom* f = [[CIFFGloom alloc] initWithImage:image radius:5 intensity:1];
+		assert([f radius] == 5);
+		assert([f intensity] == 1);
+
+		// This should clamp to 0
+		f.intensity = -10;
+		assert([f intensity] == 0);
+	}
+
 	id sepiaFilter = [[CIFFSepiaTone alloc] init];
 	assert(sepiaFilter);
 	[sepiaFilter setImage:image];

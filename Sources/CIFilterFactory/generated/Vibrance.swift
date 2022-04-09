@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIVibrance")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `-1.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `-1.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var amount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
@@ -85,7 +83,7 @@ import Foundation
 		}
 
 		/// `amount` default value
-		@objc public static let amountDefault: Double = 0
+		@objc public static let amountDefault: Double = 0.0
 
 		/// `amount` range definition
 		public static let amountRange: ClosedRange<Double> = -1.0 ... 1.0
@@ -95,10 +93,9 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			amount: Double = 0
+			amount: Double = Vibrance.amountDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.amount = amount
 		}

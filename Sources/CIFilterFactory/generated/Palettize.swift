@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPalettize")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,9 +84,7 @@ import Foundation
 		/// - Attribute key: `inputPerceptual`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeBoolean`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Default Value: `false`
 		@objc public var perceptual: Bool {
 			get {
 				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
@@ -102,19 +98,15 @@ import Foundation
 		/// `perceptual` default value
 		@objc public static let perceptualDefault: Bool = false
 
-		/// `perceptual` range definition
-		public static let perceptualRange: ClosedRange<Double> = 0.0 ... 1.0
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
 			paletteImage: CIImage,
-			perceptual: Bool = false
+			perceptual: Bool = Palettize.perceptualDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.paletteImage = paletteImage
 			self.perceptual = perceptual

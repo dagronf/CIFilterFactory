@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAztecCodeGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - message (inputMessage)
 
 		/// The message to encode in the Aztec Barcode
@@ -69,20 +67,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCorrectionLevel`
 		/// - Internal class: `NSNumber`
-		/// - Default value: `23`
-		/// - Minimum value: `5.0`
-		/// - Maximum value: `95.0`
 		@objc public var correctionLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.correctionLevelRange), forKey: "inputCorrectionLevel")
+				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
 			}
 		}
-
-		/// `correctionLevel` range definition
-		public static let correctionLevelRange: ClosedRange<Double> = 5.0 ... 95.0
 
 		// MARK: - layers (inputLayers)
 
@@ -91,19 +83,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputLayers`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `32.0`
 		@objc public var layers: NSNumber? {
 			get {
 				return self.keyedValue("inputLayers")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.layersRange), forKey: "inputLayers")
+				self.setKeyedValue(newValue, for: "inputLayers")
 			}
 		}
-
-		/// `layers` range definition
-		public static let layersRange: ClosedRange<Double> = 1.0 ... 32.0
 
 		// MARK: - compactStyle (inputCompactStyle)
 
@@ -112,24 +99,13 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCompactStyle`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
 		@objc public var compactStyle: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactStyle")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: AztecCodeGenerator.compactStyleRange), forKey: "inputCompactStyle")
+				self.setKeyedValue(newValue, for: "inputCompactStyle")
 			}
-		}
-
-		/// `compactStyle` range definition
-		public static let compactStyleRange: ClosedRange<Double> = 0.0 ... 1.0
-
-		// MARK: - Additional Outputs
-
-		@objc public var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
 		}
 
 		// MARK: - Convenience initializer
@@ -137,12 +113,11 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			correctionLevel: NSNumber = 23,
+			correctionLevel: NSNumber,
 			layers: NSNumber,
 			compactStyle: NSNumber
 		) {
 			self.init()
-
 			self.message = message
 			self.correctionLevel = correctionLevel
 			self.layers = layers

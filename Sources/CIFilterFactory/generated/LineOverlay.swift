@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CILineOverlay")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputNRNoiseLevel`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.07000000000000001`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.07`
 		@objc public var nRNoiseLevel: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
@@ -84,10 +82,10 @@ import Foundation
 		}
 
 		/// `nRNoiseLevel` default value
-		@objc public static let nRNoiseLevelDefault: Double = 0.07000000000000001
+		@objc public static let nRNoiseLevelDefault: Double = 0.07
 
 		/// `nRNoiseLevel` range definition
-		public static let nRNoiseLevelRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let nRNoiseLevelRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - nRSharpness (inputNRSharpness)
 
@@ -97,8 +95,8 @@ import Foundation
 		/// - Attribute key: `inputNRSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.71`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.71`
 		@objc public var nRSharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputNRSharpness") as? NSNumber
@@ -114,7 +112,7 @@ import Foundation
 		@objc public static let nRSharpnessDefault: Double = 0.71
 
 		/// `nRSharpness` range definition
-		public static let nRSharpnessRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let nRSharpnessRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - edgeIntensity (inputEdgeIntensity)
 
@@ -124,8 +122,8 @@ import Foundation
 		/// - Attribute key: `inputEdgeIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var edgeIntensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
@@ -138,10 +136,10 @@ import Foundation
 		}
 
 		/// `edgeIntensity` default value
-		@objc public static let edgeIntensityDefault: Double = 1
+		@objc public static let edgeIntensityDefault: Double = 1.0
 
 		/// `edgeIntensity` range definition
-		public static let edgeIntensityRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let edgeIntensityRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - threshold (inputThreshold)
 
@@ -151,8 +149,8 @@ import Foundation
 		/// - Attribute key: `inputThreshold`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.1`
 		@objc public var threshold: Double {
 			get {
 				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
@@ -168,7 +166,7 @@ import Foundation
 		@objc public static let thresholdDefault: Double = 0.1
 
 		/// `threshold` range definition
-		public static let thresholdRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let thresholdRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - contrast (inputContrast)
 
@@ -178,8 +176,8 @@ import Foundation
 		/// - Attribute key: `inputContrast`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `50`
-		/// - Minimum value: `0.25`
+		/// - Minimum Value: `0.25`
+		/// - Default Value: `50.0`
 		@objc public var contrast: Double {
 			get {
 				let number = self.filter.value(forKey: "inputContrast") as? NSNumber
@@ -192,24 +190,23 @@ import Foundation
 		}
 
 		/// `contrast` default value
-		@objc public static let contrastDefault: Double = 50
+		@objc public static let contrastDefault: Double = 50.0
 
 		/// `contrast` range definition
-		public static let contrastRange: PartialRangeFrom<Double> = Double(0.25)...
+		public static let contrastRange = PartialRangeFrom<Double>(0.25)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			nRNoiseLevel: Double = 0.07000000000000001,
-			nRSharpness: Double = 0.71,
-			edgeIntensity: Double = 1,
-			threshold: Double = 0.1,
-			contrast: Double = 50
+			nRNoiseLevel: Double = LineOverlay.nRNoiseLevelDefault,
+			nRSharpness: Double = LineOverlay.nRSharpnessDefault,
+			edgeIntensity: Double = LineOverlay.edgeIntensityDefault,
+			threshold: Double = LineOverlay.thresholdDefault,
+			contrast: Double = LineOverlay.contrastDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.nRNoiseLevel = nRNoiseLevel
 			self.nRSharpness = nRSharpness

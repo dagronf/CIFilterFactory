@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIStripesGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - center (inputCenter)
 
 		/// The x and y position to use as the center of the stripe pattern.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -73,7 +71,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -90,7 +87,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
-		/// - Default value: `rgba(0 0 0 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -108,7 +104,7 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `80`
+		/// - Default Value: `80.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -120,7 +116,7 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 80
+		@objc public static let widthDefault: Double = 80.0
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -130,9 +126,9 @@ import Foundation
 		/// - Attribute key: `inputSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `1.0`
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -145,7 +141,7 @@ import Foundation
 		}
 
 		/// `sharpness` default value
-		@objc public static let sharpnessDefault: Double = 1
+		@objc public static let sharpnessDefault: Double = 1.0
 
 		/// `sharpness` range definition
 		public static let sharpnessRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -157,11 +153,10 @@ import Foundation
 			center: CGPoint = StripesGenerator.centerDefault,
 			color0: CIColor,
 			color1: CIColor,
-			width: Double = 80,
-			sharpness: Double = 1
+			width: Double = StripesGenerator.widthDefault,
+			sharpness: Double = StripesGenerator.sharpnessDefault
 		) {
 			self.init()
-
 			self.center = center
 			self.color0 = color0
 			self.color1 = color1

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAreaHistogram")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image whose histogram you want to calculate.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 640 80]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -81,7 +79,7 @@ import Foundation
 		}
 
 		/// `extent` default value
-		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
 
 		// MARK: - scale (inputScale)
 
@@ -91,8 +89,8 @@ import Foundation
 		/// - Attribute key: `inputScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
@@ -105,10 +103,10 @@ import Foundation
 		}
 
 		/// `scale` default value
-		@objc public static let scaleDefault: Double = 1
+		@objc public static let scaleDefault: Double = 1.0
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - count (inputCount)
 
@@ -118,9 +116,9 @@ import Foundation
 		/// - Attribute key: `inputCount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `64`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `2048.0`
+		/// - Minimum Value: `1.0`
+		/// - Maximum Value: `2048.0`
+		/// - Default Value: `64.0`
 		@objc public var count: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCount") as? NSNumber
@@ -133,24 +131,10 @@ import Foundation
 		}
 
 		/// `count` default value
-		@objc public static let countDefault: Double = 64
+		@objc public static let countDefault: Double = 64.0
 
 		/// `count` range definition
 		public static let countRange: ClosedRange<Double> = 1.0 ... 2048.0
-
-		// MARK: - Additional Outputs
-
-		@objc public var outputData: Any? {
-			return self.filter.value(forKey: "outputData")
-		}
-
-		@objc public var outputImageMPS: Any? {
-			return self.filter.value(forKey: "outputImageMPS")
-		}
-
-		@objc public var outputImageNonMPS: Any? {
-			return self.filter.value(forKey: "outputImageNonMPS")
-		}
 
 		// MARK: - Convenience initializer
 
@@ -158,11 +142,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			extent: CGRect = AreaHistogram.extentDefault,
-			scale: Double = 1,
-			count: Double = 64
+			scale: Double = AreaHistogram.scaleDefault,
+			count: Double = AreaHistogram.countDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.extent = extent
 			self.scale = scale

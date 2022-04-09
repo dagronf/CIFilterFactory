@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorClamp")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMinComponents`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[0 0 0 0]`
 		@objc public var minComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMinComponents")
@@ -86,7 +83,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMaxComponents`
 		/// - Internal class: `CIVector`
-		/// - Default value: `[1 1 1 1]`
 		@objc public var maxComponents: CIVector? {
 			get {
 				return self.keyedValue("inputMaxComponents")
@@ -101,11 +97,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			minComponents: CIVector = CIVector([0.0, 0.0, 0.0, 0.0]),
-			maxComponents: CIVector = CIVector([1.0, 1.0, 1.0, 1.0])
+			minComponents: CIVector,
+			maxComponents: CIVector
 		) {
 			self.init()
-
 			self.image = image
 			self.minComponents = minComponents
 			self.maxComponents = maxComponents

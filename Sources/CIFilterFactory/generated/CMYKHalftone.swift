@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICMYKHalftone")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,8 +89,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `6`
-		/// - Minimum value: `-2.0`
+		/// - Minimum Value: `-2.0`
+		/// - Default Value: `6.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -105,10 +103,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 6
+		@objc public static let widthDefault: Double = 6.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(-2.0)...
+		public static let widthRange = PartialRangeFrom<Double>(-2.0)
 
 		// MARK: - angle (inputAngle)
 
@@ -118,7 +116,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -130,7 +128,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - sharpness (inputSharpness)
 
@@ -140,8 +138,8 @@ import Foundation
 		/// - Attribute key: `inputSharpness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `0.7`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.7`
 		@objc public var sharpness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
@@ -157,7 +155,7 @@ import Foundation
 		@objc public static let sharpnessDefault: Double = 0.7
 
 		/// `sharpness` range definition
-		public static let sharpnessRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let sharpnessRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - gCR (inputGCR)
 
@@ -167,8 +165,8 @@ import Foundation
 		/// - Attribute key: `inputGCR`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var gCR: Double {
 			get {
 				let number = self.filter.value(forKey: "inputGCR") as? NSNumber
@@ -181,10 +179,10 @@ import Foundation
 		}
 
 		/// `gCR` default value
-		@objc public static let gCRDefault: Double = 1
+		@objc public static let gCRDefault: Double = 1.0
 
 		/// `gCR` range definition
-		public static let gCRRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let gCRRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - uCR (inputUCR)
 
@@ -194,8 +192,8 @@ import Foundation
 		/// - Attribute key: `inputUCR`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var uCR: Double {
 			get {
 				let number = self.filter.value(forKey: "inputUCR") as? NSNumber
@@ -211,7 +209,7 @@ import Foundation
 		@objc public static let uCRDefault: Double = 0.5
 
 		/// `uCR` range definition
-		public static let uCRRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let uCRRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -219,14 +217,13 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = CMYKHalftone.centerDefault,
-			width: Double = 6,
-			angle: Double = 0,
-			sharpness: Double = 0.7,
-			gCR: Double = 1,
-			uCR: Double = 0.5
+			width: Double = CMYKHalftone.widthDefault,
+			angle: Double = CMYKHalftone.angleDefault,
+			sharpness: Double = CMYKHalftone.sharpnessDefault,
+			gCR: Double = CMYKHalftone.gCRDefault,
+			uCR: Double = CMYKHalftone.uCRDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.width = width

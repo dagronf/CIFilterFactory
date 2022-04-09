@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - extent (inputExtent)
 
 		/// A rectangle that defines the extent of the effect.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 100 100]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -74,8 +72,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `10`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `10.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -88,10 +86,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 10
+		@objc public static let radiusDefault: Double = 10.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - color (inputColor)
 
@@ -101,7 +99,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -116,11 +113,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			extent: CGRect = RoundedRectangleGenerator.extentDefault,
-			radius: Double = 10,
+			radius: Double = RoundedRectangleGenerator.radiusDefault,
 			color: CIColor
 		) {
 			self.init()
-
 			self.extent = extent
 			self.radius = radius
 			self.color = color

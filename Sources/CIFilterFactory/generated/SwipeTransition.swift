@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CISwipeTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 300 300]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -108,7 +106,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeOpaqueColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -126,9 +123,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -141,7 +138,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -154,7 +151,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -166,7 +163,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - width (inputWidth)
 
@@ -176,8 +173,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `300`
-		/// - Minimum value: `0.1`
+		/// - Minimum Value: `0.1`
+		/// - Default Value: `300.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -190,10 +187,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 300
+		@objc public static let widthDefault: Double = 300.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(0.1)...
+		public static let widthRange = PartialRangeFrom<Double>(0.1)
 
 		// MARK: - opacity (inputOpacity)
 
@@ -203,8 +200,8 @@ import Foundation
 		/// - Attribute key: `inputOpacity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.0`
 		@objc public var opacity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputOpacity") as? NSNumber
@@ -217,10 +214,10 @@ import Foundation
 		}
 
 		/// `opacity` default value
-		@objc public static let opacityDefault: Double = 0
+		@objc public static let opacityDefault: Double = 0.0
 
 		/// `opacity` range definition
-		public static let opacityRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let opacityRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -230,13 +227,12 @@ import Foundation
 			targetImage: CIImage,
 			extent: CGRect = SwipeTransition.extentDefault,
 			color: CIColor,
-			time: Double = 0,
-			angle: Double = 0,
-			width: Double = 300,
-			opacity: Double = 0
+			time: Double = SwipeTransition.timeDefault,
+			angle: Double = SwipeTransition.angleDefault,
+			width: Double = SwipeTransition.widthDefault,
+			opacity: Double = SwipeTransition.opacityDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.extent = extent

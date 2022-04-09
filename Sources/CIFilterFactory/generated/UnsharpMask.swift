@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIUnsharpMask")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `2.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `2.5`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -87,7 +85,7 @@ import Foundation
 		@objc public static let radiusDefault: Double = 2.5
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - intensity (inputIntensity)
 
@@ -97,8 +95,8 @@ import Foundation
 		/// - Attribute key: `inputIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `0.5`
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
@@ -114,18 +112,17 @@ import Foundation
 		@objc public static let intensityDefault: Double = 0.5
 
 		/// `intensity` range definition
-		public static let intensityRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let intensityRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			radius: Double = 2.5,
-			intensity: Double = 0.5
+			radius: Double = UnsharpMask.radiusDefault,
+			intensity: Double = UnsharpMask.intensityDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.radius = radius
 			self.intensity = intensity

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CITextImageGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - text (inputText)
 
 		/// No Description
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputFontName`
 		/// - Internal class: `NSString`
-		/// - Default value: `HelveticaNeue`
 		@objc public var fontName: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputFontName")
@@ -88,8 +85,8 @@ import Foundation
 		/// - Attribute key: `inputFontSize`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `12`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `12.0`
 		@objc public var fontSize: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFontSize") as? NSNumber
@@ -102,10 +99,10 @@ import Foundation
 		}
 
 		/// `fontSize` default value
-		@objc public static let fontSizeDefault: Double = 12
+		@objc public static let fontSizeDefault: Double = 12.0
 
 		/// `fontSize` range definition
-		public static let fontSizeRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let fontSizeRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - scaleFactor (inputScaleFactor)
 
@@ -115,8 +112,8 @@ import Foundation
 		/// - Attribute key: `inputScaleFactor`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
@@ -129,22 +126,21 @@ import Foundation
 		}
 
 		/// `scaleFactor` default value
-		@objc public static let scaleFactorDefault: Double = 1
+		@objc public static let scaleFactorDefault: Double = 1.0
 
 		/// `scaleFactor` range definition
-		public static let scaleFactorRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleFactorRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: String,
-			fontName: String = "HelveticaNeue",
-			fontSize: Double = 12,
-			scaleFactor: Double = 1
+			fontName: String,
+			fontSize: Double = TextImageGenerator.fontSizeDefault,
+			scaleFactor: Double = TextImageGenerator.scaleFactorDefault
 		) {
 			self.init()
-
 			self.text = text
 			self.fontName = fontName
 			self.fontSize = fontSize

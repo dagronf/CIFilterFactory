@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorPosterize")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputLevels`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `6`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `6.0`
 		@objc public var levels: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLevels") as? NSNumber
@@ -84,20 +82,19 @@ import Foundation
 		}
 
 		/// `levels` default value
-		@objc public static let levelsDefault: Double = 6
+		@objc public static let levelsDefault: Double = 6.0
 
 		/// `levels` range definition
-		public static let levelsRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let levelsRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			levels: Double = 6
+			levels: Double = ColorPosterize.levelsDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.levels = levels
 		}

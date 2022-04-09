@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIGuidedFilter")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// A small image to upsample.
@@ -86,7 +84,7 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
+		/// - Default Value: `1.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -98,7 +96,7 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 1
+		@objc public static let radiusDefault: Double = 1.0
 
 		// MARK: - epsilon (inputEpsilon)
 
@@ -108,7 +106,7 @@ import Foundation
 		/// - Attribute key: `inputEpsilon`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.0001`
+		/// - Default Value: `0.0001`
 		@objc public var epsilon: Double {
 			get {
 				let number = self.filter.value(forKey: "inputEpsilon") as? NSNumber
@@ -128,11 +126,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			guideImage: CIImage,
-			radius: Double = 1,
-			epsilon: Double = 0.0001
+			radius: Double = GuidedFilter.radiusDefault,
+			epsilon: Double = GuidedFilter.epsilonDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.guideImage = guideImage
 			self.radius = radius

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDisparityToDepth")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The input disparity data image to convert to depth data.
@@ -69,7 +67,6 @@ import Foundation
 			image: CIImage)
 		{
 			self.init()
-
 			self.image = image
 		}
 	}

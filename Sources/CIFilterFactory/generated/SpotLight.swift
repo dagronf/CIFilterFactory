@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CISpotLight")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,6 @@ import Foundation
 		/// - Attribute key: `inputLightPosition`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
-		/// - Default value: `[400 600 150]`
 		@objc public var lightPosition: CIVector? {
 			get {
 				return self.keyedValue("inputLightPosition")
@@ -88,7 +85,6 @@ import Foundation
 		/// - Attribute key: `inputLightPointsAt`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
-		/// - Default value: `[200 200 0]`
 		@objc public var lightPointsAt: CIVector? {
 			get {
 				return self.keyedValue("inputLightPointsAt")
@@ -106,8 +102,8 @@ import Foundation
 		/// - Attribute key: `inputBrightness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `3`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `3.0`
 		@objc public var brightness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBrightness") as? NSNumber
@@ -120,10 +116,10 @@ import Foundation
 		}
 
 		/// `brightness` default value
-		@objc public static let brightnessDefault: Double = 3
+		@objc public static let brightnessDefault: Double = 3.0
 
 		/// `brightness` range definition
-		public static let brightnessRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let brightnessRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - concentration (inputConcentration)
 
@@ -133,8 +129,8 @@ import Foundation
 		/// - Attribute key: `inputConcentration`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.1`
-		/// - Minimum value: `0.001`
+		/// - Minimum Value: `0.001`
+		/// - Default Value: `0.1`
 		@objc public var concentration: Double {
 			get {
 				let number = self.filter.value(forKey: "inputConcentration") as? NSNumber
@@ -150,7 +146,7 @@ import Foundation
 		@objc public static let concentrationDefault: Double = 0.1
 
 		/// `concentration` range definition
-		public static let concentrationRange: PartialRangeFrom<Double> = Double(0.001)...
+		public static let concentrationRange = PartialRangeFrom<Double>(0.001)
 
 		// MARK: - color (inputColor)
 
@@ -160,7 +156,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeOpaqueColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -175,14 +170,13 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			lightPosition: CIVector = CIVector([400.0, 600.0, 150.0]),
-			lightPointsAt: CIVector = CIVector([200.0, 200.0, 0.0]),
-			brightness: Double = 3,
-			concentration: Double = 0.1,
+			lightPosition: CIVector,
+			lightPointsAt: CIVector,
+			brightness: Double = SpotLight.brightnessDefault,
+			concentration: Double = SpotLight.concentrationDefault,
 			color: CIColor
 		) {
 			self.init()
-
 			self.image = image
 			self.lightPosition = lightPosition
 			self.lightPointsAt = lightPointsAt

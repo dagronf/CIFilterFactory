@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPageCurlWithShadowTransition")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -103,7 +101,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 0 0]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -124,9 +122,9 @@ import Foundation
 		/// - Attribute key: `inputTime`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeTime`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
 				let number = self.filter.value(forKey: "inputTime") as? NSNumber
@@ -139,7 +137,7 @@ import Foundation
 		}
 
 		/// `time` default value
-		@objc public static let timeDefault: Double = 0
+		@objc public static let timeDefault: Double = 0.0
 
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -152,7 +150,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -164,7 +162,7 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - radius (inputRadius)
 
@@ -174,8 +172,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
-		/// - Minimum value: `0.01`
+		/// - Minimum Value: `0.01`
+		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -188,10 +186,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 100
+		@objc public static let radiusDefault: Double = 100.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.01)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.01)
 
 		// MARK: - shadowSize (inputShadowSize)
 
@@ -201,9 +199,9 @@ import Foundation
 		/// - Attribute key: `inputShadowSize`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `0.5`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.5`
 		@objc public var shadowSize: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowSize") as? NSNumber
@@ -229,9 +227,9 @@ import Foundation
 		/// - Attribute key: `inputShadowAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `0.7`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.7`
 		@objc public var shadowAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputShadowAmount") as? NSNumber
@@ -257,7 +255,7 @@ import Foundation
 		/// - Attribute key: `inputShadowExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 0 0]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)`
 		@objc public var shadowExtent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputShadowExtent", defaultValue: Self.shadowExtentDefault)
@@ -278,15 +276,14 @@ import Foundation
 			targetImage: CIImage,
 			backsideImage: CIImage,
 			extent: CGRect = PageCurlWithShadowTransition.extentDefault,
-			time: Double = 0,
-			angle: Double = 0,
-			radius: Double = 100,
-			shadowSize: Double = 0.5,
-			shadowAmount: Double = 0.7,
+			time: Double = PageCurlWithShadowTransition.timeDefault,
+			angle: Double = PageCurlWithShadowTransition.angleDefault,
+			radius: Double = PageCurlWithShadowTransition.radiusDefault,
+			shadowSize: Double = PageCurlWithShadowTransition.shadowSizeDefault,
+			shadowAmount: Double = PageCurlWithShadowTransition.shadowAmountDefault,
 			shadowExtent: CGRect = PageCurlWithShadowTransition.shadowExtentDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.targetImage = targetImage
 			self.backsideImage = backsideImage

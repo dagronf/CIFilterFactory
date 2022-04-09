@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDisplacementDistortion")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,8 +84,8 @@ import Foundation
 		/// - Attribute key: `inputScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `50`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `50.0`
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
@@ -100,10 +98,10 @@ import Foundation
 		}
 
 		/// `scale` default value
-		@objc public static let scaleDefault: Double = 50
+		@objc public static let scaleDefault: Double = 50.0
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -111,10 +109,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			displacementImage: CIImage,
-			scale: Double = 50
+			scale: Double = DisplacementDistortion.scaleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.displacementImage = displacementImage
 			self.scale = scale

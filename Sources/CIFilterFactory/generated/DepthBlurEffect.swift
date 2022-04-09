@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIDepthBlurEffect")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -150,9 +148,9 @@ import Foundation
 		/// - Attribute key: `inputAperture`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `22.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `22.0`
+		/// - Default Value: `0.0`
 		@objc public var aperture: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAperture") as? NSNumber
@@ -165,7 +163,7 @@ import Foundation
 		}
 
 		/// `aperture` default value
-		@objc public static let apertureDefault: Double = 0
+		@objc public static let apertureDefault: Double = 0.0
 
 		/// `aperture` range definition
 		public static let apertureRange: ClosedRange<Double> = 0.0 ... 22.0
@@ -178,7 +176,7 @@ import Foundation
 		/// - Attribute key: `inputLeftEyePositions`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[-1 -1]`
+		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var leftEyePositions: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
@@ -199,7 +197,7 @@ import Foundation
 		/// - Attribute key: `inputRightEyePositions`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[-1 -1]`
+		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var rightEyePositions: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
@@ -220,7 +218,7 @@ import Foundation
 		/// - Attribute key: `inputChinPositions`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[-1 -1]`
+		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var chinPositions: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
@@ -241,7 +239,7 @@ import Foundation
 		/// - Attribute key: `inputNosePositions`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[-1 -1]`
+		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var nosePositions: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
@@ -282,9 +280,9 @@ import Foundation
 		/// - Attribute key: `inputLumaNoiseScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `0.1`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `0.1`
+		/// - Default Value: `0.0`
 		@objc public var lumaNoiseScale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
@@ -297,7 +295,7 @@ import Foundation
 		}
 
 		/// `lumaNoiseScale` default value
-		@objc public static let lumaNoiseScaleDefault: Double = 0
+		@objc public static let lumaNoiseScaleDefault: Double = 0.0
 
 		/// `lumaNoiseScale` range definition
 		public static let lumaNoiseScaleRange: ClosedRange<Double> = 0.0 ... 0.1
@@ -310,7 +308,7 @@ import Foundation
 		/// - Attribute key: `inputScaleFactor`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
+		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
@@ -322,7 +320,7 @@ import Foundation
 		}
 
 		/// `scaleFactor` default value
-		@objc public static let scaleFactorDefault: Double = 1
+		@objc public static let scaleFactorDefault: Double = 1.0
 
 		// MARK: - calibrationData (inputCalibrationData)
 
@@ -383,20 +381,19 @@ import Foundation
 			hairImage: CIImage,
 			glassesImage: CIImage,
 			gainMap: CIImage,
-			aperture: Double = 0,
+			aperture: Double = DepthBlurEffect.apertureDefault,
 			leftEyePositions: CGPoint = DepthBlurEffect.leftEyePositionsDefault,
 			rightEyePositions: CGPoint = DepthBlurEffect.rightEyePositionsDefault,
 			chinPositions: CGPoint = DepthBlurEffect.chinPositionsDefault,
 			nosePositions: CGPoint = DepthBlurEffect.nosePositionsDefault,
 			focusRect: CGRect,
-			lumaNoiseScale: Double = 0,
-			scaleFactor: Double = 1,
+			lumaNoiseScale: Double = DepthBlurEffect.lumaNoiseScaleDefault,
+			scaleFactor: Double = DepthBlurEffect.scaleFactorDefault,
 			calibrationData: AVCameraCalibrationData,
 			auxDataMetadata: CGImageMetadata,
 			shape: String
 		) {
 			self.init()
-
 			self.image = image
 			self.disparityImage = disparityImage
 			self.matteImage = matteImage

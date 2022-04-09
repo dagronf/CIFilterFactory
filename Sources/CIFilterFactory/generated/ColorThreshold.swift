@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorThreshold")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputThreshold`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.5`
+		/// - Default Value: `0.5`
 		@objc public var threshold: Double {
 			get {
 				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
@@ -89,10 +87,9 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			threshold: Double = 0.5
+			threshold: Double = ColorThreshold.thresholdDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.threshold = threshold
 		}

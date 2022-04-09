@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIKaleidoscope")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputCount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `6`
-		/// - Minimum value: `1.0`
+		/// - Minimum Value: `1.0`
+		/// - Default Value: `6.0`
 		@objc public var count: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCount") as? NSNumber
@@ -84,10 +82,10 @@ import Foundation
 		}
 
 		/// `count` default value
-		@objc public static let countDefault: Double = 6
+		@objc public static let countDefault: Double = 6.0
 
 		/// `count` range definition
-		public static let countRange: PartialRangeFrom<Double> = Double(1.0)...
+		public static let countRange = PartialRangeFrom<Double>(1.0)
 
 		// MARK: - center (inputCenter)
 
@@ -97,7 +95,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -118,7 +116,7 @@ import Foundation
 		/// - Attribute key: `inputAngle`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
@@ -130,19 +128,18 @@ import Foundation
 		}
 
 		/// `angle` default value
-		@objc public static let angleDefault: Double = 0
+		@objc public static let angleDefault: Double = 0.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			count: Double = 6,
+			count: Double = Kaleidoscope.countDefault,
 			center: CGPoint = Kaleidoscope.centerDefault,
-			angle: Double = 0
+			angle: Double = Kaleidoscope.angleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.count = count
 			self.center = center

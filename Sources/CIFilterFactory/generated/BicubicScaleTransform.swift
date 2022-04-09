@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIBicubicScaleTransform")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,8 +68,8 @@ import Foundation
 		/// - Attribute key: `inputScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
@@ -84,10 +82,10 @@ import Foundation
 		}
 
 		/// `scale` default value
-		@objc public static let scaleDefault: Double = 1
+		@objc public static let scaleDefault: Double = 1.0
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - aspectRatio (inputAspectRatio)
 
@@ -97,8 +95,8 @@ import Foundation
 		/// - Attribute key: `inputAspectRatio`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var aspectRatio: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAspectRatio") as? NSNumber
@@ -111,10 +109,10 @@ import Foundation
 		}
 
 		/// `aspectRatio` default value
-		@objc public static let aspectRatioDefault: Double = 1
+		@objc public static let aspectRatioDefault: Double = 1.0
 
 		/// `aspectRatio` range definition
-		public static let aspectRatioRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let aspectRatioRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - b (inputB)
 
@@ -124,9 +122,9 @@ import Foundation
 		/// - Attribute key: `inputB`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var b: Double {
 			get {
 				let number = self.filter.value(forKey: "inputB") as? NSNumber
@@ -139,7 +137,7 @@ import Foundation
 		}
 
 		/// `b` default value
-		@objc public static let bDefault: Double = 0
+		@objc public static let bDefault: Double = 0.0
 
 		/// `b` range definition
 		public static let bRange: ClosedRange<Double> = 0.0 ... 1.0
@@ -152,9 +150,9 @@ import Foundation
 		/// - Attribute key: `inputC`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.75`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.75`
 		@objc public var c: Double {
 			get {
 				let number = self.filter.value(forKey: "inputC") as? NSNumber
@@ -177,13 +175,12 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			scale: Double = 1,
-			aspectRatio: Double = 1,
-			b: Double = 0,
-			c: Double = 0.75
+			scale: Double = BicubicScaleTransform.scaleDefault,
+			aspectRatio: Double = BicubicScaleTransform.aspectRatioDefault,
+			b: Double = BicubicScaleTransform.bDefault,
+			c: Double = BicubicScaleTransform.cDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.scale = scale
 			self.aspectRatio = aspectRatio

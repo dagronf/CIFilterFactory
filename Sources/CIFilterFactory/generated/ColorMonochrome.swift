@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorMonochrome")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeOpaqueColor`
-		/// - Default value: `rgba(0.6 0.45 0.3 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -88,8 +85,8 @@ import Foundation
 		/// - Attribute key: `inputIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
@@ -102,10 +99,10 @@ import Foundation
 		}
 
 		/// `intensity` default value
-		@objc public static let intensityDefault: Double = 1
+		@objc public static let intensityDefault: Double = 1.0
 
 		/// `intensity` range definition
-		public static let intensityRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let intensityRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -113,10 +110,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			color: CIColor,
-			intensity: Double = 1
+			intensity: Double = ColorMonochrome.intensityDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.color = color
 			self.intensity = intensity

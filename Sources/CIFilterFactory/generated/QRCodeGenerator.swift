@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIQRCodeGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - message (inputMessage)
 
 		/// The message to encode in the QR Code
@@ -69,7 +67,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCorrectionLevel`
 		/// - Internal class: `NSString`
-		/// - Default value: `M`
 		@objc public var correctionLevel: String? {
 			get {
 				let tmp: NSString? = self.keyedValue("inputCorrectionLevel")
@@ -80,21 +77,14 @@ import Foundation
 			}
 		}
 
-		// MARK: - Additional Outputs
-
-		@objc public var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
-		}
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			correctionLevel: String = "M"
+			correctionLevel: String
 		) {
 			self.init()
-
 			self.message = message
 			self.correctionLevel = correctionLevel
 		}

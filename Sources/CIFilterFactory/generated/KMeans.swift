@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIKMeans")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputExtent`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default value: `[0 0 640 80]`
+		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
 		@objc public var extent: CGRect {
 			get {
 				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
@@ -81,7 +79,7 @@ import Foundation
 		}
 
 		/// `extent` default value
-		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 640.0)
+		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
 
 		// MARK: - means (inputMeans)
 
@@ -107,9 +105,9 @@ import Foundation
 		/// - Attribute key: `inputCount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeCount`
-		/// - Default value: `8`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `128.0`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `128`
+		/// - Default Value: `8`
 		@objc public var count: UInt {
 			get {
 				let number = self.filter.value(forKey: "inputCount") as? NSNumber
@@ -125,7 +123,7 @@ import Foundation
 		@objc public static let countDefault: UInt = 8
 
 		/// `count` range definition
-		public static let countRange: ClosedRange<Double> = 0.0 ... 128.0
+		public static let countRange: ClosedRange<UInt> = 0 ... 128
 
 		// MARK: - passes (inputPasses)
 
@@ -135,9 +133,9 @@ import Foundation
 		/// - Attribute key: `inputPasses`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeCount`
-		/// - Default value: `5`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `20.0`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `20`
+		/// - Default Value: `5`
 		@objc public var passes: UInt {
 			get {
 				let number = self.filter.value(forKey: "inputPasses") as? NSNumber
@@ -153,7 +151,7 @@ import Foundation
 		@objc public static let passesDefault: UInt = 5
 
 		/// `passes` range definition
-		public static let passesRange: ClosedRange<Double> = 0.0 ... 20.0
+		public static let passesRange: ClosedRange<UInt> = 0 ... 20
 
 		// MARK: - perceptual (inputPerceptual)
 
@@ -163,9 +161,7 @@ import Foundation
 		/// - Attribute key: `inputPerceptual`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeBoolean`
-		/// - Default value: `0`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Default Value: `false`
 		@objc public var perceptual: Bool {
 			get {
 				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
@@ -179,9 +175,6 @@ import Foundation
 		/// `perceptual` default value
 		@objc public static let perceptualDefault: Bool = false
 
-		/// `perceptual` range definition
-		public static let perceptualRange: ClosedRange<Double> = 0.0 ... 1.0
-
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
@@ -189,12 +182,11 @@ import Foundation
 			image: CIImage,
 			extent: CGRect = KMeans.extentDefault,
 			means: CIImage,
-			count: UInt = 8,
-			passes: UInt = 5,
-			perceptual: Bool = false
+			count: UInt = KMeans.countDefault,
+			passes: UInt = KMeans.passesDefault,
+			perceptual: Bool = KMeans.perceptualDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.extent = extent
 			self.means = means

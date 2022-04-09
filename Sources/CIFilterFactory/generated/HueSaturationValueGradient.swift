@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIHueSaturationValueGradient")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - value (inputValue)
 
 		/// No Description
@@ -53,8 +51,8 @@ import Foundation
 		/// - Attribute key: `inputValue`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var value: Double {
 			get {
 				let number = self.filter.value(forKey: "inputValue") as? NSNumber
@@ -67,10 +65,10 @@ import Foundation
 		}
 
 		/// `value` default value
-		@objc public static let valueDefault: Double = 1
+		@objc public static let valueDefault: Double = 1.0
 
 		/// `value` range definition
-		public static let valueRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let valueRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - radius (inputRadius)
 
@@ -80,8 +78,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `300`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `300.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -94,10 +92,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 300
+		@objc public static let radiusDefault: Double = 300.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - softness (inputSoftness)
 
@@ -107,8 +105,8 @@ import Foundation
 		/// - Attribute key: `inputSoftness`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var softness: Double {
 			get {
 				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
@@ -121,10 +119,10 @@ import Foundation
 		}
 
 		/// `softness` default value
-		@objc public static let softnessDefault: Double = 1
+		@objc public static let softnessDefault: Double = 1.0
 
 		/// `softness` range definition
-		public static let softnessRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let softnessRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - dither (inputDither)
 
@@ -134,8 +132,8 @@ import Foundation
 		/// - Attribute key: `inputDither`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.0`
 		@objc public var dither: Double {
 			get {
 				let number = self.filter.value(forKey: "inputDither") as? NSNumber
@@ -148,10 +146,10 @@ import Foundation
 		}
 
 		/// `dither` default value
-		@objc public static let ditherDefault: Double = 1
+		@objc public static let ditherDefault: Double = 1.0
 
 		/// `dither` range definition
-		public static let ditherRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let ditherRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - colorSpace (inputColorSpace)
 
@@ -160,7 +158,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColorSpace`
 		/// - Internal class: `NSObject`
-		/// - Default value: ` (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)`
 		@objc public var colorSpace: NSObject? {
 			get {
 				return self.keyedValue("inputColorSpace")
@@ -174,14 +171,13 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			value: Double = 1,
-			radius: Double = 300,
-			softness: Double = 1,
-			dither: Double = 1,
+			value: Double = HueSaturationValueGradient.valueDefault,
+			radius: Double = HueSaturationValueGradient.radiusDefault,
+			softness: Double = HueSaturationValueGradient.softnessDefault,
+			dither: Double = HueSaturationValueGradient.ditherDefault,
 			colorSpace: NSObject
 		) {
 			self.init()
-
 			self.value = value
 			self.radius = radius
 			self.softness = softness

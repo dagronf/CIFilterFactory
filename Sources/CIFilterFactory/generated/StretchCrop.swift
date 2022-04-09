@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIStretchCrop")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputSize`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[1280 720]`
+		/// - Default Value: `CGPoint(x: 1280.0, y: 1280.0)`
 		@objc public var size: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.sizeDefault)
@@ -91,9 +89,9 @@ import Foundation
 		/// - Attribute key: `inputCropAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.25`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.25`
 		@objc public var cropAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCropAmount") as? NSNumber
@@ -119,9 +117,9 @@ import Foundation
 		/// - Attribute key: `inputCenterStretchAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0.25`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.25`
 		@objc public var centerStretchAmount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
@@ -145,11 +143,10 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			size: CGPoint = StretchCrop.sizeDefault,
-			cropAmount: Double = 0.25,
-			centerStretchAmount: Double = 0.25
+			cropAmount: Double = StretchCrop.cropAmountDefault,
+			centerStretchAmount: Double = StretchCrop.centerStretchAmountDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.size = size
 			self.cropAmount = cropAmount

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICode128BarcodeGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - message (inputMessage)
 
 		/// The message to encode in the Code 128 Barcode
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputQuietSpace`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `10`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `100.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `100.0`
+		/// - Default Value: `10.0`
 		@objc public var quietSpace: Double {
 			get {
 				let number = self.filter.value(forKey: "inputQuietSpace") as? NSNumber
@@ -85,7 +83,7 @@ import Foundation
 		}
 
 		/// `quietSpace` default value
-		@objc public static let quietSpaceDefault: Double = 10
+		@objc public static let quietSpaceDefault: Double = 10.0
 
 		/// `quietSpace` range definition
 		public static let quietSpaceRange: ClosedRange<Double> = 0.0 ... 100.0
@@ -98,9 +96,9 @@ import Foundation
 		/// - Attribute key: `inputBarcodeHeight`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `32`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `500.0`
+		/// - Minimum Value: `1.0`
+		/// - Maximum Value: `500.0`
+		/// - Default Value: `32.0`
 		@objc public var barcodeHeight: Double {
 			get {
 				let number = self.filter.value(forKey: "inputBarcodeHeight") as? NSNumber
@@ -113,27 +111,20 @@ import Foundation
 		}
 
 		/// `barcodeHeight` default value
-		@objc public static let barcodeHeightDefault: Double = 32
+		@objc public static let barcodeHeightDefault: Double = 32.0
 
 		/// `barcodeHeight` range definition
 		public static let barcodeHeightRange: ClosedRange<Double> = 1.0 ... 500.0
-
-		// MARK: - Additional Outputs
-
-		@objc public var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
-		}
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			quietSpace: Double = 10,
-			barcodeHeight: Double = 32
+			quietSpace: Double = Code128BarcodeGenerator.quietSpaceDefault,
+			barcodeHeight: Double = Code128BarcodeGenerator.barcodeHeightDefault
 		) {
 			self.init()
-
 			self.message = message
 			self.quietSpace = quietSpace
 			self.barcodeHeight = barcodeHeight

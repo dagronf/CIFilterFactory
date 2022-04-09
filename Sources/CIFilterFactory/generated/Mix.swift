@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIMix")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as a foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputAmount`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
+		/// - Default Value: `1.0`
 		@objc public var amount: Double {
 			get {
 				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
@@ -99,7 +97,7 @@ import Foundation
 		}
 
 		/// `amount` default value
-		@objc public static let amountDefault: Double = 1
+		@objc public static let amountDefault: Double = 1.0
 
 		// MARK: - Convenience initializer
 
@@ -107,10 +105,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			backgroundImage: CIImage,
-			amount: Double = 1
+			amount: Double = Mix.amountDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.backgroundImage = backgroundImage
 			self.amount = amount

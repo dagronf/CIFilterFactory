@@ -19,6 +19,7 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import Foundation
 import CoreImage
 
 #if !os(macOS)
@@ -30,8 +31,25 @@ public extension CIFF {
 	
 	/// A wrapped AffineTransform class to abstract away affine transform differences per platform
 	@objc(CIFFCIAffineTransform) class CIAffineTransform: NSObject {
+
+		static func Create(m11: CGFloat, m12: CGFloat, m21: CGFloat, m22: CGFloat, tX: CGFloat, tY: CGFloat) -> CIAffineTransform {
+#if os(macOS)
+			return CIAffineTransform(
+				NSAffineTransform(transform: Foundation.AffineTransform(m11: m11, m12: m12, m21: m21, m22: m22, tX: tX, tY: tY)))
+#else
+			return CIAffineTransform(CGAffineTransform(a: m11, b: m12, c: m21, d: m22, tx: tX, ty: tY))
+#endif
+		}
+
+
 #if os(macOS)
 		@objc var transform: NSAffineTransform
+
+		@objc public init(m11: CGFloat, m12: CGFloat, m21: CGFloat, m22: CGFloat, tX: CGFloat, tY: CGFloat) {
+			self.transform = NSAffineTransform(transform: Foundation.AffineTransform(m11: m11, m12: m12, m21: m21, m22: m22, tX: tX, tY: tY))
+			super.init()
+		}
+
 		@objc public init(_ transform: NSAffineTransform) {
 			self.transform = transform
 			super.init()
@@ -49,6 +67,12 @@ public extension CIFF {
 		}
 #else
 		@objc var transform: CGAffineTransform
+
+		@objc public init(m11: CGFloat, m12: CGFloat, m21: CGFloat, m22: CGFloat, tX: CGFloat, tY: CGFloat) {
+			self.transform = CGAffineTransform(a: m11, b: m12, c: m21, d: m22, tx: tX, ty: tY)
+			super.init()
+		}
+
 		@objc public init(_ transform: CGAffineTransform) {
 			self.transform = transform
 			super.init()

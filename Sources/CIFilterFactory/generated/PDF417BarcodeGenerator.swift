@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPDF417BarcodeGenerator")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - message (inputMessage)
 
 		/// The message to encode in the PDF417 Barcode
@@ -69,19 +67,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMinWidth`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `56.0`
-		/// - Maximum value: `583.0`
 		@objc public var minWidth: NSNumber? {
 			get {
 				return self.keyedValue("inputMinWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.minWidthRange), forKey: "inputMinWidth")
+				self.setKeyedValue(newValue, for: "inputMinWidth")
 			}
 		}
-
-		/// `minWidth` range definition
-		public static let minWidthRange: ClosedRange<Double> = 56.0 ... 583.0
 
 		// MARK: - maxWidth (inputMaxWidth)
 
@@ -90,19 +83,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMaxWidth`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `56.0`
-		/// - Maximum value: `583.0`
 		@objc public var maxWidth: NSNumber? {
 			get {
 				return self.keyedValue("inputMaxWidth")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.maxWidthRange), forKey: "inputMaxWidth")
+				self.setKeyedValue(newValue, for: "inputMaxWidth")
 			}
 		}
-
-		/// `maxWidth` range definition
-		public static let maxWidthRange: ClosedRange<Double> = 56.0 ... 583.0
 
 		// MARK: - minHeight (inputMinHeight)
 
@@ -111,19 +99,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMinHeight`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `13.0`
-		/// - Maximum value: `283.0`
 		@objc public var minHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputMinHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.minHeightRange), forKey: "inputMinHeight")
+				self.setKeyedValue(newValue, for: "inputMinHeight")
 			}
 		}
-
-		/// `minHeight` range definition
-		public static let minHeightRange: ClosedRange<Double> = 13.0 ... 283.0
 
 		// MARK: - maxHeight (inputMaxHeight)
 
@@ -132,19 +115,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMaxHeight`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `13.0`
-		/// - Maximum value: `283.0`
 		@objc public var maxHeight: NSNumber? {
 			get {
 				return self.keyedValue("inputMaxHeight")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.maxHeightRange), forKey: "inputMaxHeight")
+				self.setKeyedValue(newValue, for: "inputMaxHeight")
 			}
 		}
-
-		/// `maxHeight` range definition
-		public static let maxHeightRange: ClosedRange<Double> = 13.0 ... 283.0
 
 		// MARK: - dataColumns (inputDataColumns)
 
@@ -153,19 +131,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputDataColumns`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `1.0`
-		/// - Maximum value: `30.0`
 		@objc public var dataColumns: NSNumber? {
 			get {
 				return self.keyedValue("inputDataColumns")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.dataColumnsRange), forKey: "inputDataColumns")
+				self.setKeyedValue(newValue, for: "inputDataColumns")
 			}
 		}
-
-		/// `dataColumns` range definition
-		public static let dataColumnsRange: ClosedRange<Double> = 1.0 ... 30.0
 
 		// MARK: - rows (inputRows)
 
@@ -174,19 +147,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRows`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `3.0`
-		/// - Maximum value: `90.0`
 		@objc public var rows: NSNumber? {
 			get {
 				return self.keyedValue("inputRows")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.rowsRange), forKey: "inputRows")
+				self.setKeyedValue(newValue, for: "inputRows")
 			}
 		}
-
-		/// `rows` range definition
-		public static let rowsRange: ClosedRange<Double> = 3.0 ... 90.0
 
 		// MARK: - preferredAspectRatio (inputPreferredAspectRatio)
 
@@ -195,18 +163,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputPreferredAspectRatio`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
 		@objc public var preferredAspectRatio: NSNumber? {
 			get {
 				return self.keyedValue("inputPreferredAspectRatio")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.preferredAspectRatioRange), forKey: "inputPreferredAspectRatio")
+				self.setKeyedValue(newValue, for: "inputPreferredAspectRatio")
 			}
 		}
-
-		/// `preferredAspectRatio` range definition
-		public static let preferredAspectRatioRange: PartialRangeFrom<Double> = Double(0.0)...
 
 		// MARK: - compactionMode (inputCompactionMode)
 
@@ -215,19 +179,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCompactionMode`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `3.0`
 		@objc public var compactionMode: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactionMode")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.compactionModeRange), forKey: "inputCompactionMode")
+				self.setKeyedValue(newValue, for: "inputCompactionMode")
 			}
 		}
-
-		/// `compactionMode` range definition
-		public static let compactionModeRange: ClosedRange<Double> = 0.0 ... 3.0
 
 		// MARK: - compactStyle (inputCompactStyle)
 
@@ -236,19 +195,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCompactStyle`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
 		@objc public var compactStyle: NSNumber? {
 			get {
 				return self.keyedValue("inputCompactStyle")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.compactStyleRange), forKey: "inputCompactStyle")
+				self.setKeyedValue(newValue, for: "inputCompactStyle")
 			}
 		}
-
-		/// `compactStyle` range definition
-		public static let compactStyleRange: ClosedRange<Double> = 0.0 ... 1.0
 
 		// MARK: - correctionLevel (inputCorrectionLevel)
 
@@ -257,19 +211,14 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCorrectionLevel`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `8.0`
 		@objc public var correctionLevel: NSNumber? {
 			get {
 				return self.keyedValue("inputCorrectionLevel")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.correctionLevelRange), forKey: "inputCorrectionLevel")
+				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
 			}
 		}
-
-		/// `correctionLevel` range definition
-		public static let correctionLevelRange: ClosedRange<Double> = 0.0 ... 8.0
 
 		// MARK: - alwaysSpecifyCompaction (inputAlwaysSpecifyCompaction)
 
@@ -278,24 +227,13 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAlwaysSpecifyCompaction`
 		/// - Internal class: `NSNumber`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `1.0`
 		@objc public var alwaysSpecifyCompaction: NSNumber? {
 			get {
 				return self.keyedValue("inputAlwaysSpecifyCompaction")
 			}
 			set {
-				self.filter.setValue(newValue?.clamped(bounds: PDF417BarcodeGenerator.alwaysSpecifyCompactionRange), forKey: "inputAlwaysSpecifyCompaction")
+				self.setKeyedValue(newValue, for: "inputAlwaysSpecifyCompaction")
 			}
-		}
-
-		/// `alwaysSpecifyCompaction` range definition
-		public static let alwaysSpecifyCompactionRange: ClosedRange<Double> = 0.0 ... 1.0
-
-		// MARK: - Additional Outputs
-
-		@objc public var outputCGImage: Any? {
-			return self.filter.value(forKey: "outputCGImage")
 		}
 
 		// MARK: - Convenience initializer
@@ -316,7 +254,6 @@ import Foundation
 			alwaysSpecifyCompaction: NSNumber
 		) {
 			self.init()
-
 			self.message = message
 			self.minWidth = minWidth
 			self.maxWidth = maxWidth

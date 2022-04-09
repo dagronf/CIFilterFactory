@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorCubesMixedWithMask")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,9 +85,9 @@ import Foundation
 		/// - Attribute key: `inputCubeDimension`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeCount`
-		/// - Default value: `2`
-		/// - Minimum value: `2.0`
-		/// - Maximum value: `128.0`
+		/// - Minimum Value: `2`
+		/// - Maximum Value: `128`
+		/// - Default Value: `2`
 		@objc public var cubeDimension: UInt {
 			get {
 				let number = self.filter.value(forKey: "inputCubeDimension") as? NSNumber
@@ -105,7 +103,7 @@ import Foundation
 		@objc public static let cubeDimensionDefault: UInt = 2
 
 		/// `cubeDimension` range definition
-		public static let cubeDimensionRange: ClosedRange<Double> = 2.0 ... 128.0
+		public static let cubeDimensionRange: ClosedRange<UInt> = 2 ... 128
 
 		// MARK: - cube0Data (inputCube0Data)
 
@@ -114,7 +112,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCube0Data`
 		/// - Internal class: `NSData`
-		/// - Default value: `{length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }`
 		@objc public var cube0Data: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCube0Data")
@@ -132,7 +129,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCube1Data`
 		/// - Internal class: `NSData`
-		/// - Default value: `{length = 128, bytes = 0x00000000 00000000 00000000 0000803f ... 0000803f 0000803f }`
 		@objc public var cube1Data: Data? {
 			get {
 				let tmp: NSData? = self.keyedValue("inputCube1Data")
@@ -165,13 +161,12 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			maskImage: CIImage,
-			cubeDimension: UInt = 2,
+			cubeDimension: UInt = ColorCubesMixedWithMask.cubeDimensionDefault,
 			cube0Data: Data,
 			cube1Data: Data,
 			colorSpace: NSObject
 		) {
 			self.init()
-
 			self.image = image
 			self.maskImage = maskImage
 			self.cubeDimension = cubeDimension

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CICameraCalibrationLensCorrection")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -85,7 +83,6 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputUseInverseLookUpTable`
 		/// - Internal class: `NSNumber`
-		/// - Default value: `0`
 		@objc public var useInverseLookUpTable: NSNumber? {
 			get {
 				return self.keyedValue("inputUseInverseLookUpTable")
@@ -101,10 +98,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			aVCameraCalibrationData: AVCameraCalibrationData,
-			useInverseLookUpTable: NSNumber = 0
+			useInverseLookUpTable: NSNumber
 		) {
 			self.init()
-
 			self.image = image
 			self.aVCameraCalibrationData = aVCameraCalibrationData
 			self.useInverseLookUpTable = useInverseLookUpTable

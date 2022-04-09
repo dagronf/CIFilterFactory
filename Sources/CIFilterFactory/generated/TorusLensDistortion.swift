@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CITorusLensDistortion")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -91,8 +89,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `160`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `160.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -105,10 +103,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 160
+		@objc public static let radiusDefault: Double = 160.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - width (inputWidth)
 
@@ -118,8 +116,8 @@ import Foundation
 		/// - Attribute key: `inputWidth`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `80`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `80.0`
 		@objc public var width: Double {
 			get {
 				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
@@ -132,10 +130,10 @@ import Foundation
 		}
 
 		/// `width` default value
-		@objc public static let widthDefault: Double = 80
+		@objc public static let widthDefault: Double = 80.0
 
 		/// `width` range definition
-		public static let widthRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let widthRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - refraction (inputRefraction)
 
@@ -145,8 +143,8 @@ import Foundation
 		/// - Attribute key: `inputRefraction`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1.7`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `1.7`
 		@objc public var refraction: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
@@ -162,7 +160,7 @@ import Foundation
 		@objc public static let refractionDefault: Double = 1.7
 
 		/// `refraction` range definition
-		public static let refractionRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let refractionRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -170,12 +168,11 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			center: CGPoint = TorusLensDistortion.centerDefault,
-			radius: Double = 160,
-			width: Double = 80,
-			refraction: Double = 1.7
+			radius: Double = TorusLensDistortion.radiusDefault,
+			width: Double = TorusLensDistortion.widthDefault,
+			refraction: Double = TorusLensDistortion.refractionDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.center = center
 			self.radius = radius

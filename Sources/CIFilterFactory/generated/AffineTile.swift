@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIAffineTile")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputTransform`
 		/// - Internal class: `NSAffineTransform`
-		/// - Default value: `{m11:0.4, m12:0.0, m21:0.0, m22:0.4, tX:0.0, tY:0.0}`
+		/// - Default Value: `CIFF.CIAffineTransform(m11: 0.4, m12: 0.0, m21: 0.0, m22: 0.4, tX: 0.0, tY: 0.0)`
 		@objc public var transform: CIAffineTransform? {
 			get {
 				return CIAffineTransform(filter: self.filter, key: "inputTransform")
@@ -79,15 +77,17 @@ import Foundation
 			}
 		}
 
+		/// `transform` default value
+		@objc public static let transformDefault = CIFF.CIAffineTransform(m11: 0.4, m12: 0.0, m21: 0.0, m22: 0.4, tX: 0.0, tY: 0.0)
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			transform: CIAffineTransform
+			transform: CIAffineTransform = AffineTile.transformDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.transform = transform
 		}

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPhotoEffectProcess")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -69,7 +67,6 @@ import Foundation
 			image: CIImage)
 		{
 			self.init()
-
 			self.image = image
 		}
 	}

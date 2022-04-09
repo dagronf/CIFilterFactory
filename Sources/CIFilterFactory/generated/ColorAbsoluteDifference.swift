@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIColorAbsoluteDifference")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The first input image for differencing.
@@ -86,7 +84,6 @@ import Foundation
 			image2: CIImage
 		) {
 			self.init()
-
 			self.image = image
 			self.image2 = image2
 		}

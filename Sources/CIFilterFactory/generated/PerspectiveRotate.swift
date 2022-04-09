@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIPerspectiveRotate")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to process.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputFocalLength`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `28`
+		/// - Default Value: `28.0`
 		@objc public var focalLength: Double {
 			get {
 				let number = self.filter.value(forKey: "inputFocalLength") as? NSNumber
@@ -82,7 +80,7 @@ import Foundation
 		}
 
 		/// `focalLength` default value
-		@objc public static let focalLengthDefault: Double = 28
+		@objc public static let focalLengthDefault: Double = 28.0
 
 		// MARK: - pitch (inputPitch)
 
@@ -92,7 +90,7 @@ import Foundation
 		/// - Attribute key: `inputPitch`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var pitch: Double {
 			get {
 				let number = self.filter.value(forKey: "inputPitch") as? NSNumber
@@ -104,7 +102,7 @@ import Foundation
 		}
 
 		/// `pitch` default value
-		@objc public static let pitchDefault: Double = 0
+		@objc public static let pitchDefault: Double = 0.0
 
 		// MARK: - yaw (inputYaw)
 
@@ -114,7 +112,7 @@ import Foundation
 		/// - Attribute key: `inputYaw`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var yaw: Double {
 			get {
 				let number = self.filter.value(forKey: "inputYaw") as? NSNumber
@@ -126,7 +124,7 @@ import Foundation
 		}
 
 		/// `yaw` default value
-		@objc public static let yawDefault: Double = 0
+		@objc public static let yawDefault: Double = 0.0
 
 		// MARK: - roll (inputRoll)
 
@@ -136,7 +134,7 @@ import Foundation
 		/// - Attribute key: `inputRoll`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeAngle`
-		/// - Default value: `0`
+		/// - Default Value: `0.0`
 		@objc public var roll: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRoll") as? NSNumber
@@ -148,26 +146,19 @@ import Foundation
 		}
 
 		/// `roll` default value
-		@objc public static let rollDefault: Double = 0
-
-		// MARK: - Additional Outputs
-
-		@objc public var outputTransform: Any? {
-			return self.filter.value(forKey: "outputTransform")
-		}
+		@objc public static let rollDefault: Double = 0.0
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			focalLength: Double = 28,
-			pitch: Double = 0,
-			yaw: Double = 0,
-			roll: Double = 0
+			focalLength: Double = PerspectiveRotate.focalLengthDefault,
+			pitch: Double = PerspectiveRotate.pitchDefault,
+			yaw: Double = PerspectiveRotate.yawDefault,
+			roll: Double = PerspectiveRotate.rollDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.focalLength = focalLength
 			self.pitch = pitch

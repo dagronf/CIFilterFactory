@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIGlassDistortion")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -87,7 +85,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -108,8 +106,8 @@ import Foundation
 		/// - Attribute key: `inputScale`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `200`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `200.0`
 		@objc public var scale: Double {
 			get {
 				let number = self.filter.value(forKey: "inputScale") as? NSNumber
@@ -122,10 +120,10 @@ import Foundation
 		}
 
 		/// `scale` default value
-		@objc public static let scaleDefault: Double = 200
+		@objc public static let scaleDefault: Double = 200.0
 
 		/// `scale` range definition
-		public static let scaleRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -134,10 +132,9 @@ import Foundation
 			image: CIImage,
 			texture: CIImage,
 			center: CGPoint = GlassDistortion.centerDefault,
-			scale: Double = 200
+			scale: Double = GlassDistortion.scaleDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.texture = texture
 			self.center = center

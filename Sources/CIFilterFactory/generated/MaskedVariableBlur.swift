@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIMaskedVariableBlur")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -86,8 +84,8 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `5.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -100,10 +98,10 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 5
+		@objc public static let radiusDefault: Double = 5.0
 
 		/// `radius` range definition
-		public static let radiusRange: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - Convenience initializer
 
@@ -111,10 +109,9 @@ import Foundation
 		@objc public convenience init?(
 			image: CIImage,
 			mask: CIImage,
-			radius: Double = 5
+			radius: Double = MaskedVariableBlur.radiusDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.mask = mask
 			self.radius = radius

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIWhitePointAdjust")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,6 @@ import Foundation
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color: CIColor? {
 			get {
 				return self.keyedValue("inputColor")
@@ -88,7 +85,6 @@ import Foundation
 			color: CIColor
 		) {
 			self.init()
-
 			self.image = image
 			self.color = color
 		}

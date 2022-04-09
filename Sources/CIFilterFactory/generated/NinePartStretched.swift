@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CINinePartStretched")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,7 +68,7 @@ import Foundation
 		/// - Attribute key: `inputBreakpoint0`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[50 50]`
+		/// - Default Value: `CGPoint(x: 50.0, y: 50.0)`
 		@objc public var breakpoint0: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0Default)
@@ -91,7 +89,7 @@ import Foundation
 		/// - Attribute key: `inputBreakpoint1`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var breakpoint1: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1Default)
@@ -112,7 +110,7 @@ import Foundation
 		/// - Attribute key: `inputGrowAmount`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypeOffset`
-		/// - Default value: `[100 100]`
+		/// - Default Value: `CGPoint(x: 100.0, y: 100.0)`
 		@objc public var growAmount: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmountDefault)
@@ -135,7 +133,6 @@ import Foundation
 			growAmount: CGPoint = NinePartStretched.growAmountDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.breakpoint0 = breakpoint0
 			self.breakpoint1 = breakpoint1

@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIVignette")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - image (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
@@ -70,9 +68,9 @@ import Foundation
 		/// - Attribute key: `inputIntensity`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `0`
-		/// - Minimum value: `-1.0`
-		/// - Maximum value: `1.0`
+		/// - Minimum Value: `-1.0`
+		/// - Maximum Value: `1.0`
+		/// - Default Value: `0.0`
 		@objc public var intensity: Double {
 			get {
 				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
@@ -85,7 +83,7 @@ import Foundation
 		}
 
 		/// `intensity` default value
-		@objc public static let intensityDefault: Double = 0
+		@objc public static let intensityDefault: Double = 0.0
 
 		/// `intensity` range definition
 		public static let intensityRange: ClosedRange<Double> = -1.0 ... 1.0
@@ -98,9 +96,9 @@ import Foundation
 		/// - Attribute key: `inputRadius`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeScalar`
-		/// - Default value: `1`
-		/// - Minimum value: `0.0`
-		/// - Maximum value: `2.0`
+		/// - Minimum Value: `0.0`
+		/// - Maximum Value: `2.0`
+		/// - Default Value: `1.0`
 		@objc public var radius: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
@@ -113,7 +111,7 @@ import Foundation
 		}
 
 		/// `radius` default value
-		@objc public static let radiusDefault: Double = 1
+		@objc public static let radiusDefault: Double = 1.0
 
 		/// `radius` range definition
 		public static let radiusRange: ClosedRange<Double> = 0.0 ... 2.0
@@ -123,11 +121,10 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			image: CIImage,
-			intensity: Double = 0,
-			radius: Double = 1
+			intensity: Double = Vignette.intensityDefault,
+			radius: Double = Vignette.radiusDefault
 		) {
 			self.init()
-
 			self.image = image
 			self.intensity = intensity
 			self.radius = radius

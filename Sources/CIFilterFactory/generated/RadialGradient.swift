@@ -43,8 +43,6 @@ import Foundation
 			super.init(name: "CIRadialGradient")
 		}
 
-		// MARK: - Inputs
-
 		// MARK: - center (inputCenter)
 
 		/// The center of the effect as x and y coordinates.
@@ -53,7 +51,7 @@ import Foundation
 		/// - Attribute key: `inputCenter`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition`
-		/// - Default value: `[150 150]`
+		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
 				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
@@ -74,8 +72,8 @@ import Foundation
 		/// - Attribute key: `inputRadius0`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `5`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `5.0`
 		@objc public var radius0: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius0") as? NSNumber
@@ -88,10 +86,10 @@ import Foundation
 		}
 
 		/// `radius0` default value
-		@objc public static let radius0Default: Double = 5
+		@objc public static let radius0Default: Double = 5.0
 
 		/// `radius0` range definition
-		public static let radius0Range: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radius0Range = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - radius1 (inputRadius1)
 
@@ -101,8 +99,8 @@ import Foundation
 		/// - Attribute key: `inputRadius1`
 		/// - Internal class: `NSNumber`
 		/// - Type: `CIAttributeTypeDistance`
-		/// - Default value: `100`
-		/// - Minimum value: `0.0`
+		/// - Minimum Value: `0.0`
+		/// - Default Value: `100.0`
 		@objc public var radius1: Double {
 			get {
 				let number = self.filter.value(forKey: "inputRadius1") as? NSNumber
@@ -115,10 +113,10 @@ import Foundation
 		}
 
 		/// `radius1` default value
-		@objc public static let radius1Default: Double = 100
+		@objc public static let radius1Default: Double = 100.0
 
 		/// `radius1` range definition
-		public static let radius1Range: PartialRangeFrom<Double> = Double(0.0)...
+		public static let radius1Range = PartialRangeFrom<Double>(0.0)
 
 		// MARK: - color0 (inputColor0)
 
@@ -128,7 +126,6 @@ import Foundation
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(1 1 1 1)`
 		@objc public var color0: CIColor? {
 			get {
 				return self.keyedValue("inputColor0")
@@ -146,7 +143,6 @@ import Foundation
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
 		/// - Type: `CIAttributeTypeColor`
-		/// - Default value: `rgba(0 0 0 1)`
 		@objc public var color1: CIColor? {
 			get {
 				return self.keyedValue("inputColor1")
@@ -161,13 +157,12 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			center: CGPoint = RadialGradient.centerDefault,
-			radius0: Double = 5,
-			radius1: Double = 100,
+			radius0: Double = RadialGradient.radius0Default,
+			radius1: Double = RadialGradient.radius1Default,
 			color0: CIColor,
 			color1: CIColor
 		) {
 			self.init()
-
 			self.center = center
 			self.radius0 = radius0
 			self.radius1 = radius1
