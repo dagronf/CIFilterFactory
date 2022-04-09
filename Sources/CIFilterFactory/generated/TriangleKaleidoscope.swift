@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CITriangleKaleidoscope")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// Input image to generate kaleidoscope effect from.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -159,14 +159,14 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			point: CGPoint = TriangleKaleidoscope.pointDefault,
 			size: Double = TriangleKaleidoscope.sizeDefault,
 			rotation: Double = TriangleKaleidoscope.rotationDefault,
 			decay: Double = TriangleKaleidoscope.decayDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.point = point
 			self.size = size
 			self.rotation = rotation

@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIHeightFieldFromMask")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The white values of the mask define those pixels that are inside the height field while the black values define those pixels that are outside. The field varies smoothly and continuously inside the mask, reaching the value 0 at the edge of the mask.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -99,11 +99,11 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			radius: Double = HeightFieldFromMask.radiusDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.radius = radius
 		}
 	}

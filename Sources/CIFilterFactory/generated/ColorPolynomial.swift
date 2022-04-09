@@ -53,7 +53,7 @@ import Foundation
 			super.init(name: "CIColorPolynomial")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -61,7 +61,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -138,14 +138,14 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			redCoefficients: CIVector,
 			greenCoefficients: CIVector,
 			blueCoefficients: CIVector,
 			alphaCoefficients: CIVector
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.redCoefficients = redCoefficients
 			self.greenCoefficients = greenCoefficients
 			self.blueCoefficients = blueCoefficients

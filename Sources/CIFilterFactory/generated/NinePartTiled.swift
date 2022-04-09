@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CINinePartTiled")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -157,14 +157,14 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			breakpoint0: CGPoint = NinePartTiled.breakpoint0Default,
 			breakpoint1: CGPoint = NinePartTiled.breakpoint1Default,
 			growAmount: CGPoint = NinePartTiled.growAmountDefault,
 			flipYTiles: Bool = NinePartTiled.flipYTilesDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.breakpoint0 = breakpoint0
 			self.breakpoint1 = breakpoint1
 			self.growAmount = growAmount

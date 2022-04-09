@@ -150,7 +150,7 @@ class FilterGenerator {
 
 	func generateKey(keyName: String, filterAttributes: [String: Any]) {
 		let userFriendlyKey: String = {
-			if keyName.hasPrefix("input") {
+			if keyName.hasPrefix("input") && keyName != "inputImage" {
 				let v = keyName.suffix(from: keyName.index(at: 5))
 				return v.prefix(1).lowercased() + v.dropFirst()
 			}

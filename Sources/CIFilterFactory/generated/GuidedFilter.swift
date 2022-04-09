@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIGuidedFilter")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// A small image to upsample.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -132,13 +132,13 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			guideImage: CIImage,
 			radius: Double = GuidedFilter.radiusDefault,
 			epsilon: Double = GuidedFilter.epsilonDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.guideImage = guideImage
 			self.radius = radius
 			self.epsilon = epsilon

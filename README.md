@@ -20,6 +20,12 @@ Supports macOS, tvOS, iOS and mac Catalyst
     </a>
 </p>
 
+## NOTE: Version 15.0.0 Breaking change
+
+I've changed `image` in the generated files to `inputImage` in order to make the code more readable.
+
+You will need to update your code to change any calls to `<filter>.image = …` to `<filter>.inputImage = …`. 
+
 ## Why
 
 I like CIFilters a lot. I've always found the `CIFilter` interfaces to be 
@@ -117,13 +123,22 @@ For example :-
 ///
 /// Transitions from one image to another of a differing dimensions by unfolding.
 ///
+/// **Availability**
+/// - macOS 10.10, iOS 8, tvOS 8
+///
+/// **Categories**
+/// - CICategoryBuiltIn
+/// - CICategoryStillImage
+/// - CICategoryTransition
+/// - CICategoryVideo
+///
 /// **Links**
+/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
+/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
+/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 ///
-/// [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
-///
-/// [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
-///
-@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: Core {
 ```
 
 #### Api parameter definition
@@ -186,7 +201,7 @@ let outputImage = bloomFilter.outputImage
 
 ```swift
 guard let bloomFilter = CIFF.Bloom() else { fatalError() }
-bloomFilter.image = image
+bloomFilter.inputImage = image
 bloomFilter.intensity = 0.3
 bloomFilter.radius = 5
 let outputImage = bloomFilter.outputImage
@@ -208,7 +223,7 @@ id bir = [[NSBitmapImageRep alloc] initWithData:[appimage TIFFRepresentation]];
 id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 
 CIFFBloom* filter = [[CIFFBloom alloc] init];
-[filter setImage: image];
+[filter setInputImage: image];
 [filter setRadius: 10];
 [filter setIntensity: 4];
 CIImage* output = [filter outputImage];
@@ -250,6 +265,12 @@ NOTE: This is only available for Xcode 13 and later
 2. run `sh make-docs.sh`
 
 ## History
+
+### `15.0.4`
+
+* **BREAKING** : I've changed 'image' in the generated files to 'inputImage' in order to make the code more readable.
+You will need to update your code to change any calls to `<filter>.image = …` -> `<filter>.inputImage = …` 
+
 
 ### `15.0.0`
 

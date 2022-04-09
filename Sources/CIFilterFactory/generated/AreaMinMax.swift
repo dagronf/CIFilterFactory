@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIAreaMinMax")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to process.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -93,11 +93,11 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			extent: CGRect = AreaMinMax.extentDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.extent = extent
 		}
 	}

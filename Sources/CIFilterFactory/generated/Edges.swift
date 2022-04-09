@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIEdges")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -99,11 +99,11 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			intensity: Double = Edges.intensityDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.intensity = intensity
 		}
 	}

@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 
 		do {
 			guard let bloomFilter = CIFF.Bloom() else { fatalError() }
-			bloomFilter.image = image
+			bloomFilter.inputImage = image
 			bloomFilter.intensity = 0.3
 			bloomFilter.radius = 5
 			let outputImage = bloomFilter.outputImage
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 		}
 
 		/// Test convenience initializer for sepia filter
-		guard let sepiaFilter = CIFF.SepiaTone(image: image, intensity: 0.9) else {
+		guard let sepiaFilter = CIFF.SepiaTone(inputImage: image, intensity: 0.9) else {
 			fatalError()
 		}
 
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 		}
 
 		// Use the output of the sepia filter as the input to the crystallize filter
-		crystalize.image = sepiaFilter.outputImage
+		crystalize.inputImage = sepiaFilter.outputImage
 		crystalize.radius = 20
 		crystalize.center = CGPoint(x: 150, y: 200)
 

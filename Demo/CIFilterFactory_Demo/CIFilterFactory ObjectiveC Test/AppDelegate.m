@@ -46,7 +46,7 @@
 
 	{
 		CIFFBloom* filter = [[CIFFBloom alloc] init];
-		[filter setImage:image];
+		[filter setInputImage:image];
 		[filter setRadius:10];
 		[filter setIntensity:4];
 		CIImage* output = [filter outputImage];
@@ -62,7 +62,7 @@
 	}
 
 	{
-		CIFFGloom* f = [[CIFFGloom alloc] initWithImage:image radius:5 intensity:1];
+		CIFFGloom* f = [[CIFFGloom alloc] initWithInputImage:image radius:5 intensity:1];
 		assert([f radius] == 5);
 		assert([f intensity] == 1);
 
@@ -73,12 +73,12 @@
 
 	id sepiaFilter = [[CIFFSepiaTone alloc] init];
 	assert(sepiaFilter);
-	[sepiaFilter setImage:image];
+	[sepiaFilter setInputImage:image];
 	[sepiaFilter setIntensity:1.0];
 
 	CIFFCrystallize* crystalize = [[CIFFCrystallize alloc] init];
 	assert(crystalize);
-	[crystalize setImage:[sepiaFilter outputImage]];
+	[crystalize setInputImage:[sepiaFilter outputImage]];
 	[crystalize setRadius:20];
 	[crystalize setCenter:CGPointMake(150, 200)];
 

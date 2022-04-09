@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIAreaHistogram")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image whose histogram you want to calculate.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -148,13 +148,13 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			extent: CGRect = AreaHistogram.extentDefault,
 			scale: Double = AreaHistogram.scaleDefault,
 			count: Double = AreaHistogram.countDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.extent = extent
 			self.scale = scale
 			self.count = count

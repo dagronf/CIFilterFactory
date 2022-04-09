@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIKeystoneCorrectionCombined")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to process.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -174,7 +174,7 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			focalLength: Double = KeystoneCorrectionCombined.focalLengthDefault,
 			topLeft: CGPoint,
 			topRight: CGPoint,
@@ -182,7 +182,7 @@ import Foundation
 			bottomLeft: CGPoint
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.focalLength = focalLength
 			self.topLeft = topLeft
 			self.topRight = topRight

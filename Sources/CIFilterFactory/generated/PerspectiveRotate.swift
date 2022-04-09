@@ -51,7 +51,7 @@ import Foundation
 			super.init(name: "CIPerspectiveRotate")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The image to process.
 		///
@@ -59,7 +59,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -160,14 +160,14 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			focalLength: Double = PerspectiveRotate.focalLengthDefault,
 			pitch: Double = PerspectiveRotate.pitchDefault,
 			yaw: Double = PerspectiveRotate.yawDefault,
 			roll: Double = PerspectiveRotate.rollDefault
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.focalLength = focalLength
 			self.pitch = pitch
 			self.yaw = yaw

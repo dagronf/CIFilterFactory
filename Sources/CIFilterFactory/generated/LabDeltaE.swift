@@ -53,7 +53,7 @@ import Foundation
 			super.init(name: "CILabDeltaE")
 		}
 
-		// MARK: - image (inputImage)
+		// MARK: - inputImage (inputImage)
 
 		/// The first input image for comparison.
 		///
@@ -61,7 +61,7 @@ import Foundation
 		/// - Attribute key: `inputImage`
 		/// - Internal class: `CIImage`
 		/// - Type: `CIAttributeTypeImage`
-		@objc public var image: CIImage? {
+		@objc public var inputImage: CIImage? {
 			get {
 				return self.keyedValue("inputImage")
 			}
@@ -90,11 +90,11 @@ import Foundation
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			image: CIImage,
+			inputImage: CIImage,
 			image2: CIImage
 		) {
 			self.init()
-			self.image = image
+			self.inputImage = inputImage
 			self.image2 = image2
 		}
 	}
