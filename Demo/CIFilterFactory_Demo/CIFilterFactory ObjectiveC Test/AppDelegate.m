@@ -52,12 +52,13 @@
 		CIImage* output = [filter outputImage];
 		assert(output != nil);
 
-
-		CIFFKMeans* f = [[CIFFKMeans alloc] init];
-		[f setPerceptual: YES];
-		assert([f perceptual] == YES);
-		[f setPerceptual: NO];
-		assert([f perceptual] == NO);
+		if (@available(macOS 10.15, *)) {
+			CIFFKMeans* f = [[CIFFKMeans alloc] init];
+			[f setPerceptual: YES];
+			assert([f perceptual] == YES);
+			[f setPerceptual: NO];
+			assert([f perceptual] == NO);
+		}
 	}
 
 	{
