@@ -5,8 +5,8 @@
 //  Created by Darren Ford on 9/4/2022.
 //
 
-import Foundation
 import CoreImage
+import Foundation
 
 struct InputKeyType {
 	let attributeKey: String
@@ -20,17 +20,18 @@ struct InputKeyType {
 	let keyAttributes: [String: Any]
 
 	var `class`: String {
-		return mappedClass ?? keyClass
+		return self.mappedClass ?? self.keyClass
 	}
 
+	// Map between the CIFilter attribute type and the compatible Swift type
 	var swiftType: String {
 		if self.subtype == "CIAttributeTypePosition" {
 			return "CGPoint"
 		}
-		else if subtype == "CIAttributeTypeRectangle" {
+		else if self.subtype == "CIAttributeTypeRectangle" {
 			return "CGRect"
 		}
-		else if subtype == "CIAttributeTypeOffset" {
+		else if self.subtype == "CIAttributeTypeOffset" {
 			return "CGPoint"
 		}
 		else if self.class == "NSAffineTransform" {
@@ -39,57 +40,42 @@ struct InputKeyType {
 		else if self.class == "CGImageMetadataRef" {
 			return "CGImageMetadata"
 		}
-		else if subtype == kCIAttributeTypeScalar {
+		else if self.subtype == kCIAttributeTypeScalar {
 			return "Double"
 		}
-		else if subtype == kCIAttributeTypeDistance {
+		else if self.subtype == kCIAttributeTypeDistance {
 			return "Double"
 		}
-		else if subtype == kCIAttributeTypeTime {
+		else if self.subtype == kCIAttributeTypeTime {
 			return "Double"
 		}
-		else if subtype == kCIAttributeTypeAngle {
+		else if self.subtype == kCIAttributeTypeAngle {
 			return "Double"
 		}
-		else if subtype == kCIAttributeTypeInteger {
+		else if self.subtype == kCIAttributeTypeInteger {
 			return "Int"
 		}
-		else if subtype == kCIAttributeTypeBoolean {
+		else if self.subtype == kCIAttributeTypeBoolean {
 			return "Bool"
 		}
-		else if subtype == kCIAttributeTypeCount {
+		else if self.subtype == kCIAttributeTypeCount {
 			return "UInt"
 		}
-		return self.`class`
+		return self.class
 	}
 
-	func valueType(keyAttributes: [String : Any]) -> CoreType {
-		let type = self.swiftType
-		if type == "Double" {
-			return DoubleGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
+	// Returns a code generator for the specific swift attribute type
+	func valueTypeGenerator() -> CoreType {
+		switch self.swiftType {
+		case "Double": return DoubleGeneratorType(inputKeyType: self)
+		case "Int": return IntGeneratorType(inputKeyType: self)
+		case "UInt": return UIntGeneratorType(inputKeyType: self)
+		case "Bool": return BoolGeneratorType(inputKeyType: self)
+		case "CGRect": return RectGeneratorType(inputKeyType: self)
+		case "CGPoint": return PositionGeneratorType(inputKeyType: self)
+		case "CIAffineTransform": return AffineGeneratorType(inputKeyType: self)
+		case "CGImageMetadata": return ImageGeneratorType(inputKeyType: self)
+		default: return CoreType(inputKeyType: self)
 		}
-		if type == "Int" {
-			return IntGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "UInt" {
-			return UIntGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "Bool" {
-			return BoolGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "CGRect" {
-			return RectGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "CGPoint" {
-			return PositionGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "CIAffineTransform" {
-			return AffineGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-		if type == "CGImageMetadata" {
-			return ImageGeneratorType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
-		}
-
-		return CoreType(key: attributeKey, keyAttributes: keyAttributes, inputKeyType: self)
 	}
 }

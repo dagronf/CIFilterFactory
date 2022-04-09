@@ -102,7 +102,7 @@ class FilterGenerator {
 		for property in self.initializers {
 			if str.count > 0 { str += ","; inits += "\n" }
 			str += "\n         \(property.name): \(property.swiftType)"
-			let vt = property.valueType(keyAttributes: property.keyAttributes)
+			let vt = property.valueTypeGenerator()
 			if let _ = vt.defaultValueString() {
 				str += " = \(self.staticName).\(property.name)Default"
 			}
@@ -169,7 +169,7 @@ class FilterGenerator {
 		)
 		initializers.append(keyDefinition)
 
-		let valueType = keyDefinition.valueType(keyAttributes: keyItem)
+		let valueType = keyDefinition.valueTypeGenerator()
 
 		out.print("   /// \(keyDesc)")
 		out.print("   ///")

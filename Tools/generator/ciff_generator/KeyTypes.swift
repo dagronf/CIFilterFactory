@@ -10,15 +10,14 @@ import CoreImage
 
 class CoreType {
 
-	let key: String
-	let keyAttributes: [String: Any]
 	let inputKeyType: InputKeyType
 
-	init(key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
-		self.key = key
-		self.keyAttributes = keyAttributes
+	init(inputKeyType: InputKeyType) {
 		self.inputKeyType = inputKeyType
 	}
+
+	var key: String { inputKeyType.attributeKey }
+	var keyAttributes: [String: Any] { inputKeyType.keyAttributes }
 
 	open func defaultValueString() -> String? { return nil }
 	open func minValueString() -> String? { return nil }
@@ -72,8 +71,8 @@ class CoreType {
 ///
 
 class BoolGeneratorType: ValueGeneratorType<Bool> {
-	init(key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
-		super.init(coreType: "Bool", key: key, keyAttributes: keyAttributes, inputKeyType: inputKeyType)
+	init(inputKeyType: InputKeyType) {
+		super.init(coreType: "Bool", inputKeyType: inputKeyType)
 	}
 
 	override func defaultValueString() -> String? {
@@ -107,8 +106,8 @@ class BoolGeneratorType: ValueGeneratorType<Bool> {
 }
 
 class IntGeneratorType: ValueGeneratorType<Int> {
-	init(key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
-		super.init(coreType: "Int", key: key, keyAttributes: keyAttributes, inputKeyType: inputKeyType)
+	init(inputKeyType: InputKeyType) {
+		super.init(coreType: "Int", inputKeyType: inputKeyType)
 	}
 
 	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
@@ -139,8 +138,8 @@ class IntGeneratorType: ValueGeneratorType<Int> {
 }
 
 class UIntGeneratorType: ValueGeneratorType<UInt> {
-	init(key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
-		super.init(coreType: "UInt", key: key, keyAttributes: keyAttributes, inputKeyType: inputKeyType)
+	init(inputKeyType: InputKeyType) {
+		super.init(coreType: "UInt", inputKeyType: inputKeyType)
 	}
 
 	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
@@ -170,8 +169,8 @@ class UIntGeneratorType: ValueGeneratorType<UInt> {
 }
 
 class DoubleGeneratorType: ValueGeneratorType<Double> {
-	init(key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
-		super.init(coreType: "Double", key: key, keyAttributes: keyAttributes, inputKeyType: inputKeyType)
+	init(inputKeyType: InputKeyType) {
+		super.init(coreType: "Double", inputKeyType: inputKeyType)
 	}
 	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
 		let out = FileSquirter(name: "dummy")
@@ -202,9 +201,9 @@ class DoubleGeneratorType: ValueGeneratorType<Double> {
 
 class ValueGeneratorType<ValueType>: CoreType {
 	let coreType: String
-	init(coreType: String, key: String, keyAttributes: [String: Any], inputKeyType: InputKeyType) {
+	init(coreType: String, inputKeyType: InputKeyType) {
 		self.coreType = coreType
-		super.init(key: key, keyAttributes: keyAttributes, inputKeyType: inputKeyType)
+		super.init(inputKeyType: inputKeyType)
 	}
 	override func defaultValueString() -> String? {
 		if let d = defaultValue as? ValueType {
@@ -331,7 +330,6 @@ class PositionGeneratorType: CoreType {
 		out.print("   @objc static public let \(userFriendlyKey)Default = CGPoint(x: \(defaultValue.x), y: \(defaultValue.y))")
 		return out.content
 	}
-
 }
 
 class ImageGeneratorType: CoreType {
