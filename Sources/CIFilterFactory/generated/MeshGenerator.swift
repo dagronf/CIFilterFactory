@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a mesh from an array of line segments.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

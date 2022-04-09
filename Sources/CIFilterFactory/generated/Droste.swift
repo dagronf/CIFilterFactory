@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Performs M.C. Escher Droste style deformation
 	///
+	/// **Availability**
+	/// - macOS 10.6, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

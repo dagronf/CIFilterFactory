@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Converts an image to grayscale using the minimum of the three color components.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

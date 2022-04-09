@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies a variable radius disc blur to an image where areas in the background are softened more than those in the foreground.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

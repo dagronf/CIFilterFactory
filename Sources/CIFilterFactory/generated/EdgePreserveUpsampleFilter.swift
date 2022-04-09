@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Upsamples a small image to the size of the input image using the luminance of the input image as a guide to preserve detail.
 	///
+	/// **Availability**
+	/// - macOS 10.12, iOS 10, tvOS 10
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

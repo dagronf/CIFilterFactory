@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Multiplies the inverse of the source image samples with the inverse of the background image samples. This results in colors that are at least as light as either of the two contributing sample colors.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

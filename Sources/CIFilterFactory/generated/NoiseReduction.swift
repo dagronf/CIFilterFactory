@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Reduces noise using a threshold value to define what is considered noise. Small changes in luminance below that value are considered noise and get a noise reduction treatment, which is a local blur. Changes above the threshold value are considered edges, so they are sharpened.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Increases the contrast of the edges between pixels of different colors in an image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategorySharpen

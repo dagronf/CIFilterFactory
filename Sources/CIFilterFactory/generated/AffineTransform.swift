@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies an affine transformation to an image. You can scale, translate, or rotate the input image. You can also apply a combination of these operations.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

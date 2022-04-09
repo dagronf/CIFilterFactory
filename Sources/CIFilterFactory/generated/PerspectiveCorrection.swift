@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply a perspective correction to an image.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

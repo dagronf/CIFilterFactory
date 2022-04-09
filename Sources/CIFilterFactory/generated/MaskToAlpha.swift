@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Converts a grayscale image to a white image that is masked by alpha. The white values from the source image produce the inside of the mask; the black values become completely transparent.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

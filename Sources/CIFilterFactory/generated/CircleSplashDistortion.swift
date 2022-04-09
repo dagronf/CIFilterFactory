@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Distorts the pixels starting at the circumference of a circle and emanating outward.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

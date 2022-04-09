@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Converts an image in linear space to sRGB space.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

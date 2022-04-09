@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another by revealing the target image through irregularly shaped holes.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

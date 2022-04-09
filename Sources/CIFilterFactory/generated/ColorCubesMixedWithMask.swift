@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses two three-dimensional color tables in a specified colorspace to transform the source image pixels. The mask image is used as an interpolant to mix the output of the two cubes.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

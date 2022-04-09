@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Smooths an image using a disc-shaped convolution kernel.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

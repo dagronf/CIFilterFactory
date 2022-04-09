@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Multiplies the source image samples with the background image samples. This results in colors that are at least as dark as either of the two contributing sample colors.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

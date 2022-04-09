@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a gradient that varies from one color to another using a Gaussian distribution.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient

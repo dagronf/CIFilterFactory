@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses the hue and saturation of the background with the luminance of the source image. This mode creates an effect that is inverse to the effect created by the “Color Blend Mode” filter.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

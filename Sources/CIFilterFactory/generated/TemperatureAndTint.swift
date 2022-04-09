@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adapt the reference white point for an image.
 	///
+	/// **Availability**
+	/// - macOS 10.7, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

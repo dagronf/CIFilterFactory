@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Finds the edges of an image by returning the difference between the morphological minimum and maximum operations to the image.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

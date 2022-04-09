@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Changes the overall hue, or tint, of the source pixels.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

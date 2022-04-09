@@ -57,6 +57,26 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
+		out.print("   /// **Availability**")
+		var avail = ""
+		if let macAvail = filterAttributes[kCIAttributeFilterAvailable_Mac] as? String {
+			if let _ = Float(macAvail) {
+				avail += "macOS \(macAvail)"
+			}
+		}
+		if let iosAvail = filterAttributes[kCIAttributeFilterAvailable_iOS] as? String {
+			if avail.count > 0 {
+				avail += ", "
+			}
+			if let _ = Float(iosAvail) {
+				avail += "iOS \(iosAvail), tvOS \(iosAvail)"
+			}
+		}
+		if avail.count > 0 {
+			out.print("   /// - \(avail)")
+			out.print("   ///")
+		}
+
 		if let categories = filterAttributes[kCIAttributeFilterCategories] as? [String] {
 			out.print("   /// **Categories**")
 			categories.sorted().forEach {

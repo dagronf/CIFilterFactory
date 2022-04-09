@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a rounded rectangle image with the specified extent, corner radius, and color.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

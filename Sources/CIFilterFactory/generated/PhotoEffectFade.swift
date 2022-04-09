@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply a “Fade” style effect to an image
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

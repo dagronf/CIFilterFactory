@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Spreads source pixels by an amount specified by a Gaussian distribution.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

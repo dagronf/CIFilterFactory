@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Softens edges and applies a pleasant glow to an image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

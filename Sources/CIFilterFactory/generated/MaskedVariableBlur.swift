@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Blurs an image according to the brightness levels in a mask image.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

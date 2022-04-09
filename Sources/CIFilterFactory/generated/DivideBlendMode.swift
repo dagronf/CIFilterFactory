@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Divides the background image sample color from the source image sample color.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

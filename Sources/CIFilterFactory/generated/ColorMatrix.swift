@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Multiplies source color values and adds a bias factor to each color component.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

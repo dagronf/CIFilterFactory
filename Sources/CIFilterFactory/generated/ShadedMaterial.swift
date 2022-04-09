@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a shaded image from a height field. The height field is defined to have greater heights with lighter shades, and lesser heights (lower areas) with darker shades. You can combine this filter with the “Height Field From Mask” filter to produce quick shadings of masks, such as text.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies an affine transformation to an image and then tiles the transformed image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

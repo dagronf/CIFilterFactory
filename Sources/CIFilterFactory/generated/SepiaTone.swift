@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Maps the colors of an image to various shades of brown.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

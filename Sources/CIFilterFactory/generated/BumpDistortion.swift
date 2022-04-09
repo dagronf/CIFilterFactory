@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a concave or convex bump that originates at a specified point in the image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

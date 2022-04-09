@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Wraps an image around a transparent circle. The distortion of the image increases with the distance from the center of the circle.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

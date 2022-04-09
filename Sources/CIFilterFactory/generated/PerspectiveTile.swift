@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies a perspective transform to an image and then tiles the result.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

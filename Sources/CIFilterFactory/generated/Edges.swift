@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Finds all edges in an image and displays them in color.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

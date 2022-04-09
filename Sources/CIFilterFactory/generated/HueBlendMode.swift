@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses the luminance and saturation values of the background with the hue of the source image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

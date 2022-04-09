@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a binarized image from an image and a threshold value. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
 	///
+	/// **Availability**
+	/// - macOS 11.0, iOS 14, tvOS 14
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

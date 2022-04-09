@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a stripe pattern. You can control the color of the stripes, the spacing, and the contrast.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

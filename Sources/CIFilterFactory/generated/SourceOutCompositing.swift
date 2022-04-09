@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses the second image to define what to take out of the first image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

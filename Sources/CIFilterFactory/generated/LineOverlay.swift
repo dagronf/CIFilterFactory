@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a sketch that outlines the edges of an image in black, leaving the non-outlined portions of the image transparent. The result has alpha and is rendered in black, so it won’t look like much until you render it over another image using source over compositing.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses a dissolve to transition from one image to another.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryInterlaced

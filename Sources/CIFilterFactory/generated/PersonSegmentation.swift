@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Returns a segmentation mask that is red in the portions of an image that are likely to be persons. The returned image may have a different size and aspect ratio from the input image.
 	///
+	/// **Availability**
+	/// - macOS 12.0, iOS 15, tvOS 15
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

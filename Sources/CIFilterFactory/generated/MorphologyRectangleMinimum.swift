@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Darkens areas of an image by applying a rectangular morphological maximum operation to the image.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

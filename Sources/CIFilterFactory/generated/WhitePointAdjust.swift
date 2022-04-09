@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjusts the reference white point for an image and maps all colors in the source using the new reference.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

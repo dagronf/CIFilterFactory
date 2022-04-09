@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Convolution with 7 by 7 matrix
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

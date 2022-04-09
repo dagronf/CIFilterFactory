@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a stylized black-and-white rendition of an image that looks similar to a woodblock cutout.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

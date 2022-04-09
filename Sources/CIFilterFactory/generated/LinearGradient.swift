@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a gradient that varies along a linear axis between two defined endpoints.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient

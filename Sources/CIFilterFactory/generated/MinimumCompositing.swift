@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Computes the minimum value, by color component, of two input images and creates an output image using the minimum values. This is similar to burning.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

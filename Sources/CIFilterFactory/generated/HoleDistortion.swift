@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a circular area that pushes the image pixels outward, distorting those pixels closest to the circle the most.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

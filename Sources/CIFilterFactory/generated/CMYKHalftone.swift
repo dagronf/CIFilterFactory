@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a color, halftoned rendition of the source image, using cyan, magenta, yellow, and black inks over a white page.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryHalftoneEffect

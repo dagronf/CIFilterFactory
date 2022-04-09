@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Simulates the line pattern of a halftone screen.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryHalftoneEffect

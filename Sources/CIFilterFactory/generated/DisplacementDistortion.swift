@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies the grayscale values of the second image to the first image. The output image has a texture defined by the grayscale values.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

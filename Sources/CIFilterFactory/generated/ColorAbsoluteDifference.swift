@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces an image that is the absolute value of the color difference between two images. The alpha channel of the result will be the product of the two image alpha channels.
 	///
+	/// **Availability**
+	/// - macOS 11.0, iOS 14, tvOS 14
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

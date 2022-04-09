@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generate an image attributed string.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

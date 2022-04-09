@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generate an image from a string and font information.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

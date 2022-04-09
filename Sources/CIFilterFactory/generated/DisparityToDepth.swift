@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Convert a disparity data image to depth data.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

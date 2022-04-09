@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses a three-dimensional color table to transform the source image pixels.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Light tunnel distortion.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

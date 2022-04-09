@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a tiled image from a source image by applying a 6-way reflected symmetry.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

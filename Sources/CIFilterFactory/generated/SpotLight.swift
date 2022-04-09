@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies a directional spotlight effect to an image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

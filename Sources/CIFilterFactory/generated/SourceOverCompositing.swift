@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Places the second image over the first.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

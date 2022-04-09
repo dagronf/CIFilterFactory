@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Geometrically distorts an image by altering the magnification based on the radial distance from the optical center to the farthest radius.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

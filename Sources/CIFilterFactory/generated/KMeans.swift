@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Create a palette of the most common colors found in the image.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryReduction

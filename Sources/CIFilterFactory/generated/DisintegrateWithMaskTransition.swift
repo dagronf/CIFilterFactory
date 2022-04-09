@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another using the shape defined by a mask.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

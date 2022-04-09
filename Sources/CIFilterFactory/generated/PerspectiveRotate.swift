@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply a homogenous rotation transform to an image.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

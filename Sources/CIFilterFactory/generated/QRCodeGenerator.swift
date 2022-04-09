@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generate a QR Code image for message data.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

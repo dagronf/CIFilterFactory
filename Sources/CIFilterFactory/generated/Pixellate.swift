@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Makes an image blocky.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Distorts an image by stretching an image based on two input breakpoints
 	///
+	/// **Availability**
+	/// - macOS 10.12, iOS 10, tvOS 10
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

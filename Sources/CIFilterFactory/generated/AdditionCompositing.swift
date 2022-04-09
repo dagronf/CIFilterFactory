@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adds color components to achieve a brightening effect. This filter is typically used to add highlights and lens flare effects.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

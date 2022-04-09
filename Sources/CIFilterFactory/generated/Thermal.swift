@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply a “Thermal” style effect to an image
 	///
+	/// **Availability**
+	/// - macOS 10.11, iOS 10, tvOS 10
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

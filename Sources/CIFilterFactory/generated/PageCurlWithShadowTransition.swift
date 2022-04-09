@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another by simulating a curling page, revealing the new image as the page curls.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

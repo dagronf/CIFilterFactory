@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Replaces one or more color ranges with spot colors.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

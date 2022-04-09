@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjusts the exposure setting for an image similar to the way you control exposure for a camera when you change the F-stop.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

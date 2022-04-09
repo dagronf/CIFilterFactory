@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
 	///
+	/// **Availability**
+	/// - macOS 10.12, iOS 10, tvOS 10
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

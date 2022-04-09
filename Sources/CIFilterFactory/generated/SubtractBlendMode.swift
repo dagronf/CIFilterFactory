@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Unpremultiplies the source and background image sample colors, subtracts the source from the background, and then blends the result with the background according to the PDF basic compositing formula. Source image values that are black produces output that is the same as the background. Source image values that are non-black darken the background color values.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Simulates a comic book drawing by outlining edges and applying a color halftone effect.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

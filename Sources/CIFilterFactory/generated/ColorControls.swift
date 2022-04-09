@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjusts saturation, brightness, and contrast values.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

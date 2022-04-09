@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Enhance a document image by removing unwanted shadows, whitening the background, and enhancing contrast.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

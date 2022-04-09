@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Lightens areas of an image by applying a circular morphological maximum operation to the image.
 	///
+	/// **Availability**
+	/// - macOS 10.13, iOS 11, tvOS 11
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Calculates histograms of the R, G, B, and A channels of the specified area of an image. The output image is a one pixel tall image containing the histogram data for all four channels.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryReduction

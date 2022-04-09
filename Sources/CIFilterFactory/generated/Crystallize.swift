@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates polygon-shaped color blocks by aggregating source pixel-color values.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

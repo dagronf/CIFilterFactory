@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Computes the maximum value, by color component, of two input images and creates an output image using the maximum values. This is similar to dodging.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

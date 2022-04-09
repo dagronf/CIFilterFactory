@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a sun effect. You typically use the output of the sunbeams filter as input to a composite filter.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

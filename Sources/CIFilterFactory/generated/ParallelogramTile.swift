@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Warps an image by reflecting it in a parallelogram, and then tiles the result.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

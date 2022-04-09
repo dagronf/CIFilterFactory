@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Distorts an image by applying a glass-like texture. The raised portions of the output image are the result of applying a texture map.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

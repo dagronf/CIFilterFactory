@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Calculate the mean (x,y) image coordinates of a color palette.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

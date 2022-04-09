@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Vertical Convolution of RGB channels with 9 values
 	///
+	/// **Availability**
+	/// - macOS 12.0, iOS 15, tvOS 15
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

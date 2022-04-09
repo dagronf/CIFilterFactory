@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Upsamples a small image to the size of the guide image using the content of the guide to preserve detail.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Alters the geometry of an image to simulate the observer changing viewing position. You can use the perspective filter to skew an image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

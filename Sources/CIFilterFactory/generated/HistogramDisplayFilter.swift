@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a displayable histogram image from the output of the “Area Histogram” filter.
 	///
+	/// **Availability**
+	/// - iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryReduction

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generate a PDF417 barcode image for message data.
 	///
+	/// **Availability**
+	/// - macOS 10.11, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

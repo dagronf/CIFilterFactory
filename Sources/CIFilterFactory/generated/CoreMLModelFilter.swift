@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates output image by applying input CoreML model to the input image.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

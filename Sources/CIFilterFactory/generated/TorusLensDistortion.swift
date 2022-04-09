@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a torus-shaped lens and distorts the portion of the image over which the lens is placed.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

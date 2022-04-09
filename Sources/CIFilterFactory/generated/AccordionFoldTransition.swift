@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another of a differing dimensions by unfolding.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

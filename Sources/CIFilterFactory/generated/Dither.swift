@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply dithering to an image. This operation is usually performed in a perceptual color space.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

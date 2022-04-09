@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjust the tonal mapping of an image while preserving spatial detail
 	///
+	/// **Availability**
+	/// - macOS 10.7, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

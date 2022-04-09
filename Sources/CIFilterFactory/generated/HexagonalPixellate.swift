@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Displays an image as colored hexagons whose color is an average of the pixels they replace.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

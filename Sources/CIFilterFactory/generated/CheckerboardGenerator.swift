@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a pattern of squares of alternating colors. You can specify the size, colors, and the sharpness of the pattern.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

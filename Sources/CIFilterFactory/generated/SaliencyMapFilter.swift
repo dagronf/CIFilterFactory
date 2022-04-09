@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates output image as a saliency map of the input image.
 	///
+	/// **Availability**
+	/// - macOS 10.14, iOS 12, tvOS 12
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjusts the saturation of an image while keeping pleasing skin tones.
 	///
+	/// **Availability**
+	/// - macOS 10.7, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

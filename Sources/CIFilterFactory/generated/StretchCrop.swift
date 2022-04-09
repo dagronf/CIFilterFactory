@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Distorts an image by stretching and or cropping to fit a target size.
 	///
+	/// **Availability**
+	/// - macOS 10.6, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

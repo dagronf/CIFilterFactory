@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another by creating a circular wave that expands from the center point, revealing the new image in the wake of the wave.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

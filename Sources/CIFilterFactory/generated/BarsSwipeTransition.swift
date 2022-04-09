@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another by swiping rectangular portions of the foreground image to disclose the target image.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

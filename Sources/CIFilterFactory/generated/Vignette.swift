@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies a vignette shading to the corners of an image.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

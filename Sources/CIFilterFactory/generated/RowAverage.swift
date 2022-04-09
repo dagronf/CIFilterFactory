@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Calculates the average color for each row of the specified area in an image, returning the result in a 1D image.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryReduction

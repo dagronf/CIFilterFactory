@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Paint an image from a color palette obtained using “CIKMeans“.
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

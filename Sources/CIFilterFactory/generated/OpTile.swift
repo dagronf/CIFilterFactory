@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Segments an image, applying any specified scaling and rotation, and then assembles the image again to give an op art appearance.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Creates a bump that originates from a linear portion of the image.
 	///
+	/// **Availability**
+	/// - macOS 10.5, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Convolution of RGB channels with 3 by 3 matrix
 	///
+	/// **Availability**
+	/// - macOS 12.0, iOS 15, tvOS 15
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

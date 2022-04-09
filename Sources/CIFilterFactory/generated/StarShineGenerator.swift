@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a starburst pattern. The output image is typically used as input to another filter
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

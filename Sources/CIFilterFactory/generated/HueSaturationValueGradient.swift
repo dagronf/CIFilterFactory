@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a color wheel that shows hues and saturations for a specified value.
 	///
+	/// **Availability**
+	/// - macOS 10.12, iOS 10, tvOS 10
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a high-quality, scaled version of a source image. You typically use this filter to scale down an image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

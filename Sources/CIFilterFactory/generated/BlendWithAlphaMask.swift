@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses values from a grayscale mask to interpolate between an image and the background. When a mask alpha value is 0.0, the result is the background. When the mask alpha value is 1.0, the result is the image.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

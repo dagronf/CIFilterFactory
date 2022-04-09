@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Maps a triangular portion of image to a triangular area and then generates a kaleidoscope effect.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

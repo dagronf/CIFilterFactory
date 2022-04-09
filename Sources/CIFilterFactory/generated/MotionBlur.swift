@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Blurs an image to simulate the effect of using a camera that moves a specified angle and distance while capturing the image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 8.3, tvOS 8.3
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

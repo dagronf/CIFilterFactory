@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Applies a crop to an image. The size and shape of the cropped image depend on the rectangle you specify.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

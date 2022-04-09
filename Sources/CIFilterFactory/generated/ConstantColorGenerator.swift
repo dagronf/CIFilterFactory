@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generates a solid color. You typically use the output of this filter as the input to another filter.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

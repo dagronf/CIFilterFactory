@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Simulates miniaturization effect created by Tilt & Shift lens by performing depth of field effects.
 	///
+	/// **Availability**
+	/// - macOS 10.6, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

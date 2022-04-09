@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Rotates a source image by the specified angle in radians. The image is then scaled and cropped so that the rotated image fits the extent of the input image.
 	///
+	/// **Availability**
+	/// - macOS 10.7, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Simulates the effect of zooming the camera while capturing the image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 8.3, tvOS 8.3
+	///
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn

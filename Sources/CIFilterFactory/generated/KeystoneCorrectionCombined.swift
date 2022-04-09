@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Apply keystone correction to an image with combined horizontal and vertical guides
 	///
+	/// **Availability**
+	/// - macOS 10.15, iOS 13, tvOS 13
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment

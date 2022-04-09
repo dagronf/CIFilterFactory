@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Adjusts the color of an image with polynomials.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Transitions from one image to another by simulating the effect of a copy machine.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

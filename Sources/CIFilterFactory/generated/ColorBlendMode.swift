@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Uses the luminance values of the background with the hue and saturation values of the source image. This mode preserves the gray levels in the image.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

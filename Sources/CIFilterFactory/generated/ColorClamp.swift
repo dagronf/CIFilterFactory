@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Clamp color to a certain range.
 	///
+	/// **Availability**
+	/// - macOS 10.9, iOS 7, tvOS 7
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment

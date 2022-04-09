@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Produces a kaleidoscopic image from a source image by applying 12-way symmetry.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage

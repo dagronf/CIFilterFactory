@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Generate an Aztec barcode image for message data.
 	///
+	/// **Availability**
+	/// - macOS 10.10, iOS 8, tvOS 8
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator

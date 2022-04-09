@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Brightens the background image samples to reflect the source image samples. Source image sample values that specify black do not produce a change.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 5, tvOS 5
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryCompositeOperation

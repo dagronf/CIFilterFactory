@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Performs a nonlinear transformation of source color values using mapping values provided in a table.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 6, tvOS 6
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect

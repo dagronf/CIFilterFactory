@@ -30,6 +30,9 @@ import Foundation
 	///
 	/// Maps a triangular portion of image to a triangular area and then tiles the result.
 	///
+	/// **Availability**
+	/// - macOS 10.4, iOS 9, tvOS 9
+	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryStillImage
