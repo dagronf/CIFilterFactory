@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generate an image attributed string.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generates a sun effect. You typically use the output of the sunbeams filter as input to a composite filter.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)

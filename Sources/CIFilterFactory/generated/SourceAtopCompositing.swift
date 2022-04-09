@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Places the source image over the background image, then uses the luminance of the background image to determine what to show. The composite shows the background image and only those portions of the source image that are over visible parts of the background.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryHighDynamicRange
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISourceAtopCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceAtopCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisourceatopcompositing?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISourceAtopCompositing/)

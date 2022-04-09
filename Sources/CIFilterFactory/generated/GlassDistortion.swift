@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Distorts an image by applying a glass-like texture. The raised portions of the output image are the result of applying a texture map.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryDistortionEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglassdistortion?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)

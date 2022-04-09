@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Adjusts the exposure setting for an image similar to the way you control exposure for a camera when you change the F-stop.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorAdjustment
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
+	/// - CICategoryXMPSerializable
 	///
+	/// **Links**
 	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexposureadjust?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)

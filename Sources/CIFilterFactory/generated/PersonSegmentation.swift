@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Returns a segmentation mask that is red in the portions of an image that are likely to be persons. The returned image may have a different size and aspect ratio from the input image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipersonsegmentation?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)

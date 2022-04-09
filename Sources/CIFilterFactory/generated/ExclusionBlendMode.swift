@@ -30,8 +30,15 @@ import Foundation
 	///
 	/// Produces an effect similar to that produced by the “Difference Blend Mode” filter but with lower contrast. Source image sample values that are black do not produce a change; white inverts the background color values.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIExclusionBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExclusionBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexclusionblendmode?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExclusionBlendMode/)

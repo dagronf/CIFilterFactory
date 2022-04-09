@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Calculates the average color for the specified area in an image, returning the result in a pixel.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryReduction
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaaverage?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)

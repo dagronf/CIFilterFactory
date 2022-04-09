@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Alters the geometry of an image to simulate the observer changing viewing position. You can use the perspective filter to skew an image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGeometryAdjustment
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIPerspectiveTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetransform?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)

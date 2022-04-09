@@ -30,8 +30,15 @@ import Foundation
 	///
 	/// Uses a three-dimensional color table in a specified colorspace to transform the source image pixels.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorEffect
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)

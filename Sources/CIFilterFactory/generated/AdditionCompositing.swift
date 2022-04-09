@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Adds color components to achieve a brightening effect. This filter is typically used to add highlights and lens flare effects.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryHighDynamicRange
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAdditionCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAdditionCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciadditioncompositing?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAdditionCompositing/)

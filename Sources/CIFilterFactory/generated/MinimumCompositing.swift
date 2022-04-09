@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Computes the minimum value, by color component, of two input images and creates an output image using the minimum values. This is similar to burning.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryHighDynamicRange
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMinimumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMinimumCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciminimumcompositing?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMinimumCompositing/)

@@ -57,8 +57,15 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
+		if let categories = filterAttributes[kCIAttributeFilterCategories] as? [String] {
+			out.print("   /// **Categories**")
+			categories.sorted().forEach {
+				out.print("   /// - \($0)")
+			}
+			out.print("   ///")
+		}
+
 		out.print("   /// **Links**")
-		out.print("   ///")
 
 		if let refDoc = filterAttributes[kCIAttributeReferenceDocumentation] as? URL {
 			out.print("   /// - [\(filter.name) Online Documentation](\(refDoc))")

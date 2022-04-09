@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Transitions from one image to another by creating a circular wave that expands from the center point, revealing the new image in the wake of the wave.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTransition
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)

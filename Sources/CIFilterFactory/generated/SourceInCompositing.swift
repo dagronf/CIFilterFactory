@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Uses the second image to define what to leave in the source image, effectively cropping the image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryHighDynamicRange
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISourceInCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceInCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisourceincompositing?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISourceInCompositing/)

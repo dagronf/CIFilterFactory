@@ -30,8 +30,12 @@ import Foundation
 	///
 	/// Generates a rounded rectangle image with the specified extent, corner radius, and color.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
 	///
+	/// **Links**
 	/// - [CIRoundedRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRoundedRectangleGenerator/)

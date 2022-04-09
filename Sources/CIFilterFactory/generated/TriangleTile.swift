@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Maps a triangular portion of image to a triangular area and then tiles the result.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CITriangleTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citriangletile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleTile/)

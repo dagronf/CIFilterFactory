@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Replaces one or more color ranges with spot colors.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotcolor?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)

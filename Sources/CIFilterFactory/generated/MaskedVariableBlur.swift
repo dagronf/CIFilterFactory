@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Blurs an image according to the brightness levels in a mask image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaskedvariableblur?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)

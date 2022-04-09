@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Calculates the minimum component values for the specified area in an image, returning the result in a pixel.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryReduction
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAreaMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinimum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminimum?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinimum/)

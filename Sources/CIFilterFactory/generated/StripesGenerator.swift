@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generates a stripe pattern. You can control the color of the stripes, the spacing, and the contrast.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIStripesGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStripesGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistripesgenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStripesGenerator/)

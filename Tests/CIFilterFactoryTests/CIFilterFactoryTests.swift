@@ -25,7 +25,7 @@ final class CIFilterFactoryTests: XCTestCase {
 		XCTAssertEqual(1.0, sepiaFilter2!.intensity)
 	}
 
-	@available(iOS 13, *)
+	@available(tvOS 13, iOS 13, *)
 	func testSimpleBool() {
 		// verify casting between bool and nsnumber works correctly
 		let f = CIFF.KMeans()!
@@ -35,7 +35,7 @@ final class CIFilterFactoryTests: XCTestCase {
 		XCTAssertEqual(false, f.perceptual)
 	}
 
-	@available(iOS 13, *)
+	@available(tvOS 13, iOS 13, *)
 	func testSimpleIntCheck() {
 		// verify casting between int and nsnumber works correctly
 		let f = CIFF.MorphologyRectangleMinimum()!

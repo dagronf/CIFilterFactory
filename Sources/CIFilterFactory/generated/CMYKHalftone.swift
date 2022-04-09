@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Creates a color, halftoned rendition of the source image, using cyan, magenta, yellow, and black inks over a white page.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryHalftoneEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CICMYKHalftone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICMYKHalftone)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicmykhalftone?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICMYKHalftone/)

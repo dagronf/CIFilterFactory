@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Renders the source image in a pointillistic style.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIPointillize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPointillize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipointillize?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPointillize/)

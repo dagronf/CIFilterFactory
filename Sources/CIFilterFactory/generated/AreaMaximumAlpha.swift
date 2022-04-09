@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Finds and returns the pixel with the maximum alpha value.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryReduction
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAreaMaximumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximumAlpha)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximumalpha?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximumAlpha/)

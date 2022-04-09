@@ -30,8 +30,14 @@ import Foundation
 	///
 	/// Applies a vignette shading to the corners of an image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorEffect
+	/// - CICategoryInterlaced
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignetteeffect?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)

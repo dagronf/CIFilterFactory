@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generates a pattern of squares of alternating colors. You can specify the size, colors, and the sharpness of the pattern.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CICheckerboardGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICheckerboardGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICheckerboardGenerator/)

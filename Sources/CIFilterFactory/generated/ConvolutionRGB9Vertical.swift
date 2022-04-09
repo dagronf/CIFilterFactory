@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Vertical Convolution of RGB channels with 9 values
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb9vertical?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)

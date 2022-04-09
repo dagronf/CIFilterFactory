@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Smooths or sharpens an image using a box-shaped convolution kernel.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciboxblur?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)

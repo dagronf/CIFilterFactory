@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Calculates the maximum component values for the specified area in an image, returning the result in a pixel.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryReduction
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAreaMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximum?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximum/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Produces a tiled image from a source image by applying 4 translation operations.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIFourfoldTranslatedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldTranslatedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldTranslatedTile/)

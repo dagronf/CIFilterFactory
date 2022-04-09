@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Produces a tiled image from a source image by applying a 12-way reflected symmetry.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CITwelvefoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwelvefoldReflectedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwelvefoldReflectedTile/)

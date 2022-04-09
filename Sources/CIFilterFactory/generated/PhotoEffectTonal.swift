@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Apply a “Tonal” style effect to an image
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorEffect
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
+	/// - CICategoryXMPSerializable
 	///
+	/// **Links**
 	/// - [CIPhotoEffectTonal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTonal)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttonal?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTonal/)

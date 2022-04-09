@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Applies a perspective transform to an image and then tiles the result.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIPerspectiveTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTile/)

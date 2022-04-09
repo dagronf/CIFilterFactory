@@ -30,8 +30,15 @@ import Foundation
 	///
 	/// Multiplies the source image samples with the background image samples. This results in colors that are at least as dark as either of the two contributing sample colors.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryCompositeOperation
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMultiplyBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMultiplyBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimultiplyblendmode?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMultiplyBlendMode/)

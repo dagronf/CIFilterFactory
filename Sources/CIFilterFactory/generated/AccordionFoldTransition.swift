@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Transitions from one image to another of a differing dimensions by unfolding.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTransition
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)

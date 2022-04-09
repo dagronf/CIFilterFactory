@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Produces a kaleidoscopic image from a source image by applying 12-way symmetry.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKaleidoscope)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikaleidoscope?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKaleidoscope/)

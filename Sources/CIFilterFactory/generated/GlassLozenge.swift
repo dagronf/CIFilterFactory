@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Creates a lozenge-shaped lens and distorts the portion of the image over which the lens is placed.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryDistortionEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglasslozenge?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Segments an image, applying any specified scaling and rotation, and then assembles the image again to give an op art appearance.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioptile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Darkens areas of an image by applying a circular morphological maximum operation to the image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMorphologyMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMinimum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyminimum?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMinimum/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Wraps an image around a transparent circle. The distortion of the image increases with the distance from the center of the circle.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryDistortionEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CICircularWrap Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircularWrap)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicircularwrap?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircularWrap/)

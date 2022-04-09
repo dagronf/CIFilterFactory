@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Warps an image by reflecting it in a parallelogram, and then tiles the result.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciparallelogramtile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)

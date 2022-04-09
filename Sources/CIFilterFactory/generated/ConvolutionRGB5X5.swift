@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Convolution of RGB channels with 5 by 5 matrix
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIConvolutionRGB5X5 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB5X5)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb5x5?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB5X5/)

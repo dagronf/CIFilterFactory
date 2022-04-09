@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Computes the median value for a group of neighboring pixels and replaces each pixel value with the median. The effect is to reduce noise.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMedianFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMedianFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimedianfilter?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMedianFilter/)

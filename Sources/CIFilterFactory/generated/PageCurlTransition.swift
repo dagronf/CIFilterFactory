@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Transitions from one image to another by simulating a curling page, revealing the new image as the page curls.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTransition
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurltransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)

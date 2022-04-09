@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generates a solid color. You typically use the output of this filter as the input to another filter.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGenerator
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIConstantColorGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConstantColorGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconstantcolorgenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)

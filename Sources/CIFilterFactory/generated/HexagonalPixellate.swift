@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Displays an image as colored hexagons whose color is an average of the pixels they replace.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIHexagonalPixellate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHexagonalPixellate)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihexagonalpixellate?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHexagonalPixellate/)

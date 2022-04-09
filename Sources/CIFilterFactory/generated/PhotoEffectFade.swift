@@ -30,8 +30,16 @@ import Foundation
 	///
 	/// Apply a “Fade” style effect to an image
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorEffect
+	/// - CICategoryInterlaced
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
+	/// - CICategoryXMPSerializable
 	///
+	/// **Links**
 	/// - [CIPhotoEffectFade Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectFade)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectfade?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectFade/)

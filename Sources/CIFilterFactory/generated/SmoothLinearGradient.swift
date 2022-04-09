@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Generates a gradient that varies along a linear axis between two defined endpoints.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGradient
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISmoothLinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISmoothLinearGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cismoothlineargradient?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISmoothLinearGradient/)

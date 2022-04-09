@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Increases the contrast of the edges between pixels of different colors in an image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategorySharpen
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIUnsharpMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIUnsharpMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciunsharpmask?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIUnsharpMask/)

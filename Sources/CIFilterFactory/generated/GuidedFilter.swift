@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Upsamples a small image to the size of the guide image using the content of the guide to preserve detail.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGeometryAdjustment
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciguidedfilter?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)

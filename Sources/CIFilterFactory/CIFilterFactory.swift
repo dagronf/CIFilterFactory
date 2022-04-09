@@ -87,6 +87,11 @@ import Foundation
 			return self.filter.attributes[kCIAttributeReferenceDocumentation] as? URL
 		}()
 
+		/// Returns the categories that the filter is a member of
+		@objc public lazy var categories: [String] = {
+			return self.filter.attributes[kCIAttributeFilterCategories] as? [String] ?? []
+		}()
+
 		/// Reset all the values in the filter to the defaults
 		@inlinable @objc public func reset() {
 			return self.filter.setDefaults()

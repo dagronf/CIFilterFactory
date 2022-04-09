@@ -30,8 +30,12 @@ import Foundation
 	///
 	/// Generates output image by applying input CoreML model to the input image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
 	///
+	/// **Links**
 	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicoremlmodelfilter?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)

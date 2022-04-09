@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Finds the edges of an image by returning the difference between the morphological minimum and maximum operations to the image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologygradient?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)

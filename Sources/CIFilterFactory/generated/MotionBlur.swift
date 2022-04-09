@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Blurs an image to simulate the effect of using a camera that moves a specified angle and distance while capturing the image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimotionblur?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)

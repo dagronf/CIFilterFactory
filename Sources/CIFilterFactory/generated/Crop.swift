@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Applies a crop to an image. The size and shape of the cropped image depend on the rectangle you specify.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryGeometryAdjustment
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrop?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrop/)

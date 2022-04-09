@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Produces a stylized black-and-white rendition of an image that looks similar to a woodblock cutout.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedgework?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)

@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Lightens areas of an image by applying a rectangular morphological maximum operation to the image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBlur
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)

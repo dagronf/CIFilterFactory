@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Convolution of RGB channels with 3 by 3 matrix
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryStylize
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb3x3?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)

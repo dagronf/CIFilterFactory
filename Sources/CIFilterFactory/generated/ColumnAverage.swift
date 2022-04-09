@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Calculates the average color for each column of the specified area in an image, returning the result in a 1D image.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryReduction
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIColumnAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColumnAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolumnaverage?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColumnAverage/)

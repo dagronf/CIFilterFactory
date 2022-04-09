@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Produces a tiled image from a source image by rotating the source at increments of 90 degrees.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTileEffect
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIFourfoldRotatedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldRotatedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldRotatedTile/)

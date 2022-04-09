@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Transitions from one image to another by simulating a swiping action.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryStillImage
+	/// - CICategoryTransition
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CISwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISwipeTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciswipetransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)

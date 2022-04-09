@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Distorts the pixels starting at the circumference of a circle and emanating outward.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryDistortionEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CICircleSplashDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircleSplashDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircleSplashDistortion/)

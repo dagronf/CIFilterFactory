@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Applies the grayscale values of the second image to the first image. The output image has a texture defined by the grayscale values.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryDistortionEffect
+	/// - CICategoryStillImage
+	/// - CICategoryVideo
 	///
+	/// **Links**
 	/// - [CIDisplacementDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisplacementDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisplacementdistortion?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)

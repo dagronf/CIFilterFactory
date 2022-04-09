@@ -30,8 +30,13 @@ import Foundation
 	///
 	/// Enhance a document image by removing unwanted shadows, whitening the background, and enhancing contrast.
 	///
-	/// **Links**
+	/// **Categories**
+	/// - CICategoryBuiltIn
+	/// - CICategoryColorEffect
+	/// - CICategoryNonSquarePixels
+	/// - CICategoryStillImage
 	///
+	/// **Links**
 	/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidocumentenhancer?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
