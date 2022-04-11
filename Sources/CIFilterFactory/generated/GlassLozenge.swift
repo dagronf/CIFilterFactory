@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglasslozenge?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)

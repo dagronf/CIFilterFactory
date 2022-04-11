@@ -38,10 +38,13 @@ import Foundation
 	/// - CICategoryGenerator
 	/// - CICategoryStillImage
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
+	///
+	/// **Additional output keys**
+	/// - outputCGImage
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFQRCodeGenerator) class QRCodeGenerator: Core {

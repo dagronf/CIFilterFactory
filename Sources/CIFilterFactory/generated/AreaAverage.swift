@@ -39,10 +39,13 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaaverage?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
+	///
+	/// **Additional output keys**
+	/// - outputImageNonMPS:
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFAreaAverage) class AreaAverage: Core {

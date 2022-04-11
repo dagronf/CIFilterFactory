@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipalettecentroid?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)

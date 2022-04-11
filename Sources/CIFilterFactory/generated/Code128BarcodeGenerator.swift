@@ -38,10 +38,13 @@ import Foundation
 	/// - CICategoryGenerator
 	/// - CICategoryStillImage
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
+	///
+	/// **Additional output keys**
+	/// - outputCGImage
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFCode128BarcodeGenerator) class Code128BarcodeGenerator: Core {

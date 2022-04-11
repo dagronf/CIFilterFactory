@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryTransition
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)

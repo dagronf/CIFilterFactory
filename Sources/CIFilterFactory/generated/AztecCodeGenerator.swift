@@ -38,10 +38,13 @@ import Foundation
 	/// - CICategoryGenerator
 	/// - CICategoryStillImage
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIAztecCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAztecCodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciazteccodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
+	///
+	/// **Additional output keys**
+	/// - outputCGImage
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFAztecCodeGenerator) class AztecCodeGenerator: Core {

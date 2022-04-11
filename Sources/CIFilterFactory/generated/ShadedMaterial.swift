@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStylize
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIShadedMaterial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIShadedMaterial)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cishadedmaterial?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)

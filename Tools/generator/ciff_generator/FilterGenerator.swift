@@ -85,7 +85,7 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
-		out.print("   /// **Links**")
+		out.print("   /// **Documentation Links**")
 
 		if let refDoc = filterAttributes[kCIAttributeReferenceDocumentation] as? URL {
 			out.print("   /// - [\(filter.name) Online Documentation](\(refDoc))")
@@ -94,6 +94,15 @@ class FilterGenerator {
 		out.print("   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased())?language=objc)")
 		out.print("   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)")
 		out.print("   ///")
+
+		let additionalOutputKeys = self.filter.outputKeys.filter { $0 != "outputImage" }
+		if additionalOutputKeys.count > 0 {
+			out.print("   /// **Additional output keys**")
+			additionalOutputKeys.forEach {
+				out.print("   /// - \($0)")
+			}
+			out.print("   ///")
+		}
 
 		if let availability = availability {
 			out.print(availability)

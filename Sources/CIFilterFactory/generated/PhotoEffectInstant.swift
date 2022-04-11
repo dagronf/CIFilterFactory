@@ -42,7 +42,7 @@ import Foundation
 	/// - CICategoryVideo
 	/// - CICategoryXMPSerializable
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIPhotoEffectInstant Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectInstant)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectinstant?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)

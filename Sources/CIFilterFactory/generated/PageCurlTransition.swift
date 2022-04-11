@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryTransition
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurltransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)

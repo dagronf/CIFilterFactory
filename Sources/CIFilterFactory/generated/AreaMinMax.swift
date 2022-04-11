@@ -39,10 +39,14 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmax?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
+	///
+	/// **Additional output keys**
+	/// - outputImageNonMPS
+	/// - outputImageMPS:
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFAreaMinMax) class AreaMinMax: Core {

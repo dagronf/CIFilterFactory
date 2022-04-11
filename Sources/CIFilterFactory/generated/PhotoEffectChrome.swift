@@ -42,7 +42,7 @@ import Foundation
 	/// - CICategoryVideo
 	/// - CICategoryXMPSerializable
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIPhotoEffectChrome Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectChrome)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectchrome?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectChrome/)

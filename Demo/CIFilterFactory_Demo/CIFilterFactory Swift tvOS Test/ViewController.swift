@@ -29,6 +29,11 @@ class ViewController: UIViewController {
 			let output = filter.outputImage!
 			let uiImage = UIImage(ciImage: output)
 			Swift.print(uiImage)
+
+			let cgImage = filter.outputCGImage
+			Swift.print(cgImage)
+			let uiImage2 = UIImage(cgImage: cgImage!)
+			Swift.print(uiImage2)
 		}
 
 		let appimage = UIImage(named: "AppIcon")!

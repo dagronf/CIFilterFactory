@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStylize
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIBloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBloom)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibloom?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBloom/)

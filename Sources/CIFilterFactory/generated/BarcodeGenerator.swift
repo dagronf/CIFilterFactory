@@ -39,10 +39,17 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
+	///
+	/// **Additional output keys**
+	/// - outputCGImageForQRCodeDescriptor
+	/// - outputCGImageForAztecCodeDescriptor
+	/// - outputCGImageForPDF417CodeDescriptor
+	/// - outputCGImageForDataMatrixCodeDescriptor
+	/// - outputCGImage
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBarcodeGenerator) class BarcodeGenerator: Core {

@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryTransition
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIDisintegrateWithMaskTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisintegrateWithMaskTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)

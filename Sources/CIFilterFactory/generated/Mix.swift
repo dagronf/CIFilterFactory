@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStylize
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIMix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMix)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimix?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMix/)

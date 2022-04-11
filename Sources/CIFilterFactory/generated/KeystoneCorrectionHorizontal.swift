@@ -39,10 +39,14 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIKeystoneCorrectionHorizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionHorizontal)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionhorizontal?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionHorizontal/)
+	///
+	/// **Additional output keys**
+	/// - outputTransform
+	/// - outputRotationFilter
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFKeystoneCorrectionHorizontal) class KeystoneCorrectionHorizontal: Core {

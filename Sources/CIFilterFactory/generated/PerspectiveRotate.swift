@@ -39,10 +39,13 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectiverotate?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
+	///
+	/// **Additional output keys**
+	/// - outputTransform
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFPerspectiveRotate) class PerspectiveRotate: Core {

@@ -39,10 +39,15 @@ import Foundation
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareahistogram?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
+	///
+	/// **Additional output keys**
+	/// - outputData
+	/// - outputImageMPS
+	/// - outputImageNonMPS
 	///
 	@available(macOS 10.5, iOS 8, tvOS 8, *)
 	@objc(CIFFAreaHistogram) class AreaHistogram: Core {

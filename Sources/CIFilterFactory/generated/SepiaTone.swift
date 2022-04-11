@@ -42,7 +42,7 @@ import Foundation
 	/// - CICategoryVideo
 	/// - CICategoryXMPSerializable
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CISepiaTone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISepiaTone)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisepiatone?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISepiaTone/)

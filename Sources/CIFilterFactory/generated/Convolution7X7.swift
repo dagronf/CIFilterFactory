@@ -39,7 +39,7 @@ import Foundation
 	/// - CICategoryStylize
 	/// - CICategoryVideo
 	///
-	/// **Links**
+	/// **Documentation Links**
 	/// - [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution7x7?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)

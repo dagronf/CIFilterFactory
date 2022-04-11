@@ -1,5 +1,5 @@
 //
-//  CIFilterFactory+extensions.swift
+//  AztecCodeGenerator+extensions.swift
 //
 //  Created by Darren Ford on 16/7/20.
 //
@@ -20,34 +20,21 @@
 //
 
 import Foundation
+import CoreImage
 
-// Extension to the QR code filter to have type-safe correction levels
-
-public extension CIFF.QRCodeGenerator {
-	/// QR Code correction levels
-	enum Level: String, CaseIterable {
-		/// Low level correction (up to 7% error correction capability)
-		case L
-		/// Medium level correction (up to 15%  error correction capability)
-		case M
-		/// Quantize level correction (up to 25%  error correction capability)
-		case Q
-		/// High level correction (up to 30%  error correction capability)
-		case H
-		/// The default correction level
-		public static var `default`: Level { .M }
-	}
-
-	/// The QR Code correction level.
-	///
-	/// A convenience property for the `correctionLevel` property providing type safety for the correction level types.
-	@inlinable var correction: Level {
-		get {
-			guard let v = self.correctionLevel, let level = Level(rawValue: v) else {
-				return .default
-			}
-			return level
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+public extension CIFF.AztecCodeGenerator {
+	/// the output image as a CGImage
+	@objc var outputCGImage: CGImage? {
+		let rawSelectorOutput = self.filter.perform(#selector(getter: Dummy.outputCGImage))
+		if let obj = rawSelectorOutput?.takeUnretainedValue() {
+			let im = obj as! CGImage
+			return im
 		}
-		set { self.correctionLevel = newValue.rawValue }
+		return nil
 	}
+}
+
+private final class Dummy: NSObject {
+	@objc var outputCGImage: Unmanaged<AnyObject>?
 }

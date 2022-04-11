@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 @import CIFilterFactory;
-@import CoreImage.CIContext;
+@import CoreImage;
 
 @interface AppDelegate ()
 
@@ -37,6 +37,9 @@
 		struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
 		NSImage *im = [[NSImage alloc] initWithCGImage:out size:NSZeroSize];
 		assert(im != nil);
+
+		CGImageRef r = [filter outputCGImage];
+		assert(r != nil);
 	}
 
 	id appimage = [NSImage imageNamed:NSImageNameApplicationIcon];
@@ -59,6 +62,19 @@
 			[f setPerceptual: NO];
 			assert([f perceptual] == NO);
 		}
+	}
+
+	if (@available(macOS 10.15, *)) {
+		CIFFKeystoneCorrectionHorizontal *filter = [[CIFFKeystoneCorrectionHorizontal alloc] init];
+
+		filter.inputImage = image;
+		CIImage* out = filter.outputImage;
+		assert(out != nil);
+
+		id tr = filter.outputRotationFilter;
+		NSLog(@"%@", tr);
+		//assert(tr != nil);
+
 	}
 
 	{
