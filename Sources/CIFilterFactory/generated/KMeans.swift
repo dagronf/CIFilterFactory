@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -118,12 +118,10 @@ import Foundation
 		/// - Default Value: `8`
 		@objc public var count: UInt {
 			get {
-				let number = self.filter.value(forKey: "inputCount") as? NSNumber
-				return number?.uintValue ?? Self.countDefault
+				self.uintValue(forKey: "inputCount", defaultValue: Self.countDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: KMeans.countRange)
-				self.filter.setValue(number, forKey: "inputCount")
+				self.setUIntValue(newValue, bounds: KMeans.countRange, forKey: "inputCount")
 			}
 		}
 
@@ -146,12 +144,10 @@ import Foundation
 		/// - Default Value: `5`
 		@objc public var passes: UInt {
 			get {
-				let number = self.filter.value(forKey: "inputPasses") as? NSNumber
-				return number?.uintValue ?? Self.passesDefault
+				self.uintValue(forKey: "inputPasses", defaultValue: Self.passesDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: KMeans.passesRange)
-				self.filter.setValue(number, forKey: "inputPasses")
+				self.setUIntValue(newValue, bounds: KMeans.passesRange, forKey: "inputPasses")
 			}
 		}
 
@@ -172,8 +168,7 @@ import Foundation
 		/// - Default Value: `false`
 		@objc public var perceptual: Bool {
 			get {
-				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
-				return number?.boolValue ?? Self.perceptualDefault
+				self.boolValue(forKey: "inputPerceptual", defaultValue: Self.perceptualDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")

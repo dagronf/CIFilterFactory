@@ -99,12 +99,10 @@ import Foundation
 		/// - Default Value: `3.0`
 		@objc public var spatialSigma: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSpatialSigma") as? NSNumber
-				return number?.doubleValue ?? Self.spatialSigmaDefault
+				self.doubleValue(forKey: "inputSpatialSigma", defaultValue: Self.spatialSigmaDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: EdgePreserveUpsampleFilter.spatialSigmaRange)
-				self.filter.setValue(number, forKey: "inputSpatialSigma")
+				self.setDoubleValue(newValue, bounds: EdgePreserveUpsampleFilter.spatialSigmaRange, forKey: "inputSpatialSigma")
 			}
 		}
 
@@ -127,12 +125,10 @@ import Foundation
 		/// - Default Value: `0.15`
 		@objc public var lumaSigma: Double {
 			get {
-				let number = self.filter.value(forKey: "inputLumaSigma") as? NSNumber
-				return number?.doubleValue ?? Self.lumaSigmaDefault
+				self.doubleValue(forKey: "inputLumaSigma", defaultValue: Self.lumaSigmaDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: EdgePreserveUpsampleFilter.lumaSigmaRange)
-				self.filter.setValue(number, forKey: "inputLumaSigma")
+				self.setDoubleValue(newValue, bounds: EdgePreserveUpsampleFilter.lumaSigmaRange, forKey: "inputLumaSigma")
 			}
 		}
 

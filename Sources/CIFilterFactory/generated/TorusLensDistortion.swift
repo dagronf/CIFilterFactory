@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -101,12 +101,10 @@ import Foundation
 		/// - Default Value: `160.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: TorusLensDistortion.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -128,12 +126,10 @@ import Foundation
 		/// - Default Value: `80.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setDoubleValue(newValue, bounds: TorusLensDistortion.widthRange, forKey: "inputWidth")
 			}
 		}
 
@@ -155,12 +151,10 @@ import Foundation
 		/// - Default Value: `1.7`
 		@objc public var refraction: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
-				return number?.doubleValue ?? Self.refractionDefault
+				self.doubleValue(forKey: "inputRefraction", defaultValue: Self.refractionDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: TorusLensDistortion.refractionRange)
-				self.filter.setValue(number, forKey: "inputRefraction")
+				self.setDoubleValue(newValue, bounds: TorusLensDistortion.refractionRange, forKey: "inputRefraction")
 			}
 		}
 

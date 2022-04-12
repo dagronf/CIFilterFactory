@@ -83,12 +83,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var amount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
-				return number?.doubleValue ?? Self.amountDefault
+				self.doubleValue(forKey: "inputAmount", defaultValue: Self.amountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Vibrance.amountRange)
-				self.filter.setValue(number, forKey: "inputAmount")
+				self.setDoubleValue(newValue, bounds: Vibrance.amountRange, forKey: "inputAmount")
 			}
 		}
 

@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `5`
 		@objc public var width: Int {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.intValue ?? Self.widthDefault
+				self.intValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMaximum.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setIntValue(newValue, bounds: MorphologyRectangleMaximum.widthRange, forKey: "inputWidth")
 			}
 		}
 
@@ -107,12 +105,10 @@ import Foundation
 		/// - Default Value: `5`
 		@objc public var height: Int {
 			get {
-				let number = self.filter.value(forKey: "inputHeight") as? NSNumber
-				return number?.intValue ?? Self.heightDefault
+				self.intValue(forKey: "inputHeight", defaultValue: Self.heightDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: MorphologyRectangleMaximum.heightRange)
-				self.filter.setValue(number, forKey: "inputHeight")
+				self.setIntValue(newValue, bounds: MorphologyRectangleMaximum.heightRange, forKey: "inputHeight")
 			}
 		}
 

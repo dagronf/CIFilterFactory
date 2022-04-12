@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -100,8 +100,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -123,12 +122,10 @@ import Foundation
 		/// - Default Value: `100.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SixfoldRotatedTile.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setDoubleValue(newValue, bounds: SixfoldRotatedTile.widthRange, forKey: "inputWidth")
 			}
 		}
 

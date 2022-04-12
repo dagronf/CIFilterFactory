@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 200.0, y: 200.0)`
 		@objc public var insetPoint0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputInsetPoint0", defaultValue: Self.insetPoint0Default)
+				CGPoint(with: self.filter, key: "inputInsetPoint0", defaultValue: Self.insetPoint0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputInsetPoint0")
@@ -100,7 +100,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 400.0, y: 400.0)`
 		@objc public var insetPoint1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputInsetPoint1", defaultValue: Self.insetPoint1Default)
+				CGPoint(with: self.filter, key: "inputInsetPoint1", defaultValue: Self.insetPoint1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputInsetPoint1")
@@ -123,12 +123,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var strands: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStrands") as? NSNumber
-				return number?.doubleValue ?? Self.strandsDefault
+				self.doubleValue(forKey: "inputStrands", defaultValue: Self.strandsDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Droste.strandsRange)
-				self.filter.setValue(number, forKey: "inputStrands")
+				self.setDoubleValue(newValue, bounds: Droste.strandsRange, forKey: "inputStrands")
 			}
 		}
 
@@ -150,12 +148,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var periodicity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputPeriodicity") as? NSNumber
-				return number?.doubleValue ?? Self.periodicityDefault
+				self.doubleValue(forKey: "inputPeriodicity", defaultValue: Self.periodicityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Droste.periodicityRange)
-				self.filter.setValue(number, forKey: "inputPeriodicity")
+				self.setDoubleValue(newValue, bounds: Droste.periodicityRange, forKey: "inputPeriodicity")
 			}
 		}
 
@@ -176,8 +172,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var rotation: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? Self.rotationDefault
+				self.doubleValue(forKey: "inputRotation", defaultValue: Self.rotationDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
@@ -199,12 +194,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var zoom: Double {
 			get {
-				let number = self.filter.value(forKey: "inputZoom") as? NSNumber
-				return number?.doubleValue ?? Self.zoomDefault
+				self.doubleValue(forKey: "inputZoom", defaultValue: Self.zoomDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Droste.zoomRange)
-				self.filter.setValue(number, forKey: "inputZoom")
+				self.setDoubleValue(newValue, bounds: Droste.zoomRange, forKey: "inputZoom")
 			}
 		}
 

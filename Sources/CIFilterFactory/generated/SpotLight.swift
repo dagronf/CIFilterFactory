@@ -114,12 +114,10 @@ import Foundation
 		/// - Default Value: `3.0`
 		@objc public var brightness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputBrightness") as? NSNumber
-				return number?.doubleValue ?? Self.brightnessDefault
+				self.doubleValue(forKey: "inputBrightness", defaultValue: Self.brightnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SpotLight.brightnessRange)
-				self.filter.setValue(number, forKey: "inputBrightness")
+				self.setDoubleValue(newValue, bounds: SpotLight.brightnessRange, forKey: "inputBrightness")
 			}
 		}
 
@@ -141,12 +139,10 @@ import Foundation
 		/// - Default Value: `0.1`
 		@objc public var concentration: Double {
 			get {
-				let number = self.filter.value(forKey: "inputConcentration") as? NSNumber
-				return number?.doubleValue ?? Self.concentrationDefault
+				self.doubleValue(forKey: "inputConcentration", defaultValue: Self.concentrationDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SpotLight.concentrationRange)
-				self.filter.setValue(number, forKey: "inputConcentration")
+				self.setDoubleValue(newValue, bounds: SpotLight.concentrationRange, forKey: "inputConcentration")
 			}
 		}
 

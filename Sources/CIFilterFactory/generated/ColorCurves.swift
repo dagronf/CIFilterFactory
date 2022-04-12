@@ -79,11 +79,10 @@ import Foundation
 		/// - Internal class: `NSData`
 		@objc public var curvesData: Data? {
 			get {
-				let tmp: NSData? = self.keyedValue("inputCurvesData")
-				return tmp as Data?
+				self.dataValue(forKey: "inputCurvesData")
 			}
 			set {
-				self.setKeyedValue(newValue as NSData?, for: "inputCurvesData")
+				self.setKeyedValue(newValue as? NSData, for: "inputCurvesData")
 			}
 		}
 

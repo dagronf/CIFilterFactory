@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 50.0, y: 50.0)`
 		@objc public var breakpoint0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0Default)
+				CGPoint(with: self.filter, key: "inputBreakpoint0", defaultValue: Self.breakpoint0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint0")
@@ -100,7 +100,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var breakpoint1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1Default)
+				CGPoint(with: self.filter, key: "inputBreakpoint1", defaultValue: Self.breakpoint1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBreakpoint1")
@@ -121,7 +121,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 100.0, y: 100.0)`
 		@objc public var growAmount: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmountDefault)
+				CGPoint(with: self.filter, key: "inputGrowAmount", defaultValue: Self.growAmountDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputGrowAmount")
@@ -142,8 +142,7 @@ import Foundation
 		/// - Default Value: `false`
 		@objc public var flipYTiles: Bool {
 			get {
-				let number = self.filter.value(forKey: "inputFlipYTiles") as? NSNumber
-				return number?.boolValue ?? Self.flipYTilesDefault
+				self.boolValue(forKey: "inputFlipYTiles", defaultValue: Self.flipYTilesDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputFlipYTiles")

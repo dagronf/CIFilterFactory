@@ -81,8 +81,7 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var power: Double {
 			get {
-				let number = self.filter.value(forKey: "inputPower") as? NSNumber
-				return number?.doubleValue ?? Self.powerDefault
+				self.doubleValue(forKey: "inputPower", defaultValue: Self.powerDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPower")

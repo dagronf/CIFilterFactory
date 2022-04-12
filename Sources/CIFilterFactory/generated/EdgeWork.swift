@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `3.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: EdgeWork.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: EdgeWork.radiusRange, forKey: "inputRadius")
 			}
 		}
 

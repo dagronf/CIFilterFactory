@@ -62,7 +62,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var point0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
+				CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
@@ -83,7 +83,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 200.0, y: 200.0)`
 		@objc public var point1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
+				CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")

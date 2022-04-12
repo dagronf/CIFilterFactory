@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -101,12 +101,10 @@ import Foundation
 		/// - Default Value: `8.0`
 		@objc public var scale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? Self.scaleDefault
+				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Pixellate.scaleRange)
-				self.filter.setValue(number, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: Pixellate.scaleRange, forKey: "inputScale")
 			}
 		}
 

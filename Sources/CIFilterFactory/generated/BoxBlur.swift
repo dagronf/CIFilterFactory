@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `10.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BoxBlur.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: BoxBlur.radiusRange, forKey: "inputRadius")
 			}
 		}
 

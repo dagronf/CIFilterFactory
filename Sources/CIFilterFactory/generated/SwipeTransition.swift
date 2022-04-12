@@ -96,7 +96,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -136,12 +136,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: SwipeTransition.timeRange, forKey: "inputTime")
 			}
 		}
 
@@ -162,8 +160,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -185,12 +182,10 @@ import Foundation
 		/// - Default Value: `300.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setDoubleValue(newValue, bounds: SwipeTransition.widthRange, forKey: "inputWidth")
 			}
 		}
 
@@ -212,12 +207,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var opacity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputOpacity") as? NSNumber
-				return number?.doubleValue ?? Self.opacityDefault
+				self.doubleValue(forKey: "inputOpacity", defaultValue: Self.opacityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SwipeTransition.opacityRange)
-				self.filter.setValue(number, forKey: "inputOpacity")
+				self.setDoubleValue(newValue, bounds: SwipeTransition.opacityRange, forKey: "inputOpacity")
 			}
 		}
 

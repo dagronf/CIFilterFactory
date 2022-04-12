@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `20.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Pointillize.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: Pointillize.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -106,7 +104,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")

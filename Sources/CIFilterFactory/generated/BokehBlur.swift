@@ -81,12 +81,10 @@ import Foundation
 		/// - Default Value: `20.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: BokehBlur.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -109,12 +107,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var ringAmount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRingAmount") as? NSNumber
-				return number?.doubleValue ?? Self.ringAmountDefault
+				self.doubleValue(forKey: "inputRingAmount", defaultValue: Self.ringAmountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.ringAmountRange)
-				self.filter.setValue(number, forKey: "inputRingAmount")
+				self.setDoubleValue(newValue, bounds: BokehBlur.ringAmountRange, forKey: "inputRingAmount")
 			}
 		}
 
@@ -137,12 +133,10 @@ import Foundation
 		/// - Default Value: `0.1`
 		@objc public var ringSize: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRingSize") as? NSNumber
-				return number?.doubleValue ?? Self.ringSizeDefault
+				self.doubleValue(forKey: "inputRingSize", defaultValue: Self.ringSizeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.ringSizeRange)
-				self.filter.setValue(number, forKey: "inputRingSize")
+				self.setDoubleValue(newValue, bounds: BokehBlur.ringSizeRange, forKey: "inputRingSize")
 			}
 		}
 
@@ -165,12 +159,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var softness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
-				return number?.doubleValue ?? Self.softnessDefault
+				self.doubleValue(forKey: "inputSoftness", defaultValue: Self.softnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BokehBlur.softnessRange)
-				self.filter.setValue(number, forKey: "inputSoftness")
+				self.setDoubleValue(newValue, bounds: BokehBlur.softnessRange, forKey: "inputSoftness")
 			}
 		}
 

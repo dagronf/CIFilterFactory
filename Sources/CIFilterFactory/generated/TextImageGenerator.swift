@@ -60,11 +60,10 @@ import Foundation
 		/// - Internal class: `NSString`
 		@objc public var text: String? {
 			get {
-				let tmp: NSString? = self.keyedValue("inputText")
-				return tmp as String?
+				self.stringValue(forKey: "inputText")
 			}
 			set {
-				self.setKeyedValue(newValue as NSString?, for: "inputText")
+				self.setKeyedValue(newValue as? NSString, for: "inputText")
 			}
 		}
 
@@ -77,11 +76,10 @@ import Foundation
 		/// - Internal class: `NSString`
 		@objc public var fontName: String? {
 			get {
-				let tmp: NSString? = self.keyedValue("inputFontName")
-				return tmp as String?
+				self.stringValue(forKey: "inputFontName")
 			}
 			set {
-				self.setKeyedValue(newValue as NSString?, for: "inputFontName")
+				self.setKeyedValue(newValue as? NSString, for: "inputFontName")
 			}
 		}
 
@@ -97,12 +95,10 @@ import Foundation
 		/// - Default Value: `12.0`
 		@objc public var fontSize: Double {
 			get {
-				let number = self.filter.value(forKey: "inputFontSize") as? NSNumber
-				return number?.doubleValue ?? Self.fontSizeDefault
+				self.doubleValue(forKey: "inputFontSize", defaultValue: Self.fontSizeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: TextImageGenerator.fontSizeRange)
-				self.filter.setValue(number, forKey: "inputFontSize")
+				self.setDoubleValue(newValue, bounds: TextImageGenerator.fontSizeRange, forKey: "inputFontSize")
 			}
 		}
 
@@ -124,12 +120,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
-				return number?.doubleValue ?? Self.scaleFactorDefault
+				self.doubleValue(forKey: "inputScaleFactor", defaultValue: Self.scaleFactorDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: TextImageGenerator.scaleFactorRange)
-				self.filter.setValue(number, forKey: "inputScaleFactor")
+				self.setDoubleValue(newValue, bounds: TextImageGenerator.scaleFactorRange, forKey: "inputScaleFactor")
 			}
 		}
 

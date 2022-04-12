@@ -1,6 +1,7 @@
 //
-// CIFilterFactory.swift
+//  CIFilterFactory.swift
 //
+//  Created by Darren Ford on 11/4/2022.
 //  MIT license
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -16,7 +17,6 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Automatically generated on 2020-07-15 23:42:08 +0000.  Do not edit.
 
 import CoreImage
 import Foundation

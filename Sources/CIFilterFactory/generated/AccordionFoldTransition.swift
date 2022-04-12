@@ -97,12 +97,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var bottomHeight: Double {
 			get {
-				let number = self.filter.value(forKey: "inputBottomHeight") as? NSNumber
-				return number?.doubleValue ?? Self.bottomHeightDefault
+				self.doubleValue(forKey: "inputBottomHeight", defaultValue: Self.bottomHeightDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.bottomHeightRange)
-				self.filter.setValue(number, forKey: "inputBottomHeight")
+				self.setDoubleValue(newValue, bounds: AccordionFoldTransition.bottomHeightRange, forKey: "inputBottomHeight")
 			}
 		}
 
@@ -125,12 +123,10 @@ import Foundation
 		/// - Default Value: `3.0`
 		@objc public var numberOfFolds: Double {
 			get {
-				let number = self.filter.value(forKey: "inputNumberOfFolds") as? NSNumber
-				return number?.doubleValue ?? Self.numberOfFoldsDefault
+				self.doubleValue(forKey: "inputNumberOfFolds", defaultValue: Self.numberOfFoldsDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.numberOfFoldsRange)
-				self.filter.setValue(number, forKey: "inputNumberOfFolds")
+				self.setDoubleValue(newValue, bounds: AccordionFoldTransition.numberOfFoldsRange, forKey: "inputNumberOfFolds")
 			}
 		}
 
@@ -153,12 +149,10 @@ import Foundation
 		/// - Default Value: `0.1`
 		@objc public var foldShadowAmount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputFoldShadowAmount") as? NSNumber
-				return number?.doubleValue ?? Self.foldShadowAmountDefault
+				self.doubleValue(forKey: "inputFoldShadowAmount", defaultValue: Self.foldShadowAmountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.foldShadowAmountRange)
-				self.filter.setValue(number, forKey: "inputFoldShadowAmount")
+				self.setDoubleValue(newValue, bounds: AccordionFoldTransition.foldShadowAmountRange, forKey: "inputFoldShadowAmount")
 			}
 		}
 
@@ -181,12 +175,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AccordionFoldTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: AccordionFoldTransition.timeRange, forKey: "inputTime")
 			}
 		}
 

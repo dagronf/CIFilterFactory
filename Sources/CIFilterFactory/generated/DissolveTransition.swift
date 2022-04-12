@@ -100,12 +100,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DissolveTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: DissolveTransition.timeRange, forKey: "inputTime")
 			}
 		}
 

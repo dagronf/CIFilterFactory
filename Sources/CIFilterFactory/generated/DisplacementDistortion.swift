@@ -96,12 +96,10 @@ import Foundation
 		/// - Default Value: `50.0`
 		@objc public var scale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? Self.scaleDefault
+				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DisplacementDistortion.scaleRange)
-				self.filter.setValue(number, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: DisplacementDistortion.scaleRange, forKey: "inputScale")
 			}
 		}
 

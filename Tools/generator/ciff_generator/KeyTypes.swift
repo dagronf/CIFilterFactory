@@ -91,8 +91,7 @@ class BoolGeneratorType: ValueGeneratorType<Bool> {
 		let defaultValue =  self.defaultValueString() ?? "false"
 		out.print("   @objc public var \(userFriendlyKey): Bool {")
 		out.print("      get {")
-		out.print("         let number = self.filter.value(forKey: \"\(key)\") as? NSNumber")
-		out.print("         return number?.boolValue ?? Self.\(userFriendlyKey)Default")
+		out.print("         self.boolValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key)")"#)
@@ -116,13 +115,11 @@ class IntGeneratorType: ValueGeneratorType<Int> {
 		let defaultValue = self.defaultValueString() ?? "0"
 		out.print("   @objc public var \(userFriendlyKey): Int {")
 		out.print("      get {")
-		out.print(#"        let number = self.filter.value(forKey: "\#(key)") as? NSNumber"#)
-		out.print("         return number?.intValue ?? Self.\(userFriendlyKey)Default")
+		out.print("         self.intValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		if let _ = rangeDefinition() {
-			out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(userFriendlyKey)Range)")
-			out.print("         self.filter.setValue(number, forKey: \"\(key)\")")
+			out.print("         self.setIntValue(newValue, bounds: \(staticName).\(userFriendlyKey)Range, forKey: \"\(key)\")")
 		}
 		else {
 			out.print("         self.setKeyedValue(NSNumber(value: newValue), for: \"\(key)\"")
@@ -148,16 +145,14 @@ class UIntGeneratorType: ValueGeneratorType<UInt> {
 		let defaultValue = self.defaultValueString() ?? "0"
 		out.print("   @objc public var \(userFriendlyKey): UInt {")
 		out.print("      get {")
-		out.print("         let number = self.filter.value(forKey: \"\(key)\") as? NSNumber")
-		out.print("         return number?.uintValue ?? Self.\(userFriendlyKey)Default")
+		out.print("         self.uintValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		if let _ = rangeDefinition() {
-			out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(userFriendlyKey)Range)")
-			out.print("         self.filter.setValue(number, forKey: \"\(key)\")")
+			out.print("         self.setUIntValue(newValue, bounds: \(staticName).\(userFriendlyKey)Range, forKey: \"\(key)\")")
 		}
 		else {
-			out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key)")"#)
+			out.print("         self.setKeyedValue(NSNumber(value: newValue), for: \"\(key)\")")
 		}
 		out.print("      }")
 		out.print("   }")
@@ -177,13 +172,11 @@ class DoubleGeneratorType: ValueGeneratorType<Double> {
 		let defaultValue = self.defaultValueString() ?? "0"
 		out.print("   @objc public var \(userFriendlyKey): Double {")
 		out.print("      get {")
-		out.print("         let number = self.filter.value(forKey: \"\(key)\") as? NSNumber")
-		out.print("         return number?.doubleValue ?? Self.\(userFriendlyKey)Default")
+		out.print("         self.doubleValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		if let _ = rangeDefinition() {
-			out.print("         let number = NSNumber(value: newValue).clamped(bounds: \(staticName).\(userFriendlyKey)Range)")
-			out.print("         self.filter.setValue(number, forKey: \"\(key)\")")
+			out.print("         self.setDoubleValue(newValue, bounds: \(staticName).\(userFriendlyKey)Range, forKey: \"\(key)\")")
 		}
 		else {
 			out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key)")"#)
@@ -242,6 +235,47 @@ class ValueGeneratorType<ValueType>: CoreType {
 	}
 }
 
+// MARK: - String Handling
+
+class StringGeneratorType: CoreType {
+	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
+		let out = FileSquirter(name: "dummy")
+
+		//let defaultValue = (self.defaultValue as? NSString)?.cgRectValue ?? .zero
+		out.print("   @objc public var \(userFriendlyKey): String? {")
+		out.print("      get {")
+		out.print("         self.stringValue(forKey: \"\(key)\")")
+		out.print("      }")
+		out.print("      set {")
+		out.print("         self.setKeyedValue(newValue as? NSString, for: \"\(key)\")")
+		out.print("      }")
+		out.print("   }")
+		out.print("")
+
+		return out.content
+	}
+}
+
+// MARK: - Data Handling
+
+class DataGeneratorType: CoreType {
+	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
+		let out = FileSquirter(name: "dummy")
+
+		//let defaultValue = (self.defaultValue as? NSString)?.cgRectValue ?? .zero
+		out.print("   @objc public var \(userFriendlyKey): Data? {")
+		out.print("      get {")
+		out.print("         self.dataValue(forKey: \"\(key)\")")
+		out.print("      }")
+		out.print("      set {")
+		out.print("         self.setKeyedValue(newValue as? NSData, for: \"\(key)\")")
+		out.print("      }")
+		out.print("   }")
+		out.print("")
+
+		return out.content
+	}
+}
 
 // MARK: - CGRect handling
 
@@ -260,7 +294,7 @@ class RectGeneratorType: CoreType {
 		let defaultValue = (self.defaultValue as? CIVector)?.cgRectValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): CGRect {")
 		out.print("      get {")
-		out.print("         return CGRect(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+		out.print("         CGRect(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key)")"#)
@@ -319,7 +353,7 @@ class PositionGeneratorType: CoreType {
 		let defaultValue = (self.defaultValue as? CIVector)?.cgPointValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): CGPoint {")
 		out.print("      get {")
-		out.print("         return CGPoint(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+		out.print("         CGPoint(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print("         self.setKeyedValue(newValue.ciVector, for: \"\(key)\")")

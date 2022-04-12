@@ -41,7 +41,6 @@ public extension CIFF {
 #endif
 		}
 
-
 #if os(macOS)
 		@objc var transform: NSAffineTransform
 

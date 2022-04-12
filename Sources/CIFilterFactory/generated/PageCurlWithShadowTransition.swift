@@ -112,7 +112,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -135,12 +135,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: PageCurlWithShadowTransition.timeRange, forKey: "inputTime")
 			}
 		}
 
@@ -161,8 +159,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -184,12 +181,10 @@ import Foundation
 		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: PageCurlWithShadowTransition.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -212,12 +207,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var shadowSize: Double {
 			get {
-				let number = self.filter.value(forKey: "inputShadowSize") as? NSNumber
-				return number?.doubleValue ?? Self.shadowSizeDefault
+				self.doubleValue(forKey: "inputShadowSize", defaultValue: Self.shadowSizeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.shadowSizeRange)
-				self.filter.setValue(number, forKey: "inputShadowSize")
+				self.setDoubleValue(newValue, bounds: PageCurlWithShadowTransition.shadowSizeRange, forKey: "inputShadowSize")
 			}
 		}
 
@@ -240,12 +233,10 @@ import Foundation
 		/// - Default Value: `0.7`
 		@objc public var shadowAmount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputShadowAmount") as? NSNumber
-				return number?.doubleValue ?? Self.shadowAmountDefault
+				self.doubleValue(forKey: "inputShadowAmount", defaultValue: Self.shadowAmountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: PageCurlWithShadowTransition.shadowAmountRange)
-				self.filter.setValue(number, forKey: "inputShadowAmount")
+				self.setDoubleValue(newValue, bounds: PageCurlWithShadowTransition.shadowAmountRange, forKey: "inputShadowAmount")
 			}
 		}
 
@@ -266,7 +257,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)`
 		@objc public var shadowExtent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputShadowExtent", defaultValue: Self.shadowExtentDefault)
+				CGRect(with: self.filter, key: "inputShadowExtent", defaultValue: Self.shadowExtentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputShadowExtent")

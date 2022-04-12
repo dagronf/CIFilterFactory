@@ -62,7 +62,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -84,12 +84,10 @@ import Foundation
 		/// - Default Value: `5.0`
 		@objc public var radius0: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius0") as? NSNumber
-				return number?.doubleValue ?? Self.radius0Default
+				self.doubleValue(forKey: "inputRadius0", defaultValue: Self.radius0Default)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius0Range)
-				self.filter.setValue(number, forKey: "inputRadius0")
+				self.setDoubleValue(newValue, bounds: RadialGradient.radius0Range, forKey: "inputRadius0")
 			}
 		}
 
@@ -111,12 +109,10 @@ import Foundation
 		/// - Default Value: `100.0`
 		@objc public var radius1: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius1") as? NSNumber
-				return number?.doubleValue ?? Self.radius1Default
+				self.doubleValue(forKey: "inputRadius1", defaultValue: Self.radius1Default)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: RadialGradient.radius1Range)
-				self.filter.setValue(number, forKey: "inputRadius1")
+				self.setDoubleValue(newValue, bounds: RadialGradient.radius1Range, forKey: "inputRadius1")
 			}
 		}
 

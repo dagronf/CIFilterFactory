@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 1280.0, y: 1280.0)`
 		@objc public var size: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.sizeDefault)
+				CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.sizeDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputSize")
@@ -102,12 +102,10 @@ import Foundation
 		/// - Default Value: `0.25`
 		@objc public var cropAmount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputCropAmount") as? NSNumber
-				return number?.doubleValue ?? Self.cropAmountDefault
+				self.doubleValue(forKey: "inputCropAmount", defaultValue: Self.cropAmountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.cropAmountRange)
-				self.filter.setValue(number, forKey: "inputCropAmount")
+				self.setDoubleValue(newValue, bounds: StretchCrop.cropAmountRange, forKey: "inputCropAmount")
 			}
 		}
 
@@ -130,12 +128,10 @@ import Foundation
 		/// - Default Value: `0.25`
 		@objc public var centerStretchAmount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputCenterStretchAmount") as? NSNumber
-				return number?.doubleValue ?? Self.centerStretchAmountDefault
+				self.doubleValue(forKey: "inputCenterStretchAmount", defaultValue: Self.centerStretchAmountDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: StretchCrop.centerStretchAmountRange)
-				self.filter.setValue(number, forKey: "inputCenterStretchAmount")
+				self.setDoubleValue(newValue, bounds: StretchCrop.centerStretchAmountRange, forKey: "inputCenterStretchAmount")
 			}
 		}
 

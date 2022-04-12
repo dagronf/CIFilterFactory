@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -100,8 +100,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var rotation: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? Self.rotationDefault
+				self.doubleValue(forKey: "inputRotation", defaultValue: Self.rotationDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
@@ -122,8 +121,7 @@ import Foundation
 		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")

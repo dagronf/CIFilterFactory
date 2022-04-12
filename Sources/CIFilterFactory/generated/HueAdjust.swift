@@ -81,8 +81,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")

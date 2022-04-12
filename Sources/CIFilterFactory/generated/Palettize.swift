@@ -95,8 +95,7 @@ import Foundation
 		/// - Default Value: `false`
 		@objc public var perceptual: Bool {
 			get {
-				let number = self.filter.value(forKey: "inputPerceptual") as? NSNumber
-				return number?.boolValue ?? Self.perceptualDefault
+				self.boolValue(forKey: "inputPerceptual", defaultValue: Self.perceptualDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")

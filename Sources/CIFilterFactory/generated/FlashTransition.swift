@@ -96,7 +96,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -117,7 +117,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -157,12 +157,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: FlashTransition.timeRange, forKey: "inputTime")
 			}
 		}
 
@@ -184,12 +182,10 @@ import Foundation
 		/// - Default Value: `2.58`
 		@objc public var maxStriationRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
-				return number?.doubleValue ?? Self.maxStriationRadiusDefault
+				self.doubleValue(forKey: "inputMaxStriationRadius", defaultValue: Self.maxStriationRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.maxStriationRadiusRange)
-				self.filter.setValue(number, forKey: "inputMaxStriationRadius")
+				self.setDoubleValue(newValue, bounds: FlashTransition.maxStriationRadiusRange, forKey: "inputMaxStriationRadius")
 			}
 		}
 
@@ -211,12 +207,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
-				return number?.doubleValue ?? Self.striationStrengthDefault
+				self.doubleValue(forKey: "inputStriationStrength", defaultValue: Self.striationStrengthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.striationStrengthRange)
-				self.filter.setValue(number, forKey: "inputStriationStrength")
+				self.setDoubleValue(newValue, bounds: FlashTransition.striationStrengthRange, forKey: "inputStriationStrength")
 			}
 		}
 
@@ -238,12 +232,10 @@ import Foundation
 		/// - Default Value: `1.375`
 		@objc public var striationContrast: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
-				return number?.doubleValue ?? Self.striationContrastDefault
+				self.doubleValue(forKey: "inputStriationContrast", defaultValue: Self.striationContrastDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.striationContrastRange)
-				self.filter.setValue(number, forKey: "inputStriationContrast")
+				self.setDoubleValue(newValue, bounds: FlashTransition.striationContrastRange, forKey: "inputStriationContrast")
 			}
 		}
 
@@ -266,12 +258,10 @@ import Foundation
 		/// - Default Value: `0.85`
 		@objc public var fadeThreshold: Double {
 			get {
-				let number = self.filter.value(forKey: "inputFadeThreshold") as? NSNumber
-				return number?.doubleValue ?? Self.fadeThresholdDefault
+				self.doubleValue(forKey: "inputFadeThreshold", defaultValue: Self.fadeThresholdDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: FlashTransition.fadeThresholdRange)
-				self.filter.setValue(number, forKey: "inputFadeThreshold")
+				self.setDoubleValue(newValue, bounds: FlashTransition.fadeThresholdRange, forKey: "inputFadeThreshold")
 			}
 		}
 

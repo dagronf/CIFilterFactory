@@ -79,12 +79,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
-				return number?.doubleValue ?? Self.scaleFactorDefault
+				self.doubleValue(forKey: "inputScaleFactor", defaultValue: Self.scaleFactorDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AttributedTextImageGenerator.scaleFactorRange)
-				self.filter.setValue(number, forKey: "inputScaleFactor")
+				self.setDoubleValue(newValue, bounds: AttributedTextImageGenerator.scaleFactorRange, forKey: "inputScaleFactor")
 			}
 		}
 

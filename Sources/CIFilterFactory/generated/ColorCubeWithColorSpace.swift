@@ -83,12 +83,10 @@ import Foundation
 		/// - Default Value: `2`
 		@objc public var cubeDimension: UInt {
 			get {
-				let number = self.filter.value(forKey: "inputCubeDimension") as? NSNumber
-				return number?.uintValue ?? Self.cubeDimensionDefault
+				self.uintValue(forKey: "inputCubeDimension", defaultValue: Self.cubeDimensionDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: ColorCubeWithColorSpace.cubeDimensionRange)
-				self.filter.setValue(number, forKey: "inputCubeDimension")
+				self.setUIntValue(newValue, bounds: ColorCubeWithColorSpace.cubeDimensionRange, forKey: "inputCubeDimension")
 			}
 		}
 
@@ -107,11 +105,10 @@ import Foundation
 		/// - Internal class: `NSData`
 		@objc public var cubeData: Data? {
 			get {
-				let tmp: NSData? = self.keyedValue("inputCubeData")
-				return tmp as Data?
+				self.dataValue(forKey: "inputCubeData")
 			}
 			set {
-				self.setKeyedValue(newValue as NSData?, for: "inputCubeData")
+				self.setKeyedValue(newValue as? NSData, for: "inputCubeData")
 			}
 		}
 

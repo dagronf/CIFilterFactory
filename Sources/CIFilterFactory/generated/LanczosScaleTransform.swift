@@ -84,12 +84,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? Self.scaleDefault
+				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LanczosScaleTransform.scaleRange)
-				self.filter.setValue(number, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: LanczosScaleTransform.scaleRange, forKey: "inputScale")
 			}
 		}
 
@@ -111,12 +109,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var aspectRatio: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAspectRatio") as? NSNumber
-				return number?.doubleValue ?? Self.aspectRatioDefault
+				self.doubleValue(forKey: "inputAspectRatio", defaultValue: Self.aspectRatioDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LanczosScaleTransform.aspectRatioRange)
-				self.filter.setValue(number, forKey: "inputAspectRatio")
+				self.setDoubleValue(newValue, bounds: LanczosScaleTransform.aspectRatioRange, forKey: "inputAspectRatio")
 			}
 		}
 

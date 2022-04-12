@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `2.5`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: UnsharpMask.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: UnsharpMask.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -107,12 +105,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var intensity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
-				return number?.doubleValue ?? Self.intensityDefault
+				self.doubleValue(forKey: "inputIntensity", defaultValue: Self.intensityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: UnsharpMask.intensityRange)
-				self.filter.setValue(number, forKey: "inputIntensity")
+				self.setDoubleValue(newValue, bounds: UnsharpMask.intensityRange, forKey: "inputIntensity")
 			}
 		}
 

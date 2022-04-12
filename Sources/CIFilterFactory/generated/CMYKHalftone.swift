@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -101,12 +101,10 @@ import Foundation
 		/// - Default Value: `6.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: CMYKHalftone.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setDoubleValue(newValue, bounds: CMYKHalftone.widthRange, forKey: "inputWidth")
 			}
 		}
 
@@ -127,8 +125,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -150,12 +147,10 @@ import Foundation
 		/// - Default Value: `0.7`
 		@objc public var sharpness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? Self.sharpnessDefault
+				self.doubleValue(forKey: "inputSharpness", defaultValue: Self.sharpnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: CMYKHalftone.sharpnessRange)
-				self.filter.setValue(number, forKey: "inputSharpness")
+				self.setDoubleValue(newValue, bounds: CMYKHalftone.sharpnessRange, forKey: "inputSharpness")
 			}
 		}
 
@@ -177,12 +172,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var gCR: Double {
 			get {
-				let number = self.filter.value(forKey: "inputGCR") as? NSNumber
-				return number?.doubleValue ?? Self.gCRDefault
+				self.doubleValue(forKey: "inputGCR", defaultValue: Self.gCRDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: CMYKHalftone.gCRRange)
-				self.filter.setValue(number, forKey: "inputGCR")
+				self.setDoubleValue(newValue, bounds: CMYKHalftone.gCRRange, forKey: "inputGCR")
 			}
 		}
 
@@ -204,12 +197,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var uCR: Double {
 			get {
-				let number = self.filter.value(forKey: "inputUCR") as? NSNumber
-				return number?.doubleValue ?? Self.uCRDefault
+				self.doubleValue(forKey: "inputUCR", defaultValue: Self.uCRDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: CMYKHalftone.uCRRange)
-				self.filter.setValue(number, forKey: "inputUCR")
+				self.setDoubleValue(newValue, bounds: CMYKHalftone.uCRRange, forKey: "inputUCR")
 			}
 		}
 

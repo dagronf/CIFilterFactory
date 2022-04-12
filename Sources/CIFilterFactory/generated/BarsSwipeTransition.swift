@@ -96,8 +96,7 @@ import Foundation
 		/// - Default Value: `3.141592653589793`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -119,12 +118,10 @@ import Foundation
 		/// - Default Value: `30.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.widthRange)
-				self.filter.setValue(number, forKey: "inputWidth")
+				self.setDoubleValue(newValue, bounds: BarsSwipeTransition.widthRange, forKey: "inputWidth")
 			}
 		}
 
@@ -146,12 +143,10 @@ import Foundation
 		/// - Default Value: `10.0`
 		@objc public var barOffset: Double {
 			get {
-				let number = self.filter.value(forKey: "inputBarOffset") as? NSNumber
-				return number?.doubleValue ?? Self.barOffsetDefault
+				self.doubleValue(forKey: "inputBarOffset", defaultValue: Self.barOffsetDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.barOffsetRange)
-				self.filter.setValue(number, forKey: "inputBarOffset")
+				self.setDoubleValue(newValue, bounds: BarsSwipeTransition.barOffsetRange, forKey: "inputBarOffset")
 			}
 		}
 
@@ -174,12 +169,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BarsSwipeTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: BarsSwipeTransition.timeRange, forKey: "inputTime")
 			}
 		}
 

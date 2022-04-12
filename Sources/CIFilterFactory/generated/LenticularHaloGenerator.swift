@@ -62,7 +62,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -100,12 +100,10 @@ import Foundation
 		/// - Default Value: `70.0`
 		@objc public var haloRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputHaloRadius") as? NSNumber
-				return number?.doubleValue ?? Self.haloRadiusDefault
+				self.doubleValue(forKey: "inputHaloRadius", defaultValue: Self.haloRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloRadiusRange)
-				self.filter.setValue(number, forKey: "inputHaloRadius")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.haloRadiusRange, forKey: "inputHaloRadius")
 			}
 		}
 
@@ -127,12 +125,10 @@ import Foundation
 		/// - Default Value: `87.0`
 		@objc public var haloWidth: Double {
 			get {
-				let number = self.filter.value(forKey: "inputHaloWidth") as? NSNumber
-				return number?.doubleValue ?? Self.haloWidthDefault
+				self.doubleValue(forKey: "inputHaloWidth", defaultValue: Self.haloWidthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloWidthRange)
-				self.filter.setValue(number, forKey: "inputHaloWidth")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.haloWidthRange, forKey: "inputHaloWidth")
 			}
 		}
 
@@ -154,12 +150,10 @@ import Foundation
 		/// - Default Value: `0.77`
 		@objc public var haloOverlap: Double {
 			get {
-				let number = self.filter.value(forKey: "inputHaloOverlap") as? NSNumber
-				return number?.doubleValue ?? Self.haloOverlapDefault
+				self.doubleValue(forKey: "inputHaloOverlap", defaultValue: Self.haloOverlapDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.haloOverlapRange)
-				self.filter.setValue(number, forKey: "inputHaloOverlap")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.haloOverlapRange, forKey: "inputHaloOverlap")
 			}
 		}
 
@@ -181,12 +175,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
-				return number?.doubleValue ?? Self.striationStrengthDefault
+				self.doubleValue(forKey: "inputStriationStrength", defaultValue: Self.striationStrengthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationStrengthRange)
-				self.filter.setValue(number, forKey: "inputStriationStrength")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.striationStrengthRange, forKey: "inputStriationStrength")
 			}
 		}
 
@@ -208,12 +200,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var striationContrast: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
-				return number?.doubleValue ?? Self.striationContrastDefault
+				self.doubleValue(forKey: "inputStriationContrast", defaultValue: Self.striationContrastDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.striationContrastRange)
-				self.filter.setValue(number, forKey: "inputStriationContrast")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.striationContrastRange, forKey: "inputStriationContrast")
 			}
 		}
 
@@ -236,12 +226,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LenticularHaloGenerator.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: LenticularHaloGenerator.timeRange, forKey: "inputTime")
 			}
 		}
 

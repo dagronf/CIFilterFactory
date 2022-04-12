@@ -84,7 +84,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
 		@objc public var extent: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -106,12 +106,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? Self.scaleDefault
+				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.scaleRange)
-				self.filter.setValue(number, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: AreaHistogram.scaleRange, forKey: "inputScale")
 			}
 		}
 
@@ -134,12 +132,10 @@ import Foundation
 		/// - Default Value: `64.0`
 		@objc public var count: Double {
 			get {
-				let number = self.filter.value(forKey: "inputCount") as? NSNumber
-				return number?.doubleValue ?? Self.countDefault
+				self.doubleValue(forKey: "inputCount", defaultValue: Self.countDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: AreaHistogram.countRange)
-				self.filter.setValue(number, forKey: "inputCount")
+				self.setDoubleValue(newValue, bounds: AreaHistogram.countRange, forKey: "inputCount")
 			}
 		}
 

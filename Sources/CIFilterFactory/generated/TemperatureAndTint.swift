@@ -81,7 +81,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 6500.0, y: 6500.0)`
 		@objc public var neutral: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutralDefault)
+				CGPoint(with: self.filter, key: "inputNeutral", defaultValue: Self.neutralDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputNeutral")
@@ -102,7 +102,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 6500.0, y: 6500.0)`
 		@objc public var targetNeutral: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutralDefault)
+				CGPoint(with: self.filter, key: "inputTargetNeutral", defaultValue: Self.targetNeutralDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTargetNeutral")

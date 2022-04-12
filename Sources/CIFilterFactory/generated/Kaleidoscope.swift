@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `6.0`
 		@objc public var count: Double {
 			get {
-				let number = self.filter.value(forKey: "inputCount") as? NSNumber
-				return number?.doubleValue ?? Self.countDefault
+				self.doubleValue(forKey: "inputCount", defaultValue: Self.countDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Kaleidoscope.countRange)
-				self.filter.setValue(number, forKey: "inputCount")
+				self.setDoubleValue(newValue, bounds: Kaleidoscope.countRange, forKey: "inputCount")
 			}
 		}
 
@@ -106,7 +104,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -127,8 +125,7 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")

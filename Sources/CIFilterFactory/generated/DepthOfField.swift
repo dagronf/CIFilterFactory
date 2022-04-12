@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var point0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
+				CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
@@ -100,7 +100,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 300.0, y: 300.0)`
 		@objc public var point1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
+				CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")
@@ -122,12 +122,10 @@ import Foundation
 		/// - Default Value: `1.5`
 		@objc public var saturation: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSaturation") as? NSNumber
-				return number?.doubleValue ?? Self.saturationDefault
+				self.doubleValue(forKey: "inputSaturation", defaultValue: Self.saturationDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.saturationRange)
-				self.filter.setValue(number, forKey: "inputSaturation")
+				self.setDoubleValue(newValue, bounds: DepthOfField.saturationRange, forKey: "inputSaturation")
 			}
 		}
 
@@ -149,12 +147,10 @@ import Foundation
 		/// - Default Value: `2.5`
 		@objc public var unsharpMaskRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputUnsharpMaskRadius") as? NSNumber
-				return number?.doubleValue ?? Self.unsharpMaskRadiusDefault
+				self.doubleValue(forKey: "inputUnsharpMaskRadius", defaultValue: Self.unsharpMaskRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.unsharpMaskRadiusRange)
-				self.filter.setValue(number, forKey: "inputUnsharpMaskRadius")
+				self.setDoubleValue(newValue, bounds: DepthOfField.unsharpMaskRadiusRange, forKey: "inputUnsharpMaskRadius")
 			}
 		}
 
@@ -176,12 +172,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var unsharpMaskIntensity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputUnsharpMaskIntensity") as? NSNumber
-				return number?.doubleValue ?? Self.unsharpMaskIntensityDefault
+				self.doubleValue(forKey: "inputUnsharpMaskIntensity", defaultValue: Self.unsharpMaskIntensityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.unsharpMaskIntensityRange)
-				self.filter.setValue(number, forKey: "inputUnsharpMaskIntensity")
+				self.setDoubleValue(newValue, bounds: DepthOfField.unsharpMaskIntensityRange, forKey: "inputUnsharpMaskIntensity")
 			}
 		}
 
@@ -203,12 +197,10 @@ import Foundation
 		/// - Default Value: `6.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthOfField.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: DepthOfField.radiusRange, forKey: "inputRadius")
 			}
 		}
 

@@ -62,7 +62,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -100,12 +100,10 @@ import Foundation
 		/// - Default Value: `40.0`
 		@objc public var sunRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSunRadius") as? NSNumber
-				return number?.doubleValue ?? Self.sunRadiusDefault
+				self.doubleValue(forKey: "inputSunRadius", defaultValue: Self.sunRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.sunRadiusRange)
-				self.filter.setValue(number, forKey: "inputSunRadius")
+				self.setDoubleValue(newValue, bounds: SunbeamsGenerator.sunRadiusRange, forKey: "inputSunRadius")
 			}
 		}
 
@@ -127,12 +125,10 @@ import Foundation
 		/// - Default Value: `2.58`
 		@objc public var maxStriationRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputMaxStriationRadius") as? NSNumber
-				return number?.doubleValue ?? Self.maxStriationRadiusDefault
+				self.doubleValue(forKey: "inputMaxStriationRadius", defaultValue: Self.maxStriationRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.maxStriationRadiusRange)
-				self.filter.setValue(number, forKey: "inputMaxStriationRadius")
+				self.setDoubleValue(newValue, bounds: SunbeamsGenerator.maxStriationRadiusRange, forKey: "inputMaxStriationRadius")
 			}
 		}
 
@@ -154,12 +150,10 @@ import Foundation
 		/// - Default Value: `0.5`
 		@objc public var striationStrength: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationStrength") as? NSNumber
-				return number?.doubleValue ?? Self.striationStrengthDefault
+				self.doubleValue(forKey: "inputStriationStrength", defaultValue: Self.striationStrengthDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.striationStrengthRange)
-				self.filter.setValue(number, forKey: "inputStriationStrength")
+				self.setDoubleValue(newValue, bounds: SunbeamsGenerator.striationStrengthRange, forKey: "inputStriationStrength")
 			}
 		}
 
@@ -181,12 +175,10 @@ import Foundation
 		/// - Default Value: `1.375`
 		@objc public var striationContrast: Double {
 			get {
-				let number = self.filter.value(forKey: "inputStriationContrast") as? NSNumber
-				return number?.doubleValue ?? Self.striationContrastDefault
+				self.doubleValue(forKey: "inputStriationContrast", defaultValue: Self.striationContrastDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.striationContrastRange)
-				self.filter.setValue(number, forKey: "inputStriationContrast")
+				self.setDoubleValue(newValue, bounds: SunbeamsGenerator.striationContrastRange, forKey: "inputStriationContrast")
 			}
 		}
 
@@ -209,12 +201,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: SunbeamsGenerator.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: SunbeamsGenerator.timeRange, forKey: "inputTime")
 			}
 		}
 

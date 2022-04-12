@@ -161,12 +161,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var aperture: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAperture") as? NSNumber
-				return number?.doubleValue ?? Self.apertureDefault
+				self.doubleValue(forKey: "inputAperture", defaultValue: Self.apertureDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.apertureRange)
-				self.filter.setValue(number, forKey: "inputAperture")
+				self.setDoubleValue(newValue, bounds: DepthBlurEffect.apertureRange, forKey: "inputAperture")
 			}
 		}
 
@@ -187,7 +185,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var leftEyePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
+				CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputLeftEyePositions")
@@ -208,7 +206,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var rightEyePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
+				CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputRightEyePositions")
@@ -229,7 +227,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var chinPositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
+				CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputChinPositions")
@@ -250,7 +248,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var nosePositions: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
+				CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputNosePositions")
@@ -270,7 +268,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeRectangle`
 		@objc public var focusRect: CGRect {
 			get {
-				return CGRect(with: self.filter, key: "inputFocusRect", defaultValue: Self.focusRectDefault)
+				CGRect(with: self.filter, key: "inputFocusRect", defaultValue: Self.focusRectDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputFocusRect")
@@ -293,12 +291,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var lumaNoiseScale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputLumaNoiseScale") as? NSNumber
-				return number?.doubleValue ?? Self.lumaNoiseScaleDefault
+				self.doubleValue(forKey: "inputLumaNoiseScale", defaultValue: Self.lumaNoiseScaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DepthBlurEffect.lumaNoiseScaleRange)
-				self.filter.setValue(number, forKey: "inputLumaNoiseScale")
+				self.setDoubleValue(newValue, bounds: DepthBlurEffect.lumaNoiseScaleRange, forKey: "inputLumaNoiseScale")
 			}
 		}
 
@@ -319,8 +315,7 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scaleFactor: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScaleFactor") as? NSNumber
-				return number?.doubleValue ?? Self.scaleFactorDefault
+				self.doubleValue(forKey: "inputScaleFactor", defaultValue: Self.scaleFactorDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputScaleFactor")
@@ -371,11 +366,10 @@ import Foundation
 		/// - Internal class: `NSString`
 		@objc public var shape: String? {
 			get {
-				let tmp: NSString? = self.keyedValue("inputShape")
-				return tmp as String?
+				self.stringValue(forKey: "inputShape")
 			}
 			set {
-				self.setKeyedValue(newValue as NSString?, for: "inputShape")
+				self.setKeyedValue(newValue as? NSString, for: "inputShape")
 			}
 		}
 

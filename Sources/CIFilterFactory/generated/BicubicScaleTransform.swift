@@ -81,12 +81,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var scale: Double {
 			get {
-				let number = self.filter.value(forKey: "inputScale") as? NSNumber
-				return number?.doubleValue ?? Self.scaleDefault
+				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.scaleRange)
-				self.filter.setValue(number, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: BicubicScaleTransform.scaleRange, forKey: "inputScale")
 			}
 		}
 
@@ -108,12 +106,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var aspectRatio: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAspectRatio") as? NSNumber
-				return number?.doubleValue ?? Self.aspectRatioDefault
+				self.doubleValue(forKey: "inputAspectRatio", defaultValue: Self.aspectRatioDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.aspectRatioRange)
-				self.filter.setValue(number, forKey: "inputAspectRatio")
+				self.setDoubleValue(newValue, bounds: BicubicScaleTransform.aspectRatioRange, forKey: "inputAspectRatio")
 			}
 		}
 
@@ -136,12 +132,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var b: Double {
 			get {
-				let number = self.filter.value(forKey: "inputB") as? NSNumber
-				return number?.doubleValue ?? Self.bDefault
+				self.doubleValue(forKey: "inputB", defaultValue: Self.bDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.bRange)
-				self.filter.setValue(number, forKey: "inputB")
+				self.setDoubleValue(newValue, bounds: BicubicScaleTransform.bRange, forKey: "inputB")
 			}
 		}
 
@@ -164,12 +158,10 @@ import Foundation
 		/// - Default Value: `0.75`
 		@objc public var c: Double {
 			get {
-				let number = self.filter.value(forKey: "inputC") as? NSNumber
-				return number?.doubleValue ?? Self.cDefault
+				self.doubleValue(forKey: "inputC", defaultValue: Self.cDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: BicubicScaleTransform.cRange)
-				self.filter.setValue(number, forKey: "inputC")
+				self.setDoubleValue(newValue, bounds: BicubicScaleTransform.cRange, forKey: "inputC")
 			}
 		}
 

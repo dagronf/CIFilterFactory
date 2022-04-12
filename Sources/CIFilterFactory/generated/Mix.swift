@@ -96,8 +96,7 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var amount: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAmount") as? NSNumber
-				return number?.doubleValue ?? Self.amountDefault
+				self.doubleValue(forKey: "inputAmount", defaultValue: Self.amountDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAmount")

@@ -62,11 +62,10 @@ import Foundation
 		/// - Internal class: `NSData`
 		@objc public var message: Data? {
 			get {
-				let tmp: NSData? = self.keyedValue("inputMessage")
-				return tmp as Data?
+				self.dataValue(forKey: "inputMessage")
 			}
 			set {
-				self.setKeyedValue(newValue as NSData?, for: "inputMessage")
+				self.setKeyedValue(newValue as? NSData, for: "inputMessage")
 			}
 		}
 

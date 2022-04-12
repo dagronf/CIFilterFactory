@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var point0: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
+				CGPoint(with: self.filter, key: "inputPoint0", defaultValue: Self.point0Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint0")
@@ -100,7 +100,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 350.0, y: 350.0)`
 		@objc public var point1: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
+				CGPoint(with: self.filter, key: "inputPoint1", defaultValue: Self.point1Default)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint1")
@@ -122,12 +122,10 @@ import Foundation
 		/// - Default Value: `100.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: GlassLozenge.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: GlassLozenge.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -149,12 +147,10 @@ import Foundation
 		/// - Default Value: `1.7`
 		@objc public var refraction: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRefraction") as? NSNumber
-				return number?.doubleValue ?? Self.refractionDefault
+				self.doubleValue(forKey: "inputRefraction", defaultValue: Self.refractionDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: GlassLozenge.refractionRange)
-				self.filter.setValue(number, forKey: "inputRefraction")
+				self.setDoubleValue(newValue, bounds: GlassLozenge.refractionRange, forKey: "inputRefraction")
 			}
 		}
 

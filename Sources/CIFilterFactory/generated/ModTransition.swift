@@ -96,7 +96,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -119,12 +119,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: ModTransition.timeRange, forKey: "inputTime")
 			}
 		}
 
@@ -145,8 +143,7 @@ import Foundation
 		/// - Default Value: `2.0`
 		@objc public var angle: Double {
 			get {
-				let number = self.filter.value(forKey: "inputAngle") as? NSNumber
-				return number?.doubleValue ?? Self.angleDefault
+				self.doubleValue(forKey: "inputAngle", defaultValue: Self.angleDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputAngle")
@@ -168,12 +165,10 @@ import Foundation
 		/// - Default Value: `150.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: ModTransition.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -195,12 +190,10 @@ import Foundation
 		/// - Default Value: `300.0`
 		@objc public var compression: Double {
 			get {
-				let number = self.filter.value(forKey: "inputCompression") as? NSNumber
-				return number?.doubleValue ?? Self.compressionDefault
+				self.doubleValue(forKey: "inputCompression", defaultValue: Self.compressionDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: ModTransition.compressionRange)
-				self.filter.setValue(number, forKey: "inputCompression")
+				self.setDoubleValue(newValue, bounds: ModTransition.compressionRange, forKey: "inputCompression")
 			}
 		}
 

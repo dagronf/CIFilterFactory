@@ -96,12 +96,10 @@ import Foundation
 		/// - Default Value: `0`
 		@objc public var headIndex: Int {
 			get {
-				let number = self.filter.value(forKey: "inputHeadIndex") as? NSNumber
-				return number?.intValue ?? Self.headIndexDefault
+				self.intValue(forKey: "inputHeadIndex", defaultValue: Self.headIndexDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: CoreMLModelFilter.headIndexRange)
-				self.filter.setValue(number, forKey: "inputHeadIndex")
+				self.setIntValue(newValue, bounds: CoreMLModelFilter.headIndexRange, forKey: "inputHeadIndex")
 			}
 		}
 
@@ -122,8 +120,7 @@ import Foundation
 		/// - Default Value: `false`
 		@objc public var softmaxNormalization: Bool {
 			get {
-				let number = self.filter.value(forKey: "inputSoftmaxNormalization") as? NSNumber
-				return number?.boolValue ?? Self.softmaxNormalizationDefault
+				self.boolValue(forKey: "inputSoftmaxNormalization", defaultValue: Self.softmaxNormalizationDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputSoftmaxNormalization")

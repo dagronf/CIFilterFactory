@@ -63,12 +63,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var value: Double {
 			get {
-				let number = self.filter.value(forKey: "inputValue") as? NSNumber
-				return number?.doubleValue ?? Self.valueDefault
+				self.doubleValue(forKey: "inputValue", defaultValue: Self.valueDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.valueRange)
-				self.filter.setValue(number, forKey: "inputValue")
+				self.setDoubleValue(newValue, bounds: HueSaturationValueGradient.valueRange, forKey: "inputValue")
 			}
 		}
 
@@ -90,12 +88,10 @@ import Foundation
 		/// - Default Value: `300.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.radiusRange)
-				self.filter.setValue(number, forKey: "inputRadius")
+				self.setDoubleValue(newValue, bounds: HueSaturationValueGradient.radiusRange, forKey: "inputRadius")
 			}
 		}
 
@@ -117,12 +113,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var softness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSoftness") as? NSNumber
-				return number?.doubleValue ?? Self.softnessDefault
+				self.doubleValue(forKey: "inputSoftness", defaultValue: Self.softnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.softnessRange)
-				self.filter.setValue(number, forKey: "inputSoftness")
+				self.setDoubleValue(newValue, bounds: HueSaturationValueGradient.softnessRange, forKey: "inputSoftness")
 			}
 		}
 
@@ -144,12 +138,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var dither: Double {
 			get {
-				let number = self.filter.value(forKey: "inputDither") as? NSNumber
-				return number?.doubleValue ?? Self.ditherDefault
+				self.doubleValue(forKey: "inputDither", defaultValue: Self.ditherDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: HueSaturationValueGradient.ditherRange)
-				self.filter.setValue(number, forKey: "inputDither")
+				self.setDoubleValue(newValue, bounds: HueSaturationValueGradient.ditherRange, forKey: "inputDither")
 			}
 		}
 

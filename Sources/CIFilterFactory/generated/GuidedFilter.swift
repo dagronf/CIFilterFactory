@@ -95,8 +95,7 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var radius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRadius") as? NSNumber
-				return number?.doubleValue ?? Self.radiusDefault
+				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRadius")
@@ -117,8 +116,7 @@ import Foundation
 		/// - Default Value: `0.0001`
 		@objc public var epsilon: Double {
 			get {
-				let number = self.filter.value(forKey: "inputEpsilon") as? NSNumber
-				return number?.doubleValue ?? Self.epsilonDefault
+				self.doubleValue(forKey: "inputEpsilon", defaultValue: Self.epsilonDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputEpsilon")

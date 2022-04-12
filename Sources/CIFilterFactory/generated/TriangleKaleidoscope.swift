@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var point: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputPoint", defaultValue: Self.pointDefault)
+				CGPoint(with: self.filter, key: "inputPoint", defaultValue: Self.pointDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputPoint")
@@ -100,8 +100,7 @@ import Foundation
 		/// - Default Value: `700.0`
 		@objc public var size: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSize") as? NSNumber
-				return number?.doubleValue ?? Self.sizeDefault
+				self.doubleValue(forKey: "inputSize", defaultValue: Self.sizeDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputSize")
@@ -122,8 +121,7 @@ import Foundation
 		/// - Default Value: `5.924285296593801`
 		@objc public var rotation: Double {
 			get {
-				let number = self.filter.value(forKey: "inputRotation") as? NSNumber
-				return number?.doubleValue ?? Self.rotationDefault
+				self.doubleValue(forKey: "inputRotation", defaultValue: Self.rotationDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputRotation")
@@ -144,8 +142,7 @@ import Foundation
 		/// - Default Value: `0.85`
 		@objc public var decay: Double {
 			get {
-				let number = self.filter.value(forKey: "inputDecay") as? NSNumber
-				return number?.doubleValue ?? Self.decayDefault
+				self.doubleValue(forKey: "inputDecay", defaultValue: Self.decayDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputDecay")

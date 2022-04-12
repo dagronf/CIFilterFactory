@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CIFilterFactory
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		basicTests()
 		return true
 	}
 
@@ -36,6 +38,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	}
 
+	func basicTests() {
+
+		let appimage = UIImage(named: "AppIcon")!
+		let image = CIImage(cgImage: appimage.cgImage!)
+
+		do {
+			let filter = CIFF.QRCodeGenerator()!
+			filter.message = "Hello".data(using: .utf8)!
+			filter.correction = .H
+			let output = filter.outputImage!
+			let uiImage = UIImage(ciImage: output)
+			Swift.print(uiImage)
+
+			let cgImage = filter.outputCGImage
+			Swift.print(cgImage)
+			let uiImage2 = UIImage(cgImage: cgImage!)
+			Swift.print(uiImage2)
+
+			let origString = String(data: filter.message!, encoding: .utf8)
+			assert(origString == "Hello")
+		}
+
+		do {
+			guard let bloomFilter = CIFF.Bloom() else { fatalError() }
+			bloomFilter.inputImage = image
+			bloomFilter.intensity = 0.3
+			bloomFilter.radius = 5
+			let outputImage = bloomFilter.outputImage
+			assert(outputImage != nil)
+		}
+
+		do {
+			guard let textFilter = CIFF.TextImageGenerator() else { fatalError() }
+			textFilter.text = "Noodle"
+			assert(textFilter.text == "Noodle")
+
+			let output = textFilter.outputImage!
+			let uiImage = UIImage(ciImage: output)
+			Swift.print(uiImage)
+		}
+	}
 
 }
 

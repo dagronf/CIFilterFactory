@@ -62,7 +62,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -115,8 +115,7 @@ import Foundation
 		/// - Default Value: `80.0`
 		@objc public var width: Double {
 			get {
-				let number = self.filter.value(forKey: "inputWidth") as? NSNumber
-				return number?.doubleValue ?? Self.widthDefault
+				self.doubleValue(forKey: "inputWidth", defaultValue: Self.widthDefault)
 			}
 			set {
 				self.setKeyedValue(NSNumber(value: newValue), for: "inputWidth")
@@ -139,12 +138,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var sharpness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputSharpness") as? NSNumber
-				return number?.doubleValue ?? Self.sharpnessDefault
+				self.doubleValue(forKey: "inputSharpness", defaultValue: Self.sharpnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: StripesGenerator.sharpnessRange)
-				self.filter.setValue(number, forKey: "inputSharpness")
+				self.setDoubleValue(newValue, bounds: StripesGenerator.sharpnessRange, forKey: "inputSharpness")
 			}
 		}
 

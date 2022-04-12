@@ -115,12 +115,10 @@ import Foundation
 		/// - Default Value: `0.0`
 		@objc public var time: Double {
 			get {
-				let number = self.filter.value(forKey: "inputTime") as? NSNumber
-				return number?.doubleValue ?? Self.timeDefault
+				self.doubleValue(forKey: "inputTime", defaultValue: Self.timeDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.timeRange)
-				self.filter.setValue(number, forKey: "inputTime")
+				self.setDoubleValue(newValue, bounds: DisintegrateWithMaskTransition.timeRange, forKey: "inputTime")
 			}
 		}
 
@@ -142,12 +140,10 @@ import Foundation
 		/// - Default Value: `8.0`
 		@objc public var shadowRadius: Double {
 			get {
-				let number = self.filter.value(forKey: "inputShadowRadius") as? NSNumber
-				return number?.doubleValue ?? Self.shadowRadiusDefault
+				self.doubleValue(forKey: "inputShadowRadius", defaultValue: Self.shadowRadiusDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowRadiusRange)
-				self.filter.setValue(number, forKey: "inputShadowRadius")
+				self.setDoubleValue(newValue, bounds: DisintegrateWithMaskTransition.shadowRadiusRange, forKey: "inputShadowRadius")
 			}
 		}
 
@@ -170,12 +166,10 @@ import Foundation
 		/// - Default Value: `0.65`
 		@objc public var shadowDensity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputShadowDensity") as? NSNumber
-				return number?.doubleValue ?? Self.shadowDensityDefault
+				self.doubleValue(forKey: "inputShadowDensity", defaultValue: Self.shadowDensityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: DisintegrateWithMaskTransition.shadowDensityRange)
-				self.filter.setValue(number, forKey: "inputShadowDensity")
+				self.setDoubleValue(newValue, bounds: DisintegrateWithMaskTransition.shadowDensityRange, forKey: "inputShadowDensity")
 			}
 		}
 
@@ -196,7 +190,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var shadowOffset: CGPoint {
 			get {
-				return CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
+				CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputShadowOffset")

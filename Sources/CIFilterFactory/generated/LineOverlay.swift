@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `0.07`
 		@objc public var nRNoiseLevel: Double {
 			get {
-				let number = self.filter.value(forKey: "inputNRNoiseLevel") as? NSNumber
-				return number?.doubleValue ?? Self.nRNoiseLevelDefault
+				self.doubleValue(forKey: "inputNRNoiseLevel", defaultValue: Self.nRNoiseLevelDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.nRNoiseLevelRange)
-				self.filter.setValue(number, forKey: "inputNRNoiseLevel")
+				self.setDoubleValue(newValue, bounds: LineOverlay.nRNoiseLevelRange, forKey: "inputNRNoiseLevel")
 			}
 		}
 
@@ -107,12 +105,10 @@ import Foundation
 		/// - Default Value: `0.71`
 		@objc public var nRSharpness: Double {
 			get {
-				let number = self.filter.value(forKey: "inputNRSharpness") as? NSNumber
-				return number?.doubleValue ?? Self.nRSharpnessDefault
+				self.doubleValue(forKey: "inputNRSharpness", defaultValue: Self.nRSharpnessDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.nRSharpnessRange)
-				self.filter.setValue(number, forKey: "inputNRSharpness")
+				self.setDoubleValue(newValue, bounds: LineOverlay.nRSharpnessRange, forKey: "inputNRSharpness")
 			}
 		}
 
@@ -134,12 +130,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var edgeIntensity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputEdgeIntensity") as? NSNumber
-				return number?.doubleValue ?? Self.edgeIntensityDefault
+				self.doubleValue(forKey: "inputEdgeIntensity", defaultValue: Self.edgeIntensityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.edgeIntensityRange)
-				self.filter.setValue(number, forKey: "inputEdgeIntensity")
+				self.setDoubleValue(newValue, bounds: LineOverlay.edgeIntensityRange, forKey: "inputEdgeIntensity")
 			}
 		}
 
@@ -161,12 +155,10 @@ import Foundation
 		/// - Default Value: `0.1`
 		@objc public var threshold: Double {
 			get {
-				let number = self.filter.value(forKey: "inputThreshold") as? NSNumber
-				return number?.doubleValue ?? Self.thresholdDefault
+				self.doubleValue(forKey: "inputThreshold", defaultValue: Self.thresholdDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.thresholdRange)
-				self.filter.setValue(number, forKey: "inputThreshold")
+				self.setDoubleValue(newValue, bounds: LineOverlay.thresholdRange, forKey: "inputThreshold")
 			}
 		}
 
@@ -188,12 +180,10 @@ import Foundation
 		/// - Default Value: `50.0`
 		@objc public var contrast: Double {
 			get {
-				let number = self.filter.value(forKey: "inputContrast") as? NSNumber
-				return number?.doubleValue ?? Self.contrastDefault
+				self.doubleValue(forKey: "inputContrast", defaultValue: Self.contrastDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: LineOverlay.contrastRange)
-				self.filter.setValue(number, forKey: "inputContrast")
+				self.setDoubleValue(newValue, bounds: LineOverlay.contrastRange, forKey: "inputContrast")
 			}
 		}
 

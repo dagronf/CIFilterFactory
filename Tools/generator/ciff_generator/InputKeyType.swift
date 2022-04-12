@@ -75,6 +75,8 @@ struct InputKeyType {
 		case "CGPoint": return PositionGeneratorType(inputKeyType: self)
 		case "CIAffineTransform": return AffineGeneratorType(inputKeyType: self)
 		case "CGImageMetadata": return ImageGeneratorType(inputKeyType: self)
+		case "String": return StringGeneratorType(inputKeyType: self)
+		case "Data": return DataGeneratorType(inputKeyType: self)
 		default: return CoreType(inputKeyType: self)
 		}
 	}

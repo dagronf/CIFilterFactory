@@ -80,12 +80,10 @@ import Foundation
 		/// - Default Value: `1.0`
 		@objc public var intensity: Double {
 			get {
-				let number = self.filter.value(forKey: "inputIntensity") as? NSNumber
-				return number?.doubleValue ?? Self.intensityDefault
+				self.doubleValue(forKey: "inputIntensity", defaultValue: Self.intensityDefault)
 			}
 			set {
-				let number = NSNumber(value: newValue).clamped(bounds: Edges.intensityRange)
-				self.filter.setValue(number, forKey: "inputIntensity")
+				self.setDoubleValue(newValue, bounds: Edges.intensityRange, forKey: "inputIntensity")
 			}
 		}
 
