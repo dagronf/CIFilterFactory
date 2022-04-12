@@ -12,7 +12,7 @@ script_path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 package_path="$( cd -- "${script_path}/../" >/dev/null 2>&1 ; pwd -P )"
 
 # The temporary 'docs' folder for generating documentation
-temporary_folder="${package_path}/.docgeneratortemp"
+temporary_folder="${package_path}/.build/docgenerator"
 
 echo "Generating docarchive in ${package_path}"
 echo "Temporary build location is ${temporary_folder}"
@@ -30,8 +30,8 @@ echo "Copying docarchive into position..."
 # Copy the resulting docarchive file up to the package folder
 cp -R "${temporary_folder}/Build/Products/Debug/CIFilterFactory.doccarchive" .
 
-echo "Removing temporary build folder..."
+#echo "Removing temporary build folder..."
 # And remove the temporary docs folder
-rm -r "${temporary_folder}"
+#rm -r "${temporary_folder}"
 
 popd
