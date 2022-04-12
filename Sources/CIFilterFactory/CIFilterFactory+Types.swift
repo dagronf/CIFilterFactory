@@ -92,25 +92,11 @@ public extension CIFF {
 }
 
 extension CGPoint {
-	public var ciVector: CIVector { return CIVector(cgPoint: self) }
-	public init(with filter: CIFilter, key: String, defaultValue: CGPoint) {
-		if let value = filter.value(forKey: key) as? CIVector {
-			self = value.cgPointValue
-		}
-		else {
-			self = defaultValue
-		}
-	}
+	/// Convert this CGPoint value to a CIVector
+	@inline(__always) internal var ciVector: CIVector { return CIVector(cgPoint: self) }
 }
 
 extension CGRect {
-	public var ciVector: CIVector { return CIVector(cgRect: self) }
-	public init(with filter: CIFilter, key: String, defaultValue: CGRect) {
-		if let value = filter.value(forKey: key) as? CIVector {
-			self = value.cgRectValue
-		}
-		else {
-			self = defaultValue
-		}
-	}
+	/// Convert this CGRect value to a CIVector
+	@inline(__always) internal var ciVector: CIVector { return CIVector(cgRect: self) }
 }

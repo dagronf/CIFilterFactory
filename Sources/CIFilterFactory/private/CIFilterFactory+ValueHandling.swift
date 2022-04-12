@@ -114,3 +114,32 @@ internal extension CIFF.Core {
 		return tmp as? Data
 	}
 }
+
+// CGPoint
+
+internal extension CIFF.Core {
+	// Returns the CGPoint value for the filter with the specified key
+	@inline(__always) func cgPointValue(forKey key: String, defaultValue: CGPoint) -> CGPoint {
+		if let value = filter.value(forKey: key) as? CIVector {
+			return value.cgPointValue
+		}
+		else {
+			return defaultValue
+		}
+	}
+}
+
+
+// CGRect
+
+internal extension CIFF.Core {
+	// Returns the CGPoint value for the filter with the specified key
+	@inline(__always) func cgRectValue(forKey key: String, defaultValue: CGRect) -> CGRect {
+		if let value = filter.value(forKey: key) as? CIVector {
+			return value.cgRectValue
+		}
+		else {
+			return defaultValue
+		}
+	}
+}

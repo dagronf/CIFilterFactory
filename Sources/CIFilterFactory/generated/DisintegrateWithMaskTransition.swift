@@ -190,7 +190,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 0.0, y: 0.0)`
 		@objc public var shadowOffset: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
+				self.cgPointValue(forKey: "inputShadowOffset", defaultValue: Self.shadowOffsetDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputShadowOffset")

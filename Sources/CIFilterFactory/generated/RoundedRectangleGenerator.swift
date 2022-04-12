@@ -61,7 +61,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)`
 		@objc public var extent: CGRect {
 			get {
-				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")

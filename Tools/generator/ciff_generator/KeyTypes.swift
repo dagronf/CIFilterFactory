@@ -294,7 +294,8 @@ class RectGeneratorType: CoreType {
 		let defaultValue = (self.defaultValue as? CIVector)?.cgRectValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): CGRect {")
 		out.print("      get {")
-		out.print("         CGRect(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+		out.print("         self.cgRectValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+//		out.print("         CGRect(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key)")"#)
@@ -353,7 +354,7 @@ class PositionGeneratorType: CoreType {
 		let defaultValue = (self.defaultValue as? CIVector)?.cgPointValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): CGPoint {")
 		out.print("      get {")
-		out.print("         CGPoint(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+		out.print("         self.cgPointValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print("         self.setKeyedValue(newValue.ciVector, for: \"\(key)\")")

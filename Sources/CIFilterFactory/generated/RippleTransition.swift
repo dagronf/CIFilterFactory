@@ -113,7 +113,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				self.cgPointValue(forKey: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")
@@ -134,7 +134,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
-				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")

@@ -80,7 +80,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 150.0, y: 150.0)`
 		@objc public var center: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputCenter", defaultValue: Self.centerDefault)
+				self.cgPointValue(forKey: "inputCenter", defaultValue: Self.centerDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputCenter")

@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)`
 		@objc public var extent: CGRect {
 			get {
-				CGRect(with: self.filter, key: "inputExtent", defaultValue: Self.extentDefault)
+				self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
@@ -100,7 +100,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 118.0, y: 118.0)`
 		@objc public var topLeft: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
+				self.cgPointValue(forKey: "inputTopLeft", defaultValue: Self.topLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
@@ -121,7 +121,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 646.0, y: 646.0)`
 		@objc public var topRight: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
+				self.cgPointValue(forKey: "inputTopRight", defaultValue: Self.topRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
@@ -142,7 +142,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 548.0, y: 548.0)`
 		@objc public var bottomRight: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
+				self.cgPointValue(forKey: "inputBottomRight", defaultValue: Self.bottomRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
@@ -163,7 +163,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 155.0, y: 155.0)`
 		@objc public var bottomLeft: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
+				self.cgPointValue(forKey: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")

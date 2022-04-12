@@ -103,7 +103,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition`
 		@objc public var topLeft: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputTopLeft", defaultValue: Self.topLeftDefault)
+				self.cgPointValue(forKey: "inputTopLeft", defaultValue: Self.topLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopLeft")
@@ -123,7 +123,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition`
 		@objc public var topRight: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputTopRight", defaultValue: Self.topRightDefault)
+				self.cgPointValue(forKey: "inputTopRight", defaultValue: Self.topRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputTopRight")
@@ -143,7 +143,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition`
 		@objc public var bottomRight: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputBottomRight", defaultValue: Self.bottomRightDefault)
+				self.cgPointValue(forKey: "inputBottomRight", defaultValue: Self.bottomRightDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomRight")
@@ -163,7 +163,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition`
 		@objc public var bottomLeft: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
+				self.cgPointValue(forKey: "inputBottomLeft", defaultValue: Self.bottomLeftDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputBottomLeft")

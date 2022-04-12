@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: 1280.0, y: 1280.0)`
 		@objc public var size: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputSize", defaultValue: Self.sizeDefault)
+				self.cgPointValue(forKey: "inputSize", defaultValue: Self.sizeDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputSize")

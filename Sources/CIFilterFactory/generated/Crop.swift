@@ -79,7 +79,7 @@ import Foundation
 		/// - Default Value: `CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)`
 		@objc public var rectangle: CGRect {
 			get {
-				CGRect(with: self.filter, key: "inputRectangle", defaultValue: Self.rectangleDefault)
+				self.cgRectValue(forKey: "inputRectangle", defaultValue: Self.rectangleDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputRectangle")

@@ -185,7 +185,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var leftEyePositions: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
+				self.cgPointValue(forKey: "inputLeftEyePositions", defaultValue: Self.leftEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputLeftEyePositions")
@@ -206,7 +206,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var rightEyePositions: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
+				self.cgPointValue(forKey: "inputRightEyePositions", defaultValue: Self.rightEyePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputRightEyePositions")
@@ -227,7 +227,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var chinPositions: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
+				self.cgPointValue(forKey: "inputChinPositions", defaultValue: Self.chinPositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputChinPositions")
@@ -248,7 +248,7 @@ import Foundation
 		/// - Default Value: `CGPoint(x: -1.0, y: -1.0)`
 		@objc public var nosePositions: CGPoint {
 			get {
-				CGPoint(with: self.filter, key: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
+				self.cgPointValue(forKey: "inputNosePositions", defaultValue: Self.nosePositionsDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputNosePositions")
@@ -268,7 +268,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeRectangle`
 		@objc public var focusRect: CGRect {
 			get {
-				CGRect(with: self.filter, key: "inputFocusRect", defaultValue: Self.focusRectDefault)
+				self.cgRectValue(forKey: "inputFocusRect", defaultValue: Self.focusRectDefault)
 			}
 			set {
 				self.setKeyedValue(newValue.ciVector, for: "inputFocusRect")
