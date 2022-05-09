@@ -409,3 +409,32 @@ class CIVectorGeneratorType: CoreType {
 		return out.content
 	}
 }
+
+class CIPosition3Type: CoreType {
+
+	override func defaultValueString() -> String? {
+		if let f = self.defaultValue as? CIVector {
+			return "\(f)"
+		}
+		return nil
+	}
+
+	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
+		let out = FileSquirter(name: "dummy")
+		out.print("   @objc public var \(userFriendlyKey): CIPosition3? {")
+		out.print("      get {")
+		out.print("         self.cgPosition3Value(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
+		out.print("      }")
+		out.print("      set {")
+		out.print(#"        self.setKeyedValue(newValue?.ciVector, for: "\#(key)")"#)
+		out.print("      }")
+		out.print("   }")
+		if let dvi = self.defaultValue as? CIVector {
+			var tmp = "CIPosition3(x: \(dvi.value(at: 0)), y: \(dvi.value(at: 1)), z: \(dvi.value(at: 2)))"
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default = \(tmp)")
+		}
+
+		return out.content
+	}
+}

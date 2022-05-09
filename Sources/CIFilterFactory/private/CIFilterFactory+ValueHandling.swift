@@ -143,3 +143,18 @@ internal extension CIFF.Core {
 		}
 	}
 }
+
+// CIPosition3
+
+internal extension CIFF.Core {
+	// Returns the CGPoint value for the filter with the specified key
+	@inline(__always) func cgPosition3Value(forKey key: String, defaultValue: CIFF.CIPosition3) -> CIFF.CIPosition3 {
+		if let value = filter.value(forKey: key) as? CIVector,
+			let position = CIFF.CIPosition3(value) {
+			return position
+		}
+		else {
+			return defaultValue
+		}
+	}
+}

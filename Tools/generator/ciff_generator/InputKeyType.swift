@@ -61,6 +61,9 @@ struct InputKeyType {
 		else if self.subtype == kCIAttributeTypeCount {
 			return "UInt"
 		}
+		else if self.subtype == kCIAttributeTypePosition3 {
+			return "CIPosition3"
+		}
 		return self.class
 	}
 
@@ -77,6 +80,7 @@ struct InputKeyType {
 		case "CGImageMetadata": return ImageGeneratorType(inputKeyType: self)
 		case "String": return StringGeneratorType(inputKeyType: self)
 		case "Data": return DataGeneratorType(inputKeyType: self)
+		case "CIPosition3": return CIPosition3Type(inputKeyType: self)
 		case "CIVector": return CIVectorGeneratorType(inputKeyType: self)
 		default: return CoreType(inputKeyType: self)
 		}

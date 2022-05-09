@@ -77,17 +77,17 @@ import Foundation
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
 		/// - Default Value: `[400 600 150]`
-		@objc public var lightPosition: CIVector? {
+		@objc public var lightPosition: CIPosition3? {
 			get {
-				self.keyedValue("inputLightPosition")
+				self.cgPosition3Value(forKey: "inputLightPosition", defaultValue: Self.lightPositionDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputLightPosition")
+				self.setKeyedValue(newValue?.ciVector, for: "inputLightPosition")
 			}
 		}
 
 		/// `lightPosition` default value
-		@objc public static let lightPositionDefault = CIVector(values: [400.0, 600.0, 150.0], count: 3)
+		@objc public static let lightPositionDefault = CIPosition3(x: 400.0, y: 600.0, z: 150.0)
 
 		// MARK: - lightPointsAt (inputLightPointsAt)
 
@@ -98,17 +98,17 @@ import Foundation
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
 		/// - Default Value: `[200 200 0]`
-		@objc public var lightPointsAt: CIVector? {
+		@objc public var lightPointsAt: CIPosition3? {
 			get {
-				self.keyedValue("inputLightPointsAt")
+				self.cgPosition3Value(forKey: "inputLightPointsAt", defaultValue: Self.lightPointsAtDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputLightPointsAt")
+				self.setKeyedValue(newValue?.ciVector, for: "inputLightPointsAt")
 			}
 		}
 
 		/// `lightPointsAt` default value
-		@objc public static let lightPointsAtDefault = CIVector(values: [200.0, 200.0, 0.0], count: 3)
+		@objc public static let lightPointsAtDefault = CIPosition3(x: 200.0, y: 200.0, z: 0.0)
 
 		// MARK: - brightness (inputBrightness)
 
@@ -182,8 +182,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			lightPosition: CIVector = SpotLight.lightPositionDefault,
-			lightPointsAt: CIVector = SpotLight.lightPointsAtDefault,
+			lightPosition: CIPosition3 = SpotLight.lightPositionDefault,
+			lightPointsAt: CIPosition3 = SpotLight.lightPointsAtDefault,
 			brightness: Double = SpotLight.brightnessDefault,
 			concentration: Double = SpotLight.concentrationDefault,
 			color: CIColor

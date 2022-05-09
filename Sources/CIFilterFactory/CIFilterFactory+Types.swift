@@ -100,3 +100,43 @@ extension CGRect {
 	/// Convert this CGRect value to a CIVector
 	@inline(__always) internal var ciVector: CIVector { return CIVector(cgRect: self) }
 }
+
+public extension CIFF {
+	/// A three-dimensional location in the working coordinate space. (A 3-element vector type.)
+	///
+	/// A wrapper for a `CIAttributeTypePosition3` type.
+	///
+	/// See: [CIAttributeTypePosition3](https://developer.apple.com/documentation/coreimage/kciattributetypeposition3)
+	@objc(CIFFCIPosition3) class CIPosition3: NSObject {
+		/// The x value
+		@objc public let x: CGFloat
+		/// The y value
+		@objc public let y: CGFloat
+		/// The z value
+		@objc public let z: CGFloat
+
+		/// A CIVector representation of this object
+		@objc lazy public var ciVector: CIVector = {
+			CIVector(values: [self.x, self.y, self.z], count: 3)
+		}()
+
+		/// Create a CIPosition3 value from x, y and z values
+		@inlinable @objc public init(x: CGFloat, y: CGFloat, z: CGFloat) {
+			self.x = x
+			self.y = y
+			self.z = z
+		}
+
+		/// Create a CIPosition3 value from the contents of a CIVector
+		///
+		/// Returns nil if :-
+		///  * The passed vector is nil, or
+		///  * The passed vector does not contain exactly three values
+		@inlinable @objc public init?(_ vector: CIVector?) {
+			guard let v = vector, v.count == 3 else { return nil }
+			self.x = v.value(at: 0)
+			self.y = v.value(at: 1)
+			self.z = v.value(at: 2)
+		}
+	}
+}
