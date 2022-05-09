@@ -29,30 +29,21 @@ import Foundation
 
 	/// Common filter base class. You never need need to create this yourself
 	@objc public class Core: NSObject {
-		// The CIFilter wrapped instance for the filter
+		/// The CIFilter wrapped instance for the filter
 		@objc public let filter: CIFilter
-
-		init?(name: String) {
-			guard let filter = CIFilter(name: name) else {
-				return nil
-			}
-			self.filter = filter
-			super.init()
-
-#if os(macOS)
-			filter.setDefaults()
-#endif
-		}
 
 		/// Returns a CIImage object that encapsulates the operations configured in the filter.
 		@objc public dynamic var outputImage: CIImage? {
 			return self.filter.outputImage
 		}
 
-		/// The name of the filter
-		@objc public lazy var name: String = {
-			return self.filter.name
-		}()
+		/// The filter's name
+		///
+		/// See [Apple's Documentation](https://developer.apple.com/documentation/coreimage/cifilter/1437997-name) for more information.
+		@objc @inlinable public var name: String {
+			get { self.filter.name }
+			set { self.filter.name = newValue }
+		}
 
 		/// The localized version of the filter name that is displayed in the user interface
 		@objc public lazy var displayName: String = {
@@ -95,6 +86,20 @@ import Foundation
 		/// Reset all the values in the filter to the defaults
 		@inlinable @objc public func reset() {
 			return self.filter.setDefaults()
+		}
+
+		// Private
+
+		internal init?(name: String) {
+			guard let filter = CIFilter(name: name) else {
+				return nil
+			}
+			self.filter = filter
+			super.init()
+
+#if os(macOS)
+			filter.setDefaults()
+#endif
 		}
 	}
 }
