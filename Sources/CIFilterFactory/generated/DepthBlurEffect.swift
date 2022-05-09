@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -77,7 +77,7 @@ import Foundation
 		/// - Internal class: `CIImage`
 		@objc public var disparityImage: CIImage? {
 			get {
-				return self.keyedValue("inputDisparityImage")
+				self.keyedValue("inputDisparityImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputDisparityImage")
@@ -93,7 +93,7 @@ import Foundation
 		/// - Internal class: `CIImage`
 		@objc public var matteImage: CIImage? {
 			get {
-				return self.keyedValue("inputMatteImage")
+				self.keyedValue("inputMatteImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMatteImage")
@@ -109,7 +109,7 @@ import Foundation
 		/// - Internal class: `CIImage`
 		@objc public var hairImage: CIImage? {
 			get {
-				return self.keyedValue("inputHairImage")
+				self.keyedValue("inputHairImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputHairImage")
@@ -125,7 +125,7 @@ import Foundation
 		/// - Internal class: `CIImage`
 		@objc public var glassesImage: CIImage? {
 			get {
-				return self.keyedValue("inputGlassesImage")
+				self.keyedValue("inputGlassesImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputGlassesImage")
@@ -141,7 +141,7 @@ import Foundation
 		/// - Internal class: `CIImage`
 		@objc public var gainMap: CIImage? {
 			get {
-				return self.keyedValue("inputGainMap")
+				self.keyedValue("inputGainMap")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputGainMap")
@@ -334,7 +334,7 @@ import Foundation
 		/// - Internal class: `AVCameraCalibrationData`
 		@objc public var calibrationData: AVCameraCalibrationData? {
 			get {
-				return self.keyedValue("inputCalibrationData")
+				self.keyedValue("inputCalibrationData")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCalibrationData")
@@ -350,7 +350,7 @@ import Foundation
 		/// - Internal class: `CGImageMetadataRef`
 		@objc public var auxDataMetadata: CGImageMetadata? {
 			get {
-				return self.keyedValue("inputAuxDataMetadata")
+				self.keyedValue("inputAuxDataMetadata")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputAuxDataMetadata")

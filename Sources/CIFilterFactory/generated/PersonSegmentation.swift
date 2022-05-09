@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -77,7 +77,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var qualityLevel: NSNumber? {
 			get {
-				return self.keyedValue("inputQualityLevel")
+				self.keyedValue("inputQualityLevel")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputQualityLevel")

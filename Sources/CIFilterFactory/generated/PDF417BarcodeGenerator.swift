@@ -79,7 +79,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var minWidth: NSNumber? {
 			get {
-				return self.keyedValue("inputMinWidth")
+				self.keyedValue("inputMinWidth")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMinWidth")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var maxWidth: NSNumber? {
 			get {
-				return self.keyedValue("inputMaxWidth")
+				self.keyedValue("inputMaxWidth")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMaxWidth")
@@ -111,7 +111,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var minHeight: NSNumber? {
 			get {
-				return self.keyedValue("inputMinHeight")
+				self.keyedValue("inputMinHeight")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMinHeight")
@@ -127,7 +127,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var maxHeight: NSNumber? {
 			get {
-				return self.keyedValue("inputMaxHeight")
+				self.keyedValue("inputMaxHeight")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMaxHeight")
@@ -143,7 +143,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var dataColumns: NSNumber? {
 			get {
-				return self.keyedValue("inputDataColumns")
+				self.keyedValue("inputDataColumns")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputDataColumns")
@@ -159,7 +159,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var rows: NSNumber? {
 			get {
-				return self.keyedValue("inputRows")
+				self.keyedValue("inputRows")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputRows")
@@ -175,7 +175,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var preferredAspectRatio: NSNumber? {
 			get {
-				return self.keyedValue("inputPreferredAspectRatio")
+				self.keyedValue("inputPreferredAspectRatio")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputPreferredAspectRatio")
@@ -191,7 +191,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var compactionMode: NSNumber? {
 			get {
-				return self.keyedValue("inputCompactionMode")
+				self.keyedValue("inputCompactionMode")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCompactionMode")
@@ -207,7 +207,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var compactStyle: NSNumber? {
 			get {
-				return self.keyedValue("inputCompactStyle")
+				self.keyedValue("inputCompactStyle")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCompactStyle")
@@ -223,7 +223,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var correctionLevel: NSNumber? {
 			get {
-				return self.keyedValue("inputCorrectionLevel")
+				self.keyedValue("inputCorrectionLevel")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
@@ -239,7 +239,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var alwaysSpecifyCompaction: NSNumber? {
 			get {
-				return self.keyedValue("inputAlwaysSpecifyCompaction")
+				self.keyedValue("inputAlwaysSpecifyCompaction")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputAlwaysSpecifyCompaction")

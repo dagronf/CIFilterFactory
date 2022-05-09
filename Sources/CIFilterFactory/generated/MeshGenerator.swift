@@ -85,7 +85,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var color: CIColor? {
 			get {
-				return self.keyedValue("inputColor")
+				self.keyedValue("inputColor")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputColor")
@@ -101,7 +101,7 @@ import Foundation
 		/// - Internal class: `NSArray`
 		@objc public var mesh: NSArray? {
 			get {
-				return self.keyedValue("inputMesh")
+				self.keyedValue("inputMesh")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMesh")

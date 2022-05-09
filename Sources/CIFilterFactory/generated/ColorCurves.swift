@@ -63,7 +63,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var curvesDomain: CIVector? {
 			get {
-				return self.keyedValue("inputCurvesDomain")
+				self.keyedValue("inputCurvesDomain")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCurvesDomain")
@@ -111,7 +111,7 @@ import Foundation
 		/// - Internal class: `NSObject`
 		@objc public var colorSpace: NSObject? {
 			get {
-				return self.keyedValue("inputColorSpace")
+				self.keyedValue("inputColorSpace")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputColorSpace")

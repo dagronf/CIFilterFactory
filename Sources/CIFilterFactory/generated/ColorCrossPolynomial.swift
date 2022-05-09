@@ -63,7 +63,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -79,7 +79,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var redCoefficients: CIVector? {
 			get {
-				return self.keyedValue("inputRedCoefficients")
+				self.keyedValue("inputRedCoefficients")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputRedCoefficients")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var greenCoefficients: CIVector? {
 			get {
-				return self.keyedValue("inputGreenCoefficients")
+				self.keyedValue("inputGreenCoefficients")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputGreenCoefficients")
@@ -111,7 +111,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var blueCoefficients: CIVector? {
 			get {
-				return self.keyedValue("inputBlueCoefficients")
+				self.keyedValue("inputBlueCoefficients")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBlueCoefficients")

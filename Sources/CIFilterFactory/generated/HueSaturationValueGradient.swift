@@ -160,7 +160,7 @@ import Foundation
 		/// - Internal class: `NSObject`
 		@objc public var colorSpace: NSObject? {
 			get {
-				return self.keyedValue("inputColorSpace")
+				self.keyedValue("inputColorSpace")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputColorSpace")

@@ -34,7 +34,7 @@ class CoreType {
 			out.print(#"         return tmp as \#(m)?"#)
 		}
 		else {
-			out.print(#"         return self.keyedValue("\#(key)")"#)
+			out.print(#"         self.keyedValue("\#(key)")"#)
 		}
 		out.print("      }")
 
@@ -240,8 +240,6 @@ class ValueGeneratorType<ValueType>: CoreType {
 class StringGeneratorType: CoreType {
 	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
 		let out = FileSquirter(name: "dummy")
-
-		//let defaultValue = (self.defaultValue as? NSString)?.cgRectValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): String? {")
 		out.print("      get {")
 		out.print("         self.stringValue(forKey: \"\(key)\")")
@@ -251,7 +249,6 @@ class StringGeneratorType: CoreType {
 		out.print("      }")
 		out.print("   }")
 		out.print("")
-
 		return out.content
 	}
 }
@@ -261,8 +258,6 @@ class StringGeneratorType: CoreType {
 class DataGeneratorType: CoreType {
 	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
 		let out = FileSquirter(name: "dummy")
-
-		//let defaultValue = (self.defaultValue as? NSString)?.cgRectValue ?? .zero
 		out.print("   @objc public var \(userFriendlyKey): Data? {")
 		out.print("      get {")
 		out.print("         self.dataValue(forKey: \"\(key)\")")
@@ -272,7 +267,6 @@ class DataGeneratorType: CoreType {
 		out.print("      }")
 		out.print("   }")
 		out.print("")
-
 		return out.content
 	}
 }
@@ -295,7 +289,6 @@ class RectGeneratorType: CoreType {
 		out.print("   @objc public var \(userFriendlyKey): CGRect {")
 		out.print("      get {")
 		out.print("         self.cgRectValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
-//		out.print("         CGRect(with: self.filter, key: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
 		out.print(#"         self.setKeyedValue(newValue.ciVector, for: "\#(key)")"#)
@@ -373,7 +366,7 @@ class ImageGeneratorType: CoreType {
 		let out = FileSquirter(name: "dummy")
 		out.print("   @objc public var \(userFriendlyKey): CGImageMetadata? {")
 		out.print("      get {")
-		out.print(#"         return self.keyedValue("\#(key)")"#)
+		out.print(#"         self.keyedValue("\#(key)")"#)
 		out.print("      }")
 		out.print("      set {")
 		out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)

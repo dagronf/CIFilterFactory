@@ -63,7 +63,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -79,7 +79,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var rVector: CIVector? {
 			get {
-				return self.keyedValue("inputRVector")
+				self.keyedValue("inputRVector")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputRVector")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var gVector: CIVector? {
 			get {
-				return self.keyedValue("inputGVector")
+				self.keyedValue("inputGVector")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputGVector")
@@ -111,7 +111,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var bVector: CIVector? {
 			get {
-				return self.keyedValue("inputBVector")
+				self.keyedValue("inputBVector")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBVector")
@@ -127,7 +127,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var aVector: CIVector? {
 			get {
-				return self.keyedValue("inputAVector")
+				self.keyedValue("inputAVector")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputAVector")
@@ -143,7 +143,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var biasVector: CIVector? {
 			get {
-				return self.keyedValue("inputBiasVector")
+				self.keyedValue("inputBiasVector")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBiasVector")

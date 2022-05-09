@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -77,7 +77,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var centerColor1: CIColor? {
 			get {
-				return self.keyedValue("inputCenterColor1")
+				self.keyedValue("inputCenterColor1")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCenterColor1")
@@ -93,7 +93,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var replacementColor1: CIColor? {
 			get {
-				return self.keyedValue("inputReplacementColor1")
+				self.keyedValue("inputReplacementColor1")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputReplacementColor1")
@@ -159,7 +159,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var centerColor2: CIColor? {
 			get {
-				return self.keyedValue("inputCenterColor2")
+				self.keyedValue("inputCenterColor2")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCenterColor2")
@@ -175,7 +175,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var replacementColor2: CIColor? {
 			get {
-				return self.keyedValue("inputReplacementColor2")
+				self.keyedValue("inputReplacementColor2")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputReplacementColor2")
@@ -241,7 +241,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var centerColor3: CIColor? {
 			get {
-				return self.keyedValue("inputCenterColor3")
+				self.keyedValue("inputCenterColor3")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCenterColor3")
@@ -257,7 +257,7 @@ import Foundation
 		/// - Internal class: `CIColor`
 		@objc public var replacementColor3: CIColor? {
 			get {
-				return self.keyedValue("inputReplacementColor3")
+				self.keyedValue("inputReplacementColor3")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputReplacementColor3")

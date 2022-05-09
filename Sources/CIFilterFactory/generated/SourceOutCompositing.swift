@@ -64,7 +64,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -81,7 +81,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var backgroundImage: CIImage? {
 			get {
-				return self.keyedValue("inputBackgroundImage")
+				self.keyedValue("inputBackgroundImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBackgroundImage")

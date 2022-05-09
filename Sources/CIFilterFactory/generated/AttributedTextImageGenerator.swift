@@ -60,7 +60,7 @@ import Foundation
 		/// - Internal class: `NSAttributedString`
 		@objc public var text: NSAttributedString? {
 			get {
-				return self.keyedValue("inputText")
+				self.keyedValue("inputText")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputText")

@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -77,7 +77,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var weights: CIVector? {
 			get {
-				return self.keyedValue("inputWeights")
+				self.keyedValue("inputWeights")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputWeights")
@@ -93,7 +93,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var bias: NSNumber? {
 			get {
-				return self.keyedValue("inputBias")
+				self.keyedValue("inputBias")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBias")

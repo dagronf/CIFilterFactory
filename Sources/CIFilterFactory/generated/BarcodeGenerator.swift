@@ -67,7 +67,7 @@ import Foundation
 		/// - Internal class: `CIBarcodeDescriptor`
 		@objc public var barcodeDescriptor: CIBarcodeDescriptor? {
 			get {
-				return self.keyedValue("inputBarcodeDescriptor")
+				self.keyedValue("inputBarcodeDescriptor")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputBarcodeDescriptor")

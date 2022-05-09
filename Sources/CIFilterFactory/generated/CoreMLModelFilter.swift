@@ -60,7 +60,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -76,7 +76,7 @@ import Foundation
 		/// - Internal class: `MLModel`
 		@objc public var model: MLModel? {
 			get {
-				return self.keyedValue("inputModel")
+				self.keyedValue("inputModel")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputModel")

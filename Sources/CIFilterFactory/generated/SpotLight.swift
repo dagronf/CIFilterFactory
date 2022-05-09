@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -78,7 +78,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition3`
 		@objc public var lightPosition: CIVector? {
 			get {
-				return self.keyedValue("inputLightPosition")
+				self.keyedValue("inputLightPosition")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputLightPosition")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Type: `CIAttributeTypePosition3`
 		@objc public var lightPointsAt: CIVector? {
 			get {
-				return self.keyedValue("inputLightPointsAt")
+				self.keyedValue("inputLightPointsAt")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputLightPointsAt")
@@ -162,7 +162,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeOpaqueColor`
 		@objc public var color: CIColor? {
 			get {
-				return self.keyedValue("inputColor")
+				self.keyedValue("inputColor")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputColor")

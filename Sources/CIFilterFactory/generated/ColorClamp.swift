@@ -63,7 +63,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -79,7 +79,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var minComponents: CIVector? {
 			get {
-				return self.keyedValue("inputMinComponents")
+				self.keyedValue("inputMinComponents")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMinComponents")
@@ -95,7 +95,7 @@ import Foundation
 		/// - Internal class: `CIVector`
 		@objc public var maxComponents: CIVector? {
 			get {
-				return self.keyedValue("inputMaxComponents")
+				self.keyedValue("inputMaxComponents")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputMaxComponents")

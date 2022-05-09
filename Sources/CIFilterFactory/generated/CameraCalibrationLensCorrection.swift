@@ -61,7 +61,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeImage`
 		@objc public var inputImage: CIImage? {
 			get {
-				return self.keyedValue("inputImage")
+				self.keyedValue("inputImage")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputImage")
@@ -77,7 +77,7 @@ import Foundation
 		/// - Internal class: `AVCameraCalibrationData`
 		@objc public var aVCameraCalibrationData: AVCameraCalibrationData? {
 			get {
-				return self.keyedValue("inputAVCameraCalibrationData")
+				self.keyedValue("inputAVCameraCalibrationData")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputAVCameraCalibrationData")
@@ -93,7 +93,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var useInverseLookUpTable: NSNumber? {
 			get {
-				return self.keyedValue("inputUseInverseLookUpTable")
+				self.keyedValue("inputUseInverseLookUpTable")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputUseInverseLookUpTable")

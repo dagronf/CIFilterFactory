@@ -78,7 +78,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var correctionLevel: NSNumber? {
 			get {
-				return self.keyedValue("inputCorrectionLevel")
+				self.keyedValue("inputCorrectionLevel")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
@@ -94,7 +94,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var layers: NSNumber? {
 			get {
-				return self.keyedValue("inputLayers")
+				self.keyedValue("inputLayers")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputLayers")
@@ -110,7 +110,7 @@ import Foundation
 		/// - Internal class: `NSNumber`
 		@objc public var compactStyle: NSNumber? {
 			get {
-				return self.keyedValue("inputCompactStyle")
+				self.keyedValue("inputCompactStyle")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputCompactStyle")

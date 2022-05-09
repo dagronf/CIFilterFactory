@@ -106,7 +106,7 @@ import Foundation
 		/// - Type: `CIAttributeTypeColor`
 		@objc public var color: CIColor? {
 			get {
-				return self.keyedValue("inputColor")
+				self.keyedValue("inputColor")
 			}
 			set {
 				self.setKeyedValue(newValue, for: "inputColor")
