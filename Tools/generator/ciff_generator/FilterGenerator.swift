@@ -38,13 +38,6 @@ class FilterGenerator {
 		let inputKeys = filter.inputKeys
 		let filterAttributes = filter.attributes
 
-		// Generate an availablilty if needed
-		let availability = generateAvailabilityString(filterAttributes: filterAttributes)
-
-		if let availability = availability {
-			out.print(availability)
-		}
-
 		out.print("@objc public extension CIFF {")
 
 		out.print("   ///")
