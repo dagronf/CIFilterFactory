@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.5, iOS 6, tvOS 6, *)
 @objc public extension CIFF {
 	///
 	/// Minimum Component

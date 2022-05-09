@@ -51,22 +51,10 @@ class FilterGenerator {
 		}
 
 		out.print("   /// **Availability**")
-		var avail = ""
-		if let macAvail = filterAttributes[kCIAttributeFilterAvailable_Mac] as? String {
-			if let _ = Float(macAvail) {
-				avail += "macOS \(macAvail)"
-			}
-		}
-		if let iosAvail = filterAttributes[kCIAttributeFilterAvailable_iOS] as? String {
-			if avail.count > 0 {
-				avail += ", "
-			}
-			if let _ = Float(iosAvail) {
-				avail += "iOS \(iosAvail), tvOS \(iosAvail)"
-			}
-		}
+
+		let avail = generateAvailability(filterAttributes: filterAttributes)
 		if avail.count > 0 {
-			out.print("   /// - \(avail)")
+			out.print("   /// - \(avail.joined(separator: ", "))")
 			out.print("   ///")
 		}
 
@@ -97,7 +85,7 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
-		if let availability = availability {
+		if let availability = generateAvailabilityString(filterAttributes: filterAttributes) {
 			out.print(availability)
 		}
 		out.print("   @objc(CIFF\(staticName)) class \(staticName): Core {")
@@ -231,23 +219,38 @@ class FilterGenerator {
 	}
 
 	func generateAvailabilityString(filterAttributes: [String: Any]) -> String? {
-		var avail = ""
+		let avail = generateAvailability(filterAttributes: filterAttributes)
+		if avail.count > 0 {
+			return "@available(\(avail.joined(separator: ", ")), *)"
+		}
+		return nil
+	}
+
+	func generateAvailability(filterAttributes: [String: Any]) -> [String] {
+		var avail: [String] = []
 		if let macAvail = filterAttributes[kCIAttributeFilterAvailable_Mac] as? String {
 			if let _ = Float(macAvail) {
-				avail += "macOS \(macAvail)"
+				avail.append("macOS \(macAvail)")
 			}
 		}
 		if let iosAvail = filterAttributes[kCIAttributeFilterAvailable_iOS] as? String {
-			if avail.count > 0 {
-				avail += ", "
-			}
 			if let _ = Float(iosAvail) {
-				avail += "iOS \(iosAvail), tvOS \(iosAvail)"
+				avail.append("iOS \(iosAvail)")
+				avail.append("tvOS \(iosAvail)")
 			}
 		}
 
-		if avail.isEmpty { return nil }
-		return "@available(\(avail), *)"
+		// Hack(s) for macCatalyst.
+		if filterAttributes.filter({ (key, value) in
+			if let f = value as? [String: Any],
+				let v = f[kCIAttributeClass] as? String {
+				return v == "AVCameraCalibrationData"
+			}
+			return false
+		}).count > 0 {
+			avail.append("macCatalyst 14")
+		}
+		return avail
 	}
 
 

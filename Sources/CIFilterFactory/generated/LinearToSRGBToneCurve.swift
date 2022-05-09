@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.10, iOS 7, tvOS 7, *)
 @objc public extension CIFF {
 	///
 	/// Linear to sRGB Tone Curve

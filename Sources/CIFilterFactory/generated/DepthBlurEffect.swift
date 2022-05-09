@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFF {
 	///
 	/// Depth Blur Effect
@@ -31,7 +30,7 @@ import Foundation
 	/// Applies a variable radius disc blur to an image where areas in the background are softened more than those in the foreground.
 	///
 	/// **Availability**
-	/// - macOS 10.13, iOS 11, tvOS 11
+	/// - macOS 10.13, iOS 11, tvOS 11, macCatalyst 14
 	///
 	/// **Categories**
 	/// - CICategoryBlur
@@ -44,7 +43,7 @@ import Foundation
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidepthblureffect?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
 	///
-	@available(macOS 10.13, iOS 11, tvOS 11, *)
+	@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
 	@objc(CIFFDepthBlurEffect) class DepthBlurEffect: Core {
 		/// Create an instance of the filter
 		@objc public init?() {

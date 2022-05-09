@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFF {
 	///
 	/// Lens Correction for AVC
@@ -31,7 +30,7 @@ import Foundation
 	/// Geometrically distorts an image by altering the magnification based on the radial distance from the optical center to the farthest radius.
 	///
 	/// **Availability**
-	/// - macOS 10.14, iOS 12, tvOS 12
+	/// - macOS 10.14, iOS 12, tvOS 12, macCatalyst 14
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
@@ -44,7 +43,7 @@ import Foundation
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicameracalibrationlenscorrection?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
-	@available(macOS 10.14, iOS 12, tvOS 12, *)
+	@available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
 	@objc(CIFFCameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: Core {
 		/// Create an instance of the filter
 		@objc public init?() {

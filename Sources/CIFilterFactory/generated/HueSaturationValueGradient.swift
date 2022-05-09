@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.12, iOS 10, tvOS 10, *)
 @objc public extension CIFF {
 	///
 	/// Hue/Saturation/Value Gradient

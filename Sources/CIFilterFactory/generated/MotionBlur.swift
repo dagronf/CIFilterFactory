@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 @objc public extension CIFF {
 	///
 	/// Motion Blur

@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.4, iOS 6, tvOS 6, *)
 @objc public extension CIFF {
 	///
 	/// Circle Splash Distortion

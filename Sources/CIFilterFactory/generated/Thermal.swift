@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.11, iOS 10, tvOS 10, *)
 @objc public extension CIFF {
 	///
 	/// Thermal

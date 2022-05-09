@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.4, iOS 5, tvOS 5, *)
 @objc public extension CIFF {
 	///
 	/// Source Out

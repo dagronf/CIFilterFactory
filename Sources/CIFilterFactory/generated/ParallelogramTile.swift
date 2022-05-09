@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.4, iOS 9, tvOS 9, *)
 @objc public extension CIFF {
 	///
 	/// Parallelogram Tile

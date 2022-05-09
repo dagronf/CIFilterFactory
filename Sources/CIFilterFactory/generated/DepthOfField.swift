@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.6, iOS 9, tvOS 9, *)
 @objc public extension CIFF {
 	///
 	/// Depth of Field

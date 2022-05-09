@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.5, iOS 9, tvOS 9, *)
 @objc public extension CIFF {
 	///
 	/// Column Average

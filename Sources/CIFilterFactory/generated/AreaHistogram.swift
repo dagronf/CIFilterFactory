@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.5, iOS 8, tvOS 8, *)
 @objc public extension CIFF {
 	///
 	/// Area Histogram

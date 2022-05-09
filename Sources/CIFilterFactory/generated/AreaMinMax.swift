@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.14, iOS 12, tvOS 12, *)
 @objc public extension CIFF {
 	///
 	/// Area Min and Max

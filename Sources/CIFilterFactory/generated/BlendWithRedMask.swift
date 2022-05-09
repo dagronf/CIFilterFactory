@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.13, iOS 11, tvOS 11, *)
 @objc public extension CIFF {
 	///
 	/// Blend With Red Mask

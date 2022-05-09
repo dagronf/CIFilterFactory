@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 11.0, iOS 14, tvOS 14, *)
 @objc public extension CIFF {
 	///
 	/// Color Absolute Difference

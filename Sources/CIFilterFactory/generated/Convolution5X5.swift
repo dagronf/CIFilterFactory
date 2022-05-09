@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.9, iOS 7, tvOS 7, *)
 @objc public extension CIFF {
 	///
 	/// 5 by 5 Convolution

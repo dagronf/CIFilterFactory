@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.9, iOS 5, tvOS 5, *)
 @objc public extension CIFF {
 	///
 	/// Vignette

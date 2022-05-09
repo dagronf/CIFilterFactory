@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 10.15, iOS 13, tvOS 13, *)
 @objc public extension CIFF {
 	///
 	/// Rounded Rectangle Generator

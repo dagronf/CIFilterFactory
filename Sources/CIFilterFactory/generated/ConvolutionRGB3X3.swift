@@ -23,7 +23,6 @@ import CoreImage
 import CoreML
 import Foundation
 
-@available(macOS 12.0, iOS 15, tvOS 15, *)
 @objc public extension CIFF {
 	///
 	/// 3 by 3 RGB Convolution
