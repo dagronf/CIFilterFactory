@@ -18,7 +18,29 @@
 		2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */; };
 		2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */; };
 		2358BA5E25A3B1DC00872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */; };
+		23E4CFFC2828ADE7005D0B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFB2828ADE7005D0B2B /* AppDelegate.swift */; };
+		23E4CFFE2828ADE7005D0B2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFD2828ADE7005D0B2B /* SceneDelegate.swift */; };
+		23E4D0002828ADE7005D0B2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFF2828ADE7005D0B2B /* ViewController.swift */; };
+		23E4D0032828ADE7005D0B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0012828ADE7005D0B2B /* Main.storyboard */; };
+		23E4D0052828ADE8005D0B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0042828ADE8005D0B2B /* Assets.xcassets */; };
+		23E4D0082828ADE8005D0B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0062828ADE8005D0B2B /* LaunchScreen.storyboard */; };
+		23E4D0112828AE50005D0B2B /* CIFilterFactory-Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */; };
+		23E4D0122828AE50005D0B2B /* CIFilterFactory-Shared in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		23E4D0132828AE50005D0B2B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				23E4D0122828AE50005D0B2B /* CIFilterFactory-Shared in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIFilterFactory ObjectiveC Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +59,15 @@
 		2352838C24B6BAF60006FC22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2352838E24B6BAF60006FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2358BA5225A3B1A300872159 /* CIFilterFactory */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CIFilterFactory; path = ../..; sourceTree = "<group>"; };
+		23E4CFF92828ADE7005D0B2B /* CIFilterFactory Swift iOS Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIFilterFactory Swift iOS Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23E4CFFB2828ADE7005D0B2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23E4CFFD2828ADE7005D0B2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		23E4CFFF2828ADE7005D0B2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23E4D0022828ADE7005D0B2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23E4D0042828ADE8005D0B2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23E4D0072828ADE8005D0B2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23E4D0092828ADE8005D0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23E4D00D2828ADEE005D0B2B /* CIFilterFactory Swift iOS Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CIFilterFactory Swift iOS Test.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +84,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E4CFF62828ADE7005D0B2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23E4D0112828AE50005D0B2B /* CIFilterFactory-Shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +138,7 @@
 				2358BA5225A3B1A300872159 /* CIFilterFactory */,
 				2352836924B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */,
 				2352838124B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */,
+				23E4CFFA2828ADE7005D0B2B /* CIFilterFactory Swift iOS Test */,
 				23C2F6D222A3374D002A354E /* Products */,
 				2352837924B6B0F50006FC22 /* Frameworks */,
 			);
@@ -109,8 +149,24 @@
 			children = (
 				2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */,
 				2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */,
+				23E4CFF92828ADE7005D0B2B /* CIFilterFactory Swift iOS Test.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		23E4CFFA2828ADE7005D0B2B /* CIFilterFactory Swift iOS Test */ = {
+			isa = PBXGroup;
+			children = (
+				23E4D00D2828ADEE005D0B2B /* CIFilterFactory Swift iOS Test.entitlements */,
+				23E4CFFB2828ADE7005D0B2B /* AppDelegate.swift */,
+				23E4CFFD2828ADE7005D0B2B /* SceneDelegate.swift */,
+				23E4CFFF2828ADE7005D0B2B /* ViewController.swift */,
+				23E4D0012828ADE7005D0B2B /* Main.storyboard */,
+				23E4D0042828ADE8005D0B2B /* Assets.xcassets */,
+				23E4D0062828ADE8005D0B2B /* LaunchScreen.storyboard */,
+				23E4D0092828ADE8005D0B2B /* Info.plist */,
+			);
+			path = "CIFilterFactory Swift iOS Test";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,13 +212,34 @@
 			productReference = 2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */;
 			productType = "com.apple.product-type.application";
 		};
+		23E4CFF82828ADE7005D0B2B /* CIFilterFactory Swift iOS Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23E4D00C2828ADE8005D0B2B /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift iOS Test" */;
+			buildPhases = (
+				23E4CFF52828ADE7005D0B2B /* Sources */,
+				23E4CFF62828ADE7005D0B2B /* Frameworks */,
+				23E4CFF72828ADE7005D0B2B /* Resources */,
+				23E4D0132828AE50005D0B2B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CIFilterFactory Swift iOS Test";
+			packageProductDependencies = (
+				23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */,
+			);
+			productName = "CIFilterFactory Swift iOS Test";
+			productReference = 23E4CFF92828ADE7005D0B2B /* CIFilterFactory Swift iOS Test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		23C2F6C922A3374D002A354E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Darren Ford";
 				TargetAttributes = {
@@ -171,6 +248,9 @@
 					};
 					2352837F24B6BAF60006FC22 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					23E4CFF82828ADE7005D0B2B = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
@@ -191,6 +271,7 @@
 			targets = (
 				2352836724B6AD360006FC22 /* CIFilterFactory ObjectiveC Test */,
 				2352837F24B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test */,
+				23E4CFF82828ADE7005D0B2B /* CIFilterFactory Swift iOS Test */,
 			);
 		};
 /* End PBXProject section */
@@ -215,6 +296,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23E4CFF72828ADE7005D0B2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23E4D0082828ADE8005D0B2B /* LaunchScreen.storyboard in Resources */,
+				23E4D0052828ADE8005D0B2B /* Assets.xcassets in Resources */,
+				23E4D0032828ADE7005D0B2B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -233,6 +324,16 @@
 			files = (
 				2352838524B6BAF60006FC22 /* ViewController.swift in Sources */,
 				2352838324B6BAF60006FC22 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E4CFF52828ADE7005D0B2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23E4D0002828ADE7005D0B2B /* ViewController.swift in Sources */,
+				23E4CFFC2828ADE7005D0B2B /* AppDelegate.swift in Sources */,
+				23E4CFFE2828ADE7005D0B2B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +360,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				2352838C24B6BAF60006FC22 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		23E4D0012828ADE7005D0B2B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23E4D0022828ADE7005D0B2B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23E4D0062828ADE8005D0B2B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23E4D0072828ADE8005D0B2B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -472,6 +589,77 @@
 			};
 			name = Release;
 		};
+		23E4D00A2828ADE8005D0B2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory Swift iOS Test/CIFilterFactory Swift iOS Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CIFilterFactory Swift iOS Test/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dagronf.cifilterfactory.CIFilterFactory-Swift-iOS-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		23E4D00B2828ADE8005D0B2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory Swift iOS Test/CIFilterFactory Swift iOS Test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CIFilterFactory Swift iOS Test/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dagronf.cifilterfactory.CIFilterFactory-Swift-iOS-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -502,6 +690,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		23E4D00C2828ADE8005D0B2B /* Build configuration list for PBXNativeTarget "CIFilterFactory Swift iOS Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23E4D00A2828ADE8005D0B2B /* Debug */,
+				23E4D00B2828ADE8005D0B2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +709,10 @@
 		2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "CIFilterFactory-Library";
+		};
+		23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "CIFilterFactory-Shared";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
