@@ -77,6 +77,7 @@ struct InputKeyType {
 		case "CGImageMetadata": return ImageGeneratorType(inputKeyType: self)
 		case "String": return StringGeneratorType(inputKeyType: self)
 		case "Data": return DataGeneratorType(inputKeyType: self)
+		case "CIVector": return CIVectorGeneratorType(inputKeyType: self)
 		default: return CoreType(inputKeyType: self)
 		}
 	}

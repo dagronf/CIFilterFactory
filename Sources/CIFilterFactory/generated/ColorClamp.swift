@@ -77,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMinComponents`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 0 0]`
 		@objc public var minComponents: CIVector? {
 			get {
 				self.keyedValue("inputMinComponents")
@@ -86,6 +87,9 @@ import Foundation
 			}
 		}
 
+		/// `minComponents` default value
+		@objc public static let minComponentsDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0], count: 4)
+
 		// MARK: - maxComponents (inputMaxComponents)
 
 		/// Higher clamping values
@@ -93,6 +97,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMaxComponents`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[1 1 1 1]`
 		@objc public var maxComponents: CIVector? {
 			get {
 				self.keyedValue("inputMaxComponents")
@@ -102,13 +107,16 @@ import Foundation
 			}
 		}
 
+		/// `maxComponents` default value
+		@objc public static let maxComponentsDefault = CIVector(values: [1.0, 1.0, 1.0, 1.0], count: 4)
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			minComponents: CIVector,
-			maxComponents: CIVector
+			minComponents: CIVector = ColorClamp.minComponentsDefault,
+			maxComponents: CIVector = ColorClamp.maxComponentsDefault
 		) {
 			self.init()
 			self.inputImage = inputImage

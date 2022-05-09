@@ -375,3 +375,37 @@ class ImageGeneratorType: CoreType {
 		return out.content
 	}
 }
+
+class CIVectorGeneratorType: CoreType {
+
+	override func defaultValueString() -> String? {
+		if let f = self.defaultValue as? CIVector {
+			return "\(f)"
+		}
+		return nil
+	}
+
+	override func generateDefinition(userFriendlyKey: String, staticName: String) -> String {
+		let out = FileSquirter(name: "dummy")
+		out.print("   @objc public var \(userFriendlyKey): CIVector? {")
+		out.print("      get {")
+		out.print(#"         self.keyedValue("\#(key)")"#)
+		out.print("      }")
+		out.print("      set {")
+		out.print(#"         self.setKeyedValue(newValue, for: "\#(key)")"#)
+		out.print("      }")
+		out.print("   }")
+		if let dvi = self.defaultValue as? CIVector {
+			var tmp = "CIVector(values: ["
+			for c in 0 ..< dvi.count {
+				if c != 0 { tmp += "," }
+				tmp += "\(dvi.value(at: c))"
+			}
+			tmp += "], count: \(dvi.count))"
+
+			out.print("   /// `\(userFriendlyKey)` default value")
+			out.print("   @objc static public let \(userFriendlyKey)Default = \(tmp)")
+		}
+		return out.content
+	}
+}

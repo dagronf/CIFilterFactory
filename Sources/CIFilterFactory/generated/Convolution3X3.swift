@@ -75,6 +75,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputWeights`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 0 0 1 0 0 0 0]`
 		@objc public var weights: CIVector? {
 			get {
 				self.keyedValue("inputWeights")
@@ -83,6 +84,9 @@ import Foundation
 				self.setKeyedValue(newValue, for: "inputWeights")
 			}
 		}
+
+		/// `weights` default value
+		@objc public static let weightsDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0], count: 9)
 
 		// MARK: - bias (inputBias)
 
@@ -105,7 +109,7 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			weights: CIVector,
+			weights: CIVector = Convolution3X3.weightsDefault,
 			bias: NSNumber
 		) {
 			self.init()

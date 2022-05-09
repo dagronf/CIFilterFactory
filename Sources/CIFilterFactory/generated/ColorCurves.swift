@@ -93,6 +93,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCurvesDomain`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 1]`
 		@objc public var curvesDomain: CIVector? {
 			get {
 				self.keyedValue("inputCurvesDomain")
@@ -101,6 +102,9 @@ import Foundation
 				self.setKeyedValue(newValue, for: "inputCurvesDomain")
 			}
 		}
+
+		/// `curvesDomain` default value
+		@objc public static let curvesDomainDefault = CIVector(values: [0.0, 1.0], count: 2)
 
 		// MARK: - colorSpace (inputColorSpace)
 
@@ -124,7 +128,7 @@ import Foundation
 		@objc public convenience init?(
 			inputImage: CIImage,
 			curvesData: Data,
-			curvesDomain: CIVector,
+			curvesDomain: CIVector = ColorCurves.curvesDomainDefault,
 			colorSpace: NSObject
 		) {
 			self.init()

@@ -77,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRVector`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[1 0 0 0]`
 		@objc public var rVector: CIVector? {
 			get {
 				self.keyedValue("inputRVector")
@@ -86,6 +87,9 @@ import Foundation
 			}
 		}
 
+		/// `rVector` default value
+		@objc public static let rVectorDefault = CIVector(values: [1.0, 0.0, 0.0, 0.0], count: 4)
+
 		// MARK: - gVector (inputGVector)
 
 		/// The amount of green to multiply the source color values by.
@@ -93,6 +97,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGVector`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 1 0 0]`
 		@objc public var gVector: CIVector? {
 			get {
 				self.keyedValue("inputGVector")
@@ -102,6 +107,9 @@ import Foundation
 			}
 		}
 
+		/// `gVector` default value
+		@objc public static let gVectorDefault = CIVector(values: [0.0, 1.0, 0.0, 0.0], count: 4)
+
 		// MARK: - bVector (inputBVector)
 
 		/// The amount of blue to multiply the source color values by.
@@ -109,6 +117,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBVector`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 1 0]`
 		@objc public var bVector: CIVector? {
 			get {
 				self.keyedValue("inputBVector")
@@ -118,6 +127,9 @@ import Foundation
 			}
 		}
 
+		/// `bVector` default value
+		@objc public static let bVectorDefault = CIVector(values: [0.0, 0.0, 1.0, 0.0], count: 4)
+
 		// MARK: - aVector (inputAVector)
 
 		/// The amount of alpha to multiply the source color values by.
@@ -125,6 +137,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAVector`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 0 1]`
 		@objc public var aVector: CIVector? {
 			get {
 				self.keyedValue("inputAVector")
@@ -134,6 +147,9 @@ import Foundation
 			}
 		}
 
+		/// `aVector` default value
+		@objc public static let aVectorDefault = CIVector(values: [0.0, 0.0, 0.0, 1.0], count: 4)
+
 		// MARK: - biasVector (inputBiasVector)
 
 		/// A vector that’s added to each color component.
@@ -141,6 +157,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBiasVector`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 0 0]`
 		@objc public var biasVector: CIVector? {
 			get {
 				self.keyedValue("inputBiasVector")
@@ -150,16 +167,19 @@ import Foundation
 			}
 		}
 
+		/// `biasVector` default value
+		@objc public static let biasVectorDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0], count: 4)
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			rVector: CIVector,
-			gVector: CIVector,
-			bVector: CIVector,
-			aVector: CIVector,
-			biasVector: CIVector
+			rVector: CIVector = ColorMatrix.rVectorDefault,
+			gVector: CIVector = ColorMatrix.gVectorDefault,
+			bVector: CIVector = ColorMatrix.bVectorDefault,
+			aVector: CIVector = ColorMatrix.aVectorDefault,
+			biasVector: CIVector = ColorMatrix.biasVectorDefault
 		) {
 			self.init()
 			self.inputImage = inputImage

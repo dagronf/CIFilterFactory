@@ -76,6 +76,7 @@ import Foundation
 		/// - Attribute key: `inputLightPosition`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
+		/// - Default Value: `[400 600 150]`
 		@objc public var lightPosition: CIVector? {
 			get {
 				self.keyedValue("inputLightPosition")
@@ -85,6 +86,9 @@ import Foundation
 			}
 		}
 
+		/// `lightPosition` default value
+		@objc public static let lightPositionDefault = CIVector(values: [400.0, 600.0, 150.0], count: 3)
+
 		// MARK: - lightPointsAt (inputLightPointsAt)
 
 		/// The x and y position that the spotlight points at.
@@ -93,6 +97,7 @@ import Foundation
 		/// - Attribute key: `inputLightPointsAt`
 		/// - Internal class: `CIVector`
 		/// - Type: `CIAttributeTypePosition3`
+		/// - Default Value: `[200 200 0]`
 		@objc public var lightPointsAt: CIVector? {
 			get {
 				self.keyedValue("inputLightPointsAt")
@@ -101,6 +106,9 @@ import Foundation
 				self.setKeyedValue(newValue, for: "inputLightPointsAt")
 			}
 		}
+
+		/// `lightPointsAt` default value
+		@objc public static let lightPointsAtDefault = CIVector(values: [200.0, 200.0, 0.0], count: 3)
 
 		// MARK: - brightness (inputBrightness)
 
@@ -174,8 +182,8 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			lightPosition: CIVector,
-			lightPointsAt: CIVector,
+			lightPosition: CIVector = SpotLight.lightPositionDefault,
+			lightPointsAt: CIVector = SpotLight.lightPointsAtDefault,
 			brightness: Double = SpotLight.brightnessDefault,
 			concentration: Double = SpotLight.concentrationDefault,
 			color: CIColor

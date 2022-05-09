@@ -77,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRedCoefficients`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[1 0 0 0 0 0 0 0 0 0]`
 		@objc public var redCoefficients: CIVector? {
 			get {
 				self.keyedValue("inputRedCoefficients")
@@ -86,6 +87,9 @@ import Foundation
 			}
 		}
 
+		/// `redCoefficients` default value
+		@objc public static let redCoefficientsDefault = CIVector(values: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], count: 10)
+
 		// MARK: - greenCoefficients (inputGreenCoefficients)
 
 		/// Polynomial coefficients for green channel
@@ -93,6 +97,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGreenCoefficients`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 1 0 0 0 0 0 0 0 0]`
 		@objc public var greenCoefficients: CIVector? {
 			get {
 				self.keyedValue("inputGreenCoefficients")
@@ -102,6 +107,9 @@ import Foundation
 			}
 		}
 
+		/// `greenCoefficients` default value
+		@objc public static let greenCoefficientsDefault = CIVector(values: [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], count: 10)
+
 		// MARK: - blueCoefficients (inputBlueCoefficients)
 
 		/// Polynomial coefficients for blue channel
@@ -109,6 +117,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBlueCoefficients`
 		/// - Internal class: `CIVector`
+		/// - Default Value: `[0 0 1 0 0 0 0 0 0 0]`
 		@objc public var blueCoefficients: CIVector? {
 			get {
 				self.keyedValue("inputBlueCoefficients")
@@ -118,14 +127,17 @@ import Foundation
 			}
 		}
 
+		/// `blueCoefficients` default value
+		@objc public static let blueCoefficientsDefault = CIVector(values: [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], count: 10)
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			redCoefficients: CIVector,
-			greenCoefficients: CIVector,
-			blueCoefficients: CIVector
+			redCoefficients: CIVector = ColorCrossPolynomial.redCoefficientsDefault,
+			greenCoefficients: CIVector = ColorCrossPolynomial.greenCoefficientsDefault,
+			blueCoefficients: CIVector = ColorCrossPolynomial.blueCoefficientsDefault
 		) {
 			self.init()
 			self.inputImage = inputImage
