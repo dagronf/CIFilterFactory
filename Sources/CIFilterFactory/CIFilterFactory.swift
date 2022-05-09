@@ -42,7 +42,11 @@ import Foundation
 		/// See [Apple's Documentation](https://developer.apple.com/documentation/coreimage/cifilter/1437997-name) for more information.
 		@objc @inlinable public var name: String {
 			get { self.filter.name }
-			set { self.filter.name = newValue }
+			set {
+				if #available(iOS 10.0, *) {
+					self.filter.name = newValue
+				}
+			}
 		}
 
 		/// The localized version of the filter name that is displayed in the user interface
