@@ -25,15 +25,16 @@ import CoreImage.CIFilter
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIFF.KeystoneCorrectionCombined {
 	@objc var outputRotationFilter: CIFilter? {
-		let rawSelectorOutput = self.filter.perform(#selector(getter: Dummy.outputRotationFilter))
+		let rawSelectorOutput = self.filter.perform(#selector(getter: CIFFObjectExtractor.outputRotationFilter))
 		if let obj = rawSelectorOutput?.takeUnretainedValue() {
 			let im = obj as! CIFilter
 			return im
 		}
 		return nil
 	}
-}
 
-private final class Dummy: NSObject {
-	@objc var outputRotationFilter: Unmanaged<AnyObject>?
+	// A hidden class for extracting any additional output objects
+	private final class CIFFObjectExtractor: NSObject {
+		@objc var outputRotationFilter: Unmanaged<AnyObject>?
+	}
 }

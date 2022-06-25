@@ -25,15 +25,16 @@ import CoreImage
 @available(macOS 10.11, iOS 9, tvOS 9, *)
 public extension CIFF.PDF417BarcodeGenerator {
 	@objc var outputCGImage: CGImage? {
-		let rawSelectorOutput = self.filter.perform(#selector(getter: Dummy.outputCGImage))
+		let rawSelectorOutput = self.filter.perform(#selector(getter: CIFFObjectExtractor.outputCGImage))
 		if let obj = rawSelectorOutput?.takeUnretainedValue() {
 			let im = obj as! CGImage
 			return im
 		}
 		return nil
 	}
-}
 
-private final class Dummy: NSObject {
-	@objc var outputCGImage: Unmanaged<AnyObject>?
+	// A hidden class for extracting any additional output objects
+	private final class CIFFObjectExtractor: NSObject {
+		@objc var outputCGImage: Unmanaged<AnyObject>?
+	}
 }
