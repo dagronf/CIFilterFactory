@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Exclusion Blend Mode
 	///
 	/// Produces an effect similar to that produced by the “Difference Blend Mode” filter but with lower contrast. Source image sample values that are black do not produce a change; white inverts the background color values.
+	///
+	/// **CIFilter Name**
+	/// - CIExclusionBlendMode
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as a foreground image.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Disparity To Depth
 	///
 	/// Convert a disparity data image to depth data.
+	///
+	/// **CIFilter Name**
+	/// - CIDisparityToDepth
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11

@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Clamp
 	///
 	/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
+	///
+	/// **CIFilter Name**
+	/// - CIClamp
 	///
 	/// **Availability**
 	/// - macOS 10.12, iOS 10, tvOS 10
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTileEffect
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

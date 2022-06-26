@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Curves
 	///
-	/// Uses a three-channel one-dimensional color table to transform the source image pixels. The color table must be composed of floating-point RGB values.
+	/// Uses a three-channel one-dimensional color table to transform the source image pixels.
+	///
+	/// **CIFilter Name**
+	/// - CIColorCurves
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +73,7 @@ import Foundation
 
 		// MARK: - curvesData (inputCurvesData)
 
-		/// No Description
+		/// Data containing a color table of floating-point RGB values.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCurvesData`
@@ -87,7 +89,7 @@ import Foundation
 
 		// MARK: - curvesDomain (inputCurvesDomain)
 
-		/// No Description
+		/// A two-element vector that defines the minimum and maximum RGB component values that are used to look up result values from the color table.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCurvesDomain`
@@ -107,7 +109,7 @@ import Foundation
 
 		// MARK: - colorSpace (inputColorSpace)
 
-		/// No Description
+		/// The CGColorSpace that defines the RGB values in the color table.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColorSpace`

@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Area Min and Max
 	///
 	/// Calculates the per-component minimum and maximum value for the specified area in an image. The result is returned in a 2x1 image where the component minimum values are stored in the pixel on the left.
+	///
+	/// **CIFilter Name**
+	/// - CIAreaMinMax
 	///
 	/// **Availability**
 	/// - macOS 10.14, iOS 12, tvOS 12
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo

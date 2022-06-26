@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Radial Gradient
 	///
 	/// Generates a gradient that varies radially between two circles having the same center. It is valid for one of the two circles to have a radius of 0.
+	///
+	/// **CIFilter Name**
+	/// - CIRadialGradient
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`

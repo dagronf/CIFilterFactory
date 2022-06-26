@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Constant Color
 	///
 	/// Generates a solid color. You typically use the output of this filter as the input to another filter.
+	///
+	/// **CIFilter Name**
+	/// - CIConstantColorGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///

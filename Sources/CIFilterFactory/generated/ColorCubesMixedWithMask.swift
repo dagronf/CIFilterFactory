@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Cubes Mixed With Mask
 	///
 	/// Uses two three-dimensional color tables in a specified colorspace to transform the source image pixels. The mask image is used as an interpolant to mix the output of the two cubes.
+	///
+	/// **CIFilter Name**
+	/// - CIColorCubesMixedWithMask
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -88,7 +91,7 @@ import Foundation
 
 		// MARK: - cubeDimension (inputCubeDimension)
 
-		/// No Description
+		/// The dimension of the color cubes.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCubeDimension`
@@ -146,7 +149,7 @@ import Foundation
 
 		// MARK: - colorSpace (inputColorSpace)
 
-		/// No Description
+		/// The CGColorSpace that defines the RGB values in the color table.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColorSpace`
@@ -160,6 +163,27 @@ import Foundation
 			}
 		}
 
+		// MARK: - extrapolate (inputExtrapolate)
+
+		/// If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0 to 1.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtrapolate`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default Value: `false`
+		@objc public var extrapolate: Bool {
+			get {
+				self.boolValue(forKey: "inputExtrapolate", defaultValue: Self.extrapolateDefault)
+			}
+			set {
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputExtrapolate")
+			}
+		}
+
+		/// `extrapolate` default value
+		@objc public static let extrapolateDefault: Bool = false
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
@@ -169,7 +193,8 @@ import Foundation
 			cubeDimension: UInt = ColorCubesMixedWithMask.cubeDimensionDefault,
 			cube0Data: Data,
 			cube1Data: Data,
-			colorSpace: NSObject
+			colorSpace: NSObject,
+			extrapolate: Bool = ColorCubesMixedWithMask.extrapolateDefault
 		) {
 			self.init()
 			self.inputImage = inputImage
@@ -178,6 +203,7 @@ import Foundation
 			self.cube0Data = cube0Data
 			self.cube1Data = cube1Data
 			self.colorSpace = colorSpace
+			self.extrapolate = extrapolate
 		}
 	}
 }

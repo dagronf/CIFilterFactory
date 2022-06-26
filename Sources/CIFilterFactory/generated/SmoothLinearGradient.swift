@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Smooth Linear Gradient
 	///
 	/// Generates a gradient that varies along a linear axis between two defined endpoints.
+	///
+	/// **CIFilter Name**
+	/// - CISmoothLinearGradient
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Gaussian Gradient
 	///
 	/// Generates a gradient that varies from one color to another using a Gaussian distribution.
+	///
+	/// **CIFilter Name**
+	/// - CIGaussianGradient
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGradient
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`

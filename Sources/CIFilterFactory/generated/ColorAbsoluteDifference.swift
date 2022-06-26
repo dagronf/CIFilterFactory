@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Absolute Difference
 	///
 	/// Produces an image that is the absolute value of the color difference between two images. The alpha channel of the result will be the product of the two image alpha channels.
+	///
+	/// **CIFilter Name**
+	/// - CIColorAbsoluteDifference
 	///
 	/// **Availability**
 	/// - macOS 11.0, iOS 14, tvOS 14
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -76,6 +79,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage2`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var image2: CIImage? {
 			get {
 				self.keyedValue("inputImage2")

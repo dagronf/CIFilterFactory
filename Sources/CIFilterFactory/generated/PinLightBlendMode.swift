@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Pin Light Blend Mode
 	///
 	/// Unpremultiplies the source and background image sample color, combines them according to the relative difference, and then blends the result with the background according to the PDF basic compositing formula. Source image values that are brighter than the destination will produce an output that is lighter than the destination. Source image values that are darker than the destination will produce an output that is darker than the destination.
+	///
+	/// **CIFilter Name**
+	/// - CIPinLightBlendMode
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as a foreground image.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

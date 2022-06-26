@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Column Average
 	///
 	/// Calculates the average color for each column of the specified area in an image, returning the result in a 1D image.
+	///
+	/// **CIFilter Name**
+	/// - CIColumnAverage
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo

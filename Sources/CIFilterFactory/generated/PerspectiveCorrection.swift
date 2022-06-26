@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Perspective Correction
 	///
 	/// Apply a perspective correction to an image.
+	///
+	/// **CIFilter Name**
+	/// - CIPerspectiveCorrection
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

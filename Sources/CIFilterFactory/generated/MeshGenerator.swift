@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Mesh Generator
 	///
 	/// Generates a mesh from an array of line segments.
+	///
+	/// **CIFilter Name**
+	/// - CIMeshGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.14, iOS 12, tvOS 12
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - width (inputWidth)
 
-		/// The width of the effect.
+		/// The width in pixels of the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputWidth`
@@ -82,6 +85,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var color: CIColor? {
 			get {
 				self.keyedValue("inputColor")

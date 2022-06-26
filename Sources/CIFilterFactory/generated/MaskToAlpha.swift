@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Mask to Alpha
 	///
 	/// Converts a grayscale image to a white image that is masked by alpha. The white values from the source image produce the inside of the mask; the black values become completely transparent.
+	///
+	/// **CIFilter Name**
+	/// - CIMaskToAlpha
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

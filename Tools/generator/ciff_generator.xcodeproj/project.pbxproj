@@ -15,6 +15,7 @@
 		2371CE5E2800EF1A00F0102F /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2371CE5D2800EF1A00F0102F /* String+extensions.swift */; };
 		2371CE602800F09800F0102F /* FilterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2371CE5F2800F09800F0102F /* FilterGenerator.swift */; };
 		2371CE622800F3C700F0102F /* KeyTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2371CE612800F3C700F0102F /* KeyTypes.swift */; };
+		23D57AE428681B0500961D77 /* AdditionalOutputKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D57AE328681B0500961D77 /* AdditionalOutputKeyMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		2371CE5D2800EF1A00F0102F /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		2371CE5F2800F09800F0102F /* FilterGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGenerator.swift; sourceTree = "<group>"; };
 		2371CE612800F3C700F0102F /* KeyTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTypes.swift; sourceTree = "<group>"; };
+		23D57AE328681B0500961D77 /* AdditionalOutputKeyMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalOutputKeyMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		2371CE4A2800E6E200F0102F /* ciff_generator */ = {
 			isa = PBXGroup;
 			children = (
+				23D57AE328681B0500961D77 /* AdditionalOutputKeyMap.swift */,
 				2371CE4B2800E6E200F0102F /* main.swift */,
 				2371CE562800E83500F0102F /* generator.swift */,
 				2371CE542800E7B200F0102F /* FileSquirter.swift */,
@@ -155,6 +158,7 @@
 				2371CE5C2800EE6400F0102F /* InputKeyType.swift in Sources */,
 				2371CE552800E7B200F0102F /* FileSquirter.swift in Sources */,
 				2371CE5E2800EF1A00F0102F /* String+extensions.swift in Sources */,
+				23D57AE428681B0500961D77 /* AdditionalOutputKeyMap.swift in Sources */,
 				2371CE4C2800E6E200F0102F /* main.swift in Sources */,
 				2371CE622800F3C700F0102F /* KeyTypes.swift in Sources */,
 			);
@@ -280,7 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,7 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";

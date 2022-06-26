@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Lens Correction for AVC
 	///
 	/// Geometrically distorts an image by altering the magnification based on the radial distance from the optical center to the farthest radius.
+	///
+	/// **CIFilter Name**
+	/// - CICameraCalibrationLensCorrection
 	///
 	/// **Availability**
 	/// - macOS 10.14, iOS 12, tvOS 12, macCatalyst 14
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - aVCameraCalibrationData (inputAVCameraCalibrationData)
 
-		/// AVCameraCalibrationData for the correction. Will be set from the inputImage if available and can be overridden here.
+		/// AVCameraCalibrationData for the correction. Will be set from the input image if available and can be overridden here.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAVCameraCalibrationData`
@@ -85,19 +88,24 @@ import Foundation
 
 		// MARK: - useInverseLookUpTable (inputUseInverseLookUpTable)
 
-		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData
+		/// Boolean value used to select the Look Up Table from the AVCameraCalibrationData.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputUseInverseLookUpTable`
 		/// - Internal class: `NSNumber`
-		@objc public var useInverseLookUpTable: NSNumber? {
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default Value: `false`
+		@objc public var useInverseLookUpTable: Bool {
 			get {
-				self.keyedValue("inputUseInverseLookUpTable")
+				self.boolValue(forKey: "inputUseInverseLookUpTable", defaultValue: Self.useInverseLookUpTableDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputUseInverseLookUpTable")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputUseInverseLookUpTable")
 			}
 		}
+
+		/// `useInverseLookUpTable` default value
+		@objc public static let useInverseLookUpTableDefault: Bool = false
 
 		// MARK: - Convenience initializer
 
@@ -105,7 +113,7 @@ import Foundation
 		@objc public convenience init?(
 			inputImage: CIImage,
 			aVCameraCalibrationData: AVCameraCalibrationData,
-			useInverseLookUpTable: NSNumber
+			useInverseLookUpTable: Bool = CameraCalibrationLensCorrection.useInverseLookUpTableDefault
 		) {
 			self.init()
 			self.inputImage = inputImage

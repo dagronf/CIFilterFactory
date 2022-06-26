@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Minimum Component
 	///
 	/// Converts an image to grayscale using the minimum of the three color components.
+	///
+	/// **CIFilter Name**
+	/// - CIMinimumComponent
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage

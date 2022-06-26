@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Area Minimum
 	///
 	/// Calculates the minimum component values for the specified area in an image, returning the result in a pixel.
+	///
+	/// **CIFilter Name**
+	/// - CIAreaMinimum
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo

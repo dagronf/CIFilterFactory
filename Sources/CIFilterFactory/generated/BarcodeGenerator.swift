@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Barcode Generator
 	///
 	/// Generate a barcode image from a CIBarcodeDescriptor.
+	///
+	/// **CIFilter Name**
+	/// - CIBarcodeGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -71,6 +73,21 @@ import Foundation
 			set {
 				self.setKeyedValue(newValue, for: "inputBarcodeDescriptor")
 			}
+		}
+
+		// MARK: - Additional output keys
+
+		@objc public var outputCGImage: Unmanaged<CGImage>? {
+			let value = self.filter.perform(#selector(getter: AdditionalOutputsFilterDescriptor.outputCGImage))
+			if let obj = value?.takeUnretainedValue() {
+				return Unmanaged.passUnretained(obj as! CGImage)
+			}
+			return nil
+		}
+
+		// A hidden class for extracting any additional output objects
+		private final class AdditionalOutputsFilterDescriptor: NSObject {
+			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
 		// MARK: - Convenience initializer

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Edge Preserve Upsample Filter
 	///
 	/// Upsamples a small image to the size of the input image using the luminance of the input image as a guide to preserve detail.
+	///
+	/// **CIFilter Name**
+	/// - CIEdgePreserveUpsampleFilter
 	///
 	/// **Availability**
 	/// - macOS 10.12, iOS 10, tvOS 10
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -76,6 +79,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputSmallImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var smallImage: CIImage? {
 			get {
 				self.keyedValue("inputSmallImage")

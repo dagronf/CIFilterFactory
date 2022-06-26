@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Gamma Adjust
 	///
 	/// Adjusts midtone brightness. This filter is typically used to compensate for nonlinear effects of displays. Adjusting the gamma effectively changes the slope of the transition between black and white.
+	///
+	/// **CIFilter Name**
+	/// - CIGammaAdjust
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Random Generator
 	///
 	/// Generates an image of infinite extent whose pixel values are made up of four independent, uniformly-distributed random numbers in the 0 to 1 range.
+	///
+	/// **CIFilter Name**
+	/// - CIRandomGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6

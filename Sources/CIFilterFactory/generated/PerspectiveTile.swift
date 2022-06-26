@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Perspective Tile
 	///
 	/// Applies a perspective transform to an image and then tiles the result.
+	///
+	/// **CIFilter Name**
+	/// - CIPerspectiveTile
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTileEffect
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

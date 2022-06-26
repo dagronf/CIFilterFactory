@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Code 128 Barcode Generator
 	///
 	/// Generate a Code 128 barcode image for message data.
+	///
+	/// **CIFilter Name**
+	/// - CICode128BarcodeGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -75,24 +77,24 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputQuietSpace`
 		/// - Internal class: `NSNumber`
-		/// - Type: `CIAttributeTypeScalar`
-		/// - Minimum Value: `0.0`
-		/// - Maximum Value: `100.0`
-		/// - Default Value: `10.0`
-		@objc public var quietSpace: Double {
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `100`
+		/// - Default Value: `10`
+		@objc public var quietSpace: Int {
 			get {
-				self.doubleValue(forKey: "inputQuietSpace", defaultValue: Self.quietSpaceDefault)
+				self.intValue(forKey: "inputQuietSpace", defaultValue: Self.quietSpaceDefault)
 			}
 			set {
-				self.setDoubleValue(newValue, bounds: Code128BarcodeGenerator.quietSpaceRange, forKey: "inputQuietSpace")
+				self.setIntValue(newValue, bounds: Code128BarcodeGenerator.quietSpaceRange, forKey: "inputQuietSpace")
 			}
 		}
 
 		/// `quietSpace` default value
-		@objc public static let quietSpaceDefault: Double = 10.0
+		@objc public static let quietSpaceDefault: Int = 10
 
 		/// `quietSpace` range definition
-		public static let quietSpaceRange: ClosedRange<Double> = 0.0 ... 100.0
+		public static let quietSpaceRange: ClosedRange<Int> = 0 ... 100
 
 		// MARK: - barcodeHeight (inputBarcodeHeight)
 
@@ -101,32 +103,47 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBarcodeHeight`
 		/// - Internal class: `NSNumber`
-		/// - Type: `CIAttributeTypeScalar`
-		/// - Minimum Value: `1.0`
-		/// - Maximum Value: `500.0`
-		/// - Default Value: `32.0`
-		@objc public var barcodeHeight: Double {
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `1`
+		/// - Maximum Value: `500`
+		/// - Default Value: `32`
+		@objc public var barcodeHeight: Int {
 			get {
-				self.doubleValue(forKey: "inputBarcodeHeight", defaultValue: Self.barcodeHeightDefault)
+				self.intValue(forKey: "inputBarcodeHeight", defaultValue: Self.barcodeHeightDefault)
 			}
 			set {
-				self.setDoubleValue(newValue, bounds: Code128BarcodeGenerator.barcodeHeightRange, forKey: "inputBarcodeHeight")
+				self.setIntValue(newValue, bounds: Code128BarcodeGenerator.barcodeHeightRange, forKey: "inputBarcodeHeight")
 			}
 		}
 
 		/// `barcodeHeight` default value
-		@objc public static let barcodeHeightDefault: Double = 32.0
+		@objc public static let barcodeHeightDefault: Int = 32
 
 		/// `barcodeHeight` range definition
-		public static let barcodeHeightRange: ClosedRange<Double> = 1.0 ... 500.0
+		public static let barcodeHeightRange: ClosedRange<Int> = 1 ... 500
+
+		// MARK: - Additional output keys
+
+		@objc public var outputCGImage: Unmanaged<CGImage>? {
+			let value = self.filter.perform(#selector(getter: AdditionalOutputsFilterDescriptor.outputCGImage))
+			if let obj = value?.takeUnretainedValue() {
+				return Unmanaged.passUnretained(obj as! CGImage)
+			}
+			return nil
+		}
+
+		// A hidden class for extracting any additional output objects
+		private final class AdditionalOutputsFilterDescriptor: NSObject {
+			@objc var outputCGImage: Unmanaged<AnyObject>?
+		}
 
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			quietSpace: Double = Code128BarcodeGenerator.quietSpaceDefault,
-			barcodeHeight: Double = Code128BarcodeGenerator.barcodeHeightDefault
+			quietSpace: Int = Code128BarcodeGenerator.quietSpaceDefault,
+			barcodeHeight: Int = Code128BarcodeGenerator.barcodeHeightDefault
 		) {
 			self.init()
 			self.message = message

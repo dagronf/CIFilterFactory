@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Threshold
 	///
 	/// Produces a binarized image from an image and a threshold value. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
+	///
+	/// **CIFilter Name**
+	/// - CIColorThreshold
 	///
 	/// **Availability**
 	/// - macOS 11.0, iOS 14, tvOS 14
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +73,7 @@ import Foundation
 
 		// MARK: - threshold (inputThreshold)
 
-		/// No Description
+		/// The threshold value that governs if the RGB channels of the resulting image will be zero or one.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputThreshold`

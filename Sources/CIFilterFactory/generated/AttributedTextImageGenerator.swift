@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Attributed Text Image Generator
 	///
 	/// Generate an image attributed string.
+	///
+	/// **CIFilter Name**
+	/// - CIAttributedTextImageGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - text (inputText)
 
-		/// No Description
+		/// The attributed text to render.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputText`
@@ -68,7 +70,7 @@ import Foundation
 
 		// MARK: - scaleFactor (inputScaleFactor)
 
-		/// No Description
+		/// The scale of the font to use for the generated text.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputScaleFactor`
@@ -91,16 +93,44 @@ import Foundation
 		/// `scaleFactor` range definition
 		public static let scaleFactorRange = PartialRangeFrom<Double>(0.0)
 
+		// MARK: - padding (inputPadding)
+
+		/// A value for an additional number of pixels to pad around the text’s bounding box.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPadding`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `200`
+		/// - Default Value: `0`
+		@objc public var padding: Int {
+			get {
+				self.intValue(forKey: "inputPadding", defaultValue: Self.paddingDefault)
+			}
+			set {
+				self.setIntValue(newValue, bounds: AttributedTextImageGenerator.paddingRange, forKey: "inputPadding")
+			}
+		}
+
+		/// `padding` default value
+		@objc public static let paddingDefault: Int = 0
+
+		/// `padding` range definition
+		public static let paddingRange: ClosedRange<Int> = 0 ... 200
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			text: NSAttributedString,
-			scaleFactor: Double = AttributedTextImageGenerator.scaleFactorDefault
+			scaleFactor: Double = AttributedTextImageGenerator.scaleFactorDefault,
+			padding: Int = AttributedTextImageGenerator.paddingDefault
 		) {
 			self.init()
 			self.text = text
 			self.scaleFactor = scaleFactor
+			self.padding = padding
 		}
 	}
 }

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Divide Blend Mode
 	///
 	/// Divides the background image sample color from the source image sample color.
+	///
+	/// **CIFilter Name**
+	/// - CIDivideBlendMode
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as a foreground image.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

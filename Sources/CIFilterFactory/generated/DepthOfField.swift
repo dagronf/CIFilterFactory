@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Depth of Field
 	///
 	/// Simulates miniaturization effect created by Tilt & Shift lens by performing depth of field effects.
+	///
+	/// **CIFilter Name**
+	/// - CIDepthOfField
 	///
 	/// **Availability**
 	/// - macOS 10.6, iOS 9, tvOS 9
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

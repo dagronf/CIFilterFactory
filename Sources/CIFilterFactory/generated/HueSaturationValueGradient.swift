@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Hue/Saturation/Value Gradient
 	///
 	/// Generates a color wheel that shows hues and saturations for a specified value.
+	///
+	/// **CIFilter Name**
+	/// - CIHueSaturationValueGradient
 	///
 	/// **Availability**
 	/// - macOS 10.12, iOS 10, tvOS 10
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - value (inputValue)
 
-		/// No Description
+		/// The color value used to generate the color wheel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputValue`

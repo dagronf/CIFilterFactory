@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Blend Mode
 	///
 	/// Uses the luminance values of the background with the hue and saturation values of the source image. This mode preserves the gray levels in the image.
+	///
+	/// **CIFilter Name**
+	/// - CIColorBlendMode
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as a foreground image.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Highlight and Shadow Adjust
 	///
-	/// Adjust the tonal mapping of an image while preserving spatial detail
+	/// Adjust the tonal mapping of an image while preserving spatial detail.
+	///
+	/// **CIFilter Name**
+	/// - CIHighlightShadowAdjust
 	///
 	/// **Availability**
 	/// - macOS 10.7, iOS 5, tvOS 5
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryStylize
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		/// Shadow Highlight Radius
+		/// Shadow Highlight Radius.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRadius`

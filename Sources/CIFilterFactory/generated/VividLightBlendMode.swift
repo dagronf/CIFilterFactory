@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Vivid Light Blend Mode
 	///
 	/// A blend mode that is a combination of color burn and color dodge blend modes.
+	///
+	/// **CIFilter Name**
+	/// - CIVividLightBlendMode
 	///
 	/// **Availability**
 	/// - macOS 12.0, iOS 15, tvOS 15
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as a foreground image.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

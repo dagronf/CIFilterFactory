@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Light Tunnel Distortion
 	///
 	/// Light tunnel distortion.
+	///
+	/// **CIFilter Name**
+	/// - CILightTunnel
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// Center of the light tunnel.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -90,7 +93,7 @@ import Foundation
 
 		// MARK: - rotation (inputRotation)
 
-		/// Rotation angle of the light tunnel.
+		/// Rotation angle in radians of the light tunnel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRotation`

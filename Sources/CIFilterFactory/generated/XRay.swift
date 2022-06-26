@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// X-Ray
 	///
-	/// Apply an “XRay” style effect to an image
+	/// Apply an “XRay” style effect to an image.
+	///
+	/// **CIFilter Name**
+	/// - CIXRay
 	///
 	/// **Availability**
 	/// - macOS 10.11, iOS 10, tvOS 10
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

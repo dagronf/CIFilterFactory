@@ -113,10 +113,6 @@
 		filter.inputImage = image;
 		CIImage* out = filter.outputImage;
 		assert(out != nil);
-
-		id tr = filter.outputRotationFilter;
-		NSLog(@"%@", tr);
-		//assert(tr != nil);
 	}
 
 	{

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Masked Variable Blur
 	///
 	/// Blurs an image according to the brightness levels in a mask image.
+	///
+	/// **CIFilter Name**
+	/// - CIMaskedVariableBlur
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,11 +72,12 @@ import Foundation
 
 		// MARK: - mask (inputMask)
 
-		/// No Description
+		/// The mask image that determines how much to blur the image. The mask’s green channel value from 0.0 to 1.0 determines if the image is not blurred or blurred by the full radius.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMask`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var mask: CIImage? {
 			get {
 				self.keyedValue("inputMask")
@@ -85,7 +89,7 @@ import Foundation
 
 		// MARK: - radius (inputRadius)
 
-		/// The distance from the center of the effect.
+		/// A value that governs the maximum blur radius to apply.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRadius`

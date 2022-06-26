@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Line Screen
 	///
 	/// Simulates the line pattern of a halftone screen.
+	///
+	/// **CIFilter Name**
+	/// - CILineScreen
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +71,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The x and y position to use as the center of the line screen pattern
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -90,7 +92,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// The angle of the pattern.
+		/// The angle in radians of the pattern.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`

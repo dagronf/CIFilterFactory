@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Page Curl
 	///
 	/// Transitions from one image to another by simulating a curling page, revealing the new image as the page curls.
+	///
+	/// **CIFilter Name**
+	/// - CIPageCurlTransition
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTransition
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -91,6 +94,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBacksideImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var backsideImage: CIImage? {
 			get {
 				self.keyedValue("inputBacksideImage")
@@ -166,7 +170,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// The angle of the curling page.
+		/// The angle in radians of the curling page.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`

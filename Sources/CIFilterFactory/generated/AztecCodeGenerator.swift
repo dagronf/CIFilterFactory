@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Aztec Code Generator
 	///
 	/// Generate an Aztec barcode image for message data.
+	///
+	/// **CIFilter Name**
+	/// - CIAztecCodeGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
@@ -75,14 +77,24 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCorrectionLevel`
 		/// - Internal class: `NSNumber`
-		@objc public var correctionLevel: NSNumber? {
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `5`
+		/// - Maximum Value: `95`
+		/// - Default Value: `23`
+		@objc public var correctionLevel: Int {
 			get {
-				self.keyedValue("inputCorrectionLevel")
+				self.intValue(forKey: "inputCorrectionLevel", defaultValue: Self.correctionLevelDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCorrectionLevel")
+				self.setIntValue(newValue, bounds: AztecCodeGenerator.correctionLevelRange, forKey: "inputCorrectionLevel")
 			}
 		}
+
+		/// `correctionLevel` default value
+		@objc public static let correctionLevelDefault: Int = 23
+
+		/// `correctionLevel` range definition
+		public static let correctionLevelRange: ClosedRange<Int> = 5 ... 95
 
 		// MARK: - layers (inputLayers)
 
@@ -91,14 +103,23 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputLayers`
 		/// - Internal class: `NSNumber`
-		@objc public var layers: NSNumber? {
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `1`
+		/// - Maximum Value: `32`
+		@objc public var layers: Int {
 			get {
-				self.keyedValue("inputLayers")
+				self.intValue(forKey: "inputLayers", defaultValue: Self.layersDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputLayers")
+				self.setIntValue(newValue, bounds: AztecCodeGenerator.layersRange, forKey: "inputLayers")
 			}
 		}
+
+		/// `layers` default value
+		@objc public static let layersDefault: Int = 0
+
+		/// `layers` range definition
+		public static let layersRange: ClosedRange<Int> = 1 ... 32
 
 		// MARK: - compactStyle (inputCompactStyle)
 
@@ -107,13 +128,33 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCompactStyle`
 		/// - Internal class: `NSNumber`
-		@objc public var compactStyle: NSNumber? {
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default Value: `false`
+		@objc public var compactStyle: Bool {
 			get {
-				self.keyedValue("inputCompactStyle")
+				self.boolValue(forKey: "inputCompactStyle", defaultValue: Self.compactStyleDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputCompactStyle")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputCompactStyle")
 			}
+		}
+
+		/// `compactStyle` default value
+		@objc public static let compactStyleDefault: Bool = false
+
+		// MARK: - Additional output keys
+
+		@objc public var outputCGImage: Unmanaged<CGImage>? {
+			let value = self.filter.perform(#selector(getter: AdditionalOutputsFilterDescriptor.outputCGImage))
+			if let obj = value?.takeUnretainedValue() {
+				return Unmanaged.passUnretained(obj as! CGImage)
+			}
+			return nil
+		}
+
+		// A hidden class for extracting any additional output objects
+		private final class AdditionalOutputsFilterDescriptor: NSObject {
+			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
 		// MARK: - Convenience initializer
@@ -121,9 +162,9 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			message: Data,
-			correctionLevel: NSNumber,
-			layers: NSNumber,
-			compactStyle: NSNumber
+			correctionLevel: Int = AztecCodeGenerator.correctionLevelDefault,
+			layers: Int,
+			compactStyle: Bool = AztecCodeGenerator.compactStyleDefault
 		) {
 			self.init()
 			self.message = message

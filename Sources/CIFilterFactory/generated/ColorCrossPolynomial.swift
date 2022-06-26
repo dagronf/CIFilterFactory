@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Cross Polynomial
 	///
 	/// Adjusts the color of an image with polynomials.
+	///
+	/// **CIFilter Name**
+	/// - CIColorCrossPolynomial
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +74,7 @@ import Foundation
 
 		// MARK: - redCoefficients (inputRedCoefficients)
 
-		/// Polynomial coefficients for red channel
+		/// Polynomial coefficients for red channel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRedCoefficients`
@@ -91,7 +94,7 @@ import Foundation
 
 		// MARK: - greenCoefficients (inputGreenCoefficients)
 
-		/// Polynomial coefficients for green channel
+		/// Polynomial coefficients for green channel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGreenCoefficients`
@@ -111,7 +114,7 @@ import Foundation
 
 		// MARK: - blueCoefficients (inputBlueCoefficients)
 
-		/// Polynomial coefficients for blue channel
+		/// Polynomial coefficients for blue channel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBlueCoefficients`

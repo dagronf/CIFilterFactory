@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Glass Lozenge
 	///
 	/// Creates a lozenge-shaped lens and distorts the portion of the image over which the lens is placed.
+	///
+	/// **CIFilter Name**
+	/// - CIGlassLozenge
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 9, tvOS 9
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

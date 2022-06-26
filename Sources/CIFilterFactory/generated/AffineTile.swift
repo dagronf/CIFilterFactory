@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Affine Tile
 	///
 	/// Applies an affine transformation to an image and then tiles the transformed image.
+	///
+	/// **CIFilter Name**
+	/// - CIAffineTile
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTileEffect
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -74,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputTransform`
 		/// - Internal class: `NSAffineTransform`
+		/// - Type: `CIAttributeTypeTransform`
 		/// - Default Value: `CIFF.CIAffineTransform(m11: 0.4, m12: 0.0, m21: 0.0, m22: 0.4, tX: 0.0, tY: 0.0)`
 		@objc public var transform: CIAffineTransform? {
 			get {

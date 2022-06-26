@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Spot Color
 	///
 	/// Replaces one or more color ranges with spot colors.
+	///
+	/// **CIFilter Name**
+	/// - CISpotColor
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryStylize
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -74,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenterColor1`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var centerColor1: CIColor? {
 			get {
 				self.keyedValue("inputCenterColor1")
@@ -90,6 +94,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputReplacementColor1`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var replacementColor1: CIColor? {
 			get {
 				self.keyedValue("inputReplacementColor1")
@@ -156,6 +161,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenterColor2`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var centerColor2: CIColor? {
 			get {
 				self.keyedValue("inputCenterColor2")
@@ -172,6 +178,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputReplacementColor2`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var replacementColor2: CIColor? {
 			get {
 				self.keyedValue("inputReplacementColor2")
@@ -238,6 +245,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenterColor3`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var centerColor3: CIColor? {
 			get {
 				self.keyedValue("inputCenterColor3")
@@ -254,6 +262,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputReplacementColor3`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var replacementColor3: CIColor? {
 			get {
 				self.keyedValue("inputReplacementColor3")

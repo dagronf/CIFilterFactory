@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Rounded Rectangle Generator
 	///
 	/// Generates a rounded rectangle image with the specified extent, corner radius, and color.
+	///
+	/// **CIFilter Name**
+	/// - CIRoundedRectangleGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.15, iOS 13, tvOS 13
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	///
 	/// **Documentation Links**

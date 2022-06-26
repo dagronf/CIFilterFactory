@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Cube
 	///
 	/// Uses a three-dimensional color table to transform the source image pixels.
+	///
+	/// **CIFilter Name**
+	/// - CIColorCube
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +74,7 @@ import Foundation
 
 		// MARK: - cubeDimension (inputCubeDimension)
 
-		/// No Description
+		/// The dimension of the color cube.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCubeDimension`
@@ -111,18 +114,41 @@ import Foundation
 			}
 		}
 
+		// MARK: - extrapolate (inputExtrapolate)
+
+		/// If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputExtrapolate`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default Value: `false`
+		@objc public var extrapolate: Bool {
+			get {
+				self.boolValue(forKey: "inputExtrapolate", defaultValue: Self.extrapolateDefault)
+			}
+			set {
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputExtrapolate")
+			}
+		}
+
+		/// `extrapolate` default value
+		@objc public static let extrapolateDefault: Bool = false
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
 			cubeDimension: UInt = ColorCube.cubeDimensionDefault,
-			cubeData: Data
+			cubeData: Data,
+			extrapolate: Bool = ColorCube.extrapolateDefault
 		) {
 			self.init()
 			self.inputImage = inputImage
 			self.cubeDimension = cubeDimension
 			self.cubeData = cubeData
+			self.extrapolate = extrapolate
 		}
 	}
 }

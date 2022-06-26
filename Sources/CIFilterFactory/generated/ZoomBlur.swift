@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Zoom Blur
 	///
 	/// Simulates the effect of zooming the camera while capturing the image.
+	///
+	/// **CIFilter Name**
+	/// - CIZoomBlur
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 8.3, tvOS 8.3
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`

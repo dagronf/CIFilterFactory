@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Text Image Generator
 	///
 	/// Generate an image from a string and font information.
+	///
+	/// **CIFilter Name**
+	/// - CITextImageGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - text (inputText)
 
-		/// No Description
+		/// The text to render.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputText`
@@ -68,7 +70,7 @@ import Foundation
 
 		// MARK: - fontName (inputFontName)
 
-		/// No Description
+		/// The name of the font to use for the generated text.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputFontName`
@@ -84,7 +86,7 @@ import Foundation
 
 		// MARK: - fontSize (inputFontSize)
 
-		/// No Description
+		/// The size of the font to use for the generated text.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputFontSize`
@@ -109,7 +111,7 @@ import Foundation
 
 		// MARK: - scaleFactor (inputScaleFactor)
 
-		/// No Description
+		/// The scale of the font to use for the generated text.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputScaleFactor`
@@ -132,6 +134,32 @@ import Foundation
 		/// `scaleFactor` range definition
 		public static let scaleFactorRange = PartialRangeFrom<Double>(0.0)
 
+		// MARK: - padding (inputPadding)
+
+		/// The number of additional of pixels to pad around the text’s bounding box.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputPadding`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeInteger`
+		/// - Minimum Value: `0`
+		/// - Maximum Value: `200`
+		/// - Default Value: `0`
+		@objc public var padding: Int {
+			get {
+				self.intValue(forKey: "inputPadding", defaultValue: Self.paddingDefault)
+			}
+			set {
+				self.setIntValue(newValue, bounds: TextImageGenerator.paddingRange, forKey: "inputPadding")
+			}
+		}
+
+		/// `padding` default value
+		@objc public static let paddingDefault: Int = 0
+
+		/// `padding` range definition
+		public static let paddingRange: ClosedRange<Int> = 0 ... 200
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
@@ -139,13 +167,15 @@ import Foundation
 			text: String,
 			fontName: String,
 			fontSize: Double = TextImageGenerator.fontSizeDefault,
-			scaleFactor: Double = TextImageGenerator.scaleFactorDefault
+			scaleFactor: Double = TextImageGenerator.scaleFactorDefault,
+			padding: Int = TextImageGenerator.paddingDefault
 		) {
 			self.init()
 			self.text = text
 			self.fontName = fontName
 			self.fontSize = fontSize
 			self.scaleFactor = scaleFactor
+			self.padding = padding
 		}
 	}
 }

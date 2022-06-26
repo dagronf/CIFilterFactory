@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Color Clamp
 	///
 	/// Clamp color to a certain range.
+	///
+	/// **CIFilter Name**
+	/// - CIColorClamp
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
@@ -54,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +73,7 @@ import Foundation
 
 		// MARK: - minComponents (inputMinComponents)
 
-		/// Lower clamping values
+		/// Lower clamping values.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMinComponents`
@@ -91,7 +93,7 @@ import Foundation
 
 		// MARK: - maxComponents (inputMaxComponents)
 
-		/// Higher clamping values
+		/// Higher clamping values.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMaxComponents`

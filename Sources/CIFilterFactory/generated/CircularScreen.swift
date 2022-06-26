@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Circular Screen
 	///
 	/// Simulates a circular-shaped halftone screen.
+	///
+	/// **CIFilter Name**
+	/// - CICircularScreen
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +71,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The x and y position to use as the center of the circular screen pattern
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`

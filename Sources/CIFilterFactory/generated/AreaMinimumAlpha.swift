@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Area Minimum Alpha
 	///
 	/// Finds and returns the pixel with the minimum alpha value.
+	///
+	/// **CIFilter Name**
+	/// - CIAreaMinimumAlpha
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo

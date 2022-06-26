@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Star Shine
 	///
-	/// Generates a starburst pattern. The output image is typically used as input to another filter
+	/// Generates a starburst pattern. The output image is typically used as input to another filter.
+	///
+	/// **CIFilter Name**
+	/// - CIStarShineGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The x and y position to use as the center of the star.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -78,6 +81,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var color: CIColor? {
 			get {
 				self.keyedValue("inputColor")
@@ -139,7 +143,7 @@ import Foundation
 
 		// MARK: - crossAngle (inputCrossAngle)
 
-		/// The angle of the cross pattern.
+		/// The angle in radians of the cross pattern.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCrossAngle`

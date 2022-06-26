@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Maximum Component
 	///
 	/// Converts an image to grayscale using the maximum of the three color components.
+	///
+	/// **CIFilter Name**
+	/// - CIMaximumComponent
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage

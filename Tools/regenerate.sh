@@ -11,7 +11,7 @@ xcodebuild -scheme ciff_generator build CONFIGURATION_BUILD_DIR="build"
 cd ..
 
 # Comment the next line if you don't want the files formatted automatically
-swiftformat --indent tab --tabwidth 3 --swiftversion 5 --self insert ../Sources/CIFilterFactory/generated/*.swift
+swiftformat --indent tabs --tabwidth 3 --swiftversion 5 --self insert ../Sources/CIFilterFactory/generated/*.swift
 
 # Make the docs
 ./make-docs.sh

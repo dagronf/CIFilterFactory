@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Motion Blur
 	///
 	/// Blurs an image to simulate the effect of using a camera that moves a specified angle and distance while capturing the image.
+	///
+	/// **CIFilter Name**
+	/// - CIMotionBlur
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 8.3, tvOS 8.3
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -94,7 +97,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// The angle of the motion determines which direction the blur smears.
+		/// The angle in radians of the motion determines which direction the blur smears.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`

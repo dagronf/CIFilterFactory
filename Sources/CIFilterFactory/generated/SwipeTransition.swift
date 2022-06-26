@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Swipe
 	///
 	/// Transitions from one image to another by simulating a swiping action.
+	///
+	/// **CIFilter Name**
+	/// - CISwipeTransition
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTransition
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -150,7 +153,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// The angle of the swipe.
+		/// The angle in radians of the swipe.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`
@@ -171,7 +174,7 @@ import Foundation
 
 		// MARK: - width (inputWidth)
 
-		/// The width of the swipe
+		/// The width of the swipe.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputWidth`

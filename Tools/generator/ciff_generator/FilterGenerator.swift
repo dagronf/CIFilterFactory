@@ -40,7 +40,6 @@ class FilterGenerator {
 
 		out.print("@objc public extension CIFF {")
 
-		out.print("   ///")
 		if let refDisplay = filterAttributes[kCIAttributeFilterDisplayName] as? String {
 			out.print("   /// \(refDisplay)")
 			out.print("   ///")
@@ -49,6 +48,10 @@ class FilterGenerator {
 			out.print("   /// \(refDesc)")
 			out.print("   ///")
 		}
+
+		out.print("   /// **CIFilter Name**")
+		out.print("   /// - \(filter.name)")
+		out.print("   ///")
 
 		out.print("   /// **Availability**")
 
@@ -99,6 +102,43 @@ class FilterGenerator {
 
 			for keyName in inputKeys {
 				self.generateKey(keyName: keyName, filterAttributes: filterAttributes)
+			}
+		}
+
+		outputKeyGen: do {
+			let additionalOutputKeys = filter.outputKeys.filter { $0 != "outputImage" && !$0.contains(":") }
+			if additionalOutputKeys.count == 0 {
+				break outputKeyGen
+			}
+
+			var usableKeys: [String] = []
+			for key in additionalOutputKeys {
+				if let type = additionalOutputKeyTypes[AdditionalOutputKey(filter.name, key)] {
+					if usableKeys.count == 0 {
+						out.print("      // MARK: - Additional output keys")
+						out.print("")
+					}
+					else {
+						out.print("")
+					}
+					out.print("      @objc public var \(key): Unmanaged<\(type)>? {")
+					out.print("         let value = self.filter.perform(#selector(getter: AdditionalOutputsFilterDescriptor.\(key)))")
+					out.print("         if let obj = value?.takeUnretainedValue() {")
+					out.print("            return Unmanaged.passUnretained(obj as! \(type))")
+					out.print("         }")
+					out.print("         return nil")
+					out.print("      }")
+					usableKeys.append(key)
+				}
+			}
+			if usableKeys.count > 0 {
+				out.print("")
+				out.print("      // A hidden class for extracting any additional output objects")
+				out.print("      private final class AdditionalOutputsFilterDescriptor: NSObject {")
+				for key in usableKeys {
+					out.print("         @objc var \(key): Unmanaged<AnyObject>?")
+				}
+				out.print("      }")
 			}
 		}
 

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Temperature and Tint
 	///
 	/// Adapt the reference white point for an image.
+	///
+	/// **CIFilter Name**
+	/// - CITemperatureAndTint
 	///
 	/// **Availability**
 	/// - macOS 10.7, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
@@ -54,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -71,7 +74,7 @@ import Foundation
 
 		// MARK: - neutral (inputNeutral)
 
-		/// No Description
+		/// A vector containing the source white point defined by color temperature and tint or chromaticity (x,y).
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputNeutral`
@@ -92,7 +95,7 @@ import Foundation
 
 		// MARK: - targetNeutral (inputTargetNeutral)
 
-		/// No Description
+		/// A vector containing the desired white point defined by color temperature and tint or chromaticity (x,y).
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputTargetNeutral`

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Vertical Keystone Correction
 	///
-	/// Apply vertical keystone correction to an image with guides
+	/// Apply vertical keystone correction to an image with guides.
+	///
+	/// **CIFilter Name**
+	/// - CIKeystoneCorrectionVertical
 	///
 	/// **Availability**
 	/// - macOS 10.15, iOS 13, tvOS 13
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///

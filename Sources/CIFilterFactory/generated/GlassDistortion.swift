@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Glass Distortion
 	///
 	/// Distorts an image by applying a glass-like texture. The raised portions of the output image are the result of applying a texture map.
+	///
+	/// **CIFilter Name**
+	/// - CIGlassDistortion
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 8, tvOS 8
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryDistortionEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -86,7 +89,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`

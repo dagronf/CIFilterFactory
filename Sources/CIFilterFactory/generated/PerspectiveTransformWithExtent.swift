@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Perspective Transform with Extent
 	///
 	/// Alters the geometry of an image to simulate the observer changing viewing position. You can use the perspective filter to skew an image.
+	///
+	/// **CIFilter Name**
+	/// - CIPerspectiveTransformWithExtent
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -90,7 +93,7 @@ import Foundation
 
 		// MARK: - topLeft (inputTopLeft)
 
-		/// No Description
+		/// The top left coordinate to map the image to.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputTopLeft`
@@ -111,7 +114,7 @@ import Foundation
 
 		// MARK: - topRight (inputTopRight)
 
-		/// No Description
+		/// The top right coordinate to map the image to.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputTopRight`
@@ -132,7 +135,7 @@ import Foundation
 
 		// MARK: - bottomRight (inputBottomRight)
 
-		/// No Description
+		/// The bottom right coordinate to map the image to.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBottomRight`
@@ -153,7 +156,7 @@ import Foundation
 
 		// MARK: - bottomLeft (inputBottomLeft)
 
-		/// No Description
+		/// The bottom left coordinate to map the image to.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBottomLeft`

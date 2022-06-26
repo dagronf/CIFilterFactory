@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Sunbeams
 	///
 	/// Generates a sun effect. You typically use the output of the sunbeams filter as input to a composite filter.
+	///
+	/// **CIFilter Name**
+	/// - CISunbeamsGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 9, tvOS 9
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The x and y position to use as the center of the sunbeam pattern
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -78,6 +81,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var color: CIColor? {
 			get {
 				self.keyedValue("inputColor")

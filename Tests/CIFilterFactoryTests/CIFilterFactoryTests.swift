@@ -73,4 +73,12 @@ final class CIFilterFactoryTests: XCTestCase {
 		f.cubeDimension = 19
 		XCTAssertEqual(19, f.cubeDimension)
 	}
+
+	func testQRCodeBuild() throws {
+		try autoreleasepool {
+			let c = try XCTUnwrap(CIFF.QRCodeGenerator(text: "hello"))
+			let cgimage = c.outputCGImage?.takeUnretainedValue()
+			XCTAssertNotNil(cgimage)
+		}
+	}
 }

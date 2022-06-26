@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Triangle Kaleidoscope
 	///
 	/// Maps a triangular portion of image to a triangular area and then generates a kaleidoscope effect.
+	///
+	/// **CIFilter Name**
+	/// - CITriangleKaleidoscope
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 6, tvOS 6
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTileEffect
 	/// - CICategoryVideo
@@ -111,7 +114,7 @@ import Foundation
 
 		// MARK: - rotation (inputRotation)
 
-		/// Rotation angle of the triangle.
+		/// Rotation angle in radians of the triangle.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRotation`

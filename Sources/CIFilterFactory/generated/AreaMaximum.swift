@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Area Maximum
 	///
 	/// Calculates the maximum component values for the specified area in an image, returning the result in a pixel.
+	///
+	/// **CIFilter Name**
+	/// - CIAreaMaximum
 	///
 	/// **Availability**
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo

@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// KMeans
 	///
 	/// Create a palette of the most common colors found in the image.
+	///
+	/// **CIFilter Name**
+	/// - CIKMeans
 	///
 	/// **Availability**
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -95,6 +98,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMeans`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var means: CIImage? {
 			get {
 				self.keyedValue("inputMeans")

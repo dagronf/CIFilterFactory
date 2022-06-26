@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Checkerboard
 	///
 	/// Generates a pattern of squares of alternating colors. You can specify the size, colors, and the sharpness of the pattern.
+	///
+	/// **CIFilter Name**
+	/// - CICheckerboardGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGenerator
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -78,6 +81,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor0`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var color0: CIColor? {
 			get {
 				self.keyedValue("inputColor0")
@@ -94,6 +98,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputColor1`
 		/// - Internal class: `CIColor`
+		/// - Type: `CIAttributeTypeColor`
 		@objc public var color1: CIColor? {
 			get {
 				self.keyedValue("inputColor1")

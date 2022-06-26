@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Histogram Display
 	///
 	/// Generates a displayable histogram image from the output of the “Area Histogram” filter.
+	///
+	/// **CIFilter Name**
+	/// - CIHistogramDisplayFilter
 	///
 	/// **Availability**
 	/// - iOS 8, tvOS 8
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -121,7 +123,7 @@ import Foundation
 
 		// MARK: - lowLimit (inputLowLimit)
 
-		/// The fraction of the left portion of the histogram image to make darker
+		/// The fraction of the left portion of the histogram image to make darker.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputLowLimit`

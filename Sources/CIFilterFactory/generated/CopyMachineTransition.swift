@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Copy Machine
 	///
 	/// Transitions from one image to another by simulating the effect of a copy machine.
+	///
+	/// **CIFilter Name**
+	/// - CICopyMachineTransition
 	///
 	/// **Availability**
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTransition
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -150,7 +153,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// The angle of the copier light.
+		/// The angle in radians of the copier light.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`

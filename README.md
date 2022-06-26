@@ -266,6 +266,12 @@ NOTE: This is only available for Xcode 13 and later
 
 ## History
 
+### `16.0.0`
+
+* Regenerated with support for new filters in macOS 13, iOS 16 and tvOS 16
+* Slightly nicer support for filter additional output types
+* Minor updates to code comments with more information
+
 ### `15.0.4`
 
 * **BREAKING** : I've changed 'image' in the generated files to 'inputImage' in order to make the code more readable.

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Document Enhancer
 	///
 	/// Enhance a document image by removing unwanted shadows, whitening the background, and enhancing contrast.
+	///
+	/// **CIFilter Name**
+	/// - CIDocumentEnhancer
 	///
 	/// **Availability**
 	/// - macOS 10.15, iOS 13, tvOS 13
@@ -52,7 +54,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

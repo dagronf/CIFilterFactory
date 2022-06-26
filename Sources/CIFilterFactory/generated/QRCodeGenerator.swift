@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// QR Code Generator
 	///
 	/// Generate a QR Code image for message data.
+	///
+	/// **CIFilter Name**
+	/// - CIQRCodeGenerator
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
@@ -82,6 +84,21 @@ import Foundation
 			set {
 				self.setKeyedValue(newValue as? NSString, for: "inputCorrectionLevel")
 			}
+		}
+
+		// MARK: - Additional output keys
+
+		@objc public var outputCGImage: Unmanaged<CGImage>? {
+			let value = self.filter.perform(#selector(getter: AdditionalOutputsFilterDescriptor.outputCGImage))
+			if let obj = value?.takeUnretainedValue() {
+				return Unmanaged.passUnretained(obj as! CGImage)
+			}
+			return nil
+		}
+
+		// A hidden class for extracting any additional output objects
+		private final class AdditionalOutputsFilterDescriptor: NSObject {
+			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
 		// MARK: - Convenience initializer

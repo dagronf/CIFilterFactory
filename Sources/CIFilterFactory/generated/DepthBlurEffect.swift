@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Depth Blur Effect
 	///
 	/// Applies a variable radius disc blur to an image where areas in the background are softened more than those in the foreground.
+	///
+	/// **CIFilter Name**
+	/// - CIDepthBlurEffect
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11, macCatalyst 14
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -74,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputDisparityImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var disparityImage: CIImage? {
 			get {
 				self.keyedValue("inputDisparityImage")
@@ -90,6 +94,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputMatteImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var matteImage: CIImage? {
 			get {
 				self.keyedValue("inputMatteImage")
@@ -106,6 +111,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputHairImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var hairImage: CIImage? {
 			get {
 				self.keyedValue("inputHairImage")
@@ -122,6 +128,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGlassesImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var glassesImage: CIImage? {
 			get {
 				self.keyedValue("inputGlassesImage")
@@ -138,6 +145,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGainMap`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var gainMap: CIImage? {
 			get {
 				self.keyedValue("inputGainMap")

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Vignette Effect
 	///
 	/// Applies a vignette shading to the corners of an image.
+	///
+	/// **CIFilter Name**
+	/// - CIVignetteEffect
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
@@ -53,7 +56,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -70,7 +73,7 @@ import Foundation
 
 		// MARK: - center (inputCenter)
 
-		/// The center of the effect as x and y coordinates.
+		/// The center of the effect as x and y pixel coordinates.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputCenter`
@@ -142,7 +145,7 @@ import Foundation
 
 		// MARK: - falloff (inputFalloff)
 
-		/// No Description
+		/// The falloff of the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputFalloff`

@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Guided Filter
 	///
 	/// Upsamples a small image to the size of the guide image using the content of the guide to preserve detail.
+	///
+	/// **CIFilter Name**
+	/// - CIGuidedFilter
 	///
 	/// **Availability**
 	/// - macOS 10.14, iOS 12, tvOS 12
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -74,6 +77,7 @@ import Foundation
 		/// CIFilter attribute information
 		/// - Attribute key: `inputGuideImage`
 		/// - Internal class: `CIImage`
+		/// - Type: `CIAttributeTypeImage`
 		@objc public var guideImage: CIImage? {
 			get {
 				self.keyedValue("inputGuideImage")

@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Accordion Fold Transition
 	///
 	/// Transitions from one image to another of a differing dimensions by unfolding.
+	///
+	/// **CIFilter Name**
+	/// - CIAccordionFoldTransition
 	///
 	/// **Availability**
 	/// - macOS 10.10, iOS 8, tvOS 8
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryTransition
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -86,7 +89,7 @@ import Foundation
 
 		// MARK: - bottomHeight (inputBottomHeight)
 
-		/// No Description
+		/// The height in pixels from the bottom of the image to the bottom of the folded part of the transition.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBottomHeight`
@@ -111,7 +114,7 @@ import Foundation
 
 		// MARK: - numberOfFolds (inputNumberOfFolds)
 
-		/// No Description
+		/// The number of folds used in the transition.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputNumberOfFolds`
@@ -137,7 +140,7 @@ import Foundation
 
 		// MARK: - foldShadowAmount (inputFoldShadowAmount)
 
-		/// No Description
+		/// A value that specifies the intensity of the shadow in the transition.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputFoldShadowAmount`

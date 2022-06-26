@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Straighten
 	///
 	/// Rotates a source image by the specified angle in radians. The image is then scaled and cropped so that the rotated image fits the extent of the input image.
+	///
+	/// **CIFilter Name**
+	/// - CIStraightenFilter
 	///
 	/// **Availability**
 	/// - macOS 10.7, iOS 5, tvOS 5
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBuiltIn
 	/// - CICategoryGeometryAdjustment
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - angle (inputAngle)
 
-		/// An angle in radians.
+		/// The angle in radians of the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputAngle`

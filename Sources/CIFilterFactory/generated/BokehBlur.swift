@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Bokeh Blur
 	///
 	/// Smooths an image using a disc-shaped convolution kernel.
+	///
+	/// **CIFilter Name**
+	/// - CIBokehBlur
 	///
 	/// **Availability**
 	/// - macOS 10.13, iOS 11, tvOS 11
@@ -35,6 +37,7 @@ import Foundation
 	/// **Categories**
 	/// - CICategoryBlur
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -121,7 +124,7 @@ import Foundation
 
 		// MARK: - ringSize (inputRingSize)
 
-		/// The size of extra emphasis at the ring of the bokeh
+		/// The size of extra emphasis at the ring of the bokeh.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputRingSize`

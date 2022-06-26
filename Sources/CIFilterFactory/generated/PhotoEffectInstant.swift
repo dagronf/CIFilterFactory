@@ -24,10 +24,12 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// Photo Effect Instant
 	///
-	/// Apply a “Instant” style effect to an image
+	/// Apply a “Instant” style effect to an image.
+	///
+	/// **CIFilter Name**
+	/// - CIPhotoEffectInstant
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
@@ -55,7 +57,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`

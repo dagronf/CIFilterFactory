@@ -1,5 +1,5 @@
 //
-//  ColorThresholdOtsu.swift  (AUTOMATICALLY GENERATED FILE)
+//  ConvertLabToRGB.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -24,34 +24,35 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	/// Color Threshold Otsu
+	/// Convert Lab to RGB
 	///
-	/// Produces a binarized image from an image with finite extent. The threshold is calculated from the image histogram using Otsu’s method. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
+	/// Converts an image from La*b* color space to the Core Image RGB working space.
 	///
 	/// **CIFilter Name**
-	/// - CIColorThresholdOtsu
+	/// - CIConvertLabToRGB
 	///
 	/// **Availability**
-	/// - macOS 11.0, iOS 14, tvOS 14
+	/// - macOS 13.0, iOS 16, tvOS 16
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
+	/// - CICategoryColorEffect
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryInterlaced
 	/// - CICategoryNonSquarePixels
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
 	/// **Documentation Links**
-	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthresholdotsu?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
+	/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvertlabtorgb?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
 	///
-	@available(macOS 11.0, iOS 14, tvOS 14, *)
-	@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: Core {
+	@available(macOS 13.0, iOS 16, tvOS 16, *)
+	@objc(CIFFConvertLabToRGB) class ConvertLabToRGB: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
-			super.init(name: "CIColorThresholdOtsu")
+			super.init(name: "CIConvertLabToRGB")
 		}
 
 		// MARK: - inputImage (inputImage)
@@ -71,14 +72,37 @@ import Foundation
 			}
 		}
 
+		// MARK: - normalize (inputNormalize)
+
+		/// If nomalize is false then the L channel is in the range 0 to 100 and the a*b* channels are the range -128 to 128. If nomalize is true then the La*b* channels are the range 0 to 1.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputNormalize`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeBoolean`
+		/// - Default Value: `false`
+		@objc public var normalize: Bool {
+			get {
+				self.boolValue(forKey: "inputNormalize", defaultValue: Self.normalizeDefault)
+			}
+			set {
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputNormalize")
+			}
+		}
+
+		/// `normalize` default value
+		@objc public static let normalizeDefault: Bool = false
+
 		// MARK: - Convenience initializer
 
 		/// Create an instance of the filter
 		@objc public convenience init?(
-			inputImage: CIImage)
-		{
+			inputImage: CIImage,
+			normalize: Bool = ConvertLabToRGB.normalizeDefault
+		) {
 			self.init()
 			self.inputImage = inputImage
+			self.normalize = normalize
 		}
 	}
 }

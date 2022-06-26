@@ -1,5 +1,5 @@
 //
-//  AreaHistogram.swift  (AUTOMATICALLY GENERATED FILE)
+//  AreaLogarithmicHistogram.swift  (AUTOMATICALLY GENERATED FILE)
 //  CIFilterFactory
 //
 //  MIT license
@@ -24,42 +24,43 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	/// Area Histogram
+	/// Area Logarithmic Histogram
 	///
-	/// Calculates histograms of the R, G, B, and A channels of the specified area of an image. The output image is a one pixel tall image containing the histogram data for all four channels.
+	/// Calculates histogram of the R, G, B, and A channels of the specified area of an image. Before binning, the R, G, and B channel values are transformed by the log base two function. The output image is a one pixel tall image containing the histogram data for all four channels.
 	///
 	/// **CIFilter Name**
-	/// - CIAreaHistogram
+	/// - CIAreaLogarithmicHistogram
 	///
 	/// **Availability**
-	/// - macOS 10.5, iOS 8, tvOS 8
+	/// - macOS 13.0, iOS 16, tvOS 16
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryReduction
 	/// - CICategoryStillImage
 	/// - CICategoryVideo
 	///
 	/// **Documentation Links**
-	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareahistogram?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
+	/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciarealogarithmichistogram?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaLogarithmicHistogram/)
 	///
 	/// **Additional output keys**
 	/// - outputData
 	/// - outputImageMPS
 	/// - outputImageNonMPS
 	///
-	@available(macOS 10.5, iOS 8, tvOS 8, *)
-	@objc(CIFFAreaHistogram) class AreaHistogram: Core {
+	@available(macOS 13.0, iOS 16, tvOS 16, *)
+	@objc(CIFFAreaLogarithmicHistogram) class AreaLogarithmicHistogram: Core {
 		/// Create an instance of the filter
 		@objc public init?() {
-			super.init(name: "CIAreaHistogram")
+			super.init(name: "CIAreaLogarithmicHistogram")
 		}
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image whose histogram you want to calculate.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -76,7 +77,7 @@ import Foundation
 
 		// MARK: - extent (inputExtent)
 
-		/// A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
+		/// A rectangle that defines the extent of the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputExtent`
@@ -97,7 +98,7 @@ import Foundation
 
 		// MARK: - scale (inputScale)
 
-		/// The scale value to use for the histogram values. If the scale is 1.0, then the bins in the resulting image will add up to 1.0.
+		/// The amount of the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputScale`
@@ -110,7 +111,7 @@ import Foundation
 				self.doubleValue(forKey: "inputScale", defaultValue: Self.scaleDefault)
 			}
 			set {
-				self.setDoubleValue(newValue, bounds: AreaHistogram.scaleRange, forKey: "inputScale")
+				self.setDoubleValue(newValue, bounds: AreaLogarithmicHistogram.scaleRange, forKey: "inputScale")
 			}
 		}
 
@@ -136,7 +137,7 @@ import Foundation
 				self.doubleValue(forKey: "inputCount", defaultValue: Self.countDefault)
 			}
 			set {
-				self.setDoubleValue(newValue, bounds: AreaHistogram.countRange, forKey: "inputCount")
+				self.setDoubleValue(newValue, bounds: AreaLogarithmicHistogram.countRange, forKey: "inputCount")
 			}
 		}
 
@@ -145,6 +146,48 @@ import Foundation
 
 		/// `count` range definition
 		public static let countRange: ClosedRange<Double> = 1.0 ... 2048.0
+
+		// MARK: - minimumStop (inputMinimumStop)
+
+		/// The minimum of the range of color channel values to be in the logarithmic histogram image.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMinimumStop`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default Value: `-10.0`
+		@objc public var minimumStop: Double {
+			get {
+				self.doubleValue(forKey: "inputMinimumStop", defaultValue: Self.minimumStopDefault)
+			}
+			set {
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputMinimumStop")
+			}
+		}
+
+		/// `minimumStop` default value
+		@objc public static let minimumStopDefault: Double = -10.0
+
+		// MARK: - maximumStop (inputMaximumStop)
+
+		/// The maximum of the range of color channel values to be in the logarithmic histogram image.
+		///
+		/// CIFilter attribute information
+		/// - Attribute key: `inputMaximumStop`
+		/// - Internal class: `NSNumber`
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default Value: `4.0`
+		@objc public var maximumStop: Double {
+			get {
+				self.doubleValue(forKey: "inputMaximumStop", defaultValue: Self.maximumStopDefault)
+			}
+			set {
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputMaximumStop")
+			}
+		}
+
+		/// `maximumStop` default value
+		@objc public static let maximumStopDefault: Double = 4.0
 
 		// MARK: - Additional output keys
 
@@ -184,15 +227,19 @@ import Foundation
 		/// Create an instance of the filter
 		@objc public convenience init?(
 			inputImage: CIImage,
-			extent: CGRect = AreaHistogram.extentDefault,
-			scale: Double = AreaHistogram.scaleDefault,
-			count: Double = AreaHistogram.countDefault
+			extent: CGRect = AreaLogarithmicHistogram.extentDefault,
+			scale: Double = AreaLogarithmicHistogram.scaleDefault,
+			count: Double = AreaLogarithmicHistogram.countDefault,
+			minimumStop: Double = AreaLogarithmicHistogram.minimumStopDefault,
+			maximumStop: Double = AreaLogarithmicHistogram.maximumStopDefault
 		) {
 			self.init()
 			self.inputImage = inputImage
 			self.extent = extent
 			self.scale = scale
 			self.count = count
+			self.minimumStop = minimumStop
+			self.maximumStop = maximumStop
 		}
 	}
 }

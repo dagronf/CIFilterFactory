@@ -24,16 +24,19 @@ import CoreML
 import Foundation
 
 @objc public extension CIFF {
-	///
 	/// 5 by 5 Convolution
 	///
-	/// Convolution with 5 by 5 matrix
+	/// Convolution with 5 by 5 matrix.
+	///
+	/// **CIFilter Name**
+	/// - CIConvolution5X5
 	///
 	/// **Availability**
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
 	/// - CICategoryBuiltIn
+	/// - CICategoryHighDynamicRange
 	/// - CICategoryStillImage
 	/// - CICategoryStylize
 	/// - CICategoryVideo
@@ -52,7 +55,7 @@ import Foundation
 
 		// MARK: - inputImage (inputImage)
 
-		/// The image to use as an input image. For filters that also use a background image, this is the foreground image.
+		/// The image to use as an input for the effect.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputImage`
@@ -69,7 +72,7 @@ import Foundation
 
 		// MARK: - weights (inputWeights)
 
-		/// No Description
+		/// A vector containing the 25 weights of the convolution kernel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputWeights`
@@ -89,19 +92,24 @@ import Foundation
 
 		// MARK: - bias (inputBias)
 
-		/// No Description
+		/// A value that is added to the RGBA components of the output pixel.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputBias`
 		/// - Internal class: `NSNumber`
-		@objc public var bias: NSNumber? {
+		/// - Type: `CIAttributeTypeScalar`
+		/// - Default Value: `0.0`
+		@objc public var bias: Double {
 			get {
-				self.keyedValue("inputBias")
+				self.doubleValue(forKey: "inputBias", defaultValue: Self.biasDefault)
 			}
 			set {
-				self.setKeyedValue(newValue, for: "inputBias")
+				self.setKeyedValue(NSNumber(value: newValue), for: "inputBias")
 			}
 		}
+
+		/// `bias` default value
+		@objc public static let biasDefault: Double = 0.0
 
 		// MARK: - Convenience initializer
 
@@ -109,7 +117,7 @@ import Foundation
 		@objc public convenience init?(
 			inputImage: CIImage,
 			weights: CIVector = Convolution5X5.weightsDefault,
-			bias: NSNumber
+			bias: Double = Convolution5X5.biasDefault
 		) {
 			self.init()
 			self.inputImage = inputImage
