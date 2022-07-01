@@ -74,11 +74,35 @@ final class CIFilterFactoryTests: XCTestCase {
 		XCTAssertEqual(19, f.cubeDimension)
 	}
 
-	func testQRCodeBuild() throws {
+	func testQRCodeAdditionalOutputAccess() throws {
 		try autoreleasepool {
 			let c = try XCTUnwrap(CIFF.QRCodeGenerator(text: "hello"))
 			let cgimage = c.outputCGImage?.takeUnretainedValue()
 			XCTAssertNotNil(cgimage)
+		}
+	}
+
+	func testBoundsCheck() throws {
+		do {
+			// Check lower bounds only
+			let t = try XCTUnwrap(CIFF.BarsSwipeTransition())
+			t.width = -2
+			XCTAssertEqual(CIFF.BarsSwipeTransition.widthRange.lowerBound, t.width)
+
+			t.width = -0.001
+			XCTAssertEqual(CIFF.BarsSwipeTransition.widthRange.lowerBound, t.width)
+
+			t.width = 100000
+			XCTAssertEqual(100000, t.width)
+		}
+
+		do {
+			// Check upper/lower bounds
+			let t = try XCTUnwrap(CIFF.AccordionFoldTransition())
+			t.time = -1
+			XCTAssertEqual(CIFF.AccordionFoldTransition.timeRange.lowerBound, t.time)
+			t.time = 1.1
+			XCTAssertEqual(CIFF.AccordionFoldTransition.timeRange.upperBound, t.time)
 		}
 	}
 }

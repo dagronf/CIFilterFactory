@@ -118,21 +118,24 @@ For example :-
 #### Filter definition
 
 ```swift
-///
 /// Accordion Fold Transition
 ///
 /// Transitions from one image to another of a differing dimensions by unfolding.
+///
+/// **CIFilter Name**
+/// - CIAccordionFoldTransition
 ///
 /// **Availability**
 /// - macOS 10.10, iOS 8, tvOS 8
 ///
 /// **Categories**
 /// - CICategoryBuiltIn
+/// - CICategoryHighDynamicRange
 /// - CICategoryStillImage
 /// - CICategoryTransition
 /// - CICategoryVideo
 ///
-/// **Links**
+/// **Documentation Links**
 /// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
 /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
 /// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
@@ -150,14 +153,14 @@ For example :-
 /// - Attribute key: `inputWidth`
 /// - Internal class: `NSNumber`
 /// - Type: `CIAttributeTypeDistance`
-/// - Default value: `30`
-/// - Minimum value: `2.0`
+/// - Minimum Value: `2.0`
+/// - Default Value: `30.0`
 @objc public var width: Double {
    ...
 }
 
 /// `width` range definition
-public static let widthRange: PartialRangeFrom<Double> = Double(2.0)...
+public static let widthRange = PartialRangeFrom<Double>(2.0)
 ```
 
 ### Value ranges
