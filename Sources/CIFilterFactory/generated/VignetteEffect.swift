@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFVignetteEffect) class VignetteEffect: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIVignetteEffect")
 		}
@@ -169,18 +169,26 @@ import Foundation
 		/// `falloff` range definition
 		public static let falloffRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - radius: The distance from the center of the effect.
+		///   - intensity: The intensity of the effect.
+		///   - falloff: The falloff of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = VignetteEffect.centerDefault,
 			radius: Double = VignetteEffect.radiusDefault,
 			intensity: Double = VignetteEffect.intensityDefault,
 			falloff: Double = VignetteEffect.falloffDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.radius = radius
 			self.intensity = intensity

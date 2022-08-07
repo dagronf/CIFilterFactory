@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFEdgePreserveUpsampleFilter) class EdgePreserveUpsampleFilter: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIEdgePreserveUpsampleFilter")
 		}
@@ -141,18 +141,27 @@ import Foundation
 		/// `lumaSigma` range definition
 		public static let lumaSigmaRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - smallImage: No Description
+		///   - spatialSigma: No Description
+		///   - lumaSigma: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
-			smallImage: CIImage,
+			inputImage: CIImage? = nil,
+			smallImage: CIImage? = nil,
 			spatialSigma: Double = EdgePreserveUpsampleFilter.spatialSigmaDefault,
 			lumaSigma: Double = EdgePreserveUpsampleFilter.lumaSigmaDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.smallImage = smallImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let smallImage = smallImage {
+				self.smallImage = smallImage
+			}
 			self.spatialSigma = spatialSigma
 			self.lumaSigma = lumaSigma
 		}

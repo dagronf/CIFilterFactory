@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFPerspectiveTile) class PerspectiveTile: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPerspectiveTile")
 		}
@@ -154,18 +154,26 @@ import Foundation
 		/// `bottomLeft` default value
 		@objc public static let bottomLeftDefault = CGPoint(x: 155.0, y: 153.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - topLeft: The top left coordinate of a tile.
+		///   - topRight: The top right coordinate of a tile.
+		///   - bottomRight: The bottom right coordinate of a tile.
+		///   - bottomLeft: The bottom left coordinate of a tile.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			topLeft: CGPoint = PerspectiveTile.topLeftDefault,
 			topRight: CGPoint = PerspectiveTile.topRightDefault,
 			bottomRight: CGPoint = PerspectiveTile.bottomRightDefault,
 			bottomLeft: CGPoint = PerspectiveTile.bottomLeftDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.topLeft = topLeft
 			self.topRight = topRight
 			self.bottomRight = bottomRight

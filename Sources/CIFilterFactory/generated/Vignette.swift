@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 5, tvOS 5, *)
 	@objc(CIFFVignette) class Vignette: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIVignette")
 		}
@@ -123,16 +123,22 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange: ClosedRange<Double> = 0.0 ... 2.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - intensity: The intensity of the effect.
+		///   - radius: The distance from the center of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			intensity: Double = Vignette.intensityDefault,
 			radius: Double = Vignette.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.intensity = intensity
 			self.radius = radius
 		}

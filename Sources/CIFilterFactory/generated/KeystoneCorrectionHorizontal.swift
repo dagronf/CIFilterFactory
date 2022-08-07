@@ -52,7 +52,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFKeystoneCorrectionHorizontal) class KeystoneCorrectionHorizontal: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIKeystoneCorrectionHorizontal")
 		}
@@ -175,11 +175,18 @@ import Foundation
 		/// `bottomLeft` default value
 		@objc public static let bottomLeftDefault = CGPoint(x: 0.0, y: 0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to process.
+		///   - focalLength: 35mm equivalent focal length of the input image.
+		///   - topLeft: The top left coordinate of the guide.
+		///   - topRight: The top right coordinate of the guide.
+		///   - bottomRight: The bottom right coordinate of the guide.
+		///   - bottomLeft: The bottom left coordinate of the guide.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			focalLength: Double = KeystoneCorrectionHorizontal.focalLengthDefault,
 			topLeft: CGPoint,
 			topRight: CGPoint,
@@ -187,7 +194,9 @@ import Foundation
 			bottomLeft: CGPoint
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.focalLength = focalLength
 			self.topLeft = topLeft
 			self.topRight = topRight

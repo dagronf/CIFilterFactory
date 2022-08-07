@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFConvolution9Vertical) class Convolution9Vertical: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIConvolution9Vertical")
 		}
@@ -111,16 +111,22 @@ import Foundation
 		/// `bias` default value
 		@objc public static let biasDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - weights: A vector containing the 9 weights of the convolution kernel.
+		///   - bias: A value that is added to the RGBA components of the output pixel.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			weights: CIVector = Convolution9Vertical.weightsDefault,
 			bias: Double = Convolution9Vertical.biasDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.weights = weights
 			self.bias = bias
 		}

@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFColorCurves) class ColorCurves: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorCurves")
 		}
@@ -123,17 +123,24 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - curvesData: Data containing a color table of floating-point RGB values.
+		///   - curvesDomain: A two-element vector that defines the minimum and maximum RGB component values that are used to look up result values from the color table.
+		///   - colorSpace: The CGColorSpace that defines the RGB values in the color table.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			curvesData: Data,
 			curvesDomain: CIVector = ColorCurves.curvesDomainDefault,
 			colorSpace: NSObject
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.curvesData = curvesData
 			self.curvesDomain = curvesDomain
 			self.colorSpace = colorSpace

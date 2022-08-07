@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
 	@objc(CIFFSmoothLinearGradient) class SmoothLinearGradient: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISmoothLinearGradient")
 		}
@@ -129,9 +129,14 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - point0: The starting position of the gradient -- where the first color begins.
+		///   - point1: The ending position of the gradient -- where the second color begins.
+		///   - color0: The first color to use in the gradient.
+		///   - color1: The second color to use in the gradient.
 		@objc public convenience init?(
 			point0: CGPoint = SmoothLinearGradient.point0Default,
 			point1: CGPoint = SmoothLinearGradient.point1Default,

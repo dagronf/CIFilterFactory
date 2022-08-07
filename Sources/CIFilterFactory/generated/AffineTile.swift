@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFAffineTile) class AffineTile: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAffineTile")
 		}
@@ -91,15 +91,20 @@ import Foundation
 		/// `transform` default value
 		@objc public static let transformDefault = CIFF.CIAffineTransform(m11: 0.4, m12: 0.0, m21: 0.0, m22: 0.4, tX: 0.0, tY: 0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - transform: The transform to apply to the image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			transform: CIAffineTransform = AffineTile.transformDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.transform = transform
 		}
 	}

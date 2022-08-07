@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFNoiseReduction) class NoiseReduction: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CINoiseReduction")
 		}
@@ -120,16 +120,22 @@ import Foundation
 		/// `sharpness` range definition
 		public static let sharpnessRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - noiseLevel: The amount of noise reduction. The larger the value, the more noise reduction.
+		///   - sharpness: The sharpness of the final image. The larger the value, the sharper the result.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			noiseLevel: Double = NoiseReduction.noiseLevelDefault,
 			sharpness: Double = NoiseReduction.sharpnessDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.noiseLevel = noiseLevel
 			self.sharpness = sharpness
 		}

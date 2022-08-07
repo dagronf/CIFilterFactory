@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFColorClamp) class ColorClamp: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorClamp")
 		}
@@ -111,16 +111,22 @@ import Foundation
 		/// `maxComponents` default value
 		@objc public static let maxComponentsDefault = CIVector(values: [1.0, 1.0, 1.0, 1.0], count: 4)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - minComponents: Lower clamping values.
+		///   - maxComponents: Higher clamping values.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			minComponents: CIVector = ColorClamp.minComponentsDefault,
 			maxComponents: CIVector = ColorClamp.maxComponentsDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.minComponents = minComponents
 			self.maxComponents = maxComponents
 		}

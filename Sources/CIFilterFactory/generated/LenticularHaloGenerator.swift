@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFLenticularHaloGenerator) class LenticularHaloGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CILenticularHaloGenerator")
 		}
@@ -242,9 +242,18 @@ import Foundation
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - color: A color.
+		///   - haloRadius: The radius of the halo.
+		///   - haloWidth: The width of the halo, from its inner radius to its outer radius.
+		///   - haloOverlap: No Description
+		///   - striationStrength: The intensity of the halo colors. Larger values are more intense.
+		///   - striationContrast: The contrast of the halo colors. Larger values are higher contrast.
+		///   - time: The duration of the effect.
 		@objc public convenience init?(
 			center: CGPoint = LenticularHaloGenerator.centerDefault,
 			color: CIColor,

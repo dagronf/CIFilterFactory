@@ -31,18 +31,20 @@
 	id image = [[CIImage alloc] initWithBitmapImageRep:bir];
 	assert(image);
 
-	id sepiaFilter = [[CIFFSepiaTone alloc] init];
+	// Sepia filter
+	CIFFSepiaTone* sepiaFilter = [[CIFFSepiaTone alloc] initWithInputImage:nil
+																					 intensity:1.0];
 	assert(sepiaFilter);
-	[sepiaFilter setInputImage:image];
-	[sepiaFilter setIntensity:1.0];
 
-	CIFFCrystallize* crystalize = [[CIFFCrystallize alloc] init];
+	CIFFCrystallize* crystalize = [[CIFFCrystallize alloc] initWithInputImage:nil
+																							 radius:20
+																							 center:CGPointMake(150, 200)];
 	assert(crystalize);
-	[crystalize setInputImage:[sepiaFilter outputImage]];
-	[crystalize setRadius:20];
-	[crystalize setCenter:CGPointMake(150, 200)];
 
-	CIImage* output = [crystalize outputImage];
+	// Create the output image by chaining the filters
+	CIImage* output = [image applyingWithFilters:@[sepiaFilter, crystalize]];
+
+//	CIImage* output = [crystalize outputImage];
 	struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];
 
 	id outputImage = [[NSImage alloc] initWithCGImage:out size:[output extent].size];

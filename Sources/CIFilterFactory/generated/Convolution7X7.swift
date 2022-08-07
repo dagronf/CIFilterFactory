@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 9, tvOS 9, *)
 	@objc(CIFFConvolution7X7) class Convolution7X7: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIConvolution7X7")
 		}
@@ -111,16 +111,22 @@ import Foundation
 		/// `bias` default value
 		@objc public static let biasDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - weights: A vector containing the 49 weights of the convolution kernel.
+		///   - bias: A value that is added to the RGBA components of the output pixel.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			weights: CIVector = Convolution7X7.weightsDefault,
 			bias: Double = Convolution7X7.biasDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.weights = weights
 			self.bias = bias
 		}

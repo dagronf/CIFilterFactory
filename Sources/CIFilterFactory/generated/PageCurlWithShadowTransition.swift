@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 9, tvOS 9, *)
 	@objc(CIFFPageCurlWithShadowTransition) class PageCurlWithShadowTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPageCurlWithShadowTransition")
 		}
@@ -270,13 +270,24 @@ import Foundation
 		/// `shadowExtent` default value
 		@objc public static let shadowExtentDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - backsideImage: The image that appears on the back of the source image, as the page curls to reveal the target image.
+		///   - extent: The extent of the effect.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - angle: The angle in radians of the curling page.
+		///   - radius: The radius of the curl.
+		///   - shadowSize: The maximum size in pixels of the shadow.
+		///   - shadowAmount: The strength of the shadow.
+		///   - shadowExtent: The rectagular portion of input image that will cast a shadow.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
-			backsideImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
+			backsideImage: CIImage? = nil,
 			extent: CGRect = PageCurlWithShadowTransition.extentDefault,
 			time: Double = PageCurlWithShadowTransition.timeDefault,
 			angle: Double = PageCurlWithShadowTransition.angleDefault,
@@ -286,9 +297,15 @@ import Foundation
 			shadowExtent: CGRect = PageCurlWithShadowTransition.shadowExtentDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
-			self.backsideImage = backsideImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
+			if let backsideImage = backsideImage {
+				self.backsideImage = backsideImage
+			}
 			self.extent = extent
 			self.time = time
 			self.angle = angle

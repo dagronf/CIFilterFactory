@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFQRCodeGenerator) class QRCodeGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIQRCodeGenerator")
 		}
@@ -101,9 +101,12 @@ import Foundation
 			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - message: The message to encode in the QR Code
+		///   - correctionLevel: QR Code correction level L, M, Q, or H.
 		@objc public convenience init?(
 			message: Data,
 			correctionLevel: String

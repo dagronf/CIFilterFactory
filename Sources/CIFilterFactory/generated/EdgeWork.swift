@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFEdgeWork) class EdgeWork: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIEdgeWork")
 		}
@@ -94,15 +94,20 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The thickness of the edges. The larger the value, the thicker the edges.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = EdgeWork.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 		}
 	}

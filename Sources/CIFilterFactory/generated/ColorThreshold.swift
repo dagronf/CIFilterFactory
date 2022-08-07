@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
 	@objc(CIFFColorThreshold) class ColorThreshold: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorThreshold")
 		}
@@ -92,15 +92,20 @@ import Foundation
 		/// `threshold` default value
 		@objc public static let thresholdDefault: Double = 0.5
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - threshold: The threshold value that governs if the RGB channels of the resulting image will be zero or one.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			threshold: Double = ColorThreshold.thresholdDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.threshold = threshold
 		}
 	}

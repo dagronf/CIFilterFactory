@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFKaleidoscope) class Kaleidoscope: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIKaleidoscope")
 		}
@@ -137,17 +137,24 @@ import Foundation
 		/// `angle` default value
 		@objc public static let angleDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - count: The number of reflections in the pattern.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - angle: The angle in radians of reflection.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			count: Double = Kaleidoscope.countDefault,
 			center: CGPoint = Kaleidoscope.centerDefault,
 			angle: Double = Kaleidoscope.angleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.count = count
 			self.center = center
 			self.angle = angle

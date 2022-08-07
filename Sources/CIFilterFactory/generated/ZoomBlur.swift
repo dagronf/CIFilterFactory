@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 	@objc(CIFFZoomBlur) class ZoomBlur: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIZoomBlur")
 		}
@@ -112,16 +112,22 @@ import Foundation
 		/// `amount` default value
 		@objc public static let amountDefault: Double = 20.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - amount: The zoom-in amount. Larger values result in more zooming in.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = ZoomBlur.centerDefault,
 			amount: Double = ZoomBlur.amountDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.amount = amount
 		}

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFSharpenLuminance) class SharpenLuminance: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISharpenLuminance")
 		}
@@ -112,16 +112,22 @@ import Foundation
 		/// `radius` default value
 		@objc public static let radiusDefault: Double = 1.69
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - sharpness: The amount of sharpening to apply. Larger values are sharper.
+		///   - radius: The distance from the center of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			sharpness: Double = SharpenLuminance.sharpnessDefault,
 			radius: Double = SharpenLuminance.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.sharpness = sharpness
 			self.radius = radius
 		}

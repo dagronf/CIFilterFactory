@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFDisintegrateWithMaskTransition) class DisintegrateWithMaskTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDisintegrateWithMaskTransition")
 		}
@@ -202,22 +202,36 @@ import Foundation
 		/// `shadowOffset` default value
 		@objc public static let shadowOffsetDefault = CGPoint(x: 0.0, y: -10.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - maskImage: An image that defines the shape to use when disintegrating from the source to the target image.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - shadowRadius: The radius of the shadow created by the mask.
+		///   - shadowDensity: The density of the shadow created by the mask.
+		///   - shadowOffset: The offset of the shadow created by the mask.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
-			maskImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
+			maskImage: CIImage? = nil,
 			time: Double = DisintegrateWithMaskTransition.timeDefault,
 			shadowRadius: Double = DisintegrateWithMaskTransition.shadowRadiusDefault,
 			shadowDensity: Double = DisintegrateWithMaskTransition.shadowDensityDefault,
 			shadowOffset: CGPoint = DisintegrateWithMaskTransition.shadowOffsetDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
-			self.maskImage = maskImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
+			if let maskImage = maskImage {
+				self.maskImage = maskImage
+			}
 			self.time = time
 			self.shadowRadius = shadowRadius
 			self.shadowDensity = shadowDensity

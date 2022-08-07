@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFUnsharpMask) class UnsharpMask: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIUnsharpMask")
 		}
@@ -120,16 +120,22 @@ import Foundation
 		/// `intensity` range definition
 		public static let intensityRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The radius around a given pixel to apply the unsharp mask. The larger the radius, the more of the image is affected.
+		///   - intensity: The intensity of the effect. The larger the value, the more contrast in the affected area.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = UnsharpMask.radiusDefault,
 			intensity: Double = UnsharpMask.intensityDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 			self.intensity = intensity
 		}

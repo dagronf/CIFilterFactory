@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFCode128BarcodeGenerator) class Code128BarcodeGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CICode128BarcodeGenerator")
 		}
@@ -137,9 +137,13 @@ import Foundation
 			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - message: The message to encode in the Code 128 Barcode
+		///   - quietSpace: The number of empty white pixels that should surround the barcode.
+		///   - barcodeHeight: The height of the generated barcode in pixels.
 		@objc public convenience init?(
 			message: Data,
 			quietSpace: Int = Code128BarcodeGenerator.quietSpaceDefault,

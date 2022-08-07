@@ -52,8 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			Swift.print(uiImage)
 
 			let cgImage = filter.outputCGImage
-			Swift.print(cgImage)
-			let uiImage2 = UIImage(cgImage: cgImage!)
+			let c = cgImage!.takeUnretainedValue()
+			Swift.print(c)
+			let uiImage2 = UIImage(cgImage: c)
 			Swift.print(uiImage2)
 
 			let origString = String(data: filter.message!, encoding: .utf8)

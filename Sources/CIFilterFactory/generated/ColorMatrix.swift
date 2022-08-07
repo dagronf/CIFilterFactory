@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFColorMatrix) class ColorMatrix: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorMatrix")
 		}
@@ -172,11 +172,18 @@ import Foundation
 		/// `biasVector` default value
 		@objc public static let biasVectorDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0], count: 4)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - rVector: The amount of red to multiply the source color values by.
+		///   - gVector: The amount of green to multiply the source color values by.
+		///   - bVector: The amount of blue to multiply the source color values by.
+		///   - aVector: The amount of alpha to multiply the source color values by.
+		///   - biasVector: A vector that’s added to each color component.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			rVector: CIVector = ColorMatrix.rVectorDefault,
 			gVector: CIVector = ColorMatrix.gVectorDefault,
 			bVector: CIVector = ColorMatrix.bVectorDefault,
@@ -184,7 +191,9 @@ import Foundation
 			biasVector: CIVector = ColorMatrix.biasVectorDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.rVector = rVector
 			self.gVector = gVector
 			self.bVector = bVector

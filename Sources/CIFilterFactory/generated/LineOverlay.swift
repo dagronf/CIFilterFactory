@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFLineOverlay) class LineOverlay: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CILineOverlay")
 		}
@@ -194,11 +194,18 @@ import Foundation
 		/// `contrast` range definition
 		public static let contrastRange = PartialRangeFrom<Double>(0.25)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - nRNoiseLevel: The noise level of the image (used with camera data) that gets removed before tracing the edges of the image. Increasing the noise level helps to clean up the traced edges of the image.
+		///   - nRSharpness: The amount of sharpening done when removing noise in the image before tracing the edges of the image. This improves the edge acquisition.
+		///   - edgeIntensity: The accentuation factor of the Sobel gradient information when tracing the edges of the image. Higher values find more edges, although typically a low value (such as 1.0) is used.
+		///   - threshold: This value determines edge visibility. Larger values thin out the edges.
+		///   - contrast: The amount of anti-aliasing to use on the edges produced by this filter. Higher values produce higher contrast edges (they are less anti-aliased).
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			nRNoiseLevel: Double = LineOverlay.nRNoiseLevelDefault,
 			nRSharpness: Double = LineOverlay.nRSharpnessDefault,
 			edgeIntensity: Double = LineOverlay.edgeIntensityDefault,
@@ -206,7 +213,9 @@ import Foundation
 			contrast: Double = LineOverlay.contrastDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.nRNoiseLevel = nRNoiseLevel
 			self.nRSharpness = nRSharpness
 			self.edgeIntensity = edgeIntensity

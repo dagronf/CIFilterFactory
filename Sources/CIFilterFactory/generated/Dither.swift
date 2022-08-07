@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFDither) class Dither: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDither")
 		}
@@ -96,15 +96,20 @@ import Foundation
 		/// `intensity` range definition
 		public static let intensityRange: ClosedRange<Double> = 0.0 ... 5.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - intensity: The intensity of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			intensity: Double = Dither.intensityDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.intensity = intensity
 		}
 	}

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBokehBlur) class BokehBlur: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBokehBlur")
 		}
@@ -174,18 +174,26 @@ import Foundation
 		/// `softness` range definition
 		public static let softnessRange: ClosedRange<Double> = 0.0 ... 10.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+		///   - ringAmount: The amount of extra emphasis at the ring of the bokeh.
+		///   - ringSize: The size of extra emphasis at the ring of the bokeh.
+		///   - softness: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = BokehBlur.radiusDefault,
 			ringAmount: Double = BokehBlur.ringAmountDefault,
 			ringSize: Double = BokehBlur.ringSizeDefault,
 			softness: Double = BokehBlur.softnessDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 			self.ringAmount = ringAmount
 			self.ringSize = ringSize

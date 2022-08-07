@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFRippleTransition) class RippleTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIRippleTransition")
 		}
@@ -222,13 +222,22 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(-50.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - shadingImage: An image that looks like a shaded sphere enclosed in a square image.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - extent: A rectangle that defines the extent of the effect.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - width: The width of the ripple.
+		///   - scale: A value that determines whether the ripple starts as a bulge (higher value) or a dimple (lower value).
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
-			shadingImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
+			shadingImage: CIImage? = nil,
 			center: CGPoint = RippleTransition.centerDefault,
 			extent: CGRect = RippleTransition.extentDefault,
 			time: Double = RippleTransition.timeDefault,
@@ -236,9 +245,15 @@ import Foundation
 			scale: Double = RippleTransition.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
-			self.shadingImage = shadingImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
+			if let shadingImage = shadingImage {
+				self.shadingImage = shadingImage
+			}
 			self.center = center
 			self.extent = extent
 			self.time = time

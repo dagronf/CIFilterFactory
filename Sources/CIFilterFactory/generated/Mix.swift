@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFMix) class Mix: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIMix")
 		}
@@ -108,17 +108,25 @@ import Foundation
 		/// `amount` default value
 		@objc public static let amountDefault: Double = 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as a foreground image.
+		///   - backgroundImage: The image to use as a background image.
+		///   - amount: The amount of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			backgroundImage: CIImage,
+			inputImage: CIImage? = nil,
+			backgroundImage: CIImage? = nil,
 			amount: Double = Mix.amountDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.backgroundImage = backgroundImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let backgroundImage = backgroundImage {
+				self.backgroundImage = backgroundImage
+			}
 			self.amount = amount
 		}
 	}

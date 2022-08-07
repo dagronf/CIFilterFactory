@@ -53,7 +53,7 @@ import Foundation
 	///
 	@available(macOS 13.0, iOS 16, tvOS 16, *)
 	@objc(CIFFAreaLogarithmicHistogram) class AreaLogarithmicHistogram: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAreaLogarithmicHistogram")
 		}
@@ -222,11 +222,18 @@ import Foundation
 			@objc var outputImageNonMPS: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - extent: A rectangle that defines the extent of the effect.
+		///   - scale: The amount of the effect.
+		///   - count: The number of bins for the histogram. This value will determine the width of the output image.
+		///   - minimumStop: The minimum of the range of color channel values to be in the logarithmic histogram image.
+		///   - maximumStop: The maximum of the range of color channel values to be in the logarithmic histogram image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			extent: CGRect = AreaLogarithmicHistogram.extentDefault,
 			scale: Double = AreaLogarithmicHistogram.scaleDefault,
 			count: Double = AreaLogarithmicHistogram.countDefault,
@@ -234,7 +241,9 @@ import Foundation
 			maximumStop: Double = AreaLogarithmicHistogram.maximumStopDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.extent = extent
 			self.scale = scale
 			self.count = count

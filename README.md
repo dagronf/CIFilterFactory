@@ -242,6 +242,23 @@ In more recent versions of Xcode, the SDK now comes with a pre-generated set of 
 * Some filters are not available (eg. `CICrop`)
 * Basically undocumented. `CIFilterFactory` embeds ALL the documentation within the generated code so it's directly available when you need it.
 
+## Simple filter chaining
+
+An extension has been added to the CIImage class to perform easy, repeatable filter chaining.
+
+```swift
+let image = /* some CIImage */
+
+// Create a sepia filter
+let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
+
+// Create a crystallize filter
+let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
+
+// Use the chaining API to apply the filters to an image
+let output = image.applying(filters: sepiaFilter, crystalize)
+```
+
 ## Usage
 
 Use Swift Package Manager. 

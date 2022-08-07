@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFParallelogramTile) class ParallelogramTile: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIParallelogramTile")
 		}
@@ -158,18 +158,26 @@ import Foundation
 		/// `width` range definition
 		public static let widthRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - angle: The angle in radians of the tiled pattern.
+		///   - acuteAngle: The primary angle for the repeating parallelogram tile. Small values create thin diamond tiles, and higher values create fatter parallelogram tiles.
+		///   - width: The width of a tile.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = ParallelogramTile.centerDefault,
 			angle: Double = ParallelogramTile.angleDefault,
 			acuteAngle: Double = ParallelogramTile.acuteAngleDefault,
 			width: Double = ParallelogramTile.widthDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.angle = angle
 			self.acuteAngle = acuteAngle

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFPerspectiveCorrection) class PerspectiveCorrection: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPerspectiveCorrection")
 		}
@@ -175,11 +175,18 @@ import Foundation
 		/// `crop` default value
 		@objc public static let cropDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - topLeft: The top left coordinate to be perspective corrected.
+		///   - topRight: The top right coordinate to be perspective corrected.
+		///   - bottomRight: The bottom right coordinate to be perspective corrected.
+		///   - bottomLeft: The bottom left coordinate to be perspective corrected.
+		///   - crop: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			topLeft: CGPoint = PerspectiveCorrection.topLeftDefault,
 			topRight: CGPoint = PerspectiveCorrection.topRightDefault,
 			bottomRight: CGPoint = PerspectiveCorrection.bottomRightDefault,
@@ -187,7 +194,9 @@ import Foundation
 			crop: Bool = PerspectiveCorrection.cropDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.topLeft = topLeft
 			self.topRight = topRight
 			self.bottomRight = bottomRight

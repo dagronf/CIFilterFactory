@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAccordionFoldTransition")
 		}
@@ -190,20 +190,31 @@ import Foundation
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - bottomHeight: The height in pixels from the bottom of the image to the bottom of the folded part of the transition.
+		///   - numberOfFolds: The number of folds used in the transition.
+		///   - foldShadowAmount: A value that specifies the intensity of the shadow in the transition.
+		///   - time: The duration of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			bottomHeight: Double = AccordionFoldTransition.bottomHeightDefault,
 			numberOfFolds: Double = AccordionFoldTransition.numberOfFoldsDefault,
 			foldShadowAmount: Double = AccordionFoldTransition.foldShadowAmountDefault,
 			time: Double = AccordionFoldTransition.timeDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.bottomHeight = bottomHeight
 			self.numberOfFolds = numberOfFolds
 			self.foldShadowAmount = foldShadowAmount

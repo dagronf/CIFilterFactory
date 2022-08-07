@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFPageCurlTransition) class PageCurlTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPageCurlTransition")
 		}
@@ -214,24 +214,41 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.01)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - backsideImage: The image that appears on the back of the source image, as the page curls to reveal the target image.
+		///   - shadingImage: An image that looks like a shaded sphere enclosed in a square image.
+		///   - extent: The extent of the effect.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - angle: The angle in radians of the curling page.
+		///   - radius: The radius of the curl.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
-			backsideImage: CIImage,
-			shadingImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
+			backsideImage: CIImage? = nil,
+			shadingImage: CIImage? = nil,
 			extent: CGRect = PageCurlTransition.extentDefault,
 			time: Double = PageCurlTransition.timeDefault,
 			angle: Double = PageCurlTransition.angleDefault,
 			radius: Double = PageCurlTransition.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
-			self.backsideImage = backsideImage
-			self.shadingImage = shadingImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
+			if let backsideImage = backsideImage {
+				self.backsideImage = backsideImage
+			}
+			if let shadingImage = shadingImage {
+				self.shadingImage = shadingImage
+			}
 			self.extent = extent
 			self.time = time
 			self.angle = angle

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFShadedMaterial) class ShadedMaterial: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIShadedMaterial")
 		}
@@ -112,17 +112,25 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - shadingImage: The image to use as the height field. The resulting image has greater heights with lighter shades, and lesser heights (lower areas) with darker shades.
+		///   - scale: The scale of the effect. The higher the value, the more dramatic the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			shadingImage: CIImage,
+			inputImage: CIImage? = nil,
+			shadingImage: CIImage? = nil,
 			scale: Double = ShadedMaterial.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.shadingImage = shadingImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let shadingImage = shadingImage {
+				self.shadingImage = shadingImage
+			}
 			self.scale = scale
 		}
 	}

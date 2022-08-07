@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFCrop) class Crop: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CICrop")
 		}
@@ -91,15 +91,20 @@ import Foundation
 		/// `rectangle` default value
 		@objc public static let rectangleDefault = CGRect(x: -8.988465674311579e+307, y: -8.988465674311579e+307, width: 1.7976931348623157e+308, height: 1.7976931348623157e+308)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - rectangle: The rectangle that specifies the crop to apply to the image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			rectangle: CGRect = Crop.rectangleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.rectangle = rectangle
 		}
 	}

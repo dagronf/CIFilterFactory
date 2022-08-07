@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFMaskedVariableBlur) class MaskedVariableBlur: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIMaskedVariableBlur")
 		}
@@ -112,17 +112,25 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - mask: The mask image that determines how much to blur the image. The mask’s green channel value from 0.0 to 1.0 determines if the image is not blurred or blurred by the full radius.
+		///   - radius: A value that governs the maximum blur radius to apply.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			mask: CIImage,
+			inputImage: CIImage? = nil,
+			mask: CIImage? = nil,
 			radius: Double = MaskedVariableBlur.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.mask = mask
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let mask = mask {
+				self.mask = mask
+			}
 			self.radius = radius
 		}
 	}

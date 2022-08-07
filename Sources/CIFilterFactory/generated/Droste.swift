@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
 	@objc(CIFFDroste) class Droste: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDroste")
 		}
@@ -209,11 +209,19 @@ import Foundation
 		/// `zoom` range definition
 		public static let zoomRange = PartialRangeFrom<Double>(0.01)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - insetPoint0: No Description
+		///   - insetPoint1: No Description
+		///   - strands: No Description
+		///   - periodicity: No Description
+		///   - rotation: No Description
+		///   - zoom: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			insetPoint0: CGPoint = Droste.insetPoint0Default,
 			insetPoint1: CGPoint = Droste.insetPoint1Default,
 			strands: Double = Droste.strandsDefault,
@@ -222,7 +230,9 @@ import Foundation
 			zoom: Double = Droste.zoomDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.insetPoint0 = insetPoint0
 			self.insetPoint1 = insetPoint1
 			self.strands = strands

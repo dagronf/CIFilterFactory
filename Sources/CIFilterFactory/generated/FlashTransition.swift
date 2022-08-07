@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFFlashTransition) class FlashTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIFlashTransition")
 		}
@@ -273,12 +273,23 @@ import Foundation
 		/// `fadeThreshold` range definition
 		public static let fadeThresholdRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - extent: The extent of the flash.
+		///   - color: The color of the light rays emanating from the flash.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - maxStriationRadius: The radius of the light rays emanating from the flash.
+		///   - striationStrength: The strength of the light rays emanating from the flash.
+		///   - striationContrast: The contrast of the light rays emanating from the flash.
+		///   - fadeThreshold: The amount of fade between the flash and the target image. The higher the value, the more flash time and the less fade time.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			center: CGPoint = FlashTransition.centerDefault,
 			extent: CGRect = FlashTransition.extentDefault,
 			color: CIColor,
@@ -289,8 +300,12 @@ import Foundation
 			fadeThreshold: Double = FlashTransition.fadeThresholdDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.center = center
 			self.extent = extent
 			self.color = color

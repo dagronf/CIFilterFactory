@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFCMYKHalftone) class CMYKHalftone: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CICMYKHalftone")
 		}
@@ -211,11 +211,19 @@ import Foundation
 		/// `uCR` range definition
 		public static let uCRRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - width: The distance between dots in the pattern.
+		///   - angle: The angle in radians of the pattern.
+		///   - sharpness: The sharpness of the pattern. The larger the value, the sharper the pattern.
+		///   - gCR: The gray component replacement value. The value can vary from 0.0 (none) to 1.0.
+		///   - uCR: The under color removal value. The value can vary from 0.0 to 1.0.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = CMYKHalftone.centerDefault,
 			width: Double = CMYKHalftone.widthDefault,
 			angle: Double = CMYKHalftone.angleDefault,
@@ -224,7 +232,9 @@ import Foundation
 			uCR: Double = CMYKHalftone.uCRDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.width = width
 			self.angle = angle

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFSpotColor) class SpotColor: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISpotColor")
 		}
@@ -322,11 +322,25 @@ import Foundation
 		/// `contrast3` range definition
 		public static let contrast3Range = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - centerColor1: The center value of the first color range to replace.
+		///   - replacementColor1: A replacement color for the first color range.
+		///   - closeness1: A value that indicates how close the first color must match before it is replaced.
+		///   - contrast1: The contrast of the first replacement color.
+		///   - centerColor2: The center value of the second color range to replace.
+		///   - replacementColor2: A replacement color for the second color range.
+		///   - closeness2: A value that indicates how close the second color must match before it is replaced.
+		///   - contrast2: The contrast of the second replacement color.
+		///   - centerColor3: The center value of the third color range to replace.
+		///   - replacementColor3: A replacement color for the third color range.
+		///   - closeness3: A value that indicates how close the third color must match before it is replaced.
+		///   - contrast3: The contrast of the third replacement color.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			centerColor1: CIColor,
 			replacementColor1: CIColor,
 			closeness1: Double = SpotColor.closeness1Default,
@@ -341,7 +355,9 @@ import Foundation
 			contrast3: Double = SpotColor.contrast3Default
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.centerColor1 = centerColor1
 			self.replacementColor1 = replacementColor1
 			self.closeness1 = closeness1

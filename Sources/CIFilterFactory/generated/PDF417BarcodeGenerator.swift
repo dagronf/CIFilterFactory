@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.11, iOS 9, tvOS 9, *)
 	@objc(CIFFPDF417BarcodeGenerator) class PDF417BarcodeGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPDF417BarcodeGenerator")
 		}
@@ -344,9 +344,22 @@ import Foundation
 			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - message: The message to encode in the PDF417 Barcode
+		///   - minWidth: The minimum width of the generated barcode in pixels.
+		///   - maxWidth: The maximum width of the generated barcode in pixels.
+		///   - minHeight: The minimum height of the generated barcode in pixels.
+		///   - maxHeight: The maximum height of the generated barcode in pixels.
+		///   - dataColumns: The number of data columns in the generated barcode
+		///   - rows: The number of rows in the generated barcode
+		///   - preferredAspectRatio: The preferred aspect ratio of the generated barcode
+		///   - compactionMode: The compaction mode of the generated barcode.
+		///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+		///   - correctionLevel: The correction level ratio of the generated barcode
+		///   - alwaysSpecifyCompaction: Force compaction style to @YES or @NO. Set to nil for automatic.
 		@objc public convenience init?(
 			message: Data,
 			minWidth: Int,

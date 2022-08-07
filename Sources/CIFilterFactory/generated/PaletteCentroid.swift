@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFPaletteCentroid) class PaletteCentroid: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPaletteCentroid")
 		}
@@ -107,17 +107,25 @@ import Foundation
 		/// `perceptual` default value
 		@objc public static let perceptualDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - paletteImage: The input color palette, obtained using “CIKMeans“ filter.
+		///   - perceptual: Specifies whether the color palette should be applied in a perceptual color space.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			paletteImage: CIImage,
+			inputImage: CIImage? = nil,
+			paletteImage: CIImage? = nil,
 			perceptual: Bool = PaletteCentroid.perceptualDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.paletteImage = paletteImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let paletteImage = paletteImage {
+				self.paletteImage = paletteImage
+			}
 			self.perceptual = perceptual
 		}
 	}

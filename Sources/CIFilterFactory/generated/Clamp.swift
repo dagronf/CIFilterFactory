@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFClamp) class Clamp: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIClamp")
 		}
@@ -91,15 +91,20 @@ import Foundation
 		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - extent: A rectangle that defines the extent of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			extent: CGRect = Clamp.extentDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.extent = extent
 		}
 	}

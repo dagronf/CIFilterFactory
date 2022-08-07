@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
 	@objc(CIFFBarsSwipeTransition) class BarsSwipeTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBarsSwipeTransition")
 		}
@@ -184,20 +184,31 @@ import Foundation
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - angle: The angle in radians of the bars.
+		///   - width: The width of each bar.
+		///   - barOffset: The offset of one bar with respect to another.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			angle: Double = BarsSwipeTransition.angleDefault,
 			width: Double = BarsSwipeTransition.widthDefault,
 			barOffset: Double = BarsSwipeTransition.barOffsetDefault,
 			time: Double = BarsSwipeTransition.timeDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.angle = angle
 			self.width = width
 			self.barOffset = barOffset

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFSunbeamsGenerator) class SunbeamsGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISunbeamsGenerator")
 		}
@@ -217,9 +217,17 @@ import Foundation
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - color: The color of the sun.
+		///   - sunRadius: The radius of the sun.
+		///   - maxStriationRadius: The radius of the sunbeams.
+		///   - striationStrength: The intensity of the sunbeams. Higher values result in more intensity.
+		///   - striationContrast: The contrast of the sunbeams. Higher values result in more contrast.
+		///   - time: The duration of the effect.
 		@objc public convenience init?(
 			center: CGPoint = SunbeamsGenerator.centerDefault,
 			color: CIColor,

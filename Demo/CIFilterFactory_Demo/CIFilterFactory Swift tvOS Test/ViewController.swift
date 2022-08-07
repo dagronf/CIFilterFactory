@@ -26,24 +26,15 @@ class ViewController: UIViewController {
 		let appimage = UIImage(named: "AppIcon")!
 		let image = CIImage(cgImage: appimage.cgImage!)
 
-		/// Test convenience initializer for sepia filter
-		guard let sepiaFilter = CIFF.SepiaTone(inputImage: image, intensity: 0.9) else {
-			fatalError()
-		}
+		// Sepia filter
+		let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
 
-		// Crystallize filter using the CIFilter extension
+		// Crystallize filter
+		let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
 
-		guard let crystalize = CIFF.Crystallize() else {
-			fatalError()
-		}
-
-		// Use the output of the sepia filter as the input to the crystallize filter
-		crystalize.inputImage = sepiaFilter.outputImage
-		crystalize.radius = 20
-		crystalize.center = CGPoint(x: 150, y: 200)
-
-		let output = crystalize.outputImage
-		let outputImage = UIImage(ciImage: output!)
+		// Use the chaining API to apply the filters
+		let output = image.applying(filters: sepiaFilter, crystalize)
+		let outputImage = UIImage(ciImage: output)
 		
 		self.imageView.image = outputImage
 

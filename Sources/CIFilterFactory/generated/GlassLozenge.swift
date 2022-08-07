@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFGlassLozenge) class GlassLozenge: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIGlassLozenge")
 		}
@@ -162,18 +162,26 @@ import Foundation
 		/// `refraction` range definition
 		public static let refractionRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - point0: The x and y position that defines the center of the circle at one end of the lozenge.
+		///   - point1: The x and y position that defines the center of the circle at the other end of the lozenge.
+		///   - radius: The radius of the lozenge. The larger the radius, the wider the extent of the distortion.
+		///   - refraction: The refraction of the glass.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			point0: CGPoint = GlassLozenge.point0Default,
 			point1: CGPoint = GlassLozenge.point1Default,
 			radius: Double = GlassLozenge.radiusDefault,
 			refraction: Double = GlassLozenge.refractionDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.point0 = point0
 			self.point1 = point1
 			self.radius = radius

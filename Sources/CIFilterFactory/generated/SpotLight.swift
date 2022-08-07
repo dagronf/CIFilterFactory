@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFSpotLight) class SpotLight: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISpotLight")
 		}
@@ -179,11 +179,18 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - lightPosition: The x and y position of the spotlight.
+		///   - lightPointsAt: The x and y position that the spotlight points at.
+		///   - brightness: The brightness of the spotlight.
+		///   - concentration: The spotlight size. The smaller the value, the more tightly focused the light beam.
+		///   - color: The color of the spotlight.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			lightPosition: CIPosition3 = SpotLight.lightPositionDefault,
 			lightPointsAt: CIPosition3 = SpotLight.lightPointsAtDefault,
 			brightness: Double = SpotLight.brightnessDefault,
@@ -191,7 +198,9 @@ import Foundation
 			color: CIColor
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.lightPosition = lightPosition
 			self.lightPointsAt = lightPointsAt
 			self.brightness = brightness

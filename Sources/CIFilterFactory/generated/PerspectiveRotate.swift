@@ -51,7 +51,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFPerspectiveRotate) class PerspectiveRotate: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPerspectiveRotate")
 		}
@@ -157,18 +157,26 @@ import Foundation
 		/// `roll` default value
 		@objc public static let rollDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to process.
+		///   - focalLength: 35mm equivalent focal length of the input image.
+		///   - pitch: Pitch angle in radians.
+		///   - yaw: Yaw angle in radians.
+		///   - roll: Roll angle in radians.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			focalLength: Double = PerspectiveRotate.focalLengthDefault,
 			pitch: Double = PerspectiveRotate.pitchDefault,
 			yaw: Double = PerspectiveRotate.yawDefault,
 			roll: Double = PerspectiveRotate.rollDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.focalLength = focalLength
 			self.pitch = pitch
 			self.yaw = yaw

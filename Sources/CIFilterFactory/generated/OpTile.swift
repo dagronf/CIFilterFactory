@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFOpTile) class OpTile: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIOpTile")
 		}
@@ -162,18 +162,26 @@ import Foundation
 		/// `width` range definition
 		public static let widthRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - scale: The scale determines the number of tiles in the effect.
+		///   - angle: The angle in radians of a tile.
+		///   - width: The width of a tile.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = OpTile.centerDefault,
 			scale: Double = OpTile.scaleDefault,
 			angle: Double = OpTile.angleDefault,
 			width: Double = OpTile.widthDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.scale = scale
 			self.angle = angle

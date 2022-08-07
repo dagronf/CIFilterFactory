@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
 	@objc(CIFFPersonSegmentation) class PersonSegmentation: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIPersonSegmentation")
 		}
@@ -85,15 +85,20 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - qualityLevel: Determines the size and quality of the resulting segmentation mask. The value can be a number where 0 is accurate, 1 is balanced, and 2 is fast.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			qualityLevel: NSNumber
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.qualityLevel = qualityLevel
 		}
 	}

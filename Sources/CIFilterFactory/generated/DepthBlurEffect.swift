@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
 	@objc(CIFFDepthBlurEffect) class DepthBlurEffect: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDepthBlurEffect")
 		}
@@ -380,16 +380,34 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - disparityImage: No Description
+		///   - matteImage: A matting image.
+		///   - hairImage: A segmentation matte image that corresponds to people’s hair.
+		///   - glassesImage: A segmentation matte image that corresponds to people’s glasses.
+		///   - gainMap: No Description
+		///   - aperture: No Description
+		///   - leftEyePositions: No Description
+		///   - rightEyePositions: No Description
+		///   - chinPositions: No Description
+		///   - nosePositions: No Description
+		///   - focusRect: No Description
+		///   - lumaNoiseScale: No Description
+		///   - scaleFactor: No Description
+		///   - calibrationData: No Description
+		///   - auxDataMetadata: No Description
+		///   - shape: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
-			disparityImage: CIImage,
-			matteImage: CIImage,
-			hairImage: CIImage,
-			glassesImage: CIImage,
-			gainMap: CIImage,
+			inputImage: CIImage? = nil,
+			disparityImage: CIImage? = nil,
+			matteImage: CIImage? = nil,
+			hairImage: CIImage? = nil,
+			glassesImage: CIImage? = nil,
+			gainMap: CIImage? = nil,
 			aperture: Double = DepthBlurEffect.apertureDefault,
 			leftEyePositions: CGPoint = DepthBlurEffect.leftEyePositionsDefault,
 			rightEyePositions: CGPoint = DepthBlurEffect.rightEyePositionsDefault,
@@ -403,12 +421,24 @@ import Foundation
 			shape: String
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.disparityImage = disparityImage
-			self.matteImage = matteImage
-			self.hairImage = hairImage
-			self.glassesImage = glassesImage
-			self.gainMap = gainMap
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let disparityImage = disparityImage {
+				self.disparityImage = disparityImage
+			}
+			if let matteImage = matteImage {
+				self.matteImage = matteImage
+			}
+			if let hairImage = hairImage {
+				self.hairImage = hairImage
+			}
+			if let glassesImage = glassesImage {
+				self.glassesImage = glassesImage
+			}
+			if let gainMap = gainMap {
+				self.gainMap = gainMap
+			}
 			self.aperture = aperture
 			self.leftEyePositions = leftEyePositions
 			self.rightEyePositions = rightEyePositions

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFKMeans) class KMeans: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIKMeans")
 		}
@@ -181,21 +181,32 @@ import Foundation
 		/// `perceptual` default value
 		@objc public static let perceptualDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - extent: A rectangle that defines the extent of the effect.
+		///   - means: Specifies the color seeds to use for k-means clustering, either passed as an image or an array of colors.
+		///   - count: Specifies how many k-means color clusters should be used.
+		///   - passes: Specifies how many k-means passes should be performed.
+		///   - perceptual: Specifies whether the k-means color palette should be computed in a perceptual color space.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			extent: CGRect = KMeans.extentDefault,
-			means: CIImage,
+			means: CIImage? = nil,
 			count: UInt = KMeans.countDefault,
 			passes: UInt = KMeans.passesDefault,
 			perceptual: Bool = KMeans.perceptualDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.extent = extent
-			self.means = means
+			if let means = means {
+				self.means = means
+			}
 			self.count = count
 			self.passes = passes
 			self.perceptual = perceptual

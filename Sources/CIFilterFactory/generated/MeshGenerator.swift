@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFMeshGenerator) class MeshGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIMeshGenerator")
 		}
@@ -111,9 +111,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - width: The width in pixels of the effect.
+		///   - color: A color.
+		///   - mesh: An array of line segments stored as an array of CIVectors each containing a start point and end point.
 		@objc public convenience init?(
 			width: Double = MeshGenerator.widthDefault,
 			color: CIColor,

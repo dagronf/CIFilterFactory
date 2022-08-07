@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFGuidedFilter) class GuidedFilter: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIGuidedFilter")
 		}
@@ -129,18 +129,27 @@ import Foundation
 		/// `epsilon` default value
 		@objc public static let epsilonDefault: Double = 0.0001
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: A small image to upsample.
+		///   - guideImage: A larger image to use as a guide.
+		///   - radius: The distance from the center of the effect.
+		///   - epsilon: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
-			guideImage: CIImage,
+			inputImage: CIImage? = nil,
+			guideImage: CIImage? = nil,
 			radius: Double = GuidedFilter.radiusDefault,
 			epsilon: Double = GuidedFilter.epsilonDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.guideImage = guideImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let guideImage = guideImage {
+				self.guideImage = guideImage
+			}
 			self.radius = radius
 			self.epsilon = epsilon
 		}

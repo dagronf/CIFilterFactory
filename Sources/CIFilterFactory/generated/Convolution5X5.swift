@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFConvolution5X5) class Convolution5X5: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIConvolution5X5")
 		}
@@ -111,16 +111,22 @@ import Foundation
 		/// `bias` default value
 		@objc public static let biasDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - weights: A vector containing the 25 weights of the convolution kernel.
+		///   - bias: A value that is added to the RGBA components of the output pixel.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			weights: CIVector = Convolution5X5.weightsDefault,
 			bias: Double = Convolution5X5.biasDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.weights = weights
 			self.bias = bias
 		}

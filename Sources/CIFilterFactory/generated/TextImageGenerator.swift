@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFTextImageGenerator) class TextImageGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CITextImageGenerator")
 		}
@@ -160,9 +160,15 @@ import Foundation
 		/// `padding` range definition
 		public static let paddingRange: ClosedRange<Int> = 0 ... 200
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - text: The text to render.
+		///   - fontName: The name of the font to use for the generated text.
+		///   - fontSize: The size of the font to use for the generated text.
+		///   - scaleFactor: The scale of the font to use for the generated text.
+		///   - padding: The number of additional of pixels to pad around the text’s bounding box.
 		@objc public convenience init?(
 			text: String,
 			fontName: String,

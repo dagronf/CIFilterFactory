@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFDisplacementDistortion) class DisplacementDistortion: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDisplacementDistortion")
 		}
@@ -112,17 +112,25 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - displacementImage: An image whose grayscale values will be applied to the source image.
+		///   - scale: The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			displacementImage: CIImage,
+			inputImage: CIImage? = nil,
+			displacementImage: CIImage? = nil,
 			scale: Double = DisplacementDistortion.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.displacementImage = displacementImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let displacementImage = displacementImage {
+				self.displacementImage = displacementImage
+			}
 			self.scale = scale
 		}
 	}

@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFHueSaturationValueGradient) class HueSaturationValueGradient: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIHueSaturationValueGradient")
 		}
@@ -168,9 +168,15 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - value: The color value used to generate the color wheel.
+		///   - radius: The distance from the center of the effect.
+		///   - softness: No Description
+		///   - dither: No Description
+		///   - colorSpace: The CGColorSpaceRef that the color wheel should be generated in.
 		@objc public convenience init?(
 			value: Double = HueSaturationValueGradient.valueDefault,
 			radius: Double = HueSaturationValueGradient.radiusDefault,

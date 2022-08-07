@@ -68,7 +68,12 @@ import Foundation
 
 		/// Returns a dictionary containing key/value pairs describing the filter
 		@inlinable @objc public var attributes: [String: Any] {
-			return self.filter.attributes
+			self.filter.attributes
+		}
+
+		/// Returns a dictionary containing the filter's current input parameters
+		@inlinable @objc public var inputParameters: [String: Any] {
+			self.filter.dictionaryWithValues(forKeys: self.filter.inputKeys)
 		}
 
 		/// Returns the URL for the `CIFilter.io` webpage describing the filter

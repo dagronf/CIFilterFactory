@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFRoundedRectangleGenerator) class RoundedRectangleGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIRoundedRectangleGenerator")
 		}
@@ -115,9 +115,13 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - extent: A rectangle that defines the extent of the effect.
+		///   - radius: The distance from the center of the effect.
+		///   - color: A color.
 		@objc public convenience init?(
 			extent: CGRect = RoundedRectangleGenerator.extentDefault,
 			radius: Double = RoundedRectangleGenerator.radiusDefault,

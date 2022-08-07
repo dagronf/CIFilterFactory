@@ -52,7 +52,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 8, tvOS 8, *)
 	@objc(CIFFAreaHistogram) class AreaHistogram: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAreaHistogram")
 		}
@@ -179,17 +179,24 @@ import Foundation
 			@objc var outputImageNonMPS: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image whose histogram you want to calculate.
+		///   - extent: A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
+		///   - scale: The scale value to use for the histogram values. If the scale is 1.0, then the bins in the resulting image will add up to 1.0.
+		///   - count: The number of bins for the histogram. This value will determine the width of the output image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			extent: CGRect = AreaHistogram.extentDefault,
 			scale: Double = AreaHistogram.scaleDefault,
 			count: Double = AreaHistogram.countDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.extent = extent
 			self.scale = scale
 			self.count = count

@@ -17,4 +17,7 @@ class FileSquirter {
 	func print(_ text: String) {
 		content += text + "\n"
 	}
+	func blankLine() {
+		content += "\n"
+	}
 }

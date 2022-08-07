@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFNinePartTiled) class NinePartTiled: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CINinePartTiled")
 		}
@@ -154,18 +154,26 @@ import Foundation
 		/// `flipYTiles` default value
 		@objc public static let flipYTilesDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - breakpoint0: Lower left corner of image to retain before tiling begins.
+		///   - breakpoint1: Upper right corner of image to retain after tiling ends.
+		///   - growAmount: Vector indicating how much image should grow in pixels in both dimensions.
+		///   - flipYTiles: Indicates that Y-Axis flip should occur.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			breakpoint0: CGPoint = NinePartTiled.breakpoint0Default,
 			breakpoint1: CGPoint = NinePartTiled.breakpoint1Default,
 			growAmount: CGPoint = NinePartTiled.growAmountDefault,
 			flipYTiles: Bool = NinePartTiled.flipYTilesDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.breakpoint0 = breakpoint0
 			self.breakpoint1 = breakpoint1
 			self.growAmount = growAmount

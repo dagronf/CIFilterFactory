@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFMorphologyGradient) class MorphologyGradient: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIMorphologyGradient")
 		}
@@ -95,15 +95,20 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The desired radius of the circular morphological operation to the image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = MorphologyGradient.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 		}
 	}

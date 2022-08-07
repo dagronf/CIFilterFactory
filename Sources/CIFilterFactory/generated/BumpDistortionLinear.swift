@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
 	@objc(CIFFBumpDistortionLinear) class BumpDistortionLinear: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBumpDistortionLinear")
 		}
@@ -162,18 +162,26 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(-1.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion.
+		///   - angle: The angle in radians of the line around which the distortion occurs.
+		///   - scale: The scale of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = BumpDistortionLinear.centerDefault,
 			radius: Double = BumpDistortionLinear.radiusDefault,
 			angle: Double = BumpDistortionLinear.angleDefault,
 			scale: Double = BumpDistortionLinear.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.radius = radius
 			self.angle = angle

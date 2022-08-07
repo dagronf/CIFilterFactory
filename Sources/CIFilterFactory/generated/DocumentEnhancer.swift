@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFDocumentEnhancer) class DocumentEnhancer: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDocumentEnhancer")
 		}
@@ -95,15 +95,20 @@ import Foundation
 		/// `amount` range definition
 		public static let amountRange: ClosedRange<Double> = 0.0 ... 10.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - amount: The amount of enhancement.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			amount: Double = DocumentEnhancer.amountDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.amount = amount
 		}
 	}

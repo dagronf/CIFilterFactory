@@ -51,7 +51,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFExposureAdjust) class ExposureAdjust: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIExposureAdjust")
 		}
@@ -94,15 +94,20 @@ import Foundation
 		/// `eV` default value
 		@objc public static let eVDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - eV: The amount to adjust the exposure of the image by. The larger the value, the brighter the exposure.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			eV: Double = ExposureAdjust.eVDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.eV = eV
 		}
 	}

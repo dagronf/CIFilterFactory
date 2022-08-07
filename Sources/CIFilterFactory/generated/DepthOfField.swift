@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
 	@objc(CIFFDepthOfField) class DepthOfField: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDepthOfField")
 		}
@@ -211,11 +211,19 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - point0: No Description
+		///   - point1: No Description
+		///   - saturation: The amount to adjust the saturation.
+		///   - unsharpMaskRadius: No Description
+		///   - unsharpMaskIntensity: No Description
+		///   - radius: The distance from the center of the effect.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			point0: CGPoint = DepthOfField.point0Default,
 			point1: CGPoint = DepthOfField.point1Default,
 			saturation: Double = DepthOfField.saturationDefault,
@@ -224,7 +232,9 @@ import Foundation
 			radius: Double = DepthOfField.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.point0 = point0
 			self.point1 = point1
 			self.saturation = saturation

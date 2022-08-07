@@ -52,7 +52,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFAreaMinMax) class AreaMinMax: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAreaMinMax")
 		}
@@ -95,15 +95,20 @@ import Foundation
 		/// `extent` default value
 		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to process.
+		///   - extent: A rectangle that specifies the subregion of the image that you want to process.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			extent: CGRect = AreaMinMax.extentDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.extent = extent
 		}
 	}

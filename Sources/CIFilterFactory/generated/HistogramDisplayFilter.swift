@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(iOS 8, tvOS 8, *)
 	@objc(CIFFHistogramDisplayFilter) class HistogramDisplayFilter: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIHistogramDisplayFilter")
 		}
@@ -147,17 +147,24 @@ import Foundation
 		/// `lowLimit` range definition
 		public static let lowLimitRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - height: The height of the displayable histogram image.
+		///   - highLimit: The fraction of the right portion of the histogram image to make lighter.
+		///   - lowLimit: The fraction of the left portion of the histogram image to make darker.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			height: Double = HistogramDisplayFilter.heightDefault,
 			highLimit: Double = HistogramDisplayFilter.highLimitDefault,
 			lowLimit: Double = HistogramDisplayFilter.lowLimitDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.height = height
 			self.highLimit = highLimit
 			self.lowLimit = lowLimit

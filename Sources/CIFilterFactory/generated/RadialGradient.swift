@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFRadialGradient) class RadialGradient: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIRadialGradient")
 		}
@@ -158,9 +158,15 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - radius0: The radius of the starting circle to use in the gradient.
+		///   - radius1: The radius of the ending circle to use in the gradient.
+		///   - color0: The first color to use in the gradient.
+		///   - color1: The second color to use in the gradient.
 		@objc public convenience init?(
 			center: CGPoint = RadialGradient.centerDefault,
 			radius0: Double = RadialGradient.radius0Default,

@@ -95,10 +95,11 @@ class FilterGenerator {
 
 		do {
 
-			out.print("      /// Create an instance of the filter")
+			out.print("      /// Create an instance of the filter with all default values")
 			out.print("      @objc public init?() {")
 			out.print("         super.init(name: \"\(filter.name)\")")
 			out.print("      }")
+			out.blankLine()
 
 			for keyName in inputKeys {
 				self.generateKey(keyName: keyName, filterAttributes: filterAttributes)
@@ -155,6 +156,8 @@ class FilterGenerator {
 
 		var str = ""
 		var inits = ""
+		var params = "      /// - Parameters:"
+		//var staticInits = ""
 
 		for property in self.initializers {
 			if str.count > 0 { str += ","; inits += "\n" }
@@ -163,18 +166,55 @@ class FilterGenerator {
 			if let _ = vt.defaultValueString() {
 				str += " = \(self.staticName).\(property.name)Default"
 			}
-			inits += "         self.\(property.name) = \(property.name)"
+			else if property.swiftType == "CIImage" {
+				str += "? = nil"
+			}
+
+			params += "\n"
+			params += "      ///   - \(property.name): \(property.description)"
+
+//			if staticInits.count > 0 { staticInits += ",\n" }
+//			staticInits += "            \(property.name): \(property.name)"
+
+			if property.swiftType == "CIImage" {
+				inits += "         if let \(property.name) = \(property.name) {\n"
+				inits += "            self.\(property.name) = \(property.name)\n"
+				inits += "         }"
+			}
+			else {
+				inits += "         self.\(property.name) = \(property.name)"
+			}
 		}
 
 		out.print("")
-		out.print("      // MARK: - Convenience initializer")
+		out.print("      // MARK: - Convenience creators")
 		out.print("")
-		out.print("      /// Create an instance of the filter")
-		out.print("      @objc public convenience init?(\(str))")
-		out.print("      {")
+		out.print("      /// Filter initializer")
+		out.print(params)
+		/*
+		 /// - Parameters:
+		 ///   - inputImage: <#inputImage description#>
+		 ///   - radius: <#radius description#>
+		 ///   - intensity: <#intensity description#>
+
+		 */
+
+
+		out.print("      @objc public convenience init?(\(str)")
+		out.print("      ) {")
 		out.print("         self.init()")
 		out.print(inits)
 		out.print("      }")
+
+		out.print("")
+//		out.print("      /// Create an instance of the '\(staticName)' filter.")
+//		out.print("      @inlinable @objc public static func create(\(str)")
+//		out.print("      ) -> \(staticName)? {")
+//		out.print("         \(staticName)(")
+//		out.print(staticInits)
+//		out.print("         )")
+//		out.print("      } ")
+//		out.print("")
 	}
 
 

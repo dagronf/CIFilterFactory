@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFConstantColorGenerator) class ConstantColorGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIConstantColorGenerator")
 		}
@@ -70,12 +70,14 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - color: The color to generate.
 		@objc public convenience init?(
-			color: CIColor)
-		{
+			color: CIColor
+		) {
 			self.init()
 			self.color = color
 		}

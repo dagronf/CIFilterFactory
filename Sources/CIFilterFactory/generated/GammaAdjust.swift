@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFGammaAdjust) class GammaAdjust: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIGammaAdjust")
 		}
@@ -93,15 +93,20 @@ import Foundation
 		/// `power` default value
 		@objc public static let powerDefault: Double = 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - power: A gamma value to use to correct image brightness. The larger the value, the darker the result.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			power: Double = GammaAdjust.powerDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.power = power
 		}
 	}

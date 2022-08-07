@@ -105,4 +105,24 @@ final class CIFilterFactoryTests: XCTestCase {
 			XCTAssertEqual(CIFF.AccordionFoldTransition.timeRange.upperBound, t.time)
 		}
 	}
+
+	func testChain() throws {
+		do {
+			let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
+			let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+
+			let blur = CIFF.BoxBlur()!
+			blur.radius = 10
+
+			let sepia = CIFF.SepiaTone()!
+
+			let crop = CIFF.Crop()!
+			crop.rectangle = CGRect(x: 0, y: input.extent.height / 2.0, width: input.extent.width, height: input.extent.height / 2.0)
+
+			let output = try XCTUnwrap(input.applying(filters: blur, sepia, crop))
+
+			let outputImage = try XCTUnwrap(output.asCGImage())
+			Swift.print(outputImage)
+		}
+	}
 }

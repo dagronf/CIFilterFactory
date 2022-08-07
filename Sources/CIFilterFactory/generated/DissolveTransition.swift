@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFDissolveTransition) class DissolveTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDissolveTransition")
 		}
@@ -115,17 +115,25 @@ import Foundation
 		/// `time` range definition
 		public static let timeRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			time: Double = DissolveTransition.timeDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.time = time
 		}
 	}

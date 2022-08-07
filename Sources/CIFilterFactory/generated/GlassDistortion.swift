@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 8, tvOS 8, *)
 	@objc(CIFFGlassDistortion) class GlassDistortion: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIGlassDistortion")
 		}
@@ -133,18 +133,27 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - texture: A texture to apply to the source image.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - scale: The amount of texturing of the resulting image. The larger the value, the greater the texturing.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			texture: CIImage,
+			inputImage: CIImage? = nil,
+			texture: CIImage? = nil,
 			center: CGPoint = GlassDistortion.centerDefault,
 			scale: Double = GlassDistortion.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.texture = texture
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let texture = texture {
+				self.texture = texture
+			}
 			self.center = center
 			self.scale = scale
 		}

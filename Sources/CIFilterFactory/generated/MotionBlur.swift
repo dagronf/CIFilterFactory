@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 	@objc(CIFFMotionBlur) class MotionBlur: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIMotionBlur")
 		}
@@ -116,16 +116,22 @@ import Foundation
 		/// `angle` default value
 		@objc public static let angleDefault: Double = 0.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+		///   - angle: The angle in radians of the motion determines which direction the blur smears.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = MotionBlur.radiusDefault,
 			angle: Double = MotionBlur.angleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 			self.angle = angle
 		}

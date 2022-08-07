@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFColorPolynomial) class ColorPolynomial: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorPolynomial")
 		}
@@ -152,18 +152,26 @@ import Foundation
 		/// `alphaCoefficients` default value
 		@objc public static let alphaCoefficientsDefault = CIVector(values: [0.0, 1.0, 0.0, 0.0], count: 4)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - redCoefficients: Polynomial coefficients for red channel.
+		///   - greenCoefficients: Polynomial coefficients for green channel.
+		///   - blueCoefficients: Polynomial coefficients for blue channel.
+		///   - alphaCoefficients: Polynomial coefficients for alpha channel.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			redCoefficients: CIVector = ColorPolynomial.redCoefficientsDefault,
 			greenCoefficients: CIVector = ColorPolynomial.greenCoefficientsDefault,
 			blueCoefficients: CIVector = ColorPolynomial.blueCoefficientsDefault,
 			alphaCoefficients: CIVector = ColorPolynomial.alphaCoefficientsDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.redCoefficients = redCoefficients
 			self.greenCoefficients = greenCoefficients
 			self.blueCoefficients = blueCoefficients

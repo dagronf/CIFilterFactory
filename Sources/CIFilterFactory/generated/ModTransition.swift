@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFModTransition) class ModTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIModTransition")
 		}
@@ -205,12 +205,20 @@ import Foundation
 		/// `compression` range definition
 		public static let compressionRange = PartialRangeFrom<Double>(1.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - angle: The angle in radians of the mod hole pattern.
+		///   - radius: The radius of the undistorted holes in the pattern.
+		///   - compression: The amount of stretching applied to the mod hole pattern. Holes in the center are not distorted as much as those at the edge of the image.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			center: CGPoint = ModTransition.centerDefault,
 			time: Double = ModTransition.timeDefault,
 			angle: Double = ModTransition.angleDefault,
@@ -218,8 +226,12 @@ import Foundation
 			compression: Double = ModTransition.compressionDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.center = center
 			self.time = time
 			self.angle = angle

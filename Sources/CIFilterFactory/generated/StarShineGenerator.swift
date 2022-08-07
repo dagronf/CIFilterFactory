@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFStarShineGenerator) class StarShineGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIStarShineGenerator")
 		}
@@ -237,9 +237,18 @@ import Foundation
 		/// `epsilon` range definition
 		public static let epsilonRange = PartialRangeFrom<Double>(-8.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - color: The color to use for the outer shell of the circular star.
+		///   - radius: The radius of the star.
+		///   - crossScale: The size of the cross pattern.
+		///   - crossAngle: The angle in radians of the cross pattern.
+		///   - crossOpacity: The opacity of the cross pattern.
+		///   - crossWidth: The width of the cross pattern.
+		///   - epsilon: The length of the cross spikes.
 		@objc public convenience init?(
 			center: CGPoint = StarShineGenerator.centerDefault,
 			color: CIColor,

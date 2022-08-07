@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
 	@objc(CIFFStretchCrop) class StretchCrop: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIStretchCrop")
 		}
@@ -143,17 +143,24 @@ import Foundation
 		/// `centerStretchAmount` range definition
 		public static let centerStretchAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - size: The size in pixels of the output image.
+		///   - cropAmount: Determines if and how much cropping should be used to achieve the target size. If value is 0 then only stretching is used. If 1 then only cropping is used.
+		///   - centerStretchAmount: Determine how much the center of the image is stretched if stretching is used. If value is 0 then the center of the image maintains the original aspect ratio. If 1 then the image is stretched uniformly.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			size: CGPoint = StretchCrop.sizeDefault,
 			cropAmount: Double = StretchCrop.cropAmountDefault,
 			centerStretchAmount: Double = StretchCrop.centerStretchAmountDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.size = size
 			self.cropAmount = cropAmount
 			self.centerStretchAmount = centerStretchAmount

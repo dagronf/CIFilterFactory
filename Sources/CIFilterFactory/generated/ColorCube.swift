@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFColorCube) class ColorCube: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorCube")
 		}
@@ -135,17 +135,24 @@ import Foundation
 		/// `extrapolate` default value
 		@objc public static let extrapolateDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - cubeDimension: The dimension of the color cube.
+		///   - cubeData: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+		///   - extrapolate: If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			cubeDimension: UInt = ColorCube.cubeDimensionDefault,
 			cubeData: Data,
 			extrapolate: Bool = ColorCube.extrapolateDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.cubeDimension = cubeDimension
 			self.cubeData = cubeData
 			self.extrapolate = extrapolate

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
 	@objc(CIFFTriangleKaleidoscope) class TriangleKaleidoscope: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CITriangleKaleidoscope")
 		}
@@ -154,18 +154,26 @@ import Foundation
 		/// `decay` default value
 		@objc public static let decayDefault: Double = 0.85
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: Input image to generate kaleidoscope effect from.
+		///   - point: The x and y position to use as the center of the triangular area in the input image.
+		///   - size: The size in pixels of the triangle.
+		///   - rotation: Rotation angle in radians of the triangle.
+		///   - decay: The decay determines how fast the color fades from the center triangle.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			point: CGPoint = TriangleKaleidoscope.pointDefault,
 			size: Double = TriangleKaleidoscope.sizeDefault,
 			rotation: Double = TriangleKaleidoscope.rotationDefault,
 			decay: Double = TriangleKaleidoscope.decayDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.point = point
 			self.size = size
 			self.rotation = rotation

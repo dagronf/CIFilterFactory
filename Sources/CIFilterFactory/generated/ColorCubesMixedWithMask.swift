@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFColorCubesMixedWithMask) class ColorCubesMixedWithMask: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIColorCubesMixedWithMask")
 		}
@@ -184,12 +184,20 @@ import Foundation
 		/// `extrapolate` default value
 		@objc public static let extrapolateDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - maskImage: A masking image.
+		///   - cubeDimension: The dimension of the color cubes.
+		///   - cube0Data: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+		///   - cube1Data: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+		///   - colorSpace: The CGColorSpace that defines the RGB values in the color table.
+		///   - extrapolate: If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0 to 1.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			maskImage: CIImage,
+			inputImage: CIImage? = nil,
+			maskImage: CIImage? = nil,
 			cubeDimension: UInt = ColorCubesMixedWithMask.cubeDimensionDefault,
 			cube0Data: Data,
 			cube1Data: Data,
@@ -197,8 +205,12 @@ import Foundation
 			extrapolate: Bool = ColorCubesMixedWithMask.extrapolateDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.maskImage = maskImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let maskImage = maskImage {
+				self.maskImage = maskImage
+			}
 			self.cubeDimension = cubeDimension
 			self.cube0Data = cube0Data
 			self.cube1Data = cube1Data

@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
 	@objc(CIFFLightTunnel) class LightTunnel: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CILightTunnel")
 		}
@@ -133,17 +133,24 @@ import Foundation
 		/// `radius` default value
 		@objc public static let radiusDefault: Double = 100.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to process.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - rotation: Rotation angle in radians of the light tunnel.
+		///   - radius: Center radius of the light tunnel.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = LightTunnel.centerDefault,
 			rotation: Double = LightTunnel.rotationDefault,
 			radius: Double = LightTunnel.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.rotation = rotation
 			self.radius = radius

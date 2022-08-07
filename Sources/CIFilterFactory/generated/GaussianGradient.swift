@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFGaussianGradient) class GaussianGradient: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIGaussianGradient")
 		}
@@ -133,9 +133,14 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - color0: The first color to use in the gradient.
+		///   - color1: The second color to use in the gradient.
+		///   - radius: The radius of the Gaussian distribution.
 		@objc public convenience init?(
 			center: CGPoint = GaussianGradient.centerDefault,
 			color0: CIColor,

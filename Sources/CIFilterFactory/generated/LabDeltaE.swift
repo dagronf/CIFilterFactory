@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFLabDeltaE) class LabDeltaE: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CILabDeltaE")
 		}
@@ -88,16 +88,23 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The first input image for comparison.
+		///   - image2: The second input image for comparison.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			image2: CIImage
+			inputImage: CIImage? = nil,
+			image2: CIImage? = nil
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.image2 = image2
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let image2 = image2 {
+				self.image2 = image2
+			}
 		}
 	}
 }

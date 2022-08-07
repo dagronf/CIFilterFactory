@@ -46,7 +46,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFCoreMLModelFilter) class CoreMLModelFilter: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CICoreMLModelFilter")
 		}
@@ -131,17 +131,24 @@ import Foundation
 		/// `softmaxNormalization` default value
 		@objc public static let softmaxNormalizationDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - model: The CoreML model to be used for applying effect on the image.
+		///   - headIndex: A number to specify which output of a multi-head CoreML model should be used for applying effect on the image.
+		///   - softmaxNormalization: A boolean value to specify that Softmax normalization should be applied to the output of the model.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			model: MLModel,
 			headIndex: Int = CoreMLModelFilter.headIndexDefault,
 			softmaxNormalization: Bool = CoreMLModelFilter.softmaxNormalizationDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.model = model
 			self.headIndex = headIndex
 			self.softmaxNormalization = softmaxNormalization

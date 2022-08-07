@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
 	@objc(CIFFCameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CICameraCalibrationLensCorrection")
 		}
@@ -107,16 +107,22 @@ import Foundation
 		/// `useInverseLookUpTable` default value
 		@objc public static let useInverseLookUpTableDefault: Bool = false
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to process.
+		///   - aVCameraCalibrationData: AVCameraCalibrationData for the correction. Will be set from the input image if available and can be overridden here.
+		///   - useInverseLookUpTable: Boolean value used to select the Look Up Table from the AVCameraCalibrationData.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			aVCameraCalibrationData: AVCameraCalibrationData,
 			useInverseLookUpTable: Bool = CameraCalibrationLensCorrection.useInverseLookUpTableDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.aVCameraCalibrationData = aVCameraCalibrationData
 			self.useInverseLookUpTable = useInverseLookUpTable
 		}

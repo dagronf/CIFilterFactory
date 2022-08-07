@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFHexagonalPixellate) class HexagonalPixellate: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIHexagonalPixellate")
 		}
@@ -116,16 +116,22 @@ import Foundation
 		/// `scale` range definition
 		public static let scaleRange = PartialRangeFrom<Double>(1.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - scale: The scale determines the size of the hexagons. Larger values result in larger hexagons.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = HexagonalPixellate.centerDefault,
 			scale: Double = HexagonalPixellate.scaleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.scale = scale
 		}

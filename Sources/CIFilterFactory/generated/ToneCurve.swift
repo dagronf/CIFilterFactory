@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
 	@objc(CIFFToneCurve) class ToneCurve: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIToneCurve")
 		}
@@ -176,11 +176,18 @@ import Foundation
 		/// `point4` default value
 		@objc public static let point4Default = CGPoint(x: 1.0, y: 1.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - point0: No Description
+		///   - point1: No Description
+		///   - point2: No Description
+		///   - point3: No Description
+		///   - point4: No Description
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			point0: CGPoint = ToneCurve.point0Default,
 			point1: CGPoint = ToneCurve.point1Default,
 			point2: CGPoint = ToneCurve.point2Default,
@@ -188,7 +195,9 @@ import Foundation
 			point4: CGPoint = ToneCurve.point4Default
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.point0 = point0
 			self.point1 = point1
 			self.point2 = point2

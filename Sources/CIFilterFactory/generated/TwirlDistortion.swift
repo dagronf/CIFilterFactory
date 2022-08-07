@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFTwirlDistortion) class TwirlDistortion: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CITwirlDistortion")
 		}
@@ -137,17 +137,24 @@ import Foundation
 		/// `angle` default value
 		@objc public static let angleDefault: Double = 3.141592653589793
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion.
+		///   - angle: The angle in radians of the twirl. Values can be positive or negative.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			center: CGPoint = TwirlDistortion.centerDefault,
 			radius: Double = TwirlDistortion.radiusDefault,
 			angle: Double = TwirlDistortion.angleDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.center = center
 			self.radius = radius
 			self.angle = angle

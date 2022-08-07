@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFBoxBlur) class BoxBlur: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBoxBlur")
 		}
@@ -95,15 +95,20 @@ import Foundation
 		/// `radius` range definition
 		public static let radiusRange = PartialRangeFrom<Double>(1.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = BoxBlur.radiusDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 		}
 	}

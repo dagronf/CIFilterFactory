@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFAztecCodeGenerator) class AztecCodeGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIAztecCodeGenerator")
 		}
@@ -157,9 +157,14 @@ import Foundation
 			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - message: The message to encode in the Aztec Barcode
+		///   - correctionLevel: Aztec error correction value between 5 and 95
+		///   - layers: Aztec layers value between 1 and 32. Set to nil for automatic.
+		///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
 		@objc public convenience init?(
 			message: Data,
 			correctionLevel: Int = AztecCodeGenerator.correctionLevelDefault,

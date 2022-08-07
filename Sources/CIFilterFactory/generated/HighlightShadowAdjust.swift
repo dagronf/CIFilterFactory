@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
 	@objc(CIFFHighlightShadowAdjust) class HighlightShadowAdjust: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIHighlightShadowAdjust")
 		}
@@ -147,17 +147,24 @@ import Foundation
 		/// `highlightAmount` range definition
 		public static let highlightAmountRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - radius: Shadow Highlight Radius.
+		///   - shadowAmount: The amount of adjustment to the shadows of the image.
+		///   - highlightAmount: The amount of adjustment to the highlights of the image.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			radius: Double = HighlightShadowAdjust.radiusDefault,
 			shadowAmount: Double = HighlightShadowAdjust.shadowAmountDefault,
 			highlightAmount: Double = HighlightShadowAdjust.highlightAmountDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.radius = radius
 			self.shadowAmount = shadowAmount
 			self.highlightAmount = highlightAmount

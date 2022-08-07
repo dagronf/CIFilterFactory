@@ -22,6 +22,11 @@ let package = Package(
 	],
 	targets: [
 		.target(name: "CIFilterFactory"),
-		.testTarget(name: "CIFilterFactoryTests", dependencies: ["CIFilterFactory"])
+		.testTarget(
+			name: "CIFilterFactoryTests",
+			dependencies: ["CIFilterFactory"],
+			resources: [
+				.process("resources"),
+			])
 	]
 )

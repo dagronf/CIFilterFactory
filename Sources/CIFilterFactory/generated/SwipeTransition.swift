@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFSwipeTransition) class SwipeTransition: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CISwipeTransition")
 		}
@@ -222,12 +222,21 @@ import Foundation
 		/// `opacity` range definition
 		public static let opacityRange = PartialRangeFrom<Double>(0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - targetImage: The target image for a transition.
+		///   - extent: The extent of the effect.
+		///   - color: The color of the swipe.
+		///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1).
+		///   - angle: The angle in radians of the swipe.
+		///   - width: The width of the swipe.
+		///   - opacity: The opacity of the swipe.
 		@objc public convenience init?(
-			inputImage: CIImage,
-			targetImage: CIImage,
+			inputImage: CIImage? = nil,
+			targetImage: CIImage? = nil,
 			extent: CGRect = SwipeTransition.extentDefault,
 			color: CIColor,
 			time: Double = SwipeTransition.timeDefault,
@@ -236,8 +245,12 @@ import Foundation
 			opacity: Double = SwipeTransition.opacityDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
-			self.targetImage = targetImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
+			if let targetImage = targetImage {
+				self.targetImage = targetImage
+			}
 			self.extent = extent
 			self.color = color
 			self.time = time

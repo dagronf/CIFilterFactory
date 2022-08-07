@@ -430,7 +430,7 @@ class CIPosition3Type: CoreType {
 		out.print("      }")
 		out.print("   }")
 		if let dvi = self.defaultValue as? CIVector {
-			var tmp = "CIPosition3(x: \(dvi.value(at: 0)), y: \(dvi.value(at: 1)), z: \(dvi.value(at: 2)))"
+			let tmp = "CIPosition3(x: \(dvi.value(at: 0)), y: \(dvi.value(at: 1)), z: \(dvi.value(at: 2)))"
 			out.print("   /// `\(userFriendlyKey)` default value")
 			out.print("   @objc static public let \(userFriendlyKey)Default = \(tmp)")
 		}

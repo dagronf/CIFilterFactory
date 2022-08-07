@@ -54,7 +54,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBarcodeGenerator) class BarcodeGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBarcodeGenerator")
 		}
@@ -90,12 +90,14 @@ import Foundation
 			@objc var outputCGImage: Unmanaged<AnyObject>?
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - barcodeDescriptor: The CIBarcodeDescription object to generate an image for.
 		@objc public convenience init?(
-			barcodeDescriptor: CIBarcodeDescriptor)
-		{
+			barcodeDescriptor: CIBarcodeDescriptor
+		) {
 			self.init()
 			self.barcodeDescriptor = barcodeDescriptor
 		}

@@ -49,7 +49,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBicubicScaleTransform) class BicubicScaleTransform: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIBicubicScaleTransform")
 		}
@@ -173,18 +173,26 @@ import Foundation
 		/// `c` range definition
 		public static let cRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - scale: The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image.
+		///   - aspectRatio: The additional horizontal scaling factor to use on the image.
+		///   - b: Specifies the value of B to use for the cubic resampling function.
+		///   - c: Specifies the value of C to use for the cubic resampling function.
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			scale: Double = BicubicScaleTransform.scaleDefault,
 			aspectRatio: Double = BicubicScaleTransform.aspectRatioDefault,
 			b: Double = BicubicScaleTransform.bDefault,
 			c: Double = BicubicScaleTransform.cDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.scale = scale
 			self.aspectRatio = aspectRatio
 			self.b = b

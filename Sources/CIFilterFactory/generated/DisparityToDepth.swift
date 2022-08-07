@@ -47,7 +47,7 @@ import Foundation
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFDisparityToDepth) class DisparityToDepth: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIDisparityToDepth")
 		}
@@ -69,14 +69,18 @@ import Foundation
 			}
 		}
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The input disparity data image to convert to depth data.
 		@objc public convenience init?(
-			inputImage: CIImage)
-		{
+			inputImage: CIImage? = nil
+		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 		}
 	}
 }

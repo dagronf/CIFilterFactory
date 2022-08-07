@@ -50,7 +50,7 @@ import Foundation
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
 	@objc(CIFFTemperatureAndTint) class TemperatureAndTint: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CITemperatureAndTint")
 		}
@@ -114,16 +114,22 @@ import Foundation
 		/// `targetNeutral` default value
 		@objc public static let targetNeutralDefault = CGPoint(x: 6500.0, y: 0.0)
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - inputImage: The image to use as an input for the effect.
+		///   - neutral: A vector containing the source white point defined by color temperature and tint or chromaticity (x,y).
+		///   - targetNeutral: A vector containing the desired white point defined by color temperature and tint or chromaticity (x,y).
 		@objc public convenience init?(
-			inputImage: CIImage,
+			inputImage: CIImage? = nil,
 			neutral: CGPoint = TemperatureAndTint.neutralDefault,
 			targetNeutral: CGPoint = TemperatureAndTint.targetNeutralDefault
 		) {
 			self.init()
-			self.inputImage = inputImage
+			if let inputImage = inputImage {
+				self.inputImage = inputImage
+			}
 			self.neutral = neutral
 			self.targetNeutral = targetNeutral
 		}

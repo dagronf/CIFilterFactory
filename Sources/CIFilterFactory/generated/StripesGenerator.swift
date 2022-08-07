@@ -48,7 +48,7 @@ import Foundation
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFStripesGenerator) class StripesGenerator: Core {
-		/// Create an instance of the filter
+		/// Create an instance of the filter with all default values
 		@objc public init?() {
 			super.init(name: "CIStripesGenerator")
 		}
@@ -155,9 +155,15 @@ import Foundation
 		/// `sharpness` range definition
 		public static let sharpnessRange: ClosedRange<Double> = 0.0 ... 1.0
 
-		// MARK: - Convenience initializer
+		// MARK: - Convenience creators
 
-		/// Create an instance of the filter
+		/// Filter initializer
+		/// - Parameters:
+		///   - center: The center of the effect as x and y pixel coordinates.
+		///   - color0: A color to use for the odd stripes.
+		///   - color1: A color to use for the even stripes.
+		///   - width: The width of a stripe.
+		///   - sharpness: The sharpness of the stripe pattern. The smaller the value, the more blurry the pattern. Values range from 0.0 to 1.0.
 		@objc public convenience init?(
 			center: CGPoint = StripesGenerator.centerDefault,
 			color0: CIColor,
