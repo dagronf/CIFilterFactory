@@ -1,5 +1,4 @@
 // swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -13,12 +12,9 @@ let package = Package(
 	],
 	products: [
 		// Products define the executables and libraries a package produces, and make them visible to other packages.
-		.library(name: "CIFilterFactory-Library", type: .static, targets: ["CIFilterFactory"]),
-		.library(name: "CIFilterFactory-Shared", type: .dynamic, targets: ["CIFilterFactory"]),
-	],
-	dependencies: [
-		// Dependencies declare other packages that this package depends on.
-		// .package(url: /* package url */, from: "1.0.0"),
+		.library(name: "CIFilterFactory", targets: ["CIFilterFactory"]),
+		.library(name: "CIFilterFactory-static", type: .static, targets: ["CIFilterFactory"]),
+		.library(name: "CIFilterFactory-shared", type: .dynamic, targets: ["CIFilterFactory"]),
 	],
 	targets: [
 		.target(name: "CIFilterFactory"),

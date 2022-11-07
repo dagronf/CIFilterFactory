@@ -136,7 +136,7 @@ import Foundation
 
 		// MARK: - padding (inputPadding)
 
-		/// The number of additional of pixels to pad around the text’s bounding box.
+		/// The number of additional pixels to pad around the text’s bounding box.
 		///
 		/// CIFilter attribute information
 		/// - Attribute key: `inputPadding`
@@ -168,7 +168,7 @@ import Foundation
 		///   - fontName: The name of the font to use for the generated text.
 		///   - fontSize: The size of the font to use for the generated text.
 		///   - scaleFactor: The scale of the font to use for the generated text.
-		///   - padding: The number of additional of pixels to pad around the text’s bounding box.
+		///   - padding: The number of additional pixels to pad around the text’s bounding box.
 		@objc public convenience init?(
 			text: String,
 			fontName: String,
