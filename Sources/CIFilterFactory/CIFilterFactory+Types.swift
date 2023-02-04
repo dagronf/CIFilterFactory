@@ -121,10 +121,11 @@ public extension CIFF {
 		}()
 
 		/// Create a CIPosition3 value from x, y and z values
-		@inlinable @objc public init(x: CGFloat, y: CGFloat, z: CGFloat) {
+		@objc public init(x: CGFloat, y: CGFloat, z: CGFloat) {
 			self.x = x
 			self.y = y
 			self.z = z
+			super.init()
 		}
 
 		/// Create a CIPosition3 value from the contents of a CIVector
@@ -132,11 +133,12 @@ public extension CIFF {
 		/// Returns nil if :-
 		///  * The passed vector is nil, or
 		///  * The passed vector does not contain exactly three values
-		@inlinable @objc public init?(_ vector: CIVector?) {
+		@objc public init?(_ vector: CIVector?) {
 			guard let v = vector, v.count == 3 else { return nil }
 			self.x = v.value(at: 0)
 			self.y = v.value(at: 1)
 			self.z = v.value(at: 2)
+			super.init()
 		}
 	}
 }
