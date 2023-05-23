@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIHexagonalPixellate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHexagonalPixellate)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihexagonalpixellate?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHexagonalPixellate/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
@@ -135,5 +135,38 @@ import Foundation
 			self.center = center
 			self.scale = scale
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Hexagonal Pixelate
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - scale: The scale determines the size of the hexagons. Larger values result in larger hexagons. (1.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Displays an image as colored hexagons whose color is an average of the pixels they replace.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIHexagonalPixellate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHexagonalPixellate)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHexagonalPixellate/)
+	///
+	@inlinable func applyingHexagonalPixellate(
+		center: CGPoint = CIFF.HexagonalPixellate.centerDefault,
+		scale: Double = CIFF.HexagonalPixellate.scaleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.HexagonalPixellate(
+			inputImage: self,
+			center: center,
+			scale: scale
+		)?.outputImage ?? CIImage.empty()
 	}
 }

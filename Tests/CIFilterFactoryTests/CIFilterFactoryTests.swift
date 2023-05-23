@@ -125,4 +125,17 @@ final class CIFilterFactoryTests: XCTestCase {
 			Swift.print(outputImage)
 		}
 	}
+
+	func testChainable() throws {
+		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
+		let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+
+		let output = input
+			.applyingBoxBlur()
+			.applyingSepiaTone()
+			.applyingLineScreen()
+
+		let outputImage = try XCTUnwrap(output.asCGImage())
+		Swift.print(outputImage)
+	}
 }

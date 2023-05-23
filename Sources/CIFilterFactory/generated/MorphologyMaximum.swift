@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologymaximum?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMaximum/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -107,5 +107,35 @@ import Foundation
 			}
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Morphology Maximum
+	///
+	/// - Parameters:
+	///   - radius: The desired radius of the circular morphological operation to the image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Lightens areas of an image by applying a circular morphological maximum operation to the image.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyMaximum/)
+	///
+	@inlinable func applyingMorphologyMaximum(
+		radius: Double = CIFF.MorphologyMaximum.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.MorphologyMaximum(
+			inputImage: self,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

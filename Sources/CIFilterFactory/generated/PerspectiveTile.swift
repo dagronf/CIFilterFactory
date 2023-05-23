@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPerspectiveTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTile)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetile?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTile/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -179,5 +179,44 @@ import Foundation
 			self.bottomRight = bottomRight
 			self.bottomLeft = bottomLeft
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Perspective Tile
+	///
+	/// - Parameters:
+	///   - topLeft: The top left coordinate of a tile.
+	///   - topRight: The top right coordinate of a tile.
+	///   - bottomRight: The bottom right coordinate of a tile.
+	///   - bottomLeft: The bottom left coordinate of a tile.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Applies a perspective transform to an image and then tiles the result.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPerspectiveTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTile)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTile/)
+	///
+	@inlinable func applyingPerspectiveTile(
+		topLeft: CGPoint = CIFF.PerspectiveTile.topLeftDefault,
+		topRight: CGPoint = CIFF.PerspectiveTile.topRightDefault,
+		bottomRight: CGPoint = CIFF.PerspectiveTile.bottomRightDefault,
+		bottomLeft: CGPoint = CIFF.PerspectiveTile.bottomLeftDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PerspectiveTile(
+			inputImage: self,
+			topLeft: topLeft,
+			topRight: topRight,
+			bottomRight: bottomRight,
+			bottomLeft: bottomLeft
+		)?.outputImage ?? CIImage.empty()
 	}
 }

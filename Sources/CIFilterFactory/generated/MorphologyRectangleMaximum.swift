@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
@@ -139,5 +139,38 @@ import Foundation
 			self.width = width
 			self.height = height
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// Morphology Rectangle Maximum
+	///
+	/// - Parameters:
+	///   - width: The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer. (1...)
+	///   - height: The height in pixels of the morphological operation. The value will be rounded to the nearest odd integer. (1...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Lightens areas of an image by applying a rectangular morphological maximum operation to the image.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMaximum/)
+	///
+	@inlinable func applyingMorphologyRectangleMaximum(
+		width: Int = CIFF.MorphologyRectangleMaximum.widthDefault,
+		height: Int = CIFF.MorphologyRectangleMaximum.heightDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.MorphologyRectangleMaximum(
+			inputImage: self,
+			width: width,
+			height: height
+		)?.outputImage ?? CIImage.empty()
 	}
 }

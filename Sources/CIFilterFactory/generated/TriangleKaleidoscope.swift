@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.10, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CITriangleKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleKaleidoscope)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
@@ -179,5 +179,44 @@ import Foundation
 			self.rotation = rotation
 			self.decay = decay
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Triangle Kaleidoscope
+	///
+	/// - Parameters:
+	///   - point: The x and y position to use as the center of the triangular area in the input image.
+	///   - size: The size in pixels of the triangle.
+	///   - rotation: Rotation angle in radians of the triangle.
+	///   - decay: The decay determines how fast the color fades from the center triangle.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Maps a triangular portion of image to a triangular area and then generates a kaleidoscope effect.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CITriangleKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleKaleidoscope)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
+	///
+	@inlinable func applyingTriangleKaleidoscope(
+		point: CGPoint = CIFF.TriangleKaleidoscope.pointDefault,
+		size: Double = CIFF.TriangleKaleidoscope.sizeDefault,
+		rotation: Double = CIFF.TriangleKaleidoscope.rotationDefault,
+		decay: Double = CIFF.TriangleKaleidoscope.decayDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.TriangleKaleidoscope(
+			inputImage: self,
+			point: point,
+			size: size,
+			rotation: rotation,
+			decay: decay
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcurves?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -145,5 +145,41 @@ import Foundation
 			self.curvesDomain = curvesDomain
 			self.colorSpace = colorSpace
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Color Curves
+	///
+	/// - Parameters:
+	///   - curvesData: Data containing a color table of floating-point RGB values.
+	///   - curvesDomain: A two-element vector that defines the minimum and maximum RGB component values that are used to look up result values from the color table.
+	///   - colorSpace: The CGColorSpace that defines the RGB values in the color table.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Uses a three-channel one-dimensional color table to transform the source image pixels.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCurves/)
+	///
+	@inlinable func applyingColorCurves(
+		curvesData: Data,
+		curvesDomain: CIVector = CIFF.ColorCurves.curvesDomainDefault,
+		colorSpace: NSObject,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorCurves(
+			inputImage: self,
+			curvesData: curvesData,
+			curvesDomain: curvesDomain,
+			colorSpace: colorSpace
+		)?.outputImage ?? CIImage.empty()
 	}
 }

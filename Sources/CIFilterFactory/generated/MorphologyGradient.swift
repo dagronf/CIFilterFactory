@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologygradient?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -111,5 +111,35 @@ import Foundation
 			}
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Morphology Gradient
+	///
+	/// - Parameters:
+	///   - radius: The desired radius of the circular morphological operation to the image. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Finds the edges of an image by returning the difference between the morphological minimum and maximum operations to the image.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
+	///
+	@inlinable func applyingMorphologyGradient(
+		radius: Double = CIFF.MorphologyGradient.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.MorphologyGradient(
+			inputImage: self,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

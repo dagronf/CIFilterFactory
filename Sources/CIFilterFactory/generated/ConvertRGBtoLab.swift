@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 13.0, iOS 16, tvOS 16
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIConvertRGBtoLab Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertRGBtoLab)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvertrgbtolab?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertRGBtoLab/)
 	///
 	@available(macOS 13.0, iOS 16, tvOS 16, *)
@@ -109,5 +109,35 @@ import Foundation
 			}
 			self.normalize = normalize
 		}
+	}
+}
+
+@available(macOS 13.0, iOS 16, tvOS 16, *)
+public extension CIImage {
+	/// Convert RGB to Lab
+	///
+	/// - Parameters:
+	///   - normalize: If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Converts an image from the Core Image RGB working space to La*b* color space.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIConvertRGBtoLab Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertRGBtoLab)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertRGBtoLab/)
+	///
+	@inlinable func applyingConvertRGBtoLab(
+		normalize: Bool = CIFF.ConvertRGBtoLab.normalizeDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ConvertRGBtoLab(
+			inputImage: self,
+			normalize: normalize
+		)?.outputImage ?? CIImage.empty()
 	}
 }

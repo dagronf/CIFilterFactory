@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.4, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryCompositeOperation
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - CompositeOperation (*CICategoryCompositeOperation*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIExclusionBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExclusionBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexclusionblendmode?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExclusionBlendMode/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
@@ -106,5 +106,35 @@ import Foundation
 				self.backgroundImage = backgroundImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Exclusion Blend Mode
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Produces an effect similar to that produced by the “Difference Blend Mode” filter but with lower contrast. Source image sample values that are black do not produce a change; white inverts the background color values.
+	///
+	/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIExclusionBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExclusionBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIExclusionBlendMode/)
+	///
+	@inlinable func applyingExclusionBlendMode(
+		backgroundImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ExclusionBlendMode(
+			inputImage: self,
+			backgroundImage: backgroundImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.5, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcomponent?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaximumComponent/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
@@ -85,5 +85,30 @@ import Foundation
 				self.inputImage = inputImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Maximum Component
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Converts an image to grayscale using the maximum of the three color components.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMaximumComponent/)
+	///
+	@inlinable func applyingMaximumComponent(
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.MaximumComponent(
+			inputImage: self
+		)?.outputImage ?? CIImage.empty()
 	}
 }

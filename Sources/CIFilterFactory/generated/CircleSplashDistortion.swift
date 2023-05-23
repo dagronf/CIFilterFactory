@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICircleSplashDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircleSplashDistortion)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircleSplashDistortion/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -135,5 +135,38 @@ import Foundation
 			self.center = center
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Circle Splash Distortion
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Distorts the pixels starting at the circumference of a circle and emanating outward.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CICircleSplashDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircleSplashDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICircleSplashDistortion/)
+	///
+	@inlinable func applyingCircleSplashDistortion(
+		center: CGPoint = CIFF.CircleSplashDistortion.centerDefault,
+		radius: Double = CIFF.CircleSplashDistortion.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CircleSplashDistortion(
+			inputImage: self,
+			center: center,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorCubesMixedWithMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubesMixedWithMask)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubesMixedWithMask/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -217,5 +217,50 @@ import Foundation
 			self.colorSpace = colorSpace
 			self.extrapolate = extrapolate
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Color Cubes Mixed With Mask
+	///
+	/// - Parameters:
+	///   - maskImage: A masking image.
+	///   - cubeDimension: The dimension of the color cubes. (2...128)
+	///   - cube0Data: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+	///   - cube1Data: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+	///   - colorSpace: The CGColorSpace that defines the RGB values in the color table.
+	///   - extrapolate: If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0 to 1.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Uses two three-dimensional color tables in a specified colorspace to transform the source image pixels. The mask image is used as an interpolant to mix the output of the two cubes.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorCubesMixedWithMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubesMixedWithMask)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubesMixedWithMask/)
+	///
+	@inlinable func applyingColorCubesMixedWithMask(
+		maskImage: CIImage,
+		cubeDimension: UInt = CIFF.ColorCubesMixedWithMask.cubeDimensionDefault,
+		cube0Data: Data,
+		cube1Data: Data,
+		colorSpace: NSObject,
+		extrapolate: Bool = CIFF.ColorCubesMixedWithMask.extrapolateDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorCubesMixedWithMask(
+			inputImage: self,
+			maskImage: maskImage,
+			cubeDimension: cubeDimension,
+			cube0Data: cube0Data,
+			cube1Data: cube1Data,
+			colorSpace: colorSpace,
+			extrapolate: extrapolate
+		)?.outputImage ?? CIImage.empty()
 	}
 }

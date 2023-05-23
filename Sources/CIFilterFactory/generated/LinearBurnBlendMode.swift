@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.10, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryCompositeOperation
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - CompositeOperation (*CICategoryCompositeOperation*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CILinearBurnBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearBurnBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilinearburnblendmode?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILinearBurnBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
@@ -106,5 +106,35 @@ import Foundation
 				self.backgroundImage = backgroundImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Linear Burn Blend Mode
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Inverts the unpremultiplied source and background image sample color, inverts the sum, and then blends the result with the background according to the PDF basic compositing formula. Source image values that are white produce no change. Source image values that are black invert the background color values.
+	///
+	/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CILinearBurnBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearBurnBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILinearBurnBlendMode/)
+	///
+	@inlinable func applyingLinearBurnBlendMode(
+		backgroundImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.LinearBurnBlendMode(
+			inputImage: self,
+			backgroundImage: backgroundImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

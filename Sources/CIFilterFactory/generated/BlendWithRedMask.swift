@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIBlendWithRedMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithRedMask)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblendwithredmask?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithRedMask/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -127,5 +127,38 @@ import Foundation
 				self.maskImage = maskImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Blend With Red Mask
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - maskImage: A masking image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Uses values from a mask image to interpolate between an image and the background. When a mask red value is 0.0, the result is the background. When the mask red value is 1.0, the result is the image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIBlendWithRedMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithRedMask)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithRedMask/)
+	///
+	@inlinable func applyingBlendWithRedMask(
+		backgroundImage: CIImage,
+		maskImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.BlendWithRedMask(
+			inputImage: self,
+			backgroundImage: backgroundImage,
+			maskImage: maskImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDissolveTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDissolveTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidissolvetransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -136,5 +136,38 @@ import Foundation
 			}
 			self.time = time
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Dissolve
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Uses a dissolve to transition from one image to another.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDissolveTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDissolveTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
+	///
+	@inlinable func applyingDissolveTransition(
+		targetImage: CIImage,
+		time: Double = CIFF.DissolveTransition.timeDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DissolveTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			time: time
+		)?.outputImage ?? CIImage.empty()
 	}
 }

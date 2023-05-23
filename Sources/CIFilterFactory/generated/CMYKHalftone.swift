@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHalftoneEffect
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HalftoneEffect (*CICategoryHalftoneEffect*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICMYKHalftone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICMYKHalftone)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicmykhalftone?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICMYKHalftone/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -242,5 +242,50 @@ import Foundation
 			self.gCR = gCR
 			self.uCR = uCR
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// CMYK Halftone
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - width: The distance between dots in the pattern. (-2.0...)
+	///   - angle: The angle in radians of the pattern.
+	///   - sharpness: The sharpness of the pattern. The larger the value, the sharper the pattern. (0.0...)
+	///   - gCR: The gray component replacement value. The value can vary from 0.0 (none) to 1.0. (0.0...)
+	///   - uCR: The under color removal value. The value can vary from 0.0 to 1.0.  (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates a color, halftoned rendition of the source image, using cyan, magenta, yellow, and black inks over a white page.
+	///
+	/// **Categories**: BuiltIn, HalftoneEffect, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CICMYKHalftone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICMYKHalftone)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICMYKHalftone/)
+	///
+	@inlinable func applyingCMYKHalftone(
+		center: CGPoint = CIFF.CMYKHalftone.centerDefault,
+		width: Double = CIFF.CMYKHalftone.widthDefault,
+		angle: Double = CIFF.CMYKHalftone.angleDefault,
+		sharpness: Double = CIFF.CMYKHalftone.sharpnessDefault,
+		gCR: Double = CIFF.CMYKHalftone.gCRDefault,
+		uCR: Double = CIFF.CMYKHalftone.uCRDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CMYKHalftone(
+			inputImage: self,
+			center: center,
+			width: width,
+			angle: angle,
+			sharpness: sharpness,
+			gCR: gCR,
+			uCR: uCR
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIVortexDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVortexDistortion)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civortexdistortion?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVortexDistortion/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -159,5 +159,41 @@ import Foundation
 			self.radius = radius
 			self.angle = angle
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Vortex Distortion
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion. (0.0...)
+	///   - angle: The angle in radians of the effect.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Rotates pixels around a point to simulate a vortex. You can specify the number of rotations as well the center and radius of the effect.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIVortexDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVortexDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVortexDistortion/)
+	///
+	@inlinable func applyingVortexDistortion(
+		center: CGPoint = CIFF.VortexDistortion.centerDefault,
+		radius: Double = CIFF.VortexDistortion.radiusDefault,
+		angle: Double = CIFF.VortexDistortion.angleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.VortexDistortion(
+			inputImage: self,
+			center: center,
+			radius: radius,
+			angle: angle
+		)?.outputImage ?? CIImage.empty()
 	}
 }

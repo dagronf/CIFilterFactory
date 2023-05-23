@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.4, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryCompositeOperation
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - CompositeOperation (*CICategoryCompositeOperation*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISourceAtopCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceAtopCompositing)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisourceatopcompositing?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISourceAtopCompositing/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
@@ -107,5 +107,35 @@ import Foundation
 				self.backgroundImage = backgroundImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Source Atop
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Places the source image over the background image, then uses the luminance of the background image to determine what to show. The composite shows the background image and only those portions of the source image that are over visible parts of the background.
+	///
+	/// **Categories**: BuiltIn, CompositeOperation, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CISourceAtopCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceAtopCompositing)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISourceAtopCompositing/)
+	///
+	@inlinable func applyingSourceAtopCompositing(
+		backgroundImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SourceAtopCompositing(
+			inputImage: self,
+			backgroundImage: backgroundImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

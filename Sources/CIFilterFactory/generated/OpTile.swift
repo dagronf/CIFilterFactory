@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioptile?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -187,5 +187,44 @@ import Foundation
 			self.angle = angle
 			self.width = width
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Op Tile
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - scale: The scale determines the number of tiles in the effect. (0.0...)
+	///   - angle: The angle in radians of a tile.
+	///   - width: The width of a tile. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Segments an image, applying any specified scaling and rotation, and then assembles the image again to give an op art appearance.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
+	///
+	@inlinable func applyingOpTile(
+		center: CGPoint = CIFF.OpTile.centerDefault,
+		scale: Double = CIFF.OpTile.scaleDefault,
+		angle: Double = CIFF.OpTile.angleDefault,
+		width: Double = CIFF.OpTile.widthDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.OpTile(
+			inputImage: self,
+			center: center,
+			scale: scale,
+			angle: angle,
+			width: width
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurltransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -254,5 +254,53 @@ import Foundation
 			self.angle = angle
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Page Curl
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - backsideImage: The image that appears on the back of the source image, as the page curls to reveal the target image.
+	///   - shadingImage: An image that looks like a shaded sphere enclosed in a square image.
+	///   - extent: The extent of the effect.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - angle: The angle in radians of the curling page.
+	///   - radius: The radius of the curl. (0.01...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by simulating a curling page, revealing the new image as the page curls.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlTransition/)
+	///
+	@inlinable func applyingPageCurlTransition(
+		targetImage: CIImage,
+		backsideImage: CIImage,
+		shadingImage: CIImage,
+		extent: CGRect = CIFF.PageCurlTransition.extentDefault,
+		time: Double = CIFF.PageCurlTransition.timeDefault,
+		angle: Double = CIFF.PageCurlTransition.angleDefault,
+		radius: Double = CIFF.PageCurlTransition.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PageCurlTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			backsideImage: backsideImage,
+			shadingImage: shadingImage,
+			extent: extent,
+			time: time,
+			angle: angle,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

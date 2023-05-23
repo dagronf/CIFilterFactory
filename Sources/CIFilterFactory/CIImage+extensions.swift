@@ -33,11 +33,4 @@ public extension CIImage {
 		}
 		return outputImage
 	}
-
-	/// Apply the provided chain of filters to this image, returning the filtered image
-	///
-	/// See: **Chaining Filters for Complex Effects** in the [Core Image Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_tasks/ci_tasks.html).
-	@inlinable func applying(filters: CIFF.Core...) -> CIImage {
-		return self.applying(filters: filters.map { $0 })
-	}
 }

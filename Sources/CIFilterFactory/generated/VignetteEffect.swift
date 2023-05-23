@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignetteeffect?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
@@ -194,5 +194,44 @@ import Foundation
 			self.intensity = intensity
 			self.falloff = falloff
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+public extension CIImage {
+	/// Vignette Effect
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The distance from the center of the effect. (0.0...)
+	///   - intensity: The intensity of the effect. (-1.0...1.0)
+	///   - falloff: The falloff of the effect. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Applies a vignette shading to the corners of an image.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
+	///
+	@inlinable func applyingVignetteEffect(
+		center: CGPoint = CIFF.VignetteEffect.centerDefault,
+		radius: Double = CIFF.VignetteEffect.radiusDefault,
+		intensity: Double = CIFF.VignetteEffect.intensityDefault,
+		falloff: Double = CIFF.VignetteEffect.falloffDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.VignetteEffect(
+			inputImage: self,
+			center: center,
+			radius: radius,
+			intensity: intensity,
+			falloff: falloff
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 12.0, iOS 15, tvOS 15
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryCompositeOperation
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - CompositeOperation (*CICategoryCompositeOperation*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civividlightblendmode?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
@@ -106,5 +106,35 @@ import Foundation
 				self.backgroundImage = backgroundImage
 			}
 		}
+	}
+}
+
+@available(macOS 12.0, iOS 15, tvOS 15, *)
+public extension CIImage {
+	/// Vivid Light Blend Mode
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// A blend mode that is a combination of color burn and color dodge blend modes.
+	///
+	/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
+	///
+	@inlinable func applyingVividLightBlendMode(
+		backgroundImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.VividLightBlendMode(
+			inputImage: self,
+			backgroundImage: backgroundImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

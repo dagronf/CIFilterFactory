@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 12.0, iOS 15, tvOS 15
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb9vertical?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
@@ -130,5 +130,38 @@ import Foundation
 			self.weights = weights
 			self.bias = bias
 		}
+	}
+}
+
+@available(macOS 12.0, iOS 15, tvOS 15, *)
+public extension CIImage {
+	/// Vertical 9 RGB Convolution
+	///
+	/// - Parameters:
+	///   - weights: A vector containing the 9 weights of the convolution kernel.
+	///   - bias: A value that is added to the RGB components of the output pixel.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Vertical Convolution of RGB channels with 9 values.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
+	///
+	@inlinable func applyingConvolutionRGB9Vertical(
+		weights: CIVector = CIFF.ConvolutionRGB9Vertical.weightsDefault,
+		bias: Double = CIFF.ConvolutionRGB9Vertical.biasDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ConvolutionRGB9Vertical(
+			inputImage: self,
+			weights: weights,
+			bias: bias
+		)?.outputImage ?? CIImage.empty()
 	}
 }

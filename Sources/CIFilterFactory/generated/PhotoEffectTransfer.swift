@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
-	/// - CICategoryXMPSerializable
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
+	/// - XMPSerializable (*CICategoryXMPSerializable*)
 	///
 	/// **Documentation Links**
 	/// - [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttransfer?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTransfer/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
@@ -85,5 +85,30 @@ import Foundation
 				self.inputImage = inputImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+public extension CIImage {
+	/// Photo Effect Transfer
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Apply a “Transfer” style effect to an image.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, Interlaced, NonSquarePixels, StillImage, Video, XMPSerializable
+	///
+	/// **Documentation Links**
+	/// - [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTransfer/)
+	///
+	@inlinable func applyingPhotoEffectTransfer(
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PhotoEffectTransfer(
+			inputImage: self
+		)?.outputImage ?? CIImage.empty()
 	}
 }

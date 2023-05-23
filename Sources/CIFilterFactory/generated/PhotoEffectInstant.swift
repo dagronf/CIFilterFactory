@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
-	/// - CICategoryXMPSerializable
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
+	/// - XMPSerializable (*CICategoryXMPSerializable*)
 	///
 	/// **Documentation Links**
 	/// - [CIPhotoEffectInstant Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectInstant)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectinstant?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
@@ -85,5 +85,30 @@ import Foundation
 				self.inputImage = inputImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+public extension CIImage {
+	/// Photo Effect Instant
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Apply an “Instant” style effect to an image.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, Interlaced, NonSquarePixels, StillImage, Video, XMPSerializable
+	///
+	/// **Documentation Links**
+	/// - [CIPhotoEffectInstant Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectInstant)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
+	///
+	@inlinable func applyingPhotoEffectInstant(
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PhotoEffectInstant(
+			inputImage: self
+		)?.outputImage ?? CIImage.empty()
 	}
 }

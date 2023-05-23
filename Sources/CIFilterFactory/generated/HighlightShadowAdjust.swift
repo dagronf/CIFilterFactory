@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.7, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
@@ -169,5 +169,41 @@ import Foundation
 			self.shadowAmount = shadowAmount
 			self.highlightAmount = highlightAmount
 		}
+	}
+}
+
+@available(macOS 10.7, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Highlight and Shadow Adjust
+	///
+	/// - Parameters:
+	///   - radius: Shadow Highlight Radius. (0.0...)
+	///   - shadowAmount: The amount of adjustment to the shadows of the image. (-1.0...1.0)
+	///   - highlightAmount: The amount of adjustment to the highlights of the image. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Adjust the tonal mapping of an image while preserving spatial detail.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
+	///
+	@inlinable func applyingHighlightShadowAdjust(
+		radius: Double = CIFF.HighlightShadowAdjust.radiusDefault,
+		shadowAmount: Double = CIFF.HighlightShadowAdjust.shadowAmountDefault,
+		highlightAmount: Double = CIFF.HighlightShadowAdjust.highlightAmountDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.HighlightShadowAdjust(
+			inputImage: self,
+			radius: radius,
+			shadowAmount: shadowAmount,
+			highlightAmount: highlightAmount
+		)?.outputImage ?? CIImage.empty()
 	}
 }

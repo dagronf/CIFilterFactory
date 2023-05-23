@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.4, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorAdjustment (*CICategoryColorAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormatrix?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
@@ -200,5 +200,47 @@ import Foundation
 			self.aVector = aVector
 			self.biasVector = biasVector
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Color Matrix
+	///
+	/// - Parameters:
+	///   - rVector: The amount of red to multiply the source color values by.
+	///   - gVector: The amount of green to multiply the source color values by.
+	///   - bVector: The amount of blue to multiply the source color values by.
+	///   - aVector: The amount of alpha to multiply the source color values by.
+	///   - biasVector: A vector that’s added to each color component.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Multiplies source color values and adds a bias factor to each color component.
+	///
+	/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
+	///
+	@inlinable func applyingColorMatrix(
+		rVector: CIVector = CIFF.ColorMatrix.rVectorDefault,
+		gVector: CIVector = CIFF.ColorMatrix.gVectorDefault,
+		bVector: CIVector = CIFF.ColorMatrix.bVectorDefault,
+		aVector: CIVector = CIFF.ColorMatrix.aVectorDefault,
+		biasVector: CIVector = CIFF.ColorMatrix.biasVectorDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorMatrix(
+			inputImage: self,
+			rVector: rVector,
+			gVector: gVector,
+			bVector: bVector,
+			aVector: aVector,
+			biasVector: biasVector
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.10, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryCompositeOperation
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - CompositeOperation (*CICategoryCompositeOperation*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPinLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinLightBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipinlightblendmode?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPinLightBlendMode/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
@@ -106,5 +106,35 @@ import Foundation
 				self.backgroundImage = backgroundImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Pin Light Blend Mode
+	///
+	/// - Parameters:
+	///   - backgroundImage: The image to use as a background image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Unpremultiplies the source and background image sample color, combines them according to the relative difference, and then blends the result with the background according to the PDF basic compositing formula. Source image values that are brighter than the destination will produce an output that is lighter than the destination. Source image values that are darker than the destination will produce an output that is darker than the destination.
+	///
+	/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPinLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinLightBlendMode)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPinLightBlendMode/)
+	///
+	@inlinable func applyingPinLightBlendMode(
+		backgroundImage: CIImage,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PinLightBlendMode(
+			inputImage: self,
+			backgroundImage: backgroundImage
+		)?.outputImage ?? CIImage.empty()
 	}
 }

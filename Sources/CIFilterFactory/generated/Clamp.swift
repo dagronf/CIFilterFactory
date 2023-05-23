@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.12, iOS 10, tvOS 10
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciclamp?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
@@ -107,5 +107,35 @@ import Foundation
 			}
 			self.extent = extent
 		}
+	}
+}
+
+@available(macOS 10.12, iOS 10, tvOS 10, *)
+public extension CIImage {
+	/// Clamp
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that defines the extent of the effect.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
+	///
+	@inlinable func applyingClamp(
+		extent: CGRect = CIFF.Clamp.extentDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.Clamp(
+			inputImage: self,
+			extent: extent
+		)?.outputImage ?? CIImage.empty()
 	}
 }

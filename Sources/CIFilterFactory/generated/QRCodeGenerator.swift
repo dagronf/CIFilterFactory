@@ -35,9 +35,9 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGenerator
-	/// - CICategoryStillImage
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - Generator (*CICategoryGenerator*)
+	/// - StillImage (*CICategoryStillImage*)
 	///
 	/// **Documentation Links**
 	/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)

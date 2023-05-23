@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 8.3, tvOS 8.3
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIZoomBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIZoomBlur)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cizoomblur?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
@@ -131,5 +131,38 @@ import Foundation
 			self.center = center
 			self.amount = amount
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
+public extension CIImage {
+	/// Zoom Blur
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - amount: The zoom-in amount. Larger values result in more zooming in.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Simulates the effect of zooming the camera while capturing the image.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIZoomBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIZoomBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
+	///
+	@inlinable func applyingZoomBlur(
+		center: CGPoint = CIFF.ZoomBlur.centerDefault,
+		amount: Double = CIFF.ZoomBlur.amountDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ZoomBlur(
+			inputImage: self,
+			center: center,
+			amount: amount
+		)?.outputImage ?? CIImage.empty()
 	}
 }

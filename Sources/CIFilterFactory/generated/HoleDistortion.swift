@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIHoleDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHoleDistortion)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciholedistortion?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHoleDistortion/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -135,5 +135,38 @@ import Foundation
 			self.center = center
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Hole Distortion
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion. (0.01...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates a circular area that pushes the image pixels outward, distorting those pixels closest to the circle the most.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIHoleDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHoleDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHoleDistortion/)
+	///
+	@inlinable func applyingHoleDistortion(
+		center: CGPoint = CIFF.HoleDistortion.centerDefault,
+		radius: Double = CIFF.HoleDistortion.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.HoleDistortion(
+			inputImage: self,
+			center: center,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

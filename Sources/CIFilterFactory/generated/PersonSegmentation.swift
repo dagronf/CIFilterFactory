@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 12.0, iOS 15, tvOS 15
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipersonsegmentation?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
@@ -101,5 +101,35 @@ import Foundation
 			}
 			self.qualityLevel = qualityLevel
 		}
+	}
+}
+
+@available(macOS 12.0, iOS 15, tvOS 15, *)
+public extension CIImage {
+	/// Person Segmentation
+	///
+	/// - Parameters:
+	///   - qualityLevel: Determines the size and quality of the resulting segmentation mask. The value can be a number where 0 is accurate, 1 is balanced, and 2 is fast.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Returns a segmentation mask that is red in the portions of an image that are likely to be persons. The returned image may have a different size and aspect ratio from the input image.
+	///
+	/// **Categories**: BuiltIn, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
+	///
+	@inlinable func applyingPersonSegmentation(
+		qualityLevel: NSNumber,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PersonSegmentation(
+			inputImage: self,
+			qualityLevel: qualityLevel
+		)?.outputImage ?? CIImage.empty()
 	}
 }

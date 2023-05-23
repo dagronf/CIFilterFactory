@@ -35,13 +35,13 @@ import Foundation
 	/// - macOS 10.14, iOS 12, tvOS 12
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
 	///
 	/// **Documentation Links**
 	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicoremlmodelfilter?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
@@ -153,5 +153,41 @@ import Foundation
 			self.headIndex = headIndex
 			self.softmaxNormalization = softmaxNormalization
 		}
+	}
+}
+
+@available(macOS 10.14, iOS 12, tvOS 12, *)
+public extension CIImage {
+	/// CoreML Model Filter
+	///
+	/// - Parameters:
+	///   - model: The CoreML model to be used for applying effect on the image.
+	///   - headIndex: A number to specify which output of a multi-head CoreML model should be used for applying effect on the image. (0...10)
+	///   - softmaxNormalization: A boolean value to specify that Softmax normalization should be applied to the output of the model.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Generates output image by applying input CoreML model to the input image.
+	///
+	/// **Categories**: BuiltIn, StillImage, Stylize
+	///
+	/// **Documentation Links**
+	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
+	///
+	@inlinable func applyingCoreMLModelFilter(
+		model: MLModel,
+		headIndex: Int = CIFF.CoreMLModelFilter.headIndexDefault,
+		softmaxNormalization: Bool = CIFF.CoreMLModelFilter.softmaxNormalizationDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CoreMLModelFilter(
+			inputImage: self,
+			model: model,
+			headIndex: headIndex,
+			softmaxNormalization: softmaxNormalization
+		)?.outputImage ?? CIImage.empty()
 	}
 }

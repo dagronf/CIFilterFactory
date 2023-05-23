@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.14, iOS 12, tvOS 12, macCatalyst 14
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicameracalibrationlenscorrection?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
@@ -126,5 +126,38 @@ import Foundation
 			self.aVCameraCalibrationData = aVCameraCalibrationData
 			self.useInverseLookUpTable = useInverseLookUpTable
 		}
+	}
+}
+
+@available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
+public extension CIImage {
+	/// Lens Correction for AVC
+	///
+	/// - Parameters:
+	///   - aVCameraCalibrationData: AVCameraCalibrationData for the correction. Will be set from the input image if available and can be overridden here.
+	///   - useInverseLookUpTable: Boolean value used to select the Look Up Table from the AVCameraCalibrationData.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Geometrically distorts an image by altering the magnification based on the radial distance from the optical center to the farthest radius.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
+	///
+	@inlinable func applyingCameraCalibrationLensCorrection(
+		aVCameraCalibrationData: AVCameraCalibrationData,
+		useInverseLookUpTable: Bool = CIFF.CameraCalibrationLensCorrection.useInverseLookUpTableDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CameraCalibrationLensCorrection(
+			inputImage: self,
+			aVCameraCalibrationData: aVCameraCalibrationData,
+			useInverseLookUpTable: useInverseLookUpTable
+		)?.outputImage ?? CIImage.empty()
 	}
 }

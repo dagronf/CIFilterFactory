@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrystallize?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -135,5 +135,38 @@ import Foundation
 			self.radius = radius
 			self.center = center
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Crystallize
+	///
+	/// - Parameters:
+	///   - radius: The radius determines how many pixels are used to create the effect. The larger the radius, the larger the resulting crystals. (1.0...)
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates polygon-shaped color blocks by aggregating source pixel-color values.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
+	///
+	@inlinable func applyingCrystallize(
+		radius: Double = CIFF.Crystallize.radiusDefault,
+		center: CGPoint = CIFF.Crystallize.centerDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.Crystallize(
+			inputImage: self,
+			radius: radius,
+			center: center
+		)?.outputImage ?? CIImage.empty()
 	}
 }

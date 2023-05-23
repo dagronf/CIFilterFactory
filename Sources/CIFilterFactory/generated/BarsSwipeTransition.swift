@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIBarsSwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarsSwipeTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarsswipetransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBarsSwipeTransition/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
@@ -214,5 +214,47 @@ import Foundation
 			self.barOffset = barOffset
 			self.time = time
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Bars Swipe Transition
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - angle: The angle in radians of the bars.
+	///   - width: The width of each bar. (2.0...)
+	///   - barOffset: The offset of one bar with respect to another. (1.0...)
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by swiping rectangular portions of the foreground image to disclose the target image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIBarsSwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarsSwipeTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBarsSwipeTransition/)
+	///
+	@inlinable func applyingBarsSwipeTransition(
+		targetImage: CIImage,
+		angle: Double = CIFF.BarsSwipeTransition.angleDefault,
+		width: Double = CIFF.BarsSwipeTransition.widthDefault,
+		barOffset: Double = CIFF.BarsSwipeTransition.barOffsetDefault,
+		time: Double = CIFF.BarsSwipeTransition.timeDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.BarsSwipeTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			angle: angle,
+			width: width,
+			barOffset: barOffset,
+			time: time
+		)?.outputImage ?? CIImage.empty()
 	}
 }

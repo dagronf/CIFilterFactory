@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 13.0, iOS 16, tvOS 16
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciarealogarithmichistogram?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaLogarithmicHistogram/)
 	///
 	/// **Additional output keys**
@@ -250,5 +250,47 @@ import Foundation
 			self.minimumStop = minimumStop
 			self.maximumStop = maximumStop
 		}
+	}
+}
+
+@available(macOS 13.0, iOS 16, tvOS 16, *)
+public extension CIImage {
+	/// Area Logarithmic Histogram
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that defines the extent of the effect.
+	///   - scale: The amount of the effect. (0.0...)
+	///   - count: The number of bins for the histogram. This value will determine the width of the output image. (1.0...2048.0)
+	///   - minimumStop: The minimum of the range of color channel values to be in the logarithmic histogram image.
+	///   - maximumStop: The maximum of the range of color channel values to be in the logarithmic histogram image.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Calculates histogram of the R, G, B, and A channels of the specified area of an image. Before binning, the R, G, and B channel values are transformed by the log base two function. The output image is a one pixel tall image containing the histogram data for all four channels.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaLogarithmicHistogram/)
+	///
+	@inlinable func applyingAreaLogarithmicHistogram(
+		extent: CGRect = CIFF.AreaLogarithmicHistogram.extentDefault,
+		scale: Double = CIFF.AreaLogarithmicHistogram.scaleDefault,
+		count: Double = CIFF.AreaLogarithmicHistogram.countDefault,
+		minimumStop: Double = CIFF.AreaLogarithmicHistogram.minimumStopDefault,
+		maximumStop: Double = CIFF.AreaLogarithmicHistogram.maximumStopDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.AreaLogarithmicHistogram(
+			inputImage: self,
+			extent: extent,
+			scale: scale,
+			count: count,
+			minimumStop: minimumStop,
+			maximumStop: maximumStop
+		)?.outputImage ?? CIImage.empty()
 	}
 }

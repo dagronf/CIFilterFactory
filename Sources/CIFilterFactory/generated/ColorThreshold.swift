@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 11.0, iOS 14, tvOS 14
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorAdjustment (*CICategoryColorAdjustment*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthreshold?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
 	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
@@ -108,5 +108,35 @@ import Foundation
 			}
 			self.threshold = threshold
 		}
+	}
+}
+
+@available(macOS 11.0, iOS 14, tvOS 14, *)
+public extension CIImage {
+	/// Color Threshold
+	///
+	/// - Parameters:
+	///   - threshold: The threshold value that governs if the RGB channels of the resulting image will be zero or one.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Produces a binarized image from an image and a threshold value. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
+	///
+	/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
+	///
+	@inlinable func applyingColorThreshold(
+		threshold: Double = CIFF.ColorThreshold.thresholdDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorThreshold(
+			inputImage: self,
+			threshold: threshold
+		)?.outputImage ?? CIImage.empty()
 	}
 }

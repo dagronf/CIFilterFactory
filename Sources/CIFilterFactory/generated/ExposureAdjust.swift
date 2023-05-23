@@ -35,18 +35,18 @@ import Foundation
 	/// - macOS 10.4, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
-	/// - CICategoryXMPSerializable
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorAdjustment (*CICategoryColorAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
+	/// - XMPSerializable (*CICategoryXMPSerializable*)
 	///
 	/// **Documentation Links**
 	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexposureadjust?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
@@ -110,5 +110,35 @@ import Foundation
 			}
 			self.eV = eV
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Exposure Adjust
+	///
+	/// - Parameters:
+	///   - eV: The amount to adjust the exposure of the image by. The larger the value, the brighter the exposure.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Adjusts the exposure setting for an image similar to the way you control exposure for a camera when you change the F-stop.
+	///
+	/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video, XMPSerializable
+	///
+	/// **Documentation Links**
+	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
+	///
+	@inlinable func applyingExposureAdjust(
+		eV: Double = CIFF.ExposureAdjust.eVDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ExposureAdjust(
+			inputImage: self,
+			eV: eV
+		)?.outputImage ?? CIImage.empty()
 	}
 }

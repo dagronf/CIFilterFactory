@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciparallelogramtile?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -183,5 +183,44 @@ import Foundation
 			self.acuteAngle = acuteAngle
 			self.width = width
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Parallelogram Tile
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - angle: The angle in radians of the tiled pattern.
+	///   - acuteAngle: The primary angle for the repeating parallelogram tile. Small values create thin diamond tiles, and higher values create fatter parallelogram tiles.
+	///   - width: The width of a tile. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Warps an image by reflecting it in a parallelogram, and then tiles the result.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
+	///
+	@inlinable func applyingParallelogramTile(
+		center: CGPoint = CIFF.ParallelogramTile.centerDefault,
+		angle: Double = CIFF.ParallelogramTile.angleDefault,
+		acuteAngle: Double = CIFF.ParallelogramTile.acuteAngleDefault,
+		width: Double = CIFF.ParallelogramTile.widthDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ParallelogramTile(
+			inputImage: self,
+			center: center,
+			angle: angle,
+			acuteAngle: acuteAngle,
+			width: width
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CITwirlDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwirlDistortion)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citwirldistortion?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwirlDistortion/)
 	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
@@ -159,5 +159,41 @@ import Foundation
 			self.radius = radius
 			self.angle = angle
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Twirl Distortion
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion. (0.0...)
+	///   - angle: The angle in radians of the twirl. Values can be positive or negative.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Rotates pixels around a point to give a twirling effect. You can specify the number of rotations as well as the center and radius of the effect.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CITwirlDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwirlDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITwirlDistortion/)
+	///
+	@inlinable func applyingTwirlDistortion(
+		center: CGPoint = CIFF.TwirlDistortion.centerDefault,
+		radius: Double = CIFF.TwirlDistortion.radiusDefault,
+		angle: Double = CIFF.TwirlDistortion.angleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.TwirlDistortion(
+			inputImage: self,
+			center: center,
+			radius: radius,
+			angle: angle
+		)?.outputImage ?? CIImage.empty()
 	}
 }

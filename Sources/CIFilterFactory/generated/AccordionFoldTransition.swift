@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.10, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
@@ -220,5 +220,47 @@ import Foundation
 			self.foldShadowAmount = foldShadowAmount
 			self.time = time
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Accordion Fold Transition
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - bottomHeight: The height in pixels from the bottom of the image to the bottom of the folded part of the transition. (0.0...)
+	///   - numberOfFolds: The number of folds used in the transition. (1.0...50.0)
+	///   - foldShadowAmount: A value that specifies the intensity of the shadow in the transition. (0.0...1.0)
+	///   - time: The duration of the effect. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another of a differing dimensions by unfolding.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
+	///
+	@inlinable func applyingAccordionFoldTransition(
+		targetImage: CIImage,
+		bottomHeight: Double = CIFF.AccordionFoldTransition.bottomHeightDefault,
+		numberOfFolds: Double = CIFF.AccordionFoldTransition.numberOfFoldsDefault,
+		foldShadowAmount: Double = CIFF.AccordionFoldTransition.foldShadowAmountDefault,
+		time: Double = CIFF.AccordionFoldTransition.timeDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.AccordionFoldTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			bottomHeight: bottomHeight,
+			numberOfFolds: numberOfFolds,
+			foldShadowAmount: foldShadowAmount,
+			time: time
+		)?.outputImage ?? CIImage.empty()
 	}
 }

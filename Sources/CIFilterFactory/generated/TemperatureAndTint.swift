@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.7, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorAdjustment (*CICategoryColorAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citemperatureandtint?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
@@ -133,5 +133,38 @@ import Foundation
 			self.neutral = neutral
 			self.targetNeutral = targetNeutral
 		}
+	}
+}
+
+@available(macOS 10.7, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Temperature and Tint
+	///
+	/// - Parameters:
+	///   - neutral: A vector containing the source white point defined by color temperature and tint or chromaticity (x,y).
+	///   - targetNeutral: A vector containing the desired white point defined by color temperature and tint or chromaticity (x,y).
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Adapt the reference white point for an image.
+	///
+	/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
+	///
+	@inlinable func applyingTemperatureAndTint(
+		neutral: CGPoint = CIFF.TemperatureAndTint.neutralDefault,
+		targetNeutral: CGPoint = CIFF.TemperatureAndTint.targetNeutralDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.TemperatureAndTint(
+			inputImage: self,
+			neutral: neutral,
+			targetNeutral: targetNeutral
+		)?.outputImage ?? CIImage.empty()
 	}
 }

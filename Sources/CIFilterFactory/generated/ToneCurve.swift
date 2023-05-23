@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.7, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorAdjustment
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorAdjustment (*CICategoryColorAdjustment*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citonecurve?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIToneCurve/)
 	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
@@ -204,5 +204,47 @@ import Foundation
 			self.point3 = point3
 			self.point4 = point4
 		}
+	}
+}
+
+@available(macOS 10.7, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Tone Curve
+	///
+	/// - Parameters:
+	///   - point0: No Description
+	///   - point1: No Description
+	///   - point2: No Description
+	///   - point3: No Description
+	///   - point4: No Description
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Adjusts tone response of the R, G, and B channels of an image. The input points are five x,y values that are interpolated using a spline curve. The curve is applied in a perceptual (gamma 2) version of the working space.
+	///
+	/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIToneCurve/)
+	///
+	@inlinable func applyingToneCurve(
+		point0: CGPoint = CIFF.ToneCurve.point0Default,
+		point1: CGPoint = CIFF.ToneCurve.point1Default,
+		point2: CGPoint = CIFF.ToneCurve.point2Default,
+		point3: CGPoint = CIFF.ToneCurve.point3Default,
+		point4: CGPoint = CIFF.ToneCurve.point4Default,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ToneCurve(
+			inputImage: self,
+			point0: point0,
+			point1: point1,
+			point2: point2,
+			point3: point3,
+			point4: point4
+		)?.outputImage ?? CIImage.empty()
 	}
 }

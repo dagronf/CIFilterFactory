@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorCrossPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCrossPolynomial)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCrossPolynomial/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
@@ -154,5 +154,41 @@ import Foundation
 			self.greenCoefficients = greenCoefficients
 			self.blueCoefficients = blueCoefficients
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+public extension CIImage {
+	/// Color Cross Polynomial
+	///
+	/// - Parameters:
+	///   - redCoefficients: Polynomial coefficients for red channel.
+	///   - greenCoefficients: Polynomial coefficients for green channel.
+	///   - blueCoefficients: Polynomial coefficients for blue channel.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Adjusts the color of an image with polynomials.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorCrossPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCrossPolynomial)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCrossPolynomial/)
+	///
+	@inlinable func applyingColorCrossPolynomial(
+		redCoefficients: CIVector = CIFF.ColorCrossPolynomial.redCoefficientsDefault,
+		greenCoefficients: CIVector = CIFF.ColorCrossPolynomial.greenCoefficientsDefault,
+		blueCoefficients: CIVector = CIFF.ColorCrossPolynomial.blueCoefficientsDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorCrossPolynomial(
+			inputImage: self,
+			redCoefficients: redCoefficients,
+			greenCoefficients: greenCoefficients,
+			blueCoefficients: blueCoefficients
+		)?.outputImage ?? CIImage.empty()
 	}
 }

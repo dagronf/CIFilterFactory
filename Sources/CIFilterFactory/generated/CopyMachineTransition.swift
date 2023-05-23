@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICopyMachineTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICopyMachineTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicopymachinetransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICopyMachineTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -262,5 +262,53 @@ import Foundation
 			self.width = width
 			self.opacity = opacity
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Copy Machine
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - extent: A rectangle that defines the extent of the effect.
+	///   - color: The color of the copier light.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - angle: The angle in radians of the copier light. (0.0...)
+	///   - width: The width of the copier light.  (0.1...)
+	///   - opacity: The opacity of the copier light. A value of 0.0 is transparent. A value of 1.0 is opaque. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by simulating the effect of a copy machine.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CICopyMachineTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICopyMachineTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICopyMachineTransition/)
+	///
+	@inlinable func applyingCopyMachineTransition(
+		targetImage: CIImage,
+		extent: CGRect = CIFF.CopyMachineTransition.extentDefault,
+		color: CIColor,
+		time: Double = CIFF.CopyMachineTransition.timeDefault,
+		angle: Double = CIFF.CopyMachineTransition.angleDefault,
+		width: Double = CIFF.CopyMachineTransition.widthDefault,
+		opacity: Double = CIFF.CopyMachineTransition.opacityDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CopyMachineTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			extent: extent,
+			color: color,
+			time: time,
+			angle: angle,
+			width: width,
+			opacity: opacity
+		)?.outputImage ?? CIImage.empty()
 	}
 }

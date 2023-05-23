@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectiverotate?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
 	///
 	/// **Additional output keys**
@@ -182,5 +182,44 @@ import Foundation
 			self.yaw = yaw
 			self.roll = roll
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// Perspective Rotate
+	///
+	/// - Parameters:
+	///   - focalLength: 35mm equivalent focal length of the input image.
+	///   - pitch: Pitch angle in radians.
+	///   - yaw: Yaw angle in radians.
+	///   - roll: Roll angle in radians.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Apply a homogenous rotation transform to an image.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
+	///
+	@inlinable func applyingPerspectiveRotate(
+		focalLength: Double = CIFF.PerspectiveRotate.focalLengthDefault,
+		pitch: Double = CIFF.PerspectiveRotate.pitchDefault,
+		yaw: Double = CIFF.PerspectiveRotate.yawDefault,
+		roll: Double = CIFF.PerspectiveRotate.rollDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PerspectiveRotate(
+			inputImage: self,
+			focalLength: focalLength,
+			pitch: pitch,
+			yaw: yaw,
+			roll: roll
+		)?.outputImage ?? CIImage.empty()
 	}
 }

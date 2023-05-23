@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglasslozenge?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -187,5 +187,44 @@ import Foundation
 			self.radius = radius
 			self.refraction = refraction
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Glass Lozenge
+	///
+	/// - Parameters:
+	///   - point0: The x and y position that defines the center of the circle at one end of the lozenge.
+	///   - point1: The x and y position that defines the center of the circle at the other end of the lozenge.
+	///   - radius: The radius of the lozenge. The larger the radius, the wider the extent of the distortion. (0.0...)
+	///   - refraction: The refraction of the glass. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates a lozenge-shaped lens and distorts the portion of the image over which the lens is placed.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)
+	///
+	@inlinable func applyingGlassLozenge(
+		point0: CGPoint = CIFF.GlassLozenge.point0Default,
+		point1: CGPoint = CIFF.GlassLozenge.point1Default,
+		radius: Double = CIFF.GlassLozenge.radiusDefault,
+		refraction: Double = CIFF.GlassLozenge.refractionDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.GlassLozenge(
+			inputImage: self,
+			point0: point0,
+			point1: point1,
+			radius: radius,
+			refraction: refraction
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -61,23 +61,32 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
+		var cleanCategories = [String]()
 		if let categories = filterAttributes[kCIAttributeFilterCategories] as? [String] {
 			out.print("   /// **Categories**")
-			categories.sorted().forEach {
-				out.print("   /// - \($0)")
+			let cats = categories.sorted()
+			cats.forEach {
+				let clipped = $0.replacingOccurrences(of: "CICategory", with: "")
+				cleanCategories.append(clipped)
+				out.print("   /// - \(clipped) (*\($0)*)")
 			}
 			out.print("   ///")
 		}
 
-		out.print("   /// **Documentation Links**")
+		var docs = ""
+		docs += "   /// **Documentation Links**\n"
 
 		if let refDoc = filterAttributes[kCIAttributeReferenceDocumentation] as? URL {
-			out.print("   /// - [\(filter.name) Online Documentation](\(refDoc))")
+			docs += "   /// - [\(filter.name) Online Documentation](\(refDoc))\n"
 		}
 
-		out.print("   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased())?language=objc)")
-		out.print("   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)")
-		out.print("   ///")
+		// This link seems to fluctuate for every Xcode release?
+		//docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased())?language=objc)\n"
+		docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)\n"
+		docs += "   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)\n"
+		docs += "   ///"
+
+		out.print(docs)
 
 		let additionalOutputKeys = self.filter.outputKeys.filter { $0 != "outputImage" }
 		if additionalOutputKeys.count > 0 {
@@ -88,7 +97,8 @@ class FilterGenerator {
 			out.print("   ///")
 		}
 
-		if let availability = generateAvailabilityString(filterAttributes: filterAttributes) {
+		let availability = generateAvailabilityString(filterAttributes: filterAttributes)
+		if let availability = availability {
 			out.print(availability)
 		}
 		out.print("   @objc(CIFF\(staticName)) class \(staticName): Core {")
@@ -147,9 +157,13 @@ class FilterGenerator {
 		if initializers.count > 0 {
 			self.generateInitializer()
 		}
-
 		out.print("   }")
 		out.print("}")
+		out.blankLine()
+
+		let fdesc = CIFilter.localizedDescription(forFilterName: filter.name)
+		let fname = filterAttributes[kCIAttributeFilterDisplayName] as? String ?? ""
+		self.generateCIImageExtension(fname, fdesc ?? "", availability, docs, cleanCategories)
 	}
 
 	func generateInitializer() {
@@ -157,7 +171,6 @@ class FilterGenerator {
 		var str = ""
 		var inits = ""
 		var params = "      /// - Parameters:"
-		//var staticInits = ""
 
 		for property in self.initializers {
 			if str.count > 0 { str += ","; inits += "\n" }
@@ -172,9 +185,6 @@ class FilterGenerator {
 
 			params += "\n"
 			params += "      ///   - \(property.name): \(property.description)"
-
-//			if staticInits.count > 0 { staticInits += ",\n" }
-//			staticInits += "            \(property.name): \(property.name)"
 
 			if property.swiftType == "CIImage" {
 				inits += "         if let \(property.name) = \(property.name) {\n"
@@ -191,14 +201,6 @@ class FilterGenerator {
 		out.print("")
 		out.print("      /// Filter initializer")
 		out.print(params)
-		/*
-		 /// - Parameters:
-		 ///   - inputImage: <#inputImage description#>
-		 ///   - radius: <#radius description#>
-		 ///   - intensity: <#intensity description#>
-
-		 */
-
 
 		out.print("      @objc public convenience init?(\(str)")
 		out.print("      ) {")
@@ -207,16 +209,100 @@ class FilterGenerator {
 		out.print("      }")
 
 		out.print("")
-//		out.print("      /// Create an instance of the '\(staticName)' filter.")
-//		out.print("      @inlinable @objc public static func create(\(str)")
-//		out.print("      ) -> \(staticName)? {")
-//		out.print("         \(staticName)(")
-//		out.print(staticInits)
-//		out.print("         )")
-//		out.print("      } ")
-//		out.print("")
 	}
 
+	func generateCIImageExtension(
+		_ filterName: String,
+		_ filterDescription: String,
+		_ availability: String?,
+		_ docs: String,
+		_ categories: [String]
+	) {
+		// Cannot chain if there's no inputImage parameter
+		guard self.initializers.contains(where: { key in key.name == "inputImage" }) else {
+			return
+		}
+
+		let others = self.initializers.filter { $0.name != "inputImage" }
+
+		if let availability = availability {
+			out.print(availability)
+		}
+		out.print("extension CIImage {")
+
+		// Convert to camel case
+		let funcName = staticName.prefix(1).lowercased() + staticName.dropFirst()
+
+		out.print("   /// \(filterName)")
+		if others.count > 0 {
+			out.print("   ///")
+			out.print("   /// - Parameters:")
+		}
+		others.forEach { property in
+			let vt = property.valueTypeGenerator()
+			let mins = vt.minValueString()
+			let maxs = vt.maxValueString()
+			var range = ""
+			if let mins = mins {
+				if let maxs = maxs {
+					range = "(\(mins)...\(maxs))"
+				}
+				else {
+					range = "(\(mins)...)"
+				}
+			}
+			else if let maxs = maxs {
+				range = "(...\(maxs))"
+			}
+
+			out.print("   ///   - \(property.name): \(property.description) \(range.count > 0 ? range : "") ")
+		}
+		out.print("   ///   - isActive: If true applies the filter and returns a new image, else returns this image")
+		out.print("   /// - Returns: The filtered image, or this image if the filter is not active")
+		out.print("   ///")
+		out.print("   /// \(filterDescription)")
+		out.print("   ///")
+		if !categories.isEmpty {
+			out.print("   /// **Categories**: \(categories.joined(separator: ", "))")
+			out.print("   ///")
+		}
+
+		out.print(docs)
+
+		out.print("   @inlinable public func applying\(staticName)(")
+
+		var str = ""
+		for property in others {
+			if str.count > 0 { str += "\n" }
+
+			var sType = property.swiftType
+			if ["CIPosition3", "CIAffineTransform"].contains(sType) { sType = "CIFF." + sType }
+
+			str += "      \(property.name): \(sType)"
+			let vt = property.valueTypeGenerator()
+			if let _ = vt.defaultValueString() {
+				str += " = CIFF.\(self.staticName).\(property.name)Default"
+			}
+			str += ","
+		}
+		out.print(str)
+		out.print("      isActive: Bool = true")
+		out.print("   ) -> CIImage {")
+
+		out.print("      guard isActive else { return self }")
+
+		var funcDef = "      return CIFF.\(self.staticName)(\n"
+		funcDef += "         inputImage: self"
+
+		others.forEach { key in
+			funcDef += ",\n"
+			funcDef += "         \(key.name): \(key.name)"
+		}
+		funcDef += "\n      )?.outputImage ?? CIImage.empty()"
+		out.print(funcDef)
+		out.print("   }")
+		out.print("}")
+	}
 
 	func generateKey(keyName: String, filterAttributes: [String: Any]) {
 		let userFriendlyKey: String = {

@@ -20,12 +20,6 @@ Supports macOS, tvOS, iOS and mac Catalyst
     </a>
 </p>
 
-## NOTE: Version 15.0.0 Breaking change
-
-I've changed `image` in the generated files to `inputImage` in order to make the code more readable.
-
-You will need to update your code to change any calls to `<filter>.image = …` to `<filter>.inputImage = …`. 
-
 ## Why
 
 I like CIFilters a lot. I've always found the `CIFilter` interfaces to be 
@@ -111,7 +105,8 @@ filter.inputTitle = 12.0
 
 ### Documentation
 
-CIFilterFactory defines all available documentation inline within the code itself, allowing Xcode to provide useful Quick Help for all available filters and parameters.
+CIFilterFactory defines all available documentation inline within the code itself, allowing Xcode to provide useful 
+Quick Help for all available filters and parameters.
 
 For example :-
 
@@ -165,11 +160,68 @@ public static let widthRange = PartialRangeFrom<Double>(2.0)
 
 ### Value ranges
 
-A lot of the APIs define minimum and/or maximum values for input values.  Unfortunately, these values are only publicly visible from Apple's documentation or via the programmatic interface.  The generated code embeds the min/max definitions into the code comments, as well as defining clamping ranges for input values to ensure correct behaviour. Range definitions for each range-appropriate parameter are also automatically generated and made available for your code to validate against if needed.
+A lot of the APIs define minimum and/or maximum values for input values.  Unfortunately, these values are only publicly 
+visible from Apple's documentation or via the programmatic interface.  The generated code embeds the min/max definitions
+into the code comments, as well as defining clamping ranges for input values to ensure correct behaviour.
+Range definitions for each range-appropriate parameter are also automatically generated and made available for your code
+to validate against if needed.
 
 ### OS Dependent types
 
-Some of the supported types (like an affine transform) use different class types depending on the platform (`NSAffineTransform` on macOS, `CGAffineTransform` wrapped in `NSValue` on everything else). This library defines a common AffineTransform class which wraps the os-dependent type meaning that you don't have to your code.
+Some of the supported types (like an affine transform) use different class types depending on the
+platform (`NSAffineTransform` on macOS, `CGAffineTransform` wrapped in `NSValue` on everything else). This library 
+defines a common AffineTransform class which wraps the os-dependent type meaning that you don't have to your code.
+
+## Functional CIImage interface
+
+Each filter that supports an `inputImage` generates an extension on `CIImage` for the filter to allow for
+simple chaining of filters onto a `CIImage`.  Each call returns either the original image, or a new `CIImage`
+with the filter applied.
+
+Each functional call also has an `isActive` parameter to allow you to easily enable/disable the filter within the chain.
+
+For example, the CIBokehBlur filter generates :-
+
+```swift
+/// Bokeh Blur
+///
+/// - Parameters:
+///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
+///   - ringAmount: The amount of extra emphasis at the ring of the bokeh. (0.0...1.0)
+///   - ringSize: The size of extra emphasis at the ring of the bokeh. (0.0...0.2)
+///   - softness: No Description (0.0...10.0)
+///   - isActive: If true applies the filter and returns a new image, else returns this image
+/// - Returns: The filtered image, or this image if the filter is not active
+///
+/// Smooths an image using a disc-shaped convolution kernel.
+///
+/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+///
+/// **Documentation Links**
+/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
+/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
+///
+@inlinable func applyingBokehBlur(
+   radius: Double = CIFF.BokehBlur.radiusDefault,
+   ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,
+   ringSize: Double = CIFF.BokehBlur.ringSizeDefault,
+   softness: Double = CIFF.BokehBlur.softnessDefault,
+   isActive: Bool = true
+) -> CIImage {
+   ...
+}
+```
+
+And then, you can simply chain these filters
+
+```swift
+let myImage = CIImage(...)
+let filtered = myImage
+   .applyingBokehBlur(radius: 100)
+   .applyingSepiaTone()
+```
+
 
 ## How
 
@@ -241,23 +293,6 @@ In more recent versions of Xcode, the SDK now comes with a pre-generated set of 
 * No objective-c support.
 * Some filters are not available (eg. `CICrop`)
 * Basically undocumented. `CIFilterFactory` embeds ALL the documentation within the generated code so it's directly available when you need it.
-
-## Simple filter chaining
-
-An extension has been added to the CIImage class to perform easy, repeatable filter chaining.
-
-```swift
-let image = /* some CIImage */
-
-// Create a sepia filter
-let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
-
-// Create a crystallize filter
-let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
-
-// Use the chaining API to apply the filters to an image
-let output = image.applying(filters: sepiaFilter, crystalize)
-```
 
 ## Usage
 

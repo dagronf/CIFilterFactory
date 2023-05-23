@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDisintegrateWithMaskTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisintegrateWithMaskTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -237,5 +237,50 @@ import Foundation
 			self.shadowDensity = shadowDensity
 			self.shadowOffset = shadowOffset
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Disintegrate With Mask
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - maskImage: An image that defines the shape to use when disintegrating from the source to the target image.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - shadowRadius: The radius of the shadow created by the mask. (0.0...)
+	///   - shadowDensity: The density of the shadow created by the mask. (0.0...1.0)
+	///   - shadowOffset: The offset of the shadow created by the mask.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another using the shape defined by a mask.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDisintegrateWithMaskTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisintegrateWithMaskTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDisintegrateWithMaskTransition/)
+	///
+	@inlinable func applyingDisintegrateWithMaskTransition(
+		targetImage: CIImage,
+		maskImage: CIImage,
+		time: Double = CIFF.DisintegrateWithMaskTransition.timeDefault,
+		shadowRadius: Double = CIFF.DisintegrateWithMaskTransition.shadowRadiusDefault,
+		shadowDensity: Double = CIFF.DisintegrateWithMaskTransition.shadowDensityDefault,
+		shadowOffset: CGPoint = CIFF.DisintegrateWithMaskTransition.shadowOffsetDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DisintegrateWithMaskTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			maskImage: maskImage,
+			time: time,
+			shadowRadius: shadowRadius,
+			shadowDensity: shadowDensity,
+			shadowOffset: shadowOffset
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIModTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIModTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimodtransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIModTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -238,5 +238,50 @@ import Foundation
 			self.radius = radius
 			self.compression = compression
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Mod
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - angle: The angle in radians of the mod hole pattern.
+	///   - radius: The radius of the undistorted holes in the pattern. (1.0...)
+	///   - compression: The amount of stretching applied to the mod hole pattern. Holes in the center are not distorted as much as those at the edge of the image. (1.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by revealing the target image through irregularly shaped holes.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIModTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIModTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIModTransition/)
+	///
+	@inlinable func applyingModTransition(
+		targetImage: CIImage,
+		center: CGPoint = CIFF.ModTransition.centerDefault,
+		time: Double = CIFF.ModTransition.timeDefault,
+		angle: Double = CIFF.ModTransition.angleDefault,
+		radius: Double = CIFF.ModTransition.radiusDefault,
+		compression: Double = CIFF.ModTransition.compressionDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ModTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			center: center,
+			time: time,
+			angle: angle,
+			radius: radius,
+			compression: compression
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIBumpDistortionLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBumpDistortionLinear)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBumpDistortionLinear/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
@@ -187,5 +187,44 @@ import Foundation
 			self.angle = angle
 			self.scale = scale
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Bump Distortion Linear
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius: The radius determines how many pixels are used to create the distortion. The larger the radius, the wider the extent of the distortion. (0.0...)
+	///   - angle: The angle in radians of the line around which the distortion occurs.
+	///   - scale: The scale of the effect. (-1.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates a bump that originates from a linear portion of the image.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIBumpDistortionLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBumpDistortionLinear)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBumpDistortionLinear/)
+	///
+	@inlinable func applyingBumpDistortionLinear(
+		center: CGPoint = CIFF.BumpDistortionLinear.centerDefault,
+		radius: Double = CIFF.BumpDistortionLinear.radiusDefault,
+		angle: Double = CIFF.BumpDistortionLinear.angleDefault,
+		scale: Double = CIFF.BumpDistortionLinear.scaleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.BumpDistortionLinear(
+			inputImage: self,
+			center: center,
+			radius: radius,
+			angle: angle,
+			scale: scale
+		)?.outputImage ?? CIImage.empty()
 	}
 }

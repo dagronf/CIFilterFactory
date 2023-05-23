@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTileEffect
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - TileEffect (*CICategoryTileEffect*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIEightfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEightfoldReflectedTile)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEightfoldReflectedTile/)
 	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
@@ -159,5 +159,41 @@ import Foundation
 			self.angle = angle
 			self.width = width
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Eightfold Reflected Tile
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - angle: The angle in radians of the tiled pattern.
+	///   - width: The width of a tile. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Produces a tiled image from a source image by applying an 8-way reflected symmetry.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+	///
+	/// **Documentation Links**
+	/// - [CIEightfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEightfoldReflectedTile)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIEightfoldReflectedTile/)
+	///
+	@inlinable func applyingEightfoldReflectedTile(
+		center: CGPoint = CIFF.EightfoldReflectedTile.centerDefault,
+		angle: Double = CIFF.EightfoldReflectedTile.angleDefault,
+		width: Double = CIFF.EightfoldReflectedTile.widthDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.EightfoldReflectedTile(
+			inputImage: self,
+			center: center,
+			angle: angle,
+			width: width
+		)?.outputImage ?? CIImage.empty()
 	}
 }

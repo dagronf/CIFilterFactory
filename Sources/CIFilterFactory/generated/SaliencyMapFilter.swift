@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.14, iOS 12, tvOS 12
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISaliencyMapFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaliencyMapFilter)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisaliencymapfilter?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISaliencyMapFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
@@ -82,5 +82,30 @@ import Foundation
 				self.inputImage = inputImage
 			}
 		}
+	}
+}
+
+@available(macOS 10.14, iOS 12, tvOS 12, *)
+public extension CIImage {
+	/// Saliency Map Filter
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Generates output image as a saliency map of the input image.
+	///
+	/// **Categories**: BuiltIn, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CISaliencyMapFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaliencyMapFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISaliencyMapFilter/)
+	///
+	@inlinable func applyingSaliencyMapFilter(
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SaliencyMapFilter(
+			inputImage: self
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglassdistortion?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
 	///
 	@available(macOS 10.4, iOS 8, tvOS 8, *)
@@ -157,5 +157,41 @@ import Foundation
 			self.center = center
 			self.scale = scale
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Glass Distortion
+	///
+	/// - Parameters:
+	///   - texture: A texture to apply to the source image.
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - scale: The amount of texturing of the resulting image. The larger the value, the greater the texturing. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Distorts an image by applying a glass-like texture. The raised portions of the output image are the result of applying a texture map.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
+	///
+	@inlinable func applyingGlassDistortion(
+		texture: CIImage,
+		center: CGPoint = CIFF.GlassDistortion.centerDefault,
+		scale: Double = CIFF.GlassDistortion.scaleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.GlassDistortion(
+			inputImage: self,
+			texture: texture,
+			center: center,
+			scale: scale
+		)?.outputImage ?? CIImage.empty()
 	}
 }

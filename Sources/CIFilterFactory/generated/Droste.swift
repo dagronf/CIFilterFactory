@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.6, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDroste Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDroste)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidroste?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDroste/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
@@ -240,5 +240,50 @@ import Foundation
 			self.rotation = rotation
 			self.zoom = zoom
 		}
+	}
+}
+
+@available(macOS 10.6, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Droste
+	///
+	/// - Parameters:
+	///   - insetPoint0: No Description
+	///   - insetPoint1: No Description
+	///   - strands: No Description (-10.0...10.0)
+	///   - periodicity: No Description (1.0...)
+	///   - rotation: No Description
+	///   - zoom: No Description (0.01...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Performs M.C. Escher Droste style deformation.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDroste Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDroste)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDroste/)
+	///
+	@inlinable func applyingDroste(
+		insetPoint0: CGPoint = CIFF.Droste.insetPoint0Default,
+		insetPoint1: CGPoint = CIFF.Droste.insetPoint1Default,
+		strands: Double = CIFF.Droste.strandsDefault,
+		periodicity: Double = CIFF.Droste.periodicityDefault,
+		rotation: Double = CIFF.Droste.rotationDefault,
+		zoom: Double = CIFF.Droste.zoomDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.Droste(
+			inputImage: self,
+			insetPoint0: insetPoint0,
+			insetPoint1: insetPoint1,
+			strands: strands,
+			periodicity: periodicity,
+			rotation: rotation,
+			zoom: zoom
+		)?.outputImage ?? CIImage.empty()
 	}
 }

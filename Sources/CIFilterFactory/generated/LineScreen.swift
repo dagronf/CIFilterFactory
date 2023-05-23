@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHalftoneEffect
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HalftoneEffect (*CICategoryHalftoneEffect*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CILineScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineScreen)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilinescreen?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -187,5 +187,44 @@ import Foundation
 			self.width = width
 			self.sharpness = sharpness
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Line Screen
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - angle: The angle in radians of the pattern.
+	///   - width: The distance between lines in the pattern. (1.0...)
+	///   - sharpness: The sharpness of the pattern. The larger the value, the sharper the pattern. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Simulates the line pattern of a halftone screen.
+	///
+	/// **Categories**: BuiltIn, HalftoneEffect, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CILineScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineScreen)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
+	///
+	@inlinable func applyingLineScreen(
+		center: CGPoint = CIFF.LineScreen.centerDefault,
+		angle: Double = CIFF.LineScreen.angleDefault,
+		width: Double = CIFF.LineScreen.widthDefault,
+		sharpness: Double = CIFF.LineScreen.sharpnessDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.LineScreen(
+			inputImage: self,
+			center: center,
+			angle: angle,
+			width: width,
+			sharpness: sharpness
+		)?.outputImage ?? CIImage.empty()
 	}
 }

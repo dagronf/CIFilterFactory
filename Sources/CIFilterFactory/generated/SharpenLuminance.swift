@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategorySharpen
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Sharpen (*CICategorySharpen*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisharpenluminance?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -131,5 +131,38 @@ import Foundation
 			self.sharpness = sharpness
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Sharpen Luminance
+	///
+	/// - Parameters:
+	///   - sharpness: The amount of sharpening to apply. Larger values are sharper.
+	///   - radius: The distance from the center of the effect.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Increases image detail by sharpening. It operates on the luminance of the image; the chrominance of the pixels remains unaffected.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Sharpen, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
+	///
+	@inlinable func applyingSharpenLuminance(
+		sharpness: Double = CIFF.SharpenLuminance.sharpnessDefault,
+		radius: Double = CIFF.SharpenLuminance.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SharpenLuminance(
+			inputImage: self,
+			sharpness: sharpness,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

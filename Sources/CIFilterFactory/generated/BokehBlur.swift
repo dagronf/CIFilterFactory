@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibokehblur?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
@@ -199,5 +199,44 @@ import Foundation
 			self.ringSize = ringSize
 			self.softness = softness
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+public extension CIImage {
+	/// Bokeh Blur
+	///
+	/// - Parameters:
+	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
+	///   - ringAmount: The amount of extra emphasis at the ring of the bokeh. (0.0...1.0)
+	///   - ringSize: The size of extra emphasis at the ring of the bokeh. (0.0...0.2)
+	///   - softness: No Description (0.0...10.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Smooths an image using a disc-shaped convolution kernel.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
+	///
+	@inlinable func applyingBokehBlur(
+		radius: Double = CIFF.BokehBlur.radiusDefault,
+		ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,
+		ringSize: Double = CIFF.BokehBlur.ringSizeDefault,
+		softness: Double = CIFF.BokehBlur.softnessDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.BokehBlur(
+			inputImage: self,
+			radius: radius,
+			ringAmount: ringAmount,
+			ringSize: ringSize,
+			softness: softness
+		)?.outputImage ?? CIImage.empty()
 	}
 }

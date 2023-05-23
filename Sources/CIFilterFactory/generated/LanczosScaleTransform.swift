@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilanczosscaletransform?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
 	///
 	/// **Additional output keys**
@@ -143,5 +143,38 @@ import Foundation
 			self.scale = scale
 			self.aspectRatio = aspectRatio
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Lanczos Scale Transform
+	///
+	/// - Parameters:
+	///   - scale: The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image. (0.0...)
+	///   - aspectRatio: The additional horizontal scaling factor to use on the image. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Produces a high-quality, scaled version of a source image. You typically use this filter to scale down an image.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
+	///
+	@inlinable func applyingLanczosScaleTransform(
+		scale: Double = CIFF.LanczosScaleTransform.scaleDefault,
+		aspectRatio: Double = CIFF.LanczosScaleTransform.aspectRatioDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.LanczosScaleTransform(
+			inputImage: self,
+			scale: scale,
+			aspectRatio: aspectRatio
+		)?.outputImage ?? CIImage.empty()
 	}
 }

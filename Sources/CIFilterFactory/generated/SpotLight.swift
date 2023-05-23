@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotlight?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -207,5 +207,47 @@ import Foundation
 			self.concentration = concentration
 			self.color = color
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Spot Light
+	///
+	/// - Parameters:
+	///   - lightPosition: The x and y position of the spotlight.
+	///   - lightPointsAt: The x and y position that the spotlight points at.
+	///   - brightness: The brightness of the spotlight. (0.0...)
+	///   - concentration: The spotlight size. The smaller the value, the more tightly focused the light beam. (0.001...)
+	///   - color: The color of the spotlight.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Applies a directional spotlight effect to an image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISpotLight/)
+	///
+	@inlinable func applyingSpotLight(
+		lightPosition: CIFF.CIPosition3 = CIFF.SpotLight.lightPositionDefault,
+		lightPointsAt: CIFF.CIPosition3 = CIFF.SpotLight.lightPointsAtDefault,
+		brightness: Double = CIFF.SpotLight.brightnessDefault,
+		concentration: Double = CIFF.SpotLight.concentrationDefault,
+		color: CIColor,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SpotLight(
+			inputImage: self,
+			lightPosition: lightPosition,
+			lightPointsAt: lightPointsAt,
+			brightness: brightness,
+			concentration: concentration,
+			color: color
+		)?.outputImage ?? CIImage.empty()
 	}
 }

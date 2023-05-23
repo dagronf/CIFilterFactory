@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIAreaMinimumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinimumAlpha)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminimumalpha?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinimumAlpha/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
@@ -107,5 +107,35 @@ import Foundation
 			}
 			self.extent = extent
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Area Minimum Alpha
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Finds and returns the pixel with the minimum alpha value.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIAreaMinimumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinimumAlpha)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinimumAlpha/)
+	///
+	@inlinable func applyingAreaMinimumAlpha(
+		extent: CGRect = CIFF.AreaMinimumAlpha.extentDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.AreaMinimumAlpha(
+			inputImage: self,
+			extent: extent
+		)?.outputImage ?? CIImage.empty()
 	}
 }

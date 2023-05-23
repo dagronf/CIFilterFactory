@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.14, iOS 12, tvOS 12
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciguidedfilter?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
 	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
@@ -153,5 +153,41 @@ import Foundation
 			self.radius = radius
 			self.epsilon = epsilon
 		}
+	}
+}
+
+@available(macOS 10.14, iOS 12, tvOS 12, *)
+public extension CIImage {
+	/// Guided Filter
+	///
+	/// - Parameters:
+	///   - guideImage: A larger image to use as a guide.
+	///   - radius: The distance from the center of the effect.
+	///   - epsilon: No Description
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Upsamples a small image to the size of the guide image using the content of the guide to preserve detail.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
+	///
+	@inlinable func applyingGuidedFilter(
+		guideImage: CIImage,
+		radius: Double = CIFF.GuidedFilter.radiusDefault,
+		epsilon: Double = CIFF.GuidedFilter.epsilonDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.GuidedFilter(
+			inputImage: self,
+			guideImage: guideImage,
+			radius: radius,
+			epsilon: epsilon
+		)?.outputImage ?? CIImage.empty()
 	}
 }

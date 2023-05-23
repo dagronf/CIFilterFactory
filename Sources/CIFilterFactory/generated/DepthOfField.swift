@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.6, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDepthOfField Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthOfField)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidepthoffield?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
@@ -242,5 +242,50 @@ import Foundation
 			self.unsharpMaskIntensity = unsharpMaskIntensity
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.6, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Depth of Field
+	///
+	/// - Parameters:
+	///   - point0: No Description
+	///   - point1: No Description
+	///   - saturation: The amount to adjust the saturation. (0.0...)
+	///   - unsharpMaskRadius: No Description (0.0...)
+	///   - unsharpMaskIntensity: No Description (0.0...)
+	///   - radius: The distance from the center of the effect. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Simulates miniaturization effect created by Tilt & Shift lens by performing depth of field effects.
+	///
+	/// **Categories**: BuiltIn, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDepthOfField Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthOfField)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
+	///
+	@inlinable func applyingDepthOfField(
+		point0: CGPoint = CIFF.DepthOfField.point0Default,
+		point1: CGPoint = CIFF.DepthOfField.point1Default,
+		saturation: Double = CIFF.DepthOfField.saturationDefault,
+		unsharpMaskRadius: Double = CIFF.DepthOfField.unsharpMaskRadiusDefault,
+		unsharpMaskIntensity: Double = CIFF.DepthOfField.unsharpMaskIntensityDefault,
+		radius: Double = CIFF.DepthOfField.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DepthOfField(
+			inputImage: self,
+			point0: point0,
+			point1: point1,
+			saturation: saturation,
+			unsharpMaskRadius: unsharpMaskRadius,
+			unsharpMaskIntensity: unsharpMaskIntensity,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

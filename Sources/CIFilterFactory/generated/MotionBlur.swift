@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 8.3, tvOS 8.3
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimotionblur?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
 	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
@@ -135,5 +135,38 @@ import Foundation
 			self.radius = radius
 			self.angle = angle
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
+public extension CIImage {
+	/// Motion Blur
+	///
+	/// - Parameters:
+	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...)
+	///   - angle: The angle in radians of the motion determines which direction the blur smears.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Blurs an image to simulate the effect of using a camera that moves a specified angle and distance while capturing the image.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
+	///
+	@inlinable func applyingMotionBlur(
+		radius: Double = CIFF.MotionBlur.radiusDefault,
+		angle: Double = CIFF.MotionBlur.angleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.MotionBlur(
+			inputImage: self,
+			radius: radius,
+			angle: angle
+		)?.outputImage ?? CIImage.empty()
 	}
 }

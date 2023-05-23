@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.6, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistretchcrop?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
 	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
@@ -165,5 +165,41 @@ import Foundation
 			self.cropAmount = cropAmount
 			self.centerStretchAmount = centerStretchAmount
 		}
+	}
+}
+
+@available(macOS 10.6, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Stretch Crop
+	///
+	/// - Parameters:
+	///   - size: The size in pixels of the output image.
+	///   - cropAmount: Determines if and how much cropping should be used to achieve the target size. If value is 0 then only stretching is used. If 1 then only cropping is used. (0.0...1.0)
+	///   - centerStretchAmount: Determine how much the center of the image is stretched if stretching is used. If value is 0 then the center of the image maintains the original aspect ratio. If 1 then the image is stretched uniformly. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Distorts an image by stretching and or cropping to fit a target size.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
+	///
+	@inlinable func applyingStretchCrop(
+		size: CGPoint = CIFF.StretchCrop.sizeDefault,
+		cropAmount: Double = CIFF.StretchCrop.cropAmountDefault,
+		centerStretchAmount: Double = CIFF.StretchCrop.centerStretchAmountDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.StretchCrop(
+			inputImage: self,
+			size: size,
+			cropAmount: cropAmount,
+			centerStretchAmount: centerStretchAmount
+		)?.outputImage ?? CIImage.empty()
 	}
 }

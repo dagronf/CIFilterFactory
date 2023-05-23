@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipalettecentroid?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
@@ -128,5 +128,38 @@ import Foundation
 			}
 			self.perceptual = perceptual
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// Palette Centroid
+	///
+	/// - Parameters:
+	///   - paletteImage: The input color palette, obtained using “CIKMeans“ filter.
+	///   - perceptual: Specifies whether the color palette should be applied in a perceptual color space.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Calculate the mean (x,y) image coordinates of a color palette.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
+	///
+	@inlinable func applyingPaletteCentroid(
+		paletteImage: CIImage,
+		perceptual: Bool = CIFF.PaletteCentroid.perceptualDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PaletteCentroid(
+			inputImage: self,
+			paletteImage: paletteImage,
+			perceptual: perceptual
+		)?.outputImage ?? CIImage.empty()
 	}
 }

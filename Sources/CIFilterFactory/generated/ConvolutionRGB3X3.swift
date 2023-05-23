@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 12.0, iOS 15, tvOS 15
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb3x3?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)
 	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
@@ -130,5 +130,38 @@ import Foundation
 			self.weights = weights
 			self.bias = bias
 		}
+	}
+}
+
+@available(macOS 12.0, iOS 15, tvOS 15, *)
+public extension CIImage {
+	/// 3 by 3 RGB Convolution
+	///
+	/// - Parameters:
+	///   - weights: A vector containing the 9 weights of the convolution kernel.
+	///   - bias: A value that is added to the RGB components of the output pixel.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Convolution of RGB channels with 3 by 3 matrix.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)
+	///
+	@inlinable func applyingConvolutionRGB3X3(
+		weights: CIVector = CIFF.ConvolutionRGB3X3.weightsDefault,
+		bias: Double = CIFF.ConvolutionRGB3X3.biasDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ConvolutionRGB3X3(
+			inputImage: self,
+			weights: weights,
+			bias: bias
+		)?.outputImage ?? CIImage.empty()
 	}
 }

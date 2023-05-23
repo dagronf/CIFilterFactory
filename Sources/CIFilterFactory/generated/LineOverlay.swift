@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineoverlay?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
@@ -222,5 +222,47 @@ import Foundation
 			self.threshold = threshold
 			self.contrast = contrast
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Line Overlay
+	///
+	/// - Parameters:
+	///   - nRNoiseLevel: The noise level of the image (used with camera data) that gets removed before tracing the edges of the image. Increasing the noise level helps to clean up the traced edges of the image. (0.0...)
+	///   - nRSharpness: The amount of sharpening done when removing noise in the image before tracing the edges of the image. This improves the edge acquisition. (0.0...)
+	///   - edgeIntensity: The accentuation factor of the Sobel gradient information when tracing the edges of the image. Higher values find more edges, although typically a low value (such as 1.0) is used. (0.0...)
+	///   - threshold: This value determines edge visibility. Larger values thin out the edges. (0.0...)
+	///   - contrast: The amount of anti-aliasing to use on the edges produced by this filter. Higher values produce higher contrast edges (they are less anti-aliased). (0.25...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Creates a sketch that outlines the edges of an image in black, leaving the non-outlined portions of the image transparent. The result has alpha and is rendered in black, so it won’t look like much until you render it over another image using source over compositing.
+	///
+	/// **Categories**: BuiltIn, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
+	///
+	@inlinable func applyingLineOverlay(
+		nRNoiseLevel: Double = CIFF.LineOverlay.nRNoiseLevelDefault,
+		nRSharpness: Double = CIFF.LineOverlay.nRSharpnessDefault,
+		edgeIntensity: Double = CIFF.LineOverlay.edgeIntensityDefault,
+		threshold: Double = CIFF.LineOverlay.thresholdDefault,
+		contrast: Double = CIFF.LineOverlay.contrastDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.LineOverlay(
+			inputImage: self,
+			nRNoiseLevel: nRNoiseLevel,
+			nRSharpness: nRSharpness,
+			edgeIntensity: edgeIntensity,
+			threshold: threshold,
+			contrast: contrast
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.12, iOS 10, tvOS 10
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CINinePartStretched Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartStretched)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cininepartstretched?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
@@ -155,5 +155,41 @@ import Foundation
 			self.breakpoint1 = breakpoint1
 			self.growAmount = growAmount
 		}
+	}
+}
+
+@available(macOS 10.12, iOS 10, tvOS 10, *)
+public extension CIImage {
+	/// Nine Part Stretched
+	///
+	/// - Parameters:
+	///   - breakpoint0: Lower left corner of image to retain before stretching begins.
+	///   - breakpoint1: Upper right corner of image to retain after stretching ends.
+	///   - growAmount: Vector indicating how much image should grow in pixels in both dimensions.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Distorts an image by stretching an image based on two input breakpoints.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CINinePartStretched Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartStretched)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
+	///
+	@inlinable func applyingNinePartStretched(
+		breakpoint0: CGPoint = CIFF.NinePartStretched.breakpoint0Default,
+		breakpoint1: CGPoint = CIFF.NinePartStretched.breakpoint1Default,
+		growAmount: CGPoint = CIFF.NinePartStretched.growAmountDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.NinePartStretched(
+			inputImage: self,
+			breakpoint0: breakpoint0,
+			breakpoint1: breakpoint1,
+			growAmount: growAmount
+		)?.outputImage ?? CIImage.empty()
 	}
 }

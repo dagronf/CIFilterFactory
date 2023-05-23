@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHalftoneEffect
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HalftoneEffect (*CICategoryHalftoneEffect*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDotScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDotScreen)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidotscreen?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDotScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -187,5 +187,44 @@ import Foundation
 			self.width = width
 			self.sharpness = sharpness
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Dot Screen
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - angle: The angle in radians of the pattern.
+	///   - width: The distance between dots in the pattern. (1.0...)
+	///   - sharpness: The sharpness of the pattern. The larger the value, the sharper the pattern. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Simulates the dot patterns of a halftone screen.
+	///
+	/// **Categories**: BuiltIn, HalftoneEffect, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDotScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDotScreen)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDotScreen/)
+	///
+	@inlinable func applyingDotScreen(
+		center: CGPoint = CIFF.DotScreen.centerDefault,
+		angle: Double = CIFF.DotScreen.angleDefault,
+		width: Double = CIFF.DotScreen.widthDefault,
+		sharpness: Double = CIFF.DotScreen.sharpnessDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DotScreen(
+			inputImage: self,
+			center: center,
+			angle: angle,
+			width: width,
+			sharpness: sharpness
+		)?.outputImage ?? CIImage.empty()
 	}
 }

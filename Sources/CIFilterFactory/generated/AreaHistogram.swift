@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.5, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareahistogram?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
 	///
 	/// **Additional output keys**
@@ -201,5 +201,41 @@ import Foundation
 			self.scale = scale
 			self.count = count
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Area Histogram
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
+	///   - scale: The scale value to use for the histogram values. If the scale is 1.0, then the bins in the resulting image will add up to 1.0. (0.0...)
+	///   - count: The number of bins for the histogram. This value will determine the width of the output image. (1.0...2048.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Calculates histograms of the R, G, B, and A channels of the specified area of an image. The output image is a one pixel tall image containing the histogram data for all four channels.
+	///
+	/// **Categories**: BuiltIn, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
+	///
+	@inlinable func applyingAreaHistogram(
+		extent: CGRect = CIFF.AreaHistogram.extentDefault,
+		scale: Double = CIFF.AreaHistogram.scaleDefault,
+		count: Double = CIFF.AreaHistogram.countDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.AreaHistogram(
+			inputImage: self,
+			extent: extent,
+			scale: scale,
+			count: count
+		)?.outputImage ?? CIImage.empty()
 	}
 }

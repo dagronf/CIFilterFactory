@@ -27,6 +27,13 @@ extension Main {
 				self.generateFilter(filter)
 			}
 		}
+
+		// Some additional private apple filters
+//		for filterName in CIFilter.filterNames(inCategory: "CICategoryApplePrivate") {
+//			if let filter = CIFilter(name: filterName) {
+//				self.generateFilter(filter)
+//			}
+//		}
 	}
 
 	// Generate the class definition for a specific filter

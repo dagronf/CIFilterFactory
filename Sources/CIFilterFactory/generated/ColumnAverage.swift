@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColumnAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColumnAverage)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolumnaverage?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColumnAverage/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
@@ -107,5 +107,35 @@ import Foundation
 			}
 			self.extent = extent
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Column Average
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Calculates the average color for each column of the specified area in an image, returning the result in a 1D image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColumnAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColumnAverage)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColumnAverage/)
+	///
+	@inlinable func applyingColumnAverage(
+		extent: CGRect = CIFF.ColumnAverage.extentDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColumnAverage(
+			inputImage: self,
+			extent: extent
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,16 +35,16 @@ import Foundation
 	/// - macOS 10.9, iOS 5, tvOS 5
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIVignette Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignette)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignette?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignette/)
 	///
 	@available(macOS 10.9, iOS 5, tvOS 5, *)
@@ -142,5 +142,38 @@ import Foundation
 			self.intensity = intensity
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 5, tvOS 5, *)
+public extension CIImage {
+	/// Vignette
+	///
+	/// - Parameters:
+	///   - intensity: The intensity of the effect. (-1.0...1.0)
+	///   - radius: The distance from the center of the effect. (0.0...2.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Applies a vignette shading to the corners of an image.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIVignette Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignette)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIVignette/)
+	///
+	@inlinable func applyingVignette(
+		intensity: Double = CIFF.Vignette.intensityDefault,
+		radius: Double = CIFF.Vignette.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.Vignette(
+			inputImage: self,
+			intensity: intensity,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

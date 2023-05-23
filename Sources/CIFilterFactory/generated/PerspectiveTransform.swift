@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPerspectiveTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransform)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetransform?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -179,5 +179,44 @@ import Foundation
 			self.bottomRight = bottomRight
 			self.bottomLeft = bottomLeft
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Perspective Transform
+	///
+	/// - Parameters:
+	///   - topLeft: The top left coordinate to map the image to.
+	///   - topRight: The top right coordinate to map the image to.
+	///   - bottomRight: The bottom right coordinate to map the image to.
+	///   - bottomLeft: The bottom left coordinate to map the image to.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Alters the geometry of an image to simulate the observer changing viewing position. You can use the perspective filter to skew an image.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPerspectiveTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransform)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)
+	///
+	@inlinable func applyingPerspectiveTransform(
+		topLeft: CGPoint = CIFF.PerspectiveTransform.topLeftDefault,
+		topRight: CGPoint = CIFF.PerspectiveTransform.topRightDefault,
+		bottomRight: CGPoint = CIFF.PerspectiveTransform.bottomRightDefault,
+		bottomLeft: CGPoint = CIFF.PerspectiveTransform.bottomLeftDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PerspectiveTransform(
+			inputImage: self,
+			topLeft: topLeft,
+			topRight: topRight,
+			bottomRight: bottomRight,
+			bottomLeft: bottomLeft
+		)?.outputImage ?? CIImage.empty()
 	}
 }

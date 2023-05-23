@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIKMeans Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKMeans)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikmeans?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
@@ -211,5 +211,47 @@ import Foundation
 			self.passes = passes
 			self.perceptual = perceptual
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// KMeans
+	///
+	/// - Parameters:
+	///   - extent: A rectangle that defines the extent of the effect.
+	///   - means: Specifies the color seeds to use for k-means clustering, either passed as an image or an array of colors.
+	///   - count: Specifies how many k-means color clusters should be used. (0...128)
+	///   - passes: Specifies how many k-means passes should be performed. (0...20)
+	///   - perceptual: Specifies whether the k-means color palette should be computed in a perceptual color space.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Create a palette of the most common colors found in the image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIKMeans Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKMeans)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIKMeans/)
+	///
+	@inlinable func applyingKMeans(
+		extent: CGRect = CIFF.KMeans.extentDefault,
+		means: CIImage,
+		count: UInt = CIFF.KMeans.countDefault,
+		passes: UInt = CIFF.KMeans.passesDefault,
+		perceptual: Bool = CIFF.KMeans.perceptualDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.KMeans(
+			inputImage: self,
+			extent: extent,
+			means: means,
+			count: count,
+			passes: passes,
+			perceptual: perceptual
+		)?.outputImage ?? CIImage.empty()
 	}
 }

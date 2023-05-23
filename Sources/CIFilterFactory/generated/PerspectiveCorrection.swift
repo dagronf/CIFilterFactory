@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.10, iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPerspectiveCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveCorrection)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivecorrection?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveCorrection/)
 	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
@@ -203,5 +203,47 @@ import Foundation
 			self.bottomLeft = bottomLeft
 			self.crop = crop
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Perspective Correction
+	///
+	/// - Parameters:
+	///   - topLeft: The top left coordinate to be perspective corrected.
+	///   - topRight: The top right coordinate to be perspective corrected.
+	///   - bottomRight: The bottom right coordinate to be perspective corrected.
+	///   - bottomLeft: The bottom left coordinate to be perspective corrected.
+	///   - crop: No Description
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Apply a perspective correction to an image.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPerspectiveCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveCorrection)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveCorrection/)
+	///
+	@inlinable func applyingPerspectiveCorrection(
+		topLeft: CGPoint = CIFF.PerspectiveCorrection.topLeftDefault,
+		topRight: CGPoint = CIFF.PerspectiveCorrection.topRightDefault,
+		bottomRight: CGPoint = CIFF.PerspectiveCorrection.bottomRightDefault,
+		bottomLeft: CGPoint = CIFF.PerspectiveCorrection.bottomLeftDefault,
+		crop: Bool = CIFF.PerspectiveCorrection.cropDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PerspectiveCorrection(
+			inputImage: self,
+			topLeft: topLeft,
+			topRight: topRight,
+			bottomRight: bottomRight,
+			bottomLeft: bottomLeft,
+			crop: crop
+		)?.outputImage ?? CIImage.empty()
 	}
 }

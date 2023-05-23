@@ -35,14 +35,14 @@ import Foundation
 	/// - iOS 8, tvOS 8
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryReduction
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - Reduction (*CICategoryReduction*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihistogramdisplayfilter?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
 	///
 	@available(iOS 8, tvOS 8, *)
@@ -169,5 +169,41 @@ import Foundation
 			self.highLimit = highLimit
 			self.lowLimit = lowLimit
 		}
+	}
+}
+
+@available(iOS 8, tvOS 8, *)
+public extension CIImage {
+	/// Histogram Display
+	///
+	/// - Parameters:
+	///   - height: The height of the displayable histogram image. (1.0...200.0)
+	///   - highLimit: The fraction of the right portion of the histogram image to make lighter. (0.0...1.0)
+	///   - lowLimit: The fraction of the left portion of the histogram image to make darker. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Generates a displayable histogram image from the output of the “Area Histogram” filter.
+	///
+	/// **Categories**: BuiltIn, Reduction, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
+	///
+	@inlinable func applyingHistogramDisplayFilter(
+		height: Double = CIFF.HistogramDisplayFilter.heightDefault,
+		highLimit: Double = CIFF.HistogramDisplayFilter.highLimitDefault,
+		lowLimit: Double = CIFF.HistogramDisplayFilter.lowLimitDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.HistogramDisplayFilter(
+			inputImage: self,
+			height: height,
+			highLimit: highLimit,
+			lowLimit: lowLimit
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISwipeTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciswipetransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -258,5 +258,53 @@ import Foundation
 			self.width = width
 			self.opacity = opacity
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Swipe
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - extent: The extent of the effect.
+	///   - color: The color of the swipe.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - angle: The angle in radians of the swipe.
+	///   - width: The width of the swipe. (0.1...)
+	///   - opacity: The opacity of the swipe. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by simulating a swiping action.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CISwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISwipeTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)
+	///
+	@inlinable func applyingSwipeTransition(
+		targetImage: CIImage,
+		extent: CGRect = CIFF.SwipeTransition.extentDefault,
+		color: CIColor,
+		time: Double = CIFF.SwipeTransition.timeDefault,
+		angle: Double = CIFF.SwipeTransition.angleDefault,
+		width: Double = CIFF.SwipeTransition.widthDefault,
+		opacity: Double = CIFF.SwipeTransition.opacityDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SwipeTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			extent: extent,
+			color: color,
+			time: time,
+			angle: angle,
+			width: width,
+			opacity: opacity
+		)?.outputImage ?? CIImage.empty()
 	}
 }

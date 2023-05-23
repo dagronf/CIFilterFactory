@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
 	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
@@ -260,5 +260,53 @@ import Foundation
 			self.width = width
 			self.scale = scale
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Ripple
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - shadingImage: An image that looks like a shaded sphere enclosed in a square image.
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - extent: A rectangle that defines the extent of the effect.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - width: The width of the ripple. (1.0...)
+	///   - scale: A value that determines whether the ripple starts as a bulge (higher value) or a dimple (lower value). (-50.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by creating a circular wave that expands from the center point, revealing the new image in the wake of the wave.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
+	///
+	@inlinable func applyingRippleTransition(
+		targetImage: CIImage,
+		shadingImage: CIImage,
+		center: CGPoint = CIFF.RippleTransition.centerDefault,
+		extent: CGRect = CIFF.RippleTransition.extentDefault,
+		time: Double = CIFF.RippleTransition.timeDefault,
+		width: Double = CIFF.RippleTransition.widthDefault,
+		scale: Double = CIFF.RippleTransition.scaleDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.RippleTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			shadingImage: shadingImage,
+			center: center,
+			extent: extent,
+			time: time,
+			width: width,
+			scale: scale
+		)?.outputImage ?? CIImage.empty()
 	}
 }

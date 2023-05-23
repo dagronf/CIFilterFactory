@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategorySharpen
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Sharpen (*CICategorySharpen*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIUnsharpMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIUnsharpMask)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciunsharpmask?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIUnsharpMask/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -139,5 +139,38 @@ import Foundation
 			self.radius = radius
 			self.intensity = intensity
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Unsharp Mask
+	///
+	/// - Parameters:
+	///   - radius: The radius around a given pixel to apply the unsharp mask. The larger the radius, the more of the image is affected. (0.0...)
+	///   - intensity: The intensity of the effect. The larger the value, the more contrast in the affected area. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Increases the contrast of the edges between pixels of different colors in an image.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, Sharpen, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIUnsharpMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIUnsharpMask)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIUnsharpMask/)
+	///
+	@inlinable func applyingUnsharpMask(
+		radius: Double = CIFF.UnsharpMask.radiusDefault,
+		intensity: Double = CIFF.UnsharpMask.intensityDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.UnsharpMask(
+			inputImage: self,
+			radius: radius,
+			intensity: intensity
+		)?.outputImage ?? CIImage.empty()
 	}
 }

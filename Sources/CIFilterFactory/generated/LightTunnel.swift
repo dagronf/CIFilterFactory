@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.10, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilighttunnel?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
 	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
@@ -155,5 +155,41 @@ import Foundation
 			self.rotation = rotation
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Light Tunnel Distortion
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - rotation: Rotation angle in radians of the light tunnel.
+	///   - radius: Center radius of the light tunnel.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Light tunnel distortion.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CILightTunnel/)
+	///
+	@inlinable func applyingLightTunnel(
+		center: CGPoint = CIFF.LightTunnel.centerDefault,
+		rotation: Double = CIFF.LightTunnel.rotationDefault,
+		radius: Double = CIFF.LightTunnel.radiusDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.LightTunnel(
+			inputImage: self,
+			center: center,
+			rotation: rotation,
+			radius: radius
+		)?.outputImage ?? CIImage.empty()
 	}
 }

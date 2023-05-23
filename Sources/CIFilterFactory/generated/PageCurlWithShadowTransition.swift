@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.9, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
 	///
 	@available(macOS 10.9, iOS 9, tvOS 9, *)
@@ -314,5 +314,59 @@ import Foundation
 			self.shadowAmount = shadowAmount
 			self.shadowExtent = shadowExtent
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Page Curl With Shadow
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - backsideImage: The image that appears on the back of the source image, as the page curls to reveal the target image.
+	///   - extent: The extent of the effect.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - angle: The angle in radians of the curling page.
+	///   - radius: The radius of the curl. (0.01...)
+	///   - shadowSize: The maximum size in pixels of the shadow. (0.0...1.0)
+	///   - shadowAmount: The strength of the shadow. (0.0...1.0)
+	///   - shadowExtent: The rectagular portion of input image that will cast a shadow.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by simulating a curling page, revealing the new image as the page curls.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
+	///
+	@inlinable func applyingPageCurlWithShadowTransition(
+		targetImage: CIImage,
+		backsideImage: CIImage,
+		extent: CGRect = CIFF.PageCurlWithShadowTransition.extentDefault,
+		time: Double = CIFF.PageCurlWithShadowTransition.timeDefault,
+		angle: Double = CIFF.PageCurlWithShadowTransition.angleDefault,
+		radius: Double = CIFF.PageCurlWithShadowTransition.radiusDefault,
+		shadowSize: Double = CIFF.PageCurlWithShadowTransition.shadowSizeDefault,
+		shadowAmount: Double = CIFF.PageCurlWithShadowTransition.shadowAmountDefault,
+		shadowExtent: CGRect = CIFF.PageCurlWithShadowTransition.shadowExtentDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.PageCurlWithShadowTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			backsideImage: backsideImage,
+			extent: extent,
+			time: time,
+			angle: angle,
+			radius: radius,
+			shadowSize: shadowSize,
+			shadowAmount: shadowAmount,
+			shadowExtent: shadowExtent
+		)?.outputImage ?? CIImage.empty()
 	}
 }

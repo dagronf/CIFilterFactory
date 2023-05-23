@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.13, iOS 11, tvOS 11, macCatalyst 14
 	///
 	/// **Categories**
-	/// - CICategoryBlur
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - Blur (*CICategoryBlur*)
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidepthblureffect?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
 	///
 	@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
@@ -451,5 +451,80 @@ import Foundation
 			self.auxDataMetadata = auxDataMetadata
 			self.shape = shape
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
+public extension CIImage {
+	/// Depth Blur Effect
+	///
+	/// - Parameters:
+	///   - disparityImage: No Description
+	///   - matteImage: A matting image.
+	///   - hairImage: A segmentation matte image that corresponds to people’s hair.
+	///   - glassesImage: A segmentation matte image that corresponds to people’s glasses.
+	///   - gainMap: No Description
+	///   - aperture: No Description (0.0...22.0)
+	///   - leftEyePositions: No Description
+	///   - rightEyePositions: No Description
+	///   - chinPositions: No Description
+	///   - nosePositions: No Description
+	///   - focusRect: No Description
+	///   - lumaNoiseScale: No Description (0.0...0.1)
+	///   - scaleFactor: No Description
+	///   - calibrationData: No Description
+	///   - auxDataMetadata: No Description
+	///   - shape: No Description
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Applies a variable radius disc blur to an image where areas in the background are softened more than those in the foreground.
+	///
+	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
+	///
+	@inlinable func applyingDepthBlurEffect(
+		disparityImage: CIImage,
+		matteImage: CIImage,
+		hairImage: CIImage,
+		glassesImage: CIImage,
+		gainMap: CIImage,
+		aperture: Double = CIFF.DepthBlurEffect.apertureDefault,
+		leftEyePositions: CGPoint = CIFF.DepthBlurEffect.leftEyePositionsDefault,
+		rightEyePositions: CGPoint = CIFF.DepthBlurEffect.rightEyePositionsDefault,
+		chinPositions: CGPoint = CIFF.DepthBlurEffect.chinPositionsDefault,
+		nosePositions: CGPoint = CIFF.DepthBlurEffect.nosePositionsDefault,
+		focusRect: CGRect,
+		lumaNoiseScale: Double = CIFF.DepthBlurEffect.lumaNoiseScaleDefault,
+		scaleFactor: Double = CIFF.DepthBlurEffect.scaleFactorDefault,
+		calibrationData: AVCameraCalibrationData,
+		auxDataMetadata: CGImageMetadata,
+		shape: String,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DepthBlurEffect(
+			inputImage: self,
+			disparityImage: disparityImage,
+			matteImage: matteImage,
+			hairImage: hairImage,
+			glassesImage: glassesImage,
+			gainMap: gainMap,
+			aperture: aperture,
+			leftEyePositions: leftEyePositions,
+			rightEyePositions: rightEyePositions,
+			chinPositions: chinPositions,
+			nosePositions: nosePositions,
+			focusRect: focusRect,
+			lumaNoiseScale: lumaNoiseScale,
+			scaleFactor: scaleFactor,
+			calibrationData: calibrationData,
+			auxDataMetadata: auxDataMetadata,
+			shape: shape
+		)?.outputImage ?? CIImage.empty()
 	}
 }

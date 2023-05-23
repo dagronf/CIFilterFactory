@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryTransition
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Transition (*CICategoryTransition*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIFlashTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFlashTransition)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciflashtransition?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFlashTransition/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -315,5 +315,59 @@ import Foundation
 			self.striationContrast = striationContrast
 			self.fadeThreshold = fadeThreshold
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Flash
+	///
+	/// - Parameters:
+	///   - targetImage: The target image for a transition.
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - extent: The extent of the flash.
+	///   - color: The color of the light rays emanating from the flash.
+	///   - time: The parametric time of the transition. This value drives the transition from start (at time 0) to end (at time 1). (0.0...1.0)
+	///   - maxStriationRadius: The radius of the light rays emanating from the flash. (0.0...)
+	///   - striationStrength: The strength of the light rays emanating from the flash. (0.0...)
+	///   - striationContrast: The contrast of the light rays emanating from the flash. (0.0...)
+	///   - fadeThreshold: The amount of fade between the flash and the target image. The higher the value, the more flash time and the less fade time. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Transitions from one image to another by creating a flash. The flash originates from a point you specify. Small at first, it rapidly expands until the image frame is completely filled with the flash color. As the color fades, the target image begins to appear.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Transition, Video
+	///
+	/// **Documentation Links**
+	/// - [CIFlashTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFlashTransition)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIFlashTransition/)
+	///
+	@inlinable func applyingFlashTransition(
+		targetImage: CIImage,
+		center: CGPoint = CIFF.FlashTransition.centerDefault,
+		extent: CGRect = CIFF.FlashTransition.extentDefault,
+		color: CIColor,
+		time: Double = CIFF.FlashTransition.timeDefault,
+		maxStriationRadius: Double = CIFF.FlashTransition.maxStriationRadiusDefault,
+		striationStrength: Double = CIFF.FlashTransition.striationStrengthDefault,
+		striationContrast: Double = CIFF.FlashTransition.striationContrastDefault,
+		fadeThreshold: Double = CIFF.FlashTransition.fadeThresholdDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.FlashTransition(
+			inputImage: self,
+			targetImage: targetImage,
+			center: center,
+			extent: extent,
+			color: color,
+			time: time,
+			maxStriationRadius: maxStriationRadius,
+			striationStrength: striationStrength,
+			striationContrast: striationContrast,
+			fadeThreshold: fadeThreshold
+		)?.outputImage ?? CIImage.empty()
 	}
 }

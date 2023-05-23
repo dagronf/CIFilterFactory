@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.5, iOS 9, tvOS 9
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryStylize
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Stylize (*CICategoryStylize*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotcolor?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
 	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
@@ -371,5 +371,68 @@ import Foundation
 			self.closeness3 = closeness3
 			self.contrast3 = contrast3
 		}
+	}
+}
+
+@available(macOS 10.5, iOS 9, tvOS 9, *)
+public extension CIImage {
+	/// Spot Color
+	///
+	/// - Parameters:
+	///   - centerColor1: The center value of the first color range to replace.
+	///   - replacementColor1: A replacement color for the first color range.
+	///   - closeness1: A value that indicates how close the first color must match before it is replaced. (0.0...)
+	///   - contrast1: The contrast of the first replacement color. (0.0...)
+	///   - centerColor2: The center value of the second color range to replace.
+	///   - replacementColor2: A replacement color for the second color range.
+	///   - closeness2: A value that indicates how close the second color must match before it is replaced. (0.0...)
+	///   - contrast2: The contrast of the second replacement color. (0.0...)
+	///   - centerColor3: The center value of the third color range to replace.
+	///   - replacementColor3: A replacement color for the third color range.
+	///   - closeness3: A value that indicates how close the third color must match before it is replaced. (0.0...)
+	///   - contrast3: The contrast of the third replacement color. (0.0...)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Replaces one or more color ranges with spot colors.
+	///
+	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+	///
+	/// **Documentation Links**
+	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
+	///
+	@inlinable func applyingSpotColor(
+		centerColor1: CIColor,
+		replacementColor1: CIColor,
+		closeness1: Double = CIFF.SpotColor.closeness1Default,
+		contrast1: Double = CIFF.SpotColor.contrast1Default,
+		centerColor2: CIColor,
+		replacementColor2: CIColor,
+		closeness2: Double = CIFF.SpotColor.closeness2Default,
+		contrast2: Double = CIFF.SpotColor.contrast2Default,
+		centerColor3: CIColor,
+		replacementColor3: CIColor,
+		closeness3: Double = CIFF.SpotColor.closeness3Default,
+		contrast3: Double = CIFF.SpotColor.contrast3Default,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.SpotColor(
+			inputImage: self,
+			centerColor1: centerColor1,
+			replacementColor1: replacementColor1,
+			closeness1: closeness1,
+			contrast1: contrast1,
+			centerColor2: centerColor2,
+			replacementColor2: replacementColor2,
+			closeness2: closeness2,
+			contrast2: contrast2,
+			centerColor3: centerColor3,
+			replacementColor3: replacementColor3,
+			closeness3: closeness3,
+			contrast3: contrast3
+		)?.outputImage ?? CIImage.empty()
 	}
 }

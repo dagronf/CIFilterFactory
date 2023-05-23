@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionvertical?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
 	///
 	/// **Additional output keys**
@@ -203,5 +203,47 @@ import Foundation
 			self.bottomRight = bottomRight
 			self.bottomLeft = bottomLeft
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// Vertical Keystone Correction
+	///
+	/// - Parameters:
+	///   - focalLength: 35mm equivalent focal length of the input image.
+	///   - topLeft: The top left coordinate of the guide.
+	///   - topRight: The top right coordinate of the guide.
+	///   - bottomRight: The bottom right coordinate of the guide.
+	///   - bottomLeft: The bottom left coordinate of the guide.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Apply vertical keystone correction to an image with guides.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
+	///
+	@inlinable func applyingKeystoneCorrectionVertical(
+		focalLength: Double = CIFF.KeystoneCorrectionVertical.focalLengthDefault,
+		topLeft: CGPoint,
+		topRight: CGPoint,
+		bottomRight: CGPoint,
+		bottomLeft: CGPoint,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.KeystoneCorrectionVertical(
+			inputImage: self,
+			focalLength: focalLength,
+			topLeft: topLeft,
+			topRight: topRight,
+			bottomRight: bottomRight,
+			bottomLeft: bottomLeft
+		)?.outputImage ?? CIImage.empty()
 	}
 }

@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.9, iOS 7, tvOS 7
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
 	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
@@ -171,5 +171,44 @@ import Foundation
 			self.extrapolate = extrapolate
 			self.colorSpace = colorSpace
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+public extension CIImage {
+	/// Color Cube with ColorSpace
+	///
+	/// - Parameters:
+	///   - cubeDimension: The dimension of the color cube. (2...128)
+	///   - cubeData: Data containing a 3-dimensional color table of floating-point premultiplied RGBA values. The cells are organized in a standard ordering. The columns and rows of the data are indexed by red and green, respectively. Each data plane is followed by the next higher plane in the data, with planes indexed by blue.
+	///   - extrapolate: If true, then the color cube will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
+	///   - colorSpace: The CGColorSpace that defines the RGB values in the color table.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Uses a three-dimensional color table in a specified colorspace to transform the source image pixels.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
+	///
+	@inlinable func applyingColorCubeWithColorSpace(
+		cubeDimension: UInt = CIFF.ColorCubeWithColorSpace.cubeDimensionDefault,
+		cubeData: Data,
+		extrapolate: NSNumber,
+		colorSpace: NSObject,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.ColorCubeWithColorSpace(
+			inputImage: self,
+			cubeDimension: cubeDimension,
+			cubeData: cubeData,
+			extrapolate: extrapolate,
+			colorSpace: colorSpace
+		)?.outputImage ?? CIImage.empty()
 	}
 }

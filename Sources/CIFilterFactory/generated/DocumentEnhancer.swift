@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.15, iOS 13, tvOS 13
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryColorEffect
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - ColorEffect (*CICategoryColorEffect*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
 	///
 	/// **Documentation Links**
 	/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidocumentenhancer?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
 	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
@@ -111,5 +111,35 @@ import Foundation
 			}
 			self.amount = amount
 		}
+	}
+}
+
+@available(macOS 10.15, iOS 13, tvOS 13, *)
+public extension CIImage {
+	/// Document Enhancer
+	///
+	/// - Parameters:
+	///   - amount: The amount of enhancement. (0.0...10.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Enhance a document image by removing unwanted shadows, whitening the background, and enhancing contrast.
+	///
+	/// **Categories**: BuiltIn, ColorEffect, NonSquarePixels, StillImage
+	///
+	/// **Documentation Links**
+	/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIDocumentEnhancer/)
+	///
+	@inlinable func applyingDocumentEnhancer(
+		amount: Double = CIFF.DocumentEnhancer.amountDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.DocumentEnhancer(
+			inputImage: self,
+			amount: amount
+		)?.outputImage ?? CIImage.empty()
 	}
 }

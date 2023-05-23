@@ -35,14 +35,14 @@ import Foundation
 	/// - macOS 10.4, iOS 6, tvOS 6
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryHalftoneEffect
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - HalftoneEffect (*CICategoryHalftoneEffect*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CICircularScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircularScreen)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicircularscreen?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
 	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
@@ -163,5 +163,41 @@ import Foundation
 			self.width = width
 			self.sharpness = sharpness
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 6, tvOS 6, *)
+public extension CIImage {
+	/// Circular Screen
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - width: The distance between each circle in the pattern. (1.0...)
+	///   - sharpness: The sharpness of the circles. The larger the value, the sharper the circles. (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Simulates a circular-shaped halftone screen.
+	///
+	/// **Categories**: BuiltIn, HalftoneEffect, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CICircularScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircularScreen)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
+	///
+	@inlinable func applyingCircularScreen(
+		center: CGPoint = CIFF.CircularScreen.centerDefault,
+		width: Double = CIFF.CircularScreen.widthDefault,
+		sharpness: Double = CIFF.CircularScreen.sharpnessDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.CircularScreen(
+			inputImage: self,
+			center: center,
+			width: width,
+			sharpness: sharpness
+		)?.outputImage ?? CIImage.empty()
 	}
 }

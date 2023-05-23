@@ -35,15 +35,15 @@ import Foundation
 	/// - macOS 10.12, iOS 10, tvOS 10
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryDistortionEffect
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - DistortionEffect (*CICategoryDistortionEffect*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinineparttiled?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
@@ -179,5 +179,44 @@ import Foundation
 			self.growAmount = growAmount
 			self.flipYTiles = flipYTiles
 		}
+	}
+}
+
+@available(macOS 10.12, iOS 10, tvOS 10, *)
+public extension CIImage {
+	/// Nine Part Tiled
+	///
+	/// - Parameters:
+	///   - breakpoint0: Lower left corner of image to retain before tiling begins.
+	///   - breakpoint1: Upper right corner of image to retain after tiling ends.
+	///   - growAmount: Vector indicating how much image should grow in pixels in both dimensions.
+	///   - flipYTiles: Indicates that Y-Axis flip should occur.
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Distorts an image by tiling an image based on two input breakpoints.
+	///
+	/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
+	///
+	@inlinable func applyingNinePartTiled(
+		breakpoint0: CGPoint = CIFF.NinePartTiled.breakpoint0Default,
+		breakpoint1: CGPoint = CIFF.NinePartTiled.breakpoint1Default,
+		growAmount: CGPoint = CIFF.NinePartTiled.growAmountDefault,
+		flipYTiles: Bool = CIFF.NinePartTiled.flipYTilesDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.NinePartTiled(
+			inputImage: self,
+			breakpoint0: breakpoint0,
+			breakpoint1: breakpoint1,
+			growAmount: growAmount,
+			flipYTiles: flipYTiles
+		)?.outputImage ?? CIImage.empty()
 	}
 }

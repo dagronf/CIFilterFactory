@@ -35,17 +35,17 @@ import Foundation
 	/// - macOS 10.12, iOS 10, tvOS 10
 	///
 	/// **Categories**
-	/// - CICategoryBuiltIn
-	/// - CICategoryGeometryAdjustment
-	/// - CICategoryHighDynamicRange
-	/// - CICategoryInterlaced
-	/// - CICategoryNonSquarePixels
-	/// - CICategoryStillImage
-	/// - CICategoryVideo
+	/// - BuiltIn (*CICategoryBuiltIn*)
+	/// - GeometryAdjustment (*CICategoryGeometryAdjustment*)
+	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+	/// - Interlaced (*CICategoryInterlaced*)
+	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+	/// - StillImage (*CICategoryStillImage*)
+	/// - Video (*CICategoryVideo*)
 	///
 	/// **Documentation Links**
 	/// - [CIEdgePreserveUpsampleFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgePreserveUpsampleFilter)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedgepreserveupsamplefilter?language=objc)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
 	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
@@ -165,5 +165,41 @@ import Foundation
 			self.spatialSigma = spatialSigma
 			self.lumaSigma = lumaSigma
 		}
+	}
+}
+
+@available(macOS 10.12, iOS 10, tvOS 10, *)
+public extension CIImage {
+	/// Edge Preserve Upsample Filter
+	///
+	/// - Parameters:
+	///   - smallImage: No Description
+	///   - spatialSigma: No Description (0.0...5.0)
+	///   - lumaSigma: No Description (0.0...1.0)
+	///   - isActive: If true applies the filter and returns a new image, else returns this image
+	/// - Returns: The filtered image, or this image if the filter is not active
+	///
+	/// Upsamples a small image to the size of the input image using the luminance of the input image as a guide to preserve detail.
+	///
+	/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIEdgePreserveUpsampleFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgePreserveUpsampleFilter)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
+	///
+	@inlinable func applyingEdgePreserveUpsampleFilter(
+		smallImage: CIImage,
+		spatialSigma: Double = CIFF.EdgePreserveUpsampleFilter.spatialSigmaDefault,
+		lumaSigma: Double = CIFF.EdgePreserveUpsampleFilter.lumaSigmaDefault,
+		isActive: Bool = true
+	) -> CIImage {
+		guard isActive else { return self }
+		return CIFF.EdgePreserveUpsampleFilter(
+			inputImage: self,
+			smallImage: smallImage,
+			spatialSigma: spatialSigma,
+			lumaSigma: lumaSigma
+		)?.outputImage ?? CIImage.empty()
 	}
 }
