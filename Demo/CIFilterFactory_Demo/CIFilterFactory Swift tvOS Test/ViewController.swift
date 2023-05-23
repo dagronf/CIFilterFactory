@@ -26,14 +26,16 @@ class ViewController: UIViewController {
 		let appimage = UIImage(named: "AppIcon")!
 		let image = CIImage(cgImage: appimage.cgImage!)
 
-		// Sepia filter
-		let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
-
-		// Crystallize filter
-		let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
-
 		// Use the chaining API to apply the filters
-		let output = image.applying(filters: sepiaFilter, crystalize)
+		let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
+		let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
+		let output = image.applying([sepiaFilter, crystalize])
+
+//		// Use the functional interface
+//		let output = image
+//			.applyingSepiaTone(intensity: 0.9)
+//			.applyingCrystallize(radius: 20, center: CGPoint(x: 150, y: 200))
+
 		let outputImage = UIImage(ciImage: output)
 		
 		self.imageView.image = outputImage

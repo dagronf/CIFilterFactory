@@ -119,7 +119,7 @@ final class CIFilterFactoryTests: XCTestCase {
 			let crop = CIFF.Crop()!
 			crop.rectangle = CGRect(x: 0, y: input.extent.height / 2.0, width: input.extent.width, height: input.extent.height / 2.0)
 
-			let output = try XCTUnwrap(input.applying(filters: blur, sepia, crop))
+			let output = try XCTUnwrap(input.applying([blur, sepia, crop]))
 
 			let outputImage = try XCTUnwrap(output.asCGImage())
 			Swift.print(outputImage)

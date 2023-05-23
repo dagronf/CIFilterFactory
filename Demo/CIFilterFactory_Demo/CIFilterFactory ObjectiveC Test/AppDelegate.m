@@ -42,7 +42,7 @@
 	assert(crystalize);
 
 	// Create the output image by chaining the filters
-	CIImage* output = [image applyingWithFilters:@[sepiaFilter, crystalize]];
+	CIImage* output = [image applying:@[sepiaFilter, crystalize]];
 
 //	CIImage* output = [crystalize outputImage];
 	struct CGImage* out = [[CIContext context] createCGImage:output fromRect:[output extent]];

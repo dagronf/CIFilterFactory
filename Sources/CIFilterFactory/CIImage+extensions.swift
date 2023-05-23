@@ -25,7 +25,7 @@ public extension CIImage {
 	/// Apply the provided chain of filters to this image, returning the filtered image.
 	///
 	/// See: **Chaining Filters for Complex Effects** in the [Core Image Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_tasks/ci_tasks.html).
-	@objc func applying(filters: [CIFF.Core]) -> CIImage {
+	@objc func applying(_ filters: [CIFF.Core]) -> CIImage {
 		var outputImage: CIImage = self
 		filters.forEach { filter in
 			let parameters = filter.inputParameters.removingValue(forKey: "inputImage")
@@ -33,4 +33,24 @@ public extension CIImage {
 		}
 		return outputImage
 	}
+}
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
+
+public extension CIImage {
+	#if os(macOS)
+	@inlinable func nsImage() -> NSImage {
+		let rep = NSCIImageRep(ciImage: self)
+		guard rep.size.width <= 10000, rep.size.height <= 10000 else { return NSImage() }
+		let nsImage = NSImage(size: rep.size)
+		nsImage.addRepresentation(rep)
+		return nsImage
+	}
+	#else
+	@inlinable func uiImage() -> UIImage { UIImage(ciImage: self) }
+	#endif
 }

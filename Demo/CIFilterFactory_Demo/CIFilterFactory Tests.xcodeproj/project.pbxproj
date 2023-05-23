@@ -16,16 +16,15 @@
 		2352838824B6BAF60006FC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838624B6BAF60006FC22 /* Main.storyboard */; };
 		2352838A24B6BAF60006FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352838924B6BAF60006FC22 /* Assets.xcassets */; };
 		2352838D24B6BAF60006FC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352838B24B6BAF60006FC22 /* LaunchScreen.storyboard */; };
-		2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */; };
-		2358BA5E25A3B1DC00872159 /* CIFilterFactory-Library in Frameworks */ = {isa = PBXBuildFile; productRef = 2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */; };
 		23E4CFFC2828ADE7005D0B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFB2828ADE7005D0B2B /* AppDelegate.swift */; };
 		23E4CFFE2828ADE7005D0B2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFD2828ADE7005D0B2B /* SceneDelegate.swift */; };
 		23E4D0002828ADE7005D0B2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4CFFF2828ADE7005D0B2B /* ViewController.swift */; };
 		23E4D0032828ADE7005D0B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0012828ADE7005D0B2B /* Main.storyboard */; };
 		23E4D0052828ADE8005D0B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0042828ADE8005D0B2B /* Assets.xcassets */; };
 		23E4D0082828ADE8005D0B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0062828ADE8005D0B2B /* LaunchScreen.storyboard */; };
-		23E4D0112828AE50005D0B2B /* CIFilterFactory-Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */; };
-		23E4D0122828AE50005D0B2B /* CIFilterFactory-Shared in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		23F869202A1C8FD600551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F8691F2A1C8FD600551E8C /* CIFilterFactory */; };
+		23F869222A1C900700551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F869212A1C900700551E8C /* CIFilterFactory */; };
+		23F869242A1C901300551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F869232A1C901300551E8C /* CIFilterFactory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,7 +34,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				23E4D0122828AE50005D0B2B /* CIFilterFactory-Shared in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2358BA5E25A3B1DC00872159 /* CIFilterFactory-Library in Frameworks */,
+				23F869202A1C8FD600551E8C /* CIFilterFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2358BA5C25A3B1D400872159 /* CIFilterFactory-Library in Frameworks */,
+				23F869222A1C900700551E8C /* CIFilterFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23E4D0112828AE50005D0B2B /* CIFilterFactory-Shared in Frameworks */,
+				23F869242A1C901300551E8C /* CIFilterFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +184,7 @@
 			);
 			name = "CIFilterFactory ObjectiveC Test";
 			packageProductDependencies = (
-				2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */,
+				23F8691F2A1C8FD600551E8C /* CIFilterFactory */,
 			);
 			productName = "CIFilterFactory ObjectiveC Test";
 			productReference = 2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */;
@@ -206,7 +204,7 @@
 			);
 			name = "CIFilterFactory Swift tvOS Test";
 			packageProductDependencies = (
-				2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */,
+				23F869212A1C900700551E8C /* CIFilterFactory */,
 			);
 			productName = "CIFilterFactory Swift tvOS Test";
 			productReference = 2352838024B6BAF60006FC22 /* CIFilterFactory Swift tvOS Test.app */;
@@ -227,7 +225,7 @@
 			);
 			name = "CIFilterFactory Swift iOS Test";
 			packageProductDependencies = (
-				23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */,
+				23F869232A1C901300551E8C /* CIFilterFactory */,
 			);
 			productName = "CIFilterFactory Swift iOS Test";
 			productReference = 23E4CFF92828ADE7005D0B2B /* CIFilterFactory Swift iOS Test.app */;
@@ -706,17 +704,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2358BA5B25A3B1D400872159 /* CIFilterFactory-Library */ = {
+		23F8691F2A1C8FD600551E8C /* CIFilterFactory */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "CIFilterFactory-Library";
+			productName = CIFilterFactory;
 		};
-		2358BA5D25A3B1DC00872159 /* CIFilterFactory-Library */ = {
+		23F869212A1C900700551E8C /* CIFilterFactory */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "CIFilterFactory-Library";
+			productName = CIFilterFactory;
 		};
-		23E4D0102828AE50005D0B2B /* CIFilterFactory-Shared */ = {
+		23F869232A1C901300551E8C /* CIFilterFactory */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "CIFilterFactory-Shared";
+			productName = CIFilterFactory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
