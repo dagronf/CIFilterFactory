@@ -22,9 +22,10 @@
 		23E4D0032828ADE7005D0B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0012828ADE7005D0B2B /* Main.storyboard */; };
 		23E4D0052828ADE8005D0B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0042828ADE8005D0B2B /* Assets.xcassets */; };
 		23E4D0082828ADE8005D0B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4D0062828ADE8005D0B2B /* LaunchScreen.storyboard */; };
-		23F869202A1C8FD600551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F8691F2A1C8FD600551E8C /* CIFilterFactory */; };
 		23F869222A1C900700551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F869212A1C900700551E8C /* CIFilterFactory */; };
 		23F869242A1C901300551E8C /* CIFilterFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 23F869232A1C901300551E8C /* CIFilterFactory */; };
+		23F869262A1C97F900551E8C /* CIFilterFactory-shared in Frameworks */ = {isa = PBXBuildFile; productRef = 23F869252A1C97F900551E8C /* CIFilterFactory-shared */; };
+		23F869272A1C97F900551E8C /* CIFilterFactory-shared in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 23F869252A1C97F900551E8C /* CIFilterFactory-shared */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23F869282A1C97F900551E8C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				23F869272A1C97F900551E8C /* CIFilterFactory-shared in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F869202A1C8FD600551E8C /* CIFilterFactory in Frameworks */,
+				23F869262A1C97F900551E8C /* CIFilterFactory-shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +189,7 @@
 				2352836424B6AD360006FC22 /* Sources */,
 				2352836524B6AD360006FC22 /* Frameworks */,
 				2352836624B6AD360006FC22 /* Resources */,
+				23F869282A1C97F900551E8C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,7 +197,7 @@
 			);
 			name = "CIFilterFactory ObjectiveC Test";
 			packageProductDependencies = (
-				23F8691F2A1C8FD600551E8C /* CIFilterFactory */,
+				23F869252A1C97F900551E8C /* CIFilterFactory-shared */,
 			);
 			productName = "CIFilterFactory ObjectiveC Test";
 			productReference = 2352836824B6AD360006FC22 /* CIFilterFactory ObjectiveC Test.app */;
@@ -390,9 +403,10 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory ObjectiveC Test/CIFilterFactory_ObjectiveC_Test.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "CIFilterFactory ObjectiveC Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -414,9 +428,10 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = "CIFilterFactory ObjectiveC Test/CIFilterFactory_ObjectiveC_Test.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "CIFilterFactory ObjectiveC Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -704,10 +719,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		23F8691F2A1C8FD600551E8C /* CIFilterFactory */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CIFilterFactory;
-		};
 		23F869212A1C900700551E8C /* CIFilterFactory */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CIFilterFactory;
@@ -715,6 +726,10 @@
 		23F869232A1C901300551E8C /* CIFilterFactory */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CIFilterFactory;
+		};
+		23F869252A1C97F900551E8C /* CIFilterFactory-shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "CIFilterFactory-shared";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
