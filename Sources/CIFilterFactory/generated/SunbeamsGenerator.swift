@@ -250,7 +250,7 @@ import Foundation
 }
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Sunbeams' filter
 	///
 	/// - Parameters:

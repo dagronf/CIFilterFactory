@@ -105,7 +105,7 @@ import Foundation
 }
 
 @available(macOS 10.13, iOS 11, tvOS 11, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Barcode Generator' filter
 	///
 	/// - Parameters:

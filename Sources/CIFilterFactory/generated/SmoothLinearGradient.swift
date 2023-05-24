@@ -153,7 +153,7 @@ import Foundation
 }
 
 @available(macOS 10.10, iOS 6, tvOS 6, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Smooth Linear Gradient' filter
 	///
 	/// - Parameters:

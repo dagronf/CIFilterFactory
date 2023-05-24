@@ -132,7 +132,7 @@ import Foundation
 }
 
 @available(macOS 10.14, iOS 12, tvOS 12, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Mesh Generator' filter
 	///
 	/// - Parameters:

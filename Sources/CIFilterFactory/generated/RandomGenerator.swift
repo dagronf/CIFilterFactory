@@ -55,7 +55,7 @@ import Foundation
 }
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Random Generator' filter
 	///
 	/// - Returns: A new image by running the filter, or nil if the image could not be created

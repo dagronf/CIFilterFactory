@@ -136,7 +136,7 @@ import Foundation
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Rounded Rectangle Generator' filter
 	///
 	/// - Parameters:

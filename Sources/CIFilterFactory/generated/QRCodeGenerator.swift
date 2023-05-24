@@ -119,7 +119,7 @@ import Foundation
 }
 
 @available(macOS 10.9, iOS 7, tvOS 7, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'QR Code Generator' filter
 	///
 	/// - Parameters:

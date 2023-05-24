@@ -175,6 +175,8 @@ defines a common AffineTransform class which wraps the os-dependent type meaning
 
 ## Functional CIImage interface
 
+### Chainable filters
+
 Each filter that supports an `inputImage` generates an extension on `CIImage` for the filter to allow for
 simple chaining of filters onto a `CIImage`.  Each call returns either the original image, or a new `CIImage`
 with the filter applied.
@@ -184,33 +186,34 @@ Each functional call also has an `isActive` parameter to allow you to easily ena
 For example, the CIBokehBlur filter generates :-
 
 ```swift
-/// Bokeh Blur
-///
-/// - Parameters:
-///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
-///   - ringAmount: The amount of extra emphasis at the ring of the bokeh. (0.0...1.0)
-///   - ringSize: The size of extra emphasis at the ring of the bokeh. (0.0...0.2)
-///   - softness: No Description (0.0...10.0)
-///   - isActive: If true applies the filter and returns a new image, else returns this image
-/// - Returns: The filtered image, or this image if the filter is not active
-///
-/// Smooths an image using a disc-shaped convolution kernel.
-///
-/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
-///
-/// **Documentation Links**
-/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
-/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
-///
-@inlinable func applyingBokehBlur(
-   radius: Double = CIFF.BokehBlur.radiusDefault,
-   ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,
-   ringSize: Double = CIFF.BokehBlur.ringSizeDefault,
-   softness: Double = CIFF.BokehBlur.softnessDefault,
-   isActive: Bool = true
-) -> CIImage {
-   ...
+public extension CIImage {
+   /// Apply the 'Bokeh Blur' filter to this image and return a new filtered image
+   ///
+   /// - Parameters:
+   ///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
+   ///   - ringAmount: The amount of extra emphasis at the ring of the bokeh. (0.0...1.0)
+   ///   - ringSize: The size of extra emphasis at the ring of the bokeh. (0.0...0.2)
+   ///   - softness: No Description (0.0...10.0)
+   ///   - isActive: If true applies the filter and returns a new image, else returns this image
+   /// - Returns: The filtered image, or this image if the filter is not active
+   ///
+   /// Smooths an image using a disc-shaped convolution kernel.
+   ///
+   /// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+   ///
+   /// **Documentation Links**
+   /// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
+   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+   /// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
+   @inlinable func applyingBokehBlur(
+      radius: Double = CIFF.BokehBlur.radiusDefault,
+      ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,
+      ringSize: Double = CIFF.BokehBlur.ringSizeDefault,
+      softness: Double = CIFF.BokehBlur.softnessDefault,
+      isActive: Bool = true
+   ) -> CIImage {
+      ...
+   }
 }
 ```
 
@@ -223,6 +226,38 @@ let filtered = myImage
    .applyingSepiaTone()
 ```
 
+### Generation filters
+
+For generation filters like `CIQRCodeGenerator` (these filters don't have an explicit `inputImage`), a static creator function is generated
+
+```swift
+extension CIImage {
+   /// Create a new CIImage using the 'QR Code Generator' filter
+   ///
+   /// - Parameters:
+   ///   - message: The message to encode in the QR Code
+   ///   - correctionLevel: QR Code correction level L, M, Q, or H.
+   /// - Returns: A new image by running the filter, or nil if the image could not be created
+   ///
+   /// Generate a QR Code image for message data.
+   ///
+   /// **Categories**: BuiltIn, Generator, StillImage
+   ///
+   /// **Documentation Links**
+   /// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
+   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+   /// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
+   @inlinable static func createUsingQRCodeGenerator(
+      message: Data,
+      correctionLevel: String
+   ) -> CIImage? {
+      return CIFF.QRCodeGenerator(
+         message: message,
+         correctionLevel: correctionLevel
+      )?.outputImage
+   }
+}
+```
 
 ## How
 

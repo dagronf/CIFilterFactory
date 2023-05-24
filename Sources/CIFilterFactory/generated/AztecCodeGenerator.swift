@@ -181,7 +181,7 @@ import Foundation
 }
 
 @available(macOS 10.10, iOS 8, tvOS 8, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Aztec Code Generator' filter
 	///
 	/// - Parameters:

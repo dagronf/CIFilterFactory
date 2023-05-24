@@ -392,7 +392,7 @@ import Foundation
 }
 
 @available(macOS 10.11, iOS 9, tvOS 9, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'PDF417 Barcode Generator' filter
 	///
 	/// - Parameters:

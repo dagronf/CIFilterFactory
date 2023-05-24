@@ -273,7 +273,7 @@ import Foundation
 }
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Star Shine' filter
 	///
 	/// - Parameters:

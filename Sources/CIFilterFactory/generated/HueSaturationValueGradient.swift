@@ -195,7 +195,7 @@ import Foundation
 }
 
 @available(macOS 10.12, iOS 10, tvOS 10, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Hue/Saturation/Value Gradient' filter
 	///
 	/// - Parameters:

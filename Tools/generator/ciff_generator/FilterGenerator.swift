@@ -223,7 +223,7 @@ class FilterGenerator {
 		if let availability = availability {
 			out.print(availability)
 		}
-		out.print("extension CIImage {")
+		out.print("public extension CIImage {")
 
 		// Convert to camel case
 		// let funcName = staticName.prefix(1).lowercased() + staticName.dropFirst()
@@ -278,7 +278,7 @@ class FilterGenerator {
 		out.print(docs)
 
 		if isChainable {
-			out.print("   @inlinable public func applying\(staticName)(")
+			out.print("   @inlinable func applying\(staticName)(")
 		}
 		else {
 			out.print("   @inlinable static func createUsing\(staticName)(")

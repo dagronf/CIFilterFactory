@@ -85,7 +85,7 @@ import Foundation
 }
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
-extension CIImage {
+public extension CIImage {
 	/// Create a new CIImage using the 'Constant Color' filter
 	///
 	/// - Parameters:
