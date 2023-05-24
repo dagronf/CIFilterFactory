@@ -10,10 +10,11 @@ Supports macOS, tvOS, iOS and mac Catalyst
     <img src="https://img.shields.io/badge/iOS-10+-blue" />
     <img src="https://img.shields.io/badge/tvOS-11+-orange" />
     <img src="https://img.shields.io/badge/mac Catalyst-supported-green" />
+    <img src="https://github.com/dagronf/CIFilterFactory/actions/workflows/build.yml/badge.svg" />
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.4-orange.svg" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
     <a href="https://swift.org/package-manager">
         <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
