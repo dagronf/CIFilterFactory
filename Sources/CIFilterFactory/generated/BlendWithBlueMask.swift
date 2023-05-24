@@ -1,6 +1,7 @@
 //
 //  BlendWithBlueMask.swift  (AUTOMATICALLY GENERATED FILE)
-//  CIFilterFactory
+//
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
