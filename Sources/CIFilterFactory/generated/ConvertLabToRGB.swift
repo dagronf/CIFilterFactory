@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
-	///
 	@available(macOS 13.0, iOS 16, tvOS 16, *)
 	@objc(CIFFConvertLabToRGB) class ConvertLabToRGB: Core {
 		/// Create an instance of the filter with all default values
@@ -114,7 +113,7 @@ import Foundation
 
 @available(macOS 13.0, iOS 16, tvOS 16, *)
 public extension CIImage {
-	/// Convert Lab to RGB
+	/// Apply the 'Convert Lab to RGB' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - normalize: If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
@@ -129,7 +128,6 @@ public extension CIImage {
 	/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
-	///
 	@inlinable func applyingConvertLabToRGB(
 		normalize: Bool = CIFF.ConvertLabToRGB.normalizeDefault,
 		isActive: Bool = true

@@ -45,7 +45,6 @@ import Foundation
 	/// - [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
-	///
 	@available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
 	@objc(CIFFCameraCalibrationLensCorrection) class CameraCalibrationLensCorrection: Core {
 		/// Create an instance of the filter with all default values
@@ -131,7 +130,7 @@ import Foundation
 
 @available(macOS 10.14, iOS 12, tvOS 12, macCatalyst 14, *)
 public extension CIImage {
-	/// Lens Correction for AVC
+	/// Apply the 'Lens Correction for AVC' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - aVCameraCalibrationData: AVCameraCalibrationData for the correction. Will be set from the input image if available and can be overridden here.
@@ -147,7 +146,6 @@ public extension CIImage {
 	/// - [CICameraCalibrationLensCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICameraCalibrationLensCorrection)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICameraCalibrationLensCorrection/)
-	///
 	@inlinable func applyingCameraCalibrationLensCorrection(
 		aVCameraCalibrationData: AVCameraCalibrationData,
 		useInverseLookUpTable: Bool = CIFF.CameraCalibrationLensCorrection.useInverseLookUpTableDefault,

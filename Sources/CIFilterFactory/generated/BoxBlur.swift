@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
-	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFBoxBlur) class BoxBlur: Core {
 		/// Create an instance of the filter with all default values
@@ -116,7 +115,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Box Blur
+	/// Apply the 'Box Blur' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (1.0...)
@@ -131,7 +130,6 @@ public extension CIImage {
 	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
-	///
 	@inlinable func applyingBoxBlur(
 		radius: Double = CIFF.BoxBlur.radiusDefault,
 		isActive: Bool = true

@@ -45,7 +45,6 @@ import Foundation
 	/// - [CICopyMachineTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICopyMachineTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICopyMachineTransition/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFCopyMachineTransition) class CopyMachineTransition: Core {
 		/// Create an instance of the filter with all default values
@@ -267,7 +266,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Copy Machine
+	/// Apply the 'Copy Machine' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - targetImage: The target image for a transition.
@@ -288,7 +287,6 @@ public extension CIImage {
 	/// - [CICopyMachineTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICopyMachineTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICopyMachineTransition/)
-	///
 	@inlinable func applyingCopyMachineTransition(
 		targetImage: CIImage,
 		extent: CGRect = CIFF.CopyMachineTransition.extentDefault,

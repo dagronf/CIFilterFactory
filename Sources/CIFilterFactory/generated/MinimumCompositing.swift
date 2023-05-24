@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIMinimumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMinimumCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMinimumCompositing/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFMinimumCompositing) class MinimumCompositing: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Minimum
+	/// Apply the 'Minimum' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIMinimumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMinimumCompositing)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMinimumCompositing/)
-	///
 	@inlinable func applyingMinimumCompositing(
 		backgroundImage: CIImage,
 		isActive: Bool = true

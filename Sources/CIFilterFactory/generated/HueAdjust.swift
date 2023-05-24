@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIHueAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueAdjust/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFHueAdjust) class HueAdjust: Core {
 		/// Create an instance of the filter with all default values
@@ -114,7 +113,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Hue Adjust
+	/// Apply the 'Hue Adjust' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - angle: An angle in radians to use to correct the hue of an image.
@@ -129,7 +128,6 @@ public extension CIImage {
 	/// - [CIHueAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueAdjust/)
-	///
 	@inlinable func applyingHueAdjust(
 		angle: Double = CIFF.HueAdjust.angleDefault,
 		isActive: Bool = true

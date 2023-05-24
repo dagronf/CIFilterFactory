@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
-	///
 	/// **Additional output keys**
 	/// - outputImageNonMPS:
 	///
@@ -115,7 +114,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Area Average
+	/// Apply the 'Area Average' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
@@ -130,7 +129,6 @@ public extension CIImage {
 	/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
-	///
 	@inlinable func applyingAreaAverage(
 		extent: CGRect = CIFF.AreaAverage.extentDefault,
 		isActive: Bool = true

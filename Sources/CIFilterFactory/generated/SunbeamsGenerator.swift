@@ -45,7 +45,6 @@ import Foundation
 	/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFSunbeamsGenerator) class SunbeamsGenerator: Core {
 		/// Create an instance of the filter with all default values
@@ -246,5 +245,48 @@ import Foundation
 			self.striationContrast = striationContrast
 			self.time = time
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 9, tvOS 9, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Sunbeams' filter
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - color: The color of the sun.
+	///   - sunRadius: The radius of the sun. (0.0...)
+	///   - maxStriationRadius: The radius of the sunbeams. (0.0...)
+	///   - striationStrength: The intensity of the sunbeams. Higher values result in more intensity. (0.0...)
+	///   - striationContrast: The contrast of the sunbeams. Higher values result in more contrast. (0.0...)
+	///   - time: The duration of the effect. (0.0...1.0)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a sun effect. You typically use the output of the sunbeams filter as input to a composite filter.
+	///
+	/// **Categories**: BuiltIn, Generator, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
+	@inlinable static func createUsingSunbeamsGenerator(
+		center: CGPoint = CIFF.SunbeamsGenerator.centerDefault,
+		color: CIColor,
+		sunRadius: Double = CIFF.SunbeamsGenerator.sunRadiusDefault,
+		maxStriationRadius: Double = CIFF.SunbeamsGenerator.maxStriationRadiusDefault,
+		striationStrength: Double = CIFF.SunbeamsGenerator.striationStrengthDefault,
+		striationContrast: Double = CIFF.SunbeamsGenerator.striationContrastDefault,
+		time: Double = CIFF.SunbeamsGenerator.timeDefault
+	) -> CIImage? {
+		return CIFF.SunbeamsGenerator(
+			center: center,
+			color: color,
+			sunRadius: sunRadius,
+			maxStriationRadius: maxStriationRadius,
+			striationStrength: striationStrength,
+			striationContrast: striationContrast,
+			time: time
+		)?.outputImage
 	}
 }

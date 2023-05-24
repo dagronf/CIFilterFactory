@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFGlassLozenge) class GlassLozenge: Core {
 		/// Create an instance of the filter with all default values
@@ -192,7 +191,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Glass Lozenge
+	/// Apply the 'Glass Lozenge' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - point0: The x and y position that defines the center of the circle at one end of the lozenge.
@@ -210,7 +209,6 @@ public extension CIImage {
 	/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGlassLozenge/)
-	///
 	@inlinable func applyingGlassLozenge(
 		point0: CGPoint = CIFF.GlassLozenge.point0Default,
 		point1: CGPoint = CIFF.GlassLozenge.point1Default,

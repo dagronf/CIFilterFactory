@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIPointillize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPointillize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPointillize/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFPointillize) class Pointillize: Core {
 		/// Create an instance of the filter with all default values
@@ -140,7 +139,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Pointillize
+	/// Apply the 'Pointillize' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius of the circles in the resulting pattern. (1.0...)
@@ -156,7 +155,6 @@ public extension CIImage {
 	/// - [CIPointillize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPointillize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPointillize/)
-	///
 	@inlinable func applyingPointillize(
 		radius: Double = CIFF.Pointillize.radiusDefault,
 		center: CGPoint = CIFF.Pointillize.centerDefault,

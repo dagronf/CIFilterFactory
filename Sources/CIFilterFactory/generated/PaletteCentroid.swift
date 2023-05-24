@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
-	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFPaletteCentroid) class PaletteCentroid: Core {
 		/// Create an instance of the filter with all default values
@@ -133,7 +132,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Palette Centroid
+	/// Apply the 'Palette Centroid' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - paletteImage: The input color palette, obtained using “CIKMeans“ filter.
@@ -149,7 +148,6 @@ public extension CIImage {
 	/// - [CIPaletteCentroid Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPaletteCentroid)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPaletteCentroid/)
-	///
 	@inlinable func applyingPaletteCentroid(
 		paletteImage: CIImage,
 		perceptual: Bool = CIFF.PaletteCentroid.perceptualDefault,

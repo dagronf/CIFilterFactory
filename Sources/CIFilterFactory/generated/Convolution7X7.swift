@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
-	///
 	@available(macOS 10.9, iOS 9, tvOS 9, *)
 	@objc(CIFFConvolution7X7) class Convolution7X7: Core {
 		/// Create an instance of the filter with all default values
@@ -135,7 +134,7 @@ import Foundation
 
 @available(macOS 10.9, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// 7 by 7 Convolution
+	/// Apply the '7 by 7 Convolution' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - weights: A vector containing the 49 weights of the convolution kernel.
@@ -151,7 +150,6 @@ public extension CIImage {
 	/// - [CIConvolution7X7 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution7X7)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution7X7/)
-	///
 	@inlinable func applyingConvolution7X7(
 		weights: CIVector = CIFF.Convolution7X7.weightsDefault,
 		bias: Double = CIFF.Convolution7X7.biasDefault,

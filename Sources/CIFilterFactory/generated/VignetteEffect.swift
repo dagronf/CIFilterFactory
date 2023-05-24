@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
-	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFVignetteEffect) class VignetteEffect: Core {
 		/// Create an instance of the filter with all default values
@@ -199,7 +198,7 @@ import Foundation
 
 @available(macOS 10.9, iOS 7, tvOS 7, *)
 public extension CIImage {
-	/// Vignette Effect
+	/// Apply the 'Vignette Effect' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -217,7 +216,6 @@ public extension CIImage {
 	/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVignetteEffect/)
-	///
 	@inlinable func applyingVignetteEffect(
 		center: CGPoint = CIFF.VignetteEffect.centerDefault,
 		radius: Double = CIFF.VignetteEffect.radiusDefault,

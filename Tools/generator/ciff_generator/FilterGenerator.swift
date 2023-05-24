@@ -83,8 +83,7 @@ class FilterGenerator {
 		// This link seems to fluctuate for every Xcode release?
 		//docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased())?language=objc)\n"
 		docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)\n"
-		docs += "   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)\n"
-		docs += "   ///"
+		docs += "   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)"
 
 		out.print(docs)
 
@@ -218,11 +217,7 @@ class FilterGenerator {
 		_ docs: String,
 		_ categories: [String]
 	) {
-		// Cannot chain if there's no inputImage parameter
-		guard self.initializers.contains(where: { key in key.name == "inputImage" }) else {
-			return
-		}
-
+		let isChainable = self.initializers.contains(where: { key in key.name == "inputImage" })
 		let others = self.initializers.filter { $0.name != "inputImage" }
 
 		if let availability = availability {
@@ -231,13 +226,21 @@ class FilterGenerator {
 		out.print("extension CIImage {")
 
 		// Convert to camel case
-		let funcName = staticName.prefix(1).lowercased() + staticName.dropFirst()
+		// let funcName = staticName.prefix(1).lowercased() + staticName.dropFirst()
 
-		out.print("   /// \(filterName)")
-		if others.count > 0 {
+		if isChainable {
+			out.print("   /// Apply the '\(filterName)' filter to this image and return a new filtered image")
 			out.print("   ///")
 			out.print("   /// - Parameters:")
 		}
+		else {
+			out.print("   /// Create a new CIImage using the '\(filterName)' filter")
+			out.print("   ///")
+			if others.count > 0 {
+				out.print("   /// - Parameters:")
+			}
+		}
+
 		others.forEach { property in
 			let vt = property.valueTypeGenerator()
 			let mins = vt.minValueString()
@@ -257,8 +260,13 @@ class FilterGenerator {
 
 			out.print("   ///   - \(property.name): \(property.description) \(range.count > 0 ? range : "") ")
 		}
-		out.print("   ///   - isActive: If true applies the filter and returns a new image, else returns this image")
-		out.print("   /// - Returns: The filtered image, or this image if the filter is not active")
+		if isChainable {
+			out.print("   ///   - isActive: If true applies the filter and returns a new image, else returns this image")
+			out.print("   /// - Returns: The filtered image, or this image if the filter is not active")
+		}
+		else {
+			out.print("   /// - Returns: A new image by running the filter, or nil if the image could not be created")
+		}
 		out.print("   ///")
 		out.print("   /// \(filterDescription)")
 		out.print("   ///")
@@ -269,11 +277,16 @@ class FilterGenerator {
 
 		out.print(docs)
 
-		out.print("   @inlinable public func applying\(staticName)(")
+		if isChainable {
+			out.print("   @inlinable public func applying\(staticName)(")
+		}
+		else {
+			out.print("   @inlinable static func createUsing\(staticName)(")
+		}
 
 		var str = ""
 		for property in others {
-			if str.count > 0 { str += "\n" }
+			if str.count > 0 { str += ",\n" }
 
 			var sType = property.swiftType
 			if ["CIPosition3", "CIAffineTransform"].contains(sType) { sType = "CIFF." + sType }
@@ -283,22 +296,46 @@ class FilterGenerator {
 			if let _ = vt.defaultValueString() {
 				str += " = CIFF.\(self.staticName).\(property.name)Default"
 			}
-			str += ","
 		}
+		if isChainable && others.count > 0 { str += "," }
 		out.print(str)
-		out.print("      isActive: Bool = true")
-		out.print("   ) -> CIImage {")
 
-		out.print("      guard isActive else { return self }")
+		if isChainable {
+			out.print("      isActive: Bool = true")
+		}
+
+		if isChainable {
+			out.print("   ) -> CIImage {")
+		}
+		else {
+			out.print("   ) -> CIImage? {")
+		}
+
+		if isChainable {
+			out.print("      guard isActive else { return self }")
+		}
 
 		var funcDef = "      return CIFF.\(self.staticName)(\n"
-		funcDef += "         inputImage: self"
+
+		var needCommaNewline = false
+		if isChainable {
+			funcDef += "         inputImage: self"
+			needCommaNewline = true
+		}
 
 		others.forEach { key in
-			funcDef += ",\n"
+			if needCommaNewline {
+				funcDef += ",\n"
+			}
+			needCommaNewline = true
 			funcDef += "         \(key.name): \(key.name)"
 		}
-		funcDef += "\n      )?.outputImage ?? CIImage.empty()"
+		if isChainable {
+			funcDef += "\n      )?.outputImage ?? CIImage.empty()"
+		}
+		else {
+			funcDef += "\n      )?.outputImage"
+		}
 		out.print(funcDef)
 		out.print("   }")
 		out.print("}")

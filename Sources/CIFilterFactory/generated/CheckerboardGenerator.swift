@@ -45,7 +45,6 @@ import Foundation
 	/// - [CICheckerboardGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICheckerboardGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICheckerboardGenerator/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFCheckerboardGenerator) class CheckerboardGenerator: Core {
 		/// Create an instance of the filter with all default values
@@ -178,5 +177,42 @@ import Foundation
 			self.width = width
 			self.sharpness = sharpness
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Checkerboard' filter
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - color0: A color to use for the first set of squares.
+	///   - color1: A color to use for the second set of squares.
+	///   - width: The width of the squares in the pattern.
+	///   - sharpness: The sharpness of the edges in pattern. The smaller the value, the more blurry the pattern. Values range from 0.0 to 1.0. (0.0...1.0)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a pattern of squares of alternating colors. You can specify the size, colors, and the sharpness of the pattern.
+	///
+	/// **Categories**: BuiltIn, Generator, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CICheckerboardGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICheckerboardGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICheckerboardGenerator/)
+	@inlinable static func createUsingCheckerboardGenerator(
+		center: CGPoint = CIFF.CheckerboardGenerator.centerDefault,
+		color0: CIColor,
+		color1: CIColor,
+		width: Double = CIFF.CheckerboardGenerator.widthDefault,
+		sharpness: Double = CIFF.CheckerboardGenerator.sharpnessDefault
+	) -> CIImage? {
+		return CIFF.CheckerboardGenerator(
+			center: center,
+			color0: color0,
+			color1: color1,
+			width: width,
+			sharpness: sharpness
+		)?.outputImage
 	}
 }

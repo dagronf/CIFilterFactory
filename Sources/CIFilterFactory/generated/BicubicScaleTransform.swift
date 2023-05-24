@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBicubicScaleTransform) class BicubicScaleTransform: Core {
 		/// Create an instance of the filter with all default values
@@ -203,7 +202,7 @@ import Foundation
 
 @available(macOS 10.13, iOS 11, tvOS 11, *)
 public extension CIImage {
-	/// Bicubic Scale Transform
+	/// Apply the 'Bicubic Scale Transform' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - scale: The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image. (0.0...)
@@ -221,7 +220,6 @@ public extension CIImage {
 	/// - [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
-	///
 	@inlinable func applyingBicubicScaleTransform(
 		scale: Double = CIFF.BicubicScaleTransform.scaleDefault,
 		aspectRatio: Double = CIFF.BicubicScaleTransform.aspectRatioDefault,

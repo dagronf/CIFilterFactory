@@ -45,7 +45,6 @@ import Foundation
 	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
-	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFSpotColor) class SpotColor: Core {
 		/// Create an instance of the filter with all default values
@@ -376,7 +375,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Spot Color
+	/// Apply the 'Spot Color' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - centerColor1: The center value of the first color range to replace.
@@ -402,7 +401,6 @@ public extension CIImage {
 	/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISpotColor/)
-	///
 	@inlinable func applyingSpotColor(
 		centerColor1: CIColor,
 		replacementColor1: CIColor,

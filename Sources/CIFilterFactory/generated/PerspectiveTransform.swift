@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIPerspectiveTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFPerspectiveTransform) class PerspectiveTransform: Core {
 		/// Create an instance of the filter with all default values
@@ -184,7 +183,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Perspective Transform
+	/// Apply the 'Perspective Transform' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - topLeft: The top left coordinate to map the image to.
@@ -202,7 +201,6 @@ public extension CIImage {
 	/// - [CIPerspectiveTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveTransform/)
-	///
 	@inlinable func applyingPerspectiveTransform(
 		topLeft: CGPoint = CIFF.PerspectiveTransform.topLeftDefault,
 		topRight: CGPoint = CIFF.PerspectiveTransform.topRightDefault,

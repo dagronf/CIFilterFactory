@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAreaMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximum/)
-	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFAreaMaximum) class AreaMaximum: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Area Maximum
+	/// Apply the 'Area Maximum' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIAreaMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximum/)
-	///
 	@inlinable func applyingAreaMaximum(
 		extent: CGRect = CIFF.AreaMaximum.extentDefault,
 		isActive: Bool = true

@@ -43,7 +43,6 @@ import Foundation
 	/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
-	///
 	/// **Additional output keys**
 	/// - outputCGImage
 	///
@@ -115,5 +114,33 @@ import Foundation
 			self.message = message
 			self.correctionLevel = correctionLevel
 		}
+	}
+}
+
+@available(macOS 10.9, iOS 7, tvOS 7, *)
+extension CIImage {
+	/// Create a new CIImage using the 'QR Code Generator' filter
+	///
+	/// - Parameters:
+	///   - message: The message to encode in the QR Code
+	///   - correctionLevel: QR Code correction level L, M, Q, or H.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate a QR Code image for message data.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage
+	///
+	/// **Documentation Links**
+	/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
+	@inlinable static func createUsingQRCodeGenerator(
+		message: Data,
+		correctionLevel: String
+	) -> CIImage? {
+		return CIFF.QRCodeGenerator(
+			message: message,
+			correctionLevel: correctionLevel
+		)?.outputImage
 	}
 }

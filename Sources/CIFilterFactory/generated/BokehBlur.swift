@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFBokehBlur) class BokehBlur: Core {
 		/// Create an instance of the filter with all default values
@@ -204,7 +203,7 @@ import Foundation
 
 @available(macOS 10.13, iOS 11, tvOS 11, *)
 public extension CIImage {
-	/// Bokeh Blur
+	/// Apply the 'Bokeh Blur' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
@@ -222,7 +221,6 @@ public extension CIImage {
 	/// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
-	///
 	@inlinable func applyingBokehBlur(
 		radius: Double = CIFF.BokehBlur.radiusDefault,
 		ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,

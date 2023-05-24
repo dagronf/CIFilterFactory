@@ -45,7 +45,6 @@ import Foundation
 	/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
-	///
 	/// **Additional output keys**
 	/// - outputImageNewScaleX:scaleY:
 	/// - outputImageOldScaleX:scaleY:
@@ -148,7 +147,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Lanczos Scale Transform
+	/// Apply the 'Lanczos Scale Transform' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - scale: The scaling factor to use on the image. Values less than 1.0 scale down the images. Values greater than 1.0 scale up the image. (0.0...)
@@ -164,7 +163,6 @@ public extension CIImage {
 	/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
-	///
 	@inlinable func applyingLanczosScaleTransform(
 		scale: Double = CIFF.LanczosScaleTransform.scaleDefault,
 		aspectRatio: Double = CIFF.LanczosScaleTransform.aspectRatioDefault,

@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIMaskToAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskToAlpha)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskToAlpha/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFMaskToAlpha) class MaskToAlpha: Core {
 		/// Create an instance of the filter with all default values
@@ -89,7 +88,9 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Mask to Alpha
+	/// Apply the 'Mask to Alpha' filter to this image and return a new filtered image
+	///
+	/// - Parameters:
 	///   - isActive: If true applies the filter and returns a new image, else returns this image
 	/// - Returns: The filtered image, or this image if the filter is not active
 	///
@@ -101,7 +102,6 @@ public extension CIImage {
 	/// - [CIMaskToAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskToAlpha)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskToAlpha/)
-	///
 	@inlinable func applyingMaskToAlpha(
 		isActive: Bool = true
 	) -> CIImage {

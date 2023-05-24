@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIGaussianGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFGaussianGradient) class GaussianGradient: Core {
 		/// Create an instance of the filter with all default values
@@ -153,5 +152,39 @@ import Foundation
 			self.color1 = color1
 			self.radius = radius
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Gaussian Gradient' filter
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - color0: The first color to use in the gradient.
+	///   - color1: The second color to use in the gradient.
+	///   - radius: The radius of the Gaussian distribution. (0.0...)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a gradient that varies from one color to another using a Gaussian distribution.
+	///
+	/// **Categories**: BuiltIn, Gradient, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIGaussianGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianGradient/)
+	@inlinable static func createUsingGaussianGradient(
+		center: CGPoint = CIFF.GaussianGradient.centerDefault,
+		color0: CIColor,
+		color1: CIColor,
+		radius: Double = CIFF.GaussianGradient.radiusDefault
+	) -> CIImage? {
+		return CIFF.GaussianGradient(
+			center: center,
+			color0: color0,
+			color1: color1,
+			radius: radius
+		)?.outputImage
 	}
 }

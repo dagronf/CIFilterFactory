@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIMorphologyRectangleMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMinimum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMinimum/)
-	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFMorphologyRectangleMinimum) class MorphologyRectangleMinimum: Core {
 		/// Create an instance of the filter with all default values
@@ -144,7 +143,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Morphology Rectangle Minimum
+	/// Apply the 'Morphology Rectangle Minimum' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - width: The width in pixels of the morphological operation. The value will be rounded to the nearest odd integer. (1...)
@@ -160,7 +159,6 @@ public extension CIImage {
 	/// - [CIMorphologyRectangleMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMinimum)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyRectangleMinimum/)
-	///
 	@inlinable func applyingMorphologyRectangleMinimum(
 		width: Int = CIFF.MorphologyRectangleMinimum.widthDefault,
 		height: Int = CIFF.MorphologyRectangleMinimum.heightDefault,

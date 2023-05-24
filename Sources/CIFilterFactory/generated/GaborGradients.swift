@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
-	///
 	@available(macOS 10.15, iOS 13, tvOS 13, *)
 	@objc(CIFFGaborGradients) class GaborGradients: Core {
 		/// Create an instance of the filter with all default values
@@ -88,7 +87,9 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Gabor Gradients
+	/// Apply the 'Gabor Gradients' filter to this image and return a new filtered image
+	///
+	/// - Parameters:
 	///   - isActive: If true applies the filter and returns a new image, else returns this image
 	/// - Returns: The filtered image, or this image if the filter is not active
 	///
@@ -100,7 +101,6 @@ public extension CIImage {
 	/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
-	///
 	@inlinable func applyingGaborGradients(
 		isActive: Bool = true
 	) -> CIImage {

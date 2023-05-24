@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIRowAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRowAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRowAverage/)
-	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFRowAverage) class RowAverage: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Row Average
+	/// Apply the 'Row Average' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIRowAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRowAverage)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRowAverage/)
-	///
 	@inlinable func applyingRowAverage(
 		extent: CGRect = CIFF.RowAverage.extentDefault,
 		isActive: Bool = true

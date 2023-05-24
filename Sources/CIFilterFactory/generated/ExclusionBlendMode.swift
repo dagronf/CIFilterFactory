@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIExclusionBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExclusionBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExclusionBlendMode/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFExclusionBlendMode) class ExclusionBlendMode: Core {
 		/// Create an instance of the filter with all default values
@@ -111,7 +110,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Exclusion Blend Mode
+	/// Apply the 'Exclusion Blend Mode' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -126,7 +125,6 @@ public extension CIImage {
 	/// - [CIExclusionBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExclusionBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExclusionBlendMode/)
-	///
 	@inlinable func applyingExclusionBlendMode(
 		backgroundImage: CIImage,
 		isActive: Bool = true

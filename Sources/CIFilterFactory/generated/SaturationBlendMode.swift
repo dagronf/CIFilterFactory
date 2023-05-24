@@ -46,7 +46,6 @@ import Foundation
 	/// - [CISaturationBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaturationBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISaturationBlendMode/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFSaturationBlendMode) class SaturationBlendMode: Core {
 		/// Create an instance of the filter with all default values
@@ -111,7 +110,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Saturation Blend Mode
+	/// Apply the 'Saturation Blend Mode' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -126,7 +125,6 @@ public extension CIImage {
 	/// - [CISaturationBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaturationBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISaturationBlendMode/)
-	///
 	@inlinable func applyingSaturationBlendMode(
 		backgroundImage: CIImage,
 		isActive: Bool = true

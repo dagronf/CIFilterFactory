@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIPDF417BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPDF417BarcodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPDF417BarcodeGenerator/)
-	///
 	/// **Additional output keys**
 	/// - outputCGImage
 	///
@@ -388,5 +387,63 @@ import Foundation
 			self.correctionLevel = correctionLevel
 			self.alwaysSpecifyCompaction = alwaysSpecifyCompaction
 		}
+	}
+}
+
+@available(macOS 10.11, iOS 9, tvOS 9, *)
+extension CIImage {
+	/// Create a new CIImage using the 'PDF417 Barcode Generator' filter
+	///
+	/// - Parameters:
+	///   - message: The message to encode in the PDF417 Barcode
+	///   - minWidth: The minimum width of the generated barcode in pixels. (56...583)
+	///   - maxWidth: The maximum width of the generated barcode in pixels. (56...583)
+	///   - minHeight: The minimum height of the generated barcode in pixels. (13...283)
+	///   - maxHeight: The maximum height of the generated barcode in pixels. (13...283)
+	///   - dataColumns: The number of data columns in the generated barcode (1...30)
+	///   - rows: The number of rows in the generated barcode (3...90)
+	///   - preferredAspectRatio: The preferred aspect ratio of the generated barcode
+	///   - compactionMode: The compaction mode of the generated barcode. (0...3)
+	///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+	///   - correctionLevel: The correction level ratio of the generated barcode (0...8)
+	///   - alwaysSpecifyCompaction: Force compaction style to @YES or @NO. Set to nil for automatic.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate a PDF417 barcode image for message data.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIPDF417BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPDF417BarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIPDF417BarcodeGenerator/)
+	@inlinable static func createUsingPDF417BarcodeGenerator(
+		message: Data,
+		minWidth: Int,
+		maxWidth: Int,
+		minHeight: Int,
+		maxHeight: Int,
+		dataColumns: Int,
+		rows: Int,
+		preferredAspectRatio: NSNumber,
+		compactionMode: Int,
+		compactStyle: Bool = CIFF.PDF417BarcodeGenerator.compactStyleDefault,
+		correctionLevel: Int,
+		alwaysSpecifyCompaction: Bool = CIFF.PDF417BarcodeGenerator.alwaysSpecifyCompactionDefault
+	) -> CIImage? {
+		return CIFF.PDF417BarcodeGenerator(
+			message: message,
+			minWidth: minWidth,
+			maxWidth: maxWidth,
+			minHeight: minHeight,
+			maxHeight: maxHeight,
+			dataColumns: dataColumns,
+			rows: rows,
+			preferredAspectRatio: preferredAspectRatio,
+			compactionMode: compactionMode,
+			compactStyle: compactStyle,
+			correctionLevel: correctionLevel,
+			alwaysSpecifyCompaction: alwaysSpecifyCompaction
+		)?.outputImage
 	}
 }

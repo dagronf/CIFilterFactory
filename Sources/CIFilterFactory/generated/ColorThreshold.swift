@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
-	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
 	@objc(CIFFColorThreshold) class ColorThreshold: Core {
 		/// Create an instance of the filter with all default values
@@ -113,7 +112,7 @@ import Foundation
 
 @available(macOS 11.0, iOS 14, tvOS 14, *)
 public extension CIImage {
-	/// Color Threshold
+	/// Apply the 'Color Threshold' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - threshold: The threshold value that governs if the RGB channels of the resulting image will be zero or one.
@@ -128,7 +127,6 @@ public extension CIImage {
 	/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThreshold/)
-	///
 	@inlinable func applyingColorThreshold(
 		threshold: Double = CIFF.ColorThreshold.thresholdDefault,
 		isActive: Bool = true

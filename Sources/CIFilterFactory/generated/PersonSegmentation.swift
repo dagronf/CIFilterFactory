@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
-	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
 	@objc(CIFFPersonSegmentation) class PersonSegmentation: Core {
 		/// Create an instance of the filter with all default values
@@ -106,7 +105,7 @@ import Foundation
 
 @available(macOS 12.0, iOS 15, tvOS 15, *)
 public extension CIImage {
-	/// Person Segmentation
+	/// Apply the 'Person Segmentation' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - qualityLevel: Determines the size and quality of the resulting segmentation mask. The value can be a number where 0 is accurate, 1 is balanced, and 2 is fast.
@@ -121,7 +120,6 @@ public extension CIImage {
 	/// - [CIPersonSegmentation Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPersonSegmentation)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPersonSegmentation/)
-	///
 	@inlinable func applyingPersonSegmentation(
 		qualityLevel: NSNumber,
 		isActive: Bool = true

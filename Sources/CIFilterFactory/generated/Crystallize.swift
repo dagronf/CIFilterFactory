@@ -45,7 +45,6 @@ import Foundation
 	/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFCrystallize) class Crystallize: Core {
 		/// Create an instance of the filter with all default values
@@ -140,7 +139,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Crystallize
+	/// Apply the 'Crystallize' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius determines how many pixels are used to create the effect. The larger the radius, the larger the resulting crystals. (1.0...)
@@ -156,7 +155,6 @@ public extension CIImage {
 	/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
-	///
 	@inlinable func applyingCrystallize(
 		radius: Double = CIFF.Crystallize.radiusDefault,
 		center: CGPoint = CIFF.Crystallize.centerDefault,

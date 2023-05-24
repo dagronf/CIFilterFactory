@@ -45,7 +45,6 @@ import Foundation
 	/// - [CINinePartStretched Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartStretched)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
-	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFNinePartStretched) class NinePartStretched: Core {
 		/// Create an instance of the filter with all default values
@@ -160,7 +159,7 @@ import Foundation
 
 @available(macOS 10.12, iOS 10, tvOS 10, *)
 public extension CIImage {
-	/// Nine Part Stretched
+	/// Apply the 'Nine Part Stretched' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - breakpoint0: Lower left corner of image to retain before stretching begins.
@@ -177,7 +176,6 @@ public extension CIImage {
 	/// - [CINinePartStretched Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartStretched)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartStretched/)
-	///
 	@inlinable func applyingNinePartStretched(
 		breakpoint0: CGPoint = CIFF.NinePartStretched.breakpoint0Default,
 		breakpoint1: CGPoint = CIFF.NinePartStretched.breakpoint1Default,

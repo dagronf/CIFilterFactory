@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
-	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFMaskedVariableBlur) class MaskedVariableBlur: Core {
 		/// Create an instance of the filter with all default values
@@ -138,7 +137,7 @@ import Foundation
 
 @available(macOS 10.10, iOS 8, tvOS 8, *)
 public extension CIImage {
-	/// Masked Variable Blur
+	/// Apply the 'Masked Variable Blur' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - mask: The mask image that determines how much to blur the image. The mask’s green channel value from 0.0 to 1.0 determines if the image is not blurred or blurred by the full radius.
@@ -154,7 +153,6 @@ public extension CIImage {
 	/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
-	///
 	@inlinable func applyingMaskedVariableBlur(
 		mask: CIImage,
 		radius: Double = CIFF.MaskedVariableBlur.radiusDefault,

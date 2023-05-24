@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIFalseColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFalseColor)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFFalseColor) class FalseColor: Core {
 		/// Create an instance of the filter with all default values
@@ -130,7 +129,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// False Color
+	/// Apply the 'False Color' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - color0: The first color to use for the color ramp.
@@ -146,7 +145,6 @@ public extension CIImage {
 	/// - [CIFalseColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFalseColor)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFalseColor/)
-	///
 	@inlinable func applyingFalseColor(
 		color0: CIColor,
 		color1: CIColor,

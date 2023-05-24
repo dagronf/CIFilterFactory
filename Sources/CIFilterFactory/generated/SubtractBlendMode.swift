@@ -46,7 +46,6 @@ import Foundation
 	/// - [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
-	///
 	@available(macOS 10.10, iOS 8, tvOS 8, *)
 	@objc(CIFFSubtractBlendMode) class SubtractBlendMode: Core {
 		/// Create an instance of the filter with all default values
@@ -111,7 +110,7 @@ import Foundation
 
 @available(macOS 10.10, iOS 8, tvOS 8, *)
 public extension CIImage {
-	/// Subtract Blend Mode
+	/// Apply the 'Subtract Blend Mode' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -126,7 +125,6 @@ public extension CIImage {
 	/// - [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
-	///
 	@inlinable func applyingSubtractBlendMode(
 		backgroundImage: CIImage,
 		isActive: Bool = true

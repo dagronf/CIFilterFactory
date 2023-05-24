@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIColorDodgeBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorDodgeBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorDodgeBlendMode/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFColorDodgeBlendMode) class ColorDodgeBlendMode: Core {
 		/// Create an instance of the filter with all default values
@@ -111,7 +110,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Color Dodge Blend Mode
+	/// Apply the 'Color Dodge Blend Mode' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -126,7 +125,6 @@ public extension CIImage {
 	/// - [CIColorDodgeBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorDodgeBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorDodgeBlendMode/)
-	///
 	@inlinable func applyingColorDodgeBlendMode(
 		backgroundImage: CIImage,
 		isActive: Bool = true

@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
-	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
 	@objc(CIFFStretchCrop) class StretchCrop: Core {
 		/// Create an instance of the filter with all default values
@@ -170,7 +169,7 @@ import Foundation
 
 @available(macOS 10.6, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Stretch Crop
+	/// Apply the 'Stretch Crop' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - size: The size in pixels of the output image.
@@ -187,7 +186,6 @@ public extension CIImage {
 	/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStretchCrop/)
-	///
 	@inlinable func applyingStretchCrop(
 		size: CGPoint = CIFF.StretchCrop.sizeDefault,
 		cropAmount: Double = CIFF.StretchCrop.cropAmountDefault,

@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
-	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
 	@objc(CIFFHighlightShadowAdjust) class HighlightShadowAdjust: Core {
 		/// Create an instance of the filter with all default values
@@ -174,7 +173,7 @@ import Foundation
 
 @available(macOS 10.7, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Highlight and Shadow Adjust
+	/// Apply the 'Highlight and Shadow Adjust' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: Shadow Highlight Radius. (0.0...)
@@ -191,7 +190,6 @@ public extension CIImage {
 	/// - [CIHighlightShadowAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHighlightShadowAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHighlightShadowAdjust/)
-	///
 	@inlinable func applyingHighlightShadowAdjust(
 		radius: Double = CIFF.HighlightShadowAdjust.radiusDefault,
 		shadowAmount: Double = CIFF.HighlightShadowAdjust.shadowAmountDefault,

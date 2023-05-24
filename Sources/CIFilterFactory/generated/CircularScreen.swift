@@ -44,7 +44,6 @@ import Foundation
 	/// - [CICircularScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircularScreen)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFCircularScreen) class CircularScreen: Core {
 		/// Create an instance of the filter with all default values
@@ -168,7 +167,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Circular Screen
+	/// Apply the 'Circular Screen' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -185,7 +184,6 @@ public extension CIImage {
 	/// - [CICircularScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircularScreen)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICircularScreen/)
-	///
 	@inlinable func applyingCircularScreen(
 		center: CGPoint = CIFF.CircularScreen.centerDefault,
 		width: Double = CIFF.CircularScreen.widthDefault,

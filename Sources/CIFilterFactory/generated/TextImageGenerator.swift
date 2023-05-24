@@ -44,7 +44,6 @@ import Foundation
 	/// - [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFTextImageGenerator) class TextImageGenerator: Core {
 		/// Create an instance of the filter with all default values
@@ -183,5 +182,42 @@ import Foundation
 			self.scaleFactor = scaleFactor
 			self.padding = padding
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Text Image Generator' filter
+	///
+	/// - Parameters:
+	///   - text: The text to render.
+	///   - fontName: The name of the font to use for the generated text.
+	///   - fontSize: The size of the font to use for the generated text. (0.0...)
+	///   - scaleFactor: The scale of the font to use for the generated text. (0.0...)
+	///   - padding: The number of additional pixels to pad around the text’s bounding box. (0...200)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate an image from a string and font information.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
+	@inlinable static func createUsingTextImageGenerator(
+		text: String,
+		fontName: String,
+		fontSize: Double = CIFF.TextImageGenerator.fontSizeDefault,
+		scaleFactor: Double = CIFF.TextImageGenerator.scaleFactorDefault,
+		padding: Int = CIFF.TextImageGenerator.paddingDefault
+	) -> CIImage? {
+		return CIFF.TextImageGenerator(
+			text: text,
+			fontName: fontName,
+			fontSize: fontSize,
+			scaleFactor: scaleFactor,
+			padding: padding
+		)?.outputImage
 	}
 }

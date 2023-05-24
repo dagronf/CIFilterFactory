@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIStraightenFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStraightenFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStraightenFilter/)
-	///
 	@available(macOS 10.7, iOS 5, tvOS 5, *)
 	@objc(CIFFStraightenFilter) class StraightenFilter: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.7, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Straighten
+	/// Apply the 'Straighten' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - angle: The angle in radians of the effect.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIStraightenFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStraightenFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIStraightenFilter/)
-	///
 	@inlinable func applyingStraightenFilter(
 		angle: Double = CIFF.StraightenFilter.angleDefault,
 		isActive: Bool = true

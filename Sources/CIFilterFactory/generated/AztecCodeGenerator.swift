@@ -43,7 +43,6 @@ import Foundation
 	/// - [CIAztecCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAztecCodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
-	///
 	/// **Additional output keys**
 	/// - outputCGImage
 	///
@@ -177,5 +176,39 @@ import Foundation
 			self.layers = layers
 			self.compactStyle = compactStyle
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Aztec Code Generator' filter
+	///
+	/// - Parameters:
+	///   - message: The message to encode in the Aztec Barcode
+	///   - correctionLevel: Aztec error correction value between 5 and 95 (5...95)
+	///   - layers: Aztec layers value between 1 and 32. Set to nil for automatic. (1...32)
+	///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate an Aztec barcode image for message data.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage
+	///
+	/// **Documentation Links**
+	/// - [CIAztecCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAztecCodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAztecCodeGenerator/)
+	@inlinable static func createUsingAztecCodeGenerator(
+		message: Data,
+		correctionLevel: Int = CIFF.AztecCodeGenerator.correctionLevelDefault,
+		layers: Int,
+		compactStyle: Bool = CIFF.AztecCodeGenerator.compactStyleDefault
+	) -> CIImage? {
+		return CIFF.AztecCodeGenerator(
+			message: message,
+			correctionLevel: correctionLevel,
+			layers: layers,
+			compactStyle: compactStyle
+		)?.outputImage
 	}
 }

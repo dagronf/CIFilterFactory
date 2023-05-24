@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
-	///
 	/// **Additional output keys**
 	/// - outputData
 	/// - outputImageMPS
@@ -206,7 +205,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 8, tvOS 8, *)
 public extension CIImage {
-	/// Area Histogram
+	/// Apply the 'Area Histogram' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that, after intersection with the image extent, specifies the subregion of the image that you want to process.
@@ -223,7 +222,6 @@ public extension CIImage {
 	/// - [CIAreaHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaHistogram)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaHistogram/)
-	///
 	@inlinable func applyingAreaHistogram(
 		extent: CGRect = CIFF.AreaHistogram.extentDefault,
 		scale: Double = CIFF.AreaHistogram.scaleDefault,

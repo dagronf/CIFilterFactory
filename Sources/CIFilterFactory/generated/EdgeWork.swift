@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFEdgeWork) class EdgeWork: Core {
 		/// Create an instance of the filter with all default values
@@ -115,7 +114,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Edge Work
+	/// Apply the 'Edge Work' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The thickness of the edges. The larger the value, the thicker the edges. (0.0...)
@@ -130,7 +129,6 @@ public extension CIImage {
 	/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgeWork/)
-	///
 	@inlinable func applyingEdgeWork(
 		radius: Double = CIFF.EdgeWork.radiusDefault,
 		isActive: Bool = true

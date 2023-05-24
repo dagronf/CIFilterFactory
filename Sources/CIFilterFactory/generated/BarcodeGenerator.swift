@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
-	///
 	/// **Additional output keys**
 	/// - outputCGImageForQRCodeDescriptor
 	/// - outputCGImageForAztecCodeDescriptor
@@ -101,5 +100,30 @@ import Foundation
 			self.init()
 			self.barcodeDescriptor = barcodeDescriptor
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Barcode Generator' filter
+	///
+	/// - Parameters:
+	///   - barcodeDescriptor: The CIBarcodeDescription object to generate an image for.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate a barcode image from a CIBarcodeDescriptor.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIBarcodeGenerator/)
+	@inlinable static func createUsingBarcodeGenerator(
+		barcodeDescriptor: CIBarcodeDescriptor
+	) -> CIImage? {
+		return CIFF.BarcodeGenerator(
+			barcodeDescriptor: barcodeDescriptor
+		)?.outputImage
 	}
 }

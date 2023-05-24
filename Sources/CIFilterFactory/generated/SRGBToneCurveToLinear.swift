@@ -47,7 +47,6 @@ import Foundation
 	/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
-	///
 	@available(macOS 10.10, iOS 7, tvOS 7, *)
 	@objc(CIFFSRGBToneCurveToLinear) class SRGBToneCurveToLinear: Core {
 		/// Create an instance of the filter with all default values
@@ -90,7 +89,9 @@ import Foundation
 
 @available(macOS 10.10, iOS 7, tvOS 7, *)
 public extension CIImage {
-	/// sRGB Tone Curve to Linear
+	/// Apply the 'sRGB Tone Curve to Linear' filter to this image and return a new filtered image
+	///
+	/// - Parameters:
 	///   - isActive: If true applies the filter and returns a new image, else returns this image
 	/// - Returns: The filtered image, or this image if the filter is not active
 	///
@@ -102,7 +103,6 @@ public extension CIImage {
 	/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
-	///
 	@inlinable func applyingSRGBToneCurveToLinear(
 		isActive: Bool = true
 	) -> CIImage {

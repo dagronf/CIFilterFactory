@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
-	///
 	/// **Additional output keys**
 	/// - outputTransform
 	///
@@ -187,7 +186,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Perspective Rotate
+	/// Apply the 'Perspective Rotate' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - focalLength: 35mm equivalent focal length of the input image.
@@ -205,7 +204,6 @@ public extension CIImage {
 	/// - [CIPerspectiveRotate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveRotate)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIPerspectiveRotate/)
-	///
 	@inlinable func applyingPerspectiveRotate(
 		focalLength: Double = CIFF.PerspectiveRotate.focalLengthDefault,
 		pitch: Double = CIFF.PerspectiveRotate.pitchDefault,

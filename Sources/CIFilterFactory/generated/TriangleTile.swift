@@ -45,7 +45,6 @@ import Foundation
 	/// - [CITriangleTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleTile/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFTriangleTile) class TriangleTile: Core {
 		/// Create an instance of the filter with all default values
@@ -164,7 +163,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Triangle Tile
+	/// Apply the 'Triangle Tile' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -181,7 +180,6 @@ public extension CIImage {
 	/// - [CITriangleTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITriangleTile/)
-	///
 	@inlinable func applyingTriangleTile(
 		center: CGPoint = CIFF.TriangleTile.centerDefault,
 		angle: Double = CIFF.TriangleTile.angleDefault,

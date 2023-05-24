@@ -45,7 +45,6 @@ import Foundation
 	/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
-	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFNinePartTiled) class NinePartTiled: Core {
 		/// Create an instance of the filter with all default values
@@ -184,7 +183,7 @@ import Foundation
 
 @available(macOS 10.12, iOS 10, tvOS 10, *)
 public extension CIImage {
-	/// Nine Part Tiled
+	/// Apply the 'Nine Part Tiled' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - breakpoint0: Lower left corner of image to retain before tiling begins.
@@ -202,7 +201,6 @@ public extension CIImage {
 	/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CINinePartTiled/)
-	///
 	@inlinable func applyingNinePartTiled(
 		breakpoint0: CGPoint = CIFF.NinePartTiled.breakpoint0Default,
 		breakpoint1: CGPoint = CIFF.NinePartTiled.breakpoint1Default,

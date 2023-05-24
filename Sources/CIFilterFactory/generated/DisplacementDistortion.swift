@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIDisplacementDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisplacementDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFDisplacementDistortion) class DisplacementDistortion: Core {
 		/// Create an instance of the filter with all default values
@@ -138,7 +137,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Displacement Distortion
+	/// Apply the 'Displacement Distortion' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - displacementImage: An image whose grayscale values will be applied to the source image.
@@ -154,7 +153,6 @@ public extension CIImage {
 	/// - [CIDisplacementDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisplacementDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDisplacementDistortion/)
-	///
 	@inlinable func applyingDisplacementDistortion(
 		displacementImage: CIImage,
 		scale: Double = CIFF.DisplacementDistortion.scaleDefault,

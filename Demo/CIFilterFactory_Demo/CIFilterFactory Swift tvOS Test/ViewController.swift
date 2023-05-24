@@ -30,14 +30,14 @@ class ViewController: UIViewController {
 		let sepiaFilter = CIFF.SepiaTone(intensity: 0.9)!
 		let crystalize = CIFF.Crystallize(radius: 20, center: CGPoint(x: 150, y: 200))!
 		let output = image.applying([sepiaFilter, crystalize])
+		let outputImage = UIImage(ciImage: output)
 
-//		// Use the functional interface
+		// Use the functional interface
 //		let output = image
 //			.applyingSepiaTone(intensity: 0.9)
 //			.applyingCrystallize(radius: 20, center: CGPoint(x: 150, y: 200))
+//		let outputImage = UIImage(ciImage: output)
 
-		let outputImage = UIImage(ciImage: output)
-		
 		self.imageView.image = outputImage
 
 		/// Just a simple check

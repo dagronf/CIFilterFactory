@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAffineTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineTile/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFAffineTile) class AffineTile: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Affine Tile
+	/// Apply the 'Affine Tile' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - transform: The transform to apply to the image.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIAffineTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineTile/)
-	///
 	@inlinable func applyingAffineTile(
 		transform: CIFF.CIAffineTransform = CIFF.AffineTile.transformDefault,
 		isActive: Bool = true

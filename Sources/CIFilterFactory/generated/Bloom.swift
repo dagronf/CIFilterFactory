@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIBloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBloom)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBloom/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFBloom) class Bloom: Core {
 		/// Create an instance of the filter with all default values
@@ -144,7 +143,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Bloom
+	/// Apply the 'Bloom' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius determines how many pixels are used to create the effect. The larger the radius, the greater the effect. (0.0...)
@@ -160,7 +159,6 @@ public extension CIImage {
 	/// - [CIBloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBloom)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBloom/)
-	///
 	@inlinable func applyingBloom(
 		radius: Double = CIFF.Bloom.radiusDefault,
 		intensity: Double = CIFF.Bloom.intensityDefault,

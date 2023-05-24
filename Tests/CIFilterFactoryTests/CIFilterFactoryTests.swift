@@ -133,7 +133,7 @@ final class CIFilterFactoryTests: XCTestCase {
 		let output = input
 			.applyingBoxBlur()
 			.applyingSepiaTone()
-			.applyingLineScreen()
+			.applyingLineScreen(angle: 0.78)
 
 		let outputImage = try XCTUnwrap(output.asCGImage())
 		Swift.print(outputImage)

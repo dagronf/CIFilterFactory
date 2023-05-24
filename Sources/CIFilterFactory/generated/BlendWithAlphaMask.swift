@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIBlendWithAlphaMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithAlphaMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithAlphaMask/)
-	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFBlendWithAlphaMask) class BlendWithAlphaMask: Core {
 		/// Create an instance of the filter with all default values
@@ -132,7 +131,7 @@ import Foundation
 
 @available(macOS 10.9, iOS 7, tvOS 7, *)
 public extension CIImage {
-	/// Blend With Alpha Mask
+	/// Apply the 'Blend With Alpha Mask' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -148,7 +147,6 @@ public extension CIImage {
 	/// - [CIBlendWithAlphaMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithAlphaMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIBlendWithAlphaMask/)
-	///
 	@inlinable func applyingBlendWithAlphaMask(
 		backgroundImage: CIImage,
 		maskImage: CIImage,

@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
-	///
 	/// **Additional output keys**
 	/// - outputTransform
 	/// - outputRotationFilter
@@ -208,7 +207,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Combined Keystone Correction
+	/// Apply the 'Combined Keystone Correction' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - focalLength: 35mm equivalent focal length of the input image.
@@ -227,7 +226,6 @@ public extension CIImage {
 	/// - [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
-	///
 	@inlinable func applyingKeystoneCorrectionCombined(
 		focalLength: Double = CIFF.KeystoneCorrectionCombined.focalLengthDefault,
 		topLeft: CGPoint,

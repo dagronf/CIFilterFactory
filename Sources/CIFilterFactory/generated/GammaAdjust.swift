@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGammaAdjust/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFGammaAdjust) class GammaAdjust: Core {
 		/// Create an instance of the filter with all default values
@@ -114,7 +113,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Gamma Adjust
+	/// Apply the 'Gamma Adjust' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - power: A gamma value to use to correct image brightness. The larger the value, the darker the result.
@@ -129,7 +128,6 @@ public extension CIImage {
 	/// - [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGammaAdjust/)
-	///
 	@inlinable func applyingGammaAdjust(
 		power: Double = CIFF.GammaAdjust.powerDefault,
 		isActive: Bool = true

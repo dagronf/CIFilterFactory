@@ -45,7 +45,6 @@ import Foundation
 	/// - [CISmoothLinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISmoothLinearGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISmoothLinearGradient/)
-	///
 	@available(macOS 10.10, iOS 6, tvOS 6, *)
 	@objc(CIFFSmoothLinearGradient) class SmoothLinearGradient: Core {
 		/// Create an instance of the filter with all default values
@@ -149,5 +148,39 @@ import Foundation
 			self.color0 = color0
 			self.color1 = color1
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 6, tvOS 6, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Smooth Linear Gradient' filter
+	///
+	/// - Parameters:
+	///   - point0: The starting position of the gradient -- where the first color begins.
+	///   - point1: The ending position of the gradient -- where the second color begins.
+	///   - color0: The first color to use in the gradient.
+	///   - color1: The second color to use in the gradient.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a gradient that varies along a linear axis between two defined endpoints.
+	///
+	/// **Categories**: BuiltIn, Gradient, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CISmoothLinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISmoothLinearGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CISmoothLinearGradient/)
+	@inlinable static func createUsingSmoothLinearGradient(
+		point0: CGPoint = CIFF.SmoothLinearGradient.point0Default,
+		point1: CGPoint = CIFF.SmoothLinearGradient.point1Default,
+		color0: CIColor,
+		color1: CIColor
+	) -> CIImage? {
+		return CIFF.SmoothLinearGradient(
+			point0: point0,
+			point1: point1,
+			color0: color0,
+			color1: color1
+		)?.outputImage
 	}
 }

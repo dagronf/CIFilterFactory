@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFOpTile) class OpTile: Core {
 		/// Create an instance of the filter with all default values
@@ -192,7 +191,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Op Tile
+	/// Apply the 'Op Tile' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -210,7 +209,6 @@ public extension CIImage {
 	/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
-	///
 	@inlinable func applyingOpTile(
 		center: CGPoint = CIFF.OpTile.centerDefault,
 		scale: Double = CIFF.OpTile.scaleDefault,

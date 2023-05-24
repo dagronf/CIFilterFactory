@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIFlashTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFlashTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFlashTransition/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFFlashTransition) class FlashTransition: Core {
 		/// Create an instance of the filter with all default values
@@ -320,7 +319,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Flash
+	/// Apply the 'Flash' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - targetImage: The target image for a transition.
@@ -343,7 +342,6 @@ public extension CIImage {
 	/// - [CIFlashTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFlashTransition)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFlashTransition/)
-	///
 	@inlinable func applyingFlashTransition(
 		targetImage: CIImage,
 		center: CGPoint = CIFF.FlashTransition.centerDefault,

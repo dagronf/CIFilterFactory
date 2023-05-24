@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIShadedMaterial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIShadedMaterial)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFShadedMaterial) class ShadedMaterial: Core {
 		/// Create an instance of the filter with all default values
@@ -138,7 +137,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Shaded Material
+	/// Apply the 'Shaded Material' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - shadingImage: The image to use as the height field. The resulting image has greater heights with lighter shades, and lesser heights (lower areas) with darker shades.
@@ -154,7 +153,6 @@ public extension CIImage {
 	/// - [CIShadedMaterial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIShadedMaterial)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIShadedMaterial/)
-	///
 	@inlinable func applyingShadedMaterial(
 		shadingImage: CIImage,
 		scale: Double = CIFF.ShadedMaterial.scaleDefault,

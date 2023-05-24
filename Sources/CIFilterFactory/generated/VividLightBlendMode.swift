@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
-	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
 	@objc(CIFFVividLightBlendMode) class VividLightBlendMode: Core {
 		/// Create an instance of the filter with all default values
@@ -111,7 +110,7 @@ import Foundation
 
 @available(macOS 12.0, iOS 15, tvOS 15, *)
 public extension CIImage {
-	/// Vivid Light Blend Mode
+	/// Apply the 'Vivid Light Blend Mode' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - backgroundImage: The image to use as a background image.
@@ -126,7 +125,6 @@ public extension CIImage {
 	/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIVividLightBlendMode/)
-	///
 	@inlinable func applyingVividLightBlendMode(
 		backgroundImage: CIImage,
 		isActive: Bool = true

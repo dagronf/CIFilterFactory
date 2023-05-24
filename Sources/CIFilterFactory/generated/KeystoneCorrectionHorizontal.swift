@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIKeystoneCorrectionHorizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionHorizontal)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionHorizontal/)
-	///
 	/// **Additional output keys**
 	/// - outputTransform
 	/// - outputRotationFilter
@@ -208,7 +207,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Horizontal Keystone Correction
+	/// Apply the 'Horizontal Keystone Correction' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - focalLength: 35mm equivalent focal length of the input image.
@@ -227,7 +226,6 @@ public extension CIImage {
 	/// - [CIKeystoneCorrectionHorizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionHorizontal)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionHorizontal/)
-	///
 	@inlinable func applyingKeystoneCorrectionHorizontal(
 		focalLength: Double = CIFF.KeystoneCorrectionHorizontal.focalLengthDefault,
 		topLeft: CGPoint,

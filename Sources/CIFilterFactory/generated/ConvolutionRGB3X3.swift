@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)
-	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
 	@objc(CIFFConvolutionRGB3X3) class ConvolutionRGB3X3: Core {
 		/// Create an instance of the filter with all default values
@@ -135,7 +134,7 @@ import Foundation
 
 @available(macOS 12.0, iOS 15, tvOS 15, *)
 public extension CIImage {
-	/// 3 by 3 RGB Convolution
+	/// Apply the '3 by 3 RGB Convolution' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - weights: A vector containing the 9 weights of the convolution kernel.
@@ -151,7 +150,6 @@ public extension CIImage {
 	/// - [CIConvolutionRGB3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB3X3)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB3X3/)
-	///
 	@inlinable func applyingConvolutionRGB3X3(
 		weights: CIVector = CIFF.ConvolutionRGB3X3.weightsDefault,
 		bias: Double = CIFF.ConvolutionRGB3X3.biasDefault,

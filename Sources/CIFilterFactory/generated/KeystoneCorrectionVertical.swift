@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
-	///
 	/// **Additional output keys**
 	/// - outputTransform
 	/// - outputRotationFilter
@@ -208,7 +207,7 @@ import Foundation
 
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension CIImage {
-	/// Vertical Keystone Correction
+	/// Apply the 'Vertical Keystone Correction' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - focalLength: 35mm equivalent focal length of the input image.
@@ -227,7 +226,6 @@ public extension CIImage {
 	/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
-	///
 	@inlinable func applyingKeystoneCorrectionVertical(
 		focalLength: Double = CIFF.KeystoneCorrectionVertical.focalLengthDefault,
 		topLeft: CGPoint,

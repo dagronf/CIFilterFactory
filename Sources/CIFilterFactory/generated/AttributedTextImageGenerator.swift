@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFAttributedTextImageGenerator) class AttributedTextImageGenerator: Core {
 		/// Create an instance of the filter with all default values
@@ -136,5 +135,36 @@ import Foundation
 			self.scaleFactor = scaleFactor
 			self.padding = padding
 		}
+	}
+}
+
+@available(macOS 10.13, iOS 11, tvOS 11, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Attributed Text Image Generator' filter
+	///
+	/// - Parameters:
+	///   - text: The attributed text to render.
+	///   - scaleFactor: The scale of the font to use for the generated text. (0.0...)
+	///   - padding: A value for an additional number of pixels to pad around the text’s bounding box. (0...200)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate an image attributed string.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIAttributedTextImageGenerator/)
+	@inlinable static func createUsingAttributedTextImageGenerator(
+		text: NSAttributedString,
+		scaleFactor: Double = CIFF.AttributedTextImageGenerator.scaleFactorDefault,
+		padding: Int = CIFF.AttributedTextImageGenerator.paddingDefault
+	) -> CIImage? {
+		return CIFF.AttributedTextImageGenerator(
+			text: text,
+			scaleFactor: scaleFactor,
+			padding: padding
+		)?.outputImage
 	}
 }

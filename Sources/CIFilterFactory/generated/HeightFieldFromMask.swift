@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIHeightFieldFromMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHeightFieldFromMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHeightFieldFromMask/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFHeightFieldFromMask) class HeightFieldFromMask: Core {
 		/// Create an instance of the filter with all default values
@@ -115,7 +114,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Height Field From Mask
+	/// Apply the 'Height Field From Mask' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The distance from the edge of the mask for the smooth transition is proportional to the input radius. Larger values make the transition smoother and more pronounced. Smaller values make the transition approximate a fillet radius. (0.0...)
@@ -130,7 +129,6 @@ public extension CIImage {
 	/// - [CIHeightFieldFromMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHeightFieldFromMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHeightFieldFromMask/)
-	///
 	@inlinable func applyingHeightFieldFromMask(
 		radius: Double = CIFF.HeightFieldFromMask.radiusDefault,
 		isActive: Bool = true

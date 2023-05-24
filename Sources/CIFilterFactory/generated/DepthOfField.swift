@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIDepthOfField Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthOfField)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
-	///
 	@available(macOS 10.6, iOS 9, tvOS 9, *)
 	@objc(CIFFDepthOfField) class DepthOfField: Core {
 		/// Create an instance of the filter with all default values
@@ -247,7 +246,7 @@ import Foundation
 
 @available(macOS 10.6, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Depth of Field
+	/// Apply the 'Depth of Field' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - point0: No Description
@@ -267,7 +266,6 @@ public extension CIImage {
 	/// - [CIDepthOfField Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthOfField)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthOfField/)
-	///
 	@inlinable func applyingDepthOfField(
 		point0: CGPoint = CIFF.DepthOfField.point0Default,
 		point1: CGPoint = CIFF.DepthOfField.point1Default,

@@ -44,7 +44,6 @@ import Foundation
 	/// - [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
-	///
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
 	@objc(CIFFLineOverlay) class LineOverlay: Core {
 		/// Create an instance of the filter with all default values
@@ -227,7 +226,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Line Overlay
+	/// Apply the 'Line Overlay' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - nRNoiseLevel: The noise level of the image (used with camera data) that gets removed before tracing the edges of the image. Increasing the noise level helps to clean up the traced edges of the image. (0.0...)
@@ -246,7 +245,6 @@ public extension CIImage {
 	/// - [CILineOverlay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineOverlay)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CILineOverlay/)
-	///
 	@inlinable func applyingLineOverlay(
 		nRNoiseLevel: Double = CIFF.LineOverlay.nRNoiseLevelDefault,
 		nRSharpness: Double = CIFF.LineOverlay.nRSharpnessDefault,

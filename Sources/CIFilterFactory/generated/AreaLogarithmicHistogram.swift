@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaLogarithmicHistogram/)
-	///
 	/// **Additional output keys**
 	/// - outputData
 	/// - outputImageMPS
@@ -255,7 +254,7 @@ import Foundation
 
 @available(macOS 13.0, iOS 16, tvOS 16, *)
 public extension CIImage {
-	/// Area Logarithmic Histogram
+	/// Apply the 'Area Logarithmic Histogram' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that defines the extent of the effect.
@@ -274,7 +273,6 @@ public extension CIImage {
 	/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaLogarithmicHistogram/)
-	///
 	@inlinable func applyingAreaLogarithmicHistogram(
 		extent: CGRect = CIFF.AreaLogarithmicHistogram.extentDefault,
 		scale: Double = CIFF.AreaLogarithmicHistogram.scaleDefault,

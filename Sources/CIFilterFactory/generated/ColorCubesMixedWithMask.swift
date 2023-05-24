@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIColorCubesMixedWithMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubesMixedWithMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubesMixedWithMask/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, *)
 	@objc(CIFFColorCubesMixedWithMask) class ColorCubesMixedWithMask: Core {
 		/// Create an instance of the filter with all default values
@@ -222,7 +221,7 @@ import Foundation
 
 @available(macOS 10.13, iOS 11, tvOS 11, *)
 public extension CIImage {
-	/// Color Cubes Mixed With Mask
+	/// Apply the 'Color Cubes Mixed With Mask' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - maskImage: A masking image.
@@ -242,7 +241,6 @@ public extension CIImage {
 	/// - [CIColorCubesMixedWithMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubesMixedWithMask)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubesMixedWithMask/)
-	///
 	@inlinable func applyingColorCubesMixedWithMask(
 		maskImage: CIImage,
 		cubeDimension: UInt = CIFF.ColorCubesMixedWithMask.cubeDimensionDefault,

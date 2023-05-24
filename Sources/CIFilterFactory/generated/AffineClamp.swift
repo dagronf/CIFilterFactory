@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAffineClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineClamp)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineClamp/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFAffineClamp) class AffineClamp: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Affine Clamp
+	/// Apply the 'Affine Clamp' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - transform: The transform to apply to the image.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CIAffineClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAffineClamp)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAffineClamp/)
-	///
 	@inlinable func applyingAffineClamp(
 		transform: CIFF.CIAffineTransform = CIFF.AffineClamp.transformDefault,
 		isActive: Bool = true

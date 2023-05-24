@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
-	///
 	@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 	@objc(CIFFMotionBlur) class MotionBlur: Core {
 		/// Create an instance of the filter with all default values
@@ -140,7 +139,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 public extension CIImage {
-	/// Motion Blur
+	/// Apply the 'Motion Blur' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...)
@@ -156,7 +155,6 @@ public extension CIImage {
 	/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIMotionBlur/)
-	///
 	@inlinable func applyingMotionBlur(
 		radius: Double = CIFF.MotionBlur.radiusDefault,
 		angle: Double = CIFF.MotionBlur.angleDefault,

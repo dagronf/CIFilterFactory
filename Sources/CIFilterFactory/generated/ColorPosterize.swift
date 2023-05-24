@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIColorPosterize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPosterize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFColorPosterize) class ColorPosterize: Core {
 		/// Create an instance of the filter with all default values
@@ -118,7 +117,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Color Posterize
+	/// Apply the 'Color Posterize' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - levels: The number of brightness levels to use for each color component. Lower values result in a more extreme poster effect. (1.0...)
@@ -133,7 +132,6 @@ public extension CIImage {
 	/// - [CIColorPosterize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPosterize)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPosterize/)
-	///
 	@inlinable func applyingColorPosterize(
 		levels: Double = CIFF.ColorPosterize.levelsDefault,
 		isActive: Bool = true

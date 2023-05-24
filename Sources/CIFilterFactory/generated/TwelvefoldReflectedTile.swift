@@ -45,7 +45,6 @@ import Foundation
 	/// - [CITwelvefoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwelvefoldReflectedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwelvefoldReflectedTile/)
-	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
 	@objc(CIFFTwelvefoldReflectedTile) class TwelvefoldReflectedTile: Core {
 		/// Create an instance of the filter with all default values
@@ -164,7 +163,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Twelvefold Reflected Tile
+	/// Apply the 'Twelvefold Reflected Tile' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -181,7 +180,6 @@ public extension CIImage {
 	/// - [CITwelvefoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwelvefoldReflectedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwelvefoldReflectedTile/)
-	///
 	@inlinable func applyingTwelvefoldReflectedTile(
 		center: CGPoint = CIFF.TwelvefoldReflectedTile.centerDefault,
 		angle: Double = CIFF.TwelvefoldReflectedTile.angleDefault,

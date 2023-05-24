@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
-	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFColorCubeWithColorSpace) class ColorCubeWithColorSpace: Core {
 		/// Create an instance of the filter with all default values
@@ -176,7 +175,7 @@ import Foundation
 
 @available(macOS 10.9, iOS 7, tvOS 7, *)
 public extension CIImage {
-	/// Color Cube with ColorSpace
+	/// Apply the 'Color Cube with ColorSpace' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - cubeDimension: The dimension of the color cube. (2...128)
@@ -194,7 +193,6 @@ public extension CIImage {
 	/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorCubeWithColorSpace/)
-	///
 	@inlinable func applyingColorCubeWithColorSpace(
 		cubeDimension: UInt = CIFF.ColorCubeWithColorSpace.cubeDimensionDefault,
 		cubeData: Data,

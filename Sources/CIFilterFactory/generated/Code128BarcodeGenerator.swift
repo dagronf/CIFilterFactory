@@ -43,7 +43,6 @@ import Foundation
 	/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
-	///
 	/// **Additional output keys**
 	/// - outputCGImage
 	///
@@ -154,5 +153,36 @@ import Foundation
 			self.quietSpace = quietSpace
 			self.barcodeHeight = barcodeHeight
 		}
+	}
+}
+
+@available(macOS 10.10, iOS 8, tvOS 8, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Code 128 Barcode Generator' filter
+	///
+	/// - Parameters:
+	///   - message: The message to encode in the Code 128 Barcode
+	///   - quietSpace: The number of empty white pixels that should surround the barcode. (0...100)
+	///   - barcodeHeight: The height of the generated barcode in pixels. (1...500)
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generate a Code 128 barcode image for message data.
+	///
+	/// **Categories**: BuiltIn, Generator, StillImage
+	///
+	/// **Documentation Links**
+	/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
+	@inlinable static func createUsingCode128BarcodeGenerator(
+		message: Data,
+		quietSpace: Int = CIFF.Code128BarcodeGenerator.quietSpaceDefault,
+		barcodeHeight: Int = CIFF.Code128BarcodeGenerator.barcodeHeightDefault
+	) -> CIImage? {
+		return CIFF.Code128BarcodeGenerator(
+			message: message,
+			quietSpace: quietSpace,
+			barcodeHeight: barcodeHeight
+		)?.outputImage
 	}
 }

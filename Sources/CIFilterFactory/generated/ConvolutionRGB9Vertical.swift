@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
-	///
 	@available(macOS 12.0, iOS 15, tvOS 15, *)
 	@objc(CIFFConvolutionRGB9Vertical) class ConvolutionRGB9Vertical: Core {
 		/// Create an instance of the filter with all default values
@@ -135,7 +134,7 @@ import Foundation
 
 @available(macOS 12.0, iOS 15, tvOS 15, *)
 public extension CIImage {
-	/// Vertical 9 RGB Convolution
+	/// Apply the 'Vertical 9 RGB Convolution' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - weights: A vector containing the 9 weights of the convolution kernel.
@@ -151,7 +150,6 @@ public extension CIImage {
 	/// - [CIConvolutionRGB9Vertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Vertical)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Vertical/)
-	///
 	@inlinable func applyingConvolutionRGB9Vertical(
 		weights: CIVector = CIFF.ConvolutionRGB9Vertical.weightsDefault,
 		bias: Double = CIFF.ConvolutionRGB9Vertical.biasDefault,

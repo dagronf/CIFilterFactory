@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIRadialGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRadialGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIRadialGradient/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFRadialGradient) class RadialGradient: Core {
 		/// Create an instance of the filter with all default values
@@ -181,5 +180,42 @@ import Foundation
 			self.color0 = color0
 			self.color1 = color1
 		}
+	}
+}
+
+@available(macOS 10.4, iOS 5, tvOS 5, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Radial Gradient' filter
+	///
+	/// - Parameters:
+	///   - center: The center of the effect as x and y pixel coordinates.
+	///   - radius0: The radius of the starting circle to use in the gradient. (0.0...)
+	///   - radius1: The radius of the ending circle to use in the gradient. (0.0...)
+	///   - color0: The first color to use in the gradient.
+	///   - color1: The second color to use in the gradient.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a gradient that varies radially between two circles having the same center. It is valid for one of the two circles to have a radius of 0.
+	///
+	/// **Categories**: BuiltIn, Gradient, HighDynamicRange, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIRadialGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRadialGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIRadialGradient/)
+	@inlinable static func createUsingRadialGradient(
+		center: CGPoint = CIFF.RadialGradient.centerDefault,
+		radius0: Double = CIFF.RadialGradient.radius0Default,
+		radius1: Double = CIFF.RadialGradient.radius1Default,
+		color0: CIColor,
+		color1: CIColor
+	) -> CIImage? {
+		return CIFF.RadialGradient(
+			center: center,
+			radius0: radius0,
+			radius1: radius1,
+			color0: color0,
+			color1: color1
+		)?.outputImage
 	}
 }

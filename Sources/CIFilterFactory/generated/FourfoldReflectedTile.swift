@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIFourfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldReflectedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldReflectedTile/)
-	///
 	@available(macOS 10.5, iOS 6, tvOS 6, *)
 	@objc(CIFFFourfoldReflectedTile) class FourfoldReflectedTile: Core {
 		/// Create an instance of the filter with all default values
@@ -188,7 +187,7 @@ import Foundation
 
 @available(macOS 10.5, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Fourfold Reflected Tile
+	/// Apply the 'Fourfold Reflected Tile' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -206,7 +205,6 @@ public extension CIImage {
 	/// - [CIFourfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldReflectedTile)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldReflectedTile/)
-	///
 	@inlinable func applyingFourfoldReflectedTile(
 		center: CGPoint = CIFF.FourfoldReflectedTile.centerDefault,
 		angle: Double = CIFF.FourfoldReflectedTile.angleDefault,

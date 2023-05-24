@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
-	///
 	@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
 	@objc(CIFFDepthBlurEffect) class DepthBlurEffect: Core {
 		/// Create an instance of the filter with all default values
@@ -456,7 +455,7 @@ import Foundation
 
 @available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
 public extension CIImage {
-	/// Depth Blur Effect
+	/// Apply the 'Depth Blur Effect' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - disparityImage: No Description
@@ -486,7 +485,6 @@ public extension CIImage {
 	/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
-	///
 	@inlinable func applyingDepthBlurEffect(
 		disparityImage: CIImage,
 		matteImage: CIImage,

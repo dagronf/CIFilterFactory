@@ -48,7 +48,6 @@ import Foundation
 	/// - [CISepiaTone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISepiaTone)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISepiaTone/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFSepiaTone) class SepiaTone: Core {
 		/// Create an instance of the filter with all default values
@@ -119,7 +118,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Sepia Tone
+	/// Apply the 'Sepia Tone' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - intensity: The intensity of the sepia effect. A value of 1.0 creates a monochrome sepia image. A value of 0.0 has no effect on the image. (0.0...)
@@ -134,7 +133,6 @@ public extension CIImage {
 	/// - [CISepiaTone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISepiaTone)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISepiaTone/)
-	///
 	@inlinable func applyingSepiaTone(
 		intensity: Double = CIFF.SepiaTone.intensityDefault,
 		isActive: Bool = true

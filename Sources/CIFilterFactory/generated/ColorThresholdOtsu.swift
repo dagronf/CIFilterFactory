@@ -46,7 +46,6 @@ import Foundation
 	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
-	///
 	@available(macOS 11.0, iOS 14, tvOS 14, *)
 	@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: Core {
 		/// Create an instance of the filter with all default values
@@ -89,7 +88,9 @@ import Foundation
 
 @available(macOS 11.0, iOS 14, tvOS 14, *)
 public extension CIImage {
-	/// Color Threshold Otsu
+	/// Apply the 'Color Threshold Otsu' filter to this image and return a new filtered image
+	///
+	/// - Parameters:
 	///   - isActive: If true applies the filter and returns a new image, else returns this image
 	/// - Returns: The filtered image, or this image if the filter is not active
 	///
@@ -101,7 +102,6 @@ public extension CIImage {
 	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
-	///
 	@inlinable func applyingColorThresholdOtsu(
 		isActive: Bool = true
 	) -> CIImage {

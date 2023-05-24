@@ -48,7 +48,6 @@ import Foundation
 	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFExposureAdjust) class ExposureAdjust: Core {
 		/// Create an instance of the filter with all default values
@@ -115,7 +114,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Exposure Adjust
+	/// Apply the 'Exposure Adjust' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - eV: The amount to adjust the exposure of the image by. The larger the value, the brighter the exposure.
@@ -130,7 +129,6 @@ public extension CIImage {
 	/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
-	///
 	@inlinable func applyingExposureAdjust(
 		eV: Double = CIFF.ExposureAdjust.eVDefault,
 		isActive: Bool = true

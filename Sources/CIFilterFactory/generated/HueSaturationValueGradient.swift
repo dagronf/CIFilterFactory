@@ -44,7 +44,6 @@ import Foundation
 	/// - [CIHueSaturationValueGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueSaturationValueGradient)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIHueSaturationValueGradient/)
-	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFHueSaturationValueGradient) class HueSaturationValueGradient: Core {
 		/// Create an instance of the filter with all default values
@@ -191,5 +190,42 @@ import Foundation
 			self.dither = dither
 			self.colorSpace = colorSpace
 		}
+	}
+}
+
+@available(macOS 10.12, iOS 10, tvOS 10, *)
+extension CIImage {
+	/// Create a new CIImage using the 'Hue/Saturation/Value Gradient' filter
+	///
+	/// - Parameters:
+	///   - value: The color value used to generate the color wheel. (0.0...)
+	///   - radius: The distance from the center of the effect. (0.0...)
+	///   - softness: No Description (0.0...)
+	///   - dither: No Description (0.0...)
+	///   - colorSpace: The CGColorSpaceRef that the color wheel should be generated in.
+	/// - Returns: A new image by running the filter, or nil if the image could not be created
+	///
+	/// Generates a color wheel that shows hues and saturations for a specified value.
+	///
+	/// **Categories**: BuiltIn, Gradient, StillImage, Video
+	///
+	/// **Documentation Links**
+	/// - [CIHueSaturationValueGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueSaturationValueGradient)
+	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+	/// - [CIFilter.io documentation](https://cifilter.io/CIHueSaturationValueGradient/)
+	@inlinable static func createUsingHueSaturationValueGradient(
+		value: Double = CIFF.HueSaturationValueGradient.valueDefault,
+		radius: Double = CIFF.HueSaturationValueGradient.radiusDefault,
+		softness: Double = CIFF.HueSaturationValueGradient.softnessDefault,
+		dither: Double = CIFF.HueSaturationValueGradient.ditherDefault,
+		colorSpace: NSObject
+	) -> CIImage? {
+		return CIFF.HueSaturationValueGradient(
+			value: value,
+			radius: radius,
+			softness: softness,
+			dither: dither,
+			colorSpace: colorSpace
+		)?.outputImage
 	}
 }

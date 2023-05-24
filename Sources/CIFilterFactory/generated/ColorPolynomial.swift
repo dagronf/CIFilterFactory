@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIColorPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPolynomial)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
-	///
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
 	@objc(CIFFColorPolynomial) class ColorPolynomial: Core {
 		/// Create an instance of the filter with all default values
@@ -182,7 +181,7 @@ import Foundation
 
 @available(macOS 10.9, iOS 7, tvOS 7, *)
 public extension CIImage {
-	/// Color Polynomial
+	/// Apply the 'Color Polynomial' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - redCoefficients: Polynomial coefficients for red channel.
@@ -200,7 +199,6 @@ public extension CIImage {
 	/// - [CIColorPolynomial Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorPolynomial)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIColorPolynomial/)
-	///
 	@inlinable func applyingColorPolynomial(
 		redCoefficients: CIVector = CIFF.ColorPolynomial.redCoefficientsDefault,
 		greenCoefficients: CIVector = CIFF.ColorPolynomial.greenCoefficientsDefault,

@@ -47,7 +47,6 @@ import Foundation
 	/// - [CIEdgePreserveUpsampleFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgePreserveUpsampleFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
-	///
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
 	@objc(CIFFEdgePreserveUpsampleFilter) class EdgePreserveUpsampleFilter: Core {
 		/// Create an instance of the filter with all default values
@@ -170,7 +169,7 @@ import Foundation
 
 @available(macOS 10.12, iOS 10, tvOS 10, *)
 public extension CIImage {
-	/// Edge Preserve Upsample Filter
+	/// Apply the 'Edge Preserve Upsample Filter' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - smallImage: No Description
@@ -187,7 +186,6 @@ public extension CIImage {
 	/// - [CIEdgePreserveUpsampleFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgePreserveUpsampleFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIEdgePreserveUpsampleFilter/)
-	///
 	@inlinable func applyingEdgePreserveUpsampleFilter(
 		smallImage: CIImage,
 		spatialSigma: Double = CIFF.EdgePreserveUpsampleFilter.spatialSigmaDefault,

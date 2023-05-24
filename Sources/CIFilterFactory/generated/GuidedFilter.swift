@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
-	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFGuidedFilter) class GuidedFilter: Core {
 		/// Create an instance of the filter with all default values
@@ -158,7 +157,7 @@ import Foundation
 
 @available(macOS 10.14, iOS 12, tvOS 12, *)
 public extension CIImage {
-	/// Guided Filter
+	/// Apply the 'Guided Filter' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - guideImage: A larger image to use as a guide.
@@ -175,7 +174,6 @@ public extension CIImage {
 	/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIGuidedFilter/)
-	///
 	@inlinable func applyingGuidedFilter(
 		guideImage: CIImage,
 		radius: Double = CIFF.GuidedFilter.radiusDefault,

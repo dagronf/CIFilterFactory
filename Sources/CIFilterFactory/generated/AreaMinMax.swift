@@ -45,7 +45,6 @@ import Foundation
 	/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
-	///
 	/// **Additional output keys**
 	/// - outputImageMPS:
 	/// - outputImageNonMPS
@@ -116,7 +115,7 @@ import Foundation
 
 @available(macOS 10.14, iOS 12, tvOS 12, *)
 public extension CIImage {
-	/// Area Min and Max
+	/// Apply the 'Area Min and Max' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - extent: A rectangle that specifies the subregion of the image that you want to process.
@@ -131,7 +130,6 @@ public extension CIImage {
 	/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMax/)
-	///
 	@inlinable func applyingAreaMinMax(
 		extent: CGRect = CIFF.AreaMinMax.extentDefault,
 		isActive: Bool = true

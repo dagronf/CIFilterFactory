@@ -45,7 +45,6 @@ import Foundation
 	/// - [CITorusLensDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITorusLensDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITorusLensDistortion/)
-	///
 	@available(macOS 10.4, iOS 9, tvOS 9, *)
 	@objc(CIFFTorusLensDistortion) class TorusLensDistortion: Core {
 		/// Create an instance of the filter with all default values
@@ -196,7 +195,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 9, tvOS 9, *)
 public extension CIImage {
-	/// Torus Lens Distortion
+	/// Apply the 'Torus Lens Distortion' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -214,7 +213,6 @@ public extension CIImage {
 	/// - [CITorusLensDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITorusLensDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITorusLensDistortion/)
-	///
 	@inlinable func applyingTorusLensDistortion(
 		center: CGPoint = CIFF.TorusLensDistortion.centerDefault,
 		radius: Double = CIFF.TorusLensDistortion.radiusDefault,

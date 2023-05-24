@@ -45,7 +45,6 @@ import Foundation
 	/// - [CITwirlDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwirlDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwirlDistortion/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFTwirlDistortion) class TwirlDistortion: Core {
 		/// Create an instance of the filter with all default values
@@ -164,7 +163,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Twirl Distortion
+	/// Apply the 'Twirl Distortion' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - center: The center of the effect as x and y pixel coordinates.
@@ -181,7 +180,6 @@ public extension CIImage {
 	/// - [CITwirlDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITwirlDistortion)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CITwirlDistortion/)
-	///
 	@inlinable func applyingTwirlDistortion(
 		center: CGPoint = CIFF.TwirlDistortion.centerDefault,
 		radius: Double = CIFF.TwirlDistortion.radiusDefault,

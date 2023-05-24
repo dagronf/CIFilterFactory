@@ -45,7 +45,6 @@ import Foundation
 	/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrop/)
-	///
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
 	@objc(CIFFCrop) class Crop: Core {
 		/// Create an instance of the filter with all default values
@@ -112,7 +111,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 5, tvOS 5, *)
 public extension CIImage {
-	/// Crop
+	/// Apply the 'Crop' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - rectangle: The rectangle that specifies the crop to apply to the image.
@@ -127,7 +126,6 @@ public extension CIImage {
 	/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICrop/)
-	///
 	@inlinable func applyingCrop(
 		rectangle: CGRect = CIFF.Crop.rectangleDefault,
 		isActive: Bool = true

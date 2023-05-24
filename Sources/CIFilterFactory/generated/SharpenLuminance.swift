@@ -45,7 +45,6 @@ import Foundation
 	/// - [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
-	///
 	@available(macOS 10.4, iOS 6, tvOS 6, *)
 	@objc(CIFFSharpenLuminance) class SharpenLuminance: Core {
 		/// Create an instance of the filter with all default values
@@ -136,7 +135,7 @@ import Foundation
 
 @available(macOS 10.4, iOS 6, tvOS 6, *)
 public extension CIImage {
-	/// Sharpen Luminance
+	/// Apply the 'Sharpen Luminance' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - sharpness: The amount of sharpening to apply. Larger values are sharper.
@@ -152,7 +151,6 @@ public extension CIImage {
 	/// - [CISharpenLuminance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISharpenLuminance)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CISharpenLuminance/)
-	///
 	@inlinable func applyingSharpenLuminance(
 		sharpness: Double = CIFF.SharpenLuminance.sharpnessDefault,
 		radius: Double = CIFF.SharpenLuminance.radiusDefault,

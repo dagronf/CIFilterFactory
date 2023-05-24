@@ -43,7 +43,6 @@ import Foundation
 	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
-	///
 	@available(macOS 10.14, iOS 12, tvOS 12, *)
 	@objc(CIFFCoreMLModelFilter) class CoreMLModelFilter: Core {
 		/// Create an instance of the filter with all default values
@@ -158,7 +157,7 @@ import Foundation
 
 @available(macOS 10.14, iOS 12, tvOS 12, *)
 public extension CIImage {
-	/// CoreML Model Filter
+	/// Apply the 'CoreML Model Filter' filter to this image and return a new filtered image
 	///
 	/// - Parameters:
 	///   - model: The CoreML model to be used for applying effect on the image.
@@ -175,7 +174,6 @@ public extension CIImage {
 	/// - [CICoreMLModelFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICoreMLModelFilter)
 	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 	/// - [CIFilter.io documentation](https://cifilter.io/CICoreMLModelFilter/)
-	///
 	@inlinable func applyingCoreMLModelFilter(
 		model: MLModel,
 		headIndex: Int = CIFF.CoreMLModelFilter.headIndexDefault,
