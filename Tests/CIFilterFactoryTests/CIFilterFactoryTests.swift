@@ -138,4 +138,25 @@ final class CIFilterFactoryTests: XCTestCase {
 		let outputImage = try XCTUnwrap(output.asCGImage())
 		Swift.print(outputImage)
 	}
+
+	func testStaticFunctional() throws {
+		do {
+			let output = try XCTUnwrap(CIImage.createUsingQRCodeGenerator(message: "hello".data(using: .utf8)!, correctionLevel: "H"))
+			Swift.print(output)
+			let cgImage = try XCTUnwrap(output.asCGImage())
+			Swift.print(cgImage)
+		}
+
+		do {
+			let output = try XCTUnwrap(CIImage.createUsingRandomGenerator())
+			Swift.print(output)
+
+			// This should fail, as the extent for this generator is infinite
+			XCTAssertNil(output.asCGImage())
+
+			let cgi = try XCTUnwrap(output.asCGImage(size: CGSize(width: 100, height: 200)))
+			XCTAssertEqual(cgi.width, 100)
+			XCTAssertEqual(cgi.height, 200)
+		}
+	}
 }

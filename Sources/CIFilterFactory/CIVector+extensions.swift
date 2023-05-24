@@ -1,7 +1,7 @@
 //
-//  Extensions.swift
+//  CIVector+extensions.swift
 //
-//  Copyright © 2022 Darren Ford. All rights reserved.
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -19,13 +19,26 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+#if !os(watchOS)
 
-extension Dictionary {
-	/// Returns a new dictionary without the specified key.
-	func removingValue(forKey key: Key) -> Self {
-		var result = self
-		result.removeValue(forKey: key)
-		return result
+import Foundation
+import CoreImage.CIVector
+
+extension CIVector {
+	/// A convenience for creating CIVector objects
+	@inlinable @inline(__always) public convenience init(values: CGFloat...) {
+		self.init(values: values, count: values.count)
+	}
+
+	/// A convenience for creating CIVector objects
+	@inlinable @inline(__always) public convenience init(values: [CGFloat]) {
+		self.init(values: values, count: values.count)
+	}
+
+	/// Returns the vector values as an array
+	@inlinable @inline(__always) public var allValues: [CGFloat] {
+		(0 ..< self.count).lazy.map { self.value(at: $0) }
 	}
 }
+
+#endif

@@ -35,6 +35,28 @@ public extension CIImage {
 	}
 }
 
+public extension CIImage {
+	/// Generate a CGImage representation of this CIImage
+	/// - Parameters:
+	///   - context: The context to use, or nil to use a default context
+	///   - size: The size of the resulting CGImage, or nil to use the CIImage extent
+	/// - Returns: The image
+	func asCGImage(context: CIContext? = nil, size: CGSize? = nil) -> CGImage? {
+		let context = context ?? CIContext(options: nil)
+		let rect: CGRect
+		if let size = size {
+			rect = CGRect(origin: .zero, size: size)
+		}
+		else {
+			rect = self.extent
+			if rect.width > 20000 || rect.height > 20000 {
+				return nil
+			}
+		}
+		return context.createCGImage(self, from: rect)
+	}
+}
+
 #if os(macOS)
 import AppKit
 #else
