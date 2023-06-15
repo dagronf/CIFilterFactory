@@ -158,5 +158,17 @@ final class CIFilterFactoryTests: XCTestCase {
 			XCTAssertEqual(cgi.width, 100)
 			XCTAssertEqual(cgi.height, 200)
 		}
+
+		do {
+			let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
+			let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+
+			let filteredImage = input
+				.applyingGaussianBlur()
+				.applyingPhotoEffectMono()
+
+			let cgImage = try XCTUnwrap(filteredImage.asCGImage())
+			Swift.print(cgImage)
+		}
 	}
 }
