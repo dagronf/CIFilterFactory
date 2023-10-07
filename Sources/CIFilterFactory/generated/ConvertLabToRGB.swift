@@ -19,124 +19,128 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Convert Lab to RGB
-	///
-	/// Converts an image from La*b* color space to the Core Image RGB working space.
-	///
-	/// **CIFilter Name**
-	/// - CIConvertLabToRGB
-	///
-	/// **Availability**
-	/// - macOS 13.0, iOS 16, tvOS 16
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorEffect (*CICategoryColorEffect*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Convert Lab to RGB
+		///
+		/// Converts an image from La*b* color space to the Core Image RGB working space.
+		///
+		/// **CIFilter Name**
+		/// - CIConvertLabToRGB
+		///
+		/// **Availability**
+		/// - macOS 13.0, iOS 16, tvOS 16
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorEffect (*CICategoryColorEffect*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
+		@available(macOS 13.0, iOS 16, tvOS 16, *)
+		@objc(CIFFConvertLabToRGB) class ConvertLabToRGB: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIConvertLabToRGB")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - normalize (inputNormalize)
+
+			/// If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputNormalize`
+			/// - Internal class: `NSNumber`
+			/// - Type: `CIAttributeTypeBoolean`
+			/// - Default Value: `false`
+			@objc public var normalize: Bool {
+				get {
+					self.boolValue(forKey: "inputNormalize", defaultValue: Self.normalizeDefault)
+				}
+				set {
+					self.setKeyedValue(NSNumber(value: newValue), for: "inputNormalize")
+				}
+			}
+
+			/// `normalize` default value
+			@objc public static let normalizeDefault: Bool = false
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			///   - normalize: If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				normalize: Bool = ConvertLabToRGB.normalizeDefault
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				self.normalize = normalize
+			}
+		}
+	}
+
 	@available(macOS 13.0, iOS 16, tvOS 16, *)
-	@objc(CIFFConvertLabToRGB) class ConvertLabToRGB: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIConvertLabToRGB")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	public extension CIImage {
+		/// Apply the 'Convert Lab to RGB' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - normalize (inputNormalize)
-
-		/// If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputNormalize`
-		/// - Internal class: `NSNumber`
-		/// - Type: `CIAttributeTypeBoolean`
-		/// - Default Value: `false`
-		@objc public var normalize: Bool {
-			get {
-				self.boolValue(forKey: "inputNormalize", defaultValue: Self.normalizeDefault)
-			}
-			set {
-				self.setKeyedValue(NSNumber(value: newValue), for: "inputNormalize")
-			}
-		}
-
-		/// `normalize` default value
-		@objc public static let normalizeDefault: Bool = false
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
 		///   - normalize: If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			normalize: Bool = ConvertLabToRGB.normalizeDefault
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			self.normalize = normalize
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Converts an image from La*b* color space to the Core Image RGB working space.
+		///
+		/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
+		@inlinable func applyingConvertLabToRGB(
+			normalize: Bool = CIFF.ConvertLabToRGB.normalizeDefault,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.ConvertLabToRGB(
+				inputImage: self,
+				normalize: normalize
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 13.0, iOS 16, tvOS 16, *)
-public extension CIImage {
-	/// Apply the 'Convert Lab to RGB' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - normalize: If normalize is false then the L channel is in the range 0 to 100 and the a*b* channels are in the range -128 to 128. If normalize is true then the La*b* channels are in the range 0 to 1.
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Converts an image from La*b* color space to the Core Image RGB working space.
-	///
-	/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIConvertLabToRGB Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertLabToRGB)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIConvertLabToRGB/)
-	@inlinable func applyingConvertLabToRGB(
-		normalize: Bool = CIFF.ConvertLabToRGB.normalizeDefault,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.ConvertLabToRGB(
-			inputImage: self,
-			normalize: normalize
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

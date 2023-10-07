@@ -19,95 +19,99 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Gabor Gradients
-	///
-	/// Applies multichannel 5 by 5 Gabor gradient filter to an image. The resulting image has maximum horizontal gradient in the red channel and the maximum vertical gradient in the green channel. The gradient values can be positive or negative.
-	///
-	/// **CIFilter Name**
-	/// - CIGaborGradients
-	///
-	/// **Availability**
-	/// - macOS 10.15, iOS 13, tvOS 13
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Stylize (*CICategoryStylize*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
-	@available(macOS 10.15, iOS 13, tvOS 13, *)
-	@objc(CIFFGaborGradients) class GaborGradients: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIGaborGradients")
-		}
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
 
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	@objc public extension CIFF {
+		/// Gabor Gradients
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
+		/// Applies multichannel 5 by 5 Gabor gradient filter to an image. The resulting image has maximum horizontal gradient in the red channel and the maximum vertical gradient in the green channel. The gradient values can be positive or negative.
+		///
+		/// **CIFilter Name**
+		/// - CIGaborGradients
+		///
+		/// **Availability**
+		/// - macOS 10.15, iOS 13, tvOS 13
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Stylize (*CICategoryStylize*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
+		@available(macOS 10.15, iOS 13, tvOS 13, *)
+		@objc(CIFFGaborGradients) class GaborGradients: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIGaborGradients")
 			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
 			}
 		}
+	}
 
-		// MARK: - Convenience creators
-
-		/// Filter initializer
+	@available(macOS 10.15, iOS 13, tvOS 13, *)
+	public extension CIImage {
+		/// Apply the 'Gabor Gradients' filter to this image and return a new filtered image
+		///
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Applies multichannel 5 by 5 Gabor gradient filter to an image. The resulting image has maximum horizontal gradient in the red channel and the maximum vertical gradient in the green channel. The gradient values can be positive or negative.
+		///
+		/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
+		///
+		/// **Documentation Links**
+		/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
+		@inlinable func applyingGaborGradients(
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.GaborGradients(
+				inputImage: self
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.15, iOS 13, tvOS 13, *)
-public extension CIImage {
-	/// Apply the 'Gabor Gradients' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Applies multichannel 5 by 5 Gabor gradient filter to an image. The resulting image has maximum horizontal gradient in the red channel and the maximum vertical gradient in the green channel. The gradient values can be positive or negative.
-	///
-	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, Stylize, Video
-	///
-	/// **Documentation Links**
-	/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
-	@inlinable func applyingGaborGradients(
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.GaborGradients(
-			inputImage: self
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

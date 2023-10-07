@@ -19,96 +19,100 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Color Threshold Otsu
-	///
-	/// Produces a binarized image from an image with finite extent. The threshold is calculated from the image histogram using Otsu’s method. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
-	///
-	/// **CIFilter Name**
-	/// - CIColorThresholdOtsu
-	///
-	/// **Availability**
-	/// - macOS 11.0, iOS 14, tvOS 14
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorAdjustment (*CICategoryColorAdjustment*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
-	@available(macOS 11.0, iOS 14, tvOS 14, *)
-	@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIColorThresholdOtsu")
-		}
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
 
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	@objc public extension CIFF {
+		/// Color Threshold Otsu
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
+		/// Produces a binarized image from an image with finite extent. The threshold is calculated from the image histogram using Otsu’s method. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
+		///
+		/// **CIFilter Name**
+		/// - CIColorThresholdOtsu
+		///
+		/// **Availability**
+		/// - macOS 11.0, iOS 14, tvOS 14
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
+		@available(macOS 11.0, iOS 14, tvOS 14, *)
+		@objc(CIFFColorThresholdOtsu) class ColorThresholdOtsu: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIColorThresholdOtsu")
 			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
 			}
 		}
+	}
 
-		// MARK: - Convenience creators
-
-		/// Filter initializer
+	@available(macOS 11.0, iOS 14, tvOS 14, *)
+	public extension CIImage {
+		/// Apply the 'Color Threshold Otsu' filter to this image and return a new filtered image
+		///
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Produces a binarized image from an image with finite extent. The threshold is calculated from the image histogram using Otsu’s method. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
+		///
+		/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
+		@inlinable func applyingColorThresholdOtsu(
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.ColorThresholdOtsu(
+				inputImage: self
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 11.0, iOS 14, tvOS 14, *)
-public extension CIImage {
-	/// Apply the 'Color Threshold Otsu' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Produces a binarized image from an image with finite extent. The threshold is calculated from the image histogram using Otsu’s method. The red, green and blue channels of the resulting image will be one if its value is greater than the threshold and zero otherwise.
-	///
-	/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIColorThresholdOtsu Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThresholdOtsu)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIColorThresholdOtsu/)
-	@inlinable func applyingColorThresholdOtsu(
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.ColorThresholdOtsu(
-			inputImage: self
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

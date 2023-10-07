@@ -19,121 +19,125 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Screen Blend Mode
-	///
-	/// Multiplies the inverse of the source image samples with the inverse of the background image samples. This results in colors that are at least as light as either of the two contributing sample colors.
-	///
-	/// **CIFilter Name**
-	/// - CIScreenBlendMode
-	///
-	/// **Availability**
-	/// - macOS 10.4, iOS 5, tvOS 5
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - CompositeOperation (*CICategoryCompositeOperation*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIScreenBlendMode/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Screen Blend Mode
+		///
+		/// Multiplies the inverse of the source image samples with the inverse of the background image samples. This results in colors that are at least as light as either of the two contributing sample colors.
+		///
+		/// **CIFilter Name**
+		/// - CIScreenBlendMode
+		///
+		/// **Availability**
+		/// - macOS 10.4, iOS 5, tvOS 5
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - CompositeOperation (*CICategoryCompositeOperation*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIScreenBlendMode/)
+		@available(macOS 10.4, iOS 5, tvOS 5, *)
+		@objc(CIFFScreenBlendMode) class ScreenBlendMode: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIScreenBlendMode")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as a foreground image.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - backgroundImage (inputBackgroundImage)
+
+			/// The image to use as a background image.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputBackgroundImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var backgroundImage: CIImage? {
+				get {
+					self.keyedValue("inputBackgroundImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputBackgroundImage")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as a foreground image.
+			///   - backgroundImage: The image to use as a background image.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				backgroundImage: CIImage? = nil
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				if let backgroundImage = backgroundImage {
+					self.backgroundImage = backgroundImage
+				}
+			}
+		}
+	}
+
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFScreenBlendMode) class ScreenBlendMode: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIScreenBlendMode")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as a foreground image.
+	public extension CIImage {
+		/// Apply the 'Screen Blend Mode' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - backgroundImage (inputBackgroundImage)
-
-		/// The image to use as a background image.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputBackgroundImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var backgroundImage: CIImage? {
-			get {
-				self.keyedValue("inputBackgroundImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputBackgroundImage")
-			}
-		}
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as a foreground image.
 		///   - backgroundImage: The image to use as a background image.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			backgroundImage: CIImage? = nil
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			if let backgroundImage = backgroundImage {
-				self.backgroundImage = backgroundImage
-			}
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Multiplies the inverse of the source image samples with the inverse of the background image samples. This results in colors that are at least as light as either of the two contributing sample colors.
+		///
+		/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIScreenBlendMode/)
+		@inlinable func applyingScreenBlendMode(
+			backgroundImage: CIImage,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.ScreenBlendMode(
+				inputImage: self,
+				backgroundImage: backgroundImage
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.4, iOS 5, tvOS 5, *)
-public extension CIImage {
-	/// Apply the 'Screen Blend Mode' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - backgroundImage: The image to use as a background image.
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Multiplies the inverse of the source image samples with the inverse of the background image samples. This results in colors that are at least as light as either of the two contributing sample colors.
-	///
-	/// **Categories**: BuiltIn, CompositeOperation, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIScreenBlendMode/)
-	@inlinable func applyingScreenBlendMode(
-		backgroundImage: CIImage,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.ScreenBlendMode(
-			inputImage: self,
-			backgroundImage: backgroundImage
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

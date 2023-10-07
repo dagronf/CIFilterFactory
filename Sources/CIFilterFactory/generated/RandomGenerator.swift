@@ -19,58 +19,62 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Random Generator
-	///
-	/// Generates an image of infinite extent whose pixel values are made up of four independent, uniformly-distributed random numbers in the 0 to 1 range.
-	///
-	/// **CIFilter Name**
-	/// - CIRandomGenerator
-	///
-	/// **Availability**
-	/// - macOS 10.4, iOS 6, tvOS 6
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - Generator (*CICategoryGenerator*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
-	@available(macOS 10.4, iOS 6, tvOS 6, *)
-	@objc(CIFFRandomGenerator) class RandomGenerator: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIRandomGenerator")
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Random Generator
+		///
+		/// Generates an image of infinite extent whose pixel values are made up of four independent, uniformly-distributed random numbers in the 0 to 1 range.
+		///
+		/// **CIFilter Name**
+		/// - CIRandomGenerator
+		///
+		/// **Availability**
+		/// - macOS 10.4, iOS 6, tvOS 6
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - Generator (*CICategoryGenerator*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
+		@available(macOS 10.4, iOS 6, tvOS 6, *)
+		@objc(CIFFRandomGenerator) class RandomGenerator: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIRandomGenerator")
+			}
 		}
 	}
-}
 
-@available(macOS 10.4, iOS 6, tvOS 6, *)
-public extension CIImage {
-	/// Create a new CIImage using the 'Random Generator' filter
-	///
-	/// - Returns: A new image by running the filter, or nil if the image could not be created
-	///
-	/// Generates an image of infinite extent whose pixel values are made up of four independent, uniformly-distributed random numbers in the 0 to 1 range.
-	///
-	/// **Categories**: BuiltIn, Generator, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
-	@inlinable static func createUsingRandomGenerator(
-	) -> CIImage? {
-		return CIFF.RandomGenerator(
-		)?.outputImage
+	@available(macOS 10.4, iOS 6, tvOS 6, *)
+	public extension CIImage {
+		/// Create a new CIImage using the 'Random Generator' filter
+		///
+		/// - Returns: A new image by running the filter, or nil if the image could not be created
+		///
+		/// Generates an image of infinite extent whose pixel values are made up of four independent, uniformly-distributed random numbers in the 0 to 1 range.
+		///
+		/// **Categories**: BuiltIn, Generator, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIRandomGenerator/)
+		@inlinable static func createUsingRandomGenerator(
+		) -> CIImage? {
+			return CIFF.RandomGenerator(
+			)?.outputImage
+		}
 	}
-}
+
+#endif // canImport(CoreImage)

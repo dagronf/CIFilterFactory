@@ -19,122 +19,126 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Clamp
-	///
-	/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
-	///
-	/// **CIFilter Name**
-	/// - CIClamp
-	///
-	/// **Availability**
-	/// - macOS 10.12, iOS 10, tvOS 10
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - TileEffect (*CICategoryTileEffect*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Clamp
+		///
+		/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
+		///
+		/// **CIFilter Name**
+		/// - CIClamp
+		///
+		/// **Availability**
+		/// - macOS 10.12, iOS 10, tvOS 10
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - TileEffect (*CICategoryTileEffect*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
+		@available(macOS 10.12, iOS 10, tvOS 10, *)
+		@objc(CIFFClamp) class Clamp: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIClamp")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - extent (inputExtent)
+
+			/// A rectangle that defines the extent of the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputExtent`
+			/// - Internal class: `CIVector`
+			/// - Type: `CIAttributeTypeRectangle`
+			/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
+			@objc public var extent: CGRect {
+				get {
+					self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
+				}
+				set {
+					self.setKeyedValue(newValue.ciVector, for: "inputExtent")
+				}
+			}
+
+			/// `extent` default value
+			@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			///   - extent: A rectangle that defines the extent of the effect.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				extent: CGRect = Clamp.extentDefault
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				self.extent = extent
+			}
+		}
+	}
+
 	@available(macOS 10.12, iOS 10, tvOS 10, *)
-	@objc(CIFFClamp) class Clamp: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIClamp")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	public extension CIImage {
+		/// Apply the 'Clamp' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - extent (inputExtent)
-
-		/// A rectangle that defines the extent of the effect.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputExtent`
-		/// - Internal class: `CIVector`
-		/// - Type: `CIAttributeTypeRectangle`
-		/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
-		@objc public var extent: CGRect {
-			get {
-				self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
-			}
-			set {
-				self.setKeyedValue(newValue.ciVector, for: "inputExtent")
-			}
-		}
-
-		/// `extent` default value
-		@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
 		///   - extent: A rectangle that defines the extent of the effect.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			extent: CGRect = Clamp.extentDefault
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			self.extent = extent
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
+		///
+		/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
+		///
+		/// **Documentation Links**
+		/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
+		@inlinable func applyingClamp(
+			extent: CGRect = CIFF.Clamp.extentDefault,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.Clamp(
+				inputImage: self,
+				extent: extent
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.12, iOS 10, tvOS 10, *)
-public extension CIImage {
-	/// Apply the 'Clamp' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - extent: A rectangle that defines the extent of the effect.
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Clamps an image so the pixels with the specified extent are left unchanged but those at the boundary of the extent are extended outwards. This filter produces an image with infinite extent. You can use this filter when you need to blur an image but you want to avoid a soft, black fringe along the edges.
-	///
-	/// **Categories**: BuiltIn, HighDynamicRange, StillImage, TileEffect, Video
-	///
-	/// **Documentation Links**
-	/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIClamp/)
-	@inlinable func applyingClamp(
-		extent: CGRect = CIFF.Clamp.extentDefault,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.Clamp(
-			inputImage: self,
-			extent: extent
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

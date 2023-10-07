@@ -19,94 +19,98 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Disparity To Depth
-	///
-	/// Convert a disparity data image to depth data.
-	///
-	/// **CIFilter Name**
-	/// - CIDisparityToDepth
-	///
-	/// **Availability**
-	/// - macOS 10.13, iOS 11, tvOS 11
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorAdjustment (*CICategoryColorAdjustment*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
-	@available(macOS 10.13, iOS 11, tvOS 11, *)
-	@objc(CIFFDisparityToDepth) class DisparityToDepth: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIDisparityToDepth")
-		}
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
 
-		// MARK: - inputImage (inputImage)
-
-		/// The input disparity data image to convert to depth data.
+	@objc public extension CIFF {
+		/// Disparity To Depth
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
+		/// Convert a disparity data image to depth data.
+		///
+		/// **CIFilter Name**
+		/// - CIDisparityToDepth
+		///
+		/// **Availability**
+		/// - macOS 10.13, iOS 11, tvOS 11
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
+		@available(macOS 10.13, iOS 11, tvOS 11, *)
+		@objc(CIFFDisparityToDepth) class DisparityToDepth: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIDisparityToDepth")
 			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
+
+			// MARK: - inputImage (inputImage)
+
+			/// The input disparity data image to convert to depth data.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The input disparity data image to convert to depth data.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
 			}
 		}
+	}
 
-		// MARK: - Convenience creators
-
-		/// Filter initializer
+	@available(macOS 10.13, iOS 11, tvOS 11, *)
+	public extension CIImage {
+		/// Apply the 'Disparity To Depth' filter to this image and return a new filtered image
+		///
 		/// - Parameters:
-		///   - inputImage: The input disparity data image to convert to depth data.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Convert a disparity data image to depth data.
+		///
+		/// **Categories**: BuiltIn, ColorAdjustment, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
+		@inlinable func applyingDisparityToDepth(
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.DisparityToDepth(
+				inputImage: self
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.13, iOS 11, tvOS 11, *)
-public extension CIImage {
-	/// Apply the 'Disparity To Depth' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Convert a disparity data image to depth data.
-	///
-	/// **Categories**: BuiltIn, ColorAdjustment, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
-	@inlinable func applyingDisparityToDepth(
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.DisparityToDepth(
-			inputImage: self
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

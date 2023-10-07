@@ -19,126 +19,130 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Box Blur
-	///
-	/// Smooths or sharpens an image using a box-shaped convolution kernel.
-	///
-	/// **CIFilter Name**
-	/// - CIBoxBlur
-	///
-	/// **Availability**
-	/// - macOS 10.5, iOS 9, tvOS 9
-	///
-	/// **Categories**
-	/// - Blur (*CICategoryBlur*)
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Box Blur
+		///
+		/// Smooths or sharpens an image using a box-shaped convolution kernel.
+		///
+		/// **CIFilter Name**
+		/// - CIBoxBlur
+		///
+		/// **Availability**
+		/// - macOS 10.5, iOS 9, tvOS 9
+		///
+		/// **Categories**
+		/// - Blur (*CICategoryBlur*)
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
+		@available(macOS 10.5, iOS 9, tvOS 9, *)
+		@objc(CIFFBoxBlur) class BoxBlur: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIBoxBlur")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - radius (inputRadius)
+
+			/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputRadius`
+			/// - Internal class: `NSNumber`
+			/// - Type: `CIAttributeTypeDistance`
+			/// - Minimum Value: `1.0`
+			/// - Default Value: `10.0`
+			@objc public var radius: Double {
+				get {
+					self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
+				}
+				set {
+					self.setDoubleValue(newValue, bounds: BoxBlur.radiusRange, forKey: "inputRadius")
+				}
+			}
+
+			/// `radius` default value
+			@objc public static let radiusDefault: Double = 10.0
+
+			/// `radius` range definition
+			public static let radiusRange = PartialRangeFrom<Double>(1.0)
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				radius: Double = BoxBlur.radiusDefault
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				self.radius = radius
+			}
+		}
+	}
+
 	@available(macOS 10.5, iOS 9, tvOS 9, *)
-	@objc(CIFFBoxBlur) class BoxBlur: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIBoxBlur")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	public extension CIImage {
+		/// Apply the 'Box Blur' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - radius (inputRadius)
-
-		/// The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputRadius`
-		/// - Internal class: `NSNumber`
-		/// - Type: `CIAttributeTypeDistance`
-		/// - Minimum Value: `1.0`
-		/// - Default Value: `10.0`
-		@objc public var radius: Double {
-			get {
-				self.doubleValue(forKey: "inputRadius", defaultValue: Self.radiusDefault)
-			}
-			set {
-				self.setDoubleValue(newValue, bounds: BoxBlur.radiusRange, forKey: "inputRadius")
-			}
-		}
-
-		/// `radius` default value
-		@objc public static let radiusDefault: Double = 10.0
-
-		/// `radius` range definition
-		public static let radiusRange = PartialRangeFrom<Double>(1.0)
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
-		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			radius: Double = BoxBlur.radiusDefault
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			self.radius = radius
+		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (1.0...)
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Smooths or sharpens an image using a box-shaped convolution kernel.
+		///
+		/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
+		@inlinable func applyingBoxBlur(
+			radius: Double = CIFF.BoxBlur.radiusDefault,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.BoxBlur(
+				inputImage: self,
+				radius: radius
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.5, iOS 9, tvOS 9, *)
-public extension CIImage {
-	/// Apply the 'Box Blur' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (1.0...)
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Smooths or sharpens an image using a box-shaped convolution kernel.
-	///
-	/// **Categories**: Blur, BuiltIn, HighDynamicRange, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIBoxBlur/)
-	@inlinable func applyingBoxBlur(
-		radius: Double = CIFF.BoxBlur.radiusDefault,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.BoxBlur(
-			inputImage: self,
-			radius: radius
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

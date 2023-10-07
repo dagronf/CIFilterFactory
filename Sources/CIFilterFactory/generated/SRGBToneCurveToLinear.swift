@@ -19,97 +19,101 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// sRGB Tone Curve to Linear
-	///
-	/// Converts an image in sRGB space to linear space.
-	///
-	/// **CIFilter Name**
-	/// - CISRGBToneCurveToLinear
-	///
-	/// **Availability**
-	/// - macOS 10.10, iOS 7, tvOS 7
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorAdjustment (*CICategoryColorAdjustment*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
-	@available(macOS 10.10, iOS 7, tvOS 7, *)
-	@objc(CIFFSRGBToneCurveToLinear) class SRGBToneCurveToLinear: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CISRGBToneCurveToLinear")
-		}
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
 
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	@objc public extension CIFF {
+		/// sRGB Tone Curve to Linear
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
+		/// Converts an image in sRGB space to linear space.
+		///
+		/// **CIFilter Name**
+		/// - CISRGBToneCurveToLinear
+		///
+		/// **Availability**
+		/// - macOS 10.10, iOS 7, tvOS 7
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
+		@available(macOS 10.10, iOS 7, tvOS 7, *)
+		@objc(CIFFSRGBToneCurveToLinear) class SRGBToneCurveToLinear: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CISRGBToneCurveToLinear")
 			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
 			}
 		}
+	}
 
-		// MARK: - Convenience creators
-
-		/// Filter initializer
+	@available(macOS 10.10, iOS 7, tvOS 7, *)
+	public extension CIImage {
+		/// Apply the 'sRGB Tone Curve to Linear' filter to this image and return a new filtered image
+		///
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Converts an image in sRGB space to linear space.
+		///
+		/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
+		@inlinable func applyingSRGBToneCurveToLinear(
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.SRGBToneCurveToLinear(
+				inputImage: self
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.10, iOS 7, tvOS 7, *)
-public extension CIImage {
-	/// Apply the 'sRGB Tone Curve to Linear' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Converts an image in sRGB space to linear space.
-	///
-	/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CISRGBToneCurveToLinear/)
-	@inlinable func applyingSRGBToneCurveToLinear(
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.SRGBToneCurveToLinear(
-			inputImage: self
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

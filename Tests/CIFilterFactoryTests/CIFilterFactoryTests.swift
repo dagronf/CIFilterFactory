@@ -1,6 +1,8 @@
 import XCTest
 @testable import CIFilterFactory
 
+#if canImport(CoreImage)
+
 final class CIFilterFactoryTests: XCTestCase {
 //    func testExample() {
 //        // This is an example of a functional test case.
@@ -171,4 +173,29 @@ final class CIFilterFactoryTests: XCTestCase {
 			Swift.print(cgImage)
 		}
 	}
+
+//	func testScaling() throws {
+//		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "sydney", withExtension: "jpg"))
+//		let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+//		let sz = CGSize(width: 200, height: 200)
+//		do {
+//			let output = input.scaling(to: sz, .aspectFill)
+//			let cgImage = try XCTUnwrap(output.asCGImage())
+//			XCTAssertEqual(sz, output.extent.size)
+//		}
+//
+//		do {
+//			let output = input.scaling(to: sz, .aspectFit)
+//			let cgImage = try XCTUnwrap(output.asCGImage())
+//			XCTAssertEqual(sz, output.extent.size)
+//		}
+//
+//		do {
+//			let output = input.scaling(to: sz, .fill)
+//			let cgImage = try XCTUnwrap(output.asCGImage())
+//			XCTAssertEqual(sz, output.extent.size)
+//		}
+//	}
 }
+
+#endif // canImport(CoreImage)

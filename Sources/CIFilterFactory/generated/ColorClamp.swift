@@ -19,148 +19,152 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// Color Clamp
-	///
-	/// Clamp color to a certain range.
-	///
-	/// **CIFilter Name**
-	/// - CIColorClamp
-	///
-	/// **Availability**
-	/// - macOS 10.9, iOS 7, tvOS 7
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorAdjustment (*CICategoryColorAdjustment*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// Color Clamp
+		///
+		/// Clamp color to a certain range.
+		///
+		/// **CIFilter Name**
+		/// - CIColorClamp
+		///
+		/// **Availability**
+		/// - macOS 10.9, iOS 7, tvOS 7
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
+		@available(macOS 10.9, iOS 7, tvOS 7, *)
+		@objc(CIFFColorClamp) class ColorClamp: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIColorClamp")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - minComponents (inputMinComponents)
+
+			/// Lower clamping values.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputMinComponents`
+			/// - Internal class: `CIVector`
+			/// - Default Value: `[0 0 0 0]`
+			@objc public var minComponents: CIVector? {
+				get {
+					self.keyedValue("inputMinComponents")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputMinComponents")
+				}
+			}
+
+			/// `minComponents` default value
+			@objc public static let minComponentsDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0], count: 4)
+
+			// MARK: - maxComponents (inputMaxComponents)
+
+			/// Higher clamping values.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputMaxComponents`
+			/// - Internal class: `CIVector`
+			/// - Default Value: `[1 1 1 1]`
+			@objc public var maxComponents: CIVector? {
+				get {
+					self.keyedValue("inputMaxComponents")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputMaxComponents")
+				}
+			}
+
+			/// `maxComponents` default value
+			@objc public static let maxComponentsDefault = CIVector(values: [1.0, 1.0, 1.0, 1.0], count: 4)
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			///   - minComponents: Lower clamping values.
+			///   - maxComponents: Higher clamping values.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				minComponents: CIVector = ColorClamp.minComponentsDefault,
+				maxComponents: CIVector = ColorClamp.maxComponentsDefault
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				self.minComponents = minComponents
+				self.maxComponents = maxComponents
+			}
+		}
+	}
+
 	@available(macOS 10.9, iOS 7, tvOS 7, *)
-	@objc(CIFFColorClamp) class ColorClamp: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIColorClamp")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	public extension CIImage {
+		/// Apply the 'Color Clamp' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - minComponents (inputMinComponents)
-
-		/// Lower clamping values.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputMinComponents`
-		/// - Internal class: `CIVector`
-		/// - Default Value: `[0 0 0 0]`
-		@objc public var minComponents: CIVector? {
-			get {
-				self.keyedValue("inputMinComponents")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputMinComponents")
-			}
-		}
-
-		/// `minComponents` default value
-		@objc public static let minComponentsDefault = CIVector(values: [0.0, 0.0, 0.0, 0.0], count: 4)
-
-		// MARK: - maxComponents (inputMaxComponents)
-
-		/// Higher clamping values.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputMaxComponents`
-		/// - Internal class: `CIVector`
-		/// - Default Value: `[1 1 1 1]`
-		@objc public var maxComponents: CIVector? {
-			get {
-				self.keyedValue("inputMaxComponents")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputMaxComponents")
-			}
-		}
-
-		/// `maxComponents` default value
-		@objc public static let maxComponentsDefault = CIVector(values: [1.0, 1.0, 1.0, 1.0], count: 4)
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
 		///   - minComponents: Lower clamping values.
 		///   - maxComponents: Higher clamping values.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			minComponents: CIVector = ColorClamp.minComponentsDefault,
-			maxComponents: CIVector = ColorClamp.maxComponentsDefault
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			self.minComponents = minComponents
-			self.maxComponents = maxComponents
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Clamp color to a certain range.
+		///
+		/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
+		@inlinable func applyingColorClamp(
+			minComponents: CIVector = CIFF.ColorClamp.minComponentsDefault,
+			maxComponents: CIVector = CIFF.ColorClamp.maxComponentsDefault,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.ColorClamp(
+				inputImage: self,
+				minComponents: minComponents,
+				maxComponents: maxComponents
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.9, iOS 7, tvOS 7, *)
-public extension CIImage {
-	/// Apply the 'Color Clamp' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - minComponents: Lower clamping values.
-	///   - maxComponents: Higher clamping values.
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Clamp color to a certain range.
-	///
-	/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
-	@inlinable func applyingColorClamp(
-		minComponents: CIVector = CIFF.ColorClamp.minComponentsDefault,
-		maxComponents: CIVector = CIFF.ColorClamp.maxComponentsDefault,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.ColorClamp(
-			inputImage: self,
-			minComponents: minComponents,
-			maxComponents: maxComponents
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

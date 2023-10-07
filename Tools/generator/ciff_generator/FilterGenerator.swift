@@ -163,6 +163,9 @@ class FilterGenerator {
 		let fdesc = CIFilter.localizedDescription(forFilterName: filter.name)
 		let fname = filterAttributes[kCIAttributeFilterDisplayName] as? String ?? ""
 		self.generateCIImageExtension(fname, fdesc ?? "", availability, docs, cleanCategories)
+
+		out.blankLine()
+		out.print("#endif // canImport(CoreImage)")
 	}
 
 	func generateInitializer() {
@@ -479,6 +482,8 @@ class FilterGenerator {
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+
+#if canImport(CoreImage)
 
 import Foundation
 import AVFoundation

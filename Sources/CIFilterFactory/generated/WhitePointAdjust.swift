@@ -19,120 +19,124 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import AVFoundation
-import CoreImage
-import CoreML
-import Foundation
+#if canImport(CoreImage)
 
-@objc public extension CIFF {
-	/// White Point Adjust
-	///
-	/// Adjusts the reference white point for an image and maps all colors in the source using the new reference.
-	///
-	/// **CIFilter Name**
-	/// - CIWhitePointAdjust
-	///
-	/// **Availability**
-	/// - macOS 10.4, iOS 5, tvOS 5
-	///
-	/// **Categories**
-	/// - BuiltIn (*CICategoryBuiltIn*)
-	/// - ColorAdjustment (*CICategoryColorAdjustment*)
-	/// - HighDynamicRange (*CICategoryHighDynamicRange*)
-	/// - Interlaced (*CICategoryInterlaced*)
-	/// - NonSquarePixels (*CICategoryNonSquarePixels*)
-	/// - StillImage (*CICategoryStillImage*)
-	/// - Video (*CICategoryVideo*)
-	///
-	/// **Documentation Links**
-	/// - [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
+	import AVFoundation
+	import CoreImage
+	import CoreML
+	import Foundation
+
+	@objc public extension CIFF {
+		/// White Point Adjust
+		///
+		/// Adjusts the reference white point for an image and maps all colors in the source using the new reference.
+		///
+		/// **CIFilter Name**
+		/// - CIWhitePointAdjust
+		///
+		/// **Availability**
+		/// - macOS 10.4, iOS 5, tvOS 5
+		///
+		/// **Categories**
+		/// - BuiltIn (*CICategoryBuiltIn*)
+		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
+		/// - Interlaced (*CICategoryInterlaced*)
+		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
+		/// - StillImage (*CICategoryStillImage*)
+		/// - Video (*CICategoryVideo*)
+		///
+		/// **Documentation Links**
+		/// - [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
+		@available(macOS 10.4, iOS 5, tvOS 5, *)
+		@objc(CIFFWhitePointAdjust) class WhitePointAdjust: Core {
+			/// Create an instance of the filter with all default values
+			@objc public init?() {
+				super.init(name: "CIWhitePointAdjust")
+			}
+
+			// MARK: - inputImage (inputImage)
+
+			/// The image to use as an input for the effect.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputImage`
+			/// - Internal class: `CIImage`
+			/// - Type: `CIAttributeTypeImage`
+			@objc public var inputImage: CIImage? {
+				get {
+					self.keyedValue("inputImage")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputImage")
+				}
+			}
+
+			// MARK: - color (inputColor)
+
+			/// A color to use as the white point.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputColor`
+			/// - Internal class: `CIColor`
+			/// - Type: `CIAttributeTypeColor`
+			@objc public var color: CIColor? {
+				get {
+					self.keyedValue("inputColor")
+				}
+				set {
+					self.setKeyedValue(newValue, for: "inputColor")
+				}
+			}
+
+			// MARK: - Convenience creators
+
+			/// Filter initializer
+			/// - Parameters:
+			///   - inputImage: The image to use as an input for the effect.
+			///   - color: A color to use as the white point.
+			@objc public convenience init?(
+				inputImage: CIImage? = nil,
+				color: CIColor
+			) {
+				self.init()
+				if let inputImage = inputImage {
+					self.inputImage = inputImage
+				}
+				self.color = color
+			}
+		}
+	}
+
 	@available(macOS 10.4, iOS 5, tvOS 5, *)
-	@objc(CIFFWhitePointAdjust) class WhitePointAdjust: Core {
-		/// Create an instance of the filter with all default values
-		@objc public init?() {
-			super.init(name: "CIWhitePointAdjust")
-		}
-
-		// MARK: - inputImage (inputImage)
-
-		/// The image to use as an input for the effect.
+	public extension CIImage {
+		/// Apply the 'White Point Adjust' filter to this image and return a new filtered image
 		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputImage`
-		/// - Internal class: `CIImage`
-		/// - Type: `CIAttributeTypeImage`
-		@objc public var inputImage: CIImage? {
-			get {
-				self.keyedValue("inputImage")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputImage")
-			}
-		}
-
-		// MARK: - color (inputColor)
-
-		/// A color to use as the white point.
-		///
-		/// CIFilter attribute information
-		/// - Attribute key: `inputColor`
-		/// - Internal class: `CIColor`
-		/// - Type: `CIAttributeTypeColor`
-		@objc public var color: CIColor? {
-			get {
-				self.keyedValue("inputColor")
-			}
-			set {
-				self.setKeyedValue(newValue, for: "inputColor")
-			}
-		}
-
-		// MARK: - Convenience creators
-
-		/// Filter initializer
 		/// - Parameters:
-		///   - inputImage: The image to use as an input for the effect.
 		///   - color: A color to use as the white point.
-		@objc public convenience init?(
-			inputImage: CIImage? = nil,
-			color: CIColor
-		) {
-			self.init()
-			if let inputImage = inputImage {
-				self.inputImage = inputImage
-			}
-			self.color = color
+		///   - isActive: If true applies the filter and returns a new image, else returns this image
+		/// - Returns: The filtered image, or this image if the filter is not active
+		///
+		/// Adjusts the reference white point for an image and maps all colors in the source using the new reference.
+		///
+		/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
+		///
+		/// **Documentation Links**
+		/// - [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
+		/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
+		@inlinable func applyingWhitePointAdjust(
+			color: CIColor,
+			isActive: Bool = true
+		) -> CIImage {
+			guard isActive else { return self }
+			return CIFF.WhitePointAdjust(
+				inputImage: self,
+				color: color
+			)?.outputImage ?? CIImage.empty()
 		}
 	}
-}
 
-@available(macOS 10.4, iOS 5, tvOS 5, *)
-public extension CIImage {
-	/// Apply the 'White Point Adjust' filter to this image and return a new filtered image
-	///
-	/// - Parameters:
-	///   - color: A color to use as the white point.
-	///   - isActive: If true applies the filter and returns a new image, else returns this image
-	/// - Returns: The filtered image, or this image if the filter is not active
-	///
-	/// Adjusts the reference white point for an image and maps all colors in the source using the new reference.
-	///
-	/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
-	///
-	/// **Documentation Links**
-	/// - [CIWhitePointAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust)
-	/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-	/// - [CIFilter.io documentation](https://cifilter.io/CIWhitePointAdjust/)
-	@inlinable func applyingWhitePointAdjust(
-		color: CIColor,
-		isActive: Bool = true
-	) -> CIImage {
-		guard isActive else { return self }
-		return CIFF.WhitePointAdjust(
-			inputImage: self,
-			color: color
-		)?.outputImage ?? CIImage.empty()
-	}
-}
+#endif // canImport(CoreImage)

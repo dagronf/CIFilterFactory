@@ -19,6 +19,8 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#if canImport(CoreImage)
+
 import AVFoundation
 import CoreImage
 import CoreML
@@ -196,3 +198,5 @@ public extension CIImage {
 		)?.outputImage
 	}
 }
+
+#endif // canImport(CoreImage)

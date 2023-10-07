@@ -18,6 +18,8 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#if canImport(CoreImage)
+
 import CoreImage
 import Foundation
 
@@ -124,3 +126,5 @@ internal extension CIFF.Core {
 		return self.filter.setValue(value, forKey: key)
 	}
 }
+
+#endif
