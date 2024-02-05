@@ -23,6 +23,7 @@
 
 import CoreImage
 import Foundation
+import OSLog
 
 /// The namespace object for the filter factory
 @objc public class CIFF: NSObject {
@@ -104,6 +105,13 @@ import Foundation
 
 		internal init?(name: String) {
 			guard let filter = CIFilter(name: name) else {
+				os_log(
+					"CIFilterFactory: Filter '%@' does is not supported on this platform.",
+					log: OSLog.default,
+					type: .error,
+					name
+				)
+				assert(false)   // If running in debug, make this a little more obvious to the developer
 				return nil
 			}
 			self.filter = filter
@@ -119,18 +127,34 @@ import Foundation
 internal extension CIFF.Core {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
+		guard self.filter.attributes[key] != nil else {
+			os_log(
+				"CIFilterFactory: '%@' does not support parameter '%@' on this platform.",
+				log: OSLog.default,
+				type: .error,
+				self.filter.name,
+				key
+			)
+			return nil
+		}
 		return self.filter.value(forKey: key) as? TYPE
 	}
 
 	// Convenience method for setting a value with a specific type
 	@inline(__always) func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
-		return self.filter.setValue(value, forKey: key)
-	}
-
-	// Return the property dictionary for the specified filter property (eg "inputExtrapolate")
-	// or nil if the property doesn't exist for this version
-	@inline(__always) func propertyDictionary(_ name: String) -> [String: Any]? {
-		self.filter.attributes[name] as? [String: Any]
+		// Apple seems to have added some new filter parameters ("inputExtrapolate") to some filters which
+		// are not available on older OS versions.
+		guard self.filter.attributes[key] != nil else {
+			os_log(
+				"CIFilterFactory: '%@' does not support parameter '%@' on this platform. Ignoring…",
+				log: OSLog.default,
+				type: .error,
+				self.filter.name,
+				key
+			)
+			return
+		}
+		self.filter.setValue(value, forKey: key)
 	}
 }
 

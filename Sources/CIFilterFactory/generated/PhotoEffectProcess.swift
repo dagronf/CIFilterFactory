@@ -109,9 +109,7 @@
 				if let inputImage = inputImage {
 					self.inputImage = inputImage
 				}
-				if let _ = self.propertyDictionary("inputExtrapolate") {
-					self.extrapolate = extrapolate
-				}
+				self.extrapolate = extrapolate
 			}
 		}
 	}

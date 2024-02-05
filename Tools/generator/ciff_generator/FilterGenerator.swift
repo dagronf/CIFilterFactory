@@ -193,11 +193,6 @@ class FilterGenerator {
 				inits += "            self.\(property.name) = \(property.name)\n"
 				inits += "         }"
 			}
-			else if filtersRequiringInputExtrapolateCheck.contains(self.filter.name) {
-				inits += "         if let _ = self.propertyDictionary(\"\(property.attributeKey)\") {\n"
-				inits += "            self.\(property.name) = \(property.name)\n"
-				inits += "         }"
-			}
 			else {
 				inits += "         self.\(property.name) = \(property.name)"
 			}
