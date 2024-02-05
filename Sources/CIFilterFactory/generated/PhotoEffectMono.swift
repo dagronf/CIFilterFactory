@@ -40,6 +40,7 @@
 		/// **Categories**
 		/// - BuiltIn (*CICategoryBuiltIn*)
 		/// - ColorEffect (*CICategoryColorEffect*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
 		/// - Interlaced (*CICategoryInterlaced*)
 		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
 		/// - StillImage (*CICategoryStillImage*)
@@ -74,18 +75,42 @@
 				}
 			}
 
+			// MARK: - extrapolate (inputExtrapolate)
+
+			/// If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputExtrapolate`
+			/// - Internal class: `NSNumber`
+			/// - Type: `CIAttributeTypeBoolean`
+			/// - Default Value: `false`
+			@objc public var extrapolate: Bool {
+				get {
+					self.boolValue(forKey: "inputExtrapolate", defaultValue: Self.extrapolateDefault)
+				}
+				set {
+					self.setKeyedValue(NSNumber(value: newValue), for: "inputExtrapolate")
+				}
+			}
+
+			/// `extrapolate` default value
+			@objc public static let extrapolateDefault: Bool = false
+
 			// MARK: - Convenience creators
 
 			/// Filter initializer
 			/// - Parameters:
 			///   - inputImage: The image to use as an input for the effect.
+			///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 			@objc public convenience init?(
-				inputImage: CIImage? = nil
+				inputImage: CIImage? = nil,
+				extrapolate: Bool = PhotoEffectMono.extrapolateDefault
 			) {
 				self.init()
 				if let inputImage = inputImage {
 					self.inputImage = inputImage
 				}
+				self.extrapolate = extrapolate
 			}
 		}
 	}
@@ -95,23 +120,26 @@
 		/// Apply the 'Photo Effect Mono' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
+		///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///
 		/// Apply a “Mono” style effect to an image.
 		///
-		/// **Categories**: BuiltIn, ColorEffect, Interlaced, NonSquarePixels, StillImage, Video, XMPSerializable
+		/// **Categories**: BuiltIn, ColorEffect, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video, XMPSerializable
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectMono Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectMono)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
 		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectMono/)
 		@inlinable func applyingPhotoEffectMono(
+			extrapolate: Bool = CIFF.PhotoEffectMono.extrapolateDefault,
 			isActive: Bool = true
 		) -> CIImage {
 			guard isActive else { return self }
 			return CIFF.PhotoEffectMono(
-				inputImage: self
+				inputImage: self,
+				extrapolate: extrapolate
 			)?.outputImage ?? CIImage.empty()
 		}
 	}
