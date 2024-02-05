@@ -1,8 +1,7 @@
 //
 //  CIImage+extensions.swift
 //
-//  Created by Darren Ford on 7/8/2022.
-//  MIT license
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 //  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the

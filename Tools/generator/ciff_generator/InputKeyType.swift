@@ -2,7 +2,7 @@
 //  InputKeyType.swift
 //  ciff_generator
 //
-//  Created by Darren Ford on 9/4/2022.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 
 import CoreImage

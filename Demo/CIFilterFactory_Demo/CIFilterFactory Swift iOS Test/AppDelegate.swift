@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  CIFilterFactory Swift iOS Test
 //
-//  Created by Darren Ford on 9/5/2022.
-//  Copyright © 2022 Darren Ford. All rights reserved.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 
 import UIKit

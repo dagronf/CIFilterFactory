@@ -2,7 +2,7 @@
 //  FilterGenerator.swift
 //  ciff_generator
 //
-//  Created by Darren Ford on 9/4/2022.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 
 import Foundation
@@ -465,7 +465,7 @@ class FilterGenerator {
 //
 //  \(staticName).swift  (AUTOMATICALLY GENERATED FILE)
 //
-//  Copyright © 2023 Darren Ford. All rights reserved.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

@@ -1,7 +1,7 @@
 //
 //  HueAdjust.swift  (AUTOMATICALLY GENERATED FILE)
 //
-//  Copyright © 2023 Darren Ford. All rights reserved.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

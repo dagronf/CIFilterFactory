@@ -1,7 +1,8 @@
 //
 //  CIFilterFactory.swift
 //
-//  Created by Darren Ford on 11/4/2022.
+//  Copyright © 2024 Darren Ford. All rights reserved.
+//
 //  MIT license
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated

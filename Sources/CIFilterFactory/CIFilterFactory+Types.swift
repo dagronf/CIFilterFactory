@@ -1,7 +1,7 @@
 //
 //  CIFilterFactory+Types.swift
 //
-//  Created by Darren Ford on 16/7/20.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

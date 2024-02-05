@@ -1,8 +1,7 @@
 //
 //  File.swift
 //  
-//
-//  Created by Darren Ford on 26/6/2022.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 
 import Foundation
