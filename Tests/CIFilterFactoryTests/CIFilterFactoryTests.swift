@@ -174,6 +174,15 @@ final class CIFilterFactoryTests: XCTestCase {
 		}
 	}
 
+	func testValidateHandleBasicOptionalExtrapolate() throws {
+		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
+		let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+		let filteredImage = input
+			.applyingPhotoEffectMono()
+		let cgImage = try XCTUnwrap(filteredImage.asCGImage())
+		Swift.print(cgImage)
+	}
+
 //	func testScaling() throws {
 //		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "sydney", withExtension: "jpg"))
 //		let input = try XCTUnwrap(CIImage(contentsOf: testImage))

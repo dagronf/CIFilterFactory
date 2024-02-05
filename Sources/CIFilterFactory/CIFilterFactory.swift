@@ -126,6 +126,12 @@ internal extension CIFF.Core {
 	@inline(__always) func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
 		return self.filter.setValue(value, forKey: key)
 	}
+
+	// Return the property dictionary for the specified filter property (eg "inputExtrapolate")
+	// or nil if the property doesn't exist for this version
+	@inline(__always) func propertyDictionary(_ name: String) -> [String: Any]? {
+		self.filter.attributes[name] as? [String: Any]
+	}
 }
 
 #endif

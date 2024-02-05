@@ -39,3 +39,17 @@ let additionalOutputKeyTypes: Dictionary<AdditionalOutputKey, String> = [
 	AdditionalOutputKey("CIAreaLogarithmicHistogram", "outputImageMPS"): "CIImage",
 	AdditionalOutputKey("CIAreaLogarithmicHistogram", "outputImageNonMPS"): "CIImage",
 ]
+
+// These filters introduced a new parameter 'inputExtrapolate' that isn't available on older versions.
+// We need to check these when setting/getting
+let propertiesRequiringExistenceCheck: [String] = [
+	"CIPhotoEffectMono",
+	"CIPhotoEffectChrome",
+	"CIPhotoEffectFade",
+	"CIPhotoEffectInstant",
+	"CIPhotoEffectMono",
+	"CIPhotoEffectNoir",
+	"CIPhotoEffectProcess",
+	"CIPhotoEffectTonal",
+	"CIPhotoEffectTransfer",
+]
