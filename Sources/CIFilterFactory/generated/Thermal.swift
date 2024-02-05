@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIThermal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIThermal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIThermal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cithermal)
 		@available(macOS 10.11, iOS 10, tvOS 10, *)
 		@objc(CIFFThermal) class Thermal: Core {
 			/// Create an instance of the filter with all default values
@@ -103,8 +102,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIThermal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIThermal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIThermal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cithermal)
 		@inlinable func applyingThermal(
 			isActive: Bool = true
 		) -> CIImage {

@@ -44,8 +44,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator)
 		/// **Additional output keys**
 		/// - outputCGImage
 		///
@@ -175,8 +174,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICode128BarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICode128BarcodeGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICode128BarcodeGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator)
 		@inlinable static func createUsingCode128BarcodeGenerator(
 			message: Data,
 			quietSpace: Int = CIFF.Code128BarcodeGenerator.quietSpaceDefault,

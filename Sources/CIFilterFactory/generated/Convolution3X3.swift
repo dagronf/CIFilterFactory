@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolution3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution3X3)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution3X3/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution3x3)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFConvolution3X3) class Convolution3X3: Core {
 			/// Create an instance of the filter with all default values
@@ -151,8 +150,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolution3X3 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution3X3)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution3X3/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution3x3)
 		@inlinable func applyingConvolution3X3(
 			weights: CIVector = CIFF.Convolution3X3.weightsDefault,
 			bias: Double = CIFF.Convolution3X3.biasDefault,

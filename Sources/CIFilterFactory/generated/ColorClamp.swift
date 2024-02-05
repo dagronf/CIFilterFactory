@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorclamp)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFColorClamp) class ColorClamp: Core {
 			/// Create an instance of the filter with all default values
@@ -151,8 +150,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorClamp)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorClamp/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorclamp)
 		@inlinable func applyingColorClamp(
 			minComponents: CIVector = CIFF.ColorClamp.minComponentsDefault,
 			maxComponents: CIVector = CIFF.ColorClamp.maxComponentsDefault,

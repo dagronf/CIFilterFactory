@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPixellate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPixellate)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPixellate/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipixellate)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFPixellate) class Pixellate: Core {
 			/// Create an instance of the filter with all default values
@@ -156,8 +155,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPixellate Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPixellate)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPixellate/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipixellate)
 		@inlinable func applyingPixellate(
 			center: CGPoint = CIFF.Pixellate.centerDefault,
 			scale: Double = CIFF.Pixellate.scaleDefault,

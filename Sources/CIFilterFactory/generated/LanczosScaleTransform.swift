@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilanczosscaletransform)
 		/// **Additional output keys**
 		/// - outputImageNewScaleX:scaleY:
 		/// - outputImageOldScaleX:scaleY:
@@ -164,8 +163,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILanczosScaleTransform/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilanczosscaletransform)
 		@inlinable func applyingLanczosScaleTransform(
 			scale: Double = CIFF.LanczosScaleTransform.scaleDefault,
 			aspectRatio: Double = CIFF.LanczosScaleTransform.aspectRatioDefault,

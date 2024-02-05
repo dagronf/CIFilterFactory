@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMultiplyBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMultiplyBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMultiplyBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimultiplyblendmode)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFMultiplyBlendMode) class MultiplyBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,8 +125,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMultiplyBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMultiplyBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMultiplyBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimultiplyblendmode)
 		@inlinable func applyingMultiplyBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

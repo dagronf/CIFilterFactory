@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDivideBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDivideBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDivideBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidivideblendmode)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFDivideBlendMode) class DivideBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,8 +125,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDivideBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDivideBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDivideBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidivideblendmode)
 		@inlinable func applyingDivideBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

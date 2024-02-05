@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISwipeTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciswipetransition)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFSwipeTransition) class SwipeTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -284,8 +283,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISwipeTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISwipeTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISwipeTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciswipetransition)
 		@inlinable func applyingSwipeTransition(
 			targetImage: CIImage,
 			extent: CGRect = CIFF.SwipeTransition.extentDefault,

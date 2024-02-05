@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFSunbeamsGenerator) class SunbeamsGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -271,8 +270,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISunbeamsGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISunbeamsGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISunbeamsGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator)
 		@inlinable static func createUsingSunbeamsGenerator(
 			center: CGPoint = CIFF.SunbeamsGenerator.centerDefault,
 			color: CIColor,

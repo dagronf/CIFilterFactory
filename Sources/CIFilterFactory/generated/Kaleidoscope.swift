@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKaleidoscope)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKaleidoscope/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikaleidoscope)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFKaleidoscope) class Kaleidoscope: Core {
 			/// Create an instance of the filter with all default values
@@ -181,8 +180,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKaleidoscope)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKaleidoscope/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikaleidoscope)
 		@inlinable func applyingKaleidoscope(
 			count: Double = CIFF.Kaleidoscope.countDefault,
 			center: CGPoint = CIFF.Kaleidoscope.centerDefault,

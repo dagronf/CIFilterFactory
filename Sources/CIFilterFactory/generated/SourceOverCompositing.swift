@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISourceOverCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceOverCompositing)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISourceOverCompositing/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisourceovercompositing)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFSourceOverCompositing) class SourceOverCompositing: Core {
 			/// Create an instance of the filter with all default values
@@ -127,8 +126,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISourceOverCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISourceOverCompositing)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISourceOverCompositing/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisourceovercompositing)
 		@inlinable func applyingSourceOverCompositing(
 			backgroundImage: CIImage,
 			isActive: Bool = true

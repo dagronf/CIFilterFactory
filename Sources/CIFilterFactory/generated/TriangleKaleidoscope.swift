@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITriangleKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleKaleidoscope)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope)
 		@available(macOS 10.10, iOS 6, tvOS 6, *)
 		@objc(CIFFTriangleKaleidoscope) class TriangleKaleidoscope: Core {
 			/// Create an instance of the filter with all default values
@@ -202,8 +201,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITriangleKaleidoscope Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITriangleKaleidoscope)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITriangleKaleidoscope/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope)
 		@inlinable func applyingTriangleKaleidoscope(
 			point: CGPoint = CIFF.TriangleKaleidoscope.pointDefault,
 			size: Double = CIFF.TriangleKaleidoscope.sizeDefault,

@@ -49,8 +49,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectNoir Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectNoir)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectNoir/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectnoir)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectNoir) class PhotoEffectNoir: Core {
 			/// Create an instance of the filter with all default values
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectNoir Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectNoir)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectNoir/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectnoir)
 		@inlinable func applyingPhotoEffectNoir(
 			extrapolate: Bool = CIFF.PhotoEffectNoir.extrapolateDefault,
 			isActive: Bool = true

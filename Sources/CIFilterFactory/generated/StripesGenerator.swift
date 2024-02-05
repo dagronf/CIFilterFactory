@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIStripesGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStripesGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIStripesGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistripesgenerator)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFStripesGenerator) class StripesGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -201,8 +200,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIStripesGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStripesGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIStripesGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistripesgenerator)
 		@inlinable static func createUsingStripesGenerator(
 			center: CGPoint = CIFF.StripesGenerator.centerDefault,
 			color0: CIColor,

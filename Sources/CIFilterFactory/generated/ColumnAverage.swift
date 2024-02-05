@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColumnAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColumnAverage)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColumnAverage/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolumnaverage)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFColumnAverage) class ColumnAverage: Core {
 			/// Create an instance of the filter with all default values
@@ -127,8 +126,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColumnAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColumnAverage)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColumnAverage/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolumnaverage)
 		@inlinable func applyingColumnAverage(
 			extent: CGRect = CIFF.ColumnAverage.extentDefault,
 			isActive: Bool = true

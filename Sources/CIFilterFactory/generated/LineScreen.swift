@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILineScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineScreen)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilinescreen)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFLineScreen) class LineScreen: Core {
 			/// Create an instance of the filter with all default values
@@ -210,8 +209,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILineScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILineScreen)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILineScreen/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilinescreen)
 		@inlinable func applyingLineScreen(
 			center: CGPoint = CIFF.LineScreen.centerDefault,
 			angle: Double = CIFF.LineScreen.angleDefault,

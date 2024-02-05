@@ -49,8 +49,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectTonal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTonal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTonal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttonal)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectTonal) class PhotoEffectTonal: Core {
 			/// Create an instance of the filter with all default values
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectTonal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTonal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectTonal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttonal)
 		@inlinable func applyingPhotoEffectTonal(
 			extrapolate: Bool = CIFF.PhotoEffectTonal.extrapolateDefault,
 			isActive: Bool = true

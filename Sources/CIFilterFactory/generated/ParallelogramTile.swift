@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciparallelogramtile)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFParallelogramTile) class ParallelogramTile: Core {
 			/// Create an instance of the filter with all default values
@@ -206,8 +205,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIParallelogramTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIParallelogramTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIParallelogramTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciparallelogramtile)
 		@inlinable func applyingParallelogramTile(
 			center: CGPoint = CIFF.ParallelogramTile.centerDefault,
 			angle: Double = CIFF.ParallelogramTile.angleDefault,

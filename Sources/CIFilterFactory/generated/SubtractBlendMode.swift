@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisubtractblendmode)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFSubtractBlendMode) class SubtractBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,8 +125,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISubtractBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISubtractBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISubtractBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisubtractblendmode)
 		@inlinable func applyingSubtractBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

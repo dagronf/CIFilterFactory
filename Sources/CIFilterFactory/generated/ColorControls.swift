@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorControls Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorControls)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcontrols)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFColorControls) class ColorControls: Core {
 			/// Create an instance of the filter with all default values
@@ -191,8 +190,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorControls Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorControls)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorControls/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcontrols)
 		@inlinable func applyingColorControls(
 			saturation: Double = CIFF.ColorControls.saturationDefault,
 			brightness: Double = CIFF.ColorControls.brightnessDefault,

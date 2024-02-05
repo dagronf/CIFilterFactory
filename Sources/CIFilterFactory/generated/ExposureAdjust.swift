@@ -49,8 +49,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexposureadjust)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFExposureAdjust) class ExposureAdjust: Core {
 			/// Create an instance of the filter with all default values
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIExposureAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIExposureAdjust/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciexposureadjust)
 		@inlinable func applyingExposureAdjust(
 			eV: Double = CIFF.ExposureAdjust.eVDefault,
 			isActive: Bool = true

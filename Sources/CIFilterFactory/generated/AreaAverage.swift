@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaaverage)
 		/// **Additional output keys**
 		/// - outputImageNonMPS:
 		///
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaAverage Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaAverage)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaAverage/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaaverage)
 		@inlinable func applyingAreaAverage(
 			extent: CGRect = CIFF.AreaAverage.extentDefault,
 			isActive: Bool = true

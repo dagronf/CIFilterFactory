@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICannyEdgeDetector Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICannyEdgeDetector)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICannyEdgeDetector/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicannyedgedetector)
 		@available(macOS 14.0, iOS 17, tvOS 17, *)
 		@objc(CIFFCannyEdgeDetector) class CannyEdgeDetector: Core {
 			/// Create an instance of the filter with all default values
@@ -244,8 +243,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICannyEdgeDetector Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICannyEdgeDetector)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICannyEdgeDetector/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicannyedgedetector)
 		@inlinable func applyingCannyEdgeDetector(
 			gaussianSigma: Double = CIFF.CannyEdgeDetector.gaussianSigmaDefault,
 			perceptual: Bool = CIFF.CannyEdgeDetector.perceptualDefault,

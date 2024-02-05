@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPalettize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPalettize)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPalettize/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipalettize)
 		@available(macOS 10.15, iOS 13, tvOS 13, *)
 		@objc(CIFFPalettize) class Palettize: Core {
 			/// Create an instance of the filter with all default values
@@ -149,8 +148,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPalettize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPalettize)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPalettize/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipalettize)
 		@inlinable func applyingPalettize(
 			paletteImage: CIImage,
 			perceptual: Bool = CIFF.Palettize.perceptualDefault,

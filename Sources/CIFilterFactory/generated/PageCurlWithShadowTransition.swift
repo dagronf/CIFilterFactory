@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition)
 		@available(macOS 10.9, iOS 9, tvOS 9, *)
 		@objc(CIFFPageCurlWithShadowTransition) class PageCurlWithShadowTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -342,8 +341,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPageCurlWithShadowTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlWithShadowTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPageCurlWithShadowTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition)
 		@inlinable func applyingPageCurlWithShadowTransition(
 			targetImage: CIImage,
 			backsideImage: CIImage,

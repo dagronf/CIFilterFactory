@@ -49,8 +49,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectMono Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectMono)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectMono/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectmono)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectMono) class PhotoEffectMono: Core {
 			/// Create an instance of the filter with all default values
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectMono Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectMono)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectMono/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectmono)
 		@inlinable func applyingPhotoEffectMono(
 			extrapolate: Bool = CIFF.PhotoEffectMono.extrapolateDefault,
 			isActive: Bool = true

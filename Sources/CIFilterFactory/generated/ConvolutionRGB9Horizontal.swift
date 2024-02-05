@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolutionRGB9Horizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Horizontal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Horizontal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb9horizontal)
 		@available(macOS 12.0, iOS 15, tvOS 15, *)
 		@objc(CIFFConvolutionRGB9Horizontal) class ConvolutionRGB9Horizontal: Core {
 			/// Create an instance of the filter with all default values
@@ -151,8 +150,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolutionRGB9Horizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolutionRGB9Horizontal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolutionRGB9Horizontal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolutionrgb9horizontal)
 		@inlinable func applyingConvolutionRGB9Horizontal(
 			weights: CIVector = CIFF.ConvolutionRGB9Horizontal.weightsDefault,
 			bias: Double = CIFF.ConvolutionRGB9Horizontal.biasDefault,

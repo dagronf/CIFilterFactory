@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihistogramdisplayfilter)
 		@available(iOS 8, tvOS 8, *)
 		@objc(CIFFHistogramDisplayFilter) class HistogramDisplayFilter: Core {
 			/// Create an instance of the filter with all default values
@@ -191,8 +190,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIHistogramDisplayFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHistogramDisplayFilter)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIHistogramDisplayFilter/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihistogramdisplayfilter)
 		@inlinable func applyingHistogramDisplayFilter(
 			height: Double = CIFF.HistogramDisplayFilter.heightDefault,
 			highLimit: Double = CIFF.HistogramDisplayFilter.highLimitDefault,

@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citextimagegenerator)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFTextImageGenerator) class TextImageGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -206,8 +205,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITextImageGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITextImageGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citextimagegenerator)
 		@inlinable static func createUsingTextImageGenerator(
 			text: String,
 			fontName: String,

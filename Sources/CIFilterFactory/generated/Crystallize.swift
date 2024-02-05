@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrystallize)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFCrystallize) class Crystallize: Core {
 			/// Create an instance of the filter with all default values
@@ -156,8 +155,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICrystallize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrystallize)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICrystallize/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrystallize)
 		@inlinable func applyingCrystallize(
 			radius: Double = CIFF.Crystallize.radiusDefault,
 			center: CGPoint = CIFF.Crystallize.centerDefault,

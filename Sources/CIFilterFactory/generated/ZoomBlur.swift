@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIZoomBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIZoomBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cizoomblur)
 		@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 		@objc(CIFFZoomBlur) class ZoomBlur: Core {
 			/// Create an instance of the filter with all default values
@@ -152,8 +151,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIZoomBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIZoomBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIZoomBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cizoomblur)
 		@inlinable func applyingZoomBlur(
 			center: CGPoint = CIFF.ZoomBlur.centerDefault,
 			amount: Double = CIFF.ZoomBlur.amountDefault,

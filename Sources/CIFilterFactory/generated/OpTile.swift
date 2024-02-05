@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioptile)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFOpTile) class OpTile: Core {
 			/// Create an instance of the filter with all default values
@@ -210,8 +209,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIOpTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOpTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIOpTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioptile)
 		@inlinable func applyingOpTile(
 			center: CGPoint = CIFF.OpTile.centerDefault,
 			scale: Double = CIFF.OpTile.scaleDefault,

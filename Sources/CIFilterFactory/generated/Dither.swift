@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDither Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDither)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDither/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidither)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFDither) class Dither: Core {
 			/// Create an instance of the filter with all default values
@@ -132,8 +131,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDither Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDither)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDither/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidither)
 		@inlinable func applyingDither(
 			intensity: Double = CIFF.Dither.intensityDefault,
 			isActive: Bool = true

@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIFourfoldRotatedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldRotatedTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldRotatedTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile)
 		@available(macOS 10.5, iOS 6, tvOS 6, *)
 		@objc(CIFFFourfoldRotatedTile) class FourfoldRotatedTile: Core {
 			/// Create an instance of the filter with all default values
@@ -181,8 +180,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIFourfoldRotatedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIFourfoldRotatedTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIFourfoldRotatedTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile)
 		@inlinable func applyingFourfoldRotatedTile(
 			center: CGPoint = CIFF.FourfoldRotatedTile.centerDefault,
 			angle: Double = CIFF.FourfoldRotatedTile.angleDefault,

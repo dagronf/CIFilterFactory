@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormatrix)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFColorMatrix) class ColorMatrix: Core {
 			/// Create an instance of the filter with all default values
@@ -224,8 +223,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorMatrix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMatrix)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorMatrix/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormatrix)
 		@inlinable func applyingColorMatrix(
 			rVector: CIVector = CIFF.ColorMatrix.rVectorDefault,
 			gVector: CIVector = CIFF.ColorMatrix.gVectorDefault,

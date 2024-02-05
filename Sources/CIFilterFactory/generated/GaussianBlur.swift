@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGaussianBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaussianblur)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFGaussianBlur) class GaussianBlur: Core {
 			/// Create an instance of the filter with all default values
@@ -131,8 +130,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGaussianBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaussianBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGaussianBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaussianblur)
 		@inlinable func applyingGaussianBlur(
 			radius: Double = CIFF.GaussianBlur.radiusDefault,
 			isActive: Bool = true

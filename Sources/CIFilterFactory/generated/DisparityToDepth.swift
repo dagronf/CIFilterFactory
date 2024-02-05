@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisparitytodepth)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFDisparityToDepth) class DisparityToDepth: Core {
 			/// Create an instance of the filter with all default values
@@ -101,8 +100,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDisparityToDepth Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisparityToDepth)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDisparityToDepth/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisparitytodepth)
 		@inlinable func applyingDisparityToDepth(
 			isActive: Bool = true
 		) -> CIImage {

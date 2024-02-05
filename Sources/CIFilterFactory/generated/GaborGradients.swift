@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaborgradients)
 		@available(macOS 10.15, iOS 13, tvOS 13, *)
 		@objc(CIFFGaborGradients) class GaborGradients: Core {
 			/// Create an instance of the filter with all default values
@@ -102,8 +101,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGaborGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGaborGradients)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGaborGradients/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigaborgradients)
 		@inlinable func applyingGaborGradients(
 			isActive: Bool = true
 		) -> CIImage {

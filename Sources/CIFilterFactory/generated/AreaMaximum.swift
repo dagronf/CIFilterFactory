@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximum)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximum/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximum)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFAreaMaximum) class AreaMaximum: Core {
 			/// Create an instance of the filter with all default values
@@ -127,8 +126,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximum)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMaximum/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximum)
 		@inlinable func applyingAreaMaximum(
 			extent: CGRect = CIFF.AreaMaximum.extentDefault,
 			isActive: Bool = true

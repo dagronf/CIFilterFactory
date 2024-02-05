@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISixfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISixfoldReflectedTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISixfoldReflectedTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile)
 		@available(macOS 10.5, iOS 6, tvOS 6, *)
 		@objc(CIFFSixfoldReflectedTile) class SixfoldReflectedTile: Core {
 			/// Create an instance of the filter with all default values
@@ -181,8 +180,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISixfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISixfoldReflectedTile)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISixfoldReflectedTile/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile)
 		@inlinable func applyingSixfoldReflectedTile(
 			center: CGPoint = CIFF.SixfoldReflectedTile.centerDefault,
 			angle: Double = CIFF.SixfoldReflectedTile.angleDefault,

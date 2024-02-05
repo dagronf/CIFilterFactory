@@ -49,8 +49,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectInstant Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectInstant)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectinstant)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectInstant) class PhotoEffectInstant: Core {
 			/// Create an instance of the filter with all default values
@@ -130,8 +129,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPhotoEffectInstant Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectInstant)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPhotoEffectInstant/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectinstant)
 		@inlinable func applyingPhotoEffectInstant(
 			extrapolate: Bool = CIFF.PhotoEffectInstant.extrapolateDefault,
 			isActive: Bool = true

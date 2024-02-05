@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectioncombined)
 		/// **Additional output keys**
 		/// - outputTransform
 		/// - outputRotationFilter
@@ -227,8 +226,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionCombined Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionCombined)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionCombined/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectioncombined)
 		@inlinable func applyingKeystoneCorrectionCombined(
 			focalLength: Double = CIFF.KeystoneCorrectionCombined.focalLengthDefault,
 			topLeft: CGPoint,

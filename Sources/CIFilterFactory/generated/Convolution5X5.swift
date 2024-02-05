@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolution5X5 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution5X5)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution5X5/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution5x5)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFConvolution5X5) class Convolution5X5: Core {
 			/// Create an instance of the filter with all default values
@@ -151,8 +150,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConvolution5X5 Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution5X5)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConvolution5X5/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution5x5)
 		@inlinable func applyingConvolution5X5(
 			weights: CIVector = CIFF.Convolution5X5.weightsDefault,
 			bias: Double = CIFF.Convolution5X5.biasDefault,

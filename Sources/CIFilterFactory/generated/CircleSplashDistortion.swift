@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICircleSplashDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircleSplashDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICircleSplashDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFCircleSplashDistortion) class CircleSplashDistortion: Core {
 			/// Create an instance of the filter with all default values
@@ -156,8 +155,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CICircleSplashDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICircleSplashDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CICircleSplashDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion)
 		@inlinable func applyingCircleSplashDistortion(
 			center: CGPoint = CIFF.CircleSplashDistortion.centerDefault,
 			radius: Double = CIFF.CircleSplashDistortion.radiusDefault,

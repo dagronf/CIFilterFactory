@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISobelGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISobelGradients)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISobelGradients/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisobelgradients)
 		@available(macOS 14.0, iOS 17, tvOS 17, *)
 		@objc(CIFFSobelGradients) class SobelGradients: Core {
 			/// Create an instance of the filter with all default values
@@ -102,8 +101,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CISobelGradients Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISobelGradients)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CISobelGradients/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisobelgradients)
 		@inlinable func applyingSobelGradients(
 			isActive: Bool = true
 		) -> CIImage {

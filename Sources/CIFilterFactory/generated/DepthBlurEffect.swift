@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidepthblureffect)
 		@available(macOS 10.13, iOS 11, tvOS 11, macCatalyst 14, *)
 		@objc(CIFFDepthBlurEffect) class DepthBlurEffect: Core {
 			/// Create an instance of the filter with all default values
@@ -486,8 +485,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDepthBlurEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDepthBlurEffect)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDepthBlurEffect/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidepthblureffect)
 		@inlinable func applyingDepthBlurEffect(
 			disparityImage: CIImage,
 			matteImage: CIImage,

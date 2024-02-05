@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorAbsoluteDifference Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorAbsoluteDifference)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorabsolutedifference)
 		@available(macOS 11.0, iOS 14, tvOS 14, *)
 		@objc(CIFFColorAbsoluteDifference) class ColorAbsoluteDifference: Core {
 			/// Create an instance of the filter with all default values
@@ -127,8 +126,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIColorAbsoluteDifference Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorAbsoluteDifference)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIColorAbsoluteDifference/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorabsolutedifference)
 		@inlinable func applyingColorAbsoluteDifference(
 			image2: CIImage,
 			isActive: Bool = true

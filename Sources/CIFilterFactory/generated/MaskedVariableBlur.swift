@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaskedvariableblur)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFMaskedVariableBlur) class MaskedVariableBlur: Core {
 			/// Create an instance of the filter with all default values
@@ -154,8 +153,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMaskedVariableBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaskedVariableBlur)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMaskedVariableBlur/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaskedvariableblur)
 		@inlinable func applyingMaskedVariableBlur(
 			mask: CIImage,
 			radius: Double = CIFF.MaskedVariableBlur.radiusDefault,

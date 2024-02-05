@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaMinMaxRed Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMaxRed)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMaxRed/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmaxred)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFAreaMinMaxRed) class AreaMinMaxRed: Core {
 			/// Create an instance of the filter with all default values
@@ -127,8 +126,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIAreaMinMaxRed Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMaxRed)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIAreaMinMaxRed/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmaxred)
 		@inlinable func applyingAreaMinMaxRed(
 			extent: CGRect = CIFF.AreaMinMaxRed.extentDefault,
 			isActive: Bool = true

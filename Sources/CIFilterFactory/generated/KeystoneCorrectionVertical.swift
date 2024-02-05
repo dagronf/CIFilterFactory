@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionvertical)
 		/// **Additional output keys**
 		/// - outputTransform
 		/// - outputRotationFilter
@@ -227,8 +226,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionVertical Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionVertical)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionVertical/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionvertical)
 		@inlinable func applyingKeystoneCorrectionVertical(
 			focalLength: Double = CIFF.KeystoneCorrectionVertical.focalLengthDefault,
 			topLeft: CGPoint,

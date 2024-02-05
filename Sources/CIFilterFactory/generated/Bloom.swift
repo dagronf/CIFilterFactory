@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIBloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBloom)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIBloom/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibloom)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFBloom) class Bloom: Core {
 			/// Create an instance of the filter with all default values
@@ -160,8 +159,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIBloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBloom)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIBloom/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibloom)
 		@inlinable func applyingBloom(
 			radius: Double = CIFF.Bloom.radiusDefault,
 			intensity: Double = CIFF.Bloom.intensityDefault,

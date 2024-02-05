@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibicubicscaletransform)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFBicubicScaleTransform) class BicubicScaleTransform: Core {
 			/// Create an instance of the filter with all default values
@@ -221,8 +220,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIBicubicScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBicubicScaleTransform)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIBicubicScaleTransform/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibicubicscaletransform)
 		@inlinable func applyingBicubicScaleTransform(
 			scale: Double = CIFF.BicubicScaleTransform.scaleDefault,
 			aspectRatio: Double = CIFF.BicubicScaleTransform.aspectRatioDefault,

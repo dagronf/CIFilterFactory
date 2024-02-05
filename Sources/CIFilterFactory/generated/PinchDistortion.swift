@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPinchDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinchDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPinchDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipinchdistortion)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFPinchDistortion) class PinchDistortion: Core {
 			/// Create an instance of the filter with all default values
@@ -185,8 +184,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIPinchDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPinchDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIPinchDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipinchdistortion)
 		@inlinable func applyingPinchDistortion(
 			center: CGPoint = CIFF.PinchDistortion.centerDefault,
 			radius: Double = CIFF.PinchDistortion.radiusDefault,

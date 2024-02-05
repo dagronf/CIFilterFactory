@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILinearDodgeBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearDodgeBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILinearDodgeBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineardodgeblendmode)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFLinearDodgeBlendMode) class LinearDodgeBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,8 +125,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CILinearDodgeBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearDodgeBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CILinearDodgeBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineardodgeblendmode)
 		@inlinable func applyingLinearDodgeBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

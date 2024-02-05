@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDissolveTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDissolveTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidissolvetransition)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFDissolveTransition) class DissolveTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -157,8 +156,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDissolveTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDissolveTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDissolveTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidissolvetransition)
 		@inlinable func applyingDissolveTransition(
 			targetImage: CIImage,
 			time: Double = CIFF.DissolveTransition.timeDefault,

@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIHardLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHardLightBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIHardLightBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihardlightblendmode)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFHardLightBlendMode) class HardLightBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,8 +125,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIHardLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHardLightBlendMode)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIHardLightBlendMode/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihardlightblendmode)
 		@inlinable func applyingHardLightBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIComicEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIComicEffect)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIComicEffect/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicomiceffect)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFComicEffect) class ComicEffect: Core {
 			/// Create an instance of the filter with all default values
@@ -101,8 +100,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIComicEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIComicEffect)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIComicEffect/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicomiceffect)
 		@inlinable func applyingComicEffect(
 			isActive: Bool = true
 		) -> CIImage {

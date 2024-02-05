@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglassdistortion)
 		@available(macOS 10.4, iOS 8, tvOS 8, *)
 		@objc(CIFFGlassDistortion) class GlassDistortion: Core {
 			/// Create an instance of the filter with all default values
@@ -179,8 +178,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIGlassDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassDistortion)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIGlassDistortion/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglassdistortion)
 		@inlinable func applyingGlassDistortion(
 			texture: CIImage,
 			center: CGPoint = CIFF.GlassDistortion.centerDefault,

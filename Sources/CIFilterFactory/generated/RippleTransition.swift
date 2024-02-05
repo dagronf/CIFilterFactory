@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFRippleTransition) class RippleTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -286,8 +285,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIRippleTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRippleTransition)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIRippleTransition/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirippletransition)
 		@inlinable func applyingRippleTransition(
 			targetImage: CIImage,
 			shadingImage: CIImage,

@@ -47,8 +47,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIVibrance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIVibrance/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civibrance)
 		@available(macOS 10.7, iOS 5, tvOS 5, *)
 		@objc(CIFFVibrance) class Vibrance: Core {
 			/// Create an instance of the filter with all default values
@@ -133,8 +132,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIVibrance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIVibrance/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civibrance)
 		@inlinable func applyingVibrance(
 			amount: Double = CIFF.Vibrance.amountDefault,
 			isActive: Bool = true

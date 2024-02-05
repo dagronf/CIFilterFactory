@@ -45,8 +45,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDotScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDotScreen)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDotScreen/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidotscreen)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFDotScreen) class DotScreen: Core {
 			/// Create an instance of the filter with all default values
@@ -210,8 +209,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIDotScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDotScreen)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIDotScreen/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidotscreen)
 		@inlinable func applyingDotScreen(
 			center: CGPoint = CIFF.DotScreen.centerDefault,
 			angle: Double = CIFF.DotScreen.angleDefault,

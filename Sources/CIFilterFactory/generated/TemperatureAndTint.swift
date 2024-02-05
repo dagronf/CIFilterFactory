@@ -48,8 +48,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citemperatureandtint)
 		@available(macOS 10.7, iOS 5, tvOS 5, *)
 		@objc(CIFFTemperatureAndTint) class TemperatureAndTint: Core {
 			/// Create an instance of the filter with all default values
@@ -154,8 +153,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CITemperatureAndTint Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CITemperatureAndTint/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citemperatureandtint)
 		@inlinable func applyingTemperatureAndTint(
 			neutral: CGPoint = CIFF.TemperatureAndTint.neutralDefault,
 			targetNeutral: CGPoint = CIFF.TemperatureAndTint.targetNeutralDefault,

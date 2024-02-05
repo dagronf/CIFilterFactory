@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologygradient)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFMorphologyGradient) class MorphologyGradient: Core {
 			/// Create an instance of the filter with all default values
@@ -131,8 +130,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIMorphologyGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyGradient)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIMorphologyGradient/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologygradient)
 		@inlinable func applyingMorphologyGradient(
 			radius: Double = CIFF.MorphologyGradient.radiusDefault,
 			isActive: Bool = true

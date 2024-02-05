@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionHorizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionHorizontal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionHorizontal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionhorizontal)
 		/// **Additional output keys**
 		/// - outputTransform
 		/// - outputRotationFilter
@@ -227,8 +226,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIKeystoneCorrectionHorizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIKeystoneCorrectionHorizontal)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIKeystoneCorrectionHorizontal/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cikeystonecorrectionhorizontal)
 		@inlinable func applyingKeystoneCorrectionHorizontal(
 			focalLength: Double = CIFF.KeystoneCorrectionHorizontal.focalLengthDefault,
 			topLeft: CGPoint,

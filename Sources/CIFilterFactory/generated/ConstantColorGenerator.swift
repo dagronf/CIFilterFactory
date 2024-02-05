@@ -46,8 +46,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConstantColorGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConstantColorGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconstantcolorgenerator)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFConstantColorGenerator) class ConstantColorGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -100,8 +99,7 @@
 		///
 		/// **Documentation Links**
 		/// - [CIConstantColorGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConstantColorGenerator)
-		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-		/// - [CIFilter.io documentation](https://cifilter.io/CIConstantColorGenerator/)
+		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconstantcolorgenerator)
 		@inlinable static func createUsingConstantColorGenerator(
 			color: CIColor
 		) -> CIImage? {
