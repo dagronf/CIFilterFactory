@@ -105,13 +105,14 @@ import OSLog
 
 		internal init?(name: String) {
 			guard let filter = CIFilter(name: name) else {
-				os_log(
-					"CIFilterFactory: Filter '%@' does is not supported on this platform.",
-					log: OSLog.default,
-					type: .error,
-					name
-				)
-				assert(false)   // If running in debug, make this a little more obvious to the developer
+				if #available(macOS 10.12, iOS 10, tvOS 10, *) {
+					os_log(
+						"CIFilterFactory: Filter '%@' does is not supported on this platform.",
+						log: OSLog.default,
+						type: .error,
+						name
+					)
+				}
 				return nil
 			}
 			self.filter = filter
@@ -128,13 +129,15 @@ internal extension CIFF.Core {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
 		guard self.filter.attributes[key] != nil else {
-			os_log(
-				"CIFilterFactory: '%@' does not support parameter '%@' on this platform.",
-				log: OSLog.default,
-				type: .error,
-				self.filter.name,
-				key
-			)
+			if #available(macOS 10.12, iOS 10, tvOS 10, *) {
+				os_log(
+					"CIFilterFactory: '%@' does not support parameter '%@' on this platform.",
+					log: OSLog.default,
+					type: .error,
+					self.filter.name,
+					key
+				)
+			}
 			return nil
 		}
 		return self.filter.value(forKey: key) as? TYPE
@@ -145,13 +148,15 @@ internal extension CIFF.Core {
 		// Apple seems to have added some new filter parameters ("inputExtrapolate") to some filters which
 		// are not available on older OS versions.
 		guard self.filter.attributes[key] != nil else {
-			os_log(
-				"CIFilterFactory: '%@' does not support parameter '%@' on this platform. Ignoring…",
-				log: OSLog.default,
-				type: .error,
-				self.filter.name,
-				key
-			)
+			if #available(macOS 10.12, iOS 10, tvOS 10, *) {
+				os_log(
+					"CIFilterFactory: '%@' does not support parameter '%@' on this platform. Ignoring…",
+					log: OSLog.default,
+					type: .error,
+					self.filter.name,
+					key
+				)
+			}
 			return
 		}
 		self.filter.setValue(value, forKey: key)

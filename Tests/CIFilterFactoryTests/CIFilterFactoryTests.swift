@@ -174,17 +174,25 @@ final class CIFilterFactoryTests: XCTestCase {
 		}
 	}
 
-//	func testValidateHandleBasicOptionalExtrapolate() throws {
-//		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
-//		let input = try XCTUnwrap(CIImage(contentsOf: testImage))
-//		let filteredImage = input
-//			.applyingPhotoEffectMono()
-//		let cgImage = try XCTUnwrap(filteredImage.asCGImage())
-//		Swift.print(cgImage)
-//
-//		let mm = CIFF.PhotoEffectMono()
-//		mm?.setKeyedValue("asdfasdf", for: "asdfasdfaf")
-//	}
+	func testValidateHandleBasicOptionalExtrapolateNotExisting() throws {
+		let testImage = try XCTUnwrap(Bundle.module.url(forResource: "test", withExtension: "jpg"))
+		let input = try XCTUnwrap(CIImage(contentsOf: testImage))
+		let filteredImage = input
+			.applyingPhotoEffectMono()
+		let cgImage = try XCTUnwrap(filteredImage.asCGImage())
+		Swift.print(cgImage)
+
+		// Make sure 'setKeyedValue' doesn't blow up with an unsupported input
+		let mm = CIFF.PhotoEffectMono()
+		mm?.setKeyedValue("asdfasdf", for: "asdfasdfaf")
+
+		// Make sure 'keyedValue' doesn't blow up with an unsupported input
+		let s: String? = mm?.keyedValue("asdfasdfaf")
+		XCTAssertNil(s)
+
+		let c = CIFF.Core(name: "asdf")
+		XCTAssertNil(c)
+	}
 }
 
 #endif // canImport(CoreImage)
