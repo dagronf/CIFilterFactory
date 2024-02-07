@@ -23,7 +23,10 @@
 
 import CoreImage
 import Foundation
+
+#if canImport(OSLog)
 import OSLog
+#endif
 
 /// The namespace object for the filter factory
 @objc public class CIFF: NSObject {
@@ -105,13 +108,8 @@ import OSLog
 
 		internal init?(name: String) {
 			guard let filter = CIFilter(name: name) else {
-				if #available(macOS 10.12, iOS 10, tvOS 10, *) {
-					os_log(
-						"CIFilterFactory: Filter '%@' does is not supported on this platform.",
-						log: OSLog.default,
-						type: .error,
-						name
-					)
+				if #available(macOS 11, iOS 14, tvOS 14, *) {
+					_logger.error("CIFilterFactory: Filter '\(name, privacy: .public)' is not supported on this platform.")
 				}
 				return nil
 			}
@@ -129,14 +127,8 @@ internal extension CIFF.Core {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
 		guard self.filter.attributes[key] != nil else {
-			if #available(macOS 10.12, iOS 10, tvOS 10, *) {
-				os_log(
-					"CIFilterFactory: '%@' does not support parameter '%@' on this platform.",
-					log: OSLog.default,
-					type: .error,
-					self.filter.name,
-					key
-				)
+			if #available(macOS 11, iOS 14, tvOS 14, *) {
+				_logger.error("CIFilterFactory: '\(self.filter.name, privacy: .public)' does not support parameter '\(key, privacy: .public)' on this platform.")
 			}
 			return nil
 		}
@@ -148,14 +140,8 @@ internal extension CIFF.Core {
 		// Apple seems to have added some new filter parameters ("inputExtrapolate") to some filters which
 		// are not available on older OS versions.
 		guard self.filter.attributes[key] != nil else {
-			if #available(macOS 10.12, iOS 10, tvOS 10, *) {
-				os_log(
-					"CIFilterFactory: '%@' does not support parameter '%@' on this platform. Ignoring…",
-					log: OSLog.default,
-					type: .error,
-					self.filter.name,
-					key
-				)
+			if #available(macOS 11, iOS 14, tvOS 14, *) {
+				_logger.error("CIFilterFactory: '\(self.filter.name, privacy: .public)' does not support parameter '\(key, privacy: .public)' on this platform. Ignoring…")
 			}
 			return
 		}
