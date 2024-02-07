@@ -101,7 +101,7 @@
 					self.boolValue(forKey: "inputUseInverseLookUpTable", defaultValue: Self.useInverseLookUpTableDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputUseInverseLookUpTable")
+					self.setBoolValue(newValue, forKey: "inputUseInverseLookUpTable")
 				}
 			}
 

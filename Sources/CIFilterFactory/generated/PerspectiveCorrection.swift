@@ -169,7 +169,7 @@
 					self.boolValue(forKey: "inputCrop", defaultValue: Self.cropDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputCrop")
+					self.setBoolValue(newValue, forKey: "inputCrop")
 				}
 			}
 

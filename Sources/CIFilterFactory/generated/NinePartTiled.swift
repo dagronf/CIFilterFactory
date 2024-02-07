@@ -148,7 +148,7 @@
 					self.boolValue(forKey: "inputFlipYTiles", defaultValue: Self.flipYTilesDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputFlipYTiles")
+					self.setBoolValue(newValue, forKey: "inputFlipYTiles")
 				}
 			}
 

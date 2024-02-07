@@ -36,6 +36,10 @@ internal extension CIFF.Core {
 	@inline(__always) func boolValue(forKey key: String, defaultValue: Bool) -> Bool {
 		self.numberValue(forKey: key)?.boolValue ?? defaultValue
 	}
+
+	@inline(__always) func setBoolValue(_ value: Bool, forKey key: String) {
+		self.setValidatedGenericKeyValue(NSNumber(value: value), forKey: key)
+	}
 }
 
 // MARK: - Double

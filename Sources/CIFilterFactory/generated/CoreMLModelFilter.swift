@@ -125,7 +125,7 @@
 					self.boolValue(forKey: "inputSoftmaxNormalization", defaultValue: Self.softmaxNormalizationDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputSoftmaxNormalization")
+					self.setBoolValue(newValue, forKey: "inputSoftmaxNormalization")
 				}
 			}
 

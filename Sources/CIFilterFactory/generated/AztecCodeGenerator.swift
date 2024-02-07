@@ -136,7 +136,7 @@
 					self.boolValue(forKey: "inputCompactStyle", defaultValue: Self.compactStyleDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputCompactStyle")
+					self.setBoolValue(newValue, forKey: "inputCompactStyle")
 				}
 			}
 

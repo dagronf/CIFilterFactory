@@ -88,7 +88,7 @@
 					self.boolValue(forKey: "inputExtrapolate", defaultValue: Self.extrapolateDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputExtrapolate")
+					self.setBoolValue(newValue, forKey: "inputExtrapolate")
 				}
 			}
 

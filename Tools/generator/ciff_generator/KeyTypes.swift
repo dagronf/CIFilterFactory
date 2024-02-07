@@ -94,7 +94,7 @@ class BoolGeneratorType: ValueGeneratorType<Bool> {
 		out.print("         self.boolValue(forKey: \"\(key)\", defaultValue: Self.\(userFriendlyKey)Default)")
 		out.print("      }")
 		out.print("      set {")
-		out.print(#"         self.setKeyedValue(NSNumber(value: newValue), for: "\#(key)")"#)
+		out.print(#"         self.setBoolValue(newValue, forKey: "\#(key)")"#)
 		out.print("      }")
 		out.print("   }")
 		out.print("")

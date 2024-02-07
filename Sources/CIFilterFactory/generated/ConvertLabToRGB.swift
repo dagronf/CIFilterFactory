@@ -87,7 +87,7 @@
 					self.boolValue(forKey: "inputNormalize", defaultValue: Self.normalizeDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputNormalize")
+					self.setBoolValue(newValue, forKey: "inputNormalize")
 				}
 			}
 

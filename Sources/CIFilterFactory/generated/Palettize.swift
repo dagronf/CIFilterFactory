@@ -101,7 +101,7 @@
 					self.boolValue(forKey: "inputPerceptual", defaultValue: Self.perceptualDefault)
 				}
 				set {
-					self.setKeyedValue(NSNumber(value: newValue), for: "inputPerceptual")
+					self.setBoolValue(newValue, forKey: "inputPerceptual")
 				}
 			}
 
