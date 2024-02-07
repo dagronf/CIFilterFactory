@@ -21,16 +21,16 @@
 
 #if canImport(CoreImage)
 
-import Foundation
 import CoreImage
+import Foundation
 
 internal extension CIFF.Core {
 	@inline(__always) func numberValue(forKey key: String) -> NSNumber? {
-		self.filter.value(forKey: key) as? NSNumber
+		return self.validatedGenericKeyValue(forKey: key) as? NSNumber
 	}
 }
 
-// Bool
+// MARK: - Bool
 
 internal extension CIFF.Core {
 	@inline(__always) func boolValue(forKey key: String, defaultValue: Bool) -> Bool {
@@ -38,67 +38,77 @@ internal extension CIFF.Core {
 	}
 }
 
-// Double
+// MARK: - Double
 
 internal extension CIFF.Core {
 	@inline(__always) func doubleValue(forKey key: String, defaultValue: Double) -> Double {
 		self.numberValue(forKey: key)?.doubleValue ?? defaultValue
 	}
+
 	@inline(__always) func setDoubleValue(_ value: Double, bounds: PartialRangeFrom<Double>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setDoubleValue(_ value: Double, bounds: ClosedRange<Double>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setDoubleValue(_ value: Double, bounds: PartialRangeThrough<Double>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
 }
 
-// UInt
+// MARK: - UInt
 
 internal extension CIFF.Core {
 	@inline(__always) func uintValue(forKey key: String, defaultValue: UInt) -> UInt {
 		self.numberValue(forKey: key)?.uintValue ?? defaultValue
 	}
+
 	@inline(__always) func setUIntValue(_ value: UInt, bounds: PartialRangeFrom<UInt>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setUIntValue(_ value: UInt, bounds: ClosedRange<UInt>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setUIntValue(_ value: UInt, bounds: PartialRangeThrough<UInt>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
 }
 
-// Int
+// MARK: - Int
 
 internal extension CIFF.Core {
 	@inline(__always) func intValue(forKey key: String, defaultValue: Int) -> Int {
 		self.numberValue(forKey: key)?.intValue ?? defaultValue
 	}
+
 	@inline(__always) func setIntValue(_ value: Int, bounds: PartialRangeFrom<Int>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setIntValue(_ value: Int, bounds: ClosedRange<Int>, forKey key: String) {
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
+
 	@inline(__always) func setIntValue(_ value: Int, bounds: PartialRangeThrough<Int>, forKey key: String) {
+		guard self.supportsKey(key) else { return }
 		let number = NSNumber(value: value.clamped(to: bounds))
-		self.filter.setValue(number, forKey: key)
+		self.setValidatedGenericKeyValue(number, forKey: key)
 	}
 }
 
-// String
+// MARK: - String
 
 internal extension CIFF.Core {
 	// Returns the string value for the filter with the specified key
@@ -108,7 +118,7 @@ internal extension CIFF.Core {
 	}
 }
 
-// Data
+// MARK: - Data
 
 internal extension CIFF.Core {
 	// Returns the data value for the filter with the specified key
@@ -118,47 +128,38 @@ internal extension CIFF.Core {
 	}
 }
 
-// CGPoint
+// MARK: - CGPoint
 
 internal extension CIFF.Core {
 	// Returns the CGPoint value for the filter with the specified key
 	@inline(__always) func cgPointValue(forKey key: String, defaultValue: CGPoint) -> CGPoint {
-		if let value = filter.value(forKey: key) as? CIVector {
-			return value.cgPointValue
-		}
-		else {
-			return defaultValue
-		}
+		guard let value = self.validatedGenericKeyValue(forKey: key) as? CIVector else { return defaultValue }
+		return value.cgPointValue
 	}
 }
 
-
-// CGRect
+// MARK: - CGRect
 
 internal extension CIFF.Core {
 	// Returns the CGPoint value for the filter with the specified key
 	@inline(__always) func cgRectValue(forKey key: String, defaultValue: CGRect) -> CGRect {
-		if let value = filter.value(forKey: key) as? CIVector {
-			return value.cgRectValue
-		}
-		else {
-			return defaultValue
-		}
+		guard let value = self.validatedGenericKeyValue(forKey: key) as? CIVector else { return defaultValue }
+		return value.cgRectValue
 	}
 }
 
-// CIPosition3
+// MARK: - CIPosition3
 
 internal extension CIFF.Core {
 	// Returns the CGPoint value for the filter with the specified key
 	@inline(__always) func cgPosition3Value(forKey key: String, defaultValue: CIFF.CIPosition3) -> CIFF.CIPosition3 {
-		if let value = filter.value(forKey: key) as? CIVector,
-			let position = CIFF.CIPosition3(value) {
-			return position
-		}
+		guard
+			let value = self.validatedGenericKeyValue(forKey: key) as? CIVector,
+			let position = CIFF.CIPosition3(value)
 		else {
 			return defaultValue
 		}
+		return position
 	}
 }
 

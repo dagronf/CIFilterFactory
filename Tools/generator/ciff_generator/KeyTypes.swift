@@ -40,7 +40,7 @@ class CoreType {
 
 		out.print("      set {")
 		if let _ = rangeDefinition() {
-			out.print("      self.filter.setValue(newValue?.clamped(bounds: \(staticName).\(userFriendlyKey)Range), forKey: \"\(inputKeyType.attributeKey)\")")
+			out.print("      self.setValidatedKeyValue(newValue?.clamped(bounds: \(staticName).\(userFriendlyKey)Range), forKey: \"\(inputKeyType.attributeKey)\")")
 		}
 		else {
 			if let _ = inputKeyType.mappedClass {

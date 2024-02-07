@@ -186,6 +186,9 @@ final class CIFilterFactoryTests: XCTestCase {
 		let mm = CIFF.PhotoEffectMono()
 		mm?.setKeyedValue("asdfasdf", for: "asdfasdfaf")
 
+		let ee = mm?.cgRectValue(forKey: "asdf", defaultValue: .zero)
+		XCTAssertEqual(ee, .zero)
+
 		// Make sure 'keyedValue' doesn't blow up with an unsupported input
 		let s: String? = mm?.keyedValue("asdfasdfaf")
 		XCTAssertNil(s)

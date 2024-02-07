@@ -27,7 +27,7 @@ import Foundation
 import OSLog
 
 @available(macOS 11.0, iOS 14, tvOS 14, *)
-internal var _logger: Logger = Logger()
+@usableFromInline internal var _logger: Logger = Logger()
 
 @available(macOS 11.0, iOS 14, tvOS 14, *)
 extension CIFF {

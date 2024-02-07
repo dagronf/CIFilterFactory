@@ -123,29 +123,49 @@ import OSLog
 	}
 }
 
+// MARK: Validated getting/setting key values
+
+internal extension CIFF.Core {
+	// Returns true if the filter supports the key
+	@inline(__always) func supportsKey(_ key: String) -> Bool {
+		if self.filter.attributes[key] != nil { return true }
+		if #available(macOS 11, iOS 14, tvOS 14, *) {
+			_logger.error("CIFilterFactory: '\(self.filter.name, privacy: .public)' does not support parameter '\(key, privacy: .public)' on this platform. Ignoring…")
+		}
+		return false
+	}
+
+	// Set a generic key value, validating the key exists within the filter
+	@inline(__always) func setValidatedGenericKeyValue(_ value: Any?, forKey key: String) {
+		guard self.supportsKey(key) else { return }
+		self.filter.setValue(value, forKey: key)
+	}
+
+	// Get a generic key value, validating the key exists within the filter
+	@inline(__always) func validatedGenericKeyValue(forKey key: String) -> Any? {
+		guard self.supportsKey(key) else { return nil }
+		return self.filter.value(forKey: key)
+	}
+}
+
+// MARK: - Generics for getting/setting key values
+
 internal extension CIFF.Core {
 	// Convenience method for getting a value of a specific type
 	@inline(__always) func keyedValue<TYPE>(_ key: String) -> TYPE? {
-		guard self.filter.attributes[key] != nil else {
-			if #available(macOS 11, iOS 14, tvOS 14, *) {
-				_logger.error("CIFilterFactory: '\(self.filter.name, privacy: .public)' does not support parameter '\(key, privacy: .public)' on this platform.")
-			}
-			return nil
+		// Apple seems to have added some new filter parameters ("inputExtrapolate") to some filters which
+		// are not available on older OS versions. As a result, we need to validate the key before attempting to set it
+		if let result = self.validatedGenericKeyValue(forKey: key) as? TYPE {
+			return result
 		}
-		return self.filter.value(forKey: key) as? TYPE
+		return nil
 	}
 
 	// Convenience method for setting a value with a specific type
 	@inline(__always) func setKeyedValue<TYPE>(_ value: TYPE?, for key: String) {
 		// Apple seems to have added some new filter parameters ("inputExtrapolate") to some filters which
-		// are not available on older OS versions.
-		guard self.filter.attributes[key] != nil else {
-			if #available(macOS 11, iOS 14, tvOS 14, *) {
-				_logger.error("CIFilterFactory: '\(self.filter.name, privacy: .public)' does not support parameter '\(key, privacy: .public)' on this platform. Ignoring…")
-			}
-			return
-		}
-		self.filter.setValue(value, forKey: key)
+		// are not available on older OS versions. As a result, we need to validate the key before attempting to set it
+		self.setValidatedGenericKeyValue(value, forKey: key)
 	}
 }
 
