@@ -74,7 +74,7 @@ let output = filter.outputImage
 
 ### Type safety and discovery
 
-`CIFilter` use string constants to define the argument parameters.  Incredibly powerful and extensible but not overly discoverable without having to resort to online documentation like [CIFilter.io](https://cifilter.io).  And forget Xcode code completion. As the parameter values are defined as `String: Any?`, you can spend a long time debugging an issue because you put in the wrong key string or an incorrect value type.
+`CIFilter` use string constants to define the argument parameters.  Incredibly powerful and extensible but not overly discoverable without having to resort to online documentation like [CIFilter.app](https://cifilter.app).  And forget Xcode code completion. As the parameter values are defined as `String: Any?`, you can spend a long time debugging an issue because you put in the wrong key string or an incorrect value type.
 
 This library pulls out the 'soft' string-based parameters eg :-
 
@@ -134,7 +134,7 @@ For example :-
 /// **Documentation Links**
 /// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
 /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc)
-/// - [CIFilter.io documentation](https://cifilter.io/CIAccordionFoldTransition/)
+/// - [CIFilter.app documentation](https://cifilter.app/CIAccordionFoldTransition/)
 ///
 @available(macOS 10.10, iOS 8, tvOS 8, *)
 @objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: Core {
@@ -204,7 +204,7 @@ public extension CIImage {
    /// **Documentation Links**
    /// - [CIBokehBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBokehBlur)
    /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-   /// - [CIFilter.io documentation](https://cifilter.io/CIBokehBlur/)
+   /// - [CIFilter.app documentation](https://cifilter.app/CIBokehBlur/)
    @inlinable func applyingBokehBlur(
       radius: Double = CIFF.BokehBlur.radiusDefault,
       ringAmount: Double = CIFF.BokehBlur.ringAmountDefault,
@@ -246,7 +246,7 @@ extension CIImage {
    /// **Documentation Links**
    /// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
    /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)
-   /// - [CIFilter.io documentation](https://cifilter.io/CIQRCodeGenerator/)
+   /// - [CIFilter.app documentation](https://cifilter.app/CIQRCodeGenerator/)
    @inlinable static func createUsingQRCodeGenerator(
       message: Data,
       correctionLevel: String
