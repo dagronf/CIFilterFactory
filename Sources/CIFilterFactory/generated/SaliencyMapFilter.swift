@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CISaliencyMapFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaliencyMapFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisaliencymapfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISaliencyMapFilter/)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFSaliencyMapFilter) class SaliencyMapFilter: Core {
 			/// Create an instance of the filter with all default values
@@ -101,6 +102,7 @@
 		/// **Documentation Links**
 		/// - [CISaliencyMapFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISaliencyMapFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisaliencymapfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISaliencyMapFilter/)
 		@inlinable func applyingSaliencyMapFilter(
 			isActive: Bool = true
 		) -> CIImage {

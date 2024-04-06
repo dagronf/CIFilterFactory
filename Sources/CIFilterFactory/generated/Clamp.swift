@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciclamp)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIClamp/)
 		@available(macOS 10.12, iOS 10, tvOS 10, *)
 		@objc(CIFFClamp) class Clamp: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIClamp Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIClamp)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciclamp)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIClamp/)
 		@inlinable func applyingClamp(
 			extent: CGRect = CIFF.Clamp.extentDefault,
 			isActive: Bool = true

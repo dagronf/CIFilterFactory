@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CICheckerboardGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICheckerboardGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICheckerboardGenerator/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFCheckerboardGenerator) class CheckerboardGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -201,6 +202,7 @@
 		/// **Documentation Links**
 		/// - [CICheckerboardGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICheckerboardGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICheckerboardGenerator/)
 		@inlinable static func createUsingCheckerboardGenerator(
 			center: CGPoint = CIFF.CheckerboardGenerator.centerDefault,
 			color0: CIColor,

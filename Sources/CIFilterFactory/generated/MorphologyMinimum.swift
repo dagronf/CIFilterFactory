@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMinimum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyminimum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyMinimum/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFMorphologyMinimum) class MorphologyMinimum: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyMinimum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMinimum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyminimum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyMinimum/)
 		@inlinable func applyingMorphologyMinimum(
 			radius: Double = CIFF.MorphologyMinimum.radiusDefault,
 			isActive: Bool = true

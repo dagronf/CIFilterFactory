@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciarealogarithmichistogram)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaLogarithmicHistogram/)
 		/// **Additional output keys**
 		/// - outputData
 		/// - outputImageMPS
@@ -274,6 +275,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaLogarithmicHistogram Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaLogarithmicHistogram)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciarealogarithmichistogram)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaLogarithmicHistogram/)
 		@inlinable func applyingAreaLogarithmicHistogram(
 			extent: CGRect = CIFF.AreaLogarithmicHistogram.extentDefault,
 			scale: Double = CIFF.AreaLogarithmicHistogram.scaleDefault,

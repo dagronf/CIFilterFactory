@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedgework)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIEdgeWork/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFEdgeWork) class EdgeWork: Core {
 			/// Create an instance of the filter with all default values
@@ -130,6 +131,7 @@
 		/// **Documentation Links**
 		/// - [CIEdgeWork Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEdgeWork)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciedgework)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIEdgeWork/)
 		@inlinable func applyingEdgeWork(
 			radius: Double = CIFF.EdgeWork.radiusDefault,
 			isActive: Bool = true

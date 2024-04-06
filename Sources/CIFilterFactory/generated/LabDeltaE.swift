@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CILabDeltaE Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILabDeltaE)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilabdeltae)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILabDeltaE/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFLabDeltaE) class LabDeltaE: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CILabDeltaE Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILabDeltaE)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilabdeltae)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILabDeltaE/)
 		@inlinable func applyingLabDeltaE(
 			image2: CIImage,
 			isActive: Bool = true

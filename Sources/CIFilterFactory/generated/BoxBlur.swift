@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciboxblur)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBoxBlur/)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFBoxBlur) class BoxBlur: Core {
 			/// Create an instance of the filter with all default values
@@ -131,6 +132,7 @@
 		/// **Documentation Links**
 		/// - [CIBoxBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBoxBlur)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciboxblur)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBoxBlur/)
 		@inlinable func applyingBoxBlur(
 			radius: Double = CIFF.BoxBlur.radiusDefault,
 			isActive: Bool = true

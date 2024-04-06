@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglasslozenge)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGlassLozenge/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFGlassLozenge) class GlassLozenge: Core {
 			/// Create an instance of the filter with all default values
@@ -210,6 +211,7 @@
 		/// **Documentation Links**
 		/// - [CIGlassLozenge Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGlassLozenge)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciglasslozenge)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGlassLozenge/)
 		@inlinable func applyingGlassLozenge(
 			point0: CGPoint = CIFF.GlassLozenge.point0Default,
 			point1: CGPoint = CIFF.GlassLozenge.point1Default,

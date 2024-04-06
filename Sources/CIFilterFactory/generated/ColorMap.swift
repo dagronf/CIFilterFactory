@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIColorMap Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMap)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormap)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorMap/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFColorMap) class ColorMap: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIColorMap Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMap)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormap)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorMap/)
 		@inlinable func applyingColorMap(
 			gradientImage: CIImage,
 			isActive: Bool = true

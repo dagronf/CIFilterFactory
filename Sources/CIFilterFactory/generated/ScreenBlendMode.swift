@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciscreenblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIScreenBlendMode/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFScreenBlendMode) class ScreenBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIScreenBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIScreenBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciscreenblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIScreenBlendMode/)
 		@inlinable func applyingScreenBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

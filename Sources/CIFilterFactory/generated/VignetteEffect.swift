@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignetteeffect)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIVignetteEffect/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFVignetteEffect) class VignetteEffect: Core {
 			/// Create an instance of the filter with all default values
@@ -217,6 +218,7 @@
 		/// **Documentation Links**
 		/// - [CIVignetteEffect Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVignetteEffect)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civignetteeffect)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIVignetteEffect/)
 		@inlinable func applyingVignetteEffect(
 			center: CGPoint = CIFF.VignetteEffect.centerDefault,
 			radius: Double = CIFF.VignetteEffect.radiusDefault,

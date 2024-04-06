@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciguidedfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGuidedFilter/)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFGuidedFilter) class GuidedFilter: Core {
 			/// Create an instance of the filter with all default values
@@ -175,6 +176,7 @@
 		/// **Documentation Links**
 		/// - [CIGuidedFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGuidedFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciguidedfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGuidedFilter/)
 		@inlinable func applyingGuidedFilter(
 			guideImage: CIImage,
 			radius: Double = CIFF.GuidedFilter.radiusDefault,

@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIMaximumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumCompositing)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcompositing)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMaximumCompositing/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFMaximumCompositing) class MaximumCompositing: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIMaximumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumCompositing)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcompositing)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMaximumCompositing/)
 		@inlinable func applyingMaximumCompositing(
 			backgroundImage: CIImage,
 			isActive: Bool = true

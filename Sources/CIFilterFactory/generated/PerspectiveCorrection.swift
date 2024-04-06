@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIPerspectiveCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveCorrection)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivecorrection)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPerspectiveCorrection/)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFPerspectiveCorrection) class PerspectiveCorrection: Core {
 			/// Create an instance of the filter with all default values
@@ -227,6 +228,7 @@
 		/// **Documentation Links**
 		/// - [CIPerspectiveCorrection Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveCorrection)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivecorrection)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPerspectiveCorrection/)
 		@inlinable func applyingPerspectiveCorrection(
 			topLeft: CGPoint = CIFF.PerspectiveCorrection.topLeftDefault,
 			topRight: CGPoint = CIFF.PerspectiveCorrection.topRightDefault,

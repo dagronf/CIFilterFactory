@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIRoundedRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRoundedRectangleGenerator/)
 		@available(macOS 10.15, iOS 13, tvOS 13, *)
 		@objc(CIFFRoundedRectangleGenerator) class RoundedRectangleGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -153,6 +154,7 @@
 		/// **Documentation Links**
 		/// - [CIRoundedRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRoundedRectangleGenerator/)
 		@inlinable static func createUsingRoundedRectangleGenerator(
 			extent: CGRect = CIFF.RoundedRectangleGenerator.extentDefault,
 			radius: Double = CIFF.RoundedRectangleGenerator.radiusDefault,

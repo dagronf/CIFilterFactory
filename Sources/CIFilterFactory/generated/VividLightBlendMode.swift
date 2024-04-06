@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civividlightblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIVividLightBlendMode/)
 		@available(macOS 12.0, iOS 15, tvOS 15, *)
 		@objc(CIFFVividLightBlendMode) class VividLightBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIVividLightBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVividLightBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/civividlightblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIVividLightBlendMode/)
 		@inlinable func applyingVividLightBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

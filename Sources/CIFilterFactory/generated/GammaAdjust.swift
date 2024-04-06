@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigammaadjust)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGammaAdjust/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFGammaAdjust) class GammaAdjust: Core {
 			/// Create an instance of the filter with all default values
@@ -129,6 +130,7 @@
 		/// **Documentation Links**
 		/// - [CIGammaAdjust Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigammaadjust)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGammaAdjust/)
 		@inlinable func applyingGammaAdjust(
 			power: Double = CIFF.GammaAdjust.powerDefault,
 			isActive: Bool = true

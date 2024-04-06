@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMaximumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximumAlpha)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximumalpha)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMaximumAlpha/)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFAreaMaximumAlpha) class AreaMaximumAlpha: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMaximumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMaximumAlpha)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareamaximumalpha)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMaximumAlpha/)
 		@inlinable func applyingAreaMaximumAlpha(
 			extent: CGRect = CIFF.AreaMaximumAlpha.extentDefault,
 			isActive: Bool = true

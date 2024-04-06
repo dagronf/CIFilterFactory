@@ -81,9 +81,8 @@ class FilterGenerator {
 		}
 
 		// This link seems to fluctuate for every Xcode release?
-		docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased()))"
-		//docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator?language=objc)\n"
-		//docs += "   /// - [CIFilter.io documentation](https://cifilter.io/\(filter.name)/)"
+		docs += "   /// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/\(filter.name.lowercased()))\n"
+		docs += "   /// - [CIFilter.app documentation](https://cifilter.app/\(filter.name)/)"
 
 		out.print(docs)
 

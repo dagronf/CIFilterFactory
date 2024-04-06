@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistretchcrop)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIStretchCrop/)
 		@available(macOS 10.6, iOS 9, tvOS 9, *)
 		@objc(CIFFStretchCrop) class StretchCrop: Core {
 			/// Create an instance of the filter with all default values
@@ -187,6 +188,7 @@
 		/// **Documentation Links**
 		/// - [CIStretchCrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStretchCrop)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistretchcrop)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIStretchCrop/)
 		@inlinable func applyingStretchCrop(
 			size: CGPoint = CIFF.StretchCrop.sizeDefault,
 			cropAmount: Double = CIFF.StretchCrop.cropAmountDefault,

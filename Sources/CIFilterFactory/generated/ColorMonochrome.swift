@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIColorMonochrome Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMonochrome)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormonochrome)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorMonochrome/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFColorMonochrome) class ColorMonochrome: Core {
 			/// Create an instance of the filter with all default values
@@ -154,6 +155,7 @@
 		/// **Documentation Links**
 		/// - [CIColorMonochrome Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorMonochrome)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolormonochrome)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorMonochrome/)
 		@inlinable func applyingColorMonochrome(
 			color: CIColor,
 			intensity: Double = CIFF.ColorMonochrome.intensityDefault,

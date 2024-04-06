@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisrgbtonecurvetolinear)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISRGBToneCurveToLinear/)
 		@available(macOS 10.10, iOS 7, tvOS 7, *)
 		@objc(CIFFSRGBToneCurveToLinear) class SRGBToneCurveToLinear: Core {
 			/// Create an instance of the filter with all default values
@@ -104,6 +105,7 @@
 		/// **Documentation Links**
 		/// - [CISRGBToneCurveToLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisrgbtonecurvetolinear)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISRGBToneCurveToLinear/)
 		@inlinable func applyingSRGBToneCurveToLinear(
 			isActive: Bool = true
 		) -> CIImage {

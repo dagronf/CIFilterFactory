@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyRectangleMaximum/)
 		@available(macOS 10.15, iOS 13, tvOS 13, *)
 		@objc(CIFFMorphologyRectangleMaximum) class MorphologyRectangleMaximum: Core {
 			/// Create an instance of the filter with all default values
@@ -160,6 +161,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyRectangleMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyRectangleMaximum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyRectangleMaximum/)
 		@inlinable func applyingMorphologyRectangleMaximum(
 			width: Int = CIFF.MorphologyRectangleMaximum.widthDefault,
 			height: Int = CIFF.MorphologyRectangleMaximum.heightDefault,

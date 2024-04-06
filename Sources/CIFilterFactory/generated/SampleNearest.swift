@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CISampleNearest Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISampleNearest)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisamplenearest)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISampleNearest/)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFSampleNearest) class SampleNearest: Core {
 			/// Create an instance of the filter with all default values
@@ -102,6 +103,7 @@
 		/// **Documentation Links**
 		/// - [CISampleNearest Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISampleNearest)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cisamplenearest)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISampleNearest/)
 		@inlinable func applyingSampleNearest(
 			isActive: Bool = true
 		) -> CIImage {

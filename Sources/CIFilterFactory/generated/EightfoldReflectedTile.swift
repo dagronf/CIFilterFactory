@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIEightfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEightfoldReflectedTile)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIEightfoldReflectedTile/)
 		@available(macOS 10.5, iOS 6, tvOS 6, *)
 		@objc(CIFFEightfoldReflectedTile) class EightfoldReflectedTile: Core {
 			/// Create an instance of the filter with all default values
@@ -181,6 +182,7 @@
 		/// **Documentation Links**
 		/// - [CIEightfoldReflectedTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIEightfoldReflectedTile)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIEightfoldReflectedTile/)
 		@inlinable func applyingEightfoldReflectedTile(
 			center: CGPoint = CIFF.EightfoldReflectedTile.centerDefault,
 			angle: Double = CIFF.EightfoldReflectedTile.angleDefault,

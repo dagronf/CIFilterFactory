@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIHeightFieldFromMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHeightFieldFromMask)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHeightFieldFromMask/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFHeightFieldFromMask) class HeightFieldFromMask: Core {
 			/// Create an instance of the filter with all default values
@@ -130,6 +131,7 @@
 		/// **Documentation Links**
 		/// - [CIHeightFieldFromMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHeightFieldFromMask)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHeightFieldFromMask/)
 		@inlinable func applyingHeightFieldFromMask(
 			radius: Double = CIFF.HeightFieldFromMask.radiusDefault,
 			isActive: Bool = true

@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologymaximum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyMaximum/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFMorphologyMaximum) class MorphologyMaximum: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIMorphologyMaximum Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMorphologyMaximum)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimorphologymaximum)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMorphologyMaximum/)
 		@inlinable func applyingMorphologyMaximum(
 			radius: Double = CIFF.MorphologyMaximum.radiusDefault,
 			isActive: Bool = true

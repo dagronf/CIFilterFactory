@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIConvertRGBtoLab Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertRGBtoLab)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvertrgbtolab)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIConvertRGBtoLab/)
 		@available(macOS 13.0, iOS 16, tvOS 16, *)
 		@objc(CIFFConvertRGBtoLab) class ConvertRGBtoLab: Core {
 			/// Create an instance of the filter with all default values
@@ -129,6 +130,7 @@
 		/// **Documentation Links**
 		/// - [CIConvertRGBtoLab Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvertRGBtoLab)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvertrgbtolab)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIConvertRGBtoLab/)
 		@inlinable func applyingConvertRGBtoLab(
 			normalize: Bool = CIFF.ConvertRGBtoLab.normalizeDefault,
 			isActive: Bool = true

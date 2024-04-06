@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilighttunnel)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILightTunnel/)
 		@available(macOS 10.10, iOS 6, tvOS 6, *)
 		@objc(CIFFLightTunnel) class LightTunnel: Core {
 			/// Create an instance of the filter with all default values
@@ -177,6 +178,7 @@
 		/// **Documentation Links**
 		/// - [CILightTunnel Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILightTunnel)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilighttunnel)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILightTunnel/)
 		@inlinable func applyingLightTunnel(
 			center: CGPoint = CIFF.LightTunnel.centerDefault,
 			rotation: Double = CIFF.LightTunnel.rotationDefault,

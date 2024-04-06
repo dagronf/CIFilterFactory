@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIDisintegrateWithMaskTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisintegrateWithMaskTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDisintegrateWithMaskTransition/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFDisintegrateWithMaskTransition) class DisintegrateWithMaskTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -262,6 +263,7 @@
 		/// **Documentation Links**
 		/// - [CIDisintegrateWithMaskTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDisintegrateWithMaskTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDisintegrateWithMaskTransition/)
 		@inlinable func applyingDisintegrateWithMaskTransition(
 			targetImage: CIImage,
 			maskImage: CIImage,

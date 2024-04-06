@@ -50,6 +50,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectFade Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectFade)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectfade)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectFade/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectFade) class PhotoEffectFade: Core {
 			/// Create an instance of the filter with all default values
@@ -130,6 +131,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectFade Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectFade)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectfade)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectFade/)
 		@inlinable func applyingPhotoEffectFade(
 			extrapolate: Bool = CIFF.PhotoEffectFade.extrapolateDefault,
 			isActive: Bool = true

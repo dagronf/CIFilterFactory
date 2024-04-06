@@ -50,6 +50,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttransfer)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectTransfer/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectTransfer) class PhotoEffectTransfer: Core {
 			/// Create an instance of the filter with all default values
@@ -130,6 +131,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectTransfer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectTransfer)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffecttransfer)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectTransfer/)
 		@inlinable func applyingPhotoEffectTransfer(
 			extrapolate: Bool = CIFF.PhotoEffectTransfer.extrapolateDefault,
 			isActive: Bool = true

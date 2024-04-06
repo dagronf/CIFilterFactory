@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CISmoothLinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISmoothLinearGradient)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cismoothlineargradient)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISmoothLinearGradient/)
 		@available(macOS 10.10, iOS 6, tvOS 6, *)
 		@objc(CIFFSmoothLinearGradient) class SmoothLinearGradient: Core {
 			/// Create an instance of the filter with all default values
@@ -171,6 +172,7 @@
 		/// **Documentation Links**
 		/// - [CISmoothLinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISmoothLinearGradient)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cismoothlineargradient)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISmoothLinearGradient/)
 		@inlinable static func createUsingSmoothLinearGradient(
 			point0: CGPoint = CIFF.SmoothLinearGradient.point0Default,
 			point1: CGPoint = CIFF.SmoothLinearGradient.point1Default,

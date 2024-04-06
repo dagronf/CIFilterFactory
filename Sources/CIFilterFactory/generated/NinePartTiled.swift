@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinineparttiled)
+		/// - [CIFilter.app documentation](https://cifilter.app/CINinePartTiled/)
 		@available(macOS 10.12, iOS 10, tvOS 10, *)
 		@objc(CIFFNinePartTiled) class NinePartTiled: Core {
 			/// Create an instance of the filter with all default values
@@ -202,6 +203,7 @@
 		/// **Documentation Links**
 		/// - [CINinePartTiled Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINinePartTiled)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinineparttiled)
+		/// - [CIFilter.app documentation](https://cifilter.app/CINinePartTiled/)
 		@inlinable func applyingNinePartTiled(
 			breakpoint0: CGPoint = CIFF.NinePartTiled.breakpoint0Default,
 			breakpoint1: CGPoint = CIFF.NinePartTiled.breakpoint1Default,

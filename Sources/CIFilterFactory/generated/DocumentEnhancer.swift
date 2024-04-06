@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidocumentenhancer)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDocumentEnhancer/)
 		@available(macOS 10.15, iOS 13, tvOS 13, *)
 		@objc(CIFFDocumentEnhancer) class DocumentEnhancer: Core {
 			/// Create an instance of the filter with all default values
@@ -131,6 +132,7 @@
 		/// **Documentation Links**
 		/// - [CIDocumentEnhancer Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDocumentEnhancer)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidocumentenhancer)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDocumentEnhancer/)
 		@inlinable func applyingDocumentEnhancer(
 			amount: Double = CIFF.DocumentEnhancer.amountDefault,
 			isActive: Bool = true

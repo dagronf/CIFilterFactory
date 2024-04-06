@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CICMYKHalftone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICMYKHalftone)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicmykhalftone)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICMYKHalftone/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFCMYKHalftone) class CMYKHalftone: Core {
 			/// Create an instance of the filter with all default values
@@ -267,6 +268,7 @@
 		/// **Documentation Links**
 		/// - [CICMYKHalftone Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICMYKHalftone)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicmykhalftone)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICMYKHalftone/)
 		@inlinable func applyingCMYKHalftone(
 			center: CGPoint = CIFF.CMYKHalftone.centerDefault,
 			width: Double = CIFF.CMYKHalftone.widthDefault,

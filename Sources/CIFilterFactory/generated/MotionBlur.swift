@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimotionblur)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMotionBlur/)
 		@available(macOS 10.4, iOS 8.3, tvOS 8.3, *)
 		@objc(CIFFMotionBlur) class MotionBlur: Core {
 			/// Create an instance of the filter with all default values
@@ -156,6 +157,7 @@
 		/// **Documentation Links**
 		/// - [CIMotionBlur Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMotionBlur)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimotionblur)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMotionBlur/)
 		@inlinable func applyingMotionBlur(
 			radius: Double = CIFF.MotionBlur.radiusDefault,
 			angle: Double = CIFF.MotionBlur.angleDefault,

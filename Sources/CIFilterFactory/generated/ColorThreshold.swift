@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthreshold)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorThreshold/)
 		@available(macOS 11.0, iOS 14, tvOS 14, *)
 		@objc(CIFFColorThreshold) class ColorThreshold: Core {
 			/// Create an instance of the filter with all default values
@@ -128,6 +129,7 @@
 		/// **Documentation Links**
 		/// - [CIColorThreshold Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorThreshold)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorthreshold)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorThreshold/)
 		@inlinable func applyingColorThreshold(
 			threshold: Double = CIFF.ColorThreshold.thresholdDefault,
 			isActive: Bool = true

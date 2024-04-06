@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurltransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPageCurlTransition/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFPageCurlTransition) class PageCurlTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -280,6 +281,7 @@
 		/// **Documentation Links**
 		/// - [CIPageCurlTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPageCurlTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipagecurltransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPageCurlTransition/)
 		@inlinable func applyingPageCurlTransition(
 			targetImage: CIImage,
 			backsideImage: CIImage,

@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmax)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMinMax/)
 		/// **Additional output keys**
 		/// - outputImageMPS:
 		/// - outputImageNonMPS
@@ -131,6 +132,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMinMax Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinMax)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminmax)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMinMax/)
 		@inlinable func applyingAreaMinMax(
 			extent: CGRect = CIFF.AreaMinMax.extentDefault,
 			isActive: Bool = true

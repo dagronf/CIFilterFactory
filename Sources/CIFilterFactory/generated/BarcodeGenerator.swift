@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarcodegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBarcodeGenerator/)
 		/// **Additional output keys**
 		/// - outputCGImageForQRCodeDescriptor
 		/// - outputCGImageForAztecCodeDescriptor
@@ -120,6 +121,7 @@
 		/// **Documentation Links**
 		/// - [CIBarcodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBarcodeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibarcodegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBarcodeGenerator/)
 		@inlinable static func createUsingBarcodeGenerator(
 			barcodeDescriptor: CIBarcodeDescriptor
 		) -> CIImage? {

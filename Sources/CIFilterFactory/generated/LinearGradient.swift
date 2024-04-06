@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CILinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearGradient)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineargradient)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILinearGradient/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFLinearGradient) class LinearGradient: Core {
 			/// Create an instance of the filter with all default values
@@ -171,6 +172,7 @@
 		/// **Documentation Links**
 		/// - [CILinearGradient Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearGradient)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineargradient)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILinearGradient/)
 		@inlinable static func createUsingLinearGradient(
 			point0: CGPoint = CIFF.LinearGradient.point0Default,
 			point1: CGPoint = CIFF.LinearGradient.point1Default,

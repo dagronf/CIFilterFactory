@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIRoundedRectangleStrokeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleStrokeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglestrokegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRoundedRectangleStrokeGenerator/)
 		@available(macOS 14.0, iOS 17, tvOS 17, *)
 		@objc(CIFFRoundedRectangleStrokeGenerator) class RoundedRectangleStrokeGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -182,6 +183,7 @@
 		/// **Documentation Links**
 		/// - [CIRoundedRectangleStrokeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRoundedRectangleStrokeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciroundedrectanglestrokegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRoundedRectangleStrokeGenerator/)
 		@inlinable static func createUsingRoundedRectangleStrokeGenerator(
 			extent: CGRect = CIFF.RoundedRectangleStrokeGenerator.extentDefault,
 			radius: Double = CIFF.RoundedRectangleStrokeGenerator.radiusDefault,

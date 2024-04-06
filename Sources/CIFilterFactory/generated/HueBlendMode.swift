@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIHueBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihueblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHueBlendMode/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFHueBlendMode) class HueBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIHueBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihueblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHueBlendMode/)
 		@inlinable func applyingHueBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

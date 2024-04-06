@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIDroste Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDroste)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidroste)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDroste/)
 		@available(macOS 10.6, iOS 9, tvOS 9, *)
 		@objc(CIFFDroste) class Droste: Core {
 			/// Create an instance of the filter with all default values
@@ -265,6 +266,7 @@
 		/// **Documentation Links**
 		/// - [CIDroste Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDroste)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidroste)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDroste/)
 		@inlinable func applyingDroste(
 			insetPoint0: CGPoint = CIFF.Droste.insetPoint0Default,
 			insetPoint1: CGPoint = CIFF.Droste.insetPoint1Default,

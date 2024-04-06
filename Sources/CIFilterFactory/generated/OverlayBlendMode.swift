@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIOverlayBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOverlayBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioverlayblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIOverlayBlendMode/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFOverlayBlendMode) class OverlayBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIOverlayBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIOverlayBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cioverlayblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIOverlayBlendMode/)
 		@inlinable func applyingOverlayBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

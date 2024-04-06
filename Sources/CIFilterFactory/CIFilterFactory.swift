@@ -83,9 +83,9 @@ import OSLog
 			self.filter.dictionaryWithValues(forKeys: self.filter.inputKeys)
 		}
 
-		/// Returns the URL for the `CIFilter.io` webpage describing the filter
+		/// Returns the URL for the `CIFilter.app` webpage describing the filter
 		@objc public lazy var cifilterOnlineDocumentationURL: URL? = {
-			return URL(string: "https://cifilter.io/\(self.name)/")
+			return URL(string: "https://cifilter.app/\(self.name)/")
 		}()
 
 		/// The localized reference documentation for the filter. The reference should provide developers with technical details.

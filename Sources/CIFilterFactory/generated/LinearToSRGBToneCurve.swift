@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CILinearToSRGBToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearToSRGBToneCurve)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineartosrgbtonecurve)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILinearToSRGBToneCurve/)
 		@available(macOS 10.10, iOS 7, tvOS 7, *)
 		@objc(CIFFLinearToSRGBToneCurve) class LinearToSRGBToneCurve: Core {
 			/// Create an instance of the filter with all default values
@@ -104,6 +105,7 @@
 		/// **Documentation Links**
 		/// - [CILinearToSRGBToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearToSRGBToneCurve)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilineartosrgbtonecurve)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILinearToSRGBToneCurve/)
 		@inlinable func applyingLinearToSRGBToneCurve(
 			isActive: Bool = true
 		) -> CIImage {

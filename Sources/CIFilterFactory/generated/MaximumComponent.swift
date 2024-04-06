@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcomponent)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMaximumComponent/)
 		@available(macOS 10.5, iOS 6, tvOS 6, *)
 		@objc(CIFFMaximumComponent) class MaximumComponent: Core {
 			/// Create an instance of the filter with all default values
@@ -104,6 +105,7 @@
 		/// **Documentation Links**
 		/// - [CIMaximumComponent Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMaximumComponent)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimaximumcomponent)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMaximumComponent/)
 		@inlinable func applyingMaximumComponent(
 			isActive: Bool = true
 		) -> CIImage {

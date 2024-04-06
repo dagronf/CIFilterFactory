@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcurves)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorCurves/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFColorCurves) class ColorCurves: Core {
 			/// Create an instance of the filter with all default values
@@ -167,6 +168,7 @@
 		/// **Documentation Links**
 		/// - [CIColorCurves Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCurves)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcurves)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorCurves/)
 		@inlinable func applyingColorCurves(
 			curvesData: Data,
 			curvesDomain: CIVector = CIFF.ColorCurves.curvesDomainDefault,

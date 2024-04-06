@@ -50,6 +50,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectProcess Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectProcess)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectprocess)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectProcess/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFPhotoEffectProcess) class PhotoEffectProcess: Core {
 			/// Create an instance of the filter with all default values
@@ -130,6 +131,7 @@
 		/// **Documentation Links**
 		/// - [CIPhotoEffectProcess Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPhotoEffectProcess)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciphotoeffectprocess)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPhotoEffectProcess/)
 		@inlinable func applyingPhotoEffectProcess(
 			extrapolate: Bool = CIFF.PhotoEffectProcess.extrapolateDefault,
 			isActive: Bool = true

@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIBlurredRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlurredRectangleGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblurredrectanglegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBlurredRectangleGenerator/)
 		@available(macOS 14.0, iOS 17, tvOS 17, *)
 		@objc(CIFFBlurredRectangleGenerator) class BlurredRectangleGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -153,6 +154,7 @@
 		/// **Documentation Links**
 		/// - [CIBlurredRectangleGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlurredRectangleGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblurredrectanglegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBlurredRectangleGenerator/)
 		@inlinable static func createUsingBlurredRectangleGenerator(
 			extent: CGRect = CIFF.BlurredRectangleGenerator.extentDefault,
 			sigma: Double = CIFF.BlurredRectangleGenerator.sigmaDefault,

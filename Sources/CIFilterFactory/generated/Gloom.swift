@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIGloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGloom)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigloom)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGloom/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFGloom) class Gloom: Core {
 			/// Create an instance of the filter with all default values
@@ -160,6 +161,7 @@
 		/// **Documentation Links**
 		/// - [CIGloom Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGloom)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cigloom)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIGloom/)
 		@inlinable func applyingGloom(
 			radius: Double = CIFF.Gloom.radiusDefault,
 			intensity: Double = CIFF.Gloom.intensityDefault,

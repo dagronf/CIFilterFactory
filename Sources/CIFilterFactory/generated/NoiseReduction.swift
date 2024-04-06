@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CINoiseReduction Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINoiseReduction)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinoisereduction)
+		/// - [CIFilter.app documentation](https://cifilter.app/CINoiseReduction/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFNoiseReduction) class NoiseReduction: Core {
 			/// Create an instance of the filter with all default values
@@ -160,6 +161,7 @@
 		/// **Documentation Links**
 		/// - [CINoiseReduction Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINoiseReduction)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cinoisereduction)
+		/// - [CIFilter.app documentation](https://cifilter.app/CINoiseReduction/)
 		@inlinable func applyingNoiseReduction(
 			noiseLevel: Double = CIFF.NoiseReduction.noiseLevelDefault,
 			sharpness: Double = CIFF.NoiseReduction.sharpnessDefault,

@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIDifferenceBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDifferenceBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidifferenceblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDifferenceBlendMode/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFDifferenceBlendMode) class DifferenceBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIDifferenceBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIDifferenceBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cidifferenceblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIDifferenceBlendMode/)
 		@inlinable func applyingDifferenceBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

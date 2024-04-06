@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMeshGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMeshGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimeshgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMeshGenerator/)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFMeshGenerator) class MeshGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -149,6 +150,7 @@
 		/// **Documentation Links**
 		/// - [CIMeshGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMeshGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimeshgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMeshGenerator/)
 		@inlinable static func createUsingMeshGenerator(
 			width: Double = CIFF.MeshGenerator.widthDefault,
 			color: CIColor,

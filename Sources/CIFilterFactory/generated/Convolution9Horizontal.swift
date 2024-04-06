@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIConvolution9Horizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution9Horizontal)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution9horizontal)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIConvolution9Horizontal/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFConvolution9Horizontal) class Convolution9Horizontal: Core {
 			/// Create an instance of the filter with all default values
@@ -151,6 +152,7 @@
 		/// **Documentation Links**
 		/// - [CIConvolution9Horizontal Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIConvolution9Horizontal)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciconvolution9horizontal)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIConvolution9Horizontal/)
 		@inlinable func applyingConvolution9Horizontal(
 			weights: CIVector = CIFF.Convolution9Horizontal.weightsDefault,
 			bias: Double = CIFF.Convolution9Horizontal.biasDefault,

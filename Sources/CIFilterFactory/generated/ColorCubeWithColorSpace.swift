@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorCubeWithColorSpace/)
 		@available(macOS 10.9, iOS 7, tvOS 7, *)
 		@objc(CIFFColorCubeWithColorSpace) class ColorCubeWithColorSpace: Core {
 			/// Create an instance of the filter with all default values
@@ -194,6 +195,7 @@
 		/// **Documentation Links**
 		/// - [CIColorCubeWithColorSpace Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorCubeWithColorSpace)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorCubeWithColorSpace/)
 		@inlinable func applyingColorCubeWithColorSpace(
 			cubeDimension: UInt = CIFF.ColorCubeWithColorSpace.cubeDimensionDefault,
 			cubeData: Data,

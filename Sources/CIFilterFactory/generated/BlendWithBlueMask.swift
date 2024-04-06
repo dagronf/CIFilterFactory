@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIBlendWithBlueMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithBlueMask)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblendwithbluemask)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBlendWithBlueMask/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFBlendWithBlueMask) class BlendWithBlueMask: Core {
 			/// Create an instance of the filter with all default values
@@ -148,6 +149,7 @@
 		/// **Documentation Links**
 		/// - [CIBlendWithBlueMask Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBlendWithBlueMask)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciblendwithbluemask)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBlendWithBlueMask/)
 		@inlinable func applyingBlendWithBlueMask(
 			backgroundImage: CIImage,
 			maskImage: CIImage,

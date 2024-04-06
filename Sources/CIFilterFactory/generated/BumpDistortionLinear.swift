@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIBumpDistortionLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBumpDistortionLinear)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBumpDistortionLinear/)
 		@available(macOS 10.5, iOS 6, tvOS 6, *)
 		@objc(CIFFBumpDistortionLinear) class BumpDistortionLinear: Core {
 			/// Create an instance of the filter with all default values
@@ -210,6 +211,7 @@
 		/// **Documentation Links**
 		/// - [CIBumpDistortionLinear Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIBumpDistortionLinear)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIBumpDistortionLinear/)
 		@inlinable func applyingBumpDistortionLinear(
 			center: CGPoint = CIFF.BumpDistortionLinear.centerDefault,
 			radius: Double = CIFF.BumpDistortionLinear.radiusDefault,

@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMedianFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMedianFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimedianfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMedianFilter/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFMedianFilter) class MedianFilter: Core {
 			/// Create an instance of the filter with all default values
@@ -102,6 +103,7 @@
 		/// **Documentation Links**
 		/// - [CIMedianFilter Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMedianFilter)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimedianfilter)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMedianFilter/)
 		@inlinable func applyingMedianFilter(
 			isActive: Bool = true
 		) -> CIImage {

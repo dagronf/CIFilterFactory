@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIStarShineGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStarShineGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistarshinegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIStarShineGenerator/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFStarShineGenerator) class StarShineGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -295,6 +296,7 @@
 		/// **Documentation Links**
 		/// - [CIStarShineGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIStarShineGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cistarshinegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIStarShineGenerator/)
 		@inlinable static func createUsingStarShineGenerator(
 			center: CGPoint = CIFF.StarShineGenerator.centerDefault,
 			color: CIColor,

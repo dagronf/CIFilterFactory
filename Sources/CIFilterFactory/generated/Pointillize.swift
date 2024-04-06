@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIPointillize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPointillize)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipointillize)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPointillize/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFPointillize) class Pointillize: Core {
 			/// Create an instance of the filter with all default values
@@ -156,6 +157,7 @@
 		/// **Documentation Links**
 		/// - [CIPointillize Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPointillize)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cipointillize)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPointillize/)
 		@inlinable func applyingPointillize(
 			radius: Double = CIFF.Pointillize.radiusDefault,
 			center: CGPoint = CIFF.Pointillize.centerDefault,

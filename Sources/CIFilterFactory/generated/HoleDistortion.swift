@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIHoleDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHoleDistortion)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciholedistortion)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHoleDistortion/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFHoleDistortion) class HoleDistortion: Core {
 			/// Create an instance of the filter with all default values
@@ -156,6 +157,7 @@
 		/// **Documentation Links**
 		/// - [CIHoleDistortion Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHoleDistortion)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciholedistortion)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHoleDistortion/)
 		@inlinable func applyingHoleDistortion(
 			center: CGPoint = CIFF.HoleDistortion.centerDefault,
 			radius: Double = CIFF.HoleDistortion.radiusDefault,

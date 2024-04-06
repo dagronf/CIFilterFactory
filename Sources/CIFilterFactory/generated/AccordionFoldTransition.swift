@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAccordionFoldTransition/)
 		@available(macOS 10.10, iOS 8, tvOS 8, *)
 		@objc(CIFFAccordionFoldTransition) class AccordionFoldTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -244,6 +245,7 @@
 		/// **Documentation Links**
 		/// - [CIAccordionFoldTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAccordionFoldTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAccordionFoldTransition/)
 		@inlinable func applyingAccordionFoldTransition(
 			targetImage: CIImage,
 			bottomHeight: Double = CIFF.AccordionFoldTransition.bottomHeightDefault,

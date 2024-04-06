@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CILenticularHaloGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILenticularHaloGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILenticularHaloGenerator/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFLenticularHaloGenerator) class LenticularHaloGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -300,6 +301,7 @@
 		/// **Documentation Links**
 		/// - [CILenticularHaloGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILenticularHaloGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CILenticularHaloGenerator/)
 		@inlinable static func createUsingLenticularHaloGenerator(
 			center: CGPoint = CIFF.LenticularHaloGenerator.centerDefault,
 			color: CIColor,

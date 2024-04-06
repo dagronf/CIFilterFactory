@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citonecurve)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIToneCurve/)
 		@available(macOS 10.7, iOS 5, tvOS 5, *)
 		@objc(CIFFToneCurve) class ToneCurve: Core {
 			/// Create an instance of the filter with all default values
@@ -228,6 +229,7 @@
 		/// **Documentation Links**
 		/// - [CIToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/citonecurve)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIToneCurve/)
 		@inlinable func applyingToneCurve(
 			point0: CGPoint = CIFF.ToneCurve.point0Default,
 			point1: CGPoint = CIFF.ToneCurve.point1Default,

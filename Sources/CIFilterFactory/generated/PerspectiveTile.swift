@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIPerspectiveTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTile)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetile)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPerspectiveTile/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFPerspectiveTile) class PerspectiveTile: Core {
 			/// Create an instance of the filter with all default values
@@ -202,6 +203,7 @@
 		/// **Documentation Links**
 		/// - [CIPerspectiveTile Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIPerspectiveTile)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciperspectivetile)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIPerspectiveTile/)
 		@inlinable func applyingPerspectiveTile(
 			topLeft: CGPoint = CIFF.PerspectiveTile.topLeftDefault,
 			topRight: CGPoint = CIFF.PerspectiveTile.topRightDefault,

@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIXRay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIXRay)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cixray)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIXRay/)
 		@available(macOS 10.11, iOS 10, tvOS 10, *)
 		@objc(CIFFXRay) class XRay: Core {
 			/// Create an instance of the filter with all default values
@@ -103,6 +104,7 @@
 		/// **Documentation Links**
 		/// - [CIXRay Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIXRay)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cixray)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIXRay/)
 		@inlinable func applyingXRay(
 			isActive: Bool = true
 		) -> CIImage {

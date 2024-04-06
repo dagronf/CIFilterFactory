@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAttributedTextImageGenerator/)
 		@available(macOS 10.13, iOS 11, tvOS 11, *)
 		@objc(CIFFAttributedTextImageGenerator) class AttributedTextImageGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -157,6 +158,7 @@
 		/// **Documentation Links**
 		/// - [CIAttributedTextImageGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAttributedTextImageGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAttributedTextImageGenerator/)
 		@inlinable static func createUsingAttributedTextImageGenerator(
 			text: NSAttributedString,
 			scaleFactor: Double = CIFF.AttributedTextImageGenerator.scaleFactorDefault,

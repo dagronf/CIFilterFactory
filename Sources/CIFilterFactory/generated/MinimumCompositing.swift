@@ -49,6 +49,7 @@
 		/// **Documentation Links**
 		/// - [CIMinimumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMinimumCompositing)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciminimumcompositing)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMinimumCompositing/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFMinimumCompositing) class MinimumCompositing: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIMinimumCompositing Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMinimumCompositing)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciminimumcompositing)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMinimumCompositing/)
 		@inlinable func applyingMinimumCompositing(
 			backgroundImage: CIImage,
 			isActive: Bool = true

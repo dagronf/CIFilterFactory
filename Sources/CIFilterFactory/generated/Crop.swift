@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrop)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICrop/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFCrop) class Crop: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CICrop Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CICrop)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicrop)
+		/// - [CIFilter.app documentation](https://cifilter.app/CICrop/)
 		@inlinable func applyingCrop(
 			rectangle: CGRect = CIFF.Crop.rectangleDefault,
 			isActive: Bool = true

@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIMix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMix)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimix)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMix/)
 		@available(macOS 10.14, iOS 12, tvOS 12, *)
 		@objc(CIFFMix) class Mix: Core {
 			/// Create an instance of the filter with all default values
@@ -150,6 +151,7 @@
 		/// **Documentation Links**
 		/// - [CIMix Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIMix)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimix)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIMix/)
 		@inlinable func applyingMix(
 			backgroundImage: CIImage,
 			amount: Double = CIFF.Mix.amountDefault,

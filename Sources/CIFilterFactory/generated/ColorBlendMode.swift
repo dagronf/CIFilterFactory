@@ -48,6 +48,7 @@
 		/// **Documentation Links**
 		/// - [CIColorBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorBlendMode/)
 		@available(macOS 10.4, iOS 5, tvOS 5, *)
 		@objc(CIFFColorBlendMode) class ColorBlendMode: Core {
 			/// Create an instance of the filter with all default values
@@ -126,6 +127,7 @@
 		/// **Documentation Links**
 		/// - [CIColorBlendMode Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIColorBlendMode)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cicolorblendmode)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIColorBlendMode/)
 		@inlinable func applyingColorBlendMode(
 			backgroundImage: CIImage,
 			isActive: Bool = true

@@ -45,6 +45,7 @@
 		/// **Documentation Links**
 		/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIQRCodeGenerator/)
 		/// **Additional output keys**
 		/// - outputCGImage
 		///
@@ -135,6 +136,7 @@
 		/// **Documentation Links**
 		/// - [CIQRCodeGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciqrcodegenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIQRCodeGenerator/)
 		@inlinable static func createUsingQRCodeGenerator(
 			message: Data,
 			correctionLevel: String

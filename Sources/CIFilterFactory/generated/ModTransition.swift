@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIModTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIModTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimodtransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIModTransition/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFModTransition) class ModTransition: Core {
 			/// Create an instance of the filter with all default values
@@ -263,6 +264,7 @@
 		/// **Documentation Links**
 		/// - [CIModTransition Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIModTransition)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cimodtransition)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIModTransition/)
 		@inlinable func applyingModTransition(
 			targetImage: CIImage,
 			center: CGPoint = CIFF.ModTransition.centerDefault,

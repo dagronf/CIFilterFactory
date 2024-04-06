@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIHatchedScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHatchedScreen)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihatchedscreen)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHatchedScreen/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFHatchedScreen) class HatchedScreen: Core {
 			/// Create an instance of the filter with all default values
@@ -210,6 +211,7 @@
 		/// **Documentation Links**
 		/// - [CIHatchedScreen Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHatchedScreen)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cihatchedscreen)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIHatchedScreen/)
 		@inlinable func applyingHatchedScreen(
 			center: CGPoint = CIFF.HatchedScreen.centerDefault,
 			angle: Double = CIFF.HatchedScreen.angleDefault,

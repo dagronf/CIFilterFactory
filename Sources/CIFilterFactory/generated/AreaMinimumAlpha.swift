@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMinimumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinimumAlpha)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminimumalpha)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMinimumAlpha/)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFAreaMinimumAlpha) class AreaMinimumAlpha: Core {
 			/// Create an instance of the filter with all default values
@@ -127,6 +128,7 @@
 		/// **Documentation Links**
 		/// - [CIAreaMinimumAlpha Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAreaMinimumAlpha)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/ciareaminimumalpha)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIAreaMinimumAlpha/)
 		@inlinable func applyingAreaMinimumAlpha(
 			extent: CGRect = CIFF.AreaMinimumAlpha.extentDefault,
 			isActive: Bool = true

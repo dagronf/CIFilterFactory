@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotlight)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISpotLight/)
 		@available(macOS 10.4, iOS 9, tvOS 9, *)
 		@objc(CIFFSpotLight) class SpotLight: Core {
 			/// Create an instance of the filter with all default values
@@ -231,6 +232,7 @@
 		/// **Documentation Links**
 		/// - [CISpotLight Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotLight)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotlight)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISpotLight/)
 		@inlinable func applyingSpotLight(
 			lightPosition: CIFF.CIPosition3 = CIFF.SpotLight.lightPositionDefault,
 			lightPointsAt: CIFF.CIPosition3 = CIFF.SpotLight.lightPointsAtDefault,

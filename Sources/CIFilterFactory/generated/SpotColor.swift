@@ -47,6 +47,7 @@
 		/// **Documentation Links**
 		/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotcolor)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISpotColor/)
 		@available(macOS 10.5, iOS 9, tvOS 9, *)
 		@objc(CIFFSpotColor) class SpotColor: Core {
 			/// Create an instance of the filter with all default values
@@ -402,6 +403,7 @@
 		/// **Documentation Links**
 		/// - [CISpotColor Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISpotColor)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cispotcolor)
+		/// - [CIFilter.app documentation](https://cifilter.app/CISpotColor/)
 		@inlinable func applyingSpotColor(
 			centerColor1: CIColor,
 			replacementColor1: CIColor,

@@ -46,6 +46,7 @@
 		/// **Documentation Links**
 		/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirandomgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRandomGenerator/)
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFRandomGenerator) class RandomGenerator: Core {
 			/// Create an instance of the filter with all default values
@@ -68,6 +69,7 @@
 		/// **Documentation Links**
 		/// - [CIRandomGenerator Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIRandomGenerator)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cirandomgenerator)
+		/// - [CIFilter.app documentation](https://cifilter.app/CIRandomGenerator/)
 		@inlinable static func createUsingRandomGenerator(
 		) -> CIImage? {
 			return CIFF.RandomGenerator(
