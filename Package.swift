@@ -17,7 +17,11 @@ let package = Package(
 		.library(name: "CIFilterFactory-shared", type: .dynamic, targets: ["CIFilterFactory"]),
 	],
 	targets: [
-		.target(name: "CIFilterFactory"),
+		.target(
+			name: "CIFilterFactory",
+			resources: [
+				.copy("PrivacyInfo.xcprivacy"),
+			]),
 		.testTarget(
 			name: "CIFilterFactoryTests",
 			dependencies: ["CIFilterFactory"],
