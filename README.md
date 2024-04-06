@@ -341,9 +341,9 @@ NOTE: This is only available for Xcode 13 and later
 There is a project in the `tools/generator` folder, called `ciff_generator`. Open this in XCode 13 and build/run
 the project.
 
-Additionally, there is a script in the tools directory which will rebuild the filters and update the XCode documentation.
+Additionally, there is a script in the tools directory which will rebuild the filters and update the Xcode documentation.
 
-1. Open a terminal and navigate to the CIFilterFactory/tools folder
+1. Open a terminal and navigate to the `CIFilterFactory/tools` folder
 2. run `sh regenerate.sh`
 
 ## Generating a docarchive file
@@ -352,94 +352,6 @@ NOTE: This is only available for Xcode 13 and later
 
 1. Open a terminal and navigate to the CIFilterFactory/tools folder
 2. run `sh make-docs.sh`
-
-## History
-
-### `16.0.0`
-
-* Regenerated with support for new filters in macOS 13, iOS 16 and tvOS 16
-* Slightly nicer support for filter additional output types
-* Minor updates to code comments with more information
-
-### `15.0.4`
-
-* **BREAKING** : I've changed 'image' in the generated files to 'inputImage' in order to make the code more readable.
-You will need to update your code to change any calls to `<filter>.image = …` -> `<filter>.inputImage = …` 
-
-
-### `15.0.0`
-
-* Rebuilt the generator to be somewhat cleaner, but as a result cannot be run as a script. It has to be compiled and run.
-This fixes a number of glitches relating to ranges and naming.
-
-### `14.0.1`
-
-* Changed API to use standard types (eg. Double, Bool, Int, UInt) instead of `NSNumber?`
-
-### `14.0.0`
-
-* Renamed generated classes from the verbose `CIFilterFactory.Bloom` to `CIFF.Bloom`.
-
-```swift
-let filter = CIFilterFactory.AztecCodeGenerator()
-...becomes
-let filter = CIFF.AztecCodeGenerator()
-```
-
-### `13.0.1`
-
-* Restructured generated source to better support Xcode documentation
-* Added script for generating docarchive file
-
-### `13.0.0`
-
-* Changed names to remove 'CI' prefix to class names.
-
-```swift
-// @objc(CIFilterFactory_CIAztecCodeGenerator) class CIAztecCodeGenerator
-let filter = CIFilterFactory.CIAztecCodeGenerator()
-```
-
-becomes
-
-```swift
-// @objc(CIFilterFactory_AztecCodeGenerator) class AztecCodeGenerator
-let filter = CIFilterFactory.AztecCodeGenerator()
-```
-
-* Removed `input` from the start of filter attributes where appropriate. Any attributes not starting with `input` are not changed
-
-```swift
-@objc public dynamic var inputCorrectionLevel: NSNumber?
-```
-
-becomes
-
-```swift
-@objc public var correctionLevel: NSNumber?
-```
-
-* Removed static filter creator function. The change to the class names to remove the `CI` prefix reduces the need. Also declutters the `CIFilter` namespace.
-* Changed `CIFilterFactory.AffineTransform` -> `CIAffineTransform` to declutter code.
-* Removed `CIFilterFactory.Rectangle` and `CIFilterFactory.Point` (not needed)
-
-### `12.1.0`
-
-* Directly support native Data and String types for Swift.
-
-### `12.0.0`
-
-* Regenerated for macOS Monterey
-
-### `11.1.0`
-
-* Regenerated on macOS 11.1 to update for the latest filters
-* (convenience) Generate convenience initializer with default parameters for each filter
-* (convenience) Generate static filter creator on `CIFilter` so you can use
-
-	```swift
-	var filter = CIFilter.Sepia()
-	```
 
 ## License
 
