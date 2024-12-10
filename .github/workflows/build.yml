@@ -3,13 +3,20 @@ name: Swift
 on: [push]
 
 jobs:
-  build:
-
+  macos_tests:
+    name: Build on latest macOS
     runs-on: macos-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build
         run: swift build
       - name: Run tests
         run: swift test
+
+  ios_tests:
+    name: Build on iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests on iOS
+        run: xcodebuild -scheme CIFilterFactory build -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest"
