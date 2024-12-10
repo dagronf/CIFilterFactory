@@ -40,6 +40,7 @@
 		/// **Categories**
 		/// - BuiltIn (*CICategoryBuiltIn*)
 		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
 		/// - Interlaced (*CICategoryInterlaced*)
 		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
 		/// - StillImage (*CICategoryStillImage*)
@@ -178,6 +179,27 @@
 			/// `point4` default value
 			@objc public static let point4Default = CGPoint(x: 1.0, y: 1.0)
 
+			// MARK: - extrapolate (inputExtrapolate)
+
+			/// If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputExtrapolate`
+			/// - Internal class: `NSNumber`
+			/// - Type: `CIAttributeTypeBoolean`
+			/// - Default Value: `false`
+			@objc public var extrapolate: Bool {
+				get {
+					self.boolValue(forKey: "inputExtrapolate", defaultValue: Self.extrapolateDefault)
+				}
+				set {
+					self.setBoolValue(newValue, forKey: "inputExtrapolate")
+				}
+			}
+
+			/// `extrapolate` default value
+			@objc public static let extrapolateDefault: Bool = false
+
 			// MARK: - Convenience creators
 
 			/// Filter initializer
@@ -188,13 +210,15 @@
 			///   - point2: No Description
 			///   - point3: No Description
 			///   - point4: No Description
+			///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				point0: CGPoint = ToneCurve.point0Default,
 				point1: CGPoint = ToneCurve.point1Default,
 				point2: CGPoint = ToneCurve.point2Default,
 				point3: CGPoint = ToneCurve.point3Default,
-				point4: CGPoint = ToneCurve.point4Default
+				point4: CGPoint = ToneCurve.point4Default,
+				extrapolate: Bool = ToneCurve.extrapolateDefault
 			) {
 				self.init()
 				if let inputImage = inputImage {
@@ -205,6 +229,7 @@
 				self.point2 = point2
 				self.point3 = point3
 				self.point4 = point4
+				self.extrapolate = extrapolate
 			}
 		}
 	}
@@ -219,12 +244,13 @@
 		///   - point2: No Description
 		///   - point3: No Description
 		///   - point4: No Description
+		///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///
 		/// Adjusts tone response of the R, G, and B channels of an image. The input points are five x,y values that are interpolated using a spline curve. The curve is applied in a perceptual (gamma 2) version of the working space.
 		///
-		/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+		/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
 		///
 		/// **Documentation Links**
 		/// - [CIToneCurve Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve)
@@ -236,6 +262,7 @@
 			point2: CGPoint = CIFF.ToneCurve.point2Default,
 			point3: CGPoint = CIFF.ToneCurve.point3Default,
 			point4: CGPoint = CIFF.ToneCurve.point4Default,
+			extrapolate: Bool = CIFF.ToneCurve.extrapolateDefault,
 			isActive: Bool = true
 		) -> CIImage {
 			guard isActive else { return self }
@@ -245,7 +272,8 @@
 				point1: point1,
 				point2: point2,
 				point3: point3,
-				point4: point4
+				point4: point4,
+				extrapolate: extrapolate
 			)?.outputImage ?? CIImage.empty()
 		}
 	}

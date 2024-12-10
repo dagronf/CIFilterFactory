@@ -40,6 +40,7 @@
 		/// **Categories**
 		/// - BuiltIn (*CICategoryBuiltIn*)
 		/// - ColorAdjustment (*CICategoryColorAdjustment*)
+		/// - HighDynamicRange (*CICategoryHighDynamicRange*)
 		/// - Interlaced (*CICategoryInterlaced*)
 		/// - NonSquarePixels (*CICategoryNonSquarePixels*)
 		/// - StillImage (*CICategoryStillImage*)
@@ -129,7 +130,7 @@
 		///
 		/// Adjusts the saturation of an image while keeping pleasing skin tones.
 		///
-		/// **Categories**: BuiltIn, ColorAdjustment, Interlaced, NonSquarePixels, StillImage, Video
+		/// **Categories**: BuiltIn, ColorAdjustment, HighDynamicRange, Interlaced, NonSquarePixels, StillImage, Video
 		///
 		/// **Documentation Links**
 		/// - [CIVibrance Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance)

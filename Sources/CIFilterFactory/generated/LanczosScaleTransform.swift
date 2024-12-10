@@ -48,10 +48,6 @@
 		/// - [CILanczosScaleTransform Online Documentation](http://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILanczosScaleTransform)
 		/// - [CoreImage.CIFilterBuiltins Xcode documentation](https://developer.apple.com/documentation/coreimage/cilanczosscaletransform)
 		/// - [CIFilter.app documentation](https://cifilter.app/CILanczosScaleTransform/)
-		/// **Additional output keys**
-		/// - outputImageNewScaleX:scaleY:
-		/// - outputImageOldScaleX:scaleY:
-		///
 		@available(macOS 10.4, iOS 6, tvOS 6, *)
 		@objc(CIFFLanczosScaleTransform) class LanczosScaleTransform: Core {
 			/// Create an instance of the filter with all default values
