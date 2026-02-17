@@ -1,7 +1,7 @@
 //
 //  CIFilterFactory+ValueHandling.swift
 //
-//  Copyright © 2024 Darren Ford. All rights reserved.
+//  Copyright © 2026 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
