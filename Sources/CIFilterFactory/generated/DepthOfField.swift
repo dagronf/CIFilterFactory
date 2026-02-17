@@ -73,7 +73,7 @@
 
 			// MARK: - point0 (inputPoint0)
 
-			/// No Description
+			/// The first of two points defining a line in the image that should remain in focus
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint0`
@@ -94,7 +94,7 @@
 
 			// MARK: - point1 (inputPoint1)
 
-			/// No Description
+			/// The second of two points defining a line in the image that should remain in focus
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint1`
@@ -140,7 +140,7 @@
 
 			// MARK: - unsharpMaskRadius (inputUnsharpMaskRadius)
 
-			/// No Description
+			/// A float number representing the radius of the unsharpened mask effect applied to the in-focus area of effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputUnsharpMaskRadius`
@@ -165,7 +165,7 @@
 
 			// MARK: - unsharpMaskIntensity (inputUnsharpMaskIntensity)
 
-			/// No Description
+			/// A float number representing the intensity of the unsharp mask effect applied to the in-focus area of effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputUnsharpMaskIntensity`
@@ -190,7 +190,7 @@
 
 			// MARK: - radius (inputRadius)
 
-			/// The distance from the center of the effect.
+			/// A float representing how much to blur the portion of the image that is not near the focus line.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputRadius`
@@ -218,12 +218,12 @@
 			/// Filter initializer
 			/// - Parameters:
 			///   - inputImage: The image to use as an input for the effect.
-			///   - point0: No Description
-			///   - point1: No Description
+			///   - point0: The first of two points defining a line in the image that should remain in focus
+			///   - point1: The second of two points defining a line in the image that should remain in focus
 			///   - saturation: The amount to adjust the saturation.
-			///   - unsharpMaskRadius: No Description
-			///   - unsharpMaskIntensity: No Description
-			///   - radius: The distance from the center of the effect.
+			///   - unsharpMaskRadius: A float number representing the radius of the unsharpened mask effect applied to the in-focus area of effect.
+			///   - unsharpMaskIntensity: A float number representing the intensity of the unsharp mask effect applied to the in-focus area of effect.
+			///   - radius: A float representing how much to blur the portion of the image that is not near the focus line.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				point0: CGPoint = DepthOfField.point0Default,
@@ -252,12 +252,12 @@
 		/// Apply the 'Depth of Field' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
-		///   - point0: No Description
-		///   - point1: No Description
+		///   - point0: The first of two points defining a line in the image that should remain in focus
+		///   - point1: The second of two points defining a line in the image that should remain in focus
 		///   - saturation: The amount to adjust the saturation. (0.0...)
-		///   - unsharpMaskRadius: No Description (0.0...)
-		///   - unsharpMaskIntensity: No Description (0.0...)
-		///   - radius: The distance from the center of the effect. (0.0...)
+		///   - unsharpMaskRadius: A float number representing the radius of the unsharpened mask effect applied to the in-focus area of effect. (0.0...)
+		///   - unsharpMaskIntensity: A float number representing the intensity of the unsharp mask effect applied to the in-focus area of effect. (0.0...)
+		///   - radius: A float representing how much to blur the portion of the image that is not near the focus line. (0.0...)
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///

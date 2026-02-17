@@ -29,7 +29,7 @@
 	@objc public extension CIFF {
 		/// Perspective Correction
 		///
-		/// Apply a perspective correction to an image.
+		/// Apply a perspective correction to an image. This geometry maps four control points in the input image to a rectangle.
 		///
 		/// **CIFilter Name**
 		/// - CIPerspectiveCorrection
@@ -158,7 +158,7 @@
 
 			// MARK: - crop (inputCrop)
 
-			/// No Description
+			/// If true then the filter crops the output image to the rectangle that the points map to. If false, then pixels from outside the four control points remain in the output image
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputCrop`
@@ -186,7 +186,7 @@
 			///   - topRight: The top right coordinate to be perspective corrected.
 			///   - bottomRight: The bottom right coordinate to be perspective corrected.
 			///   - bottomLeft: The bottom left coordinate to be perspective corrected.
-			///   - crop: No Description
+			///   - crop: If true then the filter crops the output image to the rectangle that the points map to. If false, then pixels from outside the four control points remain in the output image
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				topLeft: CGPoint = PerspectiveCorrection.topLeftDefault,
@@ -217,11 +217,11 @@
 		///   - topRight: The top right coordinate to be perspective corrected.
 		///   - bottomRight: The bottom right coordinate to be perspective corrected.
 		///   - bottomLeft: The bottom left coordinate to be perspective corrected.
-		///   - crop: No Description
+		///   - crop: If true then the filter crops the output image to the rectangle that the points map to. If false, then pixels from outside the four control points remain in the output image
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///
-		/// Apply a perspective correction to an image.
+		/// Apply a perspective correction to an image. This geometry maps four control points in the input image to a rectangle.
 		///
 		/// **Categories**: BuiltIn, GeometryAdjustment, HighDynamicRange, StillImage, Video
 		///

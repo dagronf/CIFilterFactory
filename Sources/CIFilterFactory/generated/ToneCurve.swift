@@ -76,7 +76,7 @@
 
 			// MARK: - point0 (inputPoint0)
 
-			/// No Description
+			/// A vector containing the position of the first point of the tone curve.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint0`
@@ -97,7 +97,7 @@
 
 			// MARK: - point1 (inputPoint1)
 
-			/// No Description
+			/// A vector containing the position of the second point of the tone curve.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint1`
@@ -118,7 +118,7 @@
 
 			// MARK: - point2 (inputPoint2)
 
-			/// No Description
+			/// A vector containing the position of the third point of the tone curve.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint2`
@@ -139,7 +139,7 @@
 
 			// MARK: - point3 (inputPoint3)
 
-			/// No Description
+			/// A vector containing the position of the fourth point of the tone curve.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint3`
@@ -160,7 +160,7 @@
 
 			// MARK: - point4 (inputPoint4)
 
-			/// No Description
+			/// A vector containing the position of the fifth point of the tone curve.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPoint4`
@@ -205,11 +205,11 @@
 			/// Filter initializer
 			/// - Parameters:
 			///   - inputImage: The image to use as an input for the effect.
-			///   - point0: No Description
-			///   - point1: No Description
-			///   - point2: No Description
-			///   - point3: No Description
-			///   - point4: No Description
+			///   - point0: A vector containing the position of the first point of the tone curve.
+			///   - point1: A vector containing the position of the second point of the tone curve.
+			///   - point2: A vector containing the position of the third point of the tone curve.
+			///   - point3: A vector containing the position of the fourth point of the tone curve.
+			///   - point4: A vector containing the position of the fifth point of the tone curve.
 			///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
@@ -239,11 +239,11 @@
 		/// Apply the 'Tone Curve' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
-		///   - point0: No Description
-		///   - point1: No Description
-		///   - point2: No Description
-		///   - point3: No Description
-		///   - point4: No Description
+		///   - point0: A vector containing the position of the first point of the tone curve.
+		///   - point1: A vector containing the position of the second point of the tone curve.
+		///   - point2: A vector containing the position of the third point of the tone curve.
+		///   - point3: A vector containing the position of the fourth point of the tone curve.
+		///   - point4: A vector containing the position of the fifth point of the tone curve.
 		///   - extrapolate: If true, then the color effect will be extrapolated if the input image contains RGB component values outside the range 0.0 to 1.0.
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active

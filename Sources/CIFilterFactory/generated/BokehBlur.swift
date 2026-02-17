@@ -152,7 +152,7 @@
 
 			// MARK: - softness (inputSoftness)
 
-			/// No Description
+			/// The softness of the bokeh effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputSoftness`
@@ -184,7 +184,7 @@
 			///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result.
 			///   - ringAmount: The amount of extra emphasis at the ring of the bokeh.
 			///   - ringSize: The size of extra emphasis at the ring of the bokeh.
-			///   - softness: No Description
+			///   - softness: The softness of the bokeh effect.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				radius: Double = BokehBlur.radiusDefault,
@@ -212,7 +212,7 @@
 		///   - radius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. (0.0...500.0)
 		///   - ringAmount: The amount of extra emphasis at the ring of the bokeh. (0.0...1.0)
 		///   - ringSize: The size of extra emphasis at the ring of the bokeh. (0.0...0.2)
-		///   - softness: No Description (0.0...10.0)
+		///   - softness: The softness of the bokeh effect. (0.0...10.0)
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///

@@ -100,6 +100,32 @@
 			/// `radius` range definition
 			public static let radiusRange = PartialRangeFrom<Double>(0.0)
 
+			// MARK: - smoothness (inputSmoothness)
+
+			/// A value to control the smoothness of the transition between the curved and linear edges of the shape.
+			///
+			/// CIFilter attribute information
+			/// - Attribute key: `inputSmoothness`
+			/// - Internal class: `NSNumber`
+			/// - Type: `CIAttributeTypeDistance`
+			/// - Minimum Value: `0.0`
+			/// - Maximum Value: `1.0`
+			/// - Default Value: `0.0`
+			@objc public var smoothness: Double {
+				get {
+					self.doubleValue(forKey: "inputSmoothness", defaultValue: Self.smoothnessDefault)
+				}
+				set {
+					self.setDoubleValue(newValue, bounds: RoundedRectangleGenerator.smoothnessRange, forKey: "inputSmoothness")
+				}
+			}
+
+			/// `smoothness` default value
+			@objc public static let smoothnessDefault: Double = 0.0
+
+			/// `smoothness` range definition
+			public static let smoothnessRange: ClosedRange<Double> = 0.0 ... 1.0
+
 			// MARK: - color (inputColor)
 
 			/// A color.
@@ -123,15 +149,18 @@
 			/// - Parameters:
 			///   - extent: A rectangle that defines the extent of the effect.
 			///   - radius: The distance from the center of the effect.
+			///   - smoothness: A value to control the smoothness of the transition between the curved and linear edges of the shape.
 			///   - color: A color.
 			@objc public convenience init?(
 				extent: CGRect = RoundedRectangleGenerator.extentDefault,
 				radius: Double = RoundedRectangleGenerator.radiusDefault,
+				smoothness: Double = RoundedRectangleGenerator.smoothnessDefault,
 				color: CIColor
 			) {
 				self.init()
 				self.extent = extent
 				self.radius = radius
+				self.smoothness = smoothness
 				self.color = color
 			}
 		}
@@ -144,6 +173,7 @@
 		/// - Parameters:
 		///   - extent: A rectangle that defines the extent of the effect.
 		///   - radius: The distance from the center of the effect. (0.0...)
+		///   - smoothness: A value to control the smoothness of the transition between the curved and linear edges of the shape. (0.0...1.0)
 		///   - color: A color.
 		/// - Returns: A new image by running the filter, or nil if the image could not be created
 		///
@@ -158,11 +188,13 @@
 		@inlinable static func createUsingRoundedRectangleGenerator(
 			extent: CGRect = CIFF.RoundedRectangleGenerator.extentDefault,
 			radius: Double = CIFF.RoundedRectangleGenerator.radiusDefault,
+			smoothness: Double = CIFF.RoundedRectangleGenerator.smoothnessDefault,
 			color: CIColor
 		) -> CIImage? {
 			return CIFF.RoundedRectangleGenerator(
 				extent: extent,
 				radius: radius,
+				smoothness: smoothness,
 				color: color
 			)?.outputImage
 		}

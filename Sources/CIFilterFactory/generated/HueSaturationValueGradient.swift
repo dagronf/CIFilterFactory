@@ -81,7 +81,7 @@
 
 			// MARK: - radius (inputRadius)
 
-			/// The distance from the center of the effect.
+			/// The radius of the color wheel in pixels.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputRadius`
@@ -106,7 +106,7 @@
 
 			// MARK: - softness (inputSoftness)
 
-			/// No Description
+			/// The amount to smooth the hue angle to make it appear more continuous.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputSoftness`
@@ -131,7 +131,7 @@
 
 			// MARK: - dither (inputDither)
 
-			/// No Description
+			/// The amount of dithered noise to add to the color wheel to avoid banding artifacts.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputDither`
@@ -175,9 +175,9 @@
 			/// Filter initializer
 			/// - Parameters:
 			///   - value: The color value used to generate the color wheel.
-			///   - radius: The distance from the center of the effect.
-			///   - softness: No Description
-			///   - dither: No Description
+			///   - radius: The radius of the color wheel in pixels.
+			///   - softness: The amount to smooth the hue angle to make it appear more continuous.
+			///   - dither: The amount of dithered noise to add to the color wheel to avoid banding artifacts.
 			///   - colorSpace: The CGColorSpaceRef that the color wheel should be generated in.
 			@objc public convenience init?(
 				value: Double = HueSaturationValueGradient.valueDefault,
@@ -202,9 +202,9 @@
 		///
 		/// - Parameters:
 		///   - value: The color value used to generate the color wheel. (0.0...)
-		///   - radius: The distance from the center of the effect. (0.0...)
-		///   - softness: No Description (0.0...)
-		///   - dither: No Description (0.0...)
+		///   - radius: The radius of the color wheel in pixels. (0.0...)
+		///   - softness: The amount to smooth the hue angle to make it appear more continuous. (0.0...)
+		///   - dither: The amount of dithered noise to add to the color wheel to avoid banding artifacts. (0.0...)
 		///   - colorSpace: The CGColorSpaceRef that the color wheel should be generated in.
 		/// - Returns: A new image by running the filter, or nil if the image could not be created
 		///

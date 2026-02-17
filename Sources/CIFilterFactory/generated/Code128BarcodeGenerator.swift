@@ -134,7 +134,7 @@
 				return nil
 			}
 
-			// A hidden class for extracting any additional output objects
+			/// A hidden class for extracting any additional output objects
 			private final class AdditionalOutputsFilterDescriptor: NSObject {
 				@objc var outputCGImage: Unmanaged<AnyObject>?
 			}

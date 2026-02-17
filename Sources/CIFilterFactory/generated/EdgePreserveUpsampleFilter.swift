@@ -59,7 +59,7 @@
 
 			// MARK: - inputImage (inputImage)
 
-			/// The image to use as an input for the effect.
+			/// The image to use as a guide to upsample the small image.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputImage`
@@ -76,7 +76,7 @@
 
 			// MARK: - smallImage (inputSmallImage)
 
-			/// No Description
+			/// The image that the filter upsamples.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputSmallImage`
@@ -93,7 +93,7 @@
 
 			// MARK: - spatialSigma (inputSpatialSigma)
 
-			/// No Description
+			/// A value that specifies the influence of the input image’s spatial information on the upsampling operation.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputSpatialSigma`
@@ -119,7 +119,7 @@
 
 			// MARK: - lumaSigma (inputLumaSigma)
 
-			/// No Description
+			/// A value that specifies the influence of the input image’s luma information on the upsampling operation.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputLumaSigma`
@@ -147,10 +147,10 @@
 
 			/// Filter initializer
 			/// - Parameters:
-			///   - inputImage: The image to use as an input for the effect.
-			///   - smallImage: No Description
-			///   - spatialSigma: No Description
-			///   - lumaSigma: No Description
+			///   - inputImage: The image to use as a guide to upsample the small image.
+			///   - smallImage: The image that the filter upsamples.
+			///   - spatialSigma: A value that specifies the influence of the input image’s spatial information on the upsampling operation.
+			///   - lumaSigma: A value that specifies the influence of the input image’s luma information on the upsampling operation.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				smallImage: CIImage? = nil,
@@ -175,9 +175,9 @@
 		/// Apply the 'Edge Preserve Upsample Filter' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
-		///   - smallImage: No Description
-		///   - spatialSigma: No Description (0.0...5.0)
-		///   - lumaSigma: No Description (0.0...1.0)
+		///   - smallImage: The image that the filter upsamples.
+		///   - spatialSigma: A value that specifies the influence of the input image’s spatial information on the upsampling operation. (0.0...5.0)
+		///   - lumaSigma: A value that specifies the influence of the input image’s luma information on the upsampling operation. (0.0...1.0)
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///

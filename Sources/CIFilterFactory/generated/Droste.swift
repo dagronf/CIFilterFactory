@@ -29,7 +29,7 @@
 	@objc public extension CIFF {
 		/// Droste
 		///
-		/// Performs M.C. Escher Droste style deformation.
+		/// The Droste effect produces an infinite image by distorting an image into a spiral of the image within itself.
 		///
 		/// **CIFilter Name**
 		/// - CIDroste
@@ -74,7 +74,7 @@
 
 			// MARK: - insetPoint0 (inputInsetPoint0)
 
-			/// No Description
+			/// The first of two points that define the rectangular frame of the effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputInsetPoint0`
@@ -95,7 +95,7 @@
 
 			// MARK: - insetPoint1 (inputInsetPoint1)
 
-			/// No Description
+			/// The second of two points that define the rectangular frame of the effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputInsetPoint1`
@@ -116,7 +116,7 @@
 
 			// MARK: - strands (inputStrands)
 
-			/// No Description
+			/// An integer number representing the amount of strands in the effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputStrands`
@@ -142,7 +142,7 @@
 
 			// MARK: - periodicity (inputPeriodicity)
 
-			/// No Description
+			/// An integer number representing the amount of intervals in the effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputPeriodicity`
@@ -167,7 +167,7 @@
 
 			// MARK: - rotation (inputRotation)
 
-			/// No Description
+			/// A float number representing the angle of the rotation in radians.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputRotation`
@@ -188,7 +188,7 @@
 
 			// MARK: - zoom (inputZoom)
 
-			/// No Description
+			/// A float number representing the zoom of the effect.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputZoom`
@@ -216,12 +216,12 @@
 			/// Filter initializer
 			/// - Parameters:
 			///   - inputImage: The image to use as an input for the effect.
-			///   - insetPoint0: No Description
-			///   - insetPoint1: No Description
-			///   - strands: No Description
-			///   - periodicity: No Description
-			///   - rotation: No Description
-			///   - zoom: No Description
+			///   - insetPoint0: The first of two points that define the rectangular frame of the effect.
+			///   - insetPoint1: The second of two points that define the rectangular frame of the effect.
+			///   - strands: An integer number representing the amount of strands in the effect.
+			///   - periodicity: An integer number representing the amount of intervals in the effect.
+			///   - rotation: A float number representing the angle of the rotation in radians.
+			///   - zoom: A float number representing the zoom of the effect.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				insetPoint0: CGPoint = Droste.insetPoint0Default,
@@ -250,16 +250,16 @@
 		/// Apply the 'Droste' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
-		///   - insetPoint0: No Description
-		///   - insetPoint1: No Description
-		///   - strands: No Description (-10.0...10.0)
-		///   - periodicity: No Description (1.0...)
-		///   - rotation: No Description
-		///   - zoom: No Description (0.01...)
+		///   - insetPoint0: The first of two points that define the rectangular frame of the effect.
+		///   - insetPoint1: The second of two points that define the rectangular frame of the effect.
+		///   - strands: An integer number representing the amount of strands in the effect. (-10.0...10.0)
+		///   - periodicity: An integer number representing the amount of intervals in the effect. (1.0...)
+		///   - rotation: A float number representing the angle of the rotation in radians.
+		///   - zoom: A float number representing the zoom of the effect. (0.01...)
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///
-		/// Performs M.C. Escher Droste style deformation.
+		/// The Droste effect produces an infinite image by distorting an image into a spiral of the image within itself.
 		///
 		/// **Categories**: BuiltIn, DistortionEffect, HighDynamicRange, StillImage, Video
 		///

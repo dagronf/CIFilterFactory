@@ -62,7 +62,7 @@
 
 			// MARK: - inputImage (inputImage)
 
-			/// The image to use as an input for the effect.
+			/// Specifies input image with an optional content headroom property.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputImage`
@@ -79,7 +79,7 @@
 
 			// MARK: - sourceHeadroom (inputSourceHeadroom)
 
-			/// Specifies the headroom of the input image.
+			/// If non-nil, this overrides the headroom property of the input image.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputSourceHeadroom`
@@ -132,8 +132,8 @@
 
 			/// Filter initializer
 			/// - Parameters:
-			///   - inputImage: The image to use as an input for the effect.
-			///   - sourceHeadroom: Specifies the headroom of the input image.
+			///   - inputImage: Specifies input image with an optional content headroom property.
+			///   - sourceHeadroom: If non-nil, this overrides the headroom property of the input image.
 			///   - targetHeadroom: Specifies the target headroom of the output image.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
@@ -155,7 +155,7 @@
 		/// Apply the 'Tone Map Headroom' filter to this image and return a new filtered image
 		///
 		/// - Parameters:
-		///   - sourceHeadroom: Specifies the headroom of the input image. (1.0...32.0)
+		///   - sourceHeadroom: If non-nil, this overrides the headroom property of the input image. (1.0...32.0)
 		///   - targetHeadroom: Specifies the target headroom of the output image. (1.0...32.0)
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active

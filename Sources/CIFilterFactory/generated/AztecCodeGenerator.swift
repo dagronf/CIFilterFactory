@@ -125,7 +125,7 @@
 
 			// MARK: - compactStyle (inputCompactStyle)
 
-			/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+			/// Force a compact style Aztec code to true or false. Set to nil for automatic.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputCompactStyle`
@@ -154,7 +154,7 @@
 				return nil
 			}
 
-			// A hidden class for extracting any additional output objects
+			/// A hidden class for extracting any additional output objects
 			private final class AdditionalOutputsFilterDescriptor: NSObject {
 				@objc var outputCGImage: Unmanaged<AnyObject>?
 			}
@@ -166,7 +166,7 @@
 			///   - message: The message to encode in the Aztec Barcode
 			///   - correctionLevel: Aztec error correction value between 5 and 95
 			///   - layers: Aztec layers value between 1 and 32. Set to nil for automatic.
-			///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+			///   - compactStyle: Force a compact style Aztec code to true or false. Set to nil for automatic.
 			@objc public convenience init?(
 				message: Data,
 				correctionLevel: Int = AztecCodeGenerator.correctionLevelDefault,
@@ -190,7 +190,7 @@
 		///   - message: The message to encode in the Aztec Barcode
 		///   - correctionLevel: Aztec error correction value between 5 and 95 (5...95)
 		///   - layers: Aztec layers value between 1 and 32. Set to nil for automatic. (1...32)
-		///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+		///   - compactStyle: Force a compact style Aztec code to true or false. Set to nil for automatic.
 		/// - Returns: A new image by running the filter, or nil if the image could not be created
 		///
 		/// Generate an Aztec barcode image for message data.

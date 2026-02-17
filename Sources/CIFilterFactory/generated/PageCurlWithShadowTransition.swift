@@ -253,7 +253,7 @@
 
 			// MARK: - shadowExtent (inputShadowExtent)
 
-			/// The rectagular portion of input image that will cast a shadow.
+			/// The rectangular portion of input image that will cast a shadow.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputShadowExtent`
@@ -285,7 +285,7 @@
 			///   - radius: The radius of the curl.
 			///   - shadowSize: The maximum size in pixels of the shadow.
 			///   - shadowAmount: The strength of the shadow.
-			///   - shadowExtent: The rectagular portion of input image that will cast a shadow.
+			///   - shadowExtent: The rectangular portion of input image that will cast a shadow.
 			@objc public convenience init?(
 				inputImage: CIImage? = nil,
 				targetImage: CIImage? = nil,
@@ -332,7 +332,7 @@
 		///   - radius: The radius of the curl. (0.01...)
 		///   - shadowSize: The maximum size in pixels of the shadow. (0.0...1.0)
 		///   - shadowAmount: The strength of the shadow. (0.0...1.0)
-		///   - shadowExtent: The rectagular portion of input image that will cast a shadow.
+		///   - shadowExtent: The rectangular portion of input image that will cast a shadow.
 		///   - isActive: If true applies the filter and returns a new image, else returns this image
 		/// - Returns: The filtered image, or this image if the filter is not active
 		///

@@ -266,7 +266,7 @@
 
 			// MARK: - compactStyle (inputCompactStyle)
 
-			/// Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+			/// Force a compact style Aztec code to true or false. Set to nil for automatic.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputCompactStyle`
@@ -312,7 +312,7 @@
 
 			// MARK: - alwaysSpecifyCompaction (inputAlwaysSpecifyCompaction)
 
-			/// Force compaction style to @YES or @NO. Set to nil for automatic.
+			/// Force compaction style to true or false. Set to nil for automatic.
 			///
 			/// CIFilter attribute information
 			/// - Attribute key: `inputAlwaysSpecifyCompaction`
@@ -341,7 +341,7 @@
 				return nil
 			}
 
-			// A hidden class for extracting any additional output objects
+			/// A hidden class for extracting any additional output objects
 			private final class AdditionalOutputsFilterDescriptor: NSObject {
 				@objc var outputCGImage: Unmanaged<AnyObject>?
 			}
@@ -359,9 +359,9 @@
 			///   - rows: The number of rows in the generated barcode
 			///   - preferredAspectRatio: The preferred aspect ratio of the generated barcode
 			///   - compactionMode: The compaction mode of the generated barcode.
-			///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+			///   - compactStyle: Force a compact style Aztec code to true or false. Set to nil for automatic.
 			///   - correctionLevel: The correction level ratio of the generated barcode
-			///   - alwaysSpecifyCompaction: Force compaction style to @YES or @NO. Set to nil for automatic.
+			///   - alwaysSpecifyCompaction: Force compaction style to true or false. Set to nil for automatic.
 			@objc public convenience init?(
 				message: Data,
 				minWidth: Int,
@@ -407,9 +407,9 @@
 		///   - rows: The number of rows in the generated barcode (3...90)
 		///   - preferredAspectRatio: The preferred aspect ratio of the generated barcode
 		///   - compactionMode: The compaction mode of the generated barcode. (0...3)
-		///   - compactStyle: Force a compact style Aztec code to @YES or @NO. Set to nil for automatic.
+		///   - compactStyle: Force a compact style Aztec code to true or false. Set to nil for automatic.
 		///   - correctionLevel: The correction level ratio of the generated barcode (0...8)
-		///   - alwaysSpecifyCompaction: Force compaction style to @YES or @NO. Set to nil for automatic.
+		///   - alwaysSpecifyCompaction: Force compaction style to true or false. Set to nil for automatic.
 		/// - Returns: A new image by running the filter, or nil if the image could not be created
 		///
 		/// Generate a PDF417 barcode image for message data.

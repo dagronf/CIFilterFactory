@@ -85,7 +85,7 @@
 			/// - Attribute key: `inputExtent`
 			/// - Internal class: `CIVector`
 			/// - Type: `CIAttributeTypeRectangle`
-			/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)`
+			/// - Default Value: `CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)`
 			@objc public var extent: CGRect {
 				get {
 					self.cgRectValue(forKey: "inputExtent", defaultValue: Self.extentDefault)
@@ -96,7 +96,7 @@
 			}
 
 			/// `extent` default value
-			@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 640.0, height: 80.0)
+			@objc public static let extentDefault = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
 
 			// MARK: - scale (inputScale)
 
@@ -217,7 +217,7 @@
 				return nil
 			}
 
-			// A hidden class for extracting any additional output objects
+			/// A hidden class for extracting any additional output objects
 			private final class AdditionalOutputsFilterDescriptor: NSObject {
 				@objc var outputData: Unmanaged<AnyObject>?
 				@objc var outputImageMPS: Unmanaged<AnyObject>?
